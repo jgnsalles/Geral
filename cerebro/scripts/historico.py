@@ -3,7 +3,11 @@ import json, os, collections
 R = os.path.join(os.path.dirname(__file__), "..")
 D = os.path.join(R, "app", "dados")
 j = lambda n: json.load(open(os.path.join(D, n), encoding="utf-8"))
-ev = j("eventos.json")["eventos"]; cx = j("caixa.json")["itens"]; g = j("grade.json")
+ev = j("eventos.json")["eventos"]
+import glob, sys
+if len(sys.argv) > 1:  # pasta cerebro/registro do repositório Claude-Code: histórico completo
+    ev = [json.loads(l) for f in sorted(glob.glob(os.path.join(sys.argv[1], "*.jsonl"))) for l in open(f, encoding="utf-8") if l.strip()]
+cx = j("caixa.json")["itens"]; g = j("grade.json")
 ins = j("inscricoes.json"); sess = {s["id"]: s for s in j("sessoes.json")["sessoes"]}
 nov = j("novidades.json")
 dia = lambda q: q[:10]
@@ -15,7 +19,7 @@ def nome(item):
 L = ["# Histórico do Cérebro", "",
      f"Cópia do app publicado em cerebro-joao.jgnsalles.workers.dev (versão {json.load(open(os.path.join(R,'app','versao.json')))['v']}).",
      f"O registro de eventos publicado vai de {dia(ev[0]['quando'])} a {dia(ev[-1]['quando'])} ({len(ev)} eventos).",
-     "O que aconteceu depois disso, ou num aparelho sem token, não está nesta cópia: está no repositório jgnsalles/Claude-Code (cerebro/registro) ou só no aparelho.", ""]
+     "Fonte: " + ("registro completo de jgnsalles/Claude-Code (cerebro/registro)." if len(sys.argv) > 1 else "cópia do registro publicada com o app."), ""]
 
 L += ["## Notas e textos que você escreveu", ""]
 for e in ev:

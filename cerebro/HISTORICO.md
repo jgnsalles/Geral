@@ -1,8 +1,8 @@
 # Histórico do Cérebro
 
 Cópia do app publicado em cerebro-joao.jgnsalles.workers.dev (versão 85).
-O registro de eventos publicado vai de 2026-10-17 a 2026-10-30 (454 eventos).
-O que aconteceu depois disso, ou num aparelho sem token, não está nesta cópia: está no repositório jgnsalles/Claude-Code (cerebro/registro) ou só no aparelho.
+O registro de eventos publicado vai de 2026-10-17 a 2026-11-06 (482 eventos).
+Fonte: registro completo de jgnsalles/Claude-Code (cerebro/registro).
 
 ## Notas e textos que você escreveu
 
@@ -101,7 +101,8 @@ Falas gravadas (áudio, ficam no repositório Claude-Code): 12
 - 2026-10-30 · Cheeky Pint · Cheeky Pint · Scott Kirby (United Airlines): The airline CEO putting Starlink on every plane · ouviu 12 min, parou em 18 min
 - 2026-10-30 · Stock Pickers · Stock Pickers #348 · Os desafios do novo governo Lula: o alerta de um ex-presidente do Banco Central · ouviu 56 min, parou em 55 min
 - 2026-10-30 · Cheeky Pint · Cheeky Pint · Why Sam Altman is against a single superintelligence · ouviu 7 min, parou em 6 min
-- 2026-10-30 · The Knowledge Project · The Knowledge Project · Steven Kotler: The Science of Doing Your Best Work · ouviu 5 min, parou em 5 min
+- 2026-11-03 · The Knowledge Project · The Knowledge Project · Steven Kotler: The Science of Doing Your Best Work · ouviu 44 min, parou em 46 min
+- 2026-11-05 · Cheeky Pint · Cheeky Pint · Muse Wonder: Mark Zuckerberg e Alexandr Wang sobre o novo modelo da Meta · ouviu 13 min, parou em 24 min
 
 ## Podcasts que você removeu (não salvos)
 
@@ -199,6 +200,9 @@ Falas gravadas (áudio, ficam no repositório Claude-Code): 12
 - 2026-10-30 · MegaCast · O novo cenário das renováveis: a estratégia da Qair para comercialização e expansão · https://anchor.fm/s/f2a70f4c/podcast/play/127967467/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-23%2F434837837-44100-2-9e664fcc52534.mp3
 - 2026-10-30 · Cheeky Pint · The airline CEO putting Starlink on every plane · https://media.transistor.fm/3391409f/2be95471.mp3
 - 2026-10-30 · Cheeky Pint · Why Sam Altman is against a single superintelligence · https://media.transistor.fm/92f18066/699c0738.mp3
+- 2026-11-05 · In Good Company with Nicolai Tangen · Friday Wrap-Up: Inside Active Strategies and Learning from Bill Ackman · https://sphinx.acast.com/p/open/s/622618c7057f3400120d15db/e/6ae339229fd2fa3c16ae05f8/media.mp3
+- 2026-11-05 · The a16z Show · The Startups Rebuilding American Industry | The AD50 · https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/7faacce1-573c-4324-a189-ce0ffa16a102/audio/128/default.mp3?aid=rss_feed&awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&awEpisodeId=7faacce1-573c-4324-a189-ce0ffa16a102&feed=JGE3yC0V
+- 2026-11-05 · The a16z Show · The New Startup Playbook | Box CEO Aaron Levie · https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/cf152414-3a4b-46e0-a3ab-13cdcf42822e/audio/128/default.mp3?aid=rss_feed&awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&awEpisodeId=cf152414-3a4b-46e0-a3ab-13cdcf42822e&feed=JGE3yC0V
 
 ## Inscrições desfeitas
 
