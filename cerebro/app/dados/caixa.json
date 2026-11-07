@@ -1,0 +1,655 @@
+{
+ "itens": [
+  {
+   "id": "cx-2026-10-17-velez",
+   "quando": "17/10",
+   "origem": "você",
+   "titulo": "Invest Like the Best EP.495 · David Vélez",
+   "url": "https://colossus.com/episode/david-v-goliath/",
+   "selo": "completo",
+   "proposta": {
+    "destino": "fluxo",
+    "onde": "3 trechos de ~24 min, no player",
+    "motivo": "Recente; transcrito aqui a partir do RSS"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-17-dyn129",
+   "quando": "17/10",
+   "origem": "você",
+   "titulo": "Dynamo · Carta 129, O Tao do Sistema 3",
+   "url": "https://www.dynamo.com.br/carta-129-o-tao-do-sistema-3/",
+   "selo": "completo",
+   "proposta": {
+    "destino": "fluxo",
+    "onde": "1 sessão de ~33 min ou resumo de 5/20 min",
+    "motivo": "Primeira de três cartas sobre a Technos"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-17-sq1s26",
+   "quando": "17/10",
+   "origem": "vigia",
+   "titulo": "Squadra · Carta do 1º semestre de 2026",
+   "url": "https://www.squadrainvest.com.br/wp-content/uploads/2026/08/Squadra_Carta_1S26.pdf",
+   "selo": "completo",
+   "proposta": {
+    "destino": "fluxo",
+    "onde": "2 sessões de ~22 min (18 págs.)",
+    "motivo": "Carta semestral nova"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-17-dynamo-historico",
+   "quando": "17/10",
+   "origem": "você",
+   "titulo": "Backlog: todas as cartas históricas da Dynamo",
+   "url": "https://www.dynamo.com.br/pt/cartas-dynamo",
+   "selo": "completo",
+   "proposta": {
+    "destino": "colecao",
+    "onde": "Coleção Dynamo, 1 carta por semana",
+    "motivo": "Inventário e ordem por importância numa próxima sessão"
+   },
+   "estado": "aprovado",
+   "nota": "Feito: as 105 cartas estão na coleção Dynamo (Catálogo)."
+  },
+  {
+   "id": "cx-2026-10-17-youtube",
+   "quando": "17/10",
+   "origem": "você",
+   "titulo": "Backlog: \"Assistir mais tarde\" do YouTube",
+   "url": "",
+   "selo": "a-verificar",
+   "estado": "descartado",
+   "por": "usuário em 2026-10-24: o que for bom ele manda pelo atalho"
+  },
+  {
+   "id": "cx-2026-10-18-livro-01",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "A Bola de Neve (Alice Schroeder)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "INV · logo depois de As Cartas de Warren Buffett",
+    "motivo": "Sugestão do Claude: Biografia autorizada e canônica; complementa as cartas (a fonte original vem antes)"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-02",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Um Passeio Aleatório por Wall Street (Burton Malkiel)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "MKT · antes de Market Wizards",
+    "motivo": "Sugestão do Claude: Clássico da eficiência de mercado; o contraponto que todo stock picker precisa conhecer"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-03",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Pensar em Apostas (Annie Duke)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "MM · depois de Rápido e Devagar",
+    "motivo": "Sugestão do Claude: Decisão sob incerteza, prática e curta; boa ponte para Superforecasting"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-04",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "De Zero a Um (Peter Thiel)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BUS · depois de 7 Powers",
+    "motivo": "Sugestão do Claude: Monopólio e vantagem competitiva vistos por um fundador-investidor"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-05",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "California Burning (Katherine Blunt)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "IND · cedo, perto de Como o Mundo Funciona",
+    "motivo": "Sugestão do Claude: Falência da PG&E: utility, regulação e risco; colado na sua cobertura"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-06",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Curto-Circuito (Rockmann e Mattos, a verificar)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BRA · junto do bloco de energia/Brasil",
+    "motivo": "Sugestão do Claude: O apagão de 2001–2002 contado por dentro; utilities no Brasil"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-07",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Negocie como se Sua Vida Dependesse Disso (Chris Voss)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "COM · depois de As Armas da Persuasão",
+    "motivo": "Sugestão do Claude: Negociação aplicada; útil em reunião com empresa"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-08",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Armas, Germes e Aço (Jared Diamond)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "GEO · depois de Por que as Nações Fracassam",
+    "motivo": "Sugestão do Claude: Pulitzer; a explicação geográfica de longo prazo, o debate com Acemoglu"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-09",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Em Busca do Portfólio Perfeito (Lo e Foerster)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "INV · bloco de alocação, antes de Desbravando a Gestão de Portfólios",
+    "motivo": "Sugestão do Claude: Entrevistas com os criadores da teoria de portfólio; prepara o Swensen"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-10",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Os Magos Desconhecidos do Mercado Financeiro (Jack Schwager)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "MKT · eletiva, depois de Market Wizards",
+    "motivo": "Sugestão do Claude: Mesma fórmula do Market Wizards com traders menos conhecidos"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-11",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Conversas Cruciais (Patterson e outros)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "COM · eletiva",
+    "motivo": "Sugestão do Claude: Conversas difíceis no trabalho; prático, menos canônico"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-12",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Brevidade Inteligente (VandeHei, Allen e Schwartz)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "COM · perto de The Pyramid Principle",
+    "motivo": "Sugestão do Claude: Escrever curto: direto para relatório de análise"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-13",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Sapiens (Yuval Noah Harari)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "FIL · eletiva",
+    "motivo": "Sugestão do Claude: Popular e bem escrito, mas divulgação; leitura de descanso"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-14",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "O Jeito Warren Buffett de Investir (Robert Hagstrom)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "INV · eletiva, depois das cartas",
+    "motivo": "Sugestão do Claude: Resumo de terceiros sobre o Buffett; a fonte original vem antes"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-15",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "DNA do Inovador (Dyer, Gregersen e Christensen)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BUS · eletiva, depois de The Innovator's Dilemma",
+    "motivo": "Sugestão do Claude: Christensen aplicado a pessoas; menos central que o Dilemma"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-16",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Falando com Estranhos (Malcolm Gladwell)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BEH · eletiva",
+    "motivo": "Sugestão do Claude: Gladwell: bom de ler, pouco rigor"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-17",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "A Política Econômica Brasileira 2019–2022 (Guedes e Sachsida)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BRA · eletiva, bloco de política econômica",
+    "motivo": "Sugestão do Claude: Relato dos próprios autores; ler como fonte primária de um lado"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-18",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Como Matar a Borboleta-Azul (Monica de Bolle)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "BRA · eletiva, junto do anterior",
+    "motivo": "Sugestão do Claude: Crônica da era Dilma; o contraponto ao livro do Guedes"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-19",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "Crash: uma Breve História da Economia (Alexandre Versignassi, a verificar)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "GEO · eletiva",
+    "motivo": "Sugestão do Claude: Divulgação leve de história econômica"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-18-livro-20",
+   "quando": "18/10",
+   "origem": "sua estante",
+   "titulo": "A Loteria na Filosofia (Renato Kinouchi)",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "estante",
+    "onde": "FIL · eletiva",
+    "motivo": "Sugestão do Claude: Probabilidade e acaso na filosofia; nicho"
+   },
+   "estado": "aprovado"
+  },
+  {
+   "id": "cx-2026-10-20-sq-hapvida",
+   "quando": "20/10",
+   "origem": "vigia",
+   "titulo": "Squadra · Carta à Hapvida pedindo voto múltiplo na eleição do Conselho (01/04/2026, 30 págs.)",
+   "url": "https://www.squadrainvest.com.br/wp-content/uploads/2026/04/Carta-Squadra-Eleicao-do-CA-Hapvida-01.04.2026.pdf",
+   "selo": "completo",
+   "proposta": {
+    "destino": "colecao",
+    "onde": "Coleção Squadra",
+    "motivo": "Documento da gestora ainda não visto (abri o PDF: carta formal à Hapvida, 30 págs.); governança, não carta aos cotistas"
+   },
+   "estado": "aprovado",
+   "por": "usuário em 2026-10-24: Assets › Squadra (a carta já está na coleção da Squadra)"
+  },
+  {
+   "id": "cx-2026-10-20-criterio-fundo",
+   "quando": "20/10",
+   "origem": "esteira",
+   "titulo": "Ajuste no critério do Fundo: política/geopolítica e entrevistas gerais",
+   "selo": "completo",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "curadoria/criterio-fundo.md",
+    "motivo": "Você removeu 9 episódios em 20/10: 4 do Foro de Teresina, 3 do Market Makers e 2 do Stock Pickers. Sugestão: política só entra se for análise estrutural sobre mercado; comentário político semanal (ex.: WW) fica fora; entrevistas com gestores só com tese própria, não o episódio de bolsa em geral"
+   },
+   "estado": "aprovado",
+   "nota": "Feito: critério atualizado em curadoria/criterio-fundo.md (21/10)."
+  },
+  {
+   "id": "cx-2026-10-21-iltb496",
+   "quando": "21/10",
+   "origem": "vigia",
+   "titulo": "Invest Like the Best EP.496 · Christina Cacioppo (Vanta): Building an Enduring Software Company in the Age of AI",
+   "url": "https://colossus.com/episode/becoming-a-category-winner/",
+   "selo": "a-verificar",
+   "proposta": {
+    "destino": "fluxo",
+    "onde": "transcrever do RSS e cortar em trechos de ~15 min, se você aprovar",
+    "motivo": "Episódio novo da fonte vigiada; página aberta e conferida (título \"Becoming a Category Winner\")"
+   },
+   "estado": "descartado",
+   "por": "revisão de 24/10 aprovada pelo usuário: o ILTB EP.496 ele já removeu nas Novidades em 20/10; o critério do Fundo caducou (sem filtro desde 24/10)"
+  },
+  {
+   "id": "cx-2026-10-22-criterio-fundo",
+   "quando": "22/10",
+   "origem": "esteira",
+   "titulo": "Ajuste no critério do Fundo: programas que você remove em lote",
+   "selo": "completo",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "curadoria/criterio-fundo.md",
+    "motivo": "Em 21/10 você removeu 5 episódios do David Senra, 4 do Capital Allocators, 3 do Invest Like the Best e 3 do Masters in Business, e moveu 16 para Relevantes. Sugestão: desses quatro programas, só entra o que for entrevista de destaque; o resto fica fora"
+   },
+   "estado": "descartado",
+   "por": "revisão de 24/10 aprovada pelo usuário: o ILTB EP.496 ele já removeu nas Novidades em 20/10; o critério do Fundo caducou (sem filtro desde 24/10)"
+  },
+  {
+   "id": "cx-2026-10-25-rev-01",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Produto: duas listas de 'o que fazer agora'",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Conteúdos",
+    "motivo": "Em 25/10, a aba Conteúdos abre o Em andamento com a Carta 129 da Dynamo, enquanto a Semana manda ler a Squadra. Sugestão: na aba Conteúdos, o conteúdo da semana vem primeiro e marcado como \"da semana\"."
+   },
+   "estado": "aprovado",
+   "por": "aprovado pelo usuário em 25/10; o ajuste é feito numa conversa"
+  },
+  {
+   "id": "cx-2026-10-25-rev-02",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Pesquisa: a série ficou parada a semana inteira",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Semana",
+    "motivo": "Pelo registro de 18 a 24/10: série 0 min em 7 dias; conteúdo 121 min, dos quais 116 em 23 e 24/10; 5 dias com menos de 5 min. Sugestão: o check-in das 21h30 (lembrete do iPhone, a verificar se já foi criado) pergunta também pela série do sábado."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-25-rev-03",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Pesquisa: nas Novidades você remove 3 vezes mais do que termina",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Novidades",
+    "motivo": "De 18 a 24/10: 44 episódios removidos contra 14 terminados. Foro de Teresina, Capital Allocators e Market Makers tiveram tudo removido (as propostas de cancelar estão na Caixa). Sugestão: decidir esses três cancelamentos e olhar de novo no domingo que vem."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-25-rev-05",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "UX: resumos prontos aparecem como pendentes na Caixa",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Caixa",
+    "motivo": "\"Pendente para a madrugada\" mostra o resumo de 8 min do Vélez (pedido em 20/10) e o resumo curto do In Good Company (21/10), mas os dois já estão prontos, com áudio. Você pode achar que a esteira não fez. Sugestão: tirar da lista o que já ficou pronto."
+   },
+   "estado": "aprovado",
+   "por": "aprovado pelo usuário em 25/10; o ajuste é feito numa conversa"
+  },
+  {
+   "id": "cx-2026-10-25-rev-06",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Engenharia: por que os pedidos prontos não saem da lista",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Caixa (blocoPendentes)",
+    "motivo": "O app só dá o pedido como feito se o item ainda está no Fluxo e o pedido tem o tamanho na chave. O do Vélez não tem (pedido antigo), e o In Good Company saiu do Fluxo para as Novidades. Sugestão: dar como feito quando o resumo daquele tamanho existe, procurando também nas Novidades."
+   },
+   "estado": "aprovado",
+   "por": "aprovado pelo usuário em 25/10; o ajuste é feito numa conversa"
+  },
+  {
+   "id": "cx-2026-10-25-rev-07",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Engenharia: episódio longo fica para sempre na fila de resumo",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Novidades",
+    "motivo": "O Seinfeld (Acquired, mais de 150 min) aparece toda noite como \"sem transcrição\" na fila do novidades.py, mas pela regra ele nunca ganha resumo. Sugestão: tirar da fila e mostrar no app \"longo demais para resumo\"."
+   },
+   "estado": "aprovado",
+   "por": "aprovado pelo usuário em 25/10; o ajuste é feito numa conversa"
+  },
+  {
+   "id": "cx-2026-10-25-rev-08",
+   "quando": "25/10",
+   "origem": "revisão de domingo",
+   "titulo": "Curador: a Amazon bloqueou a busca de preços",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Séries › Comprar",
+    "motivo": "Em 25/10, o precos.py parou no captcha da Amazon com 76 livros da lista Comprar ainda sem preço. Sugestão: tentar a Estante Virtual para os livros com edição em PT, ou aceitar que os preços cheguem aos poucos."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-25-cancelar-01",
+   "quando": "25/10",
+   "origem": "esteira",
+   "titulo": "Cancelar a inscrição: Foro de Teresina?",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Inscrições",
+    "motivo": "De 18 a 24/10 você removeu 4 episódios do Foro de Teresina e não terminou, não guardou nem ouviu nenhum. Pela regra da esteira, quem rejeita a maior parte de um programa por uma semana recebe a proposta de cancelar. Se aprovar, cancelo na Inscrições; se descartar, fica como está."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-25-cancelar-02",
+   "quando": "25/10",
+   "origem": "esteira",
+   "titulo": "Cancelar a inscrição: Capital Allocators?",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Inscrições",
+    "motivo": "De 18 a 24/10 você removeu 4 episódios do Capital Allocators e não terminou, não guardou nem ouviu nenhum. Pela regra da esteira, quem rejeita a maior parte de um programa por uma semana recebe a proposta de cancelar. Se aprovar, cancelo na Inscrições; se descartar, fica como está."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-25-cancelar-03",
+   "quando": "25/10",
+   "origem": "esteira",
+   "titulo": "Cancelar a inscrição: Market Makers?",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Inscrições",
+    "motivo": "De 18 a 24/10 você removeu 3 episódios do Market Makers e não terminou, não guardou nem ouviu nenhum. Pela regra da esteira, quem rejeita a maior parte de um programa por uma semana recebe a proposta de cancelar. Se aprovar, cancelo na Inscrições; se descartar, fica como está."
+   },
+   "estado": "descartado"
+  },
+  {
+   "id": "cx-2026-10-26-top10",
+   "quando": "26/10",
+   "origem": "esteira",
+   "titulo": "Engenharia: o Top 10 duplica episódios que já estão nas Novidades",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "projeto/gerador/fundo.py e semana.py",
+    "motivo": "Desde que tudo entra nas Novidades (24/10), quase todo candidato do Top 10 já está lá. Ao marcar como Recomendado, o fundo.py dava um código novo ao episódio, e o seu 'Ouvir depois' (GE Aerospace, Storonsky) e o resumo do Jassy deixavam de casar com ele. Nesta semana o Top 10 ficou só com os 4 episódios novos (Pichai, Affirm, Toto Wolff, Eric Schmidt). Sugestão: o Recomendado mantém o código que o episódio já tinha, e só ganha o selo e o motivo."
+   },
+   "estado": "aprovado",
+   "feito": "2026-10-27: fundo.py mantém o código antigo do Recomendado."
+  },
+  {
+   "id": "cx-2026-10-27-codigo",
+   "quando": "27/10",
+   "origem": "esteira",
+   "titulo": "Engenharia: episódio novo herda o código de um episódio que você removeu e some",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "projeto/gerador/fundo.py",
+    "motivo": "O código do episódio sai do fim do link. Simplecast termina sempre em '/audio/128/default.mp3' e a Libsyn repete 'AUDIO_V1.2'. Assim, dois episódios novos ganharam o código de episódios antigos que você removeu e ficaram escondidos, sem resumo: Capital Allocators EP.523 (Scott Ramsower, continuation vehicles) e WSJ's Take On the Week (regulação de IA). Sugestão: o fundo.py também trata como 'já usado' todo código que aparece no registro com outro link, e o episódio novo ganha o sufixo tirado do link inteiro (como já acontece com a a16z). Os dois voltam às Novidades e ganham resumo na noite seguinte."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-10-27-403",
+   "quando": "27/10",
+   "origem": "esteira",
+   "titulo": "Novidades: 3 episódios sem resumo porque o servidor recusa o download",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "projeto/gerador/novidades.py",
+    "motivo": "Os dois MinutoMega (Jerson Kelman e Itaipu; desafios da energia nos próximos quatro anos), hospedados na Buzzsprout, e o In Our Time (matéria escura), da BBC, devolvem HTTP 403 ao baixar o áudio daqui, em três tentativas. Não tentei contornar o bloqueio. Eles ficam em 'Chegando'. Opções: aceitar sem resumo, ou você ouvir direto e anotar."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-10-29-compounders",
+   "quando": "29/10",
+   "origem": "esteira",
+   "titulo": "Séries: The Compounders ainda sem sumário",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "curadoria/sumarios/INV-25.md",
+    "motivo": "O livro é de setembro de 2025 (The Book Press, 287 p.) e nenhuma página que abri traz o índice: Apple Books, lojas e busca. Pela regra 3 não monto de memória. Ele está no Essencial 3 (Série 4). Se você tiver o livro, um print do sumário resolve; senão a esteira tenta de novo nas próximas noites."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-10-30-programas",
+   "quando": "30/10",
+   "origem": "esteira",
+   "titulo": "Cancelar WW, O Assunto ou The Journal?",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "aba Inscrições → Cancelar inscrição",
+    "motivo": "Na última semana você removeu 6 episódios do WW (sobrou 1 na fila), 4 de O Assunto (sobrou 1) e 4 do The Journal (sobrou 1): a maior parte do que chegou desses programas. Se não quiser mais, cancele pelo botão da aba Inscrições; a esteira aplica na noite seguinte. Se só não quiser os de eleição, ignore: nada muda sem você."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-10-31-dyn130",
+   "quando": "31/10",
+   "origem": "vigia",
+   "titulo": "Dynamo · Carta 130, O Tácito do Tempo",
+   "url": "https://www.dynamo.com.br/carta-130-o-tacito-do-tempo/",
+   "selo": "completo",
+   "proposta": {
+    "destino": "fluxo",
+    "onde": "1 sessão de ~30 min (9 páginas, ~5.900 palavras)",
+    "motivo": "Segunda de três cartas sobre a Technos: o que a Dynamo aprendeu tarde sobre um negócio de base relacional, que foge da lógica arm's-length; continua a Carta 129, que está no seu Fluxo."
+   },
+   "estado": "proposto"
+  },
+  {
+   "id": "cx-2026-10-31-lingua",
+   "quando": "31/10",
+   "origem": "esteira",
+   "titulo": "Transcrição: episódio em português saiu em inglês",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "projeto/gerador/novidades.py",
+    "motivo": "O Market Makers #431 começa com anúncios em inglês (LinkedIn, Botox). O novidades.py decide a língua pelo 1º minuto, achou inglês e transcreveu 138 min em português com o modelo inglês: saiu texto sem sentido. Nesta noite refiz só esse episódio em português, sem mudar o código. Proposta: decidir a língua por amostras do meio do episódio (por exemplo, 3 trechos de 1 min) e, para programas brasileiros, usar sempre português. Muda só a detecção; o resto fica igual. Responda \"sim\" no chat para eu aplicar."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-11-01-rev-01",
+   "quando": "01/11",
+   "origem": "revisão de domingo",
+   "titulo": "Produto: cinco ajustes aprovados há uma semana ainda não foram feitos",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Caixa",
+    "motivo": "Você aprovou em 25 e 26/10 cinco ajustes (duas listas de 'o que fazer agora', resumos prontos como pendentes, pedidos prontos que não saem, episódio longo na fila, Top 10 duplicando Novidades) e eles seguem como 'aprovado': as mudanças no app desde então (versões 83 a 85) foram as séries e as Novidades só com resumo, e nenhum commit ou decisão trata desses cinco. A tela mostra o problema do primeiro: a Semana manda ler Squadra, Conteúdos põe a Carta 129 da Dynamo em 'Em andamento' e Séries põe Financial Shenanigans, Munger e Buffett, enquanto o plano é a Série 1. Sugestão: reservar uma conversa curta para fazer os aprovados de uma vez."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-11-01-rev-02",
+   "quando": "01/11",
+   "origem": "revisão de domingo",
+   "titulo": "UX: o placar do dia soma o áudio na meta de leitura",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Semana → Placar",
+    "motivo": "Na semana de 25 a 31/10 você leu 0 min, mas a quarta aparece '54′ de 50′', como se a meta estivesse cumprida: os 54 min são do carro (Ouvir), e a meta do dia (50′ = manhã 30 + almoço 20) é só de leitura. O mesmo acontece em seg (43′), qui e sex. Sugestão: o quadrado do dia mostrar só leitura contra a meta e o áudio à parte."
+   },
+   "estado": "a-triar"
+  },
+  {
+   "id": "cx-2026-11-01-rev-03",
+   "quando": "01/11",
+   "origem": "revisão de domingo",
+   "titulo": "Curador: 7 episódios presos em 'Chegando' por bloqueio de download",
+   "selo": "so-ficha",
+   "proposta": {
+    "destino": "ajuste",
+    "onde": "Novidades → Chegando",
+    "motivo": "Cinco MinutoMega (Buzzsprout) e dois In Our Time (BBC) devolvem áudio inválido toda noite desde 27/10, e pela regra eles só aparecem com resumo; a esteira não contorna o bloqueio. São 7 de 14 da fila. Sugestão: decidir de uma vez (aceitar o MinutoMega e o In Our Time sem resumo, com o link para ouvir, ou cancelar a inscrição) em vez de deixá-los presos; complementa o item de 27/10."
+   },
+   "estado": "a-triar"
+  }
+ ]
+}

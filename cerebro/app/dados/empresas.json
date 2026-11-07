@@ -1,0 +1,64 @@
+{
+ "empresas": [
+  {
+   "cod": "EM-AMZN",
+   "nome": "Amazon",
+   "total": 29,
+   "proprias": 29
+  },
+  {
+   "cod": "EM-MELI",
+   "nome": "Mercado Livre",
+   "total": 21,
+   "proprias": 20
+  },
+  {
+   "cod": "EM-CSU",
+   "nome": "Constellation Software",
+   "total": 19,
+   "proprias": 19
+  },
+  {
+   "cod": "EM-NU",
+   "nome": "Nubank",
+   "total": 22,
+   "proprias": 22
+  },
+  {
+   "cod": "EM-BRK",
+   "nome": "Berkshire Hathaway",
+   "total": 49,
+   "proprias": 49
+  },
+  {
+   "cod": "EM-GOOGL",
+   "nome": "Alphabet (Google)",
+   "total": 17,
+   "proprias": 17
+  },
+  {
+   "cod": "EM-MSFT",
+   "nome": "Microsoft",
+   "total": 31,
+   "proprias": 31
+  },
+  {
+   "cod": "EM-JPM",
+   "nome": "JPMorgan Chase",
+   "total": 21,
+   "proprias": 21
+  },
+  {
+   "cod": "EM-NFLX",
+   "nome": "Netflix",
+   "total": 65,
+   "proprias": 65
+  },
+  {
+   "cod": "EM-BN",
+   "nome": "Brookfield",
+   "total": 60,
+   "proprias": 60
+  }
+ ]
+}

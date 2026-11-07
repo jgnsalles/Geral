@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Cérebro</title>
+<meta name="theme-color" content="#f4f6f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1318" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cérebro">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icones/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icones/icone-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&family=Overpass+Mono:wght@500;600&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="app">
+  <main id="main">
+    <section class="tela" id="tela-semana" aria-label="Semana" hidden></section>
+    <section class="tela" id="tela-hoje" aria-label="Séries e Conteúdos"></section>
+    <section class="tela" id="tela-novidades" aria-label="Novidades" hidden></section>
+    <section class="tela" id="tela-feed" aria-label="Notes" hidden></section>
+    <section class="tela" id="tela-caixa" aria-label="Caixa" hidden></section>
+    <section class="tela" id="tela-inscricoes" aria-label="Inscrições" hidden></section>
+    <div id="sobre"></div>
+  </main>
+
+  <div class="miniplayer" id="miniplayer" hidden>
+    <div class="mp-linha"><button type="button" class="mp-titulo" data-acao="abrir-player" id="mp-titulo"></button><span class="mp-tempo" id="mp-tempo"></span><button type="button" class="bt sec mp-abrir" data-acao="abrir-player">Abrir</button></div>
+    <audio id="audio" controls preload="metadata"></audio>
+    <div class="mp-controles">
+      <button type="button" class="bt sec" data-pular="-10" aria-label="Voltar 10 segundos">↺ 10 s</button>
+      <button type="button" class="bt sec" data-pular="10" aria-label="Avançar 10 segundos">10 s ↻</button>
+      <button type="button" class="bt sec" data-acao="velocidade" id="mp-vel" aria-label="Velocidade">1×</button>
+    </div>
+  </div>
+
+  <nav class="abas" aria-label="Seções">
+    <a href="#semana" data-aba="semana">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Semana</a>
+    <a href="#series" data-aba="series">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3v18M12 3v6l7 7v5"/><circle cx="5" cy="8" r="2" fill="currentColor"/><circle cx="12" cy="9" r="2" fill="currentColor"/><circle cx="19" cy="17" r="2" fill="currentColor"/></svg>Séries</a>
+    <a href="#conteudos" data-aba="conteudos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Conteúdos</a>
+    <a href="#novidades" data-aba="novidades">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>Novidades</a>
+    <a href="#feed" data-aba="feed">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Notes</a>
+    <a href="#caixa" data-aba="caixa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1 2h6l1-2h5"/></svg><span class="badge" id="badge-caixa" hidden></span>Caixa</a>
+    <a href="#inscricoes" data-aba="inscricoes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5" fill="currentColor"/></svg>Inscrições</a>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

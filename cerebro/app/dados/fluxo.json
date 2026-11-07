@@ -1,0 +1,290 @@
+{
+ "itens": [
+  {
+   "cod": "FX-VELEZ",
+   "fonte": "Invest Like the Best · EP.495",
+   "titulo": "David Vélez: Building Nubank and the Future of Global Banking",
+   "tipo": "podcast",
+   "url": "https://colossus.com/episode/david-v-goliath/",
+   "minutos": 66,
+   "entrou": "2026-10-17",
+   "vence": "2026-11-07",
+   "ligacoes": [
+    "BUS",
+    "BRA"
+   ],
+   "selo": "completo",
+   "transcricao": true,
+   "resumos": [
+    "2",
+    "4",
+    "5",
+    "8"
+   ],
+   "audios": {
+    "5": {
+     "url": "dados/audios/FX-VELEZ-5.mp3",
+     "min": 6
+    },
+    "8": {
+     "url": "dados/audios/FX-VELEZ-8.mp3",
+     "min": 10
+    }
+   },
+   "segmentos": true
+  },
+  {
+   "cod": "FX-DYN129",
+   "fonte": "Dynamo · Carta 129",
+   "titulo": "O Tao do Sistema 3",
+   "tipo": "carta",
+   "url": "https://www.dynamo.com.br/wp-content/uploads/2026/10/Carta-Dynamo-129.pdf",
+   "minutos": 33,
+   "entrou": "2026-10-17",
+   "vence": "2026-11-07",
+   "ligacoes": [
+    "INV",
+    "MM"
+   ],
+   "selo": "completo",
+   "resumos": [
+    "1",
+    "3"
+   ],
+   "audios": {
+    "1": {
+     "url": "dados/audios/FX-DYN129-1.mp3",
+     "min": 1
+    },
+    "3": {
+     "url": "dados/audios/FX-DYN129-3.mp3",
+     "min": 4
+    }
+   }
+  },
+  {
+   "cod": "FX-SQ1S26",
+   "fonte": "Squadra · Carta 1S26",
+   "titulo": "Carta do 1º semestre de 2026",
+   "tipo": "carta",
+   "url": "https://www.squadrainvest.com.br/wp-content/uploads/2026/08/Squadra_Carta_1S26.pdf",
+   "minutos": 45,
+   "entrou": "2026-10-17",
+   "vence": "2026-11-07",
+   "ligacoes": [
+    "INV",
+    "BRA"
+   ],
+   "selo": "completo"
+  },
+  {
+   "cod": "FX-OAK2609",
+   "fonte": "Oaktree · memo de Howard Marks",
+   "titulo": "Shall We Repeal the Laws of Economics – Part III",
+   "tipo": "carta",
+   "url": "https://www.oaktreecapital.com/docs/default-source/memos/shall-we-repeal-the-laws-of-economics-part-iii.pdf?sfvrsn=e7b72d66_1",
+   "minutos": 20,
+   "entrou": "2026-10-19",
+   "vence": "2026-11-09",
+   "ligacoes": [
+    "INV",
+    "MKT"
+   ],
+   "selo": "completo"
+  },
+  {
+   "cod": "FX-FD-INGOODCOMP-ce1dmediamp3",
+   "origem": "FD-INGOODCOMP-ce1dmediamp3",
+   "fonte": "In Good Company with Nicolai Tangen",
+   "titulo": "Eric Schmidt: The Age of Agents, Superintelligence, and Why Europe Is Falling Behind",
+   "tipo": "podcast",
+   "url": "https://sphinx.acast.com/p/open/s/622618c7057f3400120d15db/e/6acf9d31f38f25c0f03dce1d/media.mp3",
+   "minutos": 46,
+   "imagem": "https://assets.pippa.io/shows/622618c7057f3400120d15db/1792517852374-44ec1a2f-2bcd-4582-b27d-0398b3785dcf.jpeg",
+   "resumo": "Voz rara do setor sobre a próxima onda da IA e a Europa.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true,
+   "resumos": [
+    "2",
+    "4"
+   ],
+   "audios": {
+    "2": {
+     "url": "dados/audios/FX-FD-INGOODCOMP-ce1dmediamp3-2.mp3",
+     "min": 3
+    },
+    "4": {
+     "url": "dados/audios/FX-FD-INGOODCOMP-ce1dmediamp3-4.mp3",
+     "min": 6
+    }
+   }
+  },
+  {
+   "cod": "FX-FD-TOP-26101906",
+   "origem": "FD-TOP-26101906",
+   "fonte": "Masters in Business",
+   "titulo": "Financing In The AI Boom: Masters  in Business with Bob Michele",
+   "tipo": "podcast",
+   "url": "https://podtrac.com/pts/redirect.mp3/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/b23da96a-aab2-44b0-bff5-b4e501005d4a/audio.mp3?utm_source=Podcast&in_playlist=5873a3cb-298f-40bc-b71f-ae2b0013000d",
+   "minutos": 71,
+   "imagem": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/5873a3cb-298f-40bc-b71f-ae2b0013000d/image.jpg?t=1677179752&size=Large",
+   "resumo": "CIO de renda fixa do JPMorgan: carreira, método e o crédito do boom de IA.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-TOP-26101909",
+   "origem": "FD-TOP-26101909",
+   "fonte": "David Senra",
+   "titulo": "Lessons from Napoleon, Steve Jobs, Joan of Arc & Other Leaders | Ben Wilson",
+   "tipo": "podcast",
+   "url": "https://traffic.megaphone.fm/SCIM5494655884.mp3",
+   "minutos": 71,
+   "imagem": "https://megaphone.imgix.net/podcasts/2c4eadea-c782-11f1-8b0b-63ab6119223c/image/92e0958ee35f1eb642ddee46ce2f20b8.jpg?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress",
+   "resumo": "Lições de liderança de Napoleão a Jobs: história aplicada a decisões.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-TOP-26101904",
+   "origem": "FD-TOP-26101904",
+   "fonte": "Cheeky Pint",
+   "titulo": "Muse Wonder: Zuckerberg and Wang's $100B AI",
+   "tipo": "podcast",
+   "url": "https://media.transistor.fm/bb7b9a51/b45e8e6f.mp3",
+   "minutos": 134,
+   "imagem": "https://img.transistorcdn.com/lhLIZ-3_1Fmrjobs4HRPJ-ZOM0-Cz5p0Mciv6z8OomU/rs:fill:0:0:1/w:1400/h:1400/q:60/mb:500000/aHR0cHM6Ly9pbWct/dXBsb2FkLXByb2R1/Y3Rpb24udHJhbnNp/c3Rvci5mbS8yM2Jj/ZjMwZTliNDE4NjMz/ODcyYzZjMzcyNWEw/YmQyMi5qcGVn.jpg",
+   "resumo": "Zuckerberg falando de estratégia de IA e infraestrutura: fonte primária de peso.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-INGOODCOMP-46e4mediamp3",
+   "origem": "FD-INGOODCOMP-46e4mediamp3",
+   "fonte": "In Good Company with Nicolai Tangen",
+   "titulo": "John Armitage: How He Invests, Building Egerton, and What Worries Him About AI",
+   "tipo": "podcast",
+   "url": "https://sphinx.acast.com/p/open/s/622618c7057f3400120d15db/e/6ac512eb5f56e1a28d3f46e4/media.mp3",
+   "minutos": 54,
+   "imagem": "https://assets.pippa.io/shows/622618c7057f3400120d15db/1791300316538-e0920af5-5bac-4cf1-a0bd-d226b7c7a861.jpeg",
+   "resumo": "Gestor lendário explica seu método de investir e sua preocupação com IA.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-CHEEKYPINT-0e34073b7mp3",
+   "origem": "FD-CHEEKYPINT-0e34073b7mp3",
+   "fonte": "Cheeky Pint",
+   "titulo": "How Toto Wolff built the most valuable team in F1",
+   "tipo": "podcast",
+   "url": "https://media.transistor.fm/62d31fa0/e34073b7.mp3",
+   "minutos": 71,
+   "imagem": "https://img.transistorcdn.com/HG_fShuhZa-c0xps7mBo2Y2LkHjlhJ25jccszDVTWP8/rs:fill:0:0:1/w:1400/h:1400/q:60/mb:500000/aHR0cHM6Ly9pbWct/dXBsb2FkLXByb2R1/Y3Rpb24udHJhbnNp/c3Rvci5mbS83NzBj/NzdhNjBjNmI1ZDQ0/ZTU0YjY3YzEyYjlj/N2EwYy5qcGVn.jpg",
+   "resumo": "Toto Wolff (chefe e co-dono da Mercedes F1) com John Collison: teto de custos que fez times valerem US$ 1 bi+, contratação sem 'dickheads', 2.500 funcionários, sucessão.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-THEJCURVEP-5dc85fb4dmp3",
+   "origem": "FD-THEJCURVEP-5dc85fb4dmp3",
+   "fonte": "The J Curve Podcast",
+   "titulo": "Arthur Freitas: iFood Wants a Bite of This Massive Industry",
+   "tipo": "podcast",
+   "url": "https://anchor.fm/s/e6607188/podcast/play/127364154/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-12%2F434021735-44100-2-d4895dc85fb4d.mp3",
+   "minutos": 53,
+   "imagem": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/38550802/38550802-1772539673373-e9f8af6df193.jpg",
+   "resumo": "Arthur Freitas (CEO da iFood Benefícios): virada de operação no vermelho, time de 750 para 250, 1,5 milhão de usuários, mercado de US$ 30-40 bi, IA em vendas.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-THEKNOWLED-268496115mp3",
+   "origem": "FD-THEKNOWLED-268496115mp3",
+   "fonte": "The Knowledge Project",
+   "titulo": "Charlie Munger's Interview with Todd Combs",
+   "tipo": "podcast",
+   "url": "https://pdst.fm/e/traffic.megaphone.fm/FSMI1268496115.mp3",
+   "minutos": 21,
+   "imagem": "https://megaphone.imgix.net/podcasts/51637684-c105-11f1-8533-5f8d8fa01772/image/0e39f520c860e3894f4411a23d17f7a1.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress",
+   "resumo": "Charlie Munger em entrevista inédita de 2022 a Todd Combs: como reconhecer pessoas, escolher problemas, temperamento acima de QI, a crise de 1974-75 e a vantagem da Berkshire.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-MASTERSINB-004baudiomp3",
+   "origem": "FD-MASTERSINB-004baudiomp3",
+   "fonte": "Masters in Business",
+   "titulo": "Using Decision Science in Investing: Masters in Business with Omar Aguilar",
+   "tipo": "podcast",
+   "url": "https://podtrac.com/pts/redirect.mp3/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/afbe784f-9233-4fb6-9366-b4d700ac004b/audio.mp3?utm_source=Podcast&in_playlist=5873a3cb-298f-40bc-b71f-ae2b0013000d",
+   "minutos": 66,
+   "imagem": "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/5873a3cb-298f-40bc-b71f-ae2b0013000d/image.jpg?t=1677179752&size=Large",
+   "resumo": "Omar Aguilar (CEO e CIO da Schwab Asset Management, mais de US$ 1 tri): ciência da decisão, os anos na Financial Engines com William Sharpe, como orienta clientes.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-THEKNOWLED-181796943mp3",
+   "origem": "FD-THEKNOWLED-181796943mp3",
+   "fonte": "The Knowledge Project",
+   "titulo": "Bill Ackman: The Biggest Fight of His Life",
+   "tipo": "podcast",
+   "url": "https://pdst.fm/e/traffic.megaphone.fm/FSMI7181796943.mp3",
+   "minutos": 78,
+   "imagem": "https://megaphone.imgix.net/podcasts/d1b0b08c-bbaa-11f1-b278-c71239ddec68/image/225dc09865dbc03d63e9d5496b812146.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress",
+   "resumo": "Bill Ackman (CEO da Pershing Square): inovação versus hype, vender e recomprar a Netflix, bolha em venture e IA, nova Berkshire e a hemorragia cerebral da filha.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-FOUNDERS-986910456mp3",
+   "origem": "FD-FOUNDERS-986910456mp3",
+   "fonte": "Founders",
+   "titulo": "#435 Mark Zuckerberg's Empire",
+   "tipo": "podcast",
+   "url": "https://traffic.megaphone.fm/DSLLC8986910456.mp3",
+   "minutos": 41,
+   "imagem": "https://megaphone.imgix.net/podcasts/0fe786f2-3d92-11f0-8fb0-e778594b8bf8/image/b3123fe637dbdfa2bd55f9fbfb386aca.jpg?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress",
+   "resumo": "David Senra sobre Mark, de Jeremy Stern: o império de Zuckerberg, a fixação por Augusto, controle majoritário da Meta, a luta de MMA e o capex em IA.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  },
+  {
+   "cod": "FX-FD-INVESTLIKE-922860814mp3",
+   "origem": "FD-INVESTLIKE-922860814mp3",
+   "fonte": "Invest Like the Best",
+   "titulo": "Gabe Stengel - Building Investing Superintelligence - [Invest Like the Best, EP.492]",
+   "tipo": "podcast",
+   "url": "https://traffic.megaphone.fm/CLS7922860814.mp3",
+   "minutos": 64,
+   "imagem": "https://megaphone.imgix.net/podcasts/ea3567a0-b511-11f1-b31a-f738f618d5f9/image/e0d60dda5b55c63765f86fb73cf76287.jpg?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress",
+   "resumo": "Gabe Stengel (cofundador e CEO da Rogo, IA para finanças): gestores refazendo seus fundos com agentes, preço por resultado, 40 rejeições antes da Série A.",
+   "entrou": "2026-10-21",
+   "vence": "2026-11-11",
+   "selo": "completo",
+   "movido": true
+  }
+ ]
+}

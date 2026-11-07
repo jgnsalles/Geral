@@ -1,0 +1,611 @@
+{
+ "_leia": "Livros da grade que o usuário tem (PDF ou físico), conferidos pelos prints que ele mandou. 'ativo': false = o app ainda não filtra. Com 'ativo': true, livro da grade fora de 'tenho' sai do Hoje e vai para 'Comprar' no Catálogo (decisão do usuário em 2026-10-18).",
+ "atualizado": "2026-10-18",
+ "ativo": true,
+ "tenho": [
+  "INV-07",
+  "INV-08",
+  "INV-38",
+  "BEH-08",
+  "BEH-20",
+  "BUS-10",
+  "FRA-06",
+  "MM-01",
+  "INV-57",
+  "INV-58",
+  "MKT-24",
+  "MM-39",
+  "BUS-41",
+  "IND-29",
+  "BRA-25",
+  "COM-16",
+  "GEO-40",
+  "INV-59",
+  "MKT-25",
+  "COM-17",
+  "COM-18",
+  "FIL-12",
+  "INV-60",
+  "BUS-42",
+  "BEH-37",
+  "BRA-26",
+  "BRA-27",
+  "GEO-41",
+  "FIL-13"
+ ],
+ "fontes": [
+  "3 fotos da estante, 2026-10-18",
+  "prints do GoodNotes, 2026-10-18 (Como Ler Livros em PDF; Margin of Safety em PDF, fora da grade)"
+ ],
+ "fora_da_grade": [
+  "A Bola de Neve (Alice Schroeder)",
+  "Sapiens (Yuval Noah Harari)",
+  "California Burning (Katherine Blunt)",
+  "Curto-Circuito (Roberto Rockmann e Lúcio Mattos?)",
+  "Armas, Germes e Aço (Jared Diamond)",
+  "Negocie como se sua vida dependesse disso (Chris Voss e Tahl Raz)",
+  "Conversas Cruciais (Patterson e outros)",
+  "A Loteria na Filosofia (Renato Rodrigues Kinouchi)",
+  "A Política Econômica Brasileira 2019–2022 (Paulo Guedes e Adolfo Sachsida)",
+  "Crash: uma breve história da economia (autor a verificar)",
+  "Como Matar a Borboleta-Azul (Monica de Bolle)",
+  "Em Busca do Portfólio Perfeito (Andrew Lo e Stephen Foerster)",
+  "Um Passeio Aleatório por Wall Street (Burton Malkiel)",
+  "Os Magos Desconhecidos do Mercado Financeiro (Jack Schwager)",
+  "DNA do Inovador (Dyer, Gregersen e Christensen)",
+  "De Zero a Um (Peter Thiel)",
+  "Pensar em Apostas (Annie Duke)",
+  "Falando com Estranhos (Malcolm Gladwell)",
+  "Brevidade Inteligente (VandeHei, Allen e Schwartz)",
+  "O Hobbit (Tolkien)",
+  "O Jeito Warren Buffett de Investir (Robert Hagstrom)",
+  "Margin of Safety (Seth Klarman), PDF"
+ ],
+ "fora_da_grade_propostos": "caixa: cx-2026-10-18-livro-01 a 20 (O Hobbit fica fora: lazer)",
+ "precos": {
+  "INV-01": {
+   "valor": 63.46,
+   "titulo_amazon": "O Mais Importante para o Investidor: Lições de um Gênio do Mercado Financeiro",
+   "url": "https://www.amazon.com.br/dp/6556600202",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-10": {
+   "valor": 18.49,
+   "titulo_amazon": "Quality Investing: Owning the Best Companies for the Long Term",
+   "url": "https://www.amazon.com.br/dp/0857195123",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-11": {
+   "valor": 35.0,
+   "titulo_amazon": "Investing for Growth (Second Edition): How to Make Money by Only Buying the Best Companies in the World",
+   "url": "https://www.amazon.com.br/dp/1804093734",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-12": {
+   "valor": 112.0,
+   "titulo_amazon": "Investimento em valor: de Graham a Buffett e além",
+   "url": "https://www.amazon.com.br/dp/8582605668",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-15": {
+   "valor": 0.0,
+   "titulo_amazon": "Expectations Investing: Reading Stock Prices for Better Returns, Revised and Updated",
+   "url": "https://www.amazon.com.br/dp/0231203047",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-04": {
+   "valor": 52.24,
+   "titulo_amazon": "As cartas de Warren Buffett: Lições de investimento e gestão selecionadas das cartas aos acionistas da Berkshire Hathaway",
+   "url": "https://www.amazon.com.br/dp/6555642920",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-05": {
+   "valor": 78.28,
+   "titulo_amazon": "One Up on Wall Street: How to Use What You Already Know to Make Money in the Market",
+   "url": "https://www.amazon.com.br/dp/0743200403",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-09": {
+   "valor": 20.54,
+   "titulo_amazon": "More More Than You Know: Finding Financial Wisdom in Unconventional Places (Updated and Expanded)",
+   "url": "https://www.amazon.com.br/dp/0231143737",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-13": {
+   "valor": 68.67,
+   "titulo_amazon": "Dominando o ciclo de mercado: aprenda a reconhecer padrões para investir com segurança",
+   "url": "https://www.amazon.com.br/dp/8550808784",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-14": {
+   "valor": 35.0,
+   "titulo_amazon": "You Can Be a Stock Market Genius Uncover the Secret Hiding Places of Stock Market Profits",
+   "url": "https://www.amazon.com.br/dp/0684840073",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-16": {
+   "valor": 66.7,
+   "titulo_amazon": "Why Moats Matter: The Morningstar Approach to Stock Investing",
+   "url": "https://www.amazon.com.br/dp/1118760239",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-19": {
+   "valor": 35.0,
+   "titulo_amazon": "Where the Money Is: Value Investing in the Digital Age",
+   "url": "https://www.amazon.com.br/dp/1982185147",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-20": {
+   "valor": 78.18,
+   "titulo_amazon": "100 Baggers: Stocks That Return 100-to-1 and How To Find Them",
+   "url": "https://www.amazon.com.br/dp/1621291650",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-21": {
+   "valor": 20.54,
+   "titulo_amazon": "The Joys of Compounding:: The Passionate Pursuit of Lifelong Learning",
+   "url": "https://www.amazon.com.br/dp/9390351014",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-23": {
+   "valor": 124.1,
+   "titulo_amazon": "The Investment Checklist: The Art of In-Depth Research",
+   "url": "https://www.amazon.com.br/dp/1394377975",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-24": {
+   "valor": 54.51,
+   "titulo_amazon": "Investimento: a última arte liberal",
+   "url": "https://www.amazon.com.br/dp/6586029864",
+   "data": "2026-10-18",
+   "confere": false
+  },
+  "INV-28": {
+   "valor": 103.14,
+   "titulo_amazon": "Investindo em Ações no Longo Prazo 6ed.: O Guia Indispensável do Investidor do Mercado Financeiro",
+   "url": "https://www.amazon.com.br/dp/8582607059",
+   "data": "2026-10-18",
+   "confere": false
+  },
+  "INV-29": {
+   "valor": 23.99,
+   "titulo_amazon": "O investidor de bom senso: A melhor maneira de garantir um bom desempenho no mercado de ações",
+   "url": "https://www.amazon.com.br/dp/8543110114",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-30": {
+   "valor": 93.03,
+   "titulo_amazon": "The Intelligent Asset Allocator: How to Build Your Portfolio to Maximize Returns and Minimize Risk",
+   "url": "https://www.amazon.com.br/dp/1260026647",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-31": {
+   "valor": 71.2,
+   "titulo_amazon": "Lucrando com ações no longo prazo: como ganhar com os ciclos do mercado financeiro",
+   "url": "https://www.amazon.com.br/dp/8582605625",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-32": {
+   "valor": 109.99,
+   "titulo_amazon": "Investing Amid Low Expected Returns: Making the Most When Markets Offer the Least",
+   "url": "https://www.amazon.com.br/dp/1119860199",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-34": {
+   "valor": 35.0,
+   "titulo_amazon": "Take on the Street: What Wall St. and Corporate America Don't Want You to Know / What You Can Do to Fight Back",
+   "url": "https://www.amazon.com.br/dp/0375421785",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-39": {
+   "valor": 61.7,
+   "titulo_amazon": "Wealth, War and Wisdom (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B008N9I1A6",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-40": {
+   "valor": 34.9,
+   "titulo_amazon": "Conversas com gestores de ações brasileiros: A fórmula dos grandes investidores para ganhar dinheiro em bolsa",
+   "url": "https://www.amazon.com.br/dp/8582850794",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-54": {
+   "valor": 177.53,
+   "titulo_amazon": "The Theory of Investment Value",
+   "url": "https://www.amazon.com.br/dp/087034126X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "INV-55": {
+   "valor": 14.24,
+   "titulo_amazon": "The Alchemy of Finance: The New Paradigm",
+   "url": "https://www.amazon.com.br/dp/0471445495",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-04": {
+   "valor": 20.54,
+   "titulo_amazon": "Rápido e devagar: Duas formas de pensar",
+   "url": "https://www.amazon.com.br/dp/853900383X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-08": {
+   "valor": 32.49,
+   "titulo_amazon": "Iludidos pelo acaso: A influência da sorte nos mercados e na vida",
+   "url": "https://www.amazon.com.br/dp/8547000968",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-10": {
+   "valor": 72.0,
+   "titulo_amazon": "Against the Gods: The Remarkable Story of Risk",
+   "url": "https://www.amazon.com.br/dp/0471295639",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-11": {
+   "valor": 37.99,
+   "titulo_amazon": "Pensando em sistemas: Como o pensamento sistêmico pode ajudar a resolver os grandes problemas globais",
+   "url": "https://www.amazon.com.br/dp/6555644524",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-12": {
+   "valor": 29.2,
+   "titulo_amazon": "Misbehaving: The Making of Behavioral Economics",
+   "url": "https://www.amazon.com.br/dp/039335279X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-14": {
+   "valor": 84.06,
+   "titulo_amazon": "Psychology of Intelligence Analysis",
+   "url": "https://www.amazon.com.br/dp/1684224128",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-15": {
+   "valor": 14.99,
+   "titulo_amazon": "Factfulness: O hábito libertador de só ter opiniões baseadas em fatos",
+   "url": "https://www.amazon.com.br/dp/8501116521",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-17": {
+   "valor": 32.49,
+   "titulo_amazon": "Antifrágil (Nova edição): Coisas que se beneficiam com o caos",
+   "url": "https://www.amazon.com.br/dp/8547001085",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-20": {
+   "valor": 32.49,
+   "titulo_amazon": "Being Wrong: Adventures in the Margin of Error (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B003JBHW08",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-21": {
+   "valor": 26.59,
+   "titulo_amazon": "Pense de novo: O poder de saber o que você não sabe",
+   "url": "https://www.amazon.com.br/dp/655564186X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-22": {
+   "valor": 35.0,
+   "titulo_amazon": "Fortune's Formula: The Untold Story of the Scientific Betting System That Beat the Casinos and Wall Street (Expanded 20th Anniversary Edition)",
+   "url": "https://www.amazon.com.br/dp/1250391121",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-23": {
+   "valor": 29.9,
+   "titulo_amazon": "O andar do bêbado: Como o acaso determina nossas vidas",
+   "url": "https://www.amazon.com.br/dp/8537818100",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-24": {
+   "valor": 10.9,
+   "titulo_amazon": "Chaos: Making a New Science (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B003YL4KOO",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-25": {
+   "valor": 20.54,
+   "titulo_amazon": "The Art of Learning: An Inner Journey to Optimal Performance (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B000QCQ970",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-26": {
+   "valor": 37.99,
+   "titulo_amazon": "Checklist: Como fazer as coisas bem-feitas",
+   "url": "https://www.amazon.com.br/dp/B0BSB3DTMX",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MM-28": {
+   "valor": 37.99,
+   "titulo_amazon": "Previsivelmente irracional: As forças invisíveis que nos levam a tomar decisões erradas",
+   "url": "https://www.amazon.com.br/dp/854310999X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-04": {
+   "valor": 126.16,
+   "titulo_amazon": "O Gestor Eficaz (edição revista, atualizada e ampliada)",
+   "url": "https://www.amazon.com.br/dp/8521611129",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-05": {
+   "valor": 62.51,
+   "titulo_amazon": "Em Busca De Sentido: Um psicólogo no campo de concentração -o número de edições pode variar, mas o conteúdo é o mesmo",
+   "url": "https://www.amazon.com.br/dp/8532606261",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-06": {
+   "valor": 6.99,
+   "titulo_amazon": "Meditações de Marco Aurélio - Edição de Luxo Almofadada",
+   "url": "https://www.amazon.com.br/dp/6584956334",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-07": {
+   "valor": 74.9,
+   "titulo_amazon": "Cartas de Um Estoico Volume I",
+   "url": "https://www.amazon.com.br/dp/1619652315",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-11": {
+   "valor": 42.99,
+   "titulo_amazon": "Os 7 Hábitos das Pessoas Altamente Eficazes - Edição Customizada",
+   "url": "https://www.amazon.com.br/dp/8576840626",
+   "data": "2026-10-18",
+   "confere": false
+  },
+  "BEH-13": {
+   "valor": 20.54,
+   "titulo_amazon": "Princípios",
+   "url": "https://www.amazon.com.br/dp/8551003429",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BEH-15": {
+   "valor": 39.31,
+   "titulo_amazon": "Como fazer amigos e influenciar pessoas",
+   "url": "https://www.amazon.com.br/dp/8543108683",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-03": {
+   "valor": 60.89,
+   "titulo_amazon": "Competition Demystified: A Radically Simplified Approach to Business Strategy",
+   "url": "https://www.amazon.com.br/dp/1591841801",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-04": {
+   "valor": 24.99,
+   "titulo_amazon": "7 Powers: The Foundations of Business Strategy",
+   "url": "https://www.amazon.com.br/dp/0998116319",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-07": {
+   "valor": 35.0,
+   "titulo_amazon": "High Output Management",
+   "url": "https://www.amazon.com.br/dp/0679762884",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-09": {
+   "valor": 71.2,
+   "titulo_amazon": "Outsiders: Oito CEOs Nada Convencionais e seus Planos Radicalmente Racionais para o Sucesso",
+   "url": "https://www.amazon.com.br/dp/8582606451",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-11": {
+   "valor": 66.03,
+   "titulo_amazon": "O efeito halo: ...e outros oito delírios empresariais que enganam os gestores",
+   "url": "https://www.amazon.com.br/dp/6555203803",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-12": {
+   "valor": 32.19,
+   "titulo_amazon": "O ciclo de vida corporativo: Aspectos do mundo dos negócios, dos investimentos e da gestão",
+   "url": "https://www.amazon.com.br/dp/B0DSWFNBWP",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-13": {
+   "valor": 104.9,
+   "titulo_amazon": "Narrative and Numbers: The Value of Stories in Business",
+   "url": "https://www.amazon.com.br/dp/0231180489",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-14": {
+   "valor": 150.46,
+   "titulo_amazon": "Information Rules: A Strategic Guide to the Network Economy",
+   "url": "https://www.amazon.com.br/dp/087584863X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "BUS-15": {
+   "valor": 72.9,
+   "titulo_amazon": "The Synergy Trap",
+   "url": "https://www.amazon.com.br/dp/141658465X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-01": {
+   "valor": 32.49,
+   "titulo_amazon": "The Great Crash 1929",
+   "url": "https://www.amazon.com.br/dp/0547248164",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-03": {
+   "valor": 77.1,
+   "titulo_amazon": "The Little Book of Behavioral Investing: How Not to Be Your Own Worst Enemy: 35",
+   "url": "https://www.amazon.com.br/dp/0470686022",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-04": {
+   "valor": 100.54,
+   "titulo_amazon": "Market Wizards: Interviews with Top Traders",
+   "url": "https://www.amazon.com.br/dp/1118273052",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-05": {
+   "valor": 80.75,
+   "titulo_amazon": "Irrational Exuberance: Revised and Expanded Third Edition",
+   "url": "https://www.amazon.com.br/dp/0691173125",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-06": {
+   "valor": 66.5,
+   "titulo_amazon": "Boom e crash: um panorama histórico das bolhas financeiras",
+   "url": "https://www.amazon.com.br/dp/8550817864",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-07": {
+   "valor": 24.99,
+   "titulo_amazon": "Your Complete Guide to Factor-Based Investing: The Way Smart Money Invests Today (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B01N7FCW2D",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-09": {
+   "valor": 104.05,
+   "titulo_amazon": "This Time Is Different: Eight Centuries of Financial Folly (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B004EYT932",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "MKT-21": {
+   "valor": 187.53,
+   "titulo_amazon": "Avaliação de empresas",
+   "url": "https://www.amazon.com.br/dp/8582605706",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "FRA-01": {
+   "valor": 35.0,
+   "titulo_amazon": "The Smartest Guys in the Room: The Amazing Rise and Scandalous Fall of Enron (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B00EOAS0EK",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "FRA-02": {
+   "valor": 32.49,
+   "titulo_amazon": "When Genius Failed: The Rise and Fall of Long-Term Capital Management",
+   "url": "https://www.amazon.com.br/dp/0375758259",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "FRA-03": {
+   "valor": 28.4,
+   "titulo_amazon": "O Jogo da Mentira",
+   "url": "https://www.amazon.com.br/dp/B07VMJ4LR1",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "FRA-05": {
+   "valor": 35.0,
+   "titulo_amazon": "Barbarians at the Gate: The Fall of RJR Nabisco",
+   "url": "https://www.amazon.com.br/dp/0061655554",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "FRA-07": {
+   "valor": 39.9,
+   "titulo_amazon": "More Money Than God: Hedge Funds and the Making of a New Elite",
+   "url": "https://www.amazon.com.br/dp/0143119419",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-02": {
+   "valor": 35.1,
+   "titulo_amazon": "A guerra dos chips: A batalha pela tecnologia que move o mundo",
+   "url": "https://www.amazon.com.br/dp/6559870936",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-03": {
+   "valor": 92.44,
+   "titulo_amazon": "The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger - Second Edition with a new chapter by the author (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B01772PS00",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-04": {
+   "valor": 24.9,
+   "titulo_amazon": "A marca da vitória: A autobiografia do criador da Nike",
+   "url": "https://www.amazon.com.br/dp/8543104467",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-07": {
+   "valor": 31.42,
+   "titulo_amazon": "How Big Things Get Done: The Surprising Factors That Determine the Fate of Every Project, from Home Renovations to Space Exploration and Everything In Between (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B0B3HS4C98",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-08": {
+   "valor": 13.72,
+   "titulo_amazon": "A Apple na China: Como a China devorou o Vale do Silício",
+   "url": "https://www.amazon.com.br/dp/658396113X",
+   "data": "2026-10-18",
+   "confere": true
+  },
+  "IND-09": {
+   "valor": 35.0,
+   "titulo_amazon": "The World for Sale: Money, Power and the Traders Who Barter the Earth’s Resources (English Edition)",
+   "url": "https://www.amazon.com.br/dp/B08LK7KP6D",
+   "data": "2026-10-18",
+   "confere": true
+  }
+ },
+ "pdf": [
+  "MM-01",
+  "INV-57"
+ ],
+ "_pdf": "Livros que o usuário tem em PDF no GoodNotes (prints de 2026-10-18). Os outros de 'tenho' são físicos, das fotos da estante."
+}

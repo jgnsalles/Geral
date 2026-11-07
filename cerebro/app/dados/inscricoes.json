@@ -1,0 +1,783 @@
+{
+ "gerado": "2026-11-01",
+ "podcasts": [
+  {
+   "nome": "Invest Like the Best",
+   "autor": "Colossus",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Cliff Sosin - Owning the Complements to Intelligence - [Invest Like the Best, EP.497]",
+    "data": "2026-10-27",
+    "url": "https://traffic.megaphone.fm/CLS5603610979.mp3"
+   }
+  },
+  {
+   "nome": "Capital Allocators",
+   "autor": "Ted Seides",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Continuation Vehicles from the LP Seat – Scott Ramsower (EP.523)",
+    "data": "2026-10-26",
+    "url": "https://traffic.libsyn.com/secure/tedseides/CA_-_EP.523_Scott_Ramsower_-_AUDIO_V1.2.mp3?dest-id=482814"
+   }
+  },
+  {
+   "nome": "Acquired",
+   "autor": "Ben Gilbert and David Rosenthal",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Seinfeld",
+    "data": "2026-10-18",
+    "url": "https://pscrb.fm/rss/p/media.transistor.fm/96a5f313/515377c5.mp3"
+   }
+  },
+  {
+   "nome": "ACQ2 by Acquired",
+   "autor": "Ben Gilbert and David Rosenthal",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "The Insane Productivity of Andrew Ross Sorkin",
+    "data": "2025-12-07",
+    "url": "https://pdst.fm/e/media.transistor.fm/27d57b05/9952119a.mp3"
+   }
+  },
+  {
+   "nome": "Founders",
+   "autor": "David Senra",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "#438 James Garfield's Extraordinary Rise",
+    "data": "2026-10-26",
+    "url": "https://traffic.megaphone.fm/DSLLC9614527488.mp3"
+   }
+  },
+  {
+   "nome": "David Senra",
+   "autor": "Scicomm Media",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "From a $27,500 Charter Company to a $4 Billion Private Jet Giant | Kenn Ricci, Flexjet",
+    "data": "2026-10-28",
+    "url": "https://traffic.megaphone.fm/SCIM6720057490.mp3"
+   }
+  },
+  {
+   "nome": "Business Breakdowns",
+   "autor": "Colossus",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Affirm: The Internet’s American Express - [Business Breakdowns, EP.249]",
+    "data": "2026-10-22",
+    "url": "https://www.podtrac.com/pts/redirect.mp3/traffic.megaphone.fm/CLS7299533905.mp3"
+   }
+  },
+  {
+   "nome": "Joys of Compounding",
+   "autor": "Colossus",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Christian Harrison: From Overcoming a Lost Decade to U.S. Open Champion - [Joys of Compounding, EP. 41]",
+    "data": "2026-10-26",
+    "url": "https://traffic.megaphone.fm/CLS8556666305.mp3"
+   }
+  },
+  {
+   "nome": "Value Investing with Legends",
+   "autor": "Columbia Business School",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Corporate Athletes: Durable Competitive Advantages and Long-Term Investing",
+    "data": "2026-10-30",
+    "url": "https://traffic.libsyn.com/secure/valueinvestingwithlegends/VIL_-_Jim_Engle_-_AUDIO_V3.mp3?dest-id=1207712"
+   }
+  },
+  {
+   "nome": "Cheeky Pint",
+   "autor": "Stripe",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Why Sam Altman is against a single superintelligence",
+    "data": "2026-10-29",
+    "url": "https://media.transistor.fm/92f18066/699c0738.mp3"
+   }
+  },
+  {
+   "nome": "In Good Company with Nicolai Tangen",
+   "autor": "Norges Bank Investment Management",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Friday Wrap-Up: Inside Active Strategies and Learning from Bill Ackman",
+    "data": "2026-10-30",
+    "url": "https://sphinx.acast.com/p/open/s/622618c7057f3400120d15db/e/6ae339229fd2fa3c16ae05f8/media.mp3"
+   }
+  },
+  {
+   "nome": "Crucible Moments",
+   "autor": "Sequoia Capital",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Palo Alto Networks ft Nir Zuk & Nikesh Arora - The Grudge That Transformed Cybersecurity",
+    "data": "2025-12-04",
+    "url": "https://pscrb.fm/rss/p/traffic.megaphone.fm/CPUAI9496935451.mp3"
+   }
+  },
+  {
+   "nome": "The Memo by Howard Marks",
+   "autor": "Oaktree Capital Management",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Shall We Repeal the Laws of Economics – Part III",
+    "data": "2026-09-22",
+    "url": "https://rss.art19.com/episodes/6207bd86-8515-4505-b25c-2bebe6b717a0.mp3?rss_browser=BAhJIgljdXJsBjoGRVQ%3D--435795d5c850773aaa4739d968bd77a1dfd6f301"
+   }
+  },
+  {
+   "nome": "Stepchange",
+   "autor": "Ben Shwab Eidelson and Anay Shah",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "The Grid: The Largest Machine Ever Built",
+    "data": "2026-04-27",
+    "url": "https://api.substack.com/feed/podcast/195589462/416887deab0245cb4e1a1486c0f38ba2.mp3"
+   }
+  },
+  {
+   "nome": "Money Maze Podcast",
+   "autor": "Money Maze Podcast",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "How Can We Educate Our Children Better As the World of AI Envelops Us? Peter Frankopan in Conversation With Sir Anthony Seldon",
+    "data": "2026-10-22",
+    "url": "https://audioboom.com/posts/8967355.mp3?modified=1792579610&sid=5118743&source=rss"
+   }
+  },
+  {
+   "nome": "The Intrinsic Value Podcast",
+   "autor": "The Investor's Podcast Network",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "TIVP105: Shopify (SHOP): The Big Winner of Agentic Commerce? w/ Shawn O'Malley & Daniel Mahncke",
+    "data": "2026-10-28",
+    "url": "https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/pscrb.fm/rss/p/traffic.megaphone.fm/PPLLC9605738546.mp3"
+   }
+  },
+  {
+   "nome": "The a16z Show",
+   "autor": "Andreessen Horowitz",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Can AI Fix Professional Networking? | Inside Cosign",
+    "data": "2026-10-31",
+    "url": "https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/fcd03bbe-16a1-453c-a1c0-69adfb573df8/audio/128/default.mp3?aid=rss_feed&awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&awEpisodeId=fcd03bbe-16a1-453c-a1c0-69adfb573df8&feed=JGE3yC0V"
+   }
+  },
+  {
+   "nome": "LADO B com Marcos Lisboa",
+   "autor": "Brazil Journal",
+   "grupo": "Investimento e negócios",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "Bottom Line",
+   "autor": "Brazil Journal",
+   "grupo": "Investimento e negócios",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "The Business of Life com Nilton Bonder",
+   "autor": "Brazil Journal",
+   "grupo": "Investimento e negócios",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "Cafezinho com Luciana Seabra",
+   "autor": "Brazil Journal",
+   "grupo": "Investimento e negócios",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "Scenius",
+   "autor": "Eduardo Vargas?",
+   "grupo": "Investimento e negócios",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "Inside MercadoLibre: Investor Relations",
+   "autor": "MercadoLibre",
+   "grupo": "Investimento e negócios",
+   "modo": "spotify",
+   "ultimo": null
+  },
+  {
+   "nome": "Encore Asset",
+   "autor": "EncoreAsset",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Encore Asset - Comentário Mensal #Junho/2026",
+    "data": "2026-07-21",
+    "url": "https://anchor.fm/s/9e0af1d8/podcast/play/123123959/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-6-21%2F428349547-44100-2-0cc33af1067e3.mp3"
+   }
+  },
+  {
+   "nome": "Kinea Investimentos",
+   "autor": "Kinea Investimentos",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Lula 4: os desafios do novo governo | Live Economia e Mercados ref. Outubro/26",
+    "data": "2026-10-29",
+    "url": "https://anchor.fm/s/5be18d94/podcast/play/128388163/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-30%2F435380485-44100-2-d91cb6b94143.mp3"
+   }
+  },
+  {
+   "nome": "Mind Asset",
+   "autor": "Itaú Asset Management",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "6T #36 I Fundos ilíquidos: como funcionam e quais oportunidades oferecem?",
+    "data": "2026-10-20",
+    "url": "https://anchor.fm/s/bfd3b890/podcast/play/127775235/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-20%2F434603934-44100-2-37e317e4d273.mp3"
+   }
+  },
+  {
+   "nome": "BTG Asset Talks",
+   "autor": "BTG Pactual Asset Management",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Ouro e prata em 2026: oportunidade estratégica diante do novo cenário global? | BTG Asset Talks #30",
+    "data": "2026-03-03",
+    "url": "https://anchor.fm/s/5591c29c/podcast/play/116351285/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-3%2F419232664-44100-2-ae9f8f6b03e53.mp3"
+   }
+  },
+  {
+   "nome": "Second Level",
+   "autor": "Market Makers",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "#42 | RENDA FIXA NÃO É 100% SEGURA (E NINGUÉM TE EXPLICA ISSO)",
+    "data": "2026-04-22",
+    "url": "https://anchor.fm/s/1079b546c/podcast/play/118869330/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-22%2F422623203-44100-2-a0911f533f86c.mp3"
+   }
+  },
+  {
+   "nome": "Expert Talks CEOs",
+   "autor": "XP",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "#49 - Na mesa com Luiz Felipe Coutinho, CEO da Origem Energia",
+    "data": "2026-09-03",
+    "url": "https://anchor.fm/s/11507f68c/podcast/play/125049850/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-1%2F430977294-44100-2-fd03e8a6203c7.mp3"
+   }
+  },
+  {
+   "nome": "Sala dos CFOs",
+   "autor": "XP Banco de Atacado",
+   "grupo": "Gestoras",
+   "modo": "pausado",
+   "ultimo": {
+    "titulo": "Episódio #4: Gabriel Wallach entrevista os CFOs Roberta Rosenburg e Guilherme Carvalho",
+    "data": "2025-02-04",
+    "url": "https://api.spreaker.com/download/episode/64079875/13670_sala_dos_cfos_ep_04_editado.mp3"
+   }
+  },
+  {
+   "nome": "Atrás do Retorno",
+   "autor": "Atrás do Retorno",
+   "grupo": "Gestoras",
+   "modo": "pausado",
+   "ultimo": {
+    "titulo": "Lucas Lima e Julio Vasconcellos - Reflexões e Encerramento da 1ª Temporada",
+    "data": "2025-04-16",
+    "url": "https://www.buzzsprout.com/2378788/episodes/16930804-lucas-lima-e-julio-vasconcellos-reflexoes-e-encerramento-da-1-temporada.mp3"
+   }
+  },
+  {
+   "nome": "Café com Investidor",
+   "autor": "Ralphe Manzoni Jr. (NeoFeed)",
+   "grupo": "Gestoras",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "#140 - Gabriel Raoni, sócio da IP Capital Partners",
+    "data": "2026-10-08",
+    "url": "https://feeds.soundcloud.com/stream/2415570888-user-281136769-140-gabriel-raoni-socio-da-ip.mp3"
+   }
+  },
+  {
+   "nome": "Itaú Views",
+   "autor": "Itaú BBA",
+   "grupo": "Macro",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Conexão Econômica",
+   "autor": "FGV IBRE",
+   "grupo": "Macro",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "WW – William Waack",
+   "autor": "CNN Brasil",
+   "grupo": "Macro",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "GDCast Copel",
+   "autor": "Copel",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "pausado",
+   "ultimo": null
+  },
+  {
+   "nome": "HeadCast",
+   "autor": "Head Energia",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Comercast",
+   "autor": "Comerc Energia",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "MegaCast",
+   "autor": "MegaWhat",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "MinutoMega",
+   "autor": "MegaWhat",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "agência eixos",
+   "autor": "agência eixos",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "EXAME Infra",
+   "autor": "Exame",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "Joule",
+   "autor": "JOTA",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "POWER com Adriano Pires",
+   "autor": "Brazil Journal",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "sem-feed",
+   "ultimo": null
+  },
+  {
+   "nome": "WEGcast",
+   "autor": "WEG",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Prosa Agro",
+   "autor": "Itaú BBA",
+   "grupo": "Trabalho (energia e utilities)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Odd Lots",
+   "autor": "Bloomberg",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "PHP2Shell Won't Be the Last Big AI Cybersecurity Risk",
+    "data": "2026-10-30",
+    "url": "https://podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/UVBrz8bN8aM2Xe47PEPu/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/cbaad2bb-14e3-4e9e-98cf-b4f2015679b2/audio.mp3?utm_source=Podcast&in_playlist=982f5071-765c-403d-969d-ae27003a8d83"
+   }
+  },
+  {
+   "nome": "Masters in Business",
+   "autor": "Barry Ritholtz, Bloomberg",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "The Future of Financial Advice: Masters in Business with Rich Steinmeier",
+    "data": "2026-10-30",
+    "url": "https://podtrac.com/pts/redirect.mp3/traffic.omny.fm/d/clips/e73c998e-6e60-432f-8610-ae210140c5b1/4e4cd910-40a1-4619-a5f3-ae2b0012ffff/b841de8e-3bbe-4931-a36d-b4f301619b1e/audio.mp3?utm_source=Podcast&in_playlist=5873a3cb-298f-40bc-b71f-ae2b0013000d"
+   }
+  },
+  {
+   "nome": "The Knowledge Project",
+   "autor": "Shane Parrish",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "The Science of Doing Your Best Work",
+    "data": "2026-10-27",
+    "url": "https://pdst.fm/e/traffic.megaphone.fm/FSMI3018913919.mp3"
+   }
+  },
+  {
+   "nome": "The J Curve Podcast",
+   "autor": "Olga Maslikhova",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Forget Coding. Is Cybersecurity AI’s Biggest Opportunity? / TJC Debrief",
+    "data": "2026-10-22",
+    "url": "https://anchor.fm/s/e6607188/podcast/play/127867096/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-9-22%2F434707542-44100-2-ffd3bb491e99f.mp3"
+   }
+  },
+  {
+   "nome": "The Journal.",
+   "autor": "The Wall Street Journal & Spotify Studios",
+   "grupo": "Investimento e negócios",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Is AI Running Out of Money to Borrow?",
+    "data": "2026-10-30",
+    "url": "https://pdst.fm/e/traffic.megaphone.fm/WSJ7887703823.mp3"
+   }
+  },
+  {
+   "nome": "Nu Videocast",
+   "autor": "Nubank (nubankbrasil)",
+   "grupo": "Investimento e negócios",
+   "modo": "spotify",
+   "ultimo": null
+  },
+  {
+   "nome": "Philosophize This!",
+   "autor": "Stephen West",
+   "grupo": "História e biografias",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Dan Carlin's Hardcore History",
+   "autor": "Dan Carlin",
+   "grupo": "História e biografias",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "In Our Time",
+   "autor": "BBC Radio 4 (Melvyn Bragg)",
+   "grupo": "História e biografias",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "The Rest Is History",
+   "autor": "Tom Holland e Dominic Sandbrook",
+   "grupo": "História e biografias",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Barron's Streetwise",
+   "autor": "Jack Hough, Barron's",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "AI’s Big Payoff? Apollo’s Top Economist Doesn’t See It Yet.",
+    "data": "2026-10-30",
+    "url": "https://dowjones.simplecastaudio.com/465a72cb-c317-4047-8d32-5f91eb260095/episodes/cbf78b1a-e7b6-456d-a436-6d396e1abf17/audio/128/default.mp3?aid=rss_feed&awCollectionId=465a72cb-c317-4047-8d32-5f91eb260095&awEpisodeId=cbf78b1a-e7b6-456d-a436-6d396e1abf17&feed=zuVCxwR_"
+   }
+  },
+  {
+   "nome": "At Barron's",
+   "autor": "Barron's",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Moderna CEO on the Biotech’s Cancer Vaccine and Pipeline",
+    "data": "2026-10-29",
+    "url": "https://dowjones.simplecastaudio.com/d5d000fb-f8d4-4637-a7ce-a49768661732/episodes/28c3f0b6-5af6-4622-a62c-cdf37ab88f4e/audio/128/default.mp3?aid=rss_feed&awCollectionId=d5d000fb-f8d4-4637-a7ce-a49768661732&awEpisodeId=28c3f0b6-5af6-4622-a62c-cdf37ab88f4e&feed=_WH_mYfE"
+   }
+  },
+  {
+   "nome": "Barron's Advisor",
+   "autor": "Barron's",
+   "grupo": "Sugeridos pelo Claude",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Erin Moriarity: How I Generated More Than 100 Million YouTube Views",
+    "data": "2026-10-27",
+    "url": "https://dowjones.simplecastaudio.com/1f4d2356-2b1d-4e94-8214-218a0482c55f/episodes/a7a8164e-46c4-47cf-985b-a9e6287bf475/audio/128/default.mp3?aid=rss_feed&awCollectionId=1f4d2356-2b1d-4e94-8214-218a0482c55f&awEpisodeId=a7a8164e-46c4-47cf-985b-a9e6287bf475&feed=BzvzPbSM"
+   }
+  },
+  {
+   "nome": "Stock Pickers",
+   "autor": "InfoMoney",
+   "grupo": "Mercado (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Market Makers",
+   "autor": "Market Makers",
+   "grupo": "Mercado (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "O Assunto",
+   "autor": "g1",
+   "grupo": "Fundo (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Foro de Teresina",
+   "autor": "revista piauí",
+   "grupo": "Fundo (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Podcast Rio Bravo",
+   "autor": "Rio Bravo",
+   "grupo": "Mercado (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "Investidor em Foco",
+   "autor": "Itaú Personnalité",
+   "grupo": "Mercado (português)",
+   "modo": "todos",
+   "ultimo": null
+  },
+  {
+   "nome": "WSJ's Take On the Week",
+   "autor": "The Wall Street Journal",
+   "grupo": "Mercado (português)",
+   "modo": "todos",
+   "ultimo": null
+  }
+ ],
+ "cartas": [
+  {
+   "nome": "Dynamo",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta 130 – O Tácito do Tempo",
+    "data": "2026-10-30",
+    "url": "https://www.dynamo.com.br/wp-content/uploads/2026/10/Carta-Dynamo-130.pdf"
+   }
+  },
+  {
+   "nome": "Oaktree",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Shall We Repeal the Laws of Economics – Part III",
+    "data": "2026-09-22",
+    "url": "https://www.oaktreecapital.com/insights/memo/shall-we-repeal-the-laws-of-economics---part-iii"
+   }
+  },
+  {
+   "nome": "Michael Mauboussin",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "To Free or Not to Free (Cash Flow)",
+    "data": "2026-09-18",
+    "url": "https://www.morganstanley.com/content/dam/im/assets/publication/thought-leadership/consilient-observer/article_tofreeornottofree_ltr.pdf"
+   }
+  },
+  {
+   "nome": "Brookfield",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Letter to Shareholders — 2º tri de 2026 (Bruce Flatt)",
+    "data": "2026-08-13",
+    "url": "https://bn.brookfield.com/sites/brookfield-bn-v2/files/Brookfield-BN-IR-V2/2026/Q2/Q2-26-Brookfield-Letter-to-Shareholders.pdf"
+   }
+  },
+  {
+   "nome": "Nubank",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Teleconferência 2T26 — abertura do David Vélez (estratégia: Brasil, licença no México, NuFormer)",
+    "data": "2026-08-13",
+    "url": "https://api.mziq.com/mzfilemanager/v2/d/59a081d2-0d63-4bb5-b786-4c07ae26bc74/ca177116-f7a5-cee1-b53b-d83ab8d0d658?origin=2#page=2"
+   }
+  },
+  {
+   "nome": "MercadoLibre",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Letter to Shareholders — 2º tri de 2026",
+    "data": "2026-08-05",
+    "url": "https://http2.mlstatic.com/storage/ml-cms-backend/cms-documents-prod/5dbba919-721c-4916-bb91-c76a8713f7f0/21c9837a-c212-4d6d-aa14-3041c26b1143/Letter_to_Shareholders.pdf"
+   }
+  },
+  {
+   "nome": "Squadra Investimentos",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta 2026 – 1º semestre",
+    "data": "2026-08",
+    "url": "https://www.squadrainvest.com.br/wp-content/uploads/2026/08/Squadra_Carta_1S26.pdf"
+   }
+  },
+  {
+   "nome": "Netflix",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Letter to Shareholders — 2º tri de 2026 (Netflix)",
+    "data": "2026-07-16",
+    "url": "https://s22.q4cdn.com/959853165/files/doc_financials/2026/q2/FINAL-Q2-26-Shareholder-Letter.pdf"
+   }
+  },
+  {
+   "nome": "JPMorgan Chase",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta aos acionistas, ano de 2025 (Jamie Dimon)",
+    "data": "2026-04-06",
+    "url": "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/ceo-letter-to-shareholders-2025.pdf"
+   }
+  },
+  {
+   "nome": "Berkshire Hathaway",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta aos acionistas de 2025 (Greg Abel, primeira como CEO)",
+    "data": "2026-02-28",
+    "url": "https://www.berkshirehathaway.com/letters/2025ltr.pdf"
+   }
+  },
+  {
+   "nome": "Pershing Square Holdings",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Letter to Shareholders in the 2025 Annual Report (link oficial aponta para a página 9 do relatório)",
+    "data": "2026-02-18",
+    "url": "https://assets.pershingsquareholdings.com/wp-content/uploads/2026/02/18175039/Pershing-Square-Holdings-Ltd.-2025-Annual-Report.pdf#page=9"
+   }
+  },
+  {
+   "nome": "Fundsmith Equity Fund",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Annual Letter to Shareholders 2025 (16ª carta anual)",
+    "data": "2026-01",
+    "url": "https://www.fundsmith.co.uk/media/4hcfd1pg/2025-fef-annual-letter-web.pdf"
+   }
+  },
+  {
+   "nome": "Amazon",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "2025 Letter to Shareholders (Andy Jassy)",
+    "data": "2026",
+    "url": "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/2025-Shareholder-Letter-Final.pdf"
+   }
+  },
+  {
+   "nome": "Giverny Capital",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Annual Letter 2025",
+    "data": "2026",
+    "url": "https://givernycapital.com/wp-content/uploads/2026/03/giverny-capital-annual-letter-2025-1.pdf"
+   }
+  },
+  {
+   "nome": "Microsoft",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta aos acionistas, ano fiscal 2025 (Satya Nadella)",
+    "data": "2025-09",
+    "url": "https://www.microsoft.com/investor/reports/ar25/index.html#shareholder-letter"
+   }
+  },
+  {
+   "nome": "Atmos Capital",
+   "autor": "",
+   "grupo": "Cartas e memos",
+   "modo": "todos",
+   "ultimo": {
+    "titulo": "Carta 33 – 1º semestre de 2025",
+    "data": "2025",
+    "url": "https://www.atmoscapital.com.br/documentos/cartas/Carta-Atmos-33.pdf"
+   }
+  }
+ ],
+ "substack": [],
+ "youtube": []
+}

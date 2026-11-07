@@ -1,0 +1,130 @@
+{
+ "inicio": "2026-11-01",
+ "fim": "2026-11-07",
+ "gerado": "2026-11-01",
+ "meta": {
+  "serie": 60,
+  "conteudo": 150
+ },
+ "horarios": {
+  "dom": [
+   [
+    "manha",
+    "serie",
+    30
+   ]
+  ],
+  "seg": [
+   [
+    "manha",
+    "conteudo",
+    30
+   ],
+   [
+    "carro",
+    "ouvir",
+    40
+   ]
+  ],
+  "ter": [
+   [
+    "manha",
+    "conteudo",
+    30
+   ],
+   [
+    "carro",
+    "ouvir",
+    40
+   ]
+  ],
+  "qua": [
+   [
+    "manha",
+    "conteudo",
+    30
+   ],
+   [
+    "carro",
+    "ouvir",
+    40
+   ]
+  ],
+  "qui": [
+   [
+    "manha",
+    "conteudo",
+    30
+   ],
+   [
+    "carro",
+    "ouvir",
+    40
+   ]
+  ],
+  "sex": [
+   [
+    "manha",
+    "conteudo",
+    30
+   ],
+   [
+    "carro",
+    "ouvir",
+    40
+   ]
+  ],
+  "sab": [
+   [
+    "manha",
+    "serie",
+    30
+   ]
+  ]
+ },
+ "serie": 1,
+ "conteudos": [
+  {
+   "id": "c1",
+   "titulo": "Squadra a fundo",
+   "cod": "CL-SQUADRA",
+   "pecas": [
+    "FX-SQ1S26.01",
+    "FX-SQ1S26.02",
+    "FX-SQ1S26.03",
+    "FX-SQ1S26.A1",
+    "FX-SQ1S26.A2",
+    "FX-SQ1S26.A3",
+    "CL-SQUADRA.001",
+    "CL-SQUADRA.002",
+    "CL-SQUADRA.003",
+    "CL-SQUADRA.004",
+    "CL-SQUADRA.005",
+    "CL-SQUADRA.006",
+    "CL-SQUADRA.007",
+    "CL-SQUADRA.008",
+    "CL-SQUADRA.009",
+    "CL-SQUADRA.010",
+    "CL-SQUADRA.011",
+    "CL-SQUADRA.012",
+    "CL-SQUADRA.013",
+    "CL-SQUADRA.014",
+    "CL-SQUADRA.015",
+    "CL-SQUADRA.016",
+    "CL-SQUADRA.017",
+    "CL-SQUADRA.018",
+    "CL-SQUADRA.019"
+   ],
+   "motivo": "Continua a Squadra, até acabar. Primeiro feche a carta do 1S26 (você parou na parte 1); depois siga as cartas desde 2009, em ordem. A meta é 30 min por manhã, de segunda a sexta: uma parte por dia."
+  }
+ ],
+ "balanco": {
+  "semana": "25 a 31/10",
+  "total_min": {
+   "serie": 0,
+   "conteudo": 0,
+   "ouvir": 215
+  },
+  "texto": "Semana zerada na leitura. Série: 0 de 120 min; a Série 1 devia começar no sábado 31/10 e não começou, e já são duas semanas sem uma página de livro. Conteúdo: 0 de 530 min; a Squadra não andou e a carta do 1S26 continua parada na parte 1. Em sete dias, nenhum horário de leitura foi usado. Ouvir: 3 h 35 min, de segunda a sexta (Senra, Big Technology, In Good Company, Stock Pickers), e foi o único hábito que ficou de pé. Nas Novidades você removeu 44 episódios e terminou 5. Se você leu algo no iPad, não está aqui: o iPad continua sem token até prova em contrário. Ficou abaixo de 50% da meta, então a meta cai em vez de virar dívida. Como você fez 0, o 'feito +25%' daria zero; a conta usa a última semana com leitura (121 min em 18 a 24/10): 150 min de conteúdo, 30 min por manhã de segunda a sexta, e 60 min de série, 30 no domingo e 30 no sábado. É pouco de propósito: o objetivo desta semana é sentar todo dia, não recuperar o atraso. O conteúdo continua a Squadra até acabar; só depois entra outro."
+ }
+}

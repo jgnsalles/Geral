@@ -1,0 +1,144 @@
+{
+ "colecoes": [
+  {
+   "cod": "CL-ATMOS",
+   "nome": "Atmos Capital",
+   "autor": "Atmos Capital Gestão de Recursos",
+   "site": "https://www.atmoscapital.com.br/cartas.php",
+   "total": 33
+  },
+  {
+   "cod": "CL-BAUPOST",
+   "nome": "Baupost",
+   "autor": "Seth Klarman",
+   "site": null,
+   "total": 2
+  },
+  {
+   "cod": "CL-DYNAMO",
+   "nome": "Dynamo",
+   "autor": "Dynamo Administração de Recursos",
+   "site": "https://www.dynamo.com.br/pt/cartas-dynamo",
+   "total": 106
+  },
+  {
+   "cod": "CL-FUNDSMITH",
+   "nome": "Fundsmith Equity Fund",
+   "autor": "Terry Smith (Fundsmith LLP)",
+   "site": "https://www.fundsmith.co.uk/documents/ (a verificar: o site bloqueia acesso automatizado com desafio Cloudflare, HTTP 403; os PDFs do mesmo domínio abrem normalmente)",
+   "total": 16
+  },
+  {
+   "cod": "CL-GIVERNY",
+   "nome": "Giverny Capital",
+   "autor": "François Rochon (Giverny Capital)",
+   "site": "https://givernycapital.com/en/letters-to-our-partners/ (conferido, HTTP 200)",
+   "total": 31
+  },
+  {
+   "cod": "CL-LYNCH",
+   "nome": "Peter Lynch",
+   "autor": "Peter Lynch",
+   "site": null,
+   "total": 1
+  },
+  {
+   "cod": "CL-MAUBOUSSIN",
+   "nome": "Michael Mauboussin",
+   "autor": "Michael J. Mauboussin",
+   "site": "https://www.michaelmauboussin.com/",
+   "total": 182
+  },
+  {
+   "cod": "CL-NOMAD",
+   "nome": "Nomad Investment Partnership",
+   "autor": "Nick Sleep e Qais (Zak) Zakaria",
+   "site": "https://igyfoundation.org.uk/nomad-partnership-letters/",
+   "total": 25
+  },
+  {
+   "cod": "CL-OAKTREE",
+   "nome": "Oaktree",
+   "autor": "Howard Marks (Oaktree Capital Management)",
+   "site": "https://www.oaktreecapital.com/insights/memos (conferido, HTTP 200)",
+   "total": 166
+  },
+  {
+   "cod": "CL-PAPERS",
+   "nome": "Papers avulsos",
+   "autor": "vários",
+   "site": null,
+   "total": 4
+  },
+  {
+   "cod": "CL-PERSHING",
+   "nome": "Pershing Square Holdings",
+   "autor": "Bill Ackman (Pershing Square Capital Management)",
+   "site": "https://pershingsquareholdings.com/materials/ (conferido via leitor web; o acesso por curl leva desafio Cloudflare, HTTP 403)",
+   "total": 12
+  },
+  {
+   "cod": "CL-SQUADRA",
+   "nome": "Squadra Investimentos",
+   "autor": "Squadra Investimentos",
+   "site": "https://www.squadrainvest.com.br/cartas/",
+   "total": 20
+  },
+  {
+   "cod": "CL-ACQUIRED",
+   "nome": "Acquired",
+   "autor": "Ben Gilbert e David Rosenthal",
+   "site": "https://www.acquired.fm",
+   "total": 17,
+   "audio": true
+  },
+  {
+   "cod": "CL-FOUNDERS",
+   "nome": "Founders Podcast",
+   "autor": "David Senra",
+   "site": "https://founderspodcast.com",
+   "total": 15,
+   "audio": true
+  },
+  {
+   "cod": "CL-ILTB",
+   "nome": "Invest Like the Best",
+   "autor": "Patrick O'Shaughnessy",
+   "site": "https://www.colossus.com/podcast/",
+   "total": 4,
+   "audio": true
+  },
+  {
+   "cod": "CL-INGOODCOMPANY",
+   "nome": "In Good Company with Nicolai Tangen",
+   "autor": "Nicolai Tangen (Norges Bank Investment Management)",
+   "site": "https://www.nbim.no/en/the-fund/news-list/podcast/",
+   "total": 1,
+   "audio": true
+  },
+  {
+   "cod": "CL-JCURVE",
+   "nome": "The J Curve Podcast",
+   "autor": "Olga Maslikhova",
+   "site": "https://www.thejcurve.com",
+   "total": 2,
+   "audio": true
+  },
+  {
+   "cod": "CL-MONEYMAZE",
+   "nome": "Money Maze Podcast",
+   "autor": "Simon Brewer",
+   "site": "https://www.moneymaze.com",
+   "total": 1,
+   "audio": true
+  },
+  {
+   "cod": "CL-PAPOCOMGESTOR",
+   "nome": "Papo com Gestor (seleção)",
+   "autor": "InfoMoney",
+   "site": "",
+   "total": 5,
+   "audio": true
+  }
+ ]
+}

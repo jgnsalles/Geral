@@ -1,0 +1,3654 @@
+{
+ "movimentos": [
+  {
+   "n": 1,
+   "nome": "Era Axial Oriental",
+   "periodo": "~550–450 a.C.",
+   "area": "Filosofia / Guerra",
+   "obs": "",
+   "genios": [
+    "BI-CONFUCIO"
+   ]
+  },
+  {
+   "n": 2,
+   "nome": "Grécia Clássica",
+   "periodo": "470–322 a.C.",
+   "area": "Filosofia / Medicina",
+   "obs": "Philosophize This!, episódios iniciais (Sócrates, Platão, Aristóteles)",
+   "genios": [
+    "BI-SOCRATES",
+    "BI-ARISTOTELE"
+   ]
+  },
+  {
+   "n": 3,
+   "nome": "Conquistadores da Antiguidade",
+   "periodo": "336–44 a.C.",
+   "area": "Guerra",
+   "obs": "",
+   "genios": [
+    "BI-ALEXANDREO",
+    "BI-ANIBAL",
+    "BI-JULIOCESAR"
+   ]
+  },
+  {
+   "n": 4,
+   "nome": "Império Mongol",
+   "periodo": "1206–1227",
+   "area": "Guerra",
+   "obs": "",
+   "genios": [
+    "BI-GENGISKHAN"
+   ]
+  },
+  {
+   "n": 5,
+   "nome": "Trecento Florentino",
+   "periodo": "~1300",
+   "area": "Literatura",
+   "obs": "",
+   "genios": [
+    "BI-DANTE"
+   ]
+  },
+  {
+   "n": 6,
+   "nome": "Grandes Navegações",
+   "periodo": "1405–1522",
+   "area": "Exploração",
+   "obs": "",
+   "genios": [
+    "BI-ZHENGHE",
+    "BI-COLOMBO",
+    "BI-MAGALHAES"
+   ]
+  },
+  {
+   "n": 7,
+   "nome": "Renascimento Italiano",
+   "periodo": "1470–1520",
+   "area": "Arte Visual",
+   "obs": "",
+   "genios": [
+    "BI-LEONARDODA",
+    "BI-MICHELANGE",
+    "BI-RAFAEL"
+   ]
+  },
+  {
+   "n": 8,
+   "nome": "Siglo de Oro e Inglaterra Elizabetana",
+   "periodo": "1590–1615",
+   "area": "Literatura",
+   "obs": "",
+   "genios": [
+    "BI-CERVANTES",
+    "BI-SHAKESPEAR"
+   ]
+  },
+  {
+   "n": 9,
+   "nome": "Revolução Científica",
+   "periodo": "1609–1727",
+   "area": "Ciência",
+   "obs": "",
+   "genios": [
+    "BI-GALILEU",
+    "BI-NEWTON"
+   ]
+  },
+  {
+   "n": 10,
+   "nome": "Idade de Ouro Holandesa",
+   "periodo": "1630–1675",
+   "area": "Arte Visual",
+   "obs": "",
+   "genios": [
+    "BI-REMBRANDT",
+    "BI-VERMEER"
+   ]
+  },
+  {
+   "n": 11,
+   "nome": "Filosofia Moderna",
+   "periodo": "1637–1889",
+   "area": "Filosofia",
+   "obs": "Philosophize This! cobre os quatro",
+   "genios": [
+    "BI-HUME",
+    "BI-KANT",
+    "BI-NIETZSCHE"
+   ]
+  },
+  {
+   "n": 12,
+   "nome": "Barroco e Classicismo Musical",
+   "periodo": "1700–1827",
+   "area": "Música",
+   "obs": "",
+   "genios": [
+    "BI-BACH",
+    "BI-MOZART",
+    "BI-BEETHOVEN"
+   ]
+  },
+  {
+   "n": 13,
+   "nome": "Matemática Clássica",
+   "periodo": "1707–1855",
+   "area": "Matemática",
+   "obs": "",
+   "genios": [
+    "BI-GAUSS"
+   ]
+  },
+  {
+   "n": 14,
+   "nome": "Iluminismo Americano",
+   "periodo": "1730–1790",
+   "area": "Política / Ciência",
+   "obs": "Movimento acrescentado por sugestão do Claude (2026-10-24).",
+   "genios": [
+    "BI-FRANKLIN"
+   ]
+  },
+  {
+   "n": 15,
+   "nome": "Era Napoleônica",
+   "periodo": "1796–1815",
+   "area": "Guerra",
+   "obs": "",
+   "genios": [
+    "BI-NAPOLEAO"
+   ]
+  },
+  {
+   "n": 16,
+   "nome": "Ciência do Século XIX",
+   "periodo": "1831–1895",
+   "area": "Ciência / Medicina",
+   "obs": "",
+   "genios": [
+    "BI-FARADAY",
+    "BI-DARWIN",
+    "BI-PASTEUR"
+   ]
+  },
+  {
+   "n": 17,
+   "nome": "Romance Russo",
+   "periodo": "1860–1880",
+   "area": "Literatura",
+   "obs": "",
+   "genios": [
+    "BI-DOSTOIEVSK",
+    "BI-TOLSTOI"
+   ]
+  },
+  {
+   "n": 18,
+   "nome": "Segunda Revolução Industrial",
+   "periodo": "1865–1930",
+   "area": "Indústria",
+   "obs": "",
+   "genios": [
+    "BI-CARNEGIE",
+    "BI-ROCKEFELLE",
+    "BI-EDISON",
+    "BI-TESLA",
+    "BI-HENRYFORD"
+   ]
+  },
+  {
+   "n": 19,
+   "nome": "Impressionismo e Vanguardas",
+   "periodo": "1872–1937",
+   "area": "Arte Visual",
+   "obs": "",
+   "genios": [
+    "BI-MONET",
+    "BI-CEZANNE",
+    "BI-VANGOGH",
+    "BI-PICASSO"
+   ]
+  },
+  {
+   "n": 20,
+   "nome": "Física Moderna e Medicina",
+   "periodo": "1896–1930",
+   "area": "Ciência / Medicina",
+   "obs": "",
+   "genios": [
+    "BI-MARIECURIE",
+    "BI-EINSTEIN",
+    "BI-BOHR",
+    "BI-HEISENBERG",
+    "BI-FLEMING"
+   ]
+  },
+  {
+   "n": 21,
+   "nome": "Cinema Clássico e Animação",
+   "periodo": "1928–1965",
+   "area": "Cinema / Entretenimento",
+   "obs": "",
+   "genios": [
+    "BI-WALTDISNEY",
+    "BI-HITCHCOCK",
+    "BI-KUROSAWA",
+    "BI-ORSONWELLE",
+    "BI-ARNOLD"
+   ]
+  },
+  {
+   "n": 22,
+   "nome": "Computação e Era Atômica",
+   "periodo": "1936–1957",
+   "area": "Matemática / Ciência",
+   "obs": "",
+   "genios": [
+    "BI-ALANTURING",
+    "BI-VONNEUMANN",
+    "BI-SHANNON"
+   ]
+  },
+  {
+   "n": 23,
+   "nome": "Finanças Modernas",
+   "periodo": "1956–2010",
+   "area": "Finanças",
+   "obs": "",
+   "genios": [
+    "BI-BUFFETT",
+    "BI-SOROS",
+    "BI-DRUCKENMIL",
+    "BI-JIMSIMONS",
+    "BI-MUNGER"
+   ]
+  },
+  {
+   "n": 24,
+   "nome": "New Hollywood",
+   "periodo": "1968–1990",
+   "area": "Cinema",
+   "obs": "Leitura do grupo inteiro: Easy Riders, Raging Bulls, Peter Biskind",
+   "genios": [
+    "BI-KUBRICK",
+    "BI-COPPOLA",
+    "BI-SCORSESE",
+    "BI-SPIELBERG"
+   ]
+  },
+  {
+   "n": 25,
+   "nome": "Silicon Valley",
+   "periodo": "1975–hoje",
+   "area": "Tecnologia",
+   "obs": "",
+   "genios": [
+    "BI-STEVEJOBS",
+    "BI-BILLGATES",
+    "BI-JEFFBEZOS",
+    "BI-ELONMUSK"
+   ]
+  }
+ ],
+ "genios": {
+  "BI-CONFUCIO": {
+   "nome": "Confúcio",
+   "movimento": 1,
+   "busca": [
+    "Confucius",
+    "Confúcio"
+   ],
+   "livros": [
+    {
+     "titulo": "Confucius and the World He Created",
+     "autor": "Michael Schuman",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19996325W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "5859b68f0b"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-SOCRATES": {
+   "nome": "Sócrates",
+   "movimento": 2,
+   "busca": [
+    "Socrates",
+    "Sócrates"
+   ],
+   "livros": [
+    {
+     "titulo": "The Hemlock Cup",
+     "autor": "Bettany Hughes",
+     "obs": "",
+     "escolha": {
+      "por_que": "A única biografia de fato; a Kirkus a chama de biografia 'inteligente e divertida'. Ressalva: é tanto Atenas quanto Sócrates.",
+      "fonte": "https://www.kirkusreviews.com/book-reviews/bettany-hughes/hemlock-cup/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16237943W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "O veneno de sócrates (Luva, 2024)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/o-veneno-de-socrates-FW2-1860-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Apologia de Sócrates",
+     "autor": "Platão",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL29484103W",
+     "pt": true,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "97d41dac6a"
+    },
+    {
+     "programa": "Founders",
+     "id": "f13fe86cea"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "9bf7486ba7"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-ARISTOTELE": {
+   "nome": "Aristóteles",
+   "movimento": 2,
+   "busca": [
+    "Aristotle",
+    "Aristóteles"
+   ],
+   "livros": [
+    {
+     "titulo": "The Lagoon: How Aristotle Invented Science",
+     "autor": "Armand Marie Leroi",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19984294W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "83927c22bb"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-ALEXANDREO": {
+   "nome": "Alexandre, o Grande",
+   "movimento": 3,
+   "busca": [
+    "Alexander the Great",
+    "Alexandre, o Grande",
+    "Alexandre o Grande"
+   ],
+   "livros": [
+    {
+     "titulo": "Alexander the Great",
+     "autor": "Philip Freeman",
+     "obs": "",
+     "voce": true,
+     "escolha": {
+      "por_que": "A que você mandou (print da Amazon), com edição em PT. A de Lane Fox é mais densa e fica para depois."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15975574W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Alexandre, o Grande (Amarilys Editora, 2014)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/alexandre-o-grande-0T0-7316-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Alexander the Great",
+     "autor": "Robin Lane Fox",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3673838W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Anábase de Alexandre",
+     "autor": "Arriano",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL13110838W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "ffb291681f"
+    },
+    {
+     "programa": "Founders",
+     "id": "a54a0a5efb"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "5e62106c85"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "69e3e2737e"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "c115b5b1e9"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-ANIBAL": {
+   "nome": "Aníbal",
+   "movimento": 3,
+   "busca": [
+    "Hannibal",
+    "Aníbal"
+   ],
+   "livros": [
+    {
+     "titulo": "The Fall of Carthage",
+     "autor": "Adrian Goldsworthy",
+     "obs": "",
+     "escolha": {
+      "por_que": "Goldsworthy apresenta o que se sabe e o que não se sabe; Políbio é a fonte antiga.",
+      "fonte": "https://www.desertcart.uy/products/1705678"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8264208W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Histórias",
+     "autor": "Políbio",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL9137562W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "dc15e3bc7d"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "d359bb8278"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "9cc788348c"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "fc411f00e7"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "52a1491a22"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "f5982fc4a9"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-JULIOCESAR": {
+   "nome": "Júlio César",
+   "movimento": 3,
+   "busca": [
+    "Julius Caesar",
+    "Júlio César",
+    "Caesar"
+   ],
+   "livros": [
+    {
+     "titulo": "Caesar: Life of a Colossus",
+     "autor": "Adrian Goldsworthy",
+     "obs": "",
+     "voce": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8264212W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "Death Throes of the Republic",
+     "programa": "Hardcore History",
+     "obs": "série"
+    }
+   ],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "0a65b149a9"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "310af4de8d"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "da5e3b096d"
+    },
+    {
+     "programa": "Founders",
+     "id": "a54a0a5efb"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "50e4fabf44"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "c3470b8eb2"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-GENGISKHAN": {
+   "nome": "Gengis Khan",
+   "movimento": 4,
+   "busca": [
+    "Genghis Khan",
+    "Gengis Khan",
+    "Chinggis"
+   ],
+   "livros": [
+    {
+     "titulo": "Genghis Khan and the Making of the Modern World",
+     "autor": "Jack Weatherford",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8162628W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Gengis Khan e a Formação do Mundo Moderno (Bertrand Brasil, 2010)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/gengis-khan-e-a-formacao-do-mundo-moderno-0V4-3107-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "Wrath of the Khans",
+     "programa": "Hardcore History",
+     "obs": "série"
+    }
+   ],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "a1a8637dab"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "e65022e738"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "456a430718"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-DANTE": {
+   "nome": "Dante",
+   "movimento": 5,
+   "busca": [
+    "Dante"
+   ],
+   "livros": [
+    {
+     "titulo": "Dante: The Story of His Life",
+     "autor": "Marco Santagata",
+     "obs": "sugestão do Claude",
+     "sugestao": true,
+     "escolha": {
+      "por_que": "Tratada como a obra de referência para o público interessado, com erudição funda (resenha da The Medieval Review).",
+      "fonte": "https://scholarworks.iu.edu/journals/index.php/tmr/article/view/30266"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL20186498W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Dante",
+     "autor": "R.W.B. Lewis",
+     "obs": "Penguin Lives",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2006045W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Dante (Objetiva, 2002)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/dante-042-5652-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-ZHENGHE": {
+   "nome": "Zheng He",
+   "movimento": 6,
+   "busca": [
+    "Zheng He"
+   ],
+   "livros": [
+    {
+     "titulo": "Zheng He: China and the Oceans in the Early Ming Dynasty",
+     "autor": "Edward Dreyer",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia de Zheng He reconstruída das fontes chinesas; a de Levathes é sobre a frota.",
+      "fonte": "https://angusrobertson.com.au/books/zheng-he-edward-l-dreyer/p/9780321084439"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3504854W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "When China Ruled the Seas",
+     "autor": "Louise Levathes",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3278748W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-COLOMBO": {
+   "nome": "Colombo",
+   "movimento": 6,
+   "busca": [
+    "Columbus",
+    "Colombo"
+   ],
+   "livros": [
+    {
+     "titulo": "Admiral of the Ocean Sea",
+     "autor": "Samuel Eliot Morison",
+     "obs": "",
+     "escolha": {
+      "por_que": "Pulitzer de biografia (1943); Morison refez as viagens a vela antes de escrever.",
+      "fonte": "https://en.wikipedia.org/wiki/Samuel_Eliot_Morison"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2917794W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Columbus: The Four Voyages",
+     "autor": "Laurence Bergreen",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16360841W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Colombo (Objetiva, 2014)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/colombo-08I-3577-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "6af1d61453"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "cae394536d"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "6985ed85b9"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "f5d1130ba3"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-MAGALHAES": {
+   "nome": "Magalhães",
+   "movimento": 6,
+   "busca": [
+    "Magellan",
+    "Magalhães",
+    "Fernão de Magalhães"
+   ],
+   "livros": [
+    {
+     "titulo": "Over the Edge of the World",
+     "autor": "Laurence Bergreen",
+     "obs": "",
+     "escolha": {
+      "por_que": "Relato dia a dia com o diário de Pigafetta, com a personalidade de Magalhães no centro; tem edição em PT.",
+      "fonte": "https://www.publishersweekly.com/9780066211732"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2655768W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Além do fim do mundo (Objetiva, 2004)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/alem-do-fim-do-mundo-0Y8-6052-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Fernão de Magalhães",
+     "autor": "Stefan Zweig",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL46041582W",
+     "pt": true,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-LEONARDODA": {
+   "nome": "Leonardo da Vinci",
+   "movimento": 7,
+   "busca": [
+    "Leonardo da Vinci",
+    "da Vinci"
+   ],
+   "livros": [
+    {
+     "titulo": "Leonardo da Vinci",
+     "autor": "Walter Isaacson",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia moderna montada sobre os cadernos dele (o processo); tem edição em PT. Vasari é fonte antiga e curta."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17802920W",
+     "pt": true,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Vidas dos Artistas",
+     "autor": "Giorgio Vasari",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL7968421W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "be95e0b3aa"
+    },
+    {
+     "programa": "Founders",
+     "id": "4fda0f1799"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-MICHELANGE": {
+   "nome": "Michelangelo",
+   "movimento": 7,
+   "busca": [
+    "Michelangelo"
+   ],
+   "livros": [
+    {
+     "titulo": "Michelangelo and the Pope's Ceiling",
+     "autor": "Ross King",
+     "obs": "",
+     "escolha": {
+      "por_que": "O processo do teto da Sistina; a outra é romance."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2984866W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Agonia e Êxtase",
+     "autor": "Irving Stone",
+     "obs": "romance",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL112002W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-RAFAEL": {
+   "nome": "Rafael",
+   "movimento": 7,
+   "busca": [
+    "Raphael",
+    "Rafael Sanzio"
+   ],
+   "livros": [
+    {
+     "titulo": "Raphael",
+     "autor": "Roger Jones e Nicholas Penny",
+     "obs": "sugestão do Claude",
+     "sugestao": true,
+     "escolha": {
+      "por_que": "Lawrence Gowing (London Review of Books) chamou de a nova fonte confiável sobre o artista.",
+      "fonte": "https://www.lrb.co.uk/the-paper/v06/n05/lawrence-gowing/the-raphael-question"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL5588788W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Vidas dos Artistas",
+     "autor": "Giorgio Vasari",
+     "obs": "capítulo de Rafael",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL7968421W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-CERVANTES": {
+   "nome": "Cervantes",
+   "movimento": 8,
+   "busca": [
+    "Cervantes",
+    "Don Quixote",
+    "Dom Quixote"
+   ],
+   "livros": [
+    {
+     "titulo": "Cervantes",
+     "autor": "Jean Canavaggio",
+     "obs": "",
+     "escolha": {
+      "por_que": "Prêmio Goncourt de biografia, uma das mais influentes do século 20; tem edição em PT.",
+      "fonte": "https://en.wikipedia.org/wiki/Jean_Canavaggio"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4778494W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Cervantes (Editora 34)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/cervantes-01F-9454-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Cervantes: A Biography",
+     "autor": "William Byron",
+     "obs": "sugestão do Claude",
+     "sugestao": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4971645W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-SHAKESPEAR": {
+   "nome": "Shakespeare",
+   "movimento": 8,
+   "busca": [
+    "Shakespeare"
+   ],
+   "livros": [
+    {
+     "titulo": "Will in the World",
+     "autor": "Stephen Greenblatt",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4083172W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Como Shakespeare se tornou Shakespeare (Companhia das Letras, 2011)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/como-shakespeare-se-tornou-shakespeare-00V-4481-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "1e45f786cf"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-GALILEU": {
+   "nome": "Galileu",
+   "movimento": 9,
+   "busca": [
+    "Galileo",
+    "Galileu"
+   ],
+   "livros": [
+    {
+     "titulo": "Galileo's Daughter",
+     "autor": "Dava Sobel",
+     "obs": "",
+     "escolha": {
+      "por_que": "Torna a vida e o trabalho dele compreensíveis para quem não é do ramo, com as cartas da filha; tem edição em PT. A de Heilbron é leitura difícil.",
+      "fonte": "https://www.bookreporter.com/reviews/galileos-daughter-a-historical-memoir-of-science-faith-and-love"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1883959W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "A filha de Galileu (Companhia das Letras, 2000)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/a-filha-de-galileu-0P1-8019-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Galileo",
+     "autor": "J. L. Heilbron",
+     "obs": "sugestão do Claude",
+     "sugestao": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15979757W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-NEWTON": {
+   "nome": "Newton",
+   "movimento": 9,
+   "busca": [
+    "Isaac Newton",
+    "Newton"
+   ],
+   "livros": [
+    {
+     "titulo": "Never at Rest",
+     "autor": "Richard Westfall",
+     "obs": "",
+     "escolha": {
+      "por_que": "Considerada a biografia definitiva de Newton, feita sobre os manuscritos dele. É longa (~900 págs.).",
+      "fonte": "https://en.wikipedia.org/wiki/Richard_S._Westfall"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2940690W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Isaac Newton",
+     "autor": "James Gleick",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15894W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Isaac Newton (Companhia das Letras, 2004)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/isaac-newton-0V5-7153-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-REMBRANDT": {
+   "nome": "Rembrandt",
+   "movimento": 10,
+   "busca": [
+    "Rembrandt"
+   ],
+   "livros": [
+    {
+     "titulo": "Rembrandt: The Painter at Work",
+     "autor": "Ernst van de Wetering",
+     "obs": "sugestão do Claude, como ele pintava, ateliê e técnica",
+     "sugestao": true,
+     "escolha": {
+      "por_que": "Como ele pintava: método, ateliê e técnica, do maior especialista; o próprio Schama elogia.",
+      "fonte": "https://aup.nl/en/book/9789089640338/rembrandt-the-painter-at-work"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL24596372W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Rembrandt's Eyes",
+     "autor": "Simon Schama",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL14865997W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-VERMEER": {
+   "nome": "Vermeer",
+   "movimento": 10,
+   "busca": [
+    "Vermeer"
+   ],
+   "livros": [
+    {
+     "titulo": "Vermeer: A View of Delft",
+     "autor": "Anthony Bailey",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia de fato (a Kirkus a chama de 'bem construída'); o Chapéu de Vermeer é sobre o comércio do século 17.",
+      "fonte": "https://www.kirkusreviews.com/book-reviews/anthony-bailey/vermeer/print/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL5715159W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Vermeer's Hat",
+     "autor": "Timothy Brook",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17921837W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "O chapéu de Vermeer (Record, 2012)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/o-chapeu-de-vermeer-0GO-6701-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-HUME": {
+   "nome": "Hume",
+   "movimento": 11,
+   "busca": [
+    "David Hume",
+    "Hume"
+   ],
+   "livros": [
+    {
+     "titulo": "The Infidel and the Professor",
+     "autor": "Dennis Rasmussen",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19367162W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "93c1154a94"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-KANT": {
+   "nome": "Kant",
+   "movimento": 11,
+   "busca": [
+    "Kant"
+   ],
+   "livros": [
+    {
+     "titulo": "Kant: A Biography",
+     "autor": "Manfred Kuehn",
+     "obs": "",
+     "escolha": {
+      "por_que": "A primeira biografia substancial de Kant em décadas, tratada como a de referência.",
+      "fonte": "https://complete-review.com/reviews/divphil/kantbio.htm"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL5051457W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Kant's Life and Thought",
+     "autor": "Ernst Cassirer",
+     "obs": "sugestão do Claude, vida e pensamento",
+     "sugestao": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL834008W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-NIETZSCHE": {
+   "nome": "Nietzsche",
+   "movimento": 11,
+   "busca": [
+    "Nietzsche"
+   ],
+   "livros": [
+    {
+     "titulo": "I Am Dynamite!",
+     "autor": "Sue Prideaux",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia bem pesquisada e viva, com trabalho de arquivo; tem edição em PT.",
+      "fonte": "https://www.publishersweekly.com/9781524760823"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19763426W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Eu sou dinamite! (Crítica, 2019)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/eu-sou-dinamite-081-8807-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Nietzsche: A Philosophical Biography",
+     "autor": "Rüdiger Safranski",
+     "obs": "sugestão do Claude",
+     "sugestao": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8297916W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-BACH": {
+   "nome": "Bach",
+   "movimento": 12,
+   "busca": [
+    "Johann Sebastian Bach",
+    " Bach "
+   ],
+   "livros": [
+    {
+     "titulo": "Johann Sebastian Bach: The Learned Musician",
+     "autor": "Christoph Wolff",
+     "obs": "",
+     "escolha": {
+      "por_que": "É a biografia padrão; a de Gardiner é um retrato pessoal, de músico.",
+      "fonte": "https://www.standpointmag.co.uk/?p=2177"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4310960W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Music in the Castle of Heaven",
+     "autor": "John Eliot Gardiner",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL21076942W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-MOZART": {
+   "nome": "Mozart",
+   "movimento": 12,
+   "busca": [
+    "Mozart"
+   ],
+   "livros": [
+    {
+     "titulo": "Mozart: A Life",
+     "autor": "Maynard Solomon",
+     "obs": "",
+     "escolha": {
+      "por_que": "Finalista do Pulitzer; a Kirkus a chama de 'magistral'.",
+      "fonte": "https://www.kirkusreviews.com/book-reviews/maynard-solomon/mozart-2/print/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2752851W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Mozart",
+     "autor": "Peter Gay",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL924642W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Mozart (Objetiva, 1999)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/mozart-0V6-1891-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "e85b7f0fd5"
+    },
+    {
+     "programa": "Founders",
+     "id": "144420bae6"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-BEETHOVEN": {
+   "nome": "Beethoven",
+   "movimento": 12,
+   "busca": [
+    "Beethoven"
+   ],
+   "livros": [
+    {
+     "titulo": "Beethoven: Anguish and Triumph",
+     "autor": "Jan Swafford",
+     "obs": "",
+     "escolha": {
+      "por_que": "A vida inteira, para quem não é músico; tem edição em PT. A de Solomon pede leitura de partitura.",
+      "fonte": "https://www.bostonglobe.com/arts/2014/08/14/book-review-beethoven-anguish-and-triumph-jan-swafford/wrq4OzmiomTXx5vbqw1I9N/story.html"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17218538W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Beethoven (Amarilys Editora, 2017)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/beethoven-083-4320-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Beethoven",
+     "autor": "Maynard Solomon",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15854712W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "9cfabeba6e"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "eea2571f1f"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-GAUSS": {
+   "nome": "Gauss",
+   "movimento": 13,
+   "busca": [
+    "Gauss"
+   ],
+   "livros": [
+    {
+     "titulo": "Carl Friedrich Gauss: Titan of Science",
+     "autor": "G. Waldo Dunnington",
+     "obs": "",
+     "escolha": {
+      "por_que": "A biografia mais completa em inglês; a MAA a recomenda.",
+      "fonte": "https://old.maa.org/node/108081"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL6042212W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Men of Mathematics",
+     "autor": "E.T. Bell",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4091543W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "9246f4d7c9"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-FRANKLIN": {
+   "nome": "Benjamin Franklin",
+   "movimento": 14,
+   "busca": [
+    "Benjamin Franklin",
+    "Ben Franklin"
+   ],
+   "livros": [
+    {
+     "titulo": "The Autobiography of Benjamin Franklin",
+     "autor": "Benjamin Franklin",
+     "obs": "",
+     "curto": true,
+     "escolha": {
+      "por_que": "Curta (<200 págs.), na voz dele e com o método de se aperfeiçoar; tem edição em PT. Isaacson cobre o resto da vida.",
+      "fonte": "https://pursuitofimpact.substack.com/p/the-best-biographies-of-benjamin"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL26492W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Autobiografia de benjamin franklin (Auster, 2019)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/autobiografia-de-benjamin-franklin-FV6-3686-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Benjamin Franklin: An American Life",
+     "autor": "Walter Isaacson",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4288868W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "c82d7f5873"
+    },
+    {
+     "programa": "Founders",
+     "id": "0831243bf0"
+    },
+    {
+     "programa": "Founders",
+     "id": "a217a28b01"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "82dd6377da"
+    }
+   ],
+   "ligacoes": [],
+   "sugestao": "Sugestão do Claude aceita pelo usuário em 2026-10-24: cientista, inventor, editor e diplomata; a autobiografia dele é um clássico de autoaperfeiçoamento."
+  },
+  "BI-NAPOLEAO": {
+   "nome": "Napoleão",
+   "movimento": 15,
+   "busca": [
+    "Napoleon",
+    "Napoleão",
+    "Bonaparte"
+   ],
+   "livros": [
+    {
+     "titulo": "Napoleon: A Life",
+     "autor": "Andrew Roberts",
+     "obs": "",
+     "voce": true,
+     "escolha": {
+      "por_que": "Uma das que você mandou; a primeira biografia em um volume feita sobre as 33 mil cartas dele.",
+      "fonte": "https://historynet.com/mhq-reviews-napoleon-a-life/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17322244W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "The Mind of Napoleon: A Selection of His Written and Spoken Words",
+     "autor": "J. Christopher Herold",
+     "obs": "as palavras do próprio Napoleão",
+     "curto": true,
+     "voce": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL43098177W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "The Campaigns of Napoleon",
+     "autor": "David Chandler",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1682904W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "episódios sobre Napoleão",
+     "programa": "Founders",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "David Senra",
+     "id": "9490d2f895"
+    },
+    {
+     "programa": "Founders",
+     "id": "b84f268c86"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "9cfabeba6e"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "18f88660a7"
+    },
+    {
+     "programa": "Founders",
+     "id": "e89f6ecc9a"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "22349ba436"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "d09bb40f31"
+    },
+    {
+     "programa": "Founders",
+     "id": "4908fe60d2"
+    },
+    {
+     "programa": "Founders",
+     "id": "9315db1a25"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "8f1800a9a4"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "656b56744d"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "73c972814c"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-FARADAY": {
+   "nome": "Faraday",
+   "movimento": 16,
+   "busca": [
+    "Faraday"
+   ],
+   "livros": [
+    {
+     "titulo": "Michael Faraday, Father of Electronics",
+     "autor": "Charles Ludwig",
+     "obs": "ISBN 978-0836134797",
+     "voce": true,
+     "escolha": {
+      "por_que": "A que você mandou (print da Amazon)."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3016860W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Faraday, Maxwell, and the Electromagnetic Field",
+     "autor": "Nancy Forbes e Basil Mahon",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19709660W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "9ae225fc90"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-DARWIN": {
+   "nome": "Darwin",
+   "movimento": 16,
+   "busca": [
+    "Darwin"
+   ],
+   "livros": [
+    {
+     "titulo": "Charles Darwin: Voyaging",
+     "autor": "Janet Browne",
+     "obs": "",
+     "escolha": {
+      "por_que": "O volume 1 da biografia em dois volumes, apontada como a referência que todas as outras precisam bater.",
+      "fonte": "https://compulsivereader.com/2009/03/09/a-review-of-charles-darwin-voyaging-and-charles-darwin-the-power-of-place-by-janet-browne/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4126676W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "The Autobiography of Charles Darwin",
+     "autor": "Charles Darwin",
+     "obs": "autobiografia, ~150 págs.",
+     "curto": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL515057W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Rest Is History",
+     "id": "921b28c26f"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "0787a91694"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "387b3268c7"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "cf4b20e45f"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-PASTEUR": {
+   "nome": "Pasteur",
+   "movimento": 16,
+   "busca": [
+    "Pasteur"
+   ],
+   "livros": [
+    {
+     "titulo": "Louis Pasteur",
+     "autor": "Patrice Debré",
+     "obs": "",
+     "escolha": {
+      "por_que": "A mais completa, feita sobre os cadernos dele; Outstanding Academic Title da Choice.",
+      "fonte": "https://press.jhu.edu/books/title/1901/louis-pasteur"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8396624W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Caçadores de Micróbios",
+     "autor": "Paul de Kruif",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL46090032W",
+     "pt": true,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "82afe232dd"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-DOSTOIEVSK": {
+   "nome": "Dostoiévski",
+   "movimento": 17,
+   "busca": [
+    "Dostoevsky",
+    "Dostoiévski",
+    "Dostoievski"
+   ],
+   "livros": [
+    {
+     "titulo": "Dostoevsky: A Writer in His Time",
+     "autor": "Joseph Frank",
+     "obs": "",
+     "escolha": {
+      "por_que": "Tida como a melhor biografia de Dostoiévski em qualquer língua (versão em um volume); tem edição em PT.",
+      "fonte": "https://press.princeton.edu/isbn/9780691155999"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3521031W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Dostoiévski (5 volumes) (Edusp, 2008)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/dostoievski-ii-os-anos-de-provacao-18501859-FVG-0665-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Dostoevsky: Reminiscences",
+     "autor": "Anna Dostoiévskaia",
+     "obs": "sugestão do Claude, memórias da mulher dele",
+     "sugestao": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8688742W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-TOLSTOI": {
+   "nome": "Tolstói",
+   "movimento": 17,
+   "busca": [
+    "Tolstoy",
+    "Tolstói",
+    "Tolstoi"
+   ],
+   "livros": [
+    {
+     "titulo": "Tolstoy: A Russian Life",
+     "autor": "Rosamund Bartlett",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16495093W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Tolstói, a biografia (Biblioteca Azul, 2013)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/tolstoi-a-biografia-10W-1785-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "38445020cc"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-CARNEGIE": {
+   "nome": "Carnegie",
+   "movimento": 18,
+   "busca": [
+    "Andrew Carnegie",
+    "Carnegie"
+   ],
+   "livros": [
+    {
+     "titulo": "Andrew Carnegie",
+     "autor": "David Nasaw",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia cuidadosa e equilibrada, que corrige o que a autobiografia dele exagera.",
+      "fonte": "https://kirkusreviews.com/book-reviews/david-nasaw/andrew-carnegie-2"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL891762W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "The Autobiography of Andrew Carnegie",
+     "autor": "Andrew Carnegie",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1532806W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "99179a4ee5"
+    },
+    {
+     "programa": "Founders",
+     "id": "d259957bee"
+    },
+    {
+     "programa": "Founders",
+     "id": "15fcf5217d"
+    },
+    {
+     "programa": "Founders",
+     "id": "c47f45edcf"
+    },
+    {
+     "programa": "Founders",
+     "id": "713d97d2cd"
+    },
+    {
+     "programa": "Founders",
+     "id": "473fcc3c06"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-ROCKEFELLE": {
+   "nome": "Rockefeller",
+   "movimento": 18,
+   "busca": [
+    "Rockefeller"
+   ],
+   "livros": [
+    {
+     "titulo": "Titan: The Life of John D. Rockefeller, Sr.",
+     "autor": "Ron Chernow",
+     "obs": "",
+     "escolha": {
+      "por_que": "Elogiada pela pesquisa e pelo equilíbrio; a Time a chamou de uma das grandes biografias americanas.",
+      "fonte": "https://en.wikipedia.org/wiki/Titan:_The_Life_of_John_D._Rockefeller,_Sr."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2665190W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Random Reminiscences of Men and Events",
+     "autor": "John D. Rockefeller",
+     "obs": "memórias curtas",
+     "curto": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL5355278W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "episódios sobre Titan",
+     "programa": "Founders",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "99179a4ee5"
+    },
+    {
+     "programa": "The Knowledge Project",
+     "id": "07e868e5ad"
+    },
+    {
+     "programa": "Founders",
+     "id": "2cbff9fe2a"
+    },
+    {
+     "programa": "Founders",
+     "id": "476e9a69c2"
+    },
+    {
+     "programa": "Founders",
+     "id": "c4a6c8f275"
+    },
+    {
+     "programa": "Founders",
+     "id": "d1f94a00c6"
+    },
+    {
+     "programa": "Founders",
+     "id": "f1022ae24e"
+    },
+    {
+     "programa": "Founders",
+     "id": "cb237301a8"
+    },
+    {
+     "programa": "Founders",
+     "id": "db9ea02e04"
+    },
+    {
+     "programa": "Founders",
+     "id": "3e4d5948ea"
+    },
+    {
+     "programa": "Founders",
+     "id": "3b4adfb195"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-EDISON": {
+   "nome": "Edison",
+   "movimento": 18,
+   "busca": [
+    "Thomas Edison",
+    "Edison"
+   ],
+   "livros": [
+    {
+     "titulo": "Edison",
+     "autor": "Edmund Morris",
+     "obs": "",
+     "voce": true,
+     "escolha": {
+      "por_que": "A que você mandou (print da Amazon)."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL20320597W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Empires of Light",
+     "autor": "Jill Jonnes",
+     "obs": "Edison x Tesla x Westinghouse",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2488115W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "b37cba4474"
+    },
+    {
+     "programa": "Founders",
+     "id": "ec43485792"
+    },
+    {
+     "programa": "Founders",
+     "id": "1ba20574e4"
+    },
+    {
+     "programa": "Founders",
+     "id": "da34d744b3"
+    },
+    {
+     "programa": "In Our Time",
+     "id": "e9f7227492"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-TESLA": {
+   "nome": "Tesla",
+   "movimento": 18,
+   "busca": [
+    "Nikola Tesla"
+   ],
+   "livros": [
+    {
+     "titulo": "Tesla: Inventor of the Electrical Age",
+     "autor": "W. Bernard Carlson",
+     "obs": "",
+     "escolha": {
+      "por_que": "O primeiro historiador da tecnologia a biografar Tesla, das fontes originais.",
+      "fonte": "https://macleans.ca/culture/books/tesla-inventor-of-the-electrical-age/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19964911W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Empires of Light",
+     "autor": "Jill Jonnes",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2488115W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "31ea2aaeaa"
+    },
+    {
+     "programa": "Founders",
+     "id": "1ba20574e4"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-HENRYFORD": {
+   "nome": "Henry Ford",
+   "movimento": 18,
+   "busca": [
+    "Henry Ford"
+   ],
+   "livros": [
+    {
+     "titulo": "My Life and Work",
+     "autor": "Henry Ford",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4418043W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Minha vida, minha obra (Principis, 2021)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/minha-vida-minha-obra-0B0-6303-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "episódios sobre Ford",
+     "programa": "Founders",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "24de9057f2"
+    },
+    {
+     "programa": "Founders",
+     "id": "ec43485792"
+    },
+    {
+     "programa": "Founders",
+     "id": "a6c24ccf5c"
+    },
+    {
+     "programa": "Founders",
+     "id": "98185cb54a"
+    },
+    {
+     "programa": "Founders",
+     "id": "52171778af"
+    },
+    {
+     "programa": "Founders",
+     "id": "62ed35abf4"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-MONET": {
+   "nome": "Monet",
+   "movimento": 19,
+   "busca": [
+    "Monet"
+   ],
+   "livros": [
+    {
+     "titulo": "Mad Enchantment",
+     "autor": "Ross King",
+     "obs": "",
+     "escolha": {
+      "por_que": "Três resenhas estreladas (Booklist, Library Journal, Kirkus); o processo das Ninfeias. Tem edição em PT.",
+      "fonte": "https://bonjourparis.com/books/book-reviews-mad-enchantment-claude-monet-and-the-painting-of-the-water-lilies/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL20206858W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Monet e a pintura das Ninfeias (Record, 2021)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/monet-e-a-pintura-das-ninfeias-08A-8787-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "The Private Lives of the Impressionists",
+     "autor": "Sue Roe",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16027589W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "7384f1c3d9"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-CEZANNE": {
+   "nome": "Cézanne",
+   "movimento": 19,
+   "busca": [
+    "Cézanne",
+    "Cezanne"
+   ],
+   "livros": [
+    {
+     "titulo": "Cézanne: A Life",
+     "autor": "Alex Danchev",
+     "obs": "",
+     "escolha": {
+      "por_que": "A primeira grande biografia de Cézanne em mais de 40 anos (Burlington Magazine).",
+      "fonte": "https://burlington.org.uk/archive/book-review/cezanne-a-life"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16557925W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "A Dúvida de Cézanne",
+     "autor": "Maurice Merleau-Ponty",
+     "obs": "ensaio",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2142400W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-VANGOGH": {
+   "nome": "Van Gogh",
+   "movimento": 19,
+   "busca": [
+    "Van Gogh"
+   ],
+   "livros": [
+    {
+     "titulo": "Cartas a Théo",
+     "autor": "Vincent van Gogh",
+     "obs": "",
+     "escolha": {
+      "por_que": "O processo dele nas palavras dele; a biografia de Naifeh e Smith é feita sobretudo dessas cartas.",
+      "fonte": "https://blog.dma.org/2011/11/09/pairoftwos/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL7121536W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Van Gogh: The Life",
+     "autor": "Steven Naifeh e Gregory White Smith",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16441496W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Van Gogh (Companhia das Letras, 2012)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/van-gogh-01K-1504-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "ab1215fc33"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-PICASSO": {
+   "nome": "Picasso",
+   "movimento": 19,
+   "busca": [
+    "Picasso"
+   ],
+   "livros": [
+    {
+     "titulo": "A Life of Picasso, vol. 1",
+     "autor": "John Richardson",
+     "obs": "",
+     "escolha": {
+      "por_que": "The New Criterion: 'um triunfo da biografia'; Richardson conheceu Picasso e teve acesso ao ateliê.",
+      "fonte": "https://newcriterion.com/article/the-young-picasso/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4802842W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Picasso",
+     "autor": "Gertrude Stein",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL37272W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Picasso (Editora Âyiné)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/picasso-0F8-9314-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "81ae6f08f9"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-MARIECURIE": {
+   "nome": "Marie Curie",
+   "movimento": 20,
+   "busca": [
+    "Marie Curie",
+    "Curie"
+   ],
+   "livros": [
+    {
+     "titulo": "Obsessive Genius",
+     "autor": "Barbara Goldsmith",
+     "obs": "",
+     "escolha": {
+      "por_que": "Biografia curta e direta, sem hagiografia, feita sobre as cartas dela; tem edição em PT.",
+      "fonte": "https://physicstoday.aip.org/reviews/obsessive-genius-the-inner-world-of-marie-curie"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1935731W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Gênio obsessivo (Companhia Das Letras, 2006)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/genio-obsessivo-FVJ-2137-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Pierre Curie",
+     "autor": "Marie Curie",
+     "obs": "com as notas autobiográficas dela",
+     "curto": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL723623W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Madame Curie",
+     "autor": "Ève Curie",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1439437W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-EINSTEIN": {
+   "nome": "Einstein",
+   "movimento": 20,
+   "busca": [
+    "Einstein"
+   ],
+   "livros": [
+    {
+     "titulo": "Einstein: His Life and Universe",
+     "autor": "Walter Isaacson",
+     "obs": "",
+     "escolha": {
+      "por_que": "Resenha estrelada da Kirkus; a primeira a usar a correspondência pessoal liberada. Tem edição em PT.",
+      "fonte": "https://en.wikipedia.org/wiki/Einstein:_His_Life_and_Universe"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL4288870W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Einstein (Intrínseca, 2024)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/einstein-C4L-1218-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Autobiographical Notes",
+     "autor": "Albert Einstein",
+     "obs": "notas autobiográficas, ~50 págs.",
+     "curto": true,
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1214189W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "6f4f1421f0"
+    },
+    {
+     "programa": "Founders",
+     "id": "bb7dd95b84"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-BOHR": {
+   "nome": "Bohr",
+   "movimento": 20,
+   "busca": [
+    "Niels Bohr",
+    "Bohr"
+   ],
+   "livros": [
+    {
+     "titulo": "Niels Bohr's Times",
+     "autor": "Abraham Pais",
+     "obs": "",
+     "escolha": {
+      "por_que": "A biografia científica de Bohr, de um físico que o conheceu; Quantum é sobre a época.",
+      "fonte": "https://www.lrb.co.uk/v14/n16/john-barrow/bohr-v-einstein"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1238357W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Quantum",
+     "autor": "Manjit Kumar",
+     "obs": "Bohr x Einstein",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL18757549W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-HEISENBERG": {
+   "nome": "Heisenberg",
+   "movimento": 20,
+   "busca": [
+    "Heisenberg"
+   ],
+   "livros": [
+    {
+     "titulo": "Physics and Beyond",
+     "autor": "Werner Heisenberg",
+     "obs": "",
+     "escolha": {
+      "por_que": "As conversas dele com Bohr, Einstein e Pauli: o processo da física quântica contado por ele.",
+      "fonte": "https://www.kirkusreviews.com/book-reviews/a/werner-heisenberg/physics-and-beyond-encounters-and-conversations"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15839082W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Quantum",
+     "autor": "Manjit Kumar",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL18757549W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-FLEMING": {
+   "nome": "Fleming",
+   "movimento": 20,
+   "busca": [
+    "Alexander Fleming",
+    "penicillin",
+    "penicilina"
+   ],
+   "livros": [
+    {
+     "titulo": "Penicillin Man",
+     "autor": "Kevin Brown",
+     "obs": "",
+     "escolha": {
+      "por_que": "BMJ, 4 estrelas: honesta e inteligente; desmonta os mitos da descoberta.",
+      "fonte": "https://pmc.ncbi.nlm.nih.gov/articles/PMC539899"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL11541083W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "The Life of Sir Alexander Fleming",
+     "autor": "André Maurois",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL44180515W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "460539d6bf"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-WALTDISNEY": {
+   "nome": "Walt Disney",
+   "movimento": 21,
+   "busca": [
+    "Walt Disney"
+   ],
+   "livros": [
+    {
+     "titulo": "Walt Disney: The Triumph of the American Imagination",
+     "autor": "Neal Gabler",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1951266W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Walt Disney (Novo Século, 2020)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/walt-disney-332-5041-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "episódios sobre Disney",
+     "programa": "Founders",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Acquired",
+     "id": "364f80783e"
+    },
+    {
+     "programa": "The Rest Is History",
+     "id": "7cda7ba144"
+    },
+    {
+     "programa": "Founders",
+     "id": "36b66470b5"
+    },
+    {
+     "programa": "Founders",
+     "id": "8d0448ee1a"
+    },
+    {
+     "programa": "Founders",
+     "id": "81ae6f08f9"
+    },
+    {
+     "programa": "Founders",
+     "id": "f706c3cbe3"
+    },
+    {
+     "programa": "Founders",
+     "id": "9314d6b260"
+    },
+    {
+     "programa": "Founders",
+     "id": "27208559af"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-HITCHCOCK": {
+   "nome": "Hitchcock",
+   "movimento": 21,
+   "busca": [
+    "Hitchcock"
+   ],
+   "livros": [
+    {
+     "titulo": "Hitchcock/Truffaut",
+     "autor": "François Truffaut",
+     "obs": "",
+     "escolha": {
+      "por_que": "O processo dele, filme a filme, em entrevista; McGilligan usa essa entrevista como fonte.",
+      "fonte": "https://popmatters.com/review/alfred-hitchcock-a-life-in-darkness"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3477651W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Alfred Hitchcock: A Life in Darkness and Light",
+     "autor": "Patrick McGilligan",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2664629W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-KUROSAWA": {
+   "nome": "Kurosawa",
+   "movimento": 21,
+   "busca": [
+    "Kurosawa"
+   ],
+   "livros": [
+    {
+     "titulo": "Something Like an Autobiography",
+     "autor": "Akira Kurosawa",
+     "obs": "",
+     "escolha": {
+      "por_que": "A Variety: sem ele é difícil entender a arte de Kurosawa; os apêndices tratam de roteiro e direção.",
+      "fonte": "https://www.upi.com/Archives/1982/07/06/Book-Reviews/9981394776000/"
+     },
+     "conferido": false
+    },
+    {
+     "titulo": "The Emperor and the Wolf",
+     "autor": "Stuart Galbraith",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2190193W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-ORSONWELLE": {
+   "nome": "Orson Welles",
+   "movimento": 21,
+   "busca": [
+    "Orson Welles"
+   ],
+   "livros": [
+    {
+     "titulo": "This Is Orson Welles",
+     "autor": "Orson Welles e Peter Bogdanovich",
+     "obs": "",
+     "escolha": {
+      "por_que": "Ele contando como fez cada filme, em entrevistas.",
+      "fonte": "https://www.nysun.com/article/arts-what-haunted-the-genius"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL2744539W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Orson Welles: The Road to Xanadu",
+     "autor": "Simon Callow",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL14871430W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-ARNOLD": {
+   "nome": "Arnold Schwarzenegger",
+   "movimento": 21,
+   "busca": [
+    "Arnold Schwarzenegger",
+    "Schwarzenegger"
+   ],
+   "livros": [
+    {
+     "titulo": "Arnold: The Education of a Bodybuilder",
+     "autor": "Arnold Schwarzenegger e Douglas Kent Hall",
+     "obs": "",
+     "voce": true,
+     "conferido": true,
+     "url": null,
+     "pt": false,
+     "fonte": "print da Amazon enviado pelo usuário (não está no Open Library)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "f8bbcf5d13"
+    },
+    {
+     "programa": "Founders",
+     "id": "57eeae3773"
+    },
+    {
+     "programa": "Masters in Business",
+     "id": "785eefe6e3"
+    },
+    {
+     "programa": "Founders",
+     "id": "9c9c389ed1"
+    },
+    {
+     "programa": "Founders",
+     "id": "3f231755bf"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-ALANTURING": {
+   "nome": "Alan Turing",
+   "movimento": 22,
+   "busca": [
+    "Alan Turing",
+    "Turing"
+   ],
+   "livros": [
+    {
+     "titulo": "Alan Turing: The Enigma",
+     "autor": "Andrew Hodges",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL61215W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Our Time",
+     "id": "baada441b1"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-VONNEUMANN": {
+   "nome": "von Neumann",
+   "movimento": 22,
+   "busca": [
+    "von Neumann"
+   ],
+   "livros": [
+    {
+     "titulo": "The Man from the Future",
+     "autor": "Ananyo Bhattacharya",
+     "obs": "",
+     "escolha": {
+      "por_que": "A mais recente e mais resenhada, do trabalho dele em vários campos.",
+      "fonte": "https://maa.org/book-reviews/the-man-from-the-future-the-visionary-ideas-of-john-von-neumann"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL25336368W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "John von Neumann",
+     "autor": "Norman Macrae",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL47366W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-SHANNON": {
+   "nome": "Claude Shannon",
+   "movimento": 22,
+   "busca": [
+    "Claude Shannon"
+   ],
+   "livros": [
+    {
+     "titulo": "A Mind at Play",
+     "autor": "Jimmy Soni e Rob Goodman",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL19710901W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "27adafc21b"
+    },
+    {
+     "programa": "Founders",
+     "id": "fe7c6666de"
+    },
+    {
+     "programa": "Founders",
+     "id": "a86ca92854"
+    }
+   ],
+   "ligacoes": [],
+   "sugestao": "Sugestão do Claude aceita pelo usuário em 2026-10-24: criou a teoria da informação, base da computação e das telecomunicações."
+  },
+  "BI-BUFFETT": {
+   "nome": "Buffett",
+   "movimento": 23,
+   "busca": [
+    "Warren Buffett",
+    "Buffett"
+   ],
+   "livros": [
+    {
+     "titulo": "The Snowball",
+     "autor": "Alice Schroeder",
+     "obs": "",
+     "escolha": {
+      "por_que": "Tida como a biografia definitiva, feita com acesso total aos arquivos dele; tem edição em PT. As cartas da Berkshire ficam para depois.",
+      "fonte": "https://rpc.cfainstitute.org/research/financial-analysts-journal/2009/the-snowball-warren-buffett-and-the-business"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL9450331W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "A bola de neve (Editora Sextante, 2008)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/a-bola-de-neve-08K-0312-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Cartas anuais da Berkshire Hathaway",
+     "autor": "Warren Buffett",
+     "obs": "o site redireciona robôs; abrir no celular",
+     "depois": true,
+     "conferido": false,
+     "url": "https://www.berkshirehathaway.com/letters/letters.html",
+     "pt": false
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Masters in Business",
+     "id": "d6ad123c92"
+    },
+    {
+     "programa": "Founders",
+     "id": "d9734ed91b"
+    },
+    {
+     "programa": "Founders",
+     "id": "573a41ebb3"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "9746f3134e"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "1cfd22a7c2"
+    },
+    {
+     "programa": "Founders",
+     "id": "ec17b98ff5"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "a4a151b250"
+    },
+    {
+     "programa": "Founders",
+     "id": "c5df92eac7"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "9b304d854b"
+    },
+    {
+     "programa": "Founders",
+     "id": "bd43be2816"
+    },
+    {
+     "programa": "Founders",
+     "id": "3024639cb7"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "baf0e77cdb"
+    },
+    {
+     "programa": "Founders",
+     "id": "f0a6d1135b"
+    },
+    {
+     "programa": "Founders",
+     "id": "04367f092b"
+    },
+    {
+     "programa": "Founders",
+     "id": "5733770cda"
+    }
+   ],
+   "ligacoes": [
+    "EM-BRK"
+   ]
+  },
+  "BI-SOROS": {
+   "nome": "Soros",
+   "movimento": 23,
+   "busca": [
+    "George Soros",
+    "Soros"
+   ],
+   "livros": [
+    {
+     "titulo": "The Alchemy of Finance",
+     "autor": "George Soros",
+     "obs": "",
+     "escolha": {
+      "por_que": "O método dele (reflexividade) contado por ele, com o diário de operações; Mallaby é história da indústria.",
+      "fonte": "https://www.georgesoros.com/1987/10/19/the_alchemy_of_finance"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1993774W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "More Money Than God",
+     "autor": "Sebastian Mallaby",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15598621W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "0ae23a6ea3"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-DRUCKENMIL": {
+   "nome": "Druckenmiller",
+   "movimento": 23,
+   "busca": [
+    "Druckenmiller"
+   ],
+   "livros": [
+    {
+     "titulo": "The New Market Wizards",
+     "autor": "Jack Schwager",
+     "obs": "capítulo dele",
+     "escolha": {
+      "por_que": "O processo dele em primeira pessoa, num capítulo curto."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1900673W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "More Money Than God",
+     "autor": "Sebastian Mallaby",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15598621W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "In Good Company with Nicolai Tangen",
+     "id": "771954c106"
+    },
+    {
+     "programa": "In Good Company with Nicolai Tangen",
+     "id": "578a172b38"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-JIMSIMONS": {
+   "nome": "Jim Simons",
+   "movimento": 23,
+   "busca": [
+    "Jim Simons",
+    "James Simons",
+    "Renaissance Technologies"
+   ],
+   "livros": [
+    {
+     "titulo": "The Man Who Solved the Market",
+     "autor": "Gregory Zuckerman",
+     "obs": "",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL20542025W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "O homem que decifrou o mercado (Alta Books, 2021)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/o-homem-que-decifrou-o-mercado-090-4231-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "entrevista com Jim Simons",
+     "programa": "Numberphile (YouTube)",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "8b07233a51"
+    },
+    {
+     "programa": "Acquired",
+     "id": "55005c6211"
+    },
+    {
+     "programa": "Investidor em Foco",
+     "id": "c4c455d2ca"
+    },
+    {
+     "programa": "Founders",
+     "id": "f1300d74dd"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-MUNGER": {
+   "nome": "Charlie Munger",
+   "movimento": 23,
+   "busca": [
+    "Charlie Munger",
+    "Munger"
+   ],
+   "livros": [
+    {
+     "titulo": "Poor Charlie's Almanack",
+     "autor": "Peter D. Kaufman (org.)",
+     "obs": "",
+     "escolha": {
+      "por_que": "Os discursos dele e os modelos mentais: o processo, que é o que importa no Munger.",
+      "fonte": "https://www.goodreads.com/book/show/1160"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL8928012W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Damn Right!",
+     "autor": "Janet Lowe",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3257939W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "The Knowledge Project",
+     "id": "a28a542ea9"
+    },
+    {
+     "programa": "Masters in Business",
+     "id": "d6ad123c92"
+    },
+    {
+     "programa": "The Knowledge Project",
+     "id": "5877988022"
+    },
+    {
+     "programa": "Founders",
+     "id": "d9734ed91b"
+    },
+    {
+     "programa": "Founders",
+     "id": "573a41ebb3"
+    },
+    {
+     "programa": "Value Investing with Legends",
+     "id": "7584aa4d7c"
+    },
+    {
+     "programa": "Invest Like the Best",
+     "id": "2447896117"
+    },
+    {
+     "programa": "Founders",
+     "id": "179f4f2e9a"
+    },
+    {
+     "programa": "Founders",
+     "id": "71077bc938"
+    },
+    {
+     "programa": "Acquired",
+     "id": "6cb7461cd8"
+    },
+    {
+     "programa": "Founders",
+     "id": "f3e992c11c"
+    },
+    {
+     "programa": "Founders",
+     "id": "ec17b98ff5"
+    },
+    {
+     "programa": "Founders",
+     "id": "f76f01e72a"
+    },
+    {
+     "programa": "The Intrinsic Value Podcast",
+     "id": "baf0e77cdb"
+    },
+    {
+     "programa": "Founders",
+     "id": "f7349fb753"
+    },
+    {
+     "programa": "Founders",
+     "id": "0c31eb3717"
+    },
+    {
+     "programa": "Founders",
+     "id": "a985e0eab1"
+    }
+   ],
+   "ligacoes": [],
+   "sugestao": "Sugestão do Claude aceita pelo usuário em 2026-10-24: sócio de Buffett por 60 anos e autor dos modelos mentais; o Poor Charlie's já está na sua grade."
+  },
+  "BI-KUBRICK": {
+   "nome": "Kubrick",
+   "movimento": 24,
+   "busca": [
+    "Kubrick"
+   ],
+   "livros": [
+    {
+     "titulo": "Kubrick",
+     "autor": "Michel Ciment",
+     "obs": "",
+     "escolha": {
+      "por_que": "Na contracapa da edição definitiva, Joel Coen diz que segue sendo o melhor trabalho sobre ele; tem entrevistas com Kubrick e edição em PT."
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3577951W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Conversas com kubrick (Cosac & Naify, 2013)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/conversas-com-kubrick-FVD-8951-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Space Odyssey",
+     "autor": "Michael Benson",
+     "obs": "making of de 2001",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17870212W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-COPPOLA": {
+   "nome": "Coppola",
+   "movimento": 24,
+   "busca": [
+    "Coppola"
+   ],
+   "livros": [
+    {
+     "titulo": "The Godfather Notebook",
+     "autor": "Francis Ford Coppola",
+     "obs": "",
+     "escolha": {
+      "por_que": "O caderno em que ele preparou O Poderoso Chefão: o processo em fac-símile.",
+      "fonte": "https://betterread.com.au/book/the-godfather-notebook.do"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17890911W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Notes on the Making of Apocalypse Now",
+     "autor": "Eleanor Coppola",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL3178169W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "9a2e35c6a3"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-SCORSESE": {
+   "nome": "Scorsese",
+   "movimento": 24,
+   "busca": [
+    "Scorsese"
+   ],
+   "livros": [
+    {
+     "titulo": "Conversations with Scorsese",
+     "autor": "Richard Schickel",
+     "obs": "",
+     "escolha": {
+      "por_que": "Mais completo que o de Christie; a Library Journal o chama de talvez o autocomentário definitivo.",
+      "fonte": "https://libraryjournal.com/review/conversations-with-scorsese"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL15572367W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Scorsese on Scorsese",
+     "autor": "Ian Christie e David Thompson (orgs.)",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL1919280W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [],
+   "ligacoes": []
+  },
+  "BI-SPIELBERG": {
+   "nome": "Spielberg",
+   "movimento": 24,
+   "busca": [
+    "Spielberg"
+   ],
+   "livros": [
+    {
+     "titulo": "Steven Spielberg: A Biography",
+     "autor": "Joseph McBride",
+     "obs": "",
+     "escolha": {
+      "por_que": "A Kirkus: 'penetrante, incisiva'; 327 entrevistas, revista em 2011.",
+      "fonte": "https://www.sensesofcinema.com/?p=9163"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL466896W",
+     "pt": false,
+     "fonte": "Open Library"
+    },
+    {
+     "titulo": "Steven Spielberg: A Life in Films",
+     "autor": "Molly Haskell",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17870215W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "5b9c97a42e"
+    },
+    {
+     "programa": "Founders",
+     "id": "cc1dee901c"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-STEVEJOBS": {
+   "nome": "Steve Jobs",
+   "movimento": 25,
+   "busca": [
+    "Steve Jobs"
+   ],
+   "livros": [
+    {
+     "titulo": "Steve Jobs",
+     "autor": "Walter Isaacson",
+     "obs": "",
+     "escolha": {
+      "por_que": "A autorizada, a mais crítica e a mais lida; tem edição em PT.",
+      "fonte": "https://9to5mac.com/2015/03/23/steve-jobs-biographies-war/"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16085155W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Steve Jobs (Companhia das Letras, 2011)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/steve-jobs-0L2-2777-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Discurso de formatura em Stanford",
+     "autor": "Steve Jobs",
+     "obs": "2005, ~15 min; o site recusa robôs, link não conferido",
+     "curto": true,
+     "depois": true,
+     "conferido": false,
+     "url": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says",
+     "pt": false
+    },
+    {
+     "titulo": "Becoming Steve Jobs",
+     "autor": "Brent Schlender",
+     "obs": "",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL17881333W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Como Steve Jobs virou Steve Jobs (Intrínseca, 2015)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/como-steve-jobs-virou-steve-jobs-0L8-2361-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "David Senra",
+     "id": "9490d2f895"
+    },
+    {
+     "programa": "The Knowledge Project",
+     "id": "6adc8ca707"
+    },
+    {
+     "programa": "Founders",
+     "id": "44f16bd04d"
+    },
+    {
+     "programa": "Founders",
+     "id": "f38fbf9006"
+    },
+    {
+     "programa": "Founders",
+     "id": "07ec02ae06"
+    },
+    {
+     "programa": "Founders",
+     "id": "d37d8237e3"
+    },
+    {
+     "programa": "Founders",
+     "id": "bbd2cd654c"
+    },
+    {
+     "programa": "Founders",
+     "id": "a8e9f92846"
+    },
+    {
+     "programa": "Founders",
+     "id": "c6751df562"
+    },
+    {
+     "programa": "Founders",
+     "id": "9e0bdca2a5"
+    },
+    {
+     "programa": "Founders",
+     "id": "eedd82ae1f"
+    },
+    {
+     "programa": "Founders",
+     "id": "c80dd1a77a"
+    },
+    {
+     "programa": "Founders",
+     "id": "79d34c12c7"
+    },
+    {
+     "programa": "Founders",
+     "id": "c6d439b558"
+    },
+    {
+     "programa": "Founders",
+     "id": "6c28025c3a"
+    },
+    {
+     "programa": "Founders",
+     "id": "9e1d145a2c"
+    },
+    {
+     "programa": "Founders",
+     "id": "f3e8159c91"
+    },
+    {
+     "programa": "Founders",
+     "id": "0269347621"
+    },
+    {
+     "programa": "Founders",
+     "id": "739a2b59d3"
+    },
+    {
+     "programa": "Founders",
+     "id": "8604a1f5a9"
+    },
+    {
+     "programa": "Founders",
+     "id": "72eadfe4b8"
+    },
+    {
+     "programa": "Founders",
+     "id": "8d92266aca"
+    }
+   ],
+   "ligacoes": []
+  },
+  "BI-BILLGATES": {
+   "nome": "Bill Gates",
+   "movimento": 25,
+   "busca": [
+    "Bill Gates"
+   ],
+   "livros": [
+    {
+     "titulo": "Source Code",
+     "autor": "Bill Gates",
+     "obs": "2025",
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL42406623W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "série sobre a Microsoft",
+     "programa": "Acquired",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "b8cca4a057"
+    },
+    {
+     "programa": "In Good Company with Nicolai Tangen",
+     "id": "7cc2dfffd3"
+    },
+    {
+     "programa": "Founders",
+     "id": "49fcbebaa8"
+    },
+    {
+     "programa": "Founders",
+     "id": "f3e8159c91"
+    },
+    {
+     "programa": "Founders",
+     "id": "9cc57c830f"
+    },
+    {
+     "programa": "Founders",
+     "id": "11316b93a5"
+    }
+   ],
+   "ligacoes": [
+    "EM-MSFT"
+   ]
+  },
+  "BI-JEFFBEZOS": {
+   "nome": "Jeff Bezos",
+   "movimento": 25,
+   "busca": [
+    "Jeff Bezos",
+    "Bezos"
+   ],
+   "livros": [
+    {
+     "titulo": "The Everything Store",
+     "autor": "Brad Stone",
+     "obs": "",
+     "escolha": {
+      "por_que": "Acesso inédito a funcionários e à família; tem edição em PT. As cartas dele ficam para depois.",
+      "fonte": "https://www.publishersweekly.com/9780316219266"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL16808249W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "A Loja de Tudo (Intrínseca, 2014)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/a-loja-de-tudo-0V4-7061-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Invent and Wander",
+     "autor": "Jeff Bezos",
+     "obs": "cartas do Bezos",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL20895272W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [
+    {
+     "titulo": "Amazon e AWS",
+     "programa": "Acquired",
+     "obs": ""
+    }
+   ],
+   "pods": [
+    {
+     "programa": "Founders",
+     "id": "5a996e7575"
+    },
+    {
+     "programa": "Founders",
+     "id": "d525207e1b"
+    },
+    {
+     "programa": "Founders",
+     "id": "8df0e8559c"
+    },
+    {
+     "programa": "Founders",
+     "id": "43f86e6053"
+    },
+    {
+     "programa": "Founders",
+     "id": "ab09135230"
+    },
+    {
+     "programa": "Founders",
+     "id": "b4c96c6163"
+    },
+    {
+     "programa": "Founders",
+     "id": "d0f6788018"
+    },
+    {
+     "programa": "Barron's Advisor",
+     "id": "aceda9001d"
+    },
+    {
+     "programa": "Founders",
+     "id": "02f058c463"
+    },
+    {
+     "programa": "Founders",
+     "id": "047efa825f"
+    },
+    {
+     "programa": "Founders",
+     "id": "886c90ec7e"
+    },
+    {
+     "programa": "Founders",
+     "id": "a51beb0ccd"
+    }
+   ],
+   "ligacoes": [
+    "EM-AMZN"
+   ]
+  },
+  "BI-ELONMUSK": {
+   "nome": "Elon Musk",
+   "movimento": 25,
+   "busca": [
+    "Elon Musk"
+   ],
+   "livros": [
+    {
+     "titulo": "Elon Musk",
+     "autor": "Walter Isaacson",
+     "obs": "",
+     "escolha": {
+      "por_que": "O retrato mais íntimo dele (dois anos ao lado); ressalva: pouco rigoroso. Tem edição em PT.",
+      "fonte": "https://thespacereview.com/article/4659/1"
+     },
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL35720357W",
+     "pt": true,
+     "fonte": "Open Library",
+     "pt_titulo": "Elon Musk (Intrínseca, 2023)",
+     "url_pt": "https://www.estantevirtual.com.br/livro/elon-musk-08A-6905-000-BK",
+     "fonte_pt": "Estante Virtual (ISBN brasileiro conferido)"
+    },
+    {
+     "titulo": "Liftoff",
+     "autor": "Eric Berger",
+     "obs": "SpaceX",
+     "depois": true,
+     "conferido": true,
+     "url": "https://openlibrary.org/works/OL21893953W",
+     "pt": false,
+     "fonte": "Open Library"
+    }
+   ],
+   "citados": [],
+   "pods": [
+    {
+     "programa": "Cheeky Pint",
+     "id": "69122223e1"
+    },
+    {
+     "programa": "Founders",
+     "id": "a6e6d78bfa"
+    },
+    {
+     "programa": "In Good Company with Nicolai Tangen",
+     "id": "fd568e64ca"
+    },
+    {
+     "programa": "Founders",
+     "id": "f079408807"
+    },
+    {
+     "programa": "Founders",
+     "id": "0a3d62812d"
+    },
+    {
+     "programa": "Founders",
+     "id": "886c90ec7e"
+    },
+    {
+     "programa": "Founders",
+     "id": "c14b2d814e"
+    },
+    {
+     "programa": "Founders",
+     "id": "d19964213e"
+    },
+    {
+     "programa": "Founders",
+     "id": "d232abdb97"
+    },
+    {
+     "programa": "Founders",
+     "id": "cfd7406889"
+    },
+    {
+     "programa": "Founders",
+     "id": "b5432ebed0"
+    }
+   ],
+   "ligacoes": []
+  }
+ },
+ "roi": [
+  "The Snowball",
+  "Titan: The Life of John D. Rockefeller, Sr.",
+  "The Man Who Solved the Market",
+  "Never at Rest",
+  "Napoleon: A Life"
+ ],
+ "podcasts_gerais": [
+  "Founders",
+  "Acquired",
+  "Hardcore History",
+  "Philosophize This!"
+ ]
+}

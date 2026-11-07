@@ -1,0 +1,359 @@
+{
+ "gerado": "2026-11-01",
+ "programas": {
+  "Invest Like the Best": {
+   "arq": "invest-like-the-best.json",
+   "n": 603,
+   "desde": "2016-09-12",
+   "ultimo": "2026-10-27"
+  },
+  "Capital Allocators": {
+   "arq": "capital-allocators.json",
+   "n": 834,
+   "desde": "2017-04-01",
+   "ultimo": "2026-10-26"
+  },
+  "Acquired": {
+   "arq": "acquired.json",
+   "n": 218,
+   "desde": "2015-10-01",
+   "ultimo": "2026-10-18"
+  },
+  "ACQ2 by Acquired": {
+   "arq": "acq2-by-acquired.json",
+   "n": 112,
+   "desde": "2018-10-21",
+   "ultimo": "2025-12-07"
+  },
+  "Founders": {
+   "arq": "founders.json",
+   "n": 463,
+   "desde": "2016-09-19",
+   "ultimo": "2026-10-26"
+  },
+  "David Senra": {
+   "arq": "david-senra.json",
+   "n": 51,
+   "desde": "2025-09-19",
+   "ultimo": "2026-10-28"
+  },
+  "Business Breakdowns": {
+   "arq": "business-breakdowns.json",
+   "n": 262,
+   "desde": "2021-03-18",
+   "ultimo": "2026-10-22"
+  },
+  "Joys of Compounding": {
+   "arq": "joys-of-compounding.json",
+   "n": 50,
+   "desde": "2023-10-02",
+   "ultimo": "2026-10-26"
+  },
+  "Value Investing with Legends": {
+   "arq": "value-investing-with-legends.json",
+   "n": 78,
+   "desde": "2019-04-16",
+   "ultimo": "2026-10-30"
+  },
+  "Cheeky Pint": {
+   "arq": "cheeky-pint.json",
+   "n": 40,
+   "desde": "2025-06-16",
+   "ultimo": "2026-10-29"
+  },
+  "In Good Company with Nicolai Tangen": {
+   "arq": "in-good-company-with-nicolai-tangen.json",
+   "n": 298,
+   "desde": "2022-03-14",
+   "ultimo": "2026-10-30"
+  },
+  "Crucible Moments": {
+   "arq": "crucible-moments.json",
+   "n": 28,
+   "desde": "2023-08-30",
+   "ultimo": "2025-12-04"
+  },
+  "The Memo by Howard Marks": {
+   "arq": "the-memo-by-howard-marks.json",
+   "n": 78,
+   "desde": "2020-10-19",
+   "ultimo": "2026-09-22"
+  },
+  "Stepchange": {
+   "arq": "stepchange.json",
+   "n": 5,
+   "desde": "2025-01-21",
+   "ultimo": "2026-04-27"
+  },
+  "Money Maze Podcast": {
+   "arq": "money-maze-podcast.json",
+   "n": 246,
+   "desde": "2020-03-25",
+   "ultimo": "2026-10-22"
+  },
+  "The Intrinsic Value Podcast": {
+   "arq": "the-intrinsic-value-podcast.json",
+   "n": 798,
+   "desde": "2019-08-21",
+   "ultimo": "2026-10-28"
+  },
+  "The a16z Show": {
+   "arq": "the-a16z-show.json",
+   "n": 1007,
+   "desde": "2016-06-28",
+   "ultimo": "2026-10-31"
+  },
+  "Encore Asset": {
+   "arq": "encore-asset.json",
+   "n": 42,
+   "desde": "2022-06-09",
+   "ultimo": "2026-07-21"
+  },
+  "Kinea Investimentos": {
+   "arq": "kinea-investimentos.json",
+   "n": 108,
+   "desde": "2021-05-26",
+   "ultimo": "2026-10-29"
+  },
+  "Mind Asset": {
+   "arq": "mind-asset.json",
+   "n": 313,
+   "desde": "2019-08-09",
+   "ultimo": "2026-10-20"
+  },
+  "BTG Asset Talks": {
+   "arq": "btg-asset-talks.json",
+   "n": 85,
+   "desde": "2021-06-09",
+   "ultimo": "2026-03-03"
+  },
+  "Second Level": {
+   "arq": "second-level.json",
+   "n": 42,
+   "desde": "2025-07-02",
+   "ultimo": "2026-04-22"
+  },
+  "Expert Talks CEOs": {
+   "arq": "expert-talks-ceos.json",
+   "n": 50,
+   "desde": "2023-06-28",
+   "ultimo": "2026-09-03"
+  },
+  "Sala dos CFOs": {
+   "arq": "sala-dos-cfos.json",
+   "n": 4,
+   "desde": "2024-07-19",
+   "ultimo": "2025-02-04"
+  },
+  "Atrás do Retorno": {
+   "arq": "atr-s-do-retorno.json",
+   "n": 14,
+   "desde": "2024-09-12",
+   "ultimo": "2025-04-16"
+  },
+  "Café com Investidor": {
+   "arq": "caf-com-investidor.json",
+   "n": 141,
+   "desde": "2019-07-02",
+   "ultimo": "2026-10-08"
+  },
+  "Itaú Views": {
+   "arq": "ita-views.json",
+   "n": 437,
+   "desde": "2019-05-27",
+   "ultimo": "2026-10-26"
+  },
+  "Conexão Econômica": {
+   "arq": "conex-o-econ-mica.json",
+   "n": 29,
+   "desde": "2024-04-09",
+   "ultimo": "2026-09-21"
+  },
+  "WW – William Waack": {
+   "arq": "ww-william-waack.json",
+   "n": 1007,
+   "desde": "2023-05-05",
+   "ultimo": "2026-10-31"
+  },
+  "GDCast Copel": {
+   "arq": "gdcast-copel.json",
+   "n": 12,
+   "desde": "2021-12-14",
+   "ultimo": "2024-07-31"
+  },
+  "HeadCast": {
+   "arq": "headcast.json",
+   "n": 144,
+   "desde": "2021-12-02",
+   "ultimo": "2026-10-28"
+  },
+  "Comercast": {
+   "arq": "comercast.json",
+   "n": 220,
+   "desde": "2019-09-17",
+   "ultimo": "2026-10-30"
+  },
+  "MegaCast": {
+   "arq": "megacast.json",
+   "n": 162,
+   "desde": "2019-11-08",
+   "ultimo": "2026-10-27"
+  },
+  "MinutoMega": {
+   "arq": "minutomega.json",
+   "n": 1276,
+   "desde": "2021-06-01",
+   "ultimo": "2026-10-30"
+  },
+  "agência eixos": {
+   "arq": "ag-ncia-eixos.json",
+   "n": 505,
+   "desde": "2025-04-22",
+   "ultimo": "2026-10-30"
+  },
+  "Joule": {
+   "arq": "joule.json",
+   "n": 145,
+   "desde": "2024-04-25",
+   "ultimo": "2026-01-07"
+  },
+  "WEGcast": {
+   "arq": "wegcast.json",
+   "n": 85,
+   "desde": "2022-08-15",
+   "ultimo": "2026-06-22"
+  },
+  "Prosa Agro": {
+   "arq": "prosa-agro.json",
+   "n": 414,
+   "desde": "2021-04-07",
+   "ultimo": "2026-10-30"
+  },
+  "Odd Lots": {
+   "arq": "odd-lots.json",
+   "n": 1298,
+   "desde": "2015-11-04",
+   "ultimo": "2026-10-30"
+  },
+  "Masters in Business": {
+   "arq": "masters-in-business.json",
+   "n": 821,
+   "desde": "2014-11-08",
+   "ultimo": "2026-10-30"
+  },
+  "The Knowledge Project": {
+   "arq": "the-knowledge-project.json",
+   "n": 292,
+   "desde": "2015-04-28",
+   "ultimo": "2026-10-27"
+  },
+  "The J Curve Podcast": {
+   "arq": "the-j-curve-podcast.json",
+   "n": 122,
+   "desde": "2021-10-28",
+   "ultimo": "2026-10-22"
+  },
+  "The Journal.": {
+   "arq": "the-journal.json",
+   "n": 1888,
+   "desde": "2019-06-19",
+   "ultimo": "2026-10-30"
+  },
+  "Philosophize This!": {
+   "arq": "philosophize-this.json",
+   "n": 253,
+   "desde": "2013-06-06",
+   "ultimo": "2026-10-27"
+  },
+  "Dan Carlin's Hardcore History": {
+   "arq": "dan-carlin-s-hardcore-history.json",
+   "n": 13,
+   "desde": "2018-07-14",
+   "ultimo": "2026-07-31"
+  },
+  "In Our Time": {
+   "arq": "in-our-time.json",
+   "n": 1117,
+   "desde": "1998-10-15",
+   "ultimo": "2026-10-29"
+  },
+  "The Rest Is History": {
+   "arq": "the-rest-is-history.json",
+   "n": 736,
+   "desde": "2020-10-28",
+   "ultimo": "2026-10-29"
+  },
+  "Barron's Streetwise": {
+   "arq": "barron-s-streetwise.json",
+   "n": 353,
+   "desde": "2020-03-25",
+   "ultimo": "2026-10-30"
+  },
+  "At Barron's": {
+   "arq": "at-barron-s.json",
+   "n": 162,
+   "desde": "2023-09-14",
+   "ultimo": "2026-10-29"
+  },
+  "Barron's Advisor": {
+   "arq": "barron-s-advisor.json",
+   "n": 350,
+   "desde": "2020-03-31",
+   "ultimo": "2026-10-27"
+  },
+  "Stock Pickers": {
+   "arq": "stock-pickers.json",
+   "n": 942,
+   "desde": "2019-04-25",
+   "ultimo": "2026-10-29"
+  },
+  "Market Makers": {
+   "arq": "market-makers.json",
+   "n": 562,
+   "desde": "2022-07-04",
+   "ultimo": "2026-10-30"
+  },
+  "O Assunto": {
+   "arq": "o-assunto.json",
+   "n": 1874,
+   "desde": "2019-08-21",
+   "ultimo": "2026-10-30"
+  },
+  "Foro de Teresina": {
+   "arq": "foro-de-teresina.json",
+   "n": 552,
+   "desde": "2018-05-17",
+   "ultimo": "2026-10-30"
+  },
+  "Podcast Rio Bravo": {
+   "arq": "podcast-rio-bravo.json",
+   "n": 501,
+   "desde": "2017-04-07",
+   "ultimo": "2026-10-30"
+  },
+  "Investidor em Foco": {
+   "arq": "investidor-em-foco.json",
+   "n": 640,
+   "desde": "2020-04-01",
+   "ultimo": "2024-12-20"
+  },
+  "WSJ's Take On the Week": {
+   "arq": "wsj-s-take-on-the-week.json",
+   "n": 139,
+   "desde": "2023-09-05",
+   "ultimo": "2026-10-25"
+  },
+  "Inside MercadoLibre: Investor Relations": {
+   "arq": "inside-mercadolibre-investor-relations.json",
+   "n": 19,
+   "desde": "2023-10-24",
+   "ultimo": "2026-10-28"
+  },
+  "Nu Videocast": {
+   "arq": "nu-videocast.json",
+   "n": 28,
+   "desde": "2024-11",
+   "ultimo": "2026-10"
+  }
+ }
+}

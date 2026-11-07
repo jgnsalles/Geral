@@ -1,0 +1,8006 @@
+{
+ "gerado": "2026-10-28",
+ "materias": [
+  {
+   "cod": "INV",
+   "nome": "Understanding - Investing",
+   "nucleo": true,
+   "pergunta": "Como pensam e operam os grandes investidores?",
+   "camada": "U"
+  },
+  {
+   "cod": "MM",
+   "nome": "Principles - Mental Models",
+   "nucleo": true,
+   "pergunta": "Como pensar e decidir melhor?",
+   "camada": "P"
+  },
+  {
+   "cod": "BEH",
+   "nome": "Principles - Behavioral",
+   "nucleo": false,
+   "pergunta": "Como viver e trabalhar bem?",
+   "camada": "P"
+  },
+  {
+   "cod": "BUS",
+   "nome": "Understanding - Business",
+   "nucleo": false,
+   "pergunta": "O que faz uma empresa vencer, durar ou morrer?",
+   "camada": "U"
+  },
+  {
+   "cod": "MKT",
+   "nome": "Understanding - Markets",
+   "nucleo": false,
+   "pergunta": "Como os mercados se comportam: ciclos, bolhas, fatores e erros?",
+   "camada": "U"
+  },
+  {
+   "cod": "FRA",
+   "nome": "Fraudes, Crises e Wall Street",
+   "nucleo": false,
+   "pergunta": "Como empresas e instituições quebram, e o que os sinais diziam antes?",
+   "camada": "D"
+  },
+  {
+   "cod": "IND",
+   "nome": "Indústrias e Histórias de Empresas",
+   "nucleo": false,
+   "pergunta": "Como funcionam as indústrias que movem o mundo, e como nasceram as grandes empresas?",
+   "camada": "D"
+  },
+  {
+   "cod": "GEO",
+   "nome": "Geopolítica e Economia",
+   "nucleo": false,
+   "pergunta": "Que forças de poder, geografia e economia moldam o mundo e os mercados?",
+   "camada": "D"
+  },
+  {
+   "cod": "BRA",
+   "nome": "Digging - Brazil",
+   "nucleo": false,
+   "pergunta": "Como o Brasil chegou até aqui, e por que cresce pouco?",
+   "camada": "D"
+  },
+  {
+   "cod": "COM",
+   "nome": "Persuasão e Comunicação",
+   "nucleo": false,
+   "pergunta": "Como convencer, explicar e ser entendido?",
+   "camada": "D"
+  },
+  {
+   "cod": "FIL",
+   "nome": "Filosofia, Mente e Ciência",
+   "nucleo": false,
+   "pergunta": "Como a mente, as culturas e as ideias funcionam?",
+   "camada": "D"
+  }
+ ],
+ "itens": [
+  {
+   "cod": "INV-01",
+   "mat": "INV",
+   "titulo": "O Mais Importante para o Investidor",
+   "autor": "Howard Marks",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada: Buffett o recomendou; síntese de 20 anos de memos",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 2,
+   "serie_original": 2
+  },
+  {
+   "cod": "INV-02",
+   "mat": "INV",
+   "titulo": "The Superinvestors of Graham-and-Doddsville",
+   "autor": "Warren Buffett, 1984",
+   "formato": "paper",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Pílula de 30 min; a defesa clássica do value investing",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 30,
+    "max": 30,
+    "fonte": "nota"
+   },
+   "serie": 2,
+   "serie_original": 2
+  },
+  {
+   "cod": "INV-03",
+   "mat": "INV",
+   "titulo": "Memos da Oaktree (seleção)",
+   "autor": "Howard Marks",
+   "formato": "memos",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": "INV-01",
+   "nota": "Pílulas recorrentes; o livro nasceu deles",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 7,
+   "serie_original": 7
+  },
+  {
+   "cod": "INV-04",
+   "mat": "INV",
+   "titulo": "As Cartas de Warren Buffett",
+   "autor": "Buffett e Lawrence Cunningham",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "INV-02",
+   "nota": "Espinha do bloco Buffett, picotada por capítulo",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 3,
+   "serie_original": 3
+  },
+  {
+   "cod": "INV-05",
+   "mat": "INV",
+   "titulo": "One Up on Wall Street",
+   "autor": "Peter Lynch",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Clássico mais acessível da lista",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 2,
+   "serie_original": 2
+  },
+  {
+   "cod": "INV-06",
+   "mat": "INV",
+   "titulo": "Palestra na Universidade da Flórida, 1998",
+   "autor": "Warren Buffett",
+   "formato": "vídeo",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": "INV-04",
+   "nota": "1h24; Buffett explicando o próprio método",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 84,
+    "max": 84,
+    "fonte": "nota"
+   },
+   "serie": 3,
+   "serie_original": 3
+  },
+  {
+   "cod": "INV-07",
+   "mat": "INV",
+   "titulo": "Common Stocks and Uncommon Profits",
+   "autor": "Philip Fisher",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Sugestão: é o Fisher canônico que Buffett cita; deveria vir antes de Paths to Wealth",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 4,
+   "serie_original": 4
+  },
+  {
+   "cod": "INV-08",
+   "mat": "INV",
+   "titulo": "Poor Charlie's Almanack",
+   "autor": "Charlie Munger",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "MM-02",
+   "nota": "Depois do discurso sobre julgamento humano",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-09",
+   "mat": "INV",
+   "titulo": "More Than You Know",
+   "autor": "Michael Mauboussin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MM-05",
+   "nota": "Ensaios curtos; bom para pílulas",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 13,
+   "serie_original": 13
+  },
+  {
+   "cod": "INV-10",
+   "mat": "INV",
+   "titulo": "Quality Investing",
+   "autor": "Cunningham, Eide e Hargreaves",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "INV-04",
+   "nota": "Porta de entrada do estilo quality",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "INV-11",
+   "mat": "INV",
+   "titulo": "Investing for Growth",
+   "autor": "Terry Smith",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "INV-10",
+   "nota": "Começar pelas cartas gratuitas da Fundsmith",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "INV-12",
+   "mat": "INV",
+   "titulo": "Investimento em Valor",
+   "autor": "Bruce Greenwald e outros",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "INV-04",
+   "nota": "Mais técnico; base de valuation por ativos e lucro",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 19,
+   "serie_original": 19
+  },
+  {
+   "cod": "INV-13",
+   "mat": "INV",
+   "titulo": "Dominando o Ciclo de Mercado",
+   "autor": "Howard Marks",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "INV-01",
+   "nota": "Aprofunda o capítulo de ciclos do primeiro livro",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "INV-14",
+   "mat": "INV",
+   "titulo": "You Can Be a Stock Market Genius",
+   "autor": "Joel Greenblatt",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "INV-05",
+   "nota": "Situações especiais; muito citado por gestores",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 19,
+   "serie_original": 19
+  },
+  {
+   "cod": "INV-15",
+   "mat": "INV",
+   "titulo": "Expectations Investing",
+   "autor": "Mauboussin e Rappaport",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "INV-09",
+   "nota": "Exige conforto com fluxo de caixa",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 6,
+   "serie_original": 6
+  },
+  {
+   "cod": "INV-16",
+   "mat": "INV",
+   "titulo": "Why Moats Matter",
+   "autor": "Brilliant e Collins (Morningstar)",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BUS-04",
+   "nota": "Melhor depois de 7 Powers",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 16,
+   "serie_original": 16
+  },
+  {
+   "cod": "INV-17",
+   "mat": "INV",
+   "titulo": "Capital Allocation",
+   "autor": "David Giroux",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "INV-04",
+   "nota": "Recente; ponte com alocação de capital",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 36,
+   "serie_original": 36
+  },
+  {
+   "cod": "INV-18",
+   "mat": "INV",
+   "titulo": "Contrarian Investment Strategies",
+   "autor": "David Dreman",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-04",
+   "nota": "Evidência do contrarianismo",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "INV-19",
+   "mat": "INV",
+   "titulo": "Where the Money Is",
+   "autor": "Adam Seessel",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "INV-10",
+   "nota": "Value na era digital",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "INV-20",
+   "mat": "INV",
+   "titulo": "100 Baggers",
+   "autor": "Christopher Mayer",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Leve; estudo de casos",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "INV-21",
+   "mat": "INV",
+   "titulo": "The Joys of Compounding",
+   "autor": "Gautam Baid",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Muitas citações de terceiros",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "INV-22",
+   "mat": "INV",
+   "titulo": "A Fórmula Mágica",
+   "autor": "Joel Greenblatt",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Curto; ideia simples bem explicada",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 19,
+   "serie_original": 19
+  },
+  {
+   "cod": "INV-23",
+   "mat": "INV",
+   "titulo": "The Investment Checklist",
+   "autor": "Michael Shearn",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "INV-04",
+   "nota": "Prático; perto do trabalho",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 19,
+   "serie_original": 19
+  },
+  {
+   "cod": "INV-24",
+   "mat": "INV",
+   "titulo": "Investing: The Last Liberal Art",
+   "autor": "Robert Hagstrom",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "MM-02",
+   "nota": "Ponte com modelos mentais",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-25",
+   "mat": "INV",
+   "titulo": "The Compounders",
+   "autor": "Dybvad, Nyland e Hadžiefendić",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Subiu para o bloco essencial a pedido do usuário (2026-10-28: \"um baita livro\"); o que faz uma empresa compor por décadas, em linguagem de analista",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 4,
+   "serie_original": 4
+  },
+  {
+   "cod": "INV-26",
+   "mat": "INV",
+   "titulo": "The Sleuth Investor",
+   "autor": "Avner Mandelman",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Pesquisa de campo",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-27",
+   "mat": "INV",
+   "titulo": "Margin of Trust",
+   "autor": "Cunningham e Cuba",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "INV-04",
+   "nota": "Cultura da Berkshire",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-28",
+   "mat": "INV",
+   "titulo": "Stocks for the Long Run",
+   "autor": "Jeremy Siegel",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Base de retorno de longo prazo",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "INV-29",
+   "mat": "INV",
+   "titulo": "O Investidor de Bom Senso",
+   "autor": "John Bogle",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "O argumento dos índices; contraponto ao stock picking",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "INV-30",
+   "mat": "INV",
+   "titulo": "The Intelligent Asset Allocator",
+   "autor": "William Bernstein",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "INV-28",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 33,
+   "serie_original": 33
+  },
+  {
+   "cod": "INV-31",
+   "mat": "INV",
+   "titulo": "Lucrando com Ações no Longo Prazo",
+   "autor": "Peter Oppenheimer",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "INV-28",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "INV-32",
+   "mat": "INV",
+   "titulo": "Investing Amid Low Expected Returns",
+   "autor": "Antti Ilmanen",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 2,
+   "pre": "MKT-08",
+   "nota": "Denso",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 33,
+   "serie_original": 33
+  },
+  {
+   "cod": "INV-33",
+   "mat": "INV",
+   "titulo": "Enough",
+   "autor": "John Bogle",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": "INV-29",
+   "nota": "Mais reflexão pessoal que método",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-34",
+   "mat": "INV",
+   "titulo": "Take On the Street",
+   "autor": "Arthur Levitt",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Visão do ex-presidente da SEC",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "INV-35",
+   "mat": "INV",
+   "titulo": "O Mesmo de Sempre",
+   "autor": "Morgan Housel",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação bem escrita; leitura de descanso",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-36",
+   "mat": "INV",
+   "titulo": "Você e Seu Dinheiro",
+   "autor": "Carl Richards",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Finanças pessoais",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-37",
+   "mat": "INV",
+   "titulo": "Os Axiomas de Zurique",
+   "autor": "Max Gunther",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Folclore de mercado, pouco rigor",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-38",
+   "mat": "INV",
+   "titulo": "Desbravando a Gestão de Portfólios",
+   "autor": "David Swensen",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "INV-28",
+   "nota": "Modelo Yale; técnico",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 33,
+   "serie_original": 33
+  },
+  {
+   "cod": "INV-39",
+   "mat": "INV",
+   "titulo": "Wealth, War & Wisdom",
+   "autor": "Barton Biggs",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Mercados na Segunda Guerra",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "INV-40",
+   "mat": "INV",
+   "titulo": "Conversas com Gestores de Ações Brasileiros",
+   "autor": "Luciana Seabra",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "INV-41",
+   "mat": "INV",
+   "titulo": "The Art of Execution",
+   "autor": "Lee Freeman-Shor",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Curto e prático",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "INV-42",
+   "mat": "INV",
+   "titulo": "Hard Lessons: Invest, then Investigate",
+   "autor": "Stan Druckenmiller (Morgan Stanley)",
+   "formato": "vídeo",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "28 min; título conferido no print da playlist do usuário",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 28,
+    "max": 28,
+    "fonte": "nota"
+   },
+   "serie": 7,
+   "serie_original": 7
+  },
+  {
+   "cod": "INV-43",
+   "mat": "INV",
+   "titulo": "Charlie Munger no Acquired",
+   "autor": "Acquired",
+   "formato": "áudio",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "INV-08",
+   "nota": "~1/3 já ouvido",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-44",
+   "mat": "INV",
+   "titulo": "Money Masters of Our Time",
+   "autor": "John Train",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Perfis de investidores; resumo de terceiros",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-45",
+   "mat": "INV",
+   "titulo": "The Money Masters",
+   "autor": "John Train",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Redundante com o anterior",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-46",
+   "mat": "INV",
+   "titulo": "The New Money Masters",
+   "autor": "John Train",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Redundante com o anterior",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-47",
+   "mat": "INV",
+   "titulo": "Os Grandes Investidores",
+   "autor": "Glen Arnold",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Resumão de investidores que você lê na fonte",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-48",
+   "mat": "INV",
+   "titulo": "Charlie Munger: O Investidor Completo",
+   "autor": "Tren Griffin",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": "INV-08",
+   "nota": "Resumo do Munger; ler o original primeiro",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-49",
+   "mat": "INV",
+   "titulo": "A Universidade da Berkshire Hathaway",
+   "autor": "Pecaut e Wrenn",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": "INV-04",
+   "nota": "Anotações de assembleias",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-50",
+   "mat": "INV",
+   "titulo": "Batendo o Mercado",
+   "autor": "Peter Lynch",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "INV-05",
+   "nota": "Redundante com One Up; opcional",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-51",
+   "mat": "INV",
+   "titulo": "Paths to Wealth through Common Stocks",
+   "autor": "Philip Fisher",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "INV-07",
+   "nota": "Depois do Fisher canônico",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-52",
+   "mat": "INV",
+   "titulo": "Acima do Mercado",
+   "autor": "Adriano Almeida",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-53",
+   "mat": "INV",
+   "titulo": "The Climb to Investment Excellence",
+   "autor": "Ana Marshall",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-54",
+   "mat": "INV",
+   "titulo": "The Theory of Investment Value",
+   "autor": "John Burr Williams",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 1,
+   "pre": "INV-12",
+   "nota": "Fundador do DCF; histórico e muito denso",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 36,
+   "serie_original": 36
+  },
+  {
+   "cod": "INV-55",
+   "mat": "INV",
+   "titulo": "The Alchemy of Finance",
+   "autor": "George Soros",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 1,
+   "pre": "MKT-01",
+   "nota": "Reflexividade; um dos livros mais difíceis da lista",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 40,
+   "serie_original": 40
+  },
+  {
+   "cod": "INV-56",
+   "mat": "INV",
+   "titulo": "Análise Técnica do Mercado Financeiro",
+   "autor": "John Murphy",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "Fora da sua filosofia de investimento",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "INV-57",
+   "mat": "INV",
+   "titulo": "Margin of Safety",
+   "autor": "Seth Klarman",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "INV-02",
+   "nota": "Clássico do value (1991), fora de catálogo; o usuário tem o PDF. Entrou no fim da lista para não renumerar a grade; a ordem real vem de livros.json (o que ele tem vem primeiro)",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 6,
+   "serie_original": 6
+  },
+  {
+   "cod": "INV-58",
+   "mat": "INV",
+   "titulo": "A Bola de Neve",
+   "autor": "Alice Schroeder",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Biografia autorizada do Buffett; depois das cartas (fonte original primeiro)",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-59",
+   "mat": "INV",
+   "titulo": "Em Busca do Portfólio Perfeito",
+   "autor": "Andrew Lo e Stephen Foerster",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Os criadores da teoria de portfólio; prepara o Swensen",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "INV-60",
+   "mat": "INV",
+   "titulo": "O Jeito Warren Buffett de Investir",
+   "autor": "Robert Hagstrom",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Resumo de terceiros; a fonte original vem antes",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "INV-61",
+   "mat": "INV",
+   "titulo": "O Investidor Inteligente",
+   "autor": "Benjamin Graham (com comentários de Jason Zweig)",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "O usuário já leu (2026-10-28) e acha que hoje pouco se aplica e é longo demais; fora das séries. Fica na grade só como registro",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-01",
+   "mat": "MM",
+   "titulo": "Como Ler Livros",
+   "autor": "Mortimer Adler e Charles Van Doren",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "⭐ Primeira trilha do projeto: ensina o método de leitura que o app vai usar",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 11,
+   "serie_original": 11
+  },
+  {
+   "cod": "MM-02",
+   "mat": "MM",
+   "titulo": "The Psychology of Human Misjudgment",
+   "autor": "Charlie Munger",
+   "formato": "palestra",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Pílula de 1h; a base dos modelos mentais",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 60,
+    "max": 60,
+    "fonte": "nota"
+   },
+   "serie": 3,
+   "serie_original": 3
+  },
+  {
+   "cod": "MM-03",
+   "mat": "MM",
+   "titulo": "A Lesson on Elementary Worldly Wisdom",
+   "autor": "Charlie Munger, 1994",
+   "formato": "palestra",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": "MM-02",
+   "nota": "Sugestão: a palestra-mãe dos modelos mentais",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 3,
+   "serie_original": 3
+  },
+  {
+   "cod": "MM-04",
+   "mat": "MM",
+   "titulo": "Rápido e Devagar",
+   "autor": "Daniel Kahneman",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "O usuário já leu (2026-10-28); fora das séries. Fica na grade só como registro",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-05",
+   "mat": "MM",
+   "titulo": "The Success Equation",
+   "autor": "Michael Mauboussin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Ler antes o paper Untangling Skill and Luck",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 13,
+   "serie_original": 13
+  },
+  {
+   "cod": "MM-06",
+   "mat": "MM",
+   "titulo": "Pense Duas Vezes",
+   "autor": "Michael Mauboussin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "MM-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 13,
+   "serie_original": 13
+  },
+  {
+   "cod": "MM-07",
+   "mat": "MM",
+   "titulo": "Superforecasting",
+   "autor": "Tetlock e Gardner",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": "MM-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 13,
+   "serie_original": 13
+  },
+  {
+   "cod": "MM-08",
+   "mat": "MM",
+   "titulo": "Iludidos pelo Acaso",
+   "autor": "Nassim Taleb",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada do Taleb",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-09",
+   "mat": "MM",
+   "titulo": "A Lógica do Cisne Negro",
+   "autor": "Nassim Taleb",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MM-08",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-10",
+   "mat": "MM",
+   "titulo": "Against the Gods",
+   "autor": "Peter Bernstein",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "História do risco",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-11",
+   "mat": "MM",
+   "titulo": "Pensando em Sistemas",
+   "autor": "Donella Meadows",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Ler antes o ensaio Leverage Points",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 25,
+   "serie_original": 25
+  },
+  {
+   "cod": "MM-12",
+   "mat": "MM",
+   "titulo": "Misbehaving",
+   "autor": "Richard Thaler",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "MM-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "MM-13",
+   "mat": "MM",
+   "titulo": "Seeking Wisdom",
+   "autor": "Peter Bevelin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MM-02",
+   "nota": "Compila Munger e Darwin, mas é obra séria",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "MM-14",
+   "mat": "MM",
+   "titulo": "Psychology of Intelligence Analysis",
+   "autor": "Richards Heuer",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MM-04",
+   "nota": "Gratuito (CIA); análise sob incerteza",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 13,
+   "serie_original": 13
+  },
+  {
+   "cod": "MM-15",
+   "mat": "MM",
+   "titulo": "Factfulness",
+   "autor": "Hans Rosling",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 25,
+   "serie_original": 25
+  },
+  {
+   "cod": "MM-16",
+   "mat": "MM",
+   "titulo": "Papers Kahneman e Tversky (1974, 1979)",
+   "autor": "Kahneman e Tversky",
+   "formato": "paper",
+   "robustez": 5,
+   "facilidade": 1,
+   "pre": "MM-04",
+   "nota": "Fonte primária; ler depois do livro",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "MM-17",
+   "mat": "MM",
+   "titulo": "Antifrágil",
+   "autor": "Nassim Taleb",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-09",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-18",
+   "mat": "MM",
+   "titulo": "Arriscando a Própria Pele",
+   "autor": "Nassim Taleb",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-09",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-19",
+   "mat": "MM",
+   "titulo": "All I Want to Know Is Where I'm Going to Die",
+   "autor": "Peter Bevelin",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "MM-13",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "MM-20",
+   "mat": "MM",
+   "titulo": "Being Wrong",
+   "autor": "Kathryn Schulz",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 25,
+   "serie_original": 25
+  },
+  {
+   "cod": "MM-21",
+   "mat": "MM",
+   "titulo": "Pense de Novo",
+   "autor": "Adam Grant",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 25,
+   "serie_original": 25
+  },
+  {
+   "cod": "MM-22",
+   "mat": "MM",
+   "titulo": "Fortune's Formula",
+   "autor": "William Poundstone",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-10",
+   "nota": "Critério de Kelly e apostas",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-23",
+   "mat": "MM",
+   "titulo": "O Andar do Bêbado",
+   "autor": "Leonard Mlodinow",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 15,
+   "serie_original": 15
+  },
+  {
+   "cod": "MM-24",
+   "mat": "MM",
+   "titulo": "Chaos",
+   "autor": "James Gleick",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-11",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 25,
+   "serie_original": 25
+  },
+  {
+   "cod": "MM-25",
+   "mat": "MM",
+   "titulo": "The Art of Learning",
+   "autor": "Josh Waitzkin",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 11,
+   "serie_original": 11
+  },
+  {
+   "cod": "MM-26",
+   "mat": "MM",
+   "titulo": "Checklist",
+   "autor": "Atul Gawande",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Ler antes o artigo da New Yorker",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "MM-27",
+   "mat": "MM",
+   "titulo": "Judgment",
+   "autor": "Tichy e Bennis",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "MM-28",
+   "mat": "MM",
+   "titulo": "Previsivelmente Irracional",
+   "autor": "Dan Ariely",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "MM-04",
+   "nota": "Divulgação; o estudo-base é o Kahneman",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "MM-29",
+   "mat": "MM",
+   "titulo": "A Arte de Pensar Claramente",
+   "autor": "Rolf Dobelli",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": "MM-04",
+   "nota": "Pílulas de 5 min, mas só depois do Kahneman",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-30",
+   "mat": "MM",
+   "titulo": "Pensamento Eficaz",
+   "autor": "Shane Parrish",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": "MM-02",
+   "nota": "Divulgação do Farnam Street",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-31",
+   "mat": "MM",
+   "titulo": "How Do You Know?",
+   "autor": "Christopher Mayer",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-32",
+   "mat": "MM",
+   "titulo": "The Paradox of Choice",
+   "autor": "Barry Schwartz",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-33",
+   "mat": "MM",
+   "titulo": "Freakonomics",
+   "autor": "Levitt e Dubner",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-34",
+   "mat": "MM",
+   "titulo": "Everybody Lies",
+   "autor": "Seth Stephens-Davidowitz",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-35",
+   "mat": "MM",
+   "titulo": "What Got You Here Won't Get You There",
+   "autor": "Marshall Goldsmith",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Melhor em Business",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-36",
+   "mat": "MM",
+   "titulo": "The Wisdom of the Bullfrog",
+   "autor": "William McRaven",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-37",
+   "mat": "MM",
+   "titulo": "O Novo Gerente-Minuto",
+   "autor": "Blanchard e Johnson",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Fábula de gestão; baixo valor",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MM-38",
+   "mat": "MM",
+   "titulo": "Daniel Kahneman: experiência x memória (TED)",
+   "autor": "Daniel Kahneman",
+   "formato": "vídeo",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Pílula de 20 min",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": {
+    "min": 20,
+    "max": 20,
+    "fonte": "nota"
+   },
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "MM-39",
+   "mat": "MM",
+   "titulo": "Pensar em Apostas",
+   "autor": "Annie Duke",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Decisão sob incerteza; ponte para Superforecasting",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 7,
+   "serie_original": 7
+  },
+  {
+   "cod": "BEH-01",
+   "mat": "BEH",
+   "titulo": "Discurso na USC Law School, 2007",
+   "autor": "Charlie Munger",
+   "formato": "palestra",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Porta de entrada: 37 min, texto ou vídeo",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 37,
+    "max": 37,
+    "fonte": "nota"
+   },
+   "serie": 10,
+   "serie_original": 10
+  },
+  {
+   "cod": "BEH-02",
+   "mat": "BEH",
+   "titulo": "Managing Oneself",
+   "autor": "Peter Drucker",
+   "formato": "artigo",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Pílula de 30 min (HBR)",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 30,
+    "max": 30,
+    "fonte": "nota"
+   },
+   "serie": 1,
+   "serie_original": 1
+  },
+  {
+   "cod": "BEH-03",
+   "mat": "BEH",
+   "titulo": "You and Your Research",
+   "autor": "Richard Hamming",
+   "formato": "palestra",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 1,
+   "serie_original": 1
+  },
+  {
+   "cod": "BEH-04",
+   "mat": "BEH",
+   "titulo": "O Gestor Eficaz",
+   "autor": "Peter Drucker",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": "BEH-02",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BEH-05",
+   "mat": "BEH",
+   "titulo": "Em Busca de Sentido",
+   "autor": "Viktor Frankl",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Edição em inglês na lista; há tradução",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 14,
+   "serie_original": 14
+  },
+  {
+   "cod": "BEH-06",
+   "mat": "BEH",
+   "titulo": "Meditações",
+   "autor": "Marco Aurélio",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Pílulas diárias",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 14,
+   "serie_original": 14
+  },
+  {
+   "cod": "BEH-07",
+   "mat": "BEH",
+   "titulo": "Cartas de um Estoico",
+   "autor": "Sêneca",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Cartas curtas; ótimas pílulas",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 14,
+   "serie_original": 14
+  },
+  {
+   "cod": "BEH-08",
+   "mat": "BEH",
+   "titulo": "Deep Work",
+   "autor": "Cal Newport",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 11,
+   "serie_original": 11
+  },
+  {
+   "cod": "BEH-09",
+   "mat": "BEH",
+   "titulo": "How to Do Great Work",
+   "autor": "Paul Graham",
+   "formato": "ensaio",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BEH-03",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 1,
+   "serie_original": 1
+  },
+  {
+   "cod": "BEH-10",
+   "mat": "BEH",
+   "titulo": "Learning to Learn",
+   "autor": "Richard Hamming",
+   "formato": "vídeo",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BEH-03",
+   "nota": "47 min",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 47,
+    "max": 47,
+    "fonte": "nota"
+   },
+   "serie": 1,
+   "serie_original": 1
+  },
+  {
+   "cod": "BEH-11",
+   "mat": "BEH",
+   "titulo": "The 7 Habits of Highly Effective People",
+   "autor": "Stephen Covey",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BEH-12",
+   "mat": "BEH",
+   "titulo": "How Will You Measure Your Life?",
+   "autor": "Clayton Christensen",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BEH-13",
+   "mat": "BEH",
+   "titulo": "Princípios",
+   "autor": "Ray Dalio",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BEH-14",
+   "mat": "BEH",
+   "titulo": "Flow",
+   "autor": "Mihaly Csikszentmihalyi",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Pesquisa original",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 11,
+   "serie_original": 11
+  },
+  {
+   "cod": "BEH-15",
+   "mat": "BEH",
+   "titulo": "Como Fazer Amigos e Influenciar Pessoas",
+   "autor": "Dale Carnegie",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "BEH-16",
+   "mat": "BEH",
+   "titulo": "Sobre a Brevidade da Vida",
+   "autor": "Sêneca",
+   "formato": "ensaio",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": "BEH-07",
+   "nota": "Sugestão: ensaio curto, complementa as Cartas",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 14,
+   "serie_original": 14
+  },
+  {
+   "cod": "BEH-17",
+   "mat": "BEH",
+   "titulo": "Sobre a Ira / Sobre a Tranquilidade da Alma",
+   "autor": "Sêneca",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BEH-07",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-18",
+   "mat": "BEH",
+   "titulo": "Mindset",
+   "autor": "Carol Dweck",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Pesquisa sólida, livro de divulgação",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-19",
+   "mat": "BEH",
+   "titulo": "Hábitos Atômicos",
+   "autor": "James Clear",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação bem feita; útil para o próprio projeto",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-20",
+   "mat": "BEH",
+   "titulo": "Coach Wooden's Pyramid of Success",
+   "autor": "John Wooden",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 14,
+   "serie_original": 14
+  },
+  {
+   "cod": "BEH-21",
+   "mat": "BEH",
+   "titulo": "Wooden: vencer x sucesso (TED)",
+   "autor": "John Wooden",
+   "formato": "vídeo",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "17 min",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": {
+    "min": 17,
+    "max": 17,
+    "fonte": "nota"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-22",
+   "mat": "BEH",
+   "titulo": "This Is Water",
+   "autor": "David Foster Wallace",
+   "formato": "vídeo",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "9 min",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": {
+    "min": 9,
+    "max": 9,
+    "fonte": "nota"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-23",
+   "mat": "BEH",
+   "titulo": "Discurso em Stanford, 2005",
+   "autor": "Steve Jobs",
+   "formato": "vídeo",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "15 min",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": {
+    "min": 15,
+    "max": 15,
+    "fonte": "nota"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-24",
+   "mat": "BEH",
+   "titulo": "O Sushi dos Sonhos de Jiro",
+   "autor": "documentário",
+   "formato": "vídeo",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "1h22",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "curto",
+   "tempo": {
+    "min": 82,
+    "max": 82,
+    "fonte": "nota"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-25",
+   "mat": "BEH",
+   "titulo": "The Courage to Be Disliked",
+   "autor": "Kishimi e Koga",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-26",
+   "mat": "BEH",
+   "titulo": "Outlive",
+   "autor": "Peter Attia",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Saúde",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-27",
+   "mat": "BEH",
+   "titulo": "Cargo Cult Science",
+   "autor": "Richard Feynman, 1974",
+   "formato": "palestra",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Sugestão: honestidade intelectual em 20 min",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 20,
+    "max": 20,
+    "fonte": "nota"
+   },
+   "serie": 1,
+   "serie_original": 1
+  },
+  {
+   "cod": "BEH-28",
+   "mat": "BEH",
+   "titulo": "The Science of Hitting",
+   "autor": "Ted Williams",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Curiosidade: a origem do fat pitch",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-29",
+   "mat": "BEH",
+   "titulo": "12 Rules for Life",
+   "autor": "Jordan Peterson",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-30",
+   "mat": "BEH",
+   "titulo": "Lost & Found",
+   "autor": "Kathryn Schulz",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-31",
+   "mat": "BEH",
+   "titulo": "Worldwide Laws of Life",
+   "autor": "John Templeton",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-32",
+   "mat": "BEH",
+   "titulo": "The Power of Full Engagement",
+   "autor": "Loehr e Schwartz",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-33",
+   "mat": "BEH",
+   "titulo": "The Path of Least Resistance",
+   "autor": "Robert Fritz",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-34",
+   "mat": "BEH",
+   "titulo": "Isso Você Não Aprende em Harvard",
+   "autor": "Mark McCormack",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-35",
+   "mat": "BEH",
+   "titulo": "10% Mais Feliz",
+   "autor": "Dan Harris",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-36",
+   "mat": "BEH",
+   "titulo": "The One Thing",
+   "autor": "Gary Keller",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Autoajuda; repete Deep Work",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BEH-37",
+   "mat": "BEH",
+   "titulo": "Falando com Estranhos",
+   "autor": "Malcolm Gladwell",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Gladwell: bom de ler, pouco rigor",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "BUS-01",
+   "mat": "BUS",
+   "titulo": "What Is Strategy?",
+   "autor": "Michael Porter (HBR, 1996)",
+   "formato": "artigo",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada: Porter na fonte, em 40 min",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": {
+    "min": 40,
+    "max": 40,
+    "fonte": "nota"
+   },
+   "serie": 4,
+   "serie_original": 4
+  },
+  {
+   "cod": "BUS-02",
+   "mat": "BUS",
+   "titulo": "Entendendo Michael Porter",
+   "autor": "Joan Magretta",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BUS-01",
+   "nota": "Resumo autorizado, mas sério",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 16,
+   "serie_original": 16
+  },
+  {
+   "cod": "BUS-03",
+   "mat": "BUS",
+   "titulo": "Competition Demystified",
+   "autor": "Greenwald e Kahn",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BUS-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 5,
+   "serie_original": 5
+  },
+  {
+   "cod": "BUS-04",
+   "mat": "BUS",
+   "titulo": "7 Powers",
+   "autor": "Hamilton Helmer",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BUS-03",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 5,
+   "serie_original": 5
+  },
+  {
+   "cod": "BUS-05",
+   "mat": "BUS",
+   "titulo": "Disruptive Technologies: Catching the Wave",
+   "autor": "Bower e Christensen (HBR, 1995)",
+   "formato": "artigo",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Versão curta do Dilema",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "BUS-06",
+   "mat": "BUS",
+   "titulo": "The Innovator's Dilemma",
+   "autor": "Clayton Christensen",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BUS-05",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "BUS-07",
+   "mat": "BUS",
+   "titulo": "High Output Management",
+   "autor": "Andrew Grove",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BUS-08",
+   "mat": "BUS",
+   "titulo": "Only the Paranoid Survive",
+   "autor": "Andrew Grove",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BUS-07",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 20,
+   "serie_original": 20
+  },
+  {
+   "cod": "BUS-09",
+   "mat": "BUS",
+   "titulo": "The Outsiders",
+   "autor": "William Thorndike",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Sugestão: CEOs como alocadores de capital; Buffett recomenda",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 8,
+   "serie_original": 8
+  },
+  {
+   "cod": "BUS-10",
+   "mat": "BUS",
+   "titulo": "Good to Great",
+   "autor": "Jim Collins",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 4,
+   "serie_original": 4
+  },
+  {
+   "cod": "BUS-11",
+   "mat": "BUS",
+   "titulo": "O Efeito Halo",
+   "autor": "Phil Rosenzweig",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BUS-10",
+   "nota": "Crítica aos estudos de sucesso; vem logo depois do Collins",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 21,
+   "serie_original": 21
+  },
+  {
+   "cod": "BUS-12",
+   "mat": "BUS",
+   "titulo": "O Ciclo de Vida Corporativo",
+   "autor": "Aswath Damodaran",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "BUS-13",
+   "mat": "BUS",
+   "titulo": "Narrative and Numbers",
+   "autor": "Aswath Damodaran",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 36,
+   "serie_original": 36
+  },
+  {
+   "cod": "BUS-14",
+   "mat": "BUS",
+   "titulo": "Information Rules",
+   "autor": "Shapiro e Varian",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Economia de redes",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "BUS-15",
+   "mat": "BUS",
+   "titulo": "The Synergy Trap",
+   "autor": "Mark Sirower",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Fusões e aquisições",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 36,
+   "serie_original": 36
+  },
+  {
+   "cod": "BUS-16",
+   "mat": "BUS",
+   "titulo": "Feitas para Durar",
+   "autor": "Collins e Porras",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BUS-10",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-17",
+   "mat": "BUS",
+   "titulo": "In Search of Excellence",
+   "autor": "Peters e Waterman",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Histórico",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-18",
+   "mat": "BUS",
+   "titulo": "For Profit",
+   "autor": "William Magnuson",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "História das corporações",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-19",
+   "mat": "BUS",
+   "titulo": "Muito Além da Sorte",
+   "autor": "Clayton Christensen",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BUS-06",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-20",
+   "mat": "BUS",
+   "titulo": "Atravessando o Abismo",
+   "autor": "Geoffrey Moore",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BUS-06",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-21",
+   "mat": "BUS",
+   "titulo": "A Startup Enxuta",
+   "autor": "Eric Ries",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-22",
+   "mat": "BUS",
+   "titulo": "Avalie o que Importa",
+   "autor": "John Doerr",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BUS-07",
+   "nota": "OKRs",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-23",
+   "mat": "BUS",
+   "titulo": "Liderança Prática",
+   "autor": "Peter Drucker",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-24",
+   "mat": "BUS",
+   "titulo": "A Organização sem Medo",
+   "autor": "Amy Edmondson",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-25",
+   "mat": "BUS",
+   "titulo": "Vencedoras por Opção",
+   "autor": "Collins e Hansen",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": "BUS-10",
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-26",
+   "mat": "BUS",
+   "titulo": "The Innovator's Manifesto",
+   "autor": "Michael Raynor",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": "BUS-06",
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-27",
+   "mat": "BUS",
+   "titulo": "The Seventh Sense",
+   "autor": "Joshua Cooper Ramo",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-28",
+   "mat": "BUS",
+   "titulo": "Little Bets",
+   "autor": "Peter Sims",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-29",
+   "mat": "BUS",
+   "titulo": "Hacking Growth",
+   "autor": "Ellis e Brown",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-30",
+   "mat": "BUS",
+   "titulo": "Tribal Leadership",
+   "autor": "Logan, King e Fischer-Wright",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-31",
+   "mat": "BUS",
+   "titulo": "Jack Welch: MBA da Vida Real + Paixão por Vencer",
+   "autor": "Jack Welch",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-32",
+   "mat": "BUS",
+   "titulo": "Responsabilidade Extrema",
+   "autor": "Willink e Babin",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-33",
+   "mat": "BUS",
+   "titulo": "O Mito do Empreendedor",
+   "autor": "Michael Gerber",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-34",
+   "mat": "BUS",
+   "titulo": "The Book of Elon",
+   "autor": "Eric Jorgenson",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Compilação de frases",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-35",
+   "mat": "BUS",
+   "titulo": "Manual do CEO",
+   "autor": "Josh Kaufman",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Resumão de MBA",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-36",
+   "mat": "BUS",
+   "titulo": "Simplificando os Negócios",
+   "autor": "Donald Miller",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Autoajuda empresarial",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-37",
+   "mat": "BUS",
+   "titulo": "Purpose",
+   "autor": "Nikos Mourkogiannis",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Pouco reconhecido",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-38",
+   "mat": "BUS",
+   "titulo": "Humanismo Extremo",
+   "autor": "Tom Peters",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-39",
+   "mat": "BUS",
+   "titulo": "Working Together",
+   "autor": "Michael Eisner",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-40",
+   "mat": "BUS",
+   "titulo": "Simplify the Global Enterprise",
+   "autor": "Saip Eren Yilmaz",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Autor pouco conhecido; não consegui avaliar",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BUS-41",
+   "mat": "BUS",
+   "titulo": "De Zero a Um",
+   "autor": "Peter Thiel",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Monopólio e vantagem competitiva vistos por um fundador-investidor",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 16,
+   "serie_original": 16
+  },
+  {
+   "cod": "BUS-42",
+   "mat": "BUS",
+   "titulo": "DNA do Inovador",
+   "autor": "Dyer, Gregersen e Christensen",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Christensen aplicado a pessoas",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "MKT-01",
+   "mat": "MKT",
+   "titulo": "O Grande Crash, 1929",
+   "autor": "John Kenneth Galbraith",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Sugestão e porta de entrada: curto, clássico, a bolha arquetípica",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-02",
+   "mat": "MKT",
+   "titulo": "This Time Is Different (paper NBER, 2008)",
+   "autor": "Reinhart e Rogoff",
+   "formato": "paper",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Versão curta do livro",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "curto",
+   "tempo": null,
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-03",
+   "mat": "MKT",
+   "titulo": "The Little Book of Behavioral Investing",
+   "autor": "James Montier",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": "MM-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 12,
+   "serie_original": 12
+  },
+  {
+   "cod": "MKT-04",
+   "mat": "MKT",
+   "titulo": "Market Wizards",
+   "autor": "Jack Schwager",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "MKT-05",
+   "mat": "MKT",
+   "titulo": "Irrational Exuberance",
+   "autor": "Robert Shiller",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MKT-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-06",
+   "mat": "MKT",
+   "titulo": "Boom e Crash",
+   "autor": "Quinn e Turner",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "MKT-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-07",
+   "mat": "MKT",
+   "titulo": "Your Complete Guide to Factor-Based Investing",
+   "autor": "Berkin e Swedroe",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada de fatores",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "MKT-08",
+   "mat": "MKT",
+   "titulo": "Expected Returns",
+   "autor": "Antti Ilmanen",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 1,
+   "pre": "MKT-07",
+   "nota": "A bíblia dos fatores; muito densa",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 33,
+   "serie_original": 33
+  },
+  {
+   "cod": "MKT-09",
+   "mat": "MKT",
+   "titulo": "This Time Is Different (livro)",
+   "autor": "Reinhart e Rogoff",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 2,
+   "pre": "MKT-02",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-10",
+   "mat": "MKT",
+   "titulo": "What Works on Wall Street",
+   "autor": "James O'Shaughnessy",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "MKT-07",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "MKT-11",
+   "mat": "MKT",
+   "titulo": "Manias, Pânicos e Crises",
+   "autor": "Charles Kindleberger",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "MKT-01",
+   "nota": "Sugestão: o tratado clássico sobre crises financeiras",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 17,
+   "serie_original": 17
+  },
+  {
+   "cod": "MKT-12",
+   "mat": "MKT",
+   "titulo": "The Incredible Shrinking Alpha",
+   "autor": "Swedroe e Berkin",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "MKT-07",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-13",
+   "mat": "MKT",
+   "titulo": "Engines That Move Markets",
+   "autor": "Alasdair Nairn",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Bolhas de tecnologia; conversa com IA hoje",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-14",
+   "mat": "MKT",
+   "titulo": "Any Happy Returns",
+   "autor": "Peter Oppenheimer",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-15",
+   "mat": "MKT",
+   "titulo": "Animal Spirits",
+   "autor": "Akerlof e Shiller",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MM-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-16",
+   "mat": "MKT",
+   "titulo": "The Hour Between Dog and Wolf",
+   "autor": "John Coates",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-17",
+   "mat": "MKT",
+   "titulo": "How Not to Invest",
+   "autor": "Barry Ritholtz",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-18",
+   "mat": "MKT",
+   "titulo": "The New Market Wizards",
+   "autor": "Jack Schwager",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "MKT-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-19",
+   "mat": "MKT",
+   "titulo": "Inside the House of Money",
+   "autor": "Steven Drobny",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-20",
+   "mat": "MKT",
+   "titulo": "Quantitative Momentum",
+   "autor": "Gray e Vogel",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "MKT-07",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-21",
+   "mat": "MKT",
+   "titulo": "Avaliação de Empresas (McKinsey)",
+   "autor": "Koller, Goedhart e Wessels",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "Referência de valuation; mantido em casa por decisão sua",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 19,
+   "serie_original": 19
+  },
+  {
+   "cod": "MKT-22",
+   "mat": "MKT",
+   "titulo": "Dual Momentum Investing",
+   "autor": "Gary Antonacci",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": "MKT-20",
+   "nota": "Redundante com Quantitative Momentum",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-23",
+   "mat": "MKT",
+   "titulo": "The Battle for Investment Survival",
+   "autor": "Gerald Loeb",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Clássico antigo e datado",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "MKT-24",
+   "mat": "MKT",
+   "titulo": "Um Passeio Aleatório por Wall Street",
+   "autor": "Burton Malkiel",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Clássico da eficiência de mercado; o contraponto do stock picker",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 23,
+   "serie_original": 23
+  },
+  {
+   "cod": "MKT-25",
+   "mat": "MKT",
+   "titulo": "Os Magos Desconhecidos do Mercado Financeiro",
+   "autor": "Jack Schwager",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Mesma fórmula do Market Wizards, traders menos conhecidos",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "FRA-01",
+   "mat": "FRA",
+   "titulo": "The Smartest Guys in the Room",
+   "autor": "McLean e Elkind",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "⭐ Porta de entrada: Enron, o caso que motivou o projeto",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "FRA-02",
+   "mat": "FRA",
+   "titulo": "When Genius Failed",
+   "autor": "Roger Lowenstein",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "LTCM",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "FRA-03",
+   "mat": "FRA",
+   "titulo": "O Jogo da Mentira",
+   "autor": "Michael Lewis",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Liar's Poker",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "FRA-04",
+   "mat": "FRA",
+   "titulo": "The Big Short",
+   "autor": "Michael Lewis",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "2008",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "FRA-05",
+   "mat": "FRA",
+   "titulo": "Barbarians at the Gate",
+   "autor": "Burrough e Helyar",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "RJR Nabisco",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 18,
+   "serie_original": 18
+  },
+  {
+   "cod": "FRA-06",
+   "mat": "FRA",
+   "titulo": "Financial Shenanigans",
+   "autor": "Howard Schilit",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "FRA-01",
+   "nota": "Sugestão: o manual de como detectar fraude contábil; perto do trabalho, mas é a ponte da Enron",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 6,
+   "serie_original": 6
+  },
+  {
+   "cod": "FRA-07",
+   "mat": "FRA",
+   "titulo": "More Money Than God",
+   "autor": "Sebastian Mallaby",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Hedge funds",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 28,
+   "serie_original": 28
+  },
+  {
+   "cod": "FRA-08",
+   "mat": "FRA",
+   "titulo": "Meltdown",
+   "autor": "Duncan Mavin",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Credit Suisse",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FRA-09",
+   "mat": "FRA",
+   "titulo": "Alerta Vermelho",
+   "autor": "Bill Browder",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Rússia",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FRA-10",
+   "mat": "FRA",
+   "titulo": "Merchants of Debt",
+   "autor": "George Anders",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": "FRA-05",
+   "nota": "KKR",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FRA-11",
+   "mat": "FRA",
+   "titulo": "A Piece of the Action",
+   "autor": "Joe Nocera",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FRA-12",
+   "mat": "FRA",
+   "titulo": "Flash Boys",
+   "autor": "Michael Lewis",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FRA-13",
+   "mat": "FRA",
+   "titulo": "Memos from the Chairman",
+   "autor": "Alan Greenberg",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Bear Stearns",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-01",
+   "mat": "IND",
+   "titulo": "Como o Mundo Funciona",
+   "autor": "Vaclav Smil",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada: energia, materiais e alimentos com números",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 9,
+   "serie_original": 9
+  },
+  {
+   "cod": "IND-02",
+   "mat": "IND",
+   "titulo": "A Guerra dos Chips",
+   "autor": "Chris Miller",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 30,
+   "serie_original": 30
+  },
+  {
+   "cod": "IND-03",
+   "mat": "IND",
+   "titulo": "The Box",
+   "autor": "Marc Levinson",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 30,
+   "serie_original": 30
+  },
+  {
+   "cod": "IND-04",
+   "mat": "IND",
+   "titulo": "A Marca da Vitória",
+   "autor": "Phil Knight",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Nike",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 8,
+   "serie_original": 8
+  },
+  {
+   "cod": "IND-05",
+   "mat": "IND",
+   "titulo": "Business Adventures",
+   "autor": "John Brooks",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Sugestão: livro favorito de Gates e Buffett; capítulos que viram pílulas",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 30,
+   "serie_original": 30
+  },
+  {
+   "cod": "IND-06",
+   "mat": "IND",
+   "titulo": "O Petróleo",
+   "autor": "Daniel Yergin",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "IND-01",
+   "nota": "Longo; picotar por era",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 22,
+   "serie_original": 22
+  },
+  {
+   "cod": "IND-07",
+   "mat": "IND",
+   "titulo": "How Big Things Get Done",
+   "autor": "Flyvbjerg e Gardner",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 22,
+   "serie_original": 22
+  },
+  {
+   "cod": "IND-08",
+   "mat": "IND",
+   "titulo": "Apple in China",
+   "autor": "Patrick McGee",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "IND-02",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 30,
+   "serie_original": 30
+  },
+  {
+   "cod": "IND-09",
+   "mat": "IND",
+   "titulo": "The World for Sale",
+   "autor": "Blas e Farchy",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "IND-06",
+   "nota": "Traders de commodities",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 22,
+   "serie_original": 22
+  },
+  {
+   "cod": "IND-10",
+   "mat": "IND",
+   "titulo": "Criatividade S.A.",
+   "autor": "Ed Catmull",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Pixar",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 26,
+   "serie_original": 26
+  },
+  {
+   "cod": "IND-11",
+   "mat": "IND",
+   "titulo": "The Quest",
+   "autor": "Daniel Yergin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "IND-06",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 22,
+   "serie_original": 22
+  },
+  {
+   "cod": "IND-12",
+   "mat": "IND",
+   "titulo": "The Power Broker",
+   "autor": "Robert Caro",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 1,
+   "pre": null,
+   "nota": "Obra-prima, mas tem ~1.300 páginas",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 40,
+   "serie_original": 40
+  },
+  {
+   "cod": "IND-13",
+   "mat": "IND",
+   "titulo": "Empire of AI",
+   "autor": "Karen Hao",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-14",
+   "mat": "IND",
+   "titulo": "The Scaling Era (a verificar)",
+   "autor": "Dwarkesh Patel e Gavin Leech",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-15",
+   "mat": "IND",
+   "titulo": "The Nvidia Way",
+   "autor": "Tae Kim",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "IND-02",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-16",
+   "mat": "IND",
+   "titulo": "Co-Intelligence",
+   "autor": "Ethan Mollick",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-17",
+   "mat": "IND",
+   "titulo": "Fome de Poder",
+   "autor": "Ray Kroc",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "McDonald's",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-18",
+   "mat": "IND",
+   "titulo": "One From Many",
+   "autor": "Dee Hock",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Visa",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-19",
+   "mat": "IND",
+   "titulo": "Brick by Brick",
+   "autor": "David Robertson",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Lego",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-20",
+   "mat": "IND",
+   "titulo": "De Um Gole Só",
+   "autor": "Ariane Abdallah",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Ambev",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-21",
+   "mat": "IND",
+   "titulo": "Lessons from the Titans",
+   "autor": "Davis, Copeland e Wertheimer",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-22",
+   "mat": "IND",
+   "titulo": "The Great Railroad Revolution",
+   "autor": "Christian Wolmar",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-23",
+   "mat": "IND",
+   "titulo": "Iron Empires",
+   "autor": "Michael Hiltzik",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-24",
+   "mat": "IND",
+   "titulo": "Coming Into View",
+   "autor": "Joseph Davis",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-25",
+   "mat": "IND",
+   "titulo": "Como o Google Funciona",
+   "autor": "Schmidt e Rosenberg",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-26",
+   "mat": "IND",
+   "titulo": "The Cloud Revolution",
+   "autor": "Mark Mills",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-27",
+   "mat": "IND",
+   "titulo": "Grupo WEG: Estratégias 1961–2013",
+   "autor": "(acadêmico)",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-28",
+   "mat": "IND",
+   "titulo": "The BESS Book",
+   "autor": "Lebowitz e outros",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "Técnico; perto do trabalho",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "IND-29",
+   "mat": "IND",
+   "titulo": "California Burning",
+   "autor": "Katherine Blunt",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Falência da PG&E: utility, regulação e risco",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 9,
+   "serie_original": 9
+  },
+  {
+   "cod": "GEO-01",
+   "mat": "GEO",
+   "titulo": "Por que as Nações Fracassam",
+   "autor": "Acemoglu e Robinson",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Porta de entrada: Nobel 2024, base de tudo que vem depois",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 27,
+   "serie_original": 27
+  },
+  {
+   "cod": "GEO-02",
+   "mat": "GEO",
+   "titulo": "Os Filósofos Mundanos",
+   "autor": "Robert Heilbroner",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Sugestão: a introdução clássica à história do pensamento econômico, antes de Smith e Keynes",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-03",
+   "mat": "GEO",
+   "titulo": "Keynes x Hayek",
+   "autor": "Nicholas Wapshott",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "GEO-02",
+   "nota": "O debate antes das fontes",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-04",
+   "mat": "GEO",
+   "titulo": "Capitalismo e Liberdade",
+   "autor": "Milton Friedman",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": "GEO-02",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-05",
+   "mat": "GEO",
+   "titulo": "Os Grandes Alquimistas Financeiros",
+   "autor": "Neil Irwin",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Porta de entrada dos bancos centrais",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-06",
+   "mat": "GEO",
+   "titulo": "Breakneck",
+   "autor": "Dan Wang",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-07",
+   "mat": "GEO",
+   "titulo": "O Poder da Geografia",
+   "autor": "Tim Marshall",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação séria",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-08",
+   "mat": "GEO",
+   "titulo": "Ordem Mundial",
+   "autor": "Henry Kissinger",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "GEO-07",
+   "nota": "Sugestão: a referência clássica de geopolítica",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-09",
+   "mat": "GEO",
+   "titulo": "The Avoidable War",
+   "autor": "Kevin Rudd",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "GEO-06",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-10",
+   "mat": "GEO",
+   "titulo": "Como as Democracias Morrem",
+   "autor": "Levitsky e Ziblatt",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-11",
+   "mat": "GEO",
+   "titulo": "O Corredor Estreito",
+   "autor": "Acemoglu e Robinson",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "GEO-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 27,
+   "serie_original": 27
+  },
+  {
+   "cod": "GEO-12",
+   "mat": "GEO",
+   "titulo": "Bancos Centrais: Teoria e Prática",
+   "autor": "Alan Blinder",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": "GEO-05",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 35,
+   "serie_original": 35
+  },
+  {
+   "cod": "GEO-13",
+   "mat": "GEO",
+   "titulo": "The Mystery of Capital",
+   "autor": "Hernando de Soto",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "GEO-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 27,
+   "serie_original": 27
+  },
+  {
+   "cod": "GEO-14",
+   "mat": "GEO",
+   "titulo": "Como Funcionam os Mercados",
+   "autor": "Alvin Roth",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-15",
+   "mat": "GEO",
+   "titulo": "Economia do Bem Comum",
+   "autor": "Jean Tirole",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-16",
+   "mat": "GEO",
+   "titulo": "O Valor do Amanhã",
+   "autor": "Eduardo Giannetti",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-17",
+   "mat": "GEO",
+   "titulo": "The Rise and Fall of American Growth",
+   "autor": "Robert Gordon",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 40,
+   "serie_original": 40
+  },
+  {
+   "cod": "GEO-18",
+   "mat": "GEO",
+   "titulo": "A Riqueza das Nações, livros I a III",
+   "autor": "Adam Smith",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 1,
+   "pre": "GEO-02",
+   "nota": "Fonte primária; ler por trechos",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 39,
+   "serie_original": 39
+  },
+  {
+   "cod": "GEO-19",
+   "mat": "GEO",
+   "titulo": "A Teoria Geral",
+   "autor": "John Maynard Keynes",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 1,
+   "pre": "GEO-03",
+   "nota": "Fonte primária muito difícil",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 39,
+   "serie_original": 39
+  },
+  {
+   "cod": "GEO-20",
+   "mat": "GEO",
+   "titulo": "Stabilizing an Unstable Economy",
+   "autor": "Hyman Minsky",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 1,
+   "pre": "GEO-19",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 39,
+   "serie_original": 39
+  },
+  {
+   "cod": "GEO-21",
+   "mat": "GEO",
+   "titulo": "Capital in the Twenty-First Century",
+   "autor": "Thomas Piketty",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 39,
+   "serie_original": 39
+  },
+  {
+   "cod": "GEO-22",
+   "mat": "GEO",
+   "titulo": "Maestro",
+   "autor": "Bob Woodward",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "GEO-05",
+   "nota": "Greenspan",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-23",
+   "mat": "GEO",
+   "titulo": "Reviravolta",
+   "autor": "Jared Diamond",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-24",
+   "mat": "GEO",
+   "titulo": "Como os Países Ricos Ficaram Ricos",
+   "autor": "Erik Reinert",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "GEO-18",
+   "nota": "Contraponto a Smith",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 39,
+   "serie_original": 39
+  },
+  {
+   "cod": "GEO-25",
+   "mat": "GEO",
+   "titulo": "Quanto é Suficiente?",
+   "autor": "Robert e Edward Skidelsky",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "GEO-04",
+   "nota": "Contraponto a Friedman",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "GEO-26",
+   "mat": "GEO",
+   "titulo": "China's World View",
+   "autor": "David Daokui Li",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-27",
+   "mat": "GEO",
+   "titulo": "Kaput",
+   "autor": "Wolfgang Münchau",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Alemanha",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-28",
+   "mat": "GEO",
+   "titulo": "Argentina para Brasileiros",
+   "autor": "Fabio Giambiagi",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-29",
+   "mat": "GEO",
+   "titulo": "War of the Flea",
+   "autor": "Robert Taber",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-30",
+   "mat": "GEO",
+   "titulo": "Princípios para a Ordem Mundial em Transformação",
+   "autor": "Ray Dalio",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Tese controversa entre historiadores",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-31",
+   "mat": "GEO",
+   "titulo": "Livre para Escolher",
+   "autor": "Milton e Rose Friedman",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "GEO-04",
+   "nota": "Redundante com Capitalismo e Liberdade",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-32",
+   "mat": "GEO",
+   "titulo": "The Invisible Hook",
+   "autor": "Peter Leeson",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divertido; economia dos piratas",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-33",
+   "mat": "GEO",
+   "titulo": "The Age of the Unthinkable",
+   "autor": "Joshua Cooper Ramo",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-34",
+   "mat": "GEO",
+   "titulo": "The Price of Tomorrow",
+   "autor": "Jeff Booth",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-35",
+   "mat": "GEO",
+   "titulo": "Tomorrow's Gold",
+   "autor": "Marc Faber",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Datado (2002)",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-36",
+   "mat": "GEO",
+   "titulo": "Nuclear Terrorism",
+   "autor": "Graham Allison",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Datado (2004)",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-37",
+   "mat": "GEO",
+   "titulo": "The Shortest History of Greece",
+   "autor": "James Heneage",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-38",
+   "mat": "GEO",
+   "titulo": "América Latina Lado B",
+   "autor": "Ariel Palacios",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Crônicas de divulgação",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-39",
+   "mat": "GEO",
+   "titulo": "The Fourth Turning",
+   "autor": "Strauss e Howe",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Teoria de ciclos sem base empírica sólida",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "GEO-40",
+   "mat": "GEO",
+   "titulo": "Armas, Germes e Aço",
+   "autor": "Jared Diamond",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Pulitzer; explicação geográfica de longo prazo, em debate com Acemoglu",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 27,
+   "serie_original": 27
+  },
+  {
+   "cod": "GEO-41",
+   "mat": "GEO",
+   "titulo": "Crash: uma Breve História da Economia",
+   "autor": "Alexandre Versignassi (a verificar)",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Divulgação leve de história econômica",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 31,
+   "serie_original": 31
+  },
+  {
+   "cod": "BRA-01",
+   "mat": "BRA",
+   "titulo": "História Concisa do Brasil",
+   "autor": "Boris Fausto",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Sugestão e porta de entrada: o manual de referência",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 29,
+   "serie_original": 29
+  },
+  {
+   "cod": "BRA-02",
+   "mat": "BRA",
+   "titulo": "Formação Econômica do Brasil",
+   "autor": "Celso Furtado",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BRA-01",
+   "nota": "Clássico de base da economia",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 29,
+   "serie_original": 29
+  },
+  {
+   "cod": "BRA-03",
+   "mat": "BRA",
+   "titulo": "Brasil: Uma Biografia",
+   "autor": "Schwarcz e Starling",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BRA-01",
+   "nota": "Aprofundamento",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 29,
+   "serie_original": 29
+  },
+  {
+   "cod": "BRA-04",
+   "mat": "BRA",
+   "titulo": "A Arte da Política Econômica",
+   "autor": "José Augusto Fernandes (org.)",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BRA-02",
+   "nota": "Os pais do Real contando como foi",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-05",
+   "mat": "BRA",
+   "titulo": "Por que o Brasil Cresce Pouco?",
+   "autor": "Marcos Mendes",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BRA-02",
+   "nota": "Par de debate com Gala e Roncaglia",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-06",
+   "mat": "BRA",
+   "titulo": "Brasil, uma Economia que Não Aprende",
+   "autor": "Gala e Roncaglia",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BRA-02",
+   "nota": "Par de debate com Mendes",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-07",
+   "mat": "BRA",
+   "titulo": "O Valor das Ideias",
+   "autor": "Lisboa e Pessôa",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BRA-05",
+   "nota": "Par de debate com Laura Carvalho",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "BRA-08",
+   "mat": "BRA",
+   "titulo": "Valsa Brasileira",
+   "autor": "Laura Carvalho",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": "BRA-05",
+   "nota": "Par de debate com Lisboa e Pessôa",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "BRA-09",
+   "mat": "BRA",
+   "titulo": "2003–2018: Uma Certa Ideia de Brasil",
+   "autor": "Pedro Malan",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Par de debate com Delfim",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-10",
+   "mat": "BRA",
+   "titulo": "Economia é Coisa Séria",
+   "autor": "Delfim Netto",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Par de debate com Malan",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-11",
+   "mat": "BRA",
+   "titulo": "Raízes do Brasil",
+   "autor": "Sérgio Buarque de Holanda",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": "BRA-03",
+   "nota": "Ensaio interpretativo; rende mais com a base",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 29,
+   "serie_original": 29
+  },
+  {
+   "cod": "BRA-12",
+   "mat": "BRA",
+   "titulo": "A Organização",
+   "autor": "Malu Gaspar",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Odebrecht",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 34,
+   "serie_original": 34
+  },
+  {
+   "cod": "BRA-13",
+   "mat": "BRA",
+   "titulo": "Conversas com Economistas Brasileiros",
+   "autor": "Biderman, Cozac e Rego",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": "BRA-05",
+   "nota": "Fecha o bloco ouvindo todos os lados",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "BRA-14",
+   "mat": "BRA",
+   "titulo": "A Crise Fiscal e Monetária Brasileira",
+   "autor": "Edmar Bacha (org., a verificar)",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "BRA-05",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "BRA-15",
+   "mat": "BRA",
+   "titulo": "Os Onze",
+   "autor": "Recondo e Weber",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "STF",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-16",
+   "mat": "BRA",
+   "titulo": "Petrobras: A Luta pela Transformação",
+   "autor": "Roberto Castello Branco",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-17",
+   "mat": "BRA",
+   "titulo": "Crises Financeiras: Brasil e Mundo",
+   "autor": "Roberto Teixeira da Costa",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-18",
+   "mat": "BRA",
+   "titulo": "História da Riqueza no Brasil",
+   "autor": "Jorge Caldeira",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": "BRA-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-19",
+   "mat": "BRA",
+   "titulo": "Sucesso Made in Brasil",
+   "autor": "Sull e Escobari",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-20",
+   "mat": "BRA",
+   "titulo": "Industrialização e Desindustrialização no Brasil",
+   "autor": "Araujo e Feijó (orgs.)",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 2,
+   "pre": "BRA-02",
+   "nota": "Acadêmico",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-21",
+   "mat": "BRA",
+   "titulo": "Fora da Nova Curva",
+   "autor": "Bartunek, Napolitano e Moreau",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Entrevistas",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-22",
+   "mat": "BRA",
+   "titulo": "Fora da Curva 2",
+   "autor": "(org.)",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-23",
+   "mat": "BRA",
+   "titulo": "Fora da Curva 3",
+   "autor": "(org.)",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-24",
+   "mat": "BRA",
+   "titulo": "A História do Brasil para Quem Tem Pressa",
+   "autor": "Marcos Costa",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação; opcional",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "BRA-25",
+   "mat": "BRA",
+   "titulo": "Curto-Circuito",
+   "autor": "Roberto Rockmann e Lúcio Mattos (a verificar)",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. O apagão de 2001–2002 contado por dentro",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 22,
+   "serie_original": 22
+  },
+  {
+   "cod": "BRA-26",
+   "mat": "BRA",
+   "titulo": "A Política Econômica Brasileira 2019–2022",
+   "autor": "Paulo Guedes e Adolfo Sachsida",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Relato dos próprios autores; ler como fonte primária de um lado",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "BRA-27",
+   "mat": "BRA",
+   "titulo": "Como Matar a Borboleta-Azul",
+   "autor": "Monica de Bolle",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Crônica da era Dilma; o contraponto ao livro do Guedes",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 37,
+   "serie_original": 37
+  },
+  {
+   "cod": "COM-01",
+   "mat": "COM",
+   "titulo": "As Armas da Persuasão",
+   "autor": "Robert Cialdini",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Porta de entrada: o clássico com base experimental",
+   "marca": "porta",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "COM-02",
+   "mat": "COM",
+   "titulo": "The Pyramid Principle",
+   "autor": "Barbara Minto",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "Sugestão: o método da McKinsey para escrever relatórios; direto no seu trabalho",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 9,
+   "serie_original": 9
+  },
+  {
+   "cod": "COM-03",
+   "mat": "COM",
+   "titulo": "Ideias que Colam",
+   "autor": "Chip e Dan Heath",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 32,
+   "serie_original": 32
+  },
+  {
+   "cod": "COM-04",
+   "mat": "COM",
+   "titulo": "Storytelling com Dados",
+   "autor": "Cole Nussbaumer Knaflic",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 32,
+   "serie_original": 32
+  },
+  {
+   "cod": "COM-05",
+   "mat": "COM",
+   "titulo": "Ogilvy sobre a Propaganda",
+   "autor": "David Ogilvy",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "COM-06",
+   "mat": "COM",
+   "titulo": "SPIN Selling",
+   "autor": "Neil Rackham",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "COM-07",
+   "mat": "COM",
+   "titulo": "Bird by Bird",
+   "autor": "Anne Lamott",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Escrita",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 32,
+   "serie_original": 32
+  },
+  {
+   "cod": "COM-08",
+   "mat": "COM",
+   "titulo": "Pense Rápido, Fale Melhor",
+   "autor": "Matt Abrahams",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Ver antes a palestra de Stanford",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-09",
+   "mat": "COM",
+   "titulo": "Supercomunicadores",
+   "autor": "Charles Duhigg",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-10",
+   "mat": "COM",
+   "titulo": "Palavras Mágicas",
+   "autor": "Jonah Berger",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-11",
+   "mat": "COM",
+   "titulo": "O Poder dos Quietos",
+   "autor": "Susan Cain",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-12",
+   "mat": "COM",
+   "titulo": "A Arte de Conquistar o Sim",
+   "autor": "Cialdini, Goldstein e Martin",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": "COM-01",
+   "nota": "Redundante com o Cialdini principal",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-13",
+   "mat": "COM",
+   "titulo": "Comece pelo Porquê",
+   "autor": "Simon Sinek",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Divulgação",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-14",
+   "mat": "COM",
+   "titulo": "The Ultimate Sales Machine",
+   "autor": "Chet Holmes",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-15",
+   "mat": "COM",
+   "titulo": "Surrounded by Idiots",
+   "autor": "Thomas Erikson",
+   "formato": "livro",
+   "robustez": 1,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Modelo DISC, sem base científica",
+   "marca": "resumao",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "COM-16",
+   "mat": "COM",
+   "titulo": "Negocie como se Sua Vida Dependesse Disso",
+   "autor": "Chris Voss e Tahl Raz",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Negociação aplicada",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "COM-17",
+   "mat": "COM",
+   "titulo": "Conversas Cruciais",
+   "autor": "Patterson, Grenny, McMillan e Switzler",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Conversas difíceis no trabalho",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 24,
+   "serie_original": 24
+  },
+  {
+   "cod": "COM-18",
+   "mat": "COM",
+   "titulo": "Brevidade Inteligente",
+   "autor": "VandeHei, Allen e Schwartz",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Escrever curto; direto para relatório",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 32,
+   "serie_original": 32
+  },
+  {
+   "cod": "FIL-01",
+   "mat": "FIL",
+   "titulo": "História da Filosofia Ocidental",
+   "autor": "Bertrand Russell",
+   "formato": "livro",
+   "robustez": 5,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Sugestão e porta de entrada: o panorama clássico, legível",
+   "marca": "sug",
+   "nivel": "Fundamental",
+   "leitura": "analítica",
+   "tempo": {
+    "min": 480,
+    "max": 720,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  },
+  {
+   "cod": "FIL-02",
+   "mat": "FIL",
+   "titulo": "Breve História de Quase Tudo",
+   "autor": "Bill Bryson",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Ciência para leigos, bem apurada",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  },
+  {
+   "cod": "FIL-03",
+   "mat": "FIL",
+   "titulo": "Como a Mente Funciona",
+   "autor": "Steven Pinker",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  },
+  {
+   "cod": "FIL-04",
+   "mat": "FIL",
+   "titulo": "The Geography of Thought",
+   "autor": "Richard Nisbett",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-05",
+   "mat": "FIL",
+   "titulo": "O Novo Iluminismo",
+   "autor": "Steven Pinker",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-06",
+   "mat": "FIL",
+   "titulo": "Os Anjos Bons da Nossa Natureza",
+   "autor": "Steven Pinker",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "FIL-05",
+   "nota": "Longo",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  },
+  {
+   "cod": "FIL-07",
+   "mat": "FIL",
+   "titulo": "Cícero (coletânea)",
+   "autor": "Cícero",
+   "formato": "livro",
+   "robustez": 4,
+   "facilidade": 2,
+   "pre": "FIL-01",
+   "nota": "",
+   "marca": null,
+   "nivel": "Fundamental",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  },
+  {
+   "cod": "FIL-08",
+   "mat": "FIL",
+   "titulo": "Ignorância: uma História Global",
+   "autor": "Peter Burke",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 3,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-09",
+   "mat": "FIL",
+   "titulo": "A Treatise on Efficacy",
+   "autor": "François Jullien",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 2,
+   "pre": "FIL-04",
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-10",
+   "mat": "FIL",
+   "titulo": "21 Lições para o Século 21",
+   "autor": "Yuval Noah Harari",
+   "formato": "livro",
+   "robustez": 3,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "",
+   "marca": null,
+   "nivel": "Médio",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-11",
+   "mat": "FIL",
+   "titulo": "Stoic Six Pack 6: The Cyrenaics",
+   "autor": "coletânea",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 2,
+   "pre": "FIL-01",
+   "nota": "",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": null,
+   "serie_original": null
+  },
+  {
+   "cod": "FIL-12",
+   "mat": "FIL",
+   "titulo": "Sapiens",
+   "autor": "Yuval Noah Harari",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 5,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Divulgação bem escrita; leitura de descanso",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 27,
+   "serie_original": 27
+  },
+  {
+   "cod": "FIL-13",
+   "mat": "FIL",
+   "titulo": "A Loteria na Filosofia",
+   "autor": "Renato Rodrigues Kinouchi",
+   "formato": "livro",
+   "robustez": 2,
+   "facilidade": 4,
+   "pre": null,
+   "nota": "Da estante do usuário, aprovado na Caixa em 2026-10-18. Probabilidade e acaso na filosofia; nicho",
+   "marca": "opc",
+   "nivel": "Eletiva",
+   "leitura": "inspecional",
+   "tempo": {
+    "min": 120,
+    "max": 180,
+    "fonte": "padrão"
+   },
+   "serie": 38,
+   "serie_original": 38
+  }
+ ],
+ "series": [
+  {
+   "n": 1,
+   "mats": [
+    "BEH"
+   ],
+   "itens": [
+    "BEH-02",
+    "BEH-03",
+    "BEH-09",
+    "BEH-10",
+    "BEH-27"
+   ],
+   "carga": 0.5,
+   "titulo": "Aprender a aprender: o essencial",
+   "abordagem": "inicial",
+   "resumo": "Antes do conteúdo, o método, em textos curtos (~3,5 h): como escolher problemas e trabalhar fundo (Hamming, Paul Graham), como aprender (Oakley), honestidade intelectual (Feynman) e como conhecer seus pontos fortes (Drucker). Um fim de semana só; logo depois vem o bloco essencial do analista, e os livros grandes do método ficam numa série própria mais adiante."
+  },
+  {
+   "n": 2,
+   "mats": [
+    "INV"
+   ],
+   "itens": [
+    "INV-02",
+    "INV-01",
+    "INV-05"
+   ],
+   "carga": 2.1,
+   "titulo": "Essencial 1 · Os princípios do value investing",
+   "abordagem": "inicial",
+   "resumo": "O que todo analista de ações deveria ter lido primeiro: a defesa do value investing por Buffett (Superinvestors), a síntese de Howard Marks e o clássico mais prático, Peter Lynch."
+  },
+  {
+   "n": 3,
+   "mats": [
+    "INV",
+    "MM"
+   ],
+   "itens": [
+    "INV-06",
+    "MM-02",
+    "MM-03",
+    "INV-04"
+   ],
+   "carga": 1.3,
+   "titulo": "Essencial 2 · Buffett e Munger na fonte",
+   "abordagem": "inicial",
+   "resumo": "Os dois na própria voz, do curto ao longo: a palestra de Buffett na Universidade da Flórida, as duas palestras-mãe de Munger (julgamento humano e modelos mentais) e as cartas de Buffett organizadas por tema."
+  },
+  {
+   "n": 4,
+   "mats": [
+    "BUS",
+    "INV"
+   ],
+   "itens": [
+    "BUS-01",
+    "BUS-10",
+    "INV-07",
+    "INV-25"
+   ],
+   "carga": 1.9,
+   "titulo": "Essencial 3 · O que faz uma grande empresa",
+   "abordagem": "inicial",
+   "resumo": "Qualidade de negócio e compounders: o que é estratégia (Porter), o que separa as empresas boas das excelentes (Collins), as 15 perguntas de Fisher sobre uma empresa e The Compounders, sobre por que algumas empresas compõem por décadas."
+  },
+  {
+   "n": 5,
+   "mats": [
+    "BUS"
+   ],
+   "itens": [
+    "BUS-03",
+    "BUS-04"
+   ],
+   "carga": 2.0,
+   "titulo": "Essencial 4 · Fossos: vantagem competitiva",
+   "abordagem": "intermediária",
+   "resumo": "As duas bases para avaliar se um fosso existe e dura: barreiras de entrada e economia de escala (Greenwald) e as sete fontes de poder (Helmer)."
+  },
+  {
+   "n": 6,
+   "mats": [
+    "FRA",
+    "INV"
+   ],
+   "itens": [
+    "FRA-06",
+    "INV-57",
+    "INV-15"
+   ],
+   "carga": 2.4,
+   "titulo": "Essencial 5 · Números: contabilidade e margem de segurança",
+   "abordagem": "intermediária",
+   "resumo": "O trabalho do analista nos números: como as empresas maquiam o balanço (Schilit, que você já começou), a margem de segurança de Klarman e como ler o que o preço da ação já embute (Expectations Investing)."
+  },
+  {
+   "n": 7,
+   "mats": [
+    "MM",
+    "INV"
+   ],
+   "itens": [
+    "MM-39",
+    "INV-03",
+    "INV-42"
+   ],
+   "carga": 0.6,
+   "titulo": "Essencial 6 · Decidir sob incerteza",
+   "abordagem": "intermediária",
+   "resumo": "Decisão aplicada ao investimento, em leituras curtas: Annie Duke (separar decisão de resultado), a seleção de memos de Howard Marks sobre risco e ciclo e Druckenmiller sobre investir primeiro e investigar depois."
+  },
+  {
+   "n": 8,
+   "mats": [
+    "BUS",
+    "IND"
+   ],
+   "itens": [
+    "BUS-09",
+    "IND-04"
+   ],
+   "carga": 1.4,
+   "titulo": "Essencial 7 · Biografias e alocadores de capital",
+   "abordagem": "intermediária",
+   "resumo": "As histórias que formam o olhar de investidor, em livros de tamanho razoável: os CEOs que eram alocadores de capital (The Outsiders) e a construção da Nike contada por Phil Knight. A biografia de Buffett, longa, fica na série da Berkshire."
+  },
+  {
+   "n": 9,
+   "mats": [
+    "COM",
+    "IND"
+   ],
+   "itens": [
+    "COM-02",
+    "IND-29",
+    "IND-01"
+   ],
+   "carga": 2.4,
+   "titulo": "Essencial 8 · O ofício: escrever e conhecer o setor",
+   "abordagem": "intermediária",
+   "resumo": "O dia a dia do analista: estruturar relatórios e e-mails pela conclusão (Minto), o caso PG&E (California Burning, sua cobertura: utilities) e como o mundo físico de energia e materiais funciona (Smil)."
+  },
+  {
+   "n": 10,
+   "mats": [
+    "BEH",
+    "INV",
+    "MM"
+   ],
+   "itens": [
+    "BEH-01",
+    "INV-08",
+    "INV-43",
+    "MM-13",
+    "MM-19",
+    "INV-24",
+    "INV-58",
+    "INV-27",
+    "INV-60"
+   ],
+   "carga": 3.6,
+   "titulo": "Munger e a Berkshire: aprofundar",
+   "abordagem": "inicial",
+   "resumo": "Depois das palestras do bloco essencial, o Munger completo (Poor Charlie's, o discurso na USC, o episódio do Acquired), Bevelin e Hagstrom sobre os modelos mentais, a vida de Buffett (A Bola de Neve, longa), a cultura da Berkshire (Margin of Trust) e o resumo de Hagstrom sobre Buffett (opcional)."
+  },
+  {
+   "n": 11,
+   "mats": [
+    "MM",
+    "BEH"
+   ],
+   "itens": [
+    "MM-01",
+    "BEH-08",
+    "MM-25",
+    "BEH-14"
+   ],
+   "carga": 2.2,
+   "titulo": "Aprender a aprender: os livros",
+   "abordagem": "inicial",
+   "resumo": "Os livros do método, depois de você já estar lendo: como ler um livro de verdade (Adler), trabalho profundo (Newport), aprender como um campeão (Waitzkin) e o estado de fluxo (Csikszentmihalyi). Saiu da Série 1 na revisão de 2026-10-24 para o começo ficar curto."
+  },
+  {
+   "n": 12,
+   "mats": [
+    "MM",
+    "MKT",
+    "BEH"
+   ],
+   "itens": [
+    "MM-38",
+    "MM-16",
+    "MM-12",
+    "MM-28",
+    "MKT-03",
+    "BEH-37"
+   ],
+   "carga": 1.8,
+   "titulo": "Vieses: como a mente erra",
+   "abordagem": "inicial",
+   "resumo": "Os vieses na fonte, depois do Kahneman do bloco essencial: a palestra dele, os papers com Tversky, Thaler, Ariely, o Montier aplicado ao investimento e Gladwell."
+  },
+  {
+   "n": 13,
+   "mats": [
+    "MM",
+    "INV"
+   ],
+   "itens": [
+    "MM-05",
+    "MM-06",
+    "MM-07",
+    "MM-14",
+    "INV-09"
+   ],
+   "carga": 2.6,
+   "titulo": "Sorte, habilidade e decisão",
+   "abordagem": "inicial",
+   "resumo": "Separar sorte de habilidade e prever melhor: Mauboussin (Success Equation, Pense Duas Vezes, More Than You Know), Superforecasting e o manual de análise da CIA (Heuer)."
+  },
+  {
+   "n": 14,
+   "mats": [
+    "BEH"
+   ],
+   "itens": [
+    "BEH-07",
+    "BEH-16",
+    "BEH-06",
+    "BEH-05",
+    "BEH-20"
+   ],
+   "carga": 3.5,
+   "titulo": "Estoicismo e sentido",
+   "abordagem": "inicial",
+   "resumo": "O temperamento do investidor e da vida: Sêneca e Marco Aurélio sobre tempo, controle e serenidade; Frankl sobre sentido; Wooden sobre disciplina. Leituras curtas, boas para o dia picado."
+  },
+  {
+   "n": 15,
+   "mats": [
+    "MM"
+   ],
+   "itens": [
+    "MM-10",
+    "MM-08",
+    "MM-09",
+    "MM-23",
+    "MM-22",
+    "MM-17",
+    "MM-18"
+   ],
+   "carga": 2.8,
+   "titulo": "Risco e incerteza",
+   "abordagem": "intermediária",
+   "resumo": "A história da ideia de risco (Bernstein), o acaso no dia a dia (Mlodinow), o tamanho da aposta (Kelly) e a obra de Taleb sobre cisnes negros, antifragilidade e ter a pele em jogo. Para não confundir o que é medido com o que importa."
+  },
+  {
+   "n": 16,
+   "mats": [
+    "BUS",
+    "INV"
+   ],
+   "itens": [
+    "BUS-02",
+    "INV-16",
+    "BUS-41"
+   ],
+   "carga": 1.2,
+   "titulo": "Estratégia e fossos",
+   "abordagem": "intermediária",
+   "resumo": "Aprofundar estratégia depois do bloco essencial: o Porter explicado por Joan Magretta, a Morningstar sobre fossos e Peter Thiel sobre monopólio."
+  },
+  {
+   "n": 17,
+   "mats": [
+    "MKT",
+    "INV"
+   ],
+   "itens": [
+    "MKT-01",
+    "MKT-02",
+    "INV-13",
+    "MKT-05",
+    "MKT-06",
+    "MKT-11",
+    "MKT-09"
+   ],
+   "carga": 4.3,
+   "titulo": "Ciclos, bolhas e crises",
+   "abordagem": "intermediária",
+   "resumo": "Como mercados sobem e quebram: 1929 por Galbraith, oito séculos de crises (Reinhart e Rogoff), o ciclo de Marks, as bolhas de Shiller e o tratado de Kindleberger. Para reconhecer o padrão quando ele se repete."
+  },
+  {
+   "n": 18,
+   "mats": [
+    "FRA",
+    "INV"
+   ],
+   "itens": [
+    "FRA-01",
+    "FRA-02",
+    "FRA-03",
+    "FRA-04",
+    "FRA-05",
+    "INV-34"
+   ],
+   "carga": 3.6,
+   "titulo": "Fraudes e escândalos de Wall Street",
+   "abordagem": "intermediária",
+   "resumo": "Os grandes casos contados por dentro: Enron, LTCM, o Jogo da Mentira, The Big Short, RJR Nabisco e o ex-presidente da SEC sobre o pequeno investidor."
+  },
+  {
+   "n": 19,
+   "mats": [
+    "INV",
+    "MKT"
+   ],
+   "itens": [
+    "INV-12",
+    "INV-22",
+    "INV-14",
+    "INV-23",
+    "MKT-21"
+   ],
+   "carga": 2.0,
+   "titulo": "Margem de segurança e valuation",
+   "abordagem": "intermediária",
+   "resumo": "Valuation na prática, depois do Klarman do bloco essencial: Greenwald, os dois Greenblatt, o checklist de Shearn e o manual da McKinsey."
+  },
+  {
+   "n": 20,
+   "mats": [
+    "BEH",
+    "BUS",
+    "MM"
+   ],
+   "itens": [
+    "BEH-04",
+    "BUS-07",
+    "BUS-08",
+    "BEH-11",
+    "BEH-13",
+    "BEH-12",
+    "MM-26",
+    "MM-27"
+   ],
+   "carga": 4.4,
+   "titulo": "Gestão e execução",
+   "abordagem": "intermediária",
+   "resumo": "Como gestores eficazes trabalham e decidem: Drucker, Andy Grove (Intel), Covey, os princípios de Dalio, Christensen sobre a vida e o checklist de Gawande. Útil para julgar a gestão das empresas e a sua própria."
+  },
+  {
+   "n": 21,
+   "mats": [
+    "INV",
+    "BUS"
+   ],
+   "itens": [
+    "INV-10",
+    "INV-11",
+    "INV-19",
+    "INV-20",
+    "INV-21",
+    "BUS-11"
+   ],
+   "carga": 2.4,
+   "titulo": "Quality e crescimento",
+   "abordagem": "intermediária",
+   "resumo": "O estilo quality, depois do Collins e do Compounders do bloco essencial: Quality Investing, Terry Smith, value na era digital, 100 Baggers, Gautam Baid e a crítica a esses estudos (O Efeito Halo)."
+  },
+  {
+   "n": 22,
+   "mats": [
+    "IND",
+    "BRA"
+   ],
+   "itens": [
+    "IND-06",
+    "IND-11",
+    "IND-09",
+    "BRA-25",
+    "IND-07"
+   ],
+   "carga": 2.6,
+   "titulo": "Energia e indústria: como o mundo físico funciona",
+   "abordagem": "intermediária",
+   "resumo": "Energia a fundo, depois de Smil e California Burning do bloco essencial: a história do petróleo e da transição (Yergin), os traders de commodities, o setor elétrico brasileiro e por que grandes obras atrasam."
+  },
+  {
+   "n": 23,
+   "mats": [
+    "MKT",
+    "INV"
+   ],
+   "itens": [
+    "MKT-24",
+    "INV-29",
+    "INV-28",
+    "INV-31",
+    "MKT-07",
+    "MKT-10",
+    "INV-59"
+   ],
+   "carga": 3.4,
+   "titulo": "Mercados: retorno, índices e fatores",
+   "abordagem": "intermediária",
+   "resumo": "O que a evidência diz sobre retorno de longo prazo: o passeio aleatório de Malkiel, o argumento dos índices (Bogle), Siegel, o ciclo das ações (Oppenheimer) e os fatores que funcionaram. O contraponto honesto ao stock picking."
+  },
+  {
+   "n": 24,
+   "mats": [
+    "COM",
+    "BEH"
+   ],
+   "itens": [
+    "COM-01",
+    "BEH-15",
+    "COM-16",
+    "COM-17",
+    "COM-06",
+    "COM-05"
+   ],
+   "carga": 3.0,
+   "titulo": "Persuadir e negociar",
+   "abordagem": "intermediária",
+   "resumo": "Influência com base experimental (Cialdini), relações (Carnegie), negociação de reféns aplicada (Voss), conversas difíceis, venda consultiva e propaganda (Ogilvy). Para defender uma tese e entender quem tenta te convencer."
+  },
+  {
+   "n": 25,
+   "mats": [
+    "MM"
+   ],
+   "itens": [
+    "MM-11",
+    "MM-24",
+    "MM-15",
+    "MM-20",
+    "MM-21"
+   ],
+   "carga": 2.0,
+   "titulo": "Sistemas, erro e mudar de ideia",
+   "abordagem": "intermediária",
+   "resumo": "Pensar em sistemas e em caos (Meadows, Gleick), ver o mundo pelos dados (Rosling) e a arte de errar e revisar opiniões (Schulz, Adam Grant). Fecha o bloco de Principles."
+  },
+  {
+   "n": 26,
+   "mats": [
+    "BUS",
+    "IND"
+   ],
+   "itens": [
+    "BUS-05",
+    "BUS-06",
+    "BUS-42",
+    "BUS-14",
+    "BUS-12",
+    "IND-10"
+   ],
+   "carga": 2.7,
+   "titulo": "Inovação e disrupção",
+   "abordagem": "intermediária",
+   "resumo": "Por que líderes caem: o dilema do inovador (do artigo ao livro), o DNA do inovador, a economia de redes, o ciclo de vida das empresas (Damodaran) e a cultura criativa da Pixar."
+  },
+  {
+   "n": 27,
+   "mats": [
+    "GEO",
+    "FIL"
+   ],
+   "itens": [
+    "GEO-40",
+    "GEO-01",
+    "GEO-11",
+    "GEO-13",
+    "FIL-12"
+   ],
+   "carga": 3.2,
+   "titulo": "Por que nações prosperam",
+   "abordagem": "intermediária",
+   "resumo": "Geografia, instituições e história longa: Armas, Germes e Aço, Acemoglu e Robinson (Nobel 2024), De Soto sobre propriedade e Sapiens. A base para pensar países e mercados emergentes, inclusive o Brasil."
+  },
+  {
+   "n": 28,
+   "mats": [
+    "MKT",
+    "INV",
+    "FRA"
+   ],
+   "itens": [
+    "MKT-04",
+    "MKT-25",
+    "INV-40",
+    "INV-41",
+    "FRA-07",
+    "INV-18",
+    "INV-39"
+   ],
+   "carga": 2.8,
+   "titulo": "Traders e gestores: como pensam",
+   "abordagem": "intermediária",
+   "resumo": "Entrevistas e histórias de quem gere dinheiro: Market Wizards, gestores brasileiros, a execução das ideias, a história dos hedge funds, o contrarianismo de Dreman e os mercados na Segunda Guerra."
+  },
+  {
+   "n": 29,
+   "mats": [
+    "BRA"
+   ],
+   "itens": [
+    "BRA-01",
+    "BRA-02",
+    "BRA-03",
+    "BRA-11"
+   ],
+   "carga": 4.0,
+   "titulo": "Brasil: história e formação",
+   "abordagem": "profunda",
+   "resumo": "Os clássicos para entender o país: Boris Fausto, Celso Furtado, a biografia de Schwarcz e Starling e Raízes do Brasil. Contexto de longo prazo para o que você analisa no dia a dia."
+  },
+  {
+   "n": 30,
+   "mats": [
+    "IND"
+   ],
+   "itens": [
+    "IND-05",
+    "IND-03",
+    "IND-02",
+    "IND-08"
+   ],
+   "carga": 3.4,
+   "titulo": "Histórias de empresas e de tecnologia",
+   "abordagem": "profunda",
+   "resumo": "Histórias de negócios que viraram clássicos: Business Adventures (o livro preferido de Buffett e Gates), o contêiner, a guerra dos chips e a Apple na China."
+  },
+  {
+   "n": 31,
+   "mats": [
+    "GEO"
+   ],
+   "itens": [
+    "GEO-02",
+    "GEO-41",
+    "GEO-03",
+    "GEO-04",
+    "GEO-25",
+    "GEO-16",
+    "GEO-15",
+    "GEO-14"
+   ],
+   "carga": 4.4,
+   "titulo": "História do pensamento econômico",
+   "abordagem": "profunda",
+   "resumo": "As grandes ideias de economia e seus debates: Heilbroner, Keynes contra Hayek, Friedman e o contraponto dos Skidelsky, Giannetti, Tirole e o desenho de mercados de Roth."
+  },
+  {
+   "n": 32,
+   "mats": [
+    "COM"
+   ],
+   "itens": [
+    "COM-18",
+    "COM-03",
+    "COM-04",
+    "COM-07"
+   ],
+   "carga": 1.6,
+   "titulo": "Escrever e apresentar",
+   "abordagem": "profunda",
+   "resumo": "Escrever e apresentar além da pirâmide de Minto: brevidade, ideias que colam, dados em gráficos e escrever com regularidade."
+  },
+  {
+   "n": 33,
+   "mats": [
+    "INV",
+    "MKT"
+   ],
+   "itens": [
+    "INV-30",
+    "INV-38",
+    "MKT-08",
+    "INV-32"
+   ],
+   "carga": 2.2,
+   "titulo": "Alocação de portfólio: o jeito institucional",
+   "abordagem": "profunda",
+   "resumo": "Como fundações e grandes alocadores montam carteiras: Bernstein, o modelo Yale de Swensen e a obra densa de Ilmanen sobre retornos esperados."
+  },
+  {
+   "n": 34,
+   "mats": [
+    "BRA"
+   ],
+   "itens": [
+    "BRA-04",
+    "BRA-09",
+    "BRA-10",
+    "BRA-05",
+    "BRA-06",
+    "BRA-12"
+   ],
+   "carga": 2.4,
+   "titulo": "Brasil: do Real ao debate econômico",
+   "abordagem": "profunda",
+   "resumo": "Os pais do Real contando como foi, Malan contra Delfim, o debate sobre por que o Brasil cresce pouco (Mendes contra Gala e Roncaglia) e a Odebrecht por dentro. Sempre os dois lados."
+  },
+  {
+   "n": 35,
+   "mats": [
+    "GEO"
+   ],
+   "itens": [
+    "GEO-05",
+    "GEO-12",
+    "GEO-06",
+    "GEO-09",
+    "GEO-08",
+    "GEO-10"
+   ],
+   "carga": 3.0,
+   "titulo": "Bancos centrais, moeda e geopolítica",
+   "abordagem": "profunda",
+   "resumo": "Quem manda no dinheiro e no mundo: bancos centrais (Irwin, Blinder), a China (Breakneck, Kevin Rudd), a ordem mundial de Kissinger e o risco às democracias."
+  },
+  {
+   "n": 36,
+   "mats": [
+    "BUS",
+    "INV"
+   ],
+   "itens": [
+    "BUS-13",
+    "BUS-15",
+    "INV-17",
+    "INV-54"
+   ],
+   "carga": 1.6,
+   "titulo": "Valuation avançado e alocação de capital",
+   "abordagem": "profunda",
+   "resumo": "Valuation avançado: Damodaran (narrativa e números), a armadilha das sinergias em aquisições, alocação de capital (Giroux) e a origem do fluxo de caixa descontado."
+  },
+  {
+   "n": 37,
+   "mats": [
+    "BRA"
+   ],
+   "itens": [
+    "BRA-07",
+    "BRA-08",
+    "BRA-26",
+    "BRA-27",
+    "BRA-13",
+    "BRA-14"
+   ],
+   "carga": 2.4,
+   "titulo": "Brasil recente: ideias em disputa",
+   "abordagem": "profunda",
+   "resumo": "Lisboa e Pessôa contra Laura Carvalho, a política econômica de 2019–2022, Monica de Bolle, as conversas com economistas e a crise fiscal e monetária. O Brasil dos últimos governos, em debate."
+  },
+  {
+   "n": 38,
+   "mats": [
+    "FIL"
+   ],
+   "itens": [
+    "FIL-01",
+    "FIL-02",
+    "FIL-03",
+    "FIL-06",
+    "FIL-07",
+    "FIL-13"
+   ],
+   "carga": 3.0,
+   "titulo": "Filosofia e ciência",
+   "abordagem": "profunda",
+   "resumo": "O panorama da filosofia ocidental (Russell), a ciência contada bem (Bryson), a mente e a violência ao longo da história (Pinker), Cícero e o acaso na filosofia."
+  },
+  {
+   "n": 39,
+   "mats": [
+    "GEO"
+   ],
+   "itens": [
+    "GEO-18",
+    "GEO-24",
+    "GEO-19",
+    "GEO-20",
+    "GEO-21"
+   ],
+   "carga": 3.2,
+   "titulo": "Economia nas fontes",
+   "abordagem": "profunda",
+   "resumo": "Os originais difíceis, depois de toda a base: Adam Smith e o contraponto de Reinert, a Teoria Geral de Keynes, a instabilidade de Minsky e Piketty sobre capital."
+  },
+  {
+   "n": 40,
+   "mats": [
+    "GEO",
+    "IND",
+    "INV"
+   ],
+   "itens": [
+    "GEO-17",
+    "IND-12",
+    "INV-55"
+   ],
+   "carga": 2.4,
+   "titulo": "Obras monumentais",
+   "abordagem": "profunda",
+   "resumo": "Três livros grandes para o fim: a ascensão e queda do crescimento americano (Gordon), o retrato do poder em Nova York (Caro) e a reflexividade de Soros."
+  }
+ ]
+}
