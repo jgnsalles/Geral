@@ -1,0 +1,2 @@
+# Opcional, mas recomendado: imita o navegador Chrome e reduz bloqueios do Cloudflare.
+curl_cffi>=0.7

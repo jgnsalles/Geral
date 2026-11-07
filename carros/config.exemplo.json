@@ -1,0 +1,26 @@
+{
+  "intervalo_segundos": 3,
+  "buscas": [
+    {
+      "nome": "Civic 2019-2021 SP",
+      "marca": "honda",
+      "modelo": "civic",
+      "estado": "sp",
+      "ano_min": 2019,
+      "ano_max": 2021,
+      "preco_max": 130000,
+      "km_max": 80000,
+      "versao_contem": "exl",
+      "paginas": 2,
+      "fipe_codigo": "014093-1",
+      "combustivel": "flex",
+      "fipe_manual": {}
+    },
+    {
+      "nome": "Busca colada do site",
+      "url": "https://www.webmotors.com.br/carros/estoque/toyota/corolla?tipoveiculo=carros&marca1=TOYOTA&modelo1=COROLLA",
+      "marca": "toyota",
+      "paginas": 1
+    }
+  ]
+}
