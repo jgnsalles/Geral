@@ -1,542 +1,542 @@
-ticker,cik,fin,name,src
-CTAS,723254,False,Cintas Corporation,ambos
-COF,927628,True,Capital One Financial Corporation,ambos
-GOOG,1652044,False,Alphabet Inc.,ambos
-DECK,910521,False,Deckers Outdoor Corporation,ambos
-ACGL,947484,True,Arch Capital Group Ltd.,ambos
-SPGI,64040,True,S&P Global Inc.,ambos
-AZN,901832,False,AstraZeneca PLC,planilha
-BAM,1937926,True,Brookfield Asset Management Ltd.,planilha
-POOL,945841,False,Pool Corporation,planilha
-ETN,1551182,False,Eaton Corporation plc,ambos
-FIVE,1177609,False,"Five Below, Inc.",planilha
-AAPL,320193,False,Apple Inc.,ambos
-ENTG,1101302,False,"Entegris, Inc.",planilha
-DAL,27904,False,"Delta Air Lines, Inc.",ambos
-EWBC,1069157,True,"East West Bancorp, Inc.",planilha
-AVGO,1730168,False,Broadcom Inc.,ambos
-NYT,71691,False,The New York Times Company,planilha
-WDC,106040,False,Western Digital Corporation,ambos
-DVA,927066,False,DaVita Inc.,ambos
-ISRG,1035267,False,"Intuitive Surgical, Inc.",ambos
-WAT,1000697,False,Waters Corporation,ambos
-SOFI,1818874,True,"SoFi Technologies, Inc.",planilha
-FERG,2011641,False,Ferguson Enterprises Inc.,ambos
-AON,315293,True,Aon plc,ambos
-CNI,16868,False,Canadian National Railway Company,planilha
-USB,36104,True,U.S. Bancorp,ambos
-ALLE,1579241,False,Allegion plc,ambos
-HOOD,1783879,True,"Robinhood Markets, Inc.",ambos
-SLB,87347,False,Slb N.V.,ambos
-VRTX,875320,False,Vertex Pharmaceuticals Incorporated,ambos
-LLY,59478,False,Eli Lilly and Company,ambos
-THC,70318,False,Tenet Healthcare Corporation,planilha
-ITW,49826,False,Illinois Tool Works Inc.,ambos
-RMD,943819,False,ResMed Inc.,ambos
-KR,56873,False,The Kroger Co.,ambos
-FN,1408710,False,Fabrinet,planilha
-SCHW,316709,True,The Charles Schwab Corporation,ambos
-ABNB,1559720,False,"Airbnb, Inc.",ambos
-RPRX,1802768,False,Royalty Pharma plc,planilha
-FICO,814547,False,Fair Isaac Corporation,ambos
-SYK,310764,False,Stryker Corporation,ambos
-NVDA,1045810,False,NVIDIA Corporation,ambos
-CHD,313927,False,"Church & Dwight Co., Inc.",ambos
-HPQ,47217,False,HP Inc.,ambos
-HCA,860730,False,"HCA Healthcare, Inc.",ambos
-HEI,46619,False,HEICO Corporation,planilha
-META,1326801,False,"Meta Platforms, Inc.",ambos
-MCD,63908,False,McDonald's Corporation,ambos
-WPM,1323404,False,Wheaton Precious Metals Corp.,planilha
-MA,1141391,True,Mastercard Incorporated,ambos
-WFC,72971,True,Wells Fargo & Company,ambos
-APO,1858681,True,"Apollo Global Management, Inc.",ambos
-VRSK,1442145,False,"Verisk Analytics, Inc.",ambos
-ADBE,796343,False,Adobe Inc.,ambos
-NSSC,69633,False,"Napco Security Technologies, Inc.",planilha
-FLEX,866374,False,Flex Ltd.,ambos
-IT,749251,False,"Gartner, Inc.",ambos
-DEO,835403,False,Diageo plc,planilha
-AMGN,318154,False,Amgen Inc.,ambos
-JPM,19617,True,JPMorgan Chase & Co.,ambos
-EBAY,1065088,False,eBay Inc.,ambos
-UL,217410,False,Unilever PLC,planilha
-WMT,104169,False,Walmart Inc.,ambos
-MEDP,1668397,False,"Medpace Holdings, Inc.",planilha
-LOW,60667,False,"Lowe's Companies, Inc.",ambos
-CLX,21076,False,The Clorox Company,ambos
-QLYS,1107843,False,"Qualys, Inc.",planilha
-IDXX,874716,False,"IDEXX Laboratories, Inc.",ambos
-TXN,97476,False,Texas Instruments Incorporated,ambos
-NKE,320187,False,"NIKE, Inc.",ambos
-PM,1413329,False,Philip Morris International Inc.,ambos
-ON,1097864,False,ON Semiconductor Corporation,ambos
-MPWR,1280452,False,"Monolithic Power Systems, Inc.",ambos
-DNOW,1599617,False,Dnow Inc.,planilha
-TDG,1260221,False,TransDigm Group Incorporated,ambos
-PKG,75677,False,Packaging Corporation of America,ambos
-IBKR,1381197,True,"Interactive Brokers Group, Inc.",ambos
-BR,1383312,False,"Broadridge Financial Solutions, Inc.",ambos
-HWM,4281,False,Howmet Aerospace Inc.,ambos
-NVR,906163,False,"NVR, Inc.",ambos
-CPRT,900075,False,"Copart, Inc.",ambos
-MOH,1179929,False,"Molina Healthcare, Inc.",planilha
-CAT,18230,False,Caterpillar Inc.,ambos
-TSCO,916365,False,Tractor Supply Company,ambos
-MSFT,789019,False,Microsoft Corporation,ambos
-PLTR,1321655,False,Palantir Technologies Inc.,ambos
-VRT,1674101,False,Vertiv Holdings Co,ambos
-YUM,1041061,False,"Yum! Brands, Inc.",ambos
-DPZ,1286681,False,"Domino's Pizza, Inc.",ambos
-CBRE,1138118,False,"CBRE Group, Inc.",ambos
-COST,909832,False,Costco Wholesale Corporation,ambos
-ASML,937966,False,ASML Holding N.V.,planilha
-CRUS,772406,False,"Cirrus Logic, Inc.",planilha
-JBL,898293,False,Jabil Inc.,ambos
-MCK,927653,False,McKesson Corporation,ambos
-HDB,1144967,True,HDFC Bank Limited,planilha
-AAON,824142,False,"AAON, Inc.",planilha
-HD,354950,False,"The Home Depot, Inc.",ambos
-CMG,1058090,False,"Chipotle Mexican Grill, Inc.",ambos
-LRN,1157408,False,"Stride, Inc.",planilha
-HLT,1585689,False,Hilton Worldwide Holdings Inc.,ambos
-ODFL,878927,False,"Old Dominion Freight Line, Inc.",ambos
-EXPD,746515,False,"Expeditors International of Washington, Inc.",ambos
-BKNG,1075531,False,Booking Holdings Inc.,ambos
-GS,886982,True,"The Goldman Sachs Group, Inc.",ambos
-ULTA,1403568,False,"Ulta Beauty, Inc.",ambos
-RELX,929869,False,RELX Plc,planilha
-MTD,1037646,False,Mettler-Toledo International Inc.,ambos
-EXP,918646,False,Eagle Materials Inc.,planilha
-GD,40533,False,General Dynamics Corporation,ambos
-KEYS,1601046,False,"Keysight Technologies, Inc.",ambos
-ONON,1858985,False,On Holding AG,planilha
-ROL,84839,False,"Rollins, Inc.",ambos
-APTV,1521332,False,Aptiv PLC,ambos
-RL,1037038,False,Ralph Lauren Corporation,ambos
-BLDR,1316835,False,"Builders FirstSource, Inc.",planilha
-DRI,940944,False,"Darden Restaurants, Inc.",ambos
-DOCS,1516513,False,"Doximity, Inc.",planilha
-KO,21344,False,The Coca-Cola Company,ambos
-APP,1751008,False,AppLovin Corporation,ambos
-STM,932787,False,STMicroelectronics N.V.,planilha
-ADP,8670,False,"Automatic Data Processing, Inc.",ambos
-MU,723125,False,"Micron Technology, Inc.",ambos
-JHX,1159152,False,James Hardie Industries plc,planilha
-BMI,9092,False,"Badger Meter, Inc.",planilha
-ABBV,1551152,False,AbbVie Inc.,ambos
-PG,80424,False,The Procter & Gamble Company,ambos
-TSEM,928876,False,Tower Semiconductor Ltd.,planilha
-NCLH,1513761,False,Norwegian Cruise Line Holdings Ltd.,ambos
-MRSH,62709,True,"Marsh & McLennan Companies, Inc.",ambos
-LMT,936468,False,Lockheed Martin Corporation,ambos
-MNST,865752,False,Monster Beverage Corporation,ambos
-FNV,1456346,False,Franco-Nevada Corporation,planilha
-WCN,1318220,False,"Waste Connections, Inc.",planilha
-HII,1501585,False,"Huntington Ingalls Industries, Inc.",ambos
-PYPL,1633917,True,"PayPal Holdings, Inc.",ambos
-UBER,1543151,False,"Uber Technologies, Inc.",ambos
-MCO,1059556,True,Moody's Corporation,ambos
-ADSK,769397,False,"Autodesk, Inc.",ambos
-QCOM,804328,False,QUALCOMM Incorporated,ambos
-NOC,1133421,False,Northrop Grumman Corporation,ambos
-RACE,1648416,False,Ferrari N.V.,planilha
-MAR,1048286,False,"Marriott International, Inc.",ambos
-ICE,1571949,True,"Intercontinental Exchange, Inc.",ambos
-AMZN,1018724,False,"Amazon.com, Inc.",ambos
-FAST,815556,False,Fastenal Company,ambos
-NDAQ,1120193,True,"Nasdaq, Inc.",ambos
-GPC,40987,False,Genuine Parts Company,ambos
-IBP,1580905,False,"Installed Building Products, Inc.",planilha
-MSCI,1408198,True,MSCI Inc.,ambos
-OTIS,1781335,False,Otis Worldwide Corporation,ambos
-BAC,70858,True,Bank of America Corporation,ambos
-AME,1037868,False,"AMETEK, Inc.",ambos
-SBUX,829224,False,Starbucks Corporation,ambos
-NFLX,1065280,False,"Netflix, Inc.",ambos
-V,1403161,True,Visa Inc.,ambos
-ANET,1596532,False,"Arista Networks, Inc.",ambos
-FSLR,1274494,False,"First Solar, Inc.",ambos
-LRCX,707549,False,Lam Research Corporation,ambos
-MANH,1056696,False,"Manhattan Associates, Inc.",planilha
-ZTS,1555280,False,Zoetis Inc.,ambos
-KNSL,1669162,True,"Kinsale Capital Group, Inc.",planilha
-MMM,66740,False,3M,sp500
-AOS,91142,False,A. O. Smith,sp500
-ABT,1800,False,Abbott Laboratories,sp500
-ACN,1467373,False,Accenture,sp500
-AMD,2488,False,Advanced Micro Devices,sp500
-AES,874761,False,AES Corporation,sp500
-AFL,4977,True,Aflac,sp500
-A,1090872,False,Agilent Technologies,sp500
-APD,2969,False,Air Products,sp500
-AKAM,1086222,False,Akamai Technologies,sp500
-ALB,915913,False,Albemarle Corporation,sp500
-ARE,1035443,False,Alexandria Real Estate Equities,sp500
-ALGN,1097149,False,Align Technology,sp500
-LNT,352541,False,Alliant Energy,sp500
-ALL,899051,True,Allstate,sp500
-MO,764180,False,Altria,sp500
-AMCR,1748790,False,Amcor,sp500
-AEE,1002910,False,Ameren,sp500
-AEP,4904,False,American Electric Power,sp500
-AXP,4962,True,American Express,sp500
-AIG,5272,True,American International Group,sp500
-AMT,1053507,False,American Tower,sp500
-AWK,1410636,False,American Water Works,sp500
-AMP,820027,True,Ameriprise Financial,sp500
-APH,820313,False,Amphenol,sp500
-ADI,6281,False,Analog Devices,sp500
-APA,1841666,False,APA Corporation,sp500
-AMAT,6951,False,Applied Materials,sp500
-ADM,7084,False,Archer Daniels Midland,sp500
-ARES,1176948,True,Ares Management,sp500
-AJG,354190,True,Arthur J. Gallagher & Co.,sp500
-AIZ,1267238,True,Assurant,sp500
-T,732717,False,AT&T,sp500
-ATO,731802,False,Atmos Energy,sp500
-AZO,866787,False,AutoZone,sp500
-AVY,8818,False,Avery Dennison,sp500
-AXON,1069183,False,Axon Enterprise,sp500
-BKR,1701605,False,Baker Hughes,sp500
-BALL,9389,False,Ball Corporation,sp500
-BAX,10456,False,Baxter International,sp500
-BDX,10795,False,Becton Dickinson,sp500
-BRK-B,1067983,True,Berkshire Hathaway,sp500
-BBY,764478,False,Best Buy,sp500
-TECH,842023,False,Bio-Techne,sp500
-BIIB,875045,False,Biogen,sp500
-BLK,2012383,True,BlackRock,sp500
-BX,1393818,True,Blackstone Inc.,sp500
-XYZ,1512673,True,"Block, Inc.",sp500
-BE,1664703,False,Bloom Energy,sp500
-BNY,1390777,True,BNY Mellon,sp500
-BA,12927,False,Boeing,sp500
-BSX,885725,False,Boston Scientific,sp500
-BMY,14272,False,Bristol Myers Squibb,sp500
-BRO,79282,True,Brown & Brown,sp500
-BF-B,14693,False,Brown–Forman,sp500
-BG,1996862,False,Bunge Global,sp500
-BXP,1037540,False,"BXP, Inc.",sp500
-CHRW,1043277,False,C.H. Robinson,sp500
-CDNS,813672,False,Cadence Design Systems,sp500
-CPT,906345,False,Camden Property Trust,sp500
-CAH,721371,False,Cardinal Health,sp500
-CCL,815097,False,Carnival Corporation,sp500
-CARR,1783180,False,Carrier Global,sp500
-CVNA,1690820,False,Carvana,sp500
-CASY,726958,False,Casey's,sp500
-CBOE,1374310,True,Cboe Global Markets,sp500
-CDW,1402057,False,CDW Corporation,sp500
-COR,1140859,False,Cencora,sp500
-CNC,1071739,False,Centene Corporation,sp500
-CNP,1130310,False,CenterPoint Energy,sp500
-CF,1324404,False,CF Industries,sp500
-CRL,1100682,False,Charles River Laboratories,sp500
-CHTR,1091667,False,Charter Communications,sp500
-CVX,93410,False,Chevron Corporation,sp500
-CB,896159,True,Chubb Limited,sp500
-CIEN,936395,False,Ciena,sp500
-CI,1739940,False,Cigna,sp500
-CINF,20286,True,Cincinnati Financial,sp500
-CSCO,858877,False,Cisco,sp500
-C,831001,True,Citigroup,sp500
-CFG,759944,True,Citizens Financial Group,sp500
-CME,1156375,True,CME Group,sp500
-CMS,811156,False,CMS Energy,sp500
-CTSH,1058290,False,Cognizant,sp500
-COHR,820318,False,Coherent Corp.,sp500
-COIN,1679788,True,Coinbase,sp500
-CL,21665,False,Colgate-Palmolive,sp500
-CMCSA,1166691,False,Comcast,sp500
-FIX,1035983,False,Comfort Systems USA,sp500
-COP,1163165,False,ConocoPhillips,sp500
-ED,1047862,False,Consolidated Edison,sp500
-STZ,16918,False,Constellation Brands,sp500
-CEG,1868275,False,Constellation Energy,sp500
-COO,711404,False,Cooper Companies (The),sp500
-GLW,24741,False,Corning Inc.,sp500
-CPAY,1175454,True,Corpay,sp500
-CSGP,1057352,False,CoStar Group,sp500
-CRH,849395,False,CRH plc,sp500
-CRWD,1535527,False,CrowdStrike,sp500
-CCI,1051470,False,Crown Castle,sp500
-CSX,277948,False,CSX Corporation,sp500
-CMI,26172,False,Cummins,sp500
-CVS,64803,False,CVS Health,sp500
-DHR,313616,False,Danaher Corporation,sp500
-DDOG,1561550,False,Datadog,sp500
-DE,315189,False,Deere & Company,sp500
-DELL,1571996,False,Dell Technologies,sp500
-DVN,1090012,False,Devon Energy,sp500
-DXCM,1093557,False,Dexcom,sp500
-FANG,1539838,False,Diamondback Energy,sp500
-DLR,1297996,False,Digital Realty,sp500
-DG,29534,False,Dollar General,sp500
-DLTR,935703,False,Dollar Tree,sp500
-D,715957,False,Dominion Energy,sp500
-DASH,1792789,False,DoorDash,sp500
-DOV,29905,False,Dover Corporation,sp500
-DOW,1751788,False,Dow Inc.,sp500
-DHI,882184,False,D. R. Horton,sp500
-DTE,936340,False,DTE Energy,sp500
-DUK,1326160,False,Duke Energy,sp500
-DD,1666700,False,DuPont,sp500
-ECHO,1415404,False,EchoStar,sp500
-ECL,31462,False,Ecolab,sp500
-EIX,827052,False,Edison International,sp500
-EW,1099800,False,Edwards Lifesciences,sp500
-ELV,1156039,False,Elevance Health,sp500
-EME,105634,False,Emcor,sp500
-EMR,32604,False,Emerson Electric,sp500
-ETR,65984,False,Entergy,sp500
-EOG,821189,False,EOG Resources,sp500
-EQT,33213,False,EQT Corporation,sp500
-EFX,33185,False,Equifax,sp500
-EQIX,1101239,False,Equinix,sp500
-ERIE,922621,True,Erie Indemnity,sp500
-ESS,920522,False,Essex Property Trust,sp500
-EL,1001250,False,Estée Lauder Companies (The),sp500
-EG,1095073,True,Everest Group,sp500
-EVRG,1711269,False,Evergy,sp500
-P,1474432,False,Everpure,sp500
-ES,72741,False,Eversource Energy,sp500
-EXC,1109357,False,Exelon,sp500
-EXE,895126,False,Expand Energy,sp500
-EXPE,1324424,False,Expedia Group,sp500
-EXR,1289490,False,Extra Space Storage,sp500
-XOM,2115436,False,ExxonMobil,sp500
-FFIV,1048695,False,"F5, Inc.",sp500
-FDS,1013237,True,FactSet,sp500
-FRT,34903,False,Federal Realty Investment Trust,sp500
-FDX,1048911,False,FedEx,sp500
-FDXF,2082247,False,FedEx Freight,sp500
-FIS,1136893,True,Fidelity National Information Services,sp500
-FITB,35527,True,Fifth Third Bancorp,sp500
-FE,1031296,False,FirstEnergy,sp500
-FISV,798354,True,Fiserv,sp500
-F,37996,False,Ford Motor Company,sp500
-FTNT,1262039,False,Fortinet,sp500
-FTV,1659166,False,Fortive,sp500
-FOXA,1754301,False,Fox Corporation (Class A),sp500
-BEN,38777,True,Franklin Resources,sp500
-FCX,831259,False,Freeport-McMoRan,sp500
-GRMN,1121788,False,Garmin,sp500
-GE,40545,False,GE Aerospace,sp500
-GEHC,1932393,False,GE HealthCare,sp500
-GEV,1996810,False,GE Vernova,sp500
-GEN,849399,False,Gen Digital,sp500
-GNRC,1474735,False,Generac,sp500
-GIS,40704,False,General Mills,sp500
-GM,1467858,False,General Motors,sp500
-GILD,882095,False,Gilead Sciences,sp500
-GPN,1123360,True,Global Payments,sp500
-GL,320335,True,Globe Life,sp500
-GDDY,1609711,False,GoDaddy,sp500
-HAL,45012,False,Halliburton,sp500
-HIG,874766,True,Hartford (The),sp500
-HAS,46080,False,Hasbro,sp500
-DOC,765880,False,Healthpeak Properties,sp500
-HSIC,1000228,False,Henry Schein,sp500
-HSY,47111,False,Hershey Company (The),sp500
-HPE,1645590,False,Hewlett Packard Enterprise,sp500
-HONA,2089271,False,Honeywell Aerospace,sp500
-HON,773840,False,Honeywell Technologies,sp500
-HRL,48465,False,Hormel Foods,sp500
-HST,1070750,False,Host Hotels & Resorts,sp500
-HUBB,48898,False,Hubbell Incorporated,sp500
-HUM,49071,False,Humana,sp500
-HBAN,49196,True,Huntington Bancshares,sp500
-IBM,51143,False,IBM,sp500
-IEX,832101,False,IDEX Corporation,sp500
-ILMN,1110803,False,"Illumina, Inc.",sp500
-INCY,879169,False,Incyte,sp500
-IR,1699150,False,Ingersoll Rand,sp500
-PODD,1145197,False,Insulet Corporation,sp500
-INTC,50863,False,Intel,sp500
-IFF,51253,False,International Flavors & Fragrances,sp500
-IP,51434,False,International Paper,sp500
-INTU,896878,False,Intuit,sp500
-IVZ,914208,True,Invesco,sp500
-INVH,1687229,False,Invitation Homes,sp500
-IQV,1478242,False,IQVIA,sp500
-IRM,1020569,False,Iron Mountain,sp500
-JBHT,728535,False,J.B. Hunt,sp500
-JKHY,779152,True,Jack Henry & Associates,sp500
-J,52988,False,Jacobs Solutions,sp500
-JNJ,200406,False,Johnson & Johnson,sp500
-JCI,833444,False,Johnson Controls,sp500
-KDP,1418135,False,Keurig Dr Pepper,sp500
-KEY,91576,True,KeyCorp,sp500
-KMB,55785,False,Kimberly-Clark,sp500
-KIM,879101,False,Kimco Realty,sp500
-KMI,1506307,False,Kinder Morgan,sp500
-KKR,1404912,True,KKR & Co.,sp500
-KLAC,319201,False,KLA Corporation,sp500
-KHC,1637459,False,Kraft Heinz,sp500
-LHX,202058,False,L3Harris,sp500
-LH,920148,False,Labcorp,sp500
-LVS,1300514,False,Las Vegas Sands,sp500
-LDOS,1336920,False,Leidos,sp500
-LEN,920760,False,Lennar,sp500
-LII,1069202,False,Lennox International,sp500
-LIN,1707925,False,Linde plc,sp500
-LYV,1335258,False,Live Nation Entertainment,sp500
-L,60086,True,Loews Corporation,sp500
-LULU,1397187,False,Lululemon Athletica,sp500
-LITE,1633978,False,Lumentum,sp500
-LYB,1489393,False,LyondellBasell,sp500
-MTB,36270,True,M&T Bank,sp500
-MPC,1510295,False,Marathon Petroleum,sp500
-MLM,916076,False,Martin Marietta Materials,sp500
-MRVL,1835632,False,Marvell Technology,sp500
-MAS,62996,False,Masco,sp500
-MKC,63754,False,McCormick & Company,sp500
-MDT,1613103,False,Medtronic,sp500
-MRK,310158,False,Merck & Co.,sp500
-MET,1099219,True,MetLife,sp500
-MGM,789570,False,MGM Resorts,sp500
-MCHP,827054,False,Microchip Technology,sp500
-MAA,912595,False,Mid-America Apartment Communities,sp500
-MRNA,1682852,False,Moderna,sp500
-MDLZ,1103982,False,Mondelez International,sp500
-MS,895421,True,Morgan Stanley,sp500
-MOS,1285785,False,Mosaic Company (The),sp500
-MSI,68505,False,Motorola Solutions,sp500
-NTAP,1002047,False,NetApp,sp500
-NEM,1164727,False,Newmont,sp500
-NWSA,1564708,False,News Corp (Class A),sp500
-NEE,753308,False,NextEra Energy,sp500
-NI,1111711,False,NiSource,sp500
-NDSN,72331,False,Nordson Corporation,sp500
-NSC,702165,False,Norfolk Southern,sp500
-NTRS,73124,True,Northern Trust,sp500
-NRG,1013871,False,NRG Energy,sp500
-NUE,73309,False,Nucor,sp500
-NXPI,1413447,False,NXP Semiconductors,sp500
-ORLY,898173,False,O'Reilly Automotive,sp500
-OXY,797468,False,Occidental Petroleum,sp500
-OKTA,1660134,False,"Okta, Inc.",sp500
-OMC,29989,False,Omnicom Group,sp500
-OKE,1039684,False,Oneok,sp500
-ORCL,1341439,False,Oracle Corporation,sp500
-PCAR,75362,False,Paccar,sp500
-PANW,1327567,False,Palo Alto Networks,sp500
-PH,76334,False,Parker Hannifin,sp500
-PAYX,723531,False,Paychex,sp500
-PNR,77360,False,Pentair,sp500
-PEP,77476,False,PepsiCo,sp500
-PFE,78003,False,Pfizer,sp500
-PCG,1004980,False,PG&E Corporation,sp500
-PSX,1534701,False,Phillips 66,sp500
-PNW,764622,False,Pinnacle West Capital,sp500
-PNC,713676,True,PNC Financial Services,sp500
-PPG,79879,False,PPG Industries,sp500
-PPL,922224,False,PPL Corporation,sp500
-PFG,1126328,True,Principal Financial Group,sp500
-PGR,80661,True,Progressive Corporation,sp500
-PLD,1045609,False,Prologis,sp500
-PRU,1137774,True,Prudential Financial,sp500
-PTC,857005,False,PTC Inc.,sp500
-PEG,788784,False,Public Service Enterprise Group,sp500
-PSA,1393311,False,Public Storage,sp500
-PHM,822416,False,PulteGroup,sp500
-Q,2058873,False,Qnity Electronics,sp500
-PWR,1050915,False,Quanta Services,sp500
-DGX,1022079,False,Quest Diagnostics,sp500
-RJF,720005,True,Raymond James Financial,sp500
-RDDT,1713445,False,Reddit,sp500
-O,726728,False,Realty Income,sp500
-REG,910606,False,Regency Centers,sp500
-REGN,872589,False,Regeneron Pharmaceuticals,sp500
-RF,1281761,True,Regions Financial Corporation,sp500
-RSG,1060391,False,Republic Services,sp500
-RVTY,31791,False,Revvity,sp500
-ROK,1024478,False,Rockwell Automation,sp500
-ROP,882835,False,Roper Technologies,sp500
-ROST,745732,False,Ross Stores,sp500
-RCL,884887,False,Royal Caribbean Group,sp500
-RTX,101829,False,RTX Corporation,sp500
-CRM,1108524,False,Salesforce,sp500
-SNDK,2023554,False,Sandisk,sp500
-SBAC,1034054,False,SBA Communications,sp500
-STX,1137789,False,Seagate Technology,sp500
-SRE,1032208,False,Sempra,sp500
-NOW,1373715,False,ServiceNow,sp500
-SHW,89800,False,Sherwin-Williams,sp500
-SPG,1063761,False,Simon Property Group,sp500
-SKYD,2041610,False,Skydance,sp500
-SWKS,4127,False,Skyworks Solutions,sp500
-SJM,91419,False,J.M. Smucker Company (The),sp500
-SW,2005951,False,Smurfit Westrock,sp500
-SNA,91440,False,Snap-on,sp500
-SOLV,1964738,False,Solventum,sp500
-SO,92122,False,Southern Company,sp500
-LUV,92380,False,Southwest Airlines,sp500
-SWK,93556,False,Stanley Black & Decker,sp500
-STT,93751,True,State Street Corporation,sp500
-STLD,1022671,False,Steel Dynamics,sp500
-STE,1757898,False,Steris,sp500
-SMCI,1375365,False,Supermicro,sp500
-SYF,1601712,True,Synchrony Financial,sp500
-SNPS,883241,False,Synopsys,sp500
-SYY,96021,False,Sysco,sp500
-TMUS,1283699,False,T-Mobile US,sp500
-TROW,1113169,True,T. Rowe Price,sp500
-TTWO,946581,False,Take-Two Interactive,sp500
-TPR,1116132,False,"Tapestry, Inc.",sp500
-TRGP,1389170,False,Targa Resources,sp500
-TGT,27419,False,Target Corporation,sp500
-TEL,1385157,False,TE Connectivity,sp500
-TDY,1094285,False,Teledyne Technologies,sp500
-TER,97210,False,Teradyne,sp500
-TSLA,1318605,False,"Tesla, Inc.",sp500
-TPL,1811074,False,Texas Pacific Land Corporation,sp500
-TXT,217346,False,Textron,sp500
-TMO,97745,False,Thermo Fisher Scientific,sp500
-TJX,109198,False,TJX Companies,sp500
-TKO,1973266,False,TKO Group Holdings,sp500
-TT,1466258,False,Trane Technologies,sp500
-TRV,86312,True,Travelers Companies (The),sp500
-TRMB,864749,False,Trimble Inc.,sp500
-TFC,92230,True,Truist Financial,sp500
-TWLO,1447669,False,Twilio,sp500
-TYL,860731,False,Tyler Technologies,sp500
-TSN,100493,False,Tyson Foods,sp500
-UDR,74208,False,"UDR, Inc.",sp500
-UNP,100885,False,Union Pacific Corporation,sp500
-UAL,100517,False,United Airlines Holdings,sp500
-UPS,1090727,False,United Parcel Service,sp500
-URI,1067701,False,United Rentals,sp500
-UNH,731766,False,UnitedHealth Group,sp500
-UHS,352915,False,Universal Health Services,sp500
-VLO,1035002,False,Valero Energy,sp500
-VEEV,1393052,False,Veeva Systems,sp500
-VTR,740260,False,Ventas,sp500
-VLTO,1967680,False,Veralto,sp500
-VRSN,1014473,False,Verisign,sp500
-VZ,732712,False,Verizon,sp500
-VTRS,1792044,False,Viatris,sp500
-VICI,1705696,False,Vici Properties,sp500
-VST,1692819,False,Vistra Corp.,sp500
-VMRK,906107,False,Vivmark Residential,sp500
-VMC,1396009,False,Vulcan Materials Company,sp500
-VYLR,2128626,False,Vylor,sp500
-WRB,11544,True,W. R. Berkley Corporation,sp500
-GWW,277135,False,W. W. Grainger,sp500
-WAB,943452,False,Wabtec,sp500
-DIS,1744489,False,Walt Disney Company (The),sp500
-WM,823768,False,Waste Management,sp500
-WEC,783325,False,WEC Energy Group,sp500
-WELL,766704,False,Welltower,sp500
-WST,105770,False,West Pharmaceutical Services,sp500
-WY,106535,False,Weyerhaeuser,sp500
-WSM,719955,False,"Williams-Sonoma, Inc.",sp500
-WMB,107263,False,Williams Companies,sp500
-WTW,1140536,True,Willis Towers Watson,sp500
-WDAY,1327811,False,"Workday, Inc.",sp500
-WYNN,1174922,False,Wynn Resorts,sp500
-XEL,72903,False,Xcel Energy,sp500
-XYL,1524472,False,Xylem Inc.,sp500
-ZBRA,877212,False,Zebra Technologies,sp500
-ZBH,1136869,False,Zimmer Biomet,sp500
+ticker,cik,fin,name,src,sector
+CTAS,723254,False,Cintas Corporation,ambos,Industrials
+COF,927628,True,Capital One Financial Corporation,ambos,Financials
+GOOG,1652044,False,Alphabet Inc.,ambos,Communication Services
+DECK,910521,False,Deckers Outdoor Corporation,ambos,Consumer Discretionary
+ACGL,947484,True,Arch Capital Group Ltd.,ambos,Financials
+SPGI,64040,True,S&P Global Inc.,ambos,Financials
+AZN,901832,False,AstraZeneca PLC,planilha,Health Care
+BAM,1937926,True,Brookfield Asset Management Ltd.,planilha,Financials
+POOL,945841,False,Pool Corporation,planilha,Industrials
+ETN,1551182,False,Eaton Corporation plc,ambos,Industrials
+FIVE,1177609,False,"Five Below, Inc.",planilha,Consumer Discretionary
+AAPL,320193,False,Apple Inc.,ambos,Information Technology
+ENTG,1101302,False,"Entegris, Inc.",planilha,Information Technology
+DAL,27904,False,"Delta Air Lines, Inc.",ambos,Industrials
+EWBC,1069157,True,"East West Bancorp, Inc.",planilha,Financials
+AVGO,1730168,False,Broadcom Inc.,ambos,Information Technology
+NYT,71691,False,The New York Times Company,planilha,Communication Services
+WDC,106040,False,Western Digital Corporation,ambos,Information Technology
+DVA,927066,False,DaVita Inc.,ambos,Health Care
+ISRG,1035267,False,"Intuitive Surgical, Inc.",ambos,Health Care
+WAT,1000697,False,Waters Corporation,ambos,Health Care
+SOFI,1818874,True,"SoFi Technologies, Inc.",planilha,Financials
+FERG,2011641,False,Ferguson Enterprises Inc.,ambos,Industrials
+AON,315293,True,Aon plc,ambos,Financials
+CNI,16868,False,Canadian National Railway Company,planilha,Industrials
+USB,36104,True,U.S. Bancorp,ambos,Financials
+ALLE,1579241,False,Allegion plc,ambos,Industrials
+HOOD,1783879,True,"Robinhood Markets, Inc.",ambos,Financials
+SLB,87347,False,Slb N.V.,ambos,Energy
+VRTX,875320,False,Vertex Pharmaceuticals Incorporated,ambos,Health Care
+LLY,59478,False,Eli Lilly and Company,ambos,Health Care
+THC,70318,False,Tenet Healthcare Corporation,planilha,Health Care
+ITW,49826,False,Illinois Tool Works Inc.,ambos,Industrials
+RMD,943819,False,ResMed Inc.,ambos,Health Care
+KR,56873,False,The Kroger Co.,ambos,Consumer Staples
+FN,1408710,False,Fabrinet,planilha,Information Technology
+SCHW,316709,True,The Charles Schwab Corporation,ambos,Financials
+ABNB,1559720,False,"Airbnb, Inc.",ambos,Consumer Discretionary
+RPRX,1802768,False,Royalty Pharma plc,planilha,Health Care
+FICO,814547,False,Fair Isaac Corporation,ambos,Information Technology
+SYK,310764,False,Stryker Corporation,ambos,Health Care
+NVDA,1045810,False,NVIDIA Corporation,ambos,Information Technology
+CHD,313927,False,"Church & Dwight Co., Inc.",ambos,Consumer Staples
+HPQ,47217,False,HP Inc.,ambos,Information Technology
+HCA,860730,False,"HCA Healthcare, Inc.",ambos,Health Care
+HEI,46619,False,HEICO Corporation,planilha,Industrials
+META,1326801,False,"Meta Platforms, Inc.",ambos,Communication Services
+MCD,63908,False,McDonald's Corporation,ambos,Consumer Discretionary
+WPM,1323404,False,Wheaton Precious Metals Corp.,planilha,Materials
+MA,1141391,True,Mastercard Incorporated,ambos,Financials
+WFC,72971,True,Wells Fargo & Company,ambos,Financials
+APO,1858681,True,"Apollo Global Management, Inc.",ambos,Financials
+VRSK,1442145,False,"Verisk Analytics, Inc.",ambos,Industrials
+ADBE,796343,False,Adobe Inc.,ambos,Information Technology
+NSSC,69633,False,"Napco Security Technologies, Inc.",planilha,Industrials
+FLEX,866374,False,Flex Ltd.,ambos,Information Technology
+IT,749251,False,"Gartner, Inc.",ambos,Information Technology
+DEO,835403,False,Diageo plc,planilha,Consumer Staples
+AMGN,318154,False,Amgen Inc.,ambos,Health Care
+JPM,19617,True,JPMorgan Chase & Co.,ambos,Financials
+EBAY,1065088,False,eBay Inc.,ambos,Consumer Discretionary
+UL,217410,False,Unilever PLC,planilha,Consumer Staples
+WMT,104169,False,Walmart Inc.,ambos,Consumer Staples
+MEDP,1668397,False,"Medpace Holdings, Inc.",planilha,Health Care
+LOW,60667,False,"Lowe's Companies, Inc.",ambos,Consumer Discretionary
+CLX,21076,False,The Clorox Company,ambos,Consumer Staples
+QLYS,1107843,False,"Qualys, Inc.",planilha,Information Technology
+IDXX,874716,False,"IDEXX Laboratories, Inc.",ambos,Health Care
+TXN,97476,False,Texas Instruments Incorporated,ambos,Information Technology
+NKE,320187,False,"NIKE, Inc.",ambos,Consumer Discretionary
+PM,1413329,False,Philip Morris International Inc.,ambos,Consumer Staples
+ON,1097864,False,ON Semiconductor Corporation,ambos,Information Technology
+MPWR,1280452,False,"Monolithic Power Systems, Inc.",ambos,Information Technology
+DNOW,1599617,False,Dnow Inc.,planilha,Industrials
+TDG,1260221,False,TransDigm Group Incorporated,ambos,Industrials
+PKG,75677,False,Packaging Corporation of America,ambos,Materials
+IBKR,1381197,True,"Interactive Brokers Group, Inc.",ambos,Financials
+BR,1383312,False,"Broadridge Financial Solutions, Inc.",ambos,Industrials
+HWM,4281,False,Howmet Aerospace Inc.,ambos,Industrials
+NVR,906163,False,"NVR, Inc.",ambos,Consumer Discretionary
+CPRT,900075,False,"Copart, Inc.",ambos,Industrials
+MOH,1179929,False,"Molina Healthcare, Inc.",planilha,Health Care
+CAT,18230,False,Caterpillar Inc.,ambos,Industrials
+TSCO,916365,False,Tractor Supply Company,ambos,Consumer Discretionary
+MSFT,789019,False,Microsoft Corporation,ambos,Information Technology
+PLTR,1321655,False,Palantir Technologies Inc.,ambos,Information Technology
+VRT,1674101,False,Vertiv Holdings Co,ambos,Industrials
+YUM,1041061,False,"Yum! Brands, Inc.",ambos,Consumer Discretionary
+DPZ,1286681,False,"Domino's Pizza, Inc.",ambos,Consumer Discretionary
+CBRE,1138118,False,"CBRE Group, Inc.",ambos,Real Estate
+COST,909832,False,Costco Wholesale Corporation,ambos,Consumer Staples
+ASML,937966,False,ASML Holding N.V.,planilha,Information Technology
+CRUS,772406,False,"Cirrus Logic, Inc.",planilha,Information Technology
+JBL,898293,False,Jabil Inc.,ambos,Information Technology
+MCK,927653,False,McKesson Corporation,ambos,Health Care
+HDB,1144967,True,HDFC Bank Limited,planilha,Financials
+AAON,824142,False,"AAON, Inc.",planilha,Industrials
+HD,354950,False,"The Home Depot, Inc.",ambos,Consumer Discretionary
+CMG,1058090,False,"Chipotle Mexican Grill, Inc.",ambos,Consumer Discretionary
+LRN,1157408,False,"Stride, Inc.",planilha,Consumer Staples
+HLT,1585689,False,Hilton Worldwide Holdings Inc.,ambos,Consumer Discretionary
+ODFL,878927,False,"Old Dominion Freight Line, Inc.",ambos,Industrials
+EXPD,746515,False,"Expeditors International of Washington, Inc.",ambos,Industrials
+BKNG,1075531,False,Booking Holdings Inc.,ambos,Consumer Discretionary
+GS,886982,True,"The Goldman Sachs Group, Inc.",ambos,Financials
+ULTA,1403568,False,"Ulta Beauty, Inc.",ambos,Consumer Discretionary
+RELX,929869,False,RELX Plc,planilha,Industrials
+MTD,1037646,False,Mettler-Toledo International Inc.,ambos,Health Care
+EXP,918646,False,Eagle Materials Inc.,planilha,Materials
+GD,40533,False,General Dynamics Corporation,ambos,Industrials
+KEYS,1601046,False,"Keysight Technologies, Inc.",ambos,Information Technology
+ONON,1858985,False,On Holding AG,planilha,Consumer Discretionary
+ROL,84839,False,"Rollins, Inc.",ambos,Industrials
+APTV,1521332,False,Aptiv PLC,ambos,Consumer Discretionary
+RL,1037038,False,Ralph Lauren Corporation,ambos,Consumer Discretionary
+BLDR,1316835,False,"Builders FirstSource, Inc.",planilha,Materials
+DRI,940944,False,"Darden Restaurants, Inc.",ambos,Consumer Discretionary
+DOCS,1516513,False,"Doximity, Inc.",planilha,Health Care
+KO,21344,False,The Coca-Cola Company,ambos,Consumer Staples
+APP,1751008,False,AppLovin Corporation,ambos,Communication Services
+STM,932787,False,STMicroelectronics N.V.,planilha,Information Technology
+ADP,8670,False,"Automatic Data Processing, Inc.",ambos,Industrials
+MU,723125,False,"Micron Technology, Inc.",ambos,Information Technology
+JHX,1159152,False,James Hardie Industries plc,planilha,Materials
+BMI,9092,False,"Badger Meter, Inc.",planilha,Industrials
+ABBV,1551152,False,AbbVie Inc.,ambos,Health Care
+PG,80424,False,The Procter & Gamble Company,ambos,Consumer Staples
+TSEM,928876,False,Tower Semiconductor Ltd.,planilha,Information Technology
+NCLH,1513761,False,Norwegian Cruise Line Holdings Ltd.,ambos,Consumer Discretionary
+MRSH,62709,True,"Marsh & McLennan Companies, Inc.",ambos,Financials
+LMT,936468,False,Lockheed Martin Corporation,ambos,Industrials
+MNST,865752,False,Monster Beverage Corporation,ambos,Consumer Staples
+FNV,1456346,False,Franco-Nevada Corporation,planilha,Materials
+WCN,1318220,False,"Waste Connections, Inc.",planilha,Industrials
+HII,1501585,False,"Huntington Ingalls Industries, Inc.",ambos,Industrials
+PYPL,1633917,True,"PayPal Holdings, Inc.",ambos,Financials
+UBER,1543151,False,"Uber Technologies, Inc.",ambos,Industrials
+MCO,1059556,True,Moody's Corporation,ambos,Financials
+ADSK,769397,False,"Autodesk, Inc.",ambos,Information Technology
+QCOM,804328,False,QUALCOMM Incorporated,ambos,Information Technology
+NOC,1133421,False,Northrop Grumman Corporation,ambos,Industrials
+RACE,1648416,False,Ferrari N.V.,planilha,Consumer Discretionary
+MAR,1048286,False,"Marriott International, Inc.",ambos,Consumer Discretionary
+ICE,1571949,True,"Intercontinental Exchange, Inc.",ambos,Financials
+AMZN,1018724,False,"Amazon.com, Inc.",ambos,Consumer Discretionary
+FAST,815556,False,Fastenal Company,ambos,Industrials
+NDAQ,1120193,True,"Nasdaq, Inc.",ambos,Financials
+GPC,40987,False,Genuine Parts Company,ambos,Consumer Discretionary
+IBP,1580905,False,"Installed Building Products, Inc.",planilha,Consumer Discretionary
+MSCI,1408198,True,MSCI Inc.,ambos,Financials
+OTIS,1781335,False,Otis Worldwide Corporation,ambos,Industrials
+BAC,70858,True,Bank of America Corporation,ambos,Financials
+AME,1037868,False,"AMETEK, Inc.",ambos,Industrials
+SBUX,829224,False,Starbucks Corporation,ambos,Consumer Discretionary
+NFLX,1065280,False,"Netflix, Inc.",ambos,Communication Services
+V,1403161,True,Visa Inc.,ambos,Financials
+ANET,1596532,False,"Arista Networks, Inc.",ambos,Information Technology
+FSLR,1274494,False,"First Solar, Inc.",ambos,Information Technology
+LRCX,707549,False,Lam Research Corporation,ambos,Information Technology
+MANH,1056696,False,"Manhattan Associates, Inc.",planilha,Information Technology
+ZTS,1555280,False,Zoetis Inc.,ambos,Health Care
+KNSL,1669162,True,"Kinsale Capital Group, Inc.",planilha,Financials
+MMM,66740,False,3M,sp500,Industrials
+AOS,91142,False,A. O. Smith,sp500,Industrials
+ABT,1800,False,Abbott Laboratories,sp500,Health Care
+ACN,1467373,False,Accenture,sp500,Information Technology
+AMD,2488,False,Advanced Micro Devices,sp500,Information Technology
+AES,874761,False,AES Corporation,sp500,Utilities
+AFL,4977,True,Aflac,sp500,Financials
+A,1090872,False,Agilent Technologies,sp500,Health Care
+APD,2969,False,Air Products,sp500,Materials
+AKAM,1086222,False,Akamai Technologies,sp500,Information Technology
+ALB,915913,False,Albemarle Corporation,sp500,Materials
+ARE,1035443,False,Alexandria Real Estate Equities,sp500,Real Estate
+ALGN,1097149,False,Align Technology,sp500,Health Care
+LNT,352541,False,Alliant Energy,sp500,Utilities
+ALL,899051,True,Allstate,sp500,Financials
+MO,764180,False,Altria,sp500,Consumer Staples
+AMCR,1748790,False,Amcor,sp500,Materials
+AEE,1002910,False,Ameren,sp500,Utilities
+AEP,4904,False,American Electric Power,sp500,Utilities
+AXP,4962,True,American Express,sp500,Financials
+AIG,5272,True,American International Group,sp500,Financials
+AMT,1053507,False,American Tower,sp500,Real Estate
+AWK,1410636,False,American Water Works,sp500,Utilities
+AMP,820027,True,Ameriprise Financial,sp500,Financials
+APH,820313,False,Amphenol,sp500,Information Technology
+ADI,6281,False,Analog Devices,sp500,Information Technology
+APA,1841666,False,APA Corporation,sp500,Energy
+AMAT,6951,False,Applied Materials,sp500,Information Technology
+ADM,7084,False,Archer Daniels Midland,sp500,Consumer Staples
+ARES,1176948,True,Ares Management,sp500,Financials
+AJG,354190,True,Arthur J. Gallagher & Co.,sp500,Financials
+AIZ,1267238,True,Assurant,sp500,Financials
+T,732717,False,AT&T,sp500,Communication Services
+ATO,731802,False,Atmos Energy,sp500,Utilities
+AZO,866787,False,AutoZone,sp500,Consumer Discretionary
+AVY,8818,False,Avery Dennison,sp500,Materials
+AXON,1069183,False,Axon Enterprise,sp500,Industrials
+BKR,1701605,False,Baker Hughes,sp500,Energy
+BALL,9389,False,Ball Corporation,sp500,Materials
+BAX,10456,False,Baxter International,sp500,Health Care
+BDX,10795,False,Becton Dickinson,sp500,Health Care
+BRK-B,1067983,True,Berkshire Hathaway,sp500,Financials
+BBY,764478,False,Best Buy,sp500,Consumer Discretionary
+TECH,842023,False,Bio-Techne,sp500,Health Care
+BIIB,875045,False,Biogen,sp500,Health Care
+BLK,2012383,True,BlackRock,sp500,Financials
+BX,1393818,True,Blackstone Inc.,sp500,Financials
+XYZ,1512673,True,"Block, Inc.",sp500,Financials
+BE,1664703,False,Bloom Energy,sp500,Industrials
+BNY,1390777,True,BNY Mellon,sp500,Financials
+BA,12927,False,Boeing,sp500,Industrials
+BSX,885725,False,Boston Scientific,sp500,Health Care
+BMY,14272,False,Bristol Myers Squibb,sp500,Health Care
+BRO,79282,True,Brown & Brown,sp500,Financials
+BF-B,14693,False,Brown–Forman,sp500,Consumer Staples
+BG,1996862,False,Bunge Global,sp500,Consumer Staples
+BXP,1037540,False,"BXP, Inc.",sp500,Real Estate
+CHRW,1043277,False,C.H. Robinson,sp500,Industrials
+CDNS,813672,False,Cadence Design Systems,sp500,Information Technology
+CPT,906345,False,Camden Property Trust,sp500,Real Estate
+CAH,721371,False,Cardinal Health,sp500,Health Care
+CCL,815097,False,Carnival Corporation,sp500,Consumer Discretionary
+CARR,1783180,False,Carrier Global,sp500,Industrials
+CVNA,1690820,False,Carvana,sp500,Consumer Discretionary
+CASY,726958,False,Casey's,sp500,Consumer Staples
+CBOE,1374310,True,Cboe Global Markets,sp500,Financials
+CDW,1402057,False,CDW Corporation,sp500,Information Technology
+COR,1140859,False,Cencora,sp500,Health Care
+CNC,1071739,False,Centene Corporation,sp500,Health Care
+CNP,1130310,False,CenterPoint Energy,sp500,Utilities
+CF,1324404,False,CF Industries,sp500,Materials
+CRL,1100682,False,Charles River Laboratories,sp500,Health Care
+CHTR,1091667,False,Charter Communications,sp500,Communication Services
+CVX,93410,False,Chevron Corporation,sp500,Energy
+CB,896159,True,Chubb Limited,sp500,Financials
+CIEN,936395,False,Ciena,sp500,Information Technology
+CI,1739940,False,Cigna,sp500,Health Care
+CINF,20286,True,Cincinnati Financial,sp500,Financials
+CSCO,858877,False,Cisco,sp500,Information Technology
+C,831001,True,Citigroup,sp500,Financials
+CFG,759944,True,Citizens Financial Group,sp500,Financials
+CME,1156375,True,CME Group,sp500,Financials
+CMS,811156,False,CMS Energy,sp500,Utilities
+CTSH,1058290,False,Cognizant,sp500,Information Technology
+COHR,820318,False,Coherent Corp.,sp500,Information Technology
+COIN,1679788,True,Coinbase,sp500,Financials
+CL,21665,False,Colgate-Palmolive,sp500,Consumer Staples
+CMCSA,1166691,False,Comcast,sp500,Communication Services
+FIX,1035983,False,Comfort Systems USA,sp500,Industrials
+COP,1163165,False,ConocoPhillips,sp500,Energy
+ED,1047862,False,Consolidated Edison,sp500,Utilities
+STZ,16918,False,Constellation Brands,sp500,Consumer Staples
+CEG,1868275,False,Constellation Energy,sp500,Utilities
+COO,711404,False,Cooper Companies (The),sp500,Health Care
+GLW,24741,False,Corning Inc.,sp500,Information Technology
+CPAY,1175454,True,Corpay,sp500,Financials
+CSGP,1057352,False,CoStar Group,sp500,Real Estate
+CRH,849395,False,CRH plc,sp500,Materials
+CRWD,1535527,False,CrowdStrike,sp500,Information Technology
+CCI,1051470,False,Crown Castle,sp500,Real Estate
+CSX,277948,False,CSX Corporation,sp500,Industrials
+CMI,26172,False,Cummins,sp500,Industrials
+CVS,64803,False,CVS Health,sp500,Health Care
+DHR,313616,False,Danaher Corporation,sp500,Health Care
+DDOG,1561550,False,Datadog,sp500,Information Technology
+DE,315189,False,Deere & Company,sp500,Industrials
+DELL,1571996,False,Dell Technologies,sp500,Information Technology
+DVN,1090012,False,Devon Energy,sp500,Energy
+DXCM,1093557,False,Dexcom,sp500,Health Care
+FANG,1539838,False,Diamondback Energy,sp500,Energy
+DLR,1297996,False,Digital Realty,sp500,Real Estate
+DG,29534,False,Dollar General,sp500,Consumer Staples
+DLTR,935703,False,Dollar Tree,sp500,Consumer Staples
+D,715957,False,Dominion Energy,sp500,Utilities
+DASH,1792789,False,DoorDash,sp500,Consumer Discretionary
+DOV,29905,False,Dover Corporation,sp500,Industrials
+DOW,1751788,False,Dow Inc.,sp500,Materials
+DHI,882184,False,D. R. Horton,sp500,Consumer Discretionary
+DTE,936340,False,DTE Energy,sp500,Utilities
+DUK,1326160,False,Duke Energy,sp500,Utilities
+DD,1666700,False,DuPont,sp500,Industrials
+ECHO,1415404,False,EchoStar,sp500,Communication Services
+ECL,31462,False,Ecolab,sp500,Materials
+EIX,827052,False,Edison International,sp500,Utilities
+EW,1099800,False,Edwards Lifesciences,sp500,Health Care
+ELV,1156039,False,Elevance Health,sp500,Health Care
+EME,105634,False,Emcor,sp500,Industrials
+EMR,32604,False,Emerson Electric,sp500,Industrials
+ETR,65984,False,Entergy,sp500,Utilities
+EOG,821189,False,EOG Resources,sp500,Energy
+EQT,33213,False,EQT Corporation,sp500,Energy
+EFX,33185,False,Equifax,sp500,Industrials
+EQIX,1101239,False,Equinix,sp500,Real Estate
+ERIE,922621,True,Erie Indemnity,sp500,Financials
+ESS,920522,False,Essex Property Trust,sp500,Real Estate
+EL,1001250,False,Estée Lauder Companies (The),sp500,Consumer Staples
+EG,1095073,True,Everest Group,sp500,Financials
+EVRG,1711269,False,Evergy,sp500,Utilities
+P,1474432,False,Everpure,sp500,Information Technology
+ES,72741,False,Eversource Energy,sp500,Utilities
+EXC,1109357,False,Exelon,sp500,Utilities
+EXE,895126,False,Expand Energy,sp500,Energy
+EXPE,1324424,False,Expedia Group,sp500,Consumer Discretionary
+EXR,1289490,False,Extra Space Storage,sp500,Real Estate
+XOM,2115436,False,ExxonMobil,sp500,Energy
+FFIV,1048695,False,"F5, Inc.",sp500,Information Technology
+FDS,1013237,True,FactSet,sp500,Financials
+FRT,34903,False,Federal Realty Investment Trust,sp500,Real Estate
+FDX,1048911,False,FedEx,sp500,Industrials
+FDXF,2082247,False,FedEx Freight,sp500,Industrials
+FIS,1136893,True,Fidelity National Information Services,sp500,Financials
+FITB,35527,True,Fifth Third Bancorp,sp500,Financials
+FE,1031296,False,FirstEnergy,sp500,Utilities
+FISV,798354,True,Fiserv,sp500,Financials
+F,37996,False,Ford Motor Company,sp500,Consumer Discretionary
+FTNT,1262039,False,Fortinet,sp500,Information Technology
+FTV,1659166,False,Fortive,sp500,Industrials
+FOXA,1754301,False,Fox Corporation (Class A),sp500,Communication Services
+BEN,38777,True,Franklin Resources,sp500,Financials
+FCX,831259,False,Freeport-McMoRan,sp500,Materials
+GRMN,1121788,False,Garmin,sp500,Consumer Discretionary
+GE,40545,False,GE Aerospace,sp500,Industrials
+GEHC,1932393,False,GE HealthCare,sp500,Health Care
+GEV,1996810,False,GE Vernova,sp500,Industrials
+GEN,849399,False,Gen Digital,sp500,Information Technology
+GNRC,1474735,False,Generac,sp500,Industrials
+GIS,40704,False,General Mills,sp500,Consumer Staples
+GM,1467858,False,General Motors,sp500,Consumer Discretionary
+GILD,882095,False,Gilead Sciences,sp500,Health Care
+GPN,1123360,True,Global Payments,sp500,Financials
+GL,320335,True,Globe Life,sp500,Financials
+GDDY,1609711,False,GoDaddy,sp500,Information Technology
+HAL,45012,False,Halliburton,sp500,Energy
+HIG,874766,True,Hartford (The),sp500,Financials
+HAS,46080,False,Hasbro,sp500,Consumer Discretionary
+DOC,765880,False,Healthpeak Properties,sp500,Real Estate
+HSIC,1000228,False,Henry Schein,sp500,Health Care
+HSY,47111,False,Hershey Company (The),sp500,Consumer Staples
+HPE,1645590,False,Hewlett Packard Enterprise,sp500,Information Technology
+HONA,2089271,False,Honeywell Aerospace,sp500,Industrials
+HON,773840,False,Honeywell Technologies,sp500,Industrials
+HRL,48465,False,Hormel Foods,sp500,Consumer Staples
+HST,1070750,False,Host Hotels & Resorts,sp500,Real Estate
+HUBB,48898,False,Hubbell Incorporated,sp500,Industrials
+HUM,49071,False,Humana,sp500,Health Care
+HBAN,49196,True,Huntington Bancshares,sp500,Financials
+IBM,51143,False,IBM,sp500,Information Technology
+IEX,832101,False,IDEX Corporation,sp500,Industrials
+ILMN,1110803,False,"Illumina, Inc.",sp500,Health Care
+INCY,879169,False,Incyte,sp500,Health Care
+IR,1699150,False,Ingersoll Rand,sp500,Industrials
+PODD,1145197,False,Insulet Corporation,sp500,Health Care
+INTC,50863,False,Intel,sp500,Information Technology
+IFF,51253,False,International Flavors & Fragrances,sp500,Materials
+IP,51434,False,International Paper,sp500,Materials
+INTU,896878,False,Intuit,sp500,Information Technology
+IVZ,914208,True,Invesco,sp500,Financials
+INVH,1687229,False,Invitation Homes,sp500,Real Estate
+IQV,1478242,False,IQVIA,sp500,Health Care
+IRM,1020569,False,Iron Mountain,sp500,Real Estate
+JBHT,728535,False,J.B. Hunt,sp500,Industrials
+JKHY,779152,True,Jack Henry & Associates,sp500,Financials
+J,52988,False,Jacobs Solutions,sp500,Industrials
+JNJ,200406,False,Johnson & Johnson,sp500,Health Care
+JCI,833444,False,Johnson Controls,sp500,Industrials
+KDP,1418135,False,Keurig Dr Pepper,sp500,Consumer Staples
+KEY,91576,True,KeyCorp,sp500,Financials
+KMB,55785,False,Kimberly-Clark,sp500,Consumer Staples
+KIM,879101,False,Kimco Realty,sp500,Real Estate
+KMI,1506307,False,Kinder Morgan,sp500,Energy
+KKR,1404912,True,KKR & Co.,sp500,Financials
+KLAC,319201,False,KLA Corporation,sp500,Information Technology
+KHC,1637459,False,Kraft Heinz,sp500,Consumer Staples
+LHX,202058,False,L3Harris,sp500,Industrials
+LH,920148,False,Labcorp,sp500,Health Care
+LVS,1300514,False,Las Vegas Sands,sp500,Consumer Discretionary
+LDOS,1336920,False,Leidos,sp500,Industrials
+LEN,920760,False,Lennar,sp500,Consumer Discretionary
+LII,1069202,False,Lennox International,sp500,Industrials
+LIN,1707925,False,Linde plc,sp500,Materials
+LYV,1335258,False,Live Nation Entertainment,sp500,Communication Services
+L,60086,True,Loews Corporation,sp500,Financials
+LULU,1397187,False,Lululemon Athletica,sp500,Consumer Discretionary
+LITE,1633978,False,Lumentum,sp500,Information Technology
+LYB,1489393,False,LyondellBasell,sp500,Materials
+MTB,36270,True,M&T Bank,sp500,Financials
+MPC,1510295,False,Marathon Petroleum,sp500,Energy
+MLM,916076,False,Martin Marietta Materials,sp500,Materials
+MRVL,1835632,False,Marvell Technology,sp500,Information Technology
+MAS,62996,False,Masco,sp500,Industrials
+MKC,63754,False,McCormick & Company,sp500,Consumer Staples
+MDT,1613103,False,Medtronic,sp500,Health Care
+MRK,310158,False,Merck & Co.,sp500,Health Care
+MET,1099219,True,MetLife,sp500,Financials
+MGM,789570,False,MGM Resorts,sp500,Consumer Discretionary
+MCHP,827054,False,Microchip Technology,sp500,Information Technology
+MAA,912595,False,Mid-America Apartment Communities,sp500,Real Estate
+MRNA,1682852,False,Moderna,sp500,Health Care
+MDLZ,1103982,False,Mondelez International,sp500,Consumer Staples
+MS,895421,True,Morgan Stanley,sp500,Financials
+MOS,1285785,False,Mosaic Company (The),sp500,Materials
+MSI,68505,False,Motorola Solutions,sp500,Information Technology
+NTAP,1002047,False,NetApp,sp500,Information Technology
+NEM,1164727,False,Newmont,sp500,Materials
+NWSA,1564708,False,News Corp (Class A),sp500,Communication Services
+NEE,753308,False,NextEra Energy,sp500,Utilities
+NI,1111711,False,NiSource,sp500,Utilities
+NDSN,72331,False,Nordson Corporation,sp500,Industrials
+NSC,702165,False,Norfolk Southern,sp500,Industrials
+NTRS,73124,True,Northern Trust,sp500,Financials
+NRG,1013871,False,NRG Energy,sp500,Utilities
+NUE,73309,False,Nucor,sp500,Materials
+NXPI,1413447,False,NXP Semiconductors,sp500,Information Technology
+ORLY,898173,False,O'Reilly Automotive,sp500,Consumer Discretionary
+OXY,797468,False,Occidental Petroleum,sp500,Energy
+OKTA,1660134,False,"Okta, Inc.",sp500,Information Technology
+OMC,29989,False,Omnicom Group,sp500,Communication Services
+OKE,1039684,False,Oneok,sp500,Energy
+ORCL,1341439,False,Oracle Corporation,sp500,Information Technology
+PCAR,75362,False,Paccar,sp500,Industrials
+PANW,1327567,False,Palo Alto Networks,sp500,Information Technology
+PH,76334,False,Parker Hannifin,sp500,Industrials
+PAYX,723531,False,Paychex,sp500,Industrials
+PNR,77360,False,Pentair,sp500,Industrials
+PEP,77476,False,PepsiCo,sp500,Consumer Staples
+PFE,78003,False,Pfizer,sp500,Health Care
+PCG,1004980,False,PG&E Corporation,sp500,Utilities
+PSX,1534701,False,Phillips 66,sp500,Energy
+PNW,764622,False,Pinnacle West Capital,sp500,Utilities
+PNC,713676,True,PNC Financial Services,sp500,Financials
+PPG,79879,False,PPG Industries,sp500,Materials
+PPL,922224,False,PPL Corporation,sp500,Utilities
+PFG,1126328,True,Principal Financial Group,sp500,Financials
+PGR,80661,True,Progressive Corporation,sp500,Financials
+PLD,1045609,False,Prologis,sp500,Real Estate
+PRU,1137774,True,Prudential Financial,sp500,Financials
+PTC,857005,False,PTC Inc.,sp500,Information Technology
+PEG,788784,False,Public Service Enterprise Group,sp500,Utilities
+PSA,1393311,False,Public Storage,sp500,Real Estate
+PHM,822416,False,PulteGroup,sp500,Consumer Discretionary
+Q,2058873,False,Qnity Electronics,sp500,Information Technology
+PWR,1050915,False,Quanta Services,sp500,Industrials
+DGX,1022079,False,Quest Diagnostics,sp500,Health Care
+RJF,720005,True,Raymond James Financial,sp500,Financials
+RDDT,1713445,False,Reddit,sp500,Communication Services
+O,726728,False,Realty Income,sp500,Real Estate
+REG,910606,False,Regency Centers,sp500,Real Estate
+REGN,872589,False,Regeneron Pharmaceuticals,sp500,Health Care
+RF,1281761,True,Regions Financial Corporation,sp500,Financials
+RSG,1060391,False,Republic Services,sp500,Industrials
+RVTY,31791,False,Revvity,sp500,Health Care
+ROK,1024478,False,Rockwell Automation,sp500,Industrials
+ROP,882835,False,Roper Technologies,sp500,Information Technology
+ROST,745732,False,Ross Stores,sp500,Consumer Discretionary
+RCL,884887,False,Royal Caribbean Group,sp500,Consumer Discretionary
+RTX,101829,False,RTX Corporation,sp500,Industrials
+CRM,1108524,False,Salesforce,sp500,Information Technology
+SNDK,2023554,False,Sandisk,sp500,Information Technology
+SBAC,1034054,False,SBA Communications,sp500,Real Estate
+STX,1137789,False,Seagate Technology,sp500,Information Technology
+SRE,1032208,False,Sempra,sp500,Utilities
+NOW,1373715,False,ServiceNow,sp500,Information Technology
+SHW,89800,False,Sherwin-Williams,sp500,Materials
+SPG,1063761,False,Simon Property Group,sp500,Real Estate
+SKYD,2041610,False,Skydance,sp500,Communication Services
+SWKS,4127,False,Skyworks Solutions,sp500,Information Technology
+SJM,91419,False,J.M. Smucker Company (The),sp500,Consumer Staples
+SW,2005951,False,Smurfit Westrock,sp500,Materials
+SNA,91440,False,Snap-on,sp500,Industrials
+SOLV,1964738,False,Solventum,sp500,Health Care
+SO,92122,False,Southern Company,sp500,Utilities
+LUV,92380,False,Southwest Airlines,sp500,Industrials
+SWK,93556,False,Stanley Black & Decker,sp500,Industrials
+STT,93751,True,State Street Corporation,sp500,Financials
+STLD,1022671,False,Steel Dynamics,sp500,Materials
+STE,1757898,False,Steris,sp500,Health Care
+SMCI,1375365,False,Supermicro,sp500,Information Technology
+SYF,1601712,True,Synchrony Financial,sp500,Financials
+SNPS,883241,False,Synopsys,sp500,Information Technology
+SYY,96021,False,Sysco,sp500,Consumer Staples
+TMUS,1283699,False,T-Mobile US,sp500,Communication Services
+TROW,1113169,True,T. Rowe Price,sp500,Financials
+TTWO,946581,False,Take-Two Interactive,sp500,Communication Services
+TPR,1116132,False,"Tapestry, Inc.",sp500,Consumer Discretionary
+TRGP,1389170,False,Targa Resources,sp500,Energy
+TGT,27419,False,Target Corporation,sp500,Consumer Staples
+TEL,1385157,False,TE Connectivity,sp500,Information Technology
+TDY,1094285,False,Teledyne Technologies,sp500,Information Technology
+TER,97210,False,Teradyne,sp500,Information Technology
+TSLA,1318605,False,"Tesla, Inc.",sp500,Consumer Discretionary
+TPL,1811074,False,Texas Pacific Land Corporation,sp500,Energy
+TXT,217346,False,Textron,sp500,Industrials
+TMO,97745,False,Thermo Fisher Scientific,sp500,Health Care
+TJX,109198,False,TJX Companies,sp500,Consumer Discretionary
+TKO,1973266,False,TKO Group Holdings,sp500,Communication Services
+TT,1466258,False,Trane Technologies,sp500,Industrials
+TRV,86312,True,Travelers Companies (The),sp500,Financials
+TRMB,864749,False,Trimble Inc.,sp500,Information Technology
+TFC,92230,True,Truist Financial,sp500,Financials
+TWLO,1447669,False,Twilio,sp500,Information Technology
+TYL,860731,False,Tyler Technologies,sp500,Information Technology
+TSN,100493,False,Tyson Foods,sp500,Consumer Staples
+UDR,74208,False,"UDR, Inc.",sp500,Real Estate
+UNP,100885,False,Union Pacific Corporation,sp500,Industrials
+UAL,100517,False,United Airlines Holdings,sp500,Industrials
+UPS,1090727,False,United Parcel Service,sp500,Industrials
+URI,1067701,False,United Rentals,sp500,Industrials
+UNH,731766,False,UnitedHealth Group,sp500,Health Care
+UHS,352915,False,Universal Health Services,sp500,Health Care
+VLO,1035002,False,Valero Energy,sp500,Energy
+VEEV,1393052,False,Veeva Systems,sp500,Health Care
+VTR,740260,False,Ventas,sp500,Real Estate
+VLTO,1967680,False,Veralto,sp500,Industrials
+VRSN,1014473,False,Verisign,sp500,Information Technology
+VZ,732712,False,Verizon,sp500,Communication Services
+VTRS,1792044,False,Viatris,sp500,Health Care
+VICI,1705696,False,Vici Properties,sp500,Real Estate
+VST,1692819,False,Vistra Corp.,sp500,Utilities
+VMRK,906107,False,Vivmark Residential,sp500,Real Estate
+VMC,1396009,False,Vulcan Materials Company,sp500,Materials
+VYLR,2128626,False,Vylor,sp500,Consumer Staples
+WRB,11544,True,W. R. Berkley Corporation,sp500,Financials
+GWW,277135,False,W. W. Grainger,sp500,Industrials
+WAB,943452,False,Wabtec,sp500,Industrials
+DIS,1744489,False,Walt Disney Company (The),sp500,Communication Services
+WM,823768,False,Waste Management,sp500,Industrials
+WEC,783325,False,WEC Energy Group,sp500,Utilities
+WELL,766704,False,Welltower,sp500,Real Estate
+WST,105770,False,West Pharmaceutical Services,sp500,Health Care
+WY,106535,False,Weyerhaeuser,sp500,Real Estate
+WSM,719955,False,"Williams-Sonoma, Inc.",sp500,Consumer Discretionary
+WMB,107263,False,Williams Companies,sp500,Energy
+WTW,1140536,True,Willis Towers Watson,sp500,Financials
+WDAY,1327811,False,"Workday, Inc.",sp500,Information Technology
+WYNN,1174922,False,Wynn Resorts,sp500,Consumer Discretionary
+XEL,72903,False,Xcel Energy,sp500,Utilities
+XYL,1524472,False,Xylem Inc.,sp500,Industrials
+ZBRA,877212,False,Zebra Technologies,sp500,Information Technology
+ZBH,1136869,False,Zimmer Biomet,sp500,Health Care
