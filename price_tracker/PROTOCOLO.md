@@ -73,3 +73,8 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   (patrimônio + dívida − caixa; capital operacional se ≤ 0) quando (B) não é calculável. Teto de 100% no ROIC usado no P/E justo
   (a classificação usa o valor sem teto). Financeiras: ROE. Escolha por validade econômica (absurdos 10,8%, cobertura 98,6%,
   persistência 0,82), sem olhar retorno; aprovada pelo usuário.
+- 2026-11-10 — **Resultados das Fases 2 a 4 (EUA, universo point-in-time, ROIC oficial):** nenhuma candidata confirmada.
+  Critério 1 (excesso no teste de limites): passa C1, C2b, C2c, C2d, C3; falha C2a. Critério 2 (alfa contra FF5 + UMD + QMJ com t ≥ 2):
+  falha em todas (maior t = 1,22, C1). Critério 3 (Deflated Sharpe ≥ 90%): falha em todas (0% a 5%). Critério 4 (excesso no teste
+  2019–2026): passa em todas, mas todas tiveram excesso negativo em 2012–2018. PBO da grade = 58%. Viés de sobrevivência do universo
+  antigo: +4 a +9 p.p. ao ano nas candidatas. Status de todas: **exploratória**. Fase 5 (Japão) pendente da chave da EDINET.
