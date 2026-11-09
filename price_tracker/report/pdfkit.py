@@ -11,7 +11,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 FD = '/usr/share/fonts/truetype/dejavu/'
 pdfmetrics.registerFont(TTFont('DejaVu', FD + 'DejaVuSans.ttf'))
 pdfmetrics.registerFont(TTFont('DejaVu-Bold', FD + 'DejaVuSans-Bold.ttf'))
-pdfmetrics.registerFont(TTFont('DejaVu-Oblique', FD + 'DejaVuSans-Oblique.ttf'))
+pdfmetrics.registerFont(TTFont('DejaVu-Oblique', FD + 'DejaVuSans.ttf'))
 from reportlab.lib.fonts import addMapping
 addMapping('DejaVu', 0, 0, 'DejaVu'); addMapping('DejaVu', 1, 0, 'DejaVu-Bold'); addMapping('DejaVu', 0, 1, 'DejaVu-Oblique')
 

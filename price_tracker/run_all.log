@@ -166,3 +166,1606 @@ Totais: Excel 13, P1 22, P2 29
 2025-09-30 509
 2025-12-31 509
 2026-03-31 514
+2026-06-30 513
+2026-09-30 512
+inicio do backtest: 2012-03-30 | datas: 59
+
+== zg2.93
+                          Carteira  CAGR   Vol  Sharpe  MaxDD  Total  CAGR liq.  Giro  N medio  Trim. vazios
+     Good Companies, Great Returns 0.207 0.182   1.137 -0.346 14.218      0.204 0.241   39.224             0
+                               QQQ 0.190 0.206   0.918 -0.351 11.391      0.190 0.000      NaN             0
+Interesting but Requires Attention 0.186 0.197   0.945 -0.367 10.904      0.183 0.292   13.310             0
+           Opportunity of Lifetime 0.181 0.197   0.920 -0.349 10.201      0.180 0.177   29.741             0
+              Cheap but Aggressive 0.174 0.252   0.690 -0.533  9.238      0.171 0.331    5.138             0
+        Expensive for what you get 0.166 0.168   0.989 -0.345  8.311      0.162 0.409   12.052             0
+                       Universo EW 0.165 0.169   0.974 -0.368  8.144      0.164 0.055  363.414             0
+                         Expensive 0.161 0.205   0.784 -0.393  7.663      0.158 0.294   14.931             0
+                 Do not Waste Time 0.157 0.167   0.939 -0.372  7.285      0.156 0.095  219.603             0
+                               SPY 0.143 0.166   0.862 -0.337  5.958      0.143 0.000      NaN             0
+             Cheap Slow Compounder 0.131 0.225   0.580 -0.425  4.932      0.127 0.359    4.414             0
+                Excellent but Fair 0.126 0.214   0.586 -0.355  4.557      0.122 0.430    5.293             0
+Good but Margin of Safety Required 0.125 0.181   0.689 -0.381  4.516      0.121 0.418   15.345             0
+                               RSP 0.119 0.170   0.698 -0.390  4.104      0.119 0.000      NaN             0
+           Investable but Not Good 0.093 0.222   0.421 -0.407  2.644      0.089 0.432    4.362             0
+
+== zg0.9
+                          Carteira  CAGR   Vol  Sharpe  MaxDD  Total  CAGR liq.  Giro  N medio  Trim. vazios
+     Good Companies, Great Returns 0.210 0.198   1.062 -0.342 14.841      0.207 0.242   29.397             0
+Interesting but Requires Attention 0.194 0.179   1.088 -0.375 12.128      0.192 0.256   34.603             0
+                               QQQ 0.190 0.206   0.918 -0.351 11.391      0.190 0.000      NaN             0
+           Opportunity of Lifetime 0.167 0.200   0.835 -0.365  8.336      0.165 0.189   16.379             0
+                       Universo EW 0.165 0.169   0.974 -0.368  8.144      0.164 0.055  363.414             0
+              Cheap but Aggressive 0.158 0.214   0.741 -0.393  7.437      0.155 0.321   10.310             0
+                 Do not Waste Time 0.157 0.167   0.937 -0.374  7.258      0.156 0.098  227.483             0
+             Cheap Slow Compounder 0.149 0.184   0.806 -0.443  6.457      0.147 0.217    1.138            23
+                               SPY 0.143 0.166   0.862 -0.337  5.958      0.143 0.000      NaN             0
+        Expensive for what you get 0.139 0.175   0.790 -0.374  5.566      0.135 0.396   17.121             0
+Good but Margin of Safety Required 0.133 0.202   0.661 -0.355  5.136      0.129 0.465    8.172             0
+                         Expensive 0.124 0.202   0.615 -0.385  4.475      0.122 0.302    7.052             4
+           Investable but Not Good 0.122 0.182   0.670 -0.368  4.297      0.118 0.415    8.948             0
+                               RSP 0.119 0.170   0.698 -0.390  4.104      0.119 0.000      NaN             0
+                Excellent but Fair 0.118 0.225   0.527 -0.431  4.073      0.115 0.426    2.810             1
+
+### Corte zGrowth 2.93
+
+| Carteira | CAGR | CAGR liq. | Vol | Max DD | vs Universo EW | t | 2012–2019 | 2020–2026 | N médio | Trim. em caixa |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Opportunity of Lifetime** | 18,1% | 18,0% | 19,7% | -34,9% | +2,1% | 1,0 | 16,4% | 20,0% | 30 | 0 |
+| **Good Companies, Great Returns** | 20,7% | 20,4% | 18,2% | -34,6% | +4,0% | 3,1 | 18,9% | 22,5% | 39 | 0 |
+| **Excellent but Fair** | 12,6% | 12,2% | 21,4% | -35,5% | -2,7% | -0,8 | 13,0% | 12,1% | 5 | 0 |
+| **Good but Margin of Safety Required** | 12,5% | 12,1% | 18,1% | -38,1% | -3,4% | -1,7 | 17,1% | 7,3% | 15 | 0 |
+| **Cheap Slow Compounder** | 13,1% | 12,7% | 22,5% | -42,5% | -1,6% | -0,4 | 16,0% | 9,8% | 4 | 0 |
+| **Interesting but Requires Attention** | 18,6% | 18,3% | 19,7% | -36,7% | +2,3% | 1,5 | 18,8% | 18,3% | 13 | 0 |
+| **Cheap but Aggressive** | 17,4% | 17,1% | 25,2% | -53,3% | +2,2% | 0,5 | 22,8% | 11,3% | 5 | 0 |
+| **Expensive for what you get** | 16,6% | 16,2% | 16,8% | -34,5% | +0,0% | 0,0 | 17,4% | 15,7% | 12 | 0 |
+| **Investable but Not Good** | 9,3% | 8,9% | 22,2% | -40,7% | -5,5% | -1,6 | 11,8% | 6,4% | 4 | 0 |
+| **Expensive** | 16,1% | 15,8% | 20,5% | -39,3% | +0,1% | 0,0 | 24,2% | 7,2% | 15 | 0 |
+| **Do not Waste Time** | 15,7% | 15,6% | 16,7% | -37,2% | -0,8% | -1,5 | 17,8% | 13,2% | 220 | 0 |
+| Universo EW (contraprova) | 16,5% | 16,4% | 16,9% | -36,8% | — | — | 18,0% | 14,7% | 363 | 0 |
+| SPY | 14,3% | 14,3% | 16,6% | -33,7% | — | — | 13,5% | 15,1% | — | 0 |
+| QQQ | 19,0% | 19,0% | 20,6% | -35,1% | — | — | 17,2% | 20,7% | — | 0 |
+| RSP | 11,9% | 11,9% | 17,0% | -39,0% | — | — | 12,7% | 10,9% | — | 0 |
+
+### Corte zGrowth 0.9
+
+| Carteira | CAGR | CAGR liq. | Vol | Max DD | vs Universo EW | t | 2012–2019 | 2020–2026 | N médio | Trim. em caixa |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Opportunity of Lifetime** | 16,7% | 16,5% | 20,0% | -36,5% | +1,0% | 0,4 | 16,4% | 16,8% | 16 | 0 |
+| **Good Companies, Great Returns** | 21,0% | 20,7% | 19,8% | -34,2% | +4,6% | 2,3 | 18,5% | 23,7% | 29 | 0 |
+| **Excellent but Fair** | 11,8% | 11,5% | 22,5% | -43,1% | -3,3% | -0,8 | 18,8% | 4,4% | 3 | 1 |
+| **Good but Margin of Safety Required** | 13,3% | 12,9% | 20,2% | -35,5% | -2,5% | -0,9 | 17,7% | 8,5% | 8 | 0 |
+| **Cheap Slow Compounder** | 14,9% | 14,7% | 18,4% | -44,3% | -0,2% | -0,0 | 21,7% | 7,5% | 1 | 23 |
+| **Interesting but Requires Attention** | 19,4% | 19,2% | 17,9% | -37,5% | +2,9% | 2,4 | 18,1% | 20,9% | 35 | 0 |
+| **Cheap but Aggressive** | 15,8% | 15,5% | 21,4% | -39,3% | +0,3% | 0,1 | 21,7% | 9,3% | 10 | 0 |
+| **Expensive for what you get** | 13,9% | 13,5% | 17,5% | -37,4% | -2,3% | -1,2 | 15,5% | 11,9% | 17 | 0 |
+| **Investable but Not Good** | 12,2% | 11,8% | 18,2% | -36,8% | -3,7% | -1,5 | 14,2% | 9,8% | 9 | 0 |
+| **Expensive** | 12,4% | 12,2% | 20,2% | -38,5% | -3,2% | -1,0 | 18,0% | 6,2% | 7 | 4 |
+| **Do not Waste Time** | 15,7% | 15,6% | 16,7% | -37,4% | -0,8% | -1,7 | 18,0% | 13,0% | 227 | 0 |
+| Universo EW (contraprova) | 16,5% | 16,4% | 16,9% | -36,8% | — | — | 18,0% | 14,7% | 363 | 0 |
+| SPY | 14,3% | 14,3% | 16,6% | -33,7% | — | — | 13,5% | 15,1% | — | 0 |
+| QQQ | 19,0% | 19,0% | 20,6% | -35,1% | — | — | 17,2% | 20,7% | — | 0 |
+| RSP | 11,9% | 11,9% | 17,0% | -39,0% | — | — | 12,7% | 10,9% | — | 0 |
+== Diagnosticos EUA
+# Diagnóstico: Good Companies, Great Returns × Opportunity of Lifetime (corte zGrowth 2.93)
+
+> ⚠️ **ROIC:** dois dos quatro defeitos que separam as classes são de ROIC; com outra definição de ROIC a fronteira muda.
+
+## 1. Tamanho das carteiras
+
+| | Opportunity of Lifetime | Good Companies, Great Returns |
+|---|---|---|
+| Ações por trimestre (média) | 30 | 39 |
+| Mínimo / máximo | 19 / 43 | 26 / 52 |
+| Ações distintas no período | 140 | 233 |
+
+## 2. De onde vem a diferença: o "defeito" de cada ação de Good Companies, Great Returns
+
+Good Companies, Great Returns = Opportunity of Lifetime com exatamente um defeito. Atribuição (retornos trimestrais, média aritmética anualizada):
+
+| Defeito | Ações (média) | % da carteira | Retorno médio a.a. | vs Opportunity of Lifetime | Contribuição para a diferença | Trimestres |
+|---|---|---|---|---|---|---|
+| ROIC médio (10–20%) | 25,0 | 63,8% | 22,0% | +3,3% | **+2,2%** | 58 |
+| ROIC instável (zROIC) | 4,1 | 10,5% | 23,2% | +3,7% | **+0,3%** | 54 |
+| Growth instável (zGrowth) | 5,5 | 13,8% | 15,7% | -3,0% | **-0,3%** | 58 |
+| Growth médio (6–15%) | 4,9 | 12,6% | 17,9% | -0,9% | **-0,4%** | 58 |
+| **Total (GCGR − OoL)** | | | | | **+1,9%** | |
+
+## 3. Ano a ano (retorno das carteiras, ano do rebalanceamento)
+
+| Ano | Opportunity of Lifetime | Good Companies, Great Returns | Diferença |
+|---|---|---|---|
+| 2012 | 8,6% | 19,1% | +10,5% |
+| 2013 | 23,4% | 28,5% | +5,1% |
+| 2014 | 20,9% | 18,1% | -2,8% |
+| 2015 | 6,4% | 0,7% | -5,8% |
+| 2016 | 18,2% | 28,0% | +9,7% |
+| 2017 | 24,4% | 16,5% | -7,9% |
+| 2018 | 8,6% | 15,8% | +7,2% |
+| 2019 | -6,1% | -4,9% | +1,3% |
+| 2020 | 71,9% | 86,4% | +14,5% |
+| 2021 | 15,1% | 18,6% | +3,5% |
+| 2022 | -1,4% | 10,7% | +12,1% |
+| 2023 | 52,2% | 38,4% | -13,9% |
+| 2024 | 2,0% | 11,6% | +9,5% |
+| 2025 | 18,0% | 22,3% | +4,3% |
+| 2026 | 21,1% | 10,2% | -10,9% |
+
+## 4. Perfil das empresas no momento da compra (mediana)
+
+| Característica | Opportunity of Lifetime | Good Companies, Great Returns |
+|---|---|---|
+| Growth histórico (mediana 5 anos) | 28,2% | 26,6% |
+| zGrowth | 0,8 | 1,3 |
+| ROIC | 30,3% | 16,8% |
+| zROIC | 0,2 | 0,3 |
+| Retorno esperado | 44,6% | 37,1% |
+| P/L (preço ÷ EPS do último ano) | 23,7 | 19,6 |
+| P/E justo | 37,7 | 27,8 |
+| Dividend yield | 0,8% | 1,3% |
+| Retorno da ação nos 12 meses anteriores | 18,1% | 16,3% |
+| **Crescimento do EPS no ano seguinte (realizado)** | 10,8% | 4,6% |
+| Retorno no trimestre seguinte | 5,2% | 4,4% |
+
+## 5. Setores (peso médio e retorno médio a.a. das ações do setor dentro da carteira)
+
+| Setor | Peso OoL | Retorno OoL | Peso GCGR | Retorno GCGR |
+|---|---|---|---|---|
+| Consumer Discretionary | 26,4% | 16,7% | 15,2% | 20,6% |
+| Information Technology | 23,7% | 29,5% | 19,2% | 30,5% |
+| Industrials | 20,3% | 16,6% | 19,6% | 24,4% |
+| Financials | 10,7% | 18,2% | 17,7% | 16,3% |
+| Health Care | 7,6% | 16,3% | 12,1% | 22,5% |
+| Materials | 3,5% | 6,7% | 4,2% | 14,9% |
+| Consumer Staples | 3,4% | 9,4% | 6,5% | 12,9% |
+| Communication Services | 3,4% | 30,7% | 1,8% | 22,5% |
+| Real Estate | 0,0% | — | 2,3% | 8,6% |
+
+## 6. Maiores contribuições (pontos de retorno aritmético a.a. que cada ação trouxe para a carteira)
+
+| # | OoL | contribuição (trim.) | GCGR | contribuição (trim.) |
+|---|---|---|---|---|
+| 1 | ANET | +0,9% (29) | FN | +0,4% (28) |
+| 2 | NVDA | +0,8% (23) | TSEM | +0,4% (9) |
+| 3 | HD | +0,5% (35) | IBP | +0,4% (17) |
+| 4 | ORLY | +0,5% (37) | FIX | +0,4% (20) |
+| 5 | WSM | +0,4% (21) | CRUS | +0,3% (28) |
+| 6 | LII | +0,4% (37) | ODFL | +0,3% (26) |
+| 7 | MANH | +0,4% (26) | GNRC | +0,3% (14) |
+| 8 | CPRT | +0,4% (21) | SMCI | +0,3% (7) |
+| 9 | SMCI | +0,4% (12) | THC | +0,3% (10) |
+| 10 | FFIV | +0,4% (26) | AZO | +0,3% (28) |
+| | **Top 10 / total** | 27,4% | | 16,6% |
+| | **Piores 5** | TPR, CRUS, LULU, KNSL, HUM | | ON, DXCM, IT, KEY, MCK |
+
+## 7. Migração entre as duas classes (retorno no trimestre seguinte à classificação)
+
+| Grupo | Observações | Retorno médio no trimestre (a.a.) |
+|---|---|---|
+| GCGR que veio de OoL | 28 | 37,4% |
+| GCGR que vai virar OoL (próximo trimestre) | 55 | 29,4% |
+| OoL que veio de GCGR | 55 | 22,5% |
+| OoL "nova" (não era OoL nem GCGR) | 172 | 11,4% |
+| OoL que já era OoL | 1498 | 20,6% |
+| GCGR que já era GCGR | 1826 | 21,7% |
+
+# Diagnóstico: Good Companies, Great Returns × Opportunity of Lifetime (corte zGrowth 0.9)
+
+> ⚠️ **ROIC:** dois dos quatro defeitos que separam as classes são de ROIC; com outra definição de ROIC a fronteira muda.
+
+## 1. Tamanho das carteiras
+
+| | Opportunity of Lifetime | Good Companies, Great Returns |
+|---|---|---|
+| Ações por trimestre (média) | 16 | 29 |
+| Mínimo / máximo | 9 / 23 | 18 / 45 |
+| Ações distintas no período | 86 | 191 |
+
+## 2. De onde vem a diferença: o "defeito" de cada ação de Good Companies, Great Returns
+
+Good Companies, Great Returns = Opportunity of Lifetime com exatamente um defeito. Atribuição (retornos trimestrais, média aritmética anualizada):
+
+| Defeito | Ações (média) | % da carteira | Retorno médio a.a. | vs Opportunity of Lifetime | Contribuição para a diferença | Trimestres |
+|---|---|---|---|---|---|---|
+| ROIC médio (10–20%) | 7,9 | 28,0% | 29,3% | +11,6% | **+2,4%** | 58 |
+| Growth instável (zGrowth) | 18,8 | 62,2% | 18,9% | +1,3% | **+1,0%** | 58 |
+| ROIC instável (zROIC) | 1,8 | 6,2% | 22,0% | +9,5% | **+0,3%** | 36 |
+| Growth médio (6–15%) | 1,9 | 7,2% | 17,9% | +1,6% | **-0,2%** | 48 |
+| **Total (GCGR − OoL)** | | | | | **+3,6%** | |
+
+## 3. Ano a ano (retorno das carteiras, ano do rebalanceamento)
+
+| Ano | Opportunity of Lifetime | Good Companies, Great Returns | Diferença |
+|---|---|---|---|
+| 2012 | 8,7% | 15,6% | +7,0% |
+| 2013 | 20,4% | 35,2% | +14,8% |
+| 2014 | 27,0% | 21,2% | -5,9% |
+| 2015 | 6,1% | -1,3% | -7,3% |
+| 2016 | 14,8% | 24,8% | +10,0% |
+| 2017 | 25,1% | 15,2% | -9,9% |
+| 2018 | 13,1% | 12,6% | -0,4% |
+| 2019 | -11,0% | -1,7% | +9,3% |
+| 2020 | 73,8% | 78,0% | +4,2% |
+| 2021 | 10,1% | 18,3% | +8,2% |
+| 2022 | -4,2% | 9,6% | +13,8% |
+| 2023 | 41,2% | 52,1% | +10,9% |
+| 2024 | 7,6% | 1,4% | -6,3% |
+| 2025 | 5,7% | 28,8% | +23,1% |
+| 2026 | 24,6% | 16,2% | -8,4% |
+
+## 4. Perfil das empresas no momento da compra (mediana)
+
+| Característica | Opportunity of Lifetime | Good Companies, Great Returns |
+|---|---|---|
+| Growth histórico (mediana 5 anos) | 26,9% | 27,7% |
+| zGrowth | 0,6 | 1,1 |
+| ROIC | 32,0% | 26,6% |
+| zROIC | 0,2 | 0,3 |
+| Retorno esperado | 38,3% | 41,0% |
+| P/L (preço ÷ EPS do último ano) | 25,0 | 21,5 |
+| P/E justo | 36,2 | 33,1 |
+| Dividend yield | 0,7% | 0,9% |
+| Retorno da ação nos 12 meses anteriores | 17,9% | 14,0% |
+| **Crescimento do EPS no ano seguinte (realizado)** | 12,8% | 6,8% |
+| Retorno no trimestre seguinte | 4,5% | 5,4% |
+
+## 5. Setores (peso médio e retorno médio a.a. das ações do setor dentro da carteira)
+
+| Setor | Peso OoL | Retorno OoL | Peso GCGR | Retorno GCGR |
+|---|---|---|---|---|
+| Consumer Discretionary | 31,5% | 15,1% | 21,0% | 21,2% |
+| Information Technology | 24,0% | 23,7% | 22,3% | 33,2% |
+| Industrials | 17,3% | 12,6% | 19,5% | 20,8% |
+| Financials | 11,3% | 18,2% | 12,5% | 17,8% |
+| Health Care | 6,3% | 17,9% | 12,1% | 25,6% |
+| Materials | 3,8% | 4,9% | 2,5% | 15,1% |
+| Consumer Staples | 3,8% | 13,3% | 3,8% | 5,2% |
+| Communication Services | 2,1% | 24,4% | 3,5% | 35,7% |
+
+## 6. Maiores contribuições (pontos de retorno aritmético a.a. que cada ação trouxe para a carteira)
+
+| # | OoL | contribuição (trim.) | GCGR | contribuição (trim.) |
+|---|---|---|---|---|
+| 1 | ANET | +1,3% (18) | NVDA | +0,8% (27) |
+| 2 | ORLY | +1,0% (37) | IBP | +0,6% (17) |
+| 3 | HD | +1,0% (35) | AMAT | +0,6% (36) |
+| 4 | FIX | +0,8% (9) | SWKS | +0,5% (12) |
+| 5 | CPRT | +0,7% (21) | TSEM | +0,5% (9) |
+| 6 | FTNT | +0,7% (10) | FN | +0,4% (20) |
+| 7 | MANH | +0,7% (26) | ILMN | +0,4% (8) |
+| 8 | ULTA | +0,6% (29) | LII | +0,4% (18) |
+| 9 | FFIV | +0,5% (22) | AZO | +0,4% (25) |
+| 10 | MPWR | +0,5% (10) | FIVE | +0,4% (13) |
+| | **Top 10 / total** | 44,3% | | 23,4% |
+| | **Piores 5** | TPR, VRSK, KNSL, TTWO, LUV | | TRGP, WYNN, TSN, LULU, BA |
+
+## 7. Migração entre as duas classes (retorno no trimestre seguinte à classificação)
+
+| Grupo | Observações | Retorno médio no trimestre (a.a.) |
+|---|---|---|
+| GCGR que veio de OoL | 35 | 20,8% |
+| GCGR que vai virar OoL (próximo trimestre) | 41 | 15,6% |
+| OoL que veio de GCGR | 41 | 21,8% |
+| OoL "nova" (não era OoL nem GCGR) | 91 | 5,7% |
+| OoL que já era OoL | 818 | 18,0% |
+| GCGR que já era GCGR | 1373 | 24,3% |
+
+2,93 0.07 original
+2,93 0.07 marg
+2,93 0.07 media
+2,93 0.06 original
+2,93 0.06 marg
+2,93 0.06 media
+0,9 0.07 original
+0,9 0.07 marg
+0,9 0.07 media
+0,9 0.06 original
+0,9 0.06 marg
+0,9 0.06 media
+# 6 cenários: g máximo × ROIC no P/E justo
+
+> ⚠️ **ROIC:** o ROIC alternativo entra só no P/E justo; a definição de capital investido e os cortes 20%/10% continuam pendentes.
+
+ROIC marginal de 5 anos disponível em 60% das observações; no resto (capital investido não cresceu ou sem 5 anos) usa o original. Mediana do ROIC original 12.8% e do marginal 12.2%.
+
+Cada célula: CAGR (excesso a.a. sobre o Universo EW; t) · ações em média.
+
+## Corte zGrowth 2,93 (Universo EW: 16,5% a.a.)
+
+| Classe | g 7% · Original | g 7% · Marginal 5a | g 7% · Média | g 6% · Original | g 6% · Marginal 5a | g 6% · Média |
+|---|---|---|---|---|---|---|
+| Opportunity of Lifetime | 18,1% (+2,1%; t=1.0) · 30 | 18,1% (+2,1%; t=0.9) · 29 | 17,9% (+1,9%; t=0.8) · 30 | 17,0% (+1,2%; t=0.6) · 25 | 17,6% (+1,7%; t=0.8) · 25 | 16,9% (+1,2%; t=0.5) · 25 |
+| Good Companies, Great Returns | 20,7% (+4,0%; t=3.1) · 39 | 20,0% (+3,4%; t=2.7) · 40 | 20,1% (+3,5%; t=2.8) · 40 | 20,2% (+3,7%; t=2.6) · 32 | 20,5% (+3,9%; t=3.2) · 33 | 20,4% (+3,7%; t=2.9) · 33 |
+| Excellent but Fair | 12,6% (-2,7%; t=-0.8) · 5 | 14,0% (-1,3%; t=-0.4) · 6 | 13,4% (-1,8%; t=-0.5) · 5 | 17,3% (+1,2%; t=0.4) · 8 | 16,3% (+0,4%; t=0.1) · 9 | 17,8% (+1,8%; t=0.6) · 8 |
+| Interesting but Requires Attention | 18,6% (+2,3%; t=1.5) · 13 | 20,9% (+4,2%; t=2.6) · 14 | 20,3% (+3,8%; t=2.3) · 14 | 19,6% (+3,4%; t=1.8) · 12 | 22,0% (+5,4%; t=2.8) · 12 | 19,6% (+3,3%; t=1.9) · 12 |
+| Good but Margin of Safety Required | 12,5% (-3,4%; t=-1.7) · 15 | 13,6% (-2,4%; t=-1.2) · 14 | 13,3% (-2,7%; t=-1.2) · 15 | 16,9% (+0,6%; t=0.3) · 18 | 16,5% (+0,2%; t=0.1) · 17 | 17,2% (+0,8%; t=0.4) · 17 |
+| Expensive | 16,1% (+0,1%; t=0.0) · 15 | 15,3% (-0,9%; t=-0.4) · 15 | 16,5% (+0,3%; t=0.1) · 15 | 16,0% (-0,1%; t=-0.0) · 22 | 13,9% (-2,2%; t=-1.1) · 22 | 14,4% (-1,7%; t=-0.9) · 21 |
+| Do not Waste Time | 15,7% (-0,8%; t=-1.5) · 220 | 15,7% (-0,8%; t=-1.4) · 218 | 15,7% (-0,8%; t=-1.5) · 220 | 15,7% (-0,8%; t=-1.5) · 223 | 15,7% (-0,8%; t=-1.5) · 221 | 15,7% (-0,8%; t=-1.5) · 224 |
+
+## Corte zGrowth 0,9 (Universo EW: 16,5% a.a.)
+
+| Classe | g 7% · Original | g 7% · Marginal 5a | g 7% · Média | g 6% · Original | g 6% · Marginal 5a | g 6% · Média |
+|---|---|---|---|---|---|---|
+| Opportunity of Lifetime | 16,7% (+1,0%; t=0.4) · 16 | 16,2% (+0,6%; t=0.2) · 16 | 16,2% (+0,5%; t=0.2) · 17 | 14,9% (-0,3%; t=-0.1) · 13 | 14,4% (-0,7%; t=-0.2) · 13 | 14,5% (-0,7%; t=-0.2) · 14 |
+| Good Companies, Great Returns | 21,0% (+4,6%; t=2.3) · 29 | 21,3% (+4,7%; t=2.4) · 30 | 21,2% (+4,7%; t=2.3) · 30 | 20,2% (+3,9%; t=1.8) · 24 | 21,6% (+5,1%; t=2.5) · 24 | 20,4% (+4,1%; t=2.0) · 25 |
+| Excellent but Fair | 11,8% (-3,3%; t=-0.8) · 3 | 14,6% (-0,8%; t=-0.2) · 3 | 14,8% (-0,4%; t=-0.1) · 3 | 19,3% (+3,2%; t=0.8) · 5 | 18,1% (+1,8%; t=0.5) · 5 | 19,4% (+3,0%; t=0.8) · 5 |
+| Interesting but Requires Attention | 19,4% (+2,9%; t=2.4) · 35 | 19,6% (+3,1%; t=2.5) · 36 | 19,3% (+2,8%; t=2.3) · 36 | 19,4% (+3,0%; t=2.1) · 29 | 20,0% (+3,5%; t=2.7) · 31 | 19,3% (+2,8%; t=2.2) · 30 |
+| Good but Margin of Safety Required | 13,3% (-2,5%; t=-0.9) · 8 | 14,3% (-1,4%; t=-0.5) · 8 | 12,5% (-3,1%; t=-1.1) · 8 | 16,7% (+0,6%; t=0.2) · 10 | 16,7% (+0,6%; t=0.2) · 11 | 19,0% (+2,5%; t=0.9) · 11 |
+| Expensive | 12,4% (-3,2%; t=-1.0) · 7 | 12,9% (-2,8%; t=-0.9) · 7 | 13,8% (-1,9%; t=-0.6) · 7 | 14,0% (-1,8%; t=-0.6) · 11 | 12,2% (-3,3%; t=-1.1) · 11 | 12,4% (-3,2%; t=-1.1) · 10 |
+| Do not Waste Time | 15,7% (-0,8%; t=-1.7) · 227 | 15,7% (-0,8%; t=-1.5) · 227 | 15,7% (-0,8%; t=-1.7) · 228 | 15,6% (-0,8%; t=-1.8) · 234 | 15,6% (-0,9%; t=-1.7) · 232 | 15,6% (-0,8%; t=-1.8) · 235 |
+
+# Atribuição por ação (cenário-base: g 7%, ROIC original, corte zGrowth 2,93)
+
+> ⚠️ **ROIC:** quem entra em cada classe depende do ROIC (clássico, cortes 20%/10% ainda não revistos).
+
+Contribuição = soma, nos trimestres em que a ação esteve na carteira, de (1/N) × retorno da ação no trimestre, em pontos percentuais do retorno acumulado aritmético da carteira.
+
+## Opportunity of Lifetime
+
+- CAGR da carteira: **18,1%** · ações distintas: 140 · contribuição total: +272,2%
+- Sem as maiores contribuições: sem top 5: 16,3% · sem top 10: 15,5% · sem top 15: 14,5%
+- Sem as 10 piores: 20,6%
+- As 15 maiores somam 37,0% do total; as 15 menores, -5,7%
+
+### 15 maiores contribuições
+
+| # | Ticker | Empresa | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|---|
+| 1 | ANET | Arista Networks, Inc. | Information Technology | +13,2% | 4,9% | 29 | +13,6% | 2016–2026 |
+| 2 | NVDA | NVIDIA Corporation | Information Technology | +11,6% | 4,3% | 23 | +15,8% | 2018–2026 |
+| 3 | HD | The Home Depot, Inc. | Consumer Discretionary | +7,0% | 2,6% | 35 | +5,6% | 2015–2023 |
+| 4 | ORLY | O'Reilly Automotive | Consumer Discretionary | +6,8% | 2,5% | 37 | +5,5% | 2015–2024 |
+| 5 | WSM | Williams-Sonoma, Inc. | Consumer Discretionary | +6,4% | 2,3% | 21 | +9,5% | 2012–2025 |
+| 6 | LII | Lennox International | Industrials | +6,2% | 2,3% | 37 | +5,0% | 2015–2026 |
+| 7 | MANH | Manhattan Associates, Inc. | Information Technology | +6,2% | 2,3% | 26 | +6,9% | 2013–2019 |
+| 8 | CPRT | Copart, Inc. | Industrials | +5,8% | 2,1% | 21 | +8,2% | 2017–2022 |
+| 9 | SMCI | Supermicro | Information Technology | +5,7% | 2,1% | 12 | +18,8% | 2023–2026 |
+| 10 | FFIV | F5, Inc. | Information Technology | +5,6% | 2,1% | 26 | +6,4% | 2012–2026 |
+| 11 | MPWR | Monolithic Power Systems, Inc. | Information Technology | +5,5% | 2,0% | 15 | +13,6% | 2022–2026 |
+| 12 | ULTA | Ulta Beauty, Inc. | Consumer Discretionary | +5,3% | 2,0% | 29 | +5,1% | 2013–2020 |
+| 13 | META | Meta Platforms, Inc. | Communication Services | +5,3% | 1,9% | 30 | +7,2% | 2019–2026 |
+| 14 | IBKR | Interactive Brokers Group, Inc. | Financials | +5,0% | 1,8% | 13 | +13,2% | 2023–2026 |
+| 15 | LRCX | Lam Research Corporation | Information Technology | +5,0% | 1,8% | 17 | +10,1% | 2019–2025 |
+
+### 15 menores contribuições
+
+| # | Ticker | Empresa | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|---|
+| 1 | TPR | Tapestry, Inc. | Consumer Discretionary | -2,6% | -1,0% | 14 | -5,2% | 2012–2015 |
+| 2 | CRUS | Cirrus Logic, Inc. | Information Technology | -1,8% | -0,7% | 9 | -4,5% | 2017–2026 |
+| 3 | LULU | Lululemon Athletica | Consumer Discretionary | -1,6% | -0,6% | 33 | -1,5% | 2012–2026 |
+| 4 | KNSL | Kinsale Capital Group, Inc. | Financials | -1,1% | -0,4% | 10 | -4,0% | 2024–2026 |
+| 5 | HUM | Humana | Health Care | -1,1% | -0,4% | 4 | -6,4% | 2012–2012 |
+| 6 | VRSK | Verisk Analytics, Inc. | Industrials | -1,1% | -0,4% | 4 | -10,0% | 2025–2025 |
+| 7 | TGT | Target Corporation | Consumer Staples | -1,0% | -0,4% | 11 | -1,7% | 2022–2024 |
+| 8 | LUV | Southwest Airlines | Industrials | -1,0% | -0,4% | 8 | -3,7% | 2018–2019 |
+| 9 | BIIB | Biogen | Health Care | -0,9% | -0,3% | 28 | -1,4% | 2015–2023 |
+| 10 | TTWO | Take-Two Interactive | Communication Services | -0,7% | -0,3% | 8 | -1,1% | 2021–2023 |
+| 11 | AXP | American Express | Financials | -0,6% | -0,2% | 6 | -2,6% | 2014–2015 |
+| 12 | BMI | Badger Meter, Inc. | Industrials | -0,5% | -0,2% | 2 | -9,4% | 2026–2026 |
+| 13 | WDC | Western Digital Corporation | Information Technology | -0,5% | -0,2% | 4 | -3,5% | 2014–2015 |
+| 14 | STM | STMicroelectronics N.V. | Information Technology | -0,5% | -0,2% | 4 | -4,3% | 2023–2023 |
+| 15 | AMP | Ameriprise Financial | Financials | -0,4% | -0,1% | 12 | -0,2% | 2018–2022 |
+
+## Good Companies, Great Returns
+
+- CAGR da carteira: **20,7%** · ações distintas: 233 · contribuição total: +299,0%
+- Sem as maiores contribuições: sem top 5: 19,7% · sem top 10: 18,7% · sem top 15: 18,0%
+- Sem as 10 piores: 22,1%
+- As 15 maiores somam 23,3% do total; as 15 menores, -4,0%
+
+### 15 maiores contribuições
+
+| # | Ticker | Empresa | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|---|
+| 1 | FN | Fabrinet | Information Technology | +6,4% | 2,1% | 28 | +8,9% | 2018–2025 |
+| 2 | TSEM | Tower Semiconductor Ltd. | Information Technology | +5,9% | 2,0% | 9 | +26,0% | 2024–2026 |
+| 3 | IBP | Installed Building Products, Inc. | Consumer Discretionary | +5,6% | 1,9% | 17 | +15,2% | 2020–2024 |
+| 4 | FIX | Comfort Systems USA | Industrials | +5,5% | 1,8% | 20 | +10,2% | 2018–2023 |
+| 5 | CRUS | Cirrus Logic, Inc. | Information Technology | +4,6% | 1,5% | 28 | +6,3% | 2013–2026 |
+| 6 | ODFL | Old Dominion Freight Line, Inc. | Industrials | +4,5% | 1,5% | 26 | +6,9% | 2012–2019 |
+| 7 | GNRC | Generac | Industrials | +4,3% | 1,5% | 14 | +13,2% | 2018–2025 |
+| 8 | SMCI | Supermicro | Information Technology | +4,3% | 1,4% | 7 | +29,8% | 2015–2023 |
+| 9 | THC | Tenet Healthcare Corporation | Health Care | +4,2% | 1,4% | 10 | +16,9% | 2012–2026 |
+| 10 | AZO | AutoZone | Consumer Discretionary | +4,2% | 1,4% | 28 | +5,2% | 2016–2026 |
+| 11 | MEDP | Medpace Holdings, Inc. | Health Care | +4,2% | 1,4% | 12 | +13,0% | 2020–2025 |
+| 12 | CPAY | Corpay | Financials | +4,2% | 1,4% | 21 | +8,3% | 2013–2024 |
+| 13 | UNH | UnitedHealth Group | Health Care | +4,1% | 1,4% | 13 | +12,0% | 2013–2021 |
+| 14 | KNSL | Kinsale Capital Group, Inc. | Financials | +3,8% | 1,3% | 9 | +17,4% | 2021–2023 |
+| 15 | CIEN | Ciena | Information Technology | +3,7% | 1,2% | 8 | +15,1% | 2020–2024 |
+
+### 15 menores contribuições
+
+| # | Ticker | Empresa | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|---|
+| 1 | ON | ON Semiconductor Corporation | Information Technology | -1,6% | -0,5% | 4 | -12,4% | 2024–2024 |
+| 2 | DXCM | Dexcom | Health Care | -1,5% | -0,5% | 4 | -13,8% | 2024–2024 |
+| 3 | IT | Gartner, Inc. | Information Technology | -1,0% | -0,3% | 8 | -4,7% | 2023–2025 |
+| 4 | KEY | KeyCorp | Financials | -0,9% | -0,3% | 4 | -11,4% | 2022–2022 |
+| 5 | MCK | McKesson Corporation | Health Care | -0,8% | -0,3% | 8 | -3,6% | 2016–2018 |
+| 6 | BEN | Franklin Resources | Financials | -0,8% | -0,3% | 11 | -2,9% | 2012–2015 |
+| 7 | SBAC | SBA Communications | Real Estate | -0,8% | -0,3% | 14 | -2,1% | 2023–2026 |
+| 8 | TPR | Tapestry, Inc. | Consumer Discretionary | -0,7% | -0,2% | 4 | -6,5% | 2019–2020 |
+| 9 | OTIS | Otis Worldwide Corporation | Industrials | -0,6% | -0,2% | 4 | -6,6% | 2025–2025 |
+| 10 | YUM | Yum! Brands, Inc. | Consumer Discretionary | -0,6% | -0,2% | 8 | -2,7% | 2013–2019 |
+| 11 | BBY | Best Buy | Consumer Discretionary | -0,6% | -0,2% | 15 | -0,0% | 2018–2023 |
+| 12 | PGR | Progressive Corporation | Financials | -0,6% | -0,2% | 6 | -3,8% | 2025–2026 |
+| 13 | BX | Blackstone Inc. | Financials | -0,5% | -0,2% | 4 | -6,3% | 2022–2022 |
+| 14 | CVS | CVS Health | Health Care | -0,5% | -0,2% | 5 | -3,9% | 2017–2018 |
+| 15 | FISV | Fiserv | Financials | -0,5% | -0,2% | 2 | -10,0% | 2026–2026 |
+
+Ações que passaram pelas duas carteiras em algum momento: 107.
+# Distribuições e retorno esperado × realizado (corte zGrowth 2,93)
+
+> ⚠️ **ROIC:** o retorno esperado vem do P/E justo, que usa o ROIC (clássico, cortes não revistos).
+
+## 1. Distribuições
+
+| Estatística | Atribuição OoL | Atribuição GCGR | Retorno/trim. OoL | Retorno/trim. GCGR |
+|---|---|---|---|---|
+| Média | 1,9% | 1,3% | 4,9% | 5,4% |
+| Mediana | 1,4% | 1,0% | 4,3% | 4,6% |
+| Desvio-padrão | 2,3% | 1,4% | 18,0% | 15,6% |
+| Percentil 5 | -1,0% | -0,6% | -22,2% | -17,5% |
+| Percentil 95 | 5,8% | 4,2% | 32,8% | 31,1% |
+| Mínimo | -2,6% | -1,6% | -53,9% | -56,4% |
+| Máximo | 13,2% | 6,4% | 255,3% | 133,9% |
+| Assimetria (skew) | 1,62 | 0,93 | 1,89 | 0,50 |
+| % posições negativas | | | 38,4% | 35,0% |
+| Peso médio por ação (1/N) | 3,4% | 2,5% | | |
+
+## 2. Retorno esperado × realizado, por faixa de retorno esperado
+
+Compra = ação × trimestre em que estava na classe (a mesma ação aparece em vários trimestres).
+
+### Realizado em 3 anos (a.a.)
+
+| Faixa esperada | OoL: compras | OoL: esperado (med.) | OoL: realizado (med.) | OoL: % negativas | GCGR: compras | GCGR: esperado (med.) | GCGR: realizado (med.) | GCGR: % negativas |
+|---|---|---|---|---|---|---|---|---|
+| 20–30% | 304 | 25,8% | 12,1% | 17,1% | 610 | 24,6% | 14,7% | 12,0% |
+| 30–40% | 299 | 34,8% | 12,0% | 11,7% | 447 | 34,3% | 14,1% | 9,6% |
+| 40–60% | 333 | 47,3% | 12,5% | 18,6% | 420 | 47,4% | 16,1% | 12,9% |
+| 60–100% | 259 | 76,0% | 13,3% | 14,3% | 266 | 73,9% | 13,3% | 17,3% |
+| >100% | 158 | 124,8% | 15,3% | 17,7% | 113 | 144,4% | 14,0% | 20,4% |
+
+### Realizado em 1 ano (a.a.)
+
+| Faixa esperada | OoL: compras | OoL: esperado (med.) | OoL: realizado (med.) | OoL: % negativas | GCGR: compras | GCGR: esperado (med.) | GCGR: realizado (med.) | GCGR: % negativas |
+|---|---|---|---|---|---|---|---|---|
+| 20–30% | 365 | 25,4% | 11,6% | 32,1% | 691 | 24,6% | 17,6% | 25,3% |
+| 30–40% | 341 | 34,6% | 15,7% | 27,6% | 517 | 34,4% | 19,7% | 22,2% |
+| 40–60% | 416 | 47,4% | 15,4% | 28,8% | 481 | 47,7% | 16,1% | 27,2% |
+| 60–100% | 315 | 76,4% | 13,8% | 30,5% | 318 | 73,9% | 18,6% | 25,2% |
+| >100% | 182 | 124,3% | 21,3% | 30,2% | 141 | 141,7% | 27,9% | 21,3% |
+
+### As duas classes juntas (realizado em 3 anos)
+
+| Faixa esperada | Compras | Realizado (mediana) | % negativas |
+|---|---|---|---|
+| 20–30% | 914 | 13,8% | 13,7% |
+| 30–40% | 746 | 13,4% | 10,5% |
+| 40–60% | 753 | 14,5% | 15,4% |
+| 60–100% | 525 | 13,3% | 15,8% |
+| >100% | 271 | 14,6% | 18,8% |
+# Piores episódios: o que tinham na entrada (corte zGrowth 2,93)
+
+> ⚠️ **ROIC:** ROIC e zROIC são parâmetros comparados; a definição ainda está em revisão.
+
+Episódio = período contínuo em que a ação ficou na classe. Contribuição = soma de (1/N × retorno trimestral) no episódio. Parâmetros medidos no trimestre de entrada.
+
+## Opportunity of Lifetime: 227 episódios
+
+### Perfil na entrada: 50 piores × todos × 50 melhores (medianas)
+
+| Parâmetro | 50 piores | Todos os episódios | 50 melhores |
+|---|---|---|---|
+| Growth (mediana EPS 5a) | **27,0%** | 27,1% | 36,5% |
+| zGrowth | **0,9** | 0,9 | 0,8 |
+| Último crescimento anual do EPS | **41,8%** | 29,7% | 34,1% |
+| ROIC | **27,1%** | 28,7% | 30,4% |
+| zROIC | **0,3** | 0,3 | 0,3 |
+| ROIC marginal 5a | **45,8%** | 44,2% | 44,5% |
+| Retorno esperado | **40,5%** | 38,8% | 49,6% |
+| Retorno esperado (P/E justo) | **53,2%** | 47,6% | 64,5% |
+| g do ranking | **6,3%** | 6,3% | 6,5% |
+| P/L de entrada | **22,4** | 26,1 | 25,4 |
+| P/E justo | **35,9** | 36,7 | 38,9 |
+| P/L ÷ P/E justo | **0,7** | 0,7 | 0,6 |
+| Dividend yield | **0,9%** | 0,7% | 0,2% |
+| Retorno 12m antes da entrada | **22,6%** | 18,8% | 20,1% |
+| Retorno 3a antes da entrada | **118,4%** | 103,4% | 138,9% |
+| Anos de EPS válidos (de 5) | **5,0** | 5,0 | 5,0 |
+| Trimestres na classe | **4,0** | 6,0 | 11,5 |
+| Retorno do episódio | **-17,6%** | 25,2% | 111,8% |
+
+**Setores (% dos episódios):** Information Technology 16,0% (todos 23,8%) · Consumer Discretionary 16,0% (todos 23,3%) · Industrials 30,0% (todos 23,3%) · Financials 12,0% (todos 11,0%) · Health Care 12,0% (todos 9,3%) · Communication Services 4,0% (todos 3,5%) · Consumer Staples 6,0% (todos 2,6%)
+
+### Os 50 piores episódios
+
+| # | Ticker | Empresa | Setor | Entrada | Saída | Trim. | Retorno do episódio | Contribuição | Growth | zG | ROIC | zROIC | Ret. esperado | P/L | P/E justo | Retorno 12m antes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | LULU | Lululemon Athletica | Consumer Discretionary | 2024-03 | 2026-06 | 10 | -75,4% | -3,1% | 36,6% | 1,0 | 63,0% | 0,3 | 50,1% | 32,0 | 46,0 | 22,0% |
+| 2 | TPR | Tapestry, Inc. | Consumer Discretionary | 2012-03 | 2015-06 | 14 | -58,5% | -2,6% | 22,0% | 0,8 | 81,7% | 0,1 | 34,8% | 26,5 | 37,7 | 49,6% |
+| 3 | GNRC | Generac | Industrials | 2022-03 | 2022-12 | 4 | -63,7% | -2,0% | 39,9% | 0,5 | 21,6% | 0,4 | 39,5% | 35,8 | 35,4 | -9,2% |
+| 4 | CRUS | Cirrus Logic, Inc. | Information Technology | 2017-06 | 2018-03 | 4 | -38,9% | -1,8% | 55,0% | 1,2 | 20,7% | 0,4 | 100,9% | 16,0 | 40,5 | 61,7% |
+| 5 | AMAT | Applied Materials | Information Technology | 2017-12 | 2018-09 | 4 | -34,9% | -1,5% | 105,8% | 1,0 | 23,7% | 0,5 | 178,4% | 16,1 | 46,4 | 58,0% |
+| 6 | BA | Boeing | Industrials | 2018-03 | 2019-12 | 8 | -52,5% | -1,4% | 16,6% | 1,7 | 295,0% | 0,7 | 31,3% | 24,4 | 36,5 | 89,0% |
+| 7 | KNSL | Kinsale Capital Group, Inc. | Financials | 2024-03 | 2026-06 | 10 | -38,2% | -1,1% | 71,1% | 0,5 | 21,5% | 0,2 | 65,0% | 39,7 | 34,1 | 77,0% |
+| 8 | HUM | Humana | Health Care | 2012-03 | 2012-12 | 4 | -24,2% | -1,1% | 18,0% | 1,7 | 20,3% | 0,5 | 51,9% | 10,9 | 26,8 | 36,1% |
+| 9 | VRSK | Verisk Analytics, Inc. | Industrials | 2025-03 | 2025-12 | 4 | -35,7% | -1,1% | 47,1% | 0,8 | 24,0% | 0,4 | 44,9% | 44,4 | 41,2 | 27,0% |
+| 10 | LUV | Southwest Airlines | Industrials | 2018-03 | 2019-12 | 8 | -36,2% | -1,0% | 63,1% | 0,5 | 23,8% | 0,4 | 153,5% | 9,9 | 43,6 | 8,0% |
+| 11 | DECK | Deckers Outdoor Corporation | Consumer Discretionary | 2025-03 | 2026-06 | 6 | -30,1% | -0,9% | 20,7% | 0,7 | 81,4% | 0,3 | 39,7% | 23,0 | 39,8 | -28,7% |
+| 12 | LII | Lennox International | Industrials | 2025-03 | 2026-06 | 6 | -35,5% | -0,9% | 19,2% | 0,9 | 54,4% | 0,1 | 33,1% | 24,9 | 37,2 | 15,4% |
+| 13 | POOL | Pool Corporation | Industrials | 2024-06 | 2025-12 | 7 | -32,2% | -0,9% | 17,1% | 2,0 | 29,5% | 0,1 | 27,6% | 23,0 | 30,8 | -16,0% |
+| 14 | CHRW | C.H. Robinson | Industrials | 2019-03 | 2019-12 | 4 | -21,9% | -0,7% | 15,1% | 0,8 | 29,2% | 0,2 | 31,1% | 18,4 | 28,3 | -5,2% |
+| 15 | TTWO | Take-Two Interactive | Communication Services | 2021-06 | 2023-03 | 8 | -16,9% | -0,7% | 66,0% | 0,5 | 22,8% | 0,5 | 75,6% | 34,8 | 43,2 | 26,8% |
+| 16 | BIIB | Biogen | Health Care | 2023-03 | 2023-12 | 4 | -22,4% | -0,6% | 45,6% | 1,3 | 25,5% | 0,3 | 100,1% | 13,3 | 40,8 | 32,0% |
+| 17 | AXP | American Express | Financials | 2014-03 | 2015-06 | 6 | -16,1% | -0,6% | 23,0% | 2,2 | 24,8% | 0,1 | 38,2% | 18,4 | 28,0 | 35,0% |
+| 18 | CHRW | C.H. Robinson | Industrials | 2023-03 | 2023-12 | 4 | -21,1% | -0,6% | 17,3% | 1,8 | 25,3% | 0,2 | 44,2% | 13,4 | 27,1 | -5,7% |
+| 19 | CRUS | Cirrus Logic, Inc. | Information Technology | 2026-06 | 2026-06 | 1 | -19,2% | -0,5% | 30,8% | 1,2 | 22,8% | 0,2 | 54,3% | 18,9 | 34,9 | 42,5% |
+| 20 | TGT | Target Corporation | Consumer Staples | 2023-06 | 2024-12 | 7 | -16,3% | -0,5% | 15,4% | 2,6 | 25,0% | 0,4 | 23,4% | 22,1 | 26,0 | -4,2% |
+| 21 | BMI | Badger Meter, Inc. | Industrials | 2026-03 | 2026-06 | 2 | -18,4% | -0,5% | 23,1% | 0,5 | 28,3% | 0,2 | 26,2% | 31,8 | 34,1 | -19,2% |
+| 22 | WDC | Western Digital Corporation | Information Technology | 2014-09 | 2015-06 | 4 | -16,2% | -0,5% | 67,8% | 1,3 | 27,0% | 0,5 | 135,9% | 14,6 | 47,1 | 55,3% |
+| 23 | AMP | Ameriprise Financial | Financials | 2018-03 | 2019-12 | 8 | -27,0% | -0,5% | 20,9% | 0,8 | 20,8% | 0,2 | 41,5% | 15,7 | 26,7 | 18,8% |
+| 24 | FFIV | F5, Inc. | Information Technology | 2018-12 | 2019-09 | 4 | -13,8% | -0,5% | 16,9% | 0,3 | 52,3% | 0,3 | 29,3% | 22,1 | 32,6 | 23,5% |
+| 25 | TDG | TransDigm Group Incorporated | Industrials | 2025-09 | 2026-06 | 4 | -17,9% | -0,5% | 22,5% | 0,9 | 82,5% | 0,2 | 23,2% | 51,4 | 40,5 | 4,2% |
+| 26 | STM | STMicroelectronics N.V. | Information Technology | 2023-03 | 2023-12 | 4 | -18,7% | -0,5% | 58,4% | 0,7 | 22,2% | 0,3 | 122,0% | 12,8 | 41,2 | 24,5% |
+| 27 | TGT | Target Corporation | Consumer Staples | 2022-03 | 2022-12 | 4 | -20,1% | -0,4% | 15,4% | 1,4 | 26,1% | 0,3 | 35,4% | 15,1 | 26,2 | 8,7% |
+| 28 | NFLX | Netflix, Inc. | Communication Services | 2025-03 | 2026-06 | 6 | -25,4% | -0,4% | 47,2% | 0,7 | 21,6% | 0,2 | 41,3% | 47,0 | 39,8 | 53,5% |
+| 29 | LVS | Las Vegas Sands | Consumer Discretionary | 2018-03 | 2018-12 | 4 | -11,0% | -0,3% | 26,2% | 1,4 | 20,8% | 0,2 | 46,9% | 20,3 | 32,5 | 31,1% |
+| 30 | RL | Ralph Lauren Corporation | Consumer Discretionary | 2026-06 | 2026-06 | 1 | -11,3% | -0,3% | 20,3% | 0,2 | 37,8% | 0,5 | 29,7% | 26,6 | 34,6 | 47,9% |
+| 31 | BBY | Best Buy | Consumer Discretionary | 2019-03 | 2019-12 | 4 | -17,3% | -0,3% | 48,8% | 1,1 | 36,2% | 0,3 | 114,3% | 13,7 | 46,7 | 4,3% |
+| 32 | BIIB | Biogen | Health Care | 2015-03 | 2020-12 | 24 | -33,7% | -0,3% | 27,9% | 0,6 | 21,8% | 0,2 | 26,3% | 34,1 | 32,4 | 38,0% |
+| 33 | MSFT | Microsoft Corporation | Information Technology | 2012-03 | 2012-06 | 2 | -6,5% | -0,3% | 28,1% | 0,7 | 42,3% | 0,3 | 80,9% | 12,0 | 38,5 | 29,4% |
+| 34 | NSSC | Napco Security Technologies, Inc. | Industrials | 2024-09 | 2026-06 | 8 | -9,1% | -0,2% | 37,7% | 1,3 | 27,3% | 0,3 | 48,5% | 30,2 | 39,6 | 83,7% |
+| 35 | MRSH | Marsh & McLennan Companies, Inc. | Financials | 2025-12 | 2025-12 | 1 | -6,0% | -0,2% | 15,5% | 1,3 | 28,2% | 0,1 | 22,7% | 22,7 | 27,1 | -11,3% |
+| 36 | SNPS | Synopsys | Information Technology | 2024-12 | 2025-09 | 4 | -3,2% | -0,1% | 25,9% | 1,0 | 22,6% | 0,2 | 26,3% | 33,5 | 33,9 | -5,7% |
+| 37 | CF | CF Industries | Materials | 2024-03 | 2024-12 | 4 | -3,7% | -0,1% | 79,8% | 1,6 | 34,7% | 0,6 | 189,3% | 10,6 | 50,9 | 21,1% |
+| 38 | LYB | LyondellBasell | Materials | 2015-03 | 2019-12 | 20 | -30,9% | -0,0% | 31,6% | 0,3 | 27,2% | 0,1 | 90,8% | 11,0 | 37,9 | 1,7% |
+| 39 | UNH | UnitedHealth Group | Health Care | 2012-03 | 2012-12 | 4 | -1,4% | -0,0% | 21,0% | 1,2 | 20,9% | 0,5 | 52,4% | 12,5 | 28,2 | 31,5% |
+| 40 | IDXX | IDEXX Laboratories, Inc. | Health Care | 2026-06 | 2026-06 | 1 | -0,8% | -0,0% | 22,6% | 0,6 | 52,5% | 0,1 | 20,7% | 40,2 | 37,7 | -1,8% |
+| 41 | ALLE | Allegion plc | Industrials | 2022-03 | 2022-12 | 4 | -1,2% | -0,0% | 20,8% | 1,6 | 24,9% | 0,1 | 32,0% | 20,6 | 27,9 | -11,6% |
+| 42 | POOL | Pool Corporation | Industrials | 2022-03 | 2023-12 | 8 | -2,3% | -0,0% | 30,0% | 0,7 | 31,6% | 0,1 | 39,6% | 26,5 | 34,3 | 23,3% |
+| 43 | CMI | Cummins | Industrials | 2012-03 | 2012-12 | 4 | -1,8% | 0,1% | 42,3% | 1,7 | 28,1% | 0,3 | 102,0% | 12,6 | 41,8 | 11,1% |
+| 44 | PM | Philip Morris International Inc. | Consumer Staples | 2012-03 | 2013-12 | 8 | -0,7% | 0,1% | 18,4% | 0,5 | 76,0% | 0,5 | 44,1% | 18,3 | 34,9 | 40,4% |
+| 45 | CMG | Chipotle Mexican Grill, Inc. | Consumer Discretionary | 2015-12 | 2016-12 | 5 | -7,2% | 0,1% | 29,4% | 0,3 | 28,7% | 0,1 | 32,3% | 34,0 | 37,0 | -29,9% |
+| 46 | MCO | Moody's Corporation | Financials | 2026-03 | 2026-06 | 2 | 4,6% | 0,1% | 21,4% | 1,1 | 62,5% | 0,4 | 23,4% | 31,9 | 33,1 | -5,6% |
+| 47 | CMG | Chipotle Mexican Grill, Inc. | Consumer Discretionary | 2023-03 | 2026-06 | 14 | -6,5% | 0,1% | 39,9% | 1,0 | 32,6% | 0,4 | 30,5% | 53,3 | 39,9 | 8,0% |
+| 48 | FAST | Fastenal Company | Industrials | 2013-03 | 2015-12 | 12 | 2,5% | 0,1% | 34,4% | 0,3 | 25,3% | 0,1 | 38,9% | 36,1 | 39,1 | -2,7% |
+| 49 | AMP | Ameriprise Financial | Financials | 2022-03 | 2022-12 | 4 | 3,8% | 0,2% | 20,9% | 1,8 | 33,9% | 0,3 | 49,9% | 13,1 | 27,7 | 31,3% |
+| 50 | WST | West Pharmaceutical Services | Health Care | 2022-03 | 2023-12 | 8 | -3,2% | 0,2% | 37,7% | 0,8 | 22,0% | 0,4 | 28,2% | 47,4 | 35,0 | 46,0% |
+
+### Opportunity of Lifetime: retorno médio no trimestre seguinte por faixa (todas as 1725 posições)
+
+- **P/L de entrada:** [0.0, 20.0): 17,3% a.a., 39,8% neg. (n=601) · [20.0, 30.0): 23,9% a.a., 34,4% neg. (n=613) · [30.0, 40.0): 17,1% a.a., 42,7% neg. (n=300) · [40.0, 60.0): 20,8% a.a., 37,0% neg. (n=154) · [60.0, inf): 10,4% a.a., 47,3% neg. (n=55)
+- **Retorno esperado:** [0.2, 0.4): 19,9% a.a., 35,8% neg. (n=754) · [0.4, 0.6): 12,6% a.a., 44,1% neg. (n=447) · [0.6, 1.0): 25,0% a.a., 36,9% neg. (n=333) · [1.0, inf): 26,4% a.a., 37,7% neg. (n=191)
+- **Retorno 12m antes:** [-inf, 0.0): 24,8% a.a., 36,5% neg. (n=553) · [0.0, 0.25): 19,2% a.a., 36,5% neg. (n=575) · [0.25, 0.5): 12,9% a.a., 42,7% neg. (n=337) · [0.5, 1.0): 14,2% a.a., 42,1% neg. (n=214) · [1.0, inf): 39,8% a.a., 34,8% neg. (n=46)
+- **ROIC:** [0.2, 0.3): 16,3% a.a., 40,6% neg. (n=822) · [0.3, 0.5): 22,0% a.a., 36,5% neg. (n=485) · [0.5, inf): 23,8% a.a., 36,1% neg. (n=418)
+- **Growth:** [0.15, 0.25): 19,4% a.a., 34,7% neg. (n=718) · [0.25, 0.4): 18,9% a.a., 41,9% neg. (n=556) · [0.4, 0.6): 18,1% a.a., 41,8% neg. (n=325) · [0.6, inf): 28,7% a.a., 34,9% neg. (n=126)
+
+## Good Companies, Great Returns: 449 episódios
+
+### Perfil na entrada: 50 piores × todos × 50 melhores (medianas)
+
+| Parâmetro | 50 piores | Todos os episódios | 50 melhores |
+|---|---|---|---|
+| Growth (mediana EPS 5a) | **21,8%** | 23,6% | 33,4% |
+| zGrowth | **1,3** | 1,3 | 1,2 |
+| Último crescimento anual do EPS | **30,3%** | 28,1% | 29,3% |
+| ROIC | **20,3%** | 18,2% | 14,6% |
+| zROIC | **0,2** | 0,3 | 0,3 |
+| ROIC marginal 5a | **19,9%** | 23,3% | 23,4% |
+| Retorno esperado | **31,3%** | 31,6% | 46,3% |
+| Retorno esperado (P/E justo) | **38,7%** | 39,0% | 56,9% |
+| g do ranking | **6,0%** | 6,2% | 6,5% |
+| P/L de entrada | **19,9** | 20,2 | 19,6 |
+| P/E justo | **26,7** | 27,2 | 27,3 |
+| P/L ÷ P/E justo | **0,8** | 0,8 | 0,7 |
+| Dividend yield | **1,3%** | 1,2% | 0,0% |
+| Retorno 12m antes da entrada | **6,1%** | 10,0% | 8,2% |
+| Retorno 3a antes da entrada | **43,9%** | 58,0% | 59,4% |
+| Anos de EPS válidos (de 5) | **5,0** | 5,0 | 5,0 |
+| Trimestres na classe | **4,0** | 4,0 | 8,0 |
+| Retorno do episódio | **-19,8%** | 19,4% | 113,9% |
+
+**Setores (% dos episódios):** Industrials 10,0% (todos 21,4%) · Information Technology 14,0% (todos 18,7%) · Financials 16,0% (todos 17,6%) · Consumer Discretionary 22,0% (todos 15,1%) · Health Care 18,0% (todos 12,7%) · Consumer Staples 2,0% (todos 5,8%) · Materials 4,0% (todos 3,1%)
+
+### Good Companies, Great Returns: retorno médio no trimestre seguinte por faixa (todas as 2275 posições)
+
+- **P/L de entrada:** [0.0, 20.0): 21,0% a.a., 34,2% neg. (n=1164) · [20.0, 30.0): 19,1% a.a., 36,0% neg. (n=706) · [30.0, 40.0): 26,2% a.a., 34,2% neg. (n=184) · [40.0, 60.0): 29,2% a.a., 34,5% neg. (n=116) · [60.0, inf): 23,6% a.a., 44,2% neg. (n=77)
+- **Retorno esperado:** [0.2, 0.4): 20,5% a.a., 34,0% neg. (n=1279) · [0.4, 0.6): 21,3% a.a., 34,5% neg. (n=510) · [0.6, 1.0): 20,5% a.a., 39,1% neg. (n=338) · [1.0, inf): 34,0% a.a., 36,5% neg. (n=148)
+- **Retorno 12m antes:** [-inf, 0.0): 25,7% a.a., 35,5% neg. (n=718) · [0.0, 0.25): 18,0% a.a., 35,2% neg. (n=823) · [0.25, 0.5): 17,9% a.a., 35,7% neg. (n=460) · [0.5, 1.0): 22,9% a.a., 33,3% neg. (n=225) · [1.0, inf): 49,5% a.a., 26,5% neg. (n=49)
+- **ROIC:** [0.0, 0.2): 23,2% a.a., 33,3% neg. (n=1452) · [0.2, 0.3): 16,1% a.a., 40,9% neg. (n=303) · [0.3, 0.5): 20,7% a.a., 35,1% neg. (n=259) · [0.5, inf): 19,9% a.a., 37,9% neg. (n=261)
+- **Growth:** [0.15, 0.25): 19,1% a.a., 32,5% neg. (n=824) · [0.25, 0.4): 26,6% a.a., 34,0% neg. (n=647) · [0.4, 0.6): 17,6% a.a., 42,0% neg. (n=326) · [0.6, inf): 29,3% a.a., 37,0% neg. (n=192)
+
+# Análise setorial (corte zGrowth 2,93)
+
+> ⚠️ **ROIC:** quem entra em cada classe depende do ROIC; no setor financeiro a régua é o ROE.
+
+Indústrias cíclicas (grupo testado): Agricultural & Farm Machinery, Air Freight & Logistics, Auto - Manufacturers, Automobile Manufacturers, Automotive Parts & Equipment, Building Products, Cargo Ground Transportation, Casinos & Gaming, Commodity Chemicals, Computer & Electronics Retail, Construction Machinery & Heavy Transportation Equipment, Construction Materials, Copper, Electronic Components, Fertilizers & Agricultural Chemicals, Hardware, Equipment & Parts, Homebuilding, Homefurnishing Retail, Hotels, Resorts & Cruise Lines, Integrated Oil & Gas, Leisure Products, Oil & Gas Equipment & Services, Oil & Gas Exploration & Production, Oil & Gas Refining & Marketing, Passenger Airlines, Residential Construction, Semiconductor Materials & Equipment, Semiconductors, Specialty Chemicals, Steel, Technology Hardware, Storage & Peripherals.
+
+## Opportunity of Lifetime
+
+Carteira completa: 18,1% a.a. (2012–2019: 16,4%; 2020–2026: 20,0%)
+
+| Setor | % dos 50 piores | % de todos | % dos 50 melhores | Retorno médio da posição (a.a.) | % posições negativas | Carteira sem o setor | Δ total | Δ 2012–19 | Δ 2020–26 |
+|---|---|---|---|---|---|---|---|---|---|
+| Tecnologia | 16,0% | 23,8% | 36,0% | 29,5% | 35,9% | 15,5% | **-2,6%** | -0,6% | -5,0% |
+| Consumo discricionário | 16,0% | 23,3% | 18,0% | 16,7% | 36,3% | 18,7% | **+0,6%** | +0,5% | +0,7% |
+| Industrial | 30,0% | 23,3% | 18,0% | 16,6% | 38,8% | 19,0% | **+0,9%** | -0,1% | +2,1% |
+| Financeiro | 12,0% | 11,0% | 12,0% | 18,2% | 33,0% | 18,2% | **+0,1%** | -0,2% | +0,5% |
+| Saúde | 12,0% | 9,3% | 4,0% | 16,3% | 43,7% | 18,3% | **+0,2%** | +0,2% | +0,1% |
+| Comunicação | 4,0% | 3,5% | 6,0% | 30,7% | 43,5% | 17,8% | **-0,3%** | -0,6% | +0,1% |
+| Consumo básico | 6,0% | 2,6% | 4,0% | 9,4% | 38,3% | 18,4% | **+0,3%** | +0,2% | +0,4% |
+| Materiais | 4,0% | 2,2% | 2,0% | 6,7% | 43,3% | 18,5% | **+0,4%** | +0,2% | +0,5% |
+| Energia | 0,0% | 0,9% | 0,0% | 15,4% | 44,4% | 18,2% | **+0,0%** | +0,2% | -0,1% |
+| **Cíclicos (grupo)** | 30,0% | 29,5% | 38,0% | 21,7% | 37,7% | 17,5% | **-0,6%** | +1,3% | -2,9% |
+
+## Good Companies, Great Returns
+
+Carteira completa: 20,7% a.a. (2012–2019: 18,9%; 2020–2026: 22,5%)
+
+| Setor | % dos 50 piores | % de todos | % dos 50 melhores | Retorno médio da posição (a.a.) | % posições negativas | Carteira sem o setor | Δ total | Δ 2012–19 | Δ 2020–26 |
+|---|---|---|---|---|---|---|---|---|---|
+| Industrial | 10,0% | 21,4% | 24,0% | 24,4% | 30,2% | 20,0% | **-0,6%** | +0,2% | -1,4% |
+| Tecnologia | 14,0% | 18,7% | 32,0% | 30,5% | 34,5% | 18,7% | **-2,0%** | -1,2% | -2,9% |
+| Financeiro | 16,0% | 17,6% | 8,0% | 16,3% | 34,3% | 21,1% | **+0,4%** | +0,4% | +0,5% |
+| Consumo discricionário | 22,0% | 15,1% | 16,0% | 20,6% | 37,9% | 20,9% | **+0,3%** | +0,5% | +0,0% |
+| Saúde | 18,0% | 12,7% | 12,0% | 22,5% | 35,1% | 20,7% | **+0,0%** | -0,7% | +0,9% |
+| Consumo básico | 2,0% | 5,8% | 2,0% | 12,9% | 35,4% | 21,3% | **+0,7%** | +0,0% | +1,4% |
+| Materiais | 4,0% | 3,1% | 2,0% | 14,9% | 40,4% | 21,0% | **+0,3%** | +0,4% | +0,1% |
+| Comunicação | 6,0% | 2,4% | 2,0% | 22,5% | 27,9% | 20,8% | **+0,1%** | +0,1% | +0,2% |
+| Imobiliário | 6,0% | 2,0% | 2,0% | 8,6% | 38,9% | 20,9% | **+0,3%** | +0,0% | +0,6% |
+| Energia | 2,0% | 1,1% | 0,0% | 8,0% | 29,0% | 20,8% | **+0,1%** | +0,1% | +0,1% |
+| **Cíclicos (grupo)** | 20,0% | 24,3% | 36,0% | 25,1% | 36,6% | 19,8% | **-0,8%** | +0,8% | -2,7% |
+
+# EUA: desempenho por zROIC e ROIC marginal
+
+> ⚠️ **ROIC:** análise sobre estabilidade do ROIC e ROIC marginal; há problemas de dado conhecidos (ex.: Copart, Deere).
+
+Cenário-base (g 7%, ROIC 20%/10%, zGrowth 2,93), 2012–2026. Unidade = posição (ação × trimestre na classe). Retorno = média do retorno trimestral seguinte, anualizado; excesso = sobre a média do universo no mesmo trimestre. ROIC marginal de 5 anos = ΔNOPAT ÷ Δcapital investido (só quando o capital cresceu).
+
+## Good Companies, Great Returns (todas)
+
+### Por faixa de zROIC
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **Todas** | 2275 | 233 | 21,6% | **+4,3%** | 3,1 | 35,0% | 17,0% | 23,3% |
+| < 0,15 | 424 | 63 | 22,1% | **+2,7%** | 1,2 | 30,2% | 16,0% | 22,7% |
+| 0,15–0,30 | 926 | 118 | 20,8% | **+4,5%** | 2,3 | 35,7% | 15,2% | 22,3% |
+| 0,30–0,50 | 482 | 90 | 20,5% | **+3,9%** | 0,4 | 36,1% | 16,2% | 30,8% |
+| 0,50–0,70 | 223 | 50 | 23,1% | **+5,2%** | 0,8 | 38,1% | 21,4% | 29,4% |
+| ≥ 0,70 (instável) | 220 | 35 | 24,5% | **+6,4%** | 1,4 | 35,9% | 60,4% | 16,5% |
+
+### zROIC alto (terço mais instável do grupo: zROIC ≥ 0,4) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **zROIC alto (todas)** | 761 | 118 | 21,9% | **+4,9%** | 1,5 | 37,2% | 25,7% | 26,5% |
+| ROIC marginal acima da mediana do grupo (23,3%) | 241 | 50 | 21,6% | **+5,7%** | 0,5 | 40,7% | 21,0% | 48,6% |
+| ROIC marginal abaixo da mediana do grupo | 210 | 48 | 27,1% | **+9,9%** | 1,3 | 32,9% | 20,7% | 9,8% |
+| ROIC marginal acima do ROIC da empresa (melhora) | 241 | 48 | 18,0% | **+2,7%** | 0,1 | 41,5% | 18,7% | 48,5% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 210 | 46 | 31,1% | **+13,4%** | 1,9 | 31,9% | 25,9% | 9,8% |
+| Sem ROIC marginal (capital não cresceu em 5 anos) | 310 | 57 | 18,6% | **+0,8%** | -0,0 | 37,4% | 40,8% | — |
+
+### Para comparar: zROIC baixo/médio (dois terços mais estáveis) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| ROIC marginal acima do ROIC da empresa (melhora) | 798 | 114 | 23,0% | **+5,4%** | 2,3 | 33,2% | 14,9% | 26,5% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 323 | 63 | 19,9% | **+4,5%** | 1,5 | 33,4% | 16,2% | 11,8% |
+
+## Excluídas de OoL por ROIC médio
+
+### Por faixa de zROIC
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **Todas** | 1452 | 148 | 23,2% | **+5,7%** | 3,5 | 33,3% | 14,1% | 21,6% |
+| < 0,15 | 284 | 43 | 23,3% | **+4,5%** | 1,0 | 29,9% | 14,1% | 18,9% |
+| 0,15–0,30 | 761 | 91 | 22,3% | **+5,5%** | 2,6 | 34,3% | 14,5% | 22,1% |
+| 0,30–0,50 | 300 | 55 | 23,0% | **+7,0%** | 1,3 | 34,3% | 13,4% | 26,1% |
+| 0,50–0,70 | 107 | 23 | 29,0% | **+7,0%** | 1,0 | 31,8% | 14,8% | 14,2% |
+| ≥ 0,70 (instável) | 0 | | | | | | | |
+
+### zROIC alto (terço mais instável do grupo: zROIC ≥ 0,3) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **zROIC alto (todas)** | 486 | 82 | 25,5% | **+8,1%** | 2,6 | 32,9% | 13,6% | 25,9% |
+| ROIC marginal acima da mediana do grupo (21,6%) | 191 | 42 | 22,8% | **+8,7%** | 1,6 | 38,7% | 14,3% | 35,7% |
+| ROIC marginal abaixo da mediana do grupo | 135 | 29 | 33,4% | **+14,3%** | 2,5 | 28,1% | 13,2% | 6,8% |
+| ROIC marginal acima do ROIC da empresa (melhora) | 212 | 43 | 22,9% | **+8,7%** | 1,6 | 37,7% | 14,2% | 33,2% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 114 | 23 | 35,0% | **+15,4%** | 2,2 | 28,1% | 13,5% | 6,5% |
+| Sem ROIC marginal (capital não cresceu em 5 anos) | 160 | 38 | 22,1% | **+2,1%** | -0,8 | 30,0% | 13,4% | — |
+
+### Para comparar: zROIC baixo/médio (dois terços mais estáveis) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| ROIC marginal acima do ROIC da empresa (melhora) | 584 | 80 | 22,4% | **+4,8%** | 1,9 | 33,2% | 14,4% | 23,4% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 195 | 37 | 21,5% | **+5,9%** | 1,7 | 31,3% | 13,8% | 9,2% |
+
+## Opportunity of Lifetime (referência)
+
+### Por faixa de zROIC
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **Todas** | 1725 | 140 | 19,7% | **+3,2%** | 1,0 | 38,4% | 30,7% | 40,9% |
+| < 0,15 | 375 | 44 | 17,5% | **-0,2%** | 0,4 | 38,7% | 31,0% | 36,0% |
+| 0,15–0,30 | 684 | 80 | 18,3% | **+2,3%** | 1,0 | 38,3% | 28,2% | 45,1% |
+| 0,30–0,50 | 451 | 66 | 19,0% | **+2,3%** | -0,2 | 38,8% | 32,6% | 55,6% |
+| 0,50–0,70 | 215 | 33 | 29,3% | **+13,5%** | 1,7 | 37,2% | 42,5% | 33,4% |
+| ≥ 0,70 (instável) | 0 | | | | | | | |
+
+### zROIC alto (terço mais instável do grupo: zROIC ≥ 0,3) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **zROIC alto (todas)** | 575 | 79 | 23,7% | **+7,5%** | 1,3 | 38,4% | 34,8% | 50,2% |
+| ROIC marginal acima da mediana do grupo (40,9%) | 165 | 28 | 32,4% | **+15,8%** | 0,6 | 43,6% | 33,6% | 117,6% |
+| ROIC marginal abaixo da mediana do grupo | 139 | 29 | 17,9% | **+2,6%** | 0,5 | 35,3% | 27,9% | 20,7% |
+| ROIC marginal acima do ROIC da empresa (melhora) | 187 | 32 | 29,3% | **+12,6%** | 0,3 | 44,4% | 29,0% | 89,7% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 117 | 26 | 20,1% | **+5,2%** | 0,8 | 32,5% | 31,4% | 17,5% |
+| Sem ROIC marginal (capital não cresceu em 5 anos) | 271 | 43 | 21,4% | **+5,0%** | 1,6 | 36,9% | 52,6% | — |
+
+### Para comparar: zROIC baixo/médio (dois terços mais estáveis) por ROIC marginal
+
+| Faixa | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| ROIC marginal acima do ROIC da empresa (melhora) | 599 | 74 | 16,9% | **+1,4%** | -0,0 | 40,1% | 29,7% | 53,3% |
+| ROIC marginal abaixo do ROIC da empresa (piora) | 255 | 43 | 17,9% | **-1,1%** | -0,9 | 37,3% | 28,4% | 21,5% |
+
+# EUA: excluídas de OoL por ROIC instável (zROIC ≥ 0,7)
+
+> ⚠️ **ROIC:** grupo pequeno; problemas de dado no ROIC pesam mais aqui.
+
+220 posições, 35 empresas. Faixas com o mesmo número de posições. "ROIC 2 anos" = média dos dois últimos exercícios; "média 6 anos" = média da janela do modelo (só exercícios já arquivados na data).
+
+## 1. Cinco faixas de zROIC
+
+| Faixa de zROIC | Posições | Empresas | Retorno a.a. | vs Universo | t | % negativas | ROIC (mediana) | ROIC marginal (mediana) |
+|---|---|---|---|---|---|---|---|---|
+| **Todas** | 220 | 35 | 24,5% | **+6,4%** | 1,4 | 35,9% | 60,4% | 16,5% |
+| 0,70–0,80 | 47 | 11 | 39,8% | **+12,8%** | 1,5 | 31,9% | 31,5% | 13,1% |
+| 0,80–0,93 | 42 | 9 | 11,9% | **-0,7%** | 0,0 | 47,6% | 66,6% | 21,5% |
+| 0,93–1,16 | 46 | 12 | 20,0% | **+2,6%** | -0,3 | 37,0% | 87,4% | 22,9% |
+| 1,16–1,68 | 42 | 10 | 22,4% | **+6,0%** | 0,5 | 31,0% | 61,0% | 28,5% |
+| 1,68–4,40 | 43 | 8 | 27,1% | **+10,7%** | 0,8 | 32,6% | 97,4% | 6,6% |
+
+## 2. Cinco faixas × ROIC dos últimos 2 anos acima ou abaixo da média de 6 anos
+
+| Faixa de zROIC | Acima: posições | Acima: retorno a.a. | Acima: vs Universo | Abaixo: posições | Abaixo: retorno a.a. | Abaixo: vs Universo |
+|---|---|---|---|---|---|---|
+| 0,70–0,80 | 22 | 59,9% | **+31,9%** | 25 | 22,2% | **-4,0%** |
+| 0,80–0,93 | 21 | 6,1% | **-5,4%** | 21 | 17,6% | **+4,0%** |
+| 0,93–1,16 | 11 | -17,0% | **-30,4%** | 35 | 31,7% | **+12,9%** |
+| 1,16–1,68 | 20 | 31,6% | **+14,9%** | 22 | 14,0% | **-2,1%** |
+| 1,68–4,40 | 0 | — | — | 43 | 27,1% | **+10,7%** |
+| **Todas** | 74 | 25,6% | **+7,5%** | 146 | 24,0% | **+5,8%** |
+
+## Empresas do grupo
+
+| Ticker | Empresa | Posições | zROIC (mediana) | ROIC 2 anos (mediana) | Média 6 anos (mediana) | Retorno médio a.a. |
+|---|---|---|---|---|---|---|
+| VRSK | Verisk Analytics, Inc. | 20 | 2,77 | 22,9% | 215,2% | 11,1% |
+| DOCS | Doximity, Inc. | 13 | 3,43 | 14,7% | 3320,2% | 13,9% |
+| BBY | Best Buy | 12 | 0,85 | 282,0% | 145,0% | -3,3% |
+| VRSN | Verisign | 12 | 1,16 | 30,1% | 42,9% | 18,8% |
+| VEEV | Veeva Systems | 12 | 1,37 | 27,9% | 275,2% | 47,4% |
+| SHW | Sherwin-Williams | 12 | 0,79 | 20,4% | 32,7% | 19,0% |
+| ANET | Arista Networks, Inc. | 12 | 0,82 | 34,9% | 49,6% | 28,2% |
+| MAR | Marriott International, Inc. | 12 | 2,27 | 14,9% | 92,3% | 15,6% |
+| MSI | Motorola Solutions | 10 | 1,32 | 32,3% | 19,4% | 11,0% |
+| YUM | Yum! Brands, Inc. | 8 | 1,26 | 101,8% | 72,0% | -10,6% |
+| MCO | Moody's Corporation | 7 | 0,84 | 53,1% | 97,9% | 14,2% |
+| FIVE | Five Below, Inc. | 6 | 0,99 | 28,9% | 56,0% | 89,2% |
+| FICO | Fair Isaac Corporation | 5 | 1,24 | 296,5% | 115,0% | 47,2% |
+| AMT | American Tower | 5 | 1,04 | 7,4% | 18,7% | -1,9% |
+| IDXX | IDEXX Laboratories, Inc. | 5 | 0,82 | 53,9% | 130,0% | 36,8% |
+| AMZN | Amazon.com, Inc. | 4 | 1,68 | 14,8% | 60,9% | 28,7% |
+| ACN | Accenture | 4 | 0,95 | 69,7% | 154,3% | 31,6% |
+| MAS | Masco | 4 | 0,84 | 76,2% | 31,7% | 20,3% |
+| BA | Boeing | 4 | 2,39 | -16,3% | 161,2% | 28,8% |
+| STX | Seagate Technology | 4 | 1,28 | 199,2% | 88,4% | 58,9% |
+| TER | Teradyne | 4 | 0,75 | 73,3% | 29,5% | 103,0% |
+| MU | Micron Technology, Inc. | 4 | 0,73 | 37,3% | 20,1% | 60,2% |
+| MANH | Manhattan Associates, Inc. | 4 | 1,00 | 1063,4% | 2925,8% | 38,2% |
+| CF | CF Industries | 4 | 0,81 | 50,6% | 22,4% | 19,0% |
+| DECK | Deckers Outdoor Corporation | 4 | 0,71 | 23,0% | 40,8% | -15,1% |
+| DXCM | Dexcom | 4 | 0,99 | 26,6% | 20,0% | -55,3% |
+| MEDP | Medpace Holdings, Inc. | 4 | 0,72 | 166,9% | 80,4% | 61,6% |
+| VRTX | Vertex Pharmaceuticals Incorporated | 4 | 1,64 | 63,0% | 15,9% | 23,7% |
+| WYNN | Wynn Resorts | 4 | 0,71 | 25,0% | 24,3% | 68,3% |
+| ORCL | Oracle Corporation | 4 | 1,69 | 13,4% | 48,7% | 71,9% |
+| EXPE | Expedia Group | 2 | 1,10 | 52,0% | 18,0% | 28,3% |
+| SPGI | S&P Global Inc. | 2 | 2,76 | 13,0% | 108,5% | -2,8% |
+| GL | Globe Life | 2 | 0,79 | 19,8% | 35,6% | 43,1% |
+| MSCI | MSCI Inc. | 2 | 0,70 | 53,5% | 27,9% | 40,3% |
+| INTU | Intuit | 1 | 2,56 | 15,9% | 54,9% | 24,4% |
+== Brasil
+2010-12-30 0
+2011-03-31 48
+2011-06-30 59
+2011-09-30 62
+2011-12-29 60
+2012-03-30 69
+2012-06-29 74
+2012-09-28 69
+2012-12-28 76
+2013-03-28 82
+2013-06-28 85
+2013-09-30 80
+2013-12-30 85
+2014-03-31 84
+2014-06-30 84
+2014-09-30 83
+2014-12-30 79
+2015-03-31 77
+2015-06-30 78
+2015-09-30 76
+2015-12-30 75
+2016-03-31 74
+2016-06-30 77
+2016-09-30 74
+2016-12-29 77
+2017-03-31 84
+2017-06-30 86
+2017-09-29 90
+2017-12-29 92
+2018-03-29 97
+2018-06-29 94
+2018-09-28 92
+2018-12-28 100
+2019-03-29 103
+2019-06-28 99
+2019-09-30 109
+2019-12-30 109
+2020-03-31 125
+2020-06-30 125
+2020-09-30 129
+2020-12-30 141
+2021-03-31 159
+2021-06-30 180
+2021-09-30 183
+2021-12-30 180
+2022-03-31 176
+2022-06-30 165
+2022-09-30 157
+2022-12-29 158
+2023-03-31 150
+2023-06-30 158
+2023-09-29 160
+2023-12-28 162
+2024-03-28 162
+2024-06-28 160
+2024-09-30 157
+2024-12-30 155
+2025-03-31 149
+2025-06-30 151
+2025-09-30 150
+2025-12-30 156
+2026-03-31 163
+2026-06-30 158
+2026-09-30 154
+inicio: 2014-06-30 | trimestres: 49 | classificadas por data (mediana): 94
+
+== zg2.93
+                          Carteira   CAGR   Vol  Sharpe  MaxDD  Total  CAGR liq.  Giro  N medio  Trim. vazios
+             Cheap Slow Compounder  0.201 0.237   0.849 -0.411  8.438      0.198 0.283    1.551            13
+           Opportunity of Lifetime  0.141 0.364   0.387 -0.635  4.030      0.139 0.252    3.020             1
+        Expensive for what you get  0.140 0.260   0.539 -0.562  3.973      0.136 0.379    2.082             5
+              Cheap but Aggressive  0.137 0.265   0.518 -0.454  3.846      0.135 0.257    1.857             9
+     Good Companies, Great Returns  0.124 0.263   0.471 -0.644  3.198      0.122 0.241   13.245             0
+                 Do not Waste Time  0.121 0.245   0.495 -0.508  3.072      0.120 0.148   60.714             0
+                       Universo EW  0.119 0.233   0.511 -0.493  2.967      0.118 0.102   95.306             0
+                            BOVA11  0.109 0.237   0.460 -0.469  2.561      0.109 0.000      NaN             0
+           Investable but Not Good  0.069 0.297   0.233 -0.687  1.271      0.066 0.349    1.286            17
+                            SMAL11  0.049 0.260   0.189 -0.511  0.799      0.049 0.000      NaN             0
+                         Expensive  0.039 0.294   0.132 -0.585  0.591      0.036 0.325    2.796             2
+Good but Margin of Safety Required  0.008 0.301   0.026 -0.644  0.102      0.004 0.481    2.857             0
+Interesting but Requires Attention -0.001 0.270  -0.002 -0.564 -0.008     -0.003 0.246    5.000            10
+                Excellent but Fair -0.060 0.358  -0.167 -0.734 -0.531     -0.061 0.200    0.898            15
+
+== zg0.9
+                          Carteira   CAGR   Vol  Sharpe  MaxDD  Total  CAGR liq.  Giro  N medio  Trim. vazios
+           Investable but Not Good  0.155 0.265   0.586 -0.482  4.872      0.152 0.402    2.735             2
+              Cheap but Aggressive  0.136 0.278   0.492 -0.483  3.793      0.133 0.347    3.796             3
+     Good Companies, Great Returns  0.127 0.295   0.430 -0.669  3.310      0.124 0.276    6.429             0
+                       Universo EW  0.119 0.233   0.511 -0.493  2.967      0.118 0.102   95.306             0
+                 Do not Waste Time  0.118 0.243   0.486 -0.496  2.931      0.117 0.148   62.367             0
+                            BOVA11  0.109 0.237   0.460 -0.469  2.561      0.109 0.000      NaN             0
+Interesting but Requires Attention  0.099 0.246   0.404 -0.500  2.191      0.097 0.239   12.224             0
+             Cheap Slow Compounder  0.066 0.226   0.289 -0.436  1.176      0.065 0.096    0.531            26
+                         Expensive  0.055 0.293   0.187 -0.573  0.918      0.053 0.194    1.143            14
+                            SMAL11  0.049 0.260   0.189 -0.511  0.799      0.049 0.000      NaN             0
+           Opportunity of Lifetime  0.049 0.345   0.142 -0.612  0.796      0.047 0.199    1.694            12
+        Expensive for what you get  0.030 0.297   0.103 -0.672  0.444      0.027 0.431    2.571             5
+Good but Margin of Safety Required  0.023 0.304   0.074 -0.548  0.316      0.020 0.356    1.429            10
+                Excellent but Fair -0.187 0.345  -0.543 -0.929 -0.921     -0.188 0.094    0.388            30
+A (ROIC 20%/10%) 2.93
+A (ROIC 20%/10%) 0.9
+B (ROIC 22,5%/12,5%) 2.93
+B (ROIC 22,5%/12,5%) 0.9
+# Brasil: parâmetros dos EUA + 2,5 p.p.
+
+> ⚠️ **ROIC:** a variante B sobe também os cortes de ROIC; a definição de ROIC segue em revisão.
+
+WACC 11,0%; g 9,5% → 6,0% (operacionais e financeiras); crescimento 17,5%/8,5%; retorno 22,5%/10,5%.
+
+## Variante A (ROIC 20%/10%), corte zGrowth 2,93 (início 30/06/2014)
+
+| Carteira | Retorno anual | vs Universo EW | t | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|
+| Opportunity of Lifetime | 9,1% | +1,5% | 0.2 | 3.3 | 0 |
+| Good Companies, Great Returns | 10,9% | -1,2% | -0.4 | 13.4 | 0 |
+| Excellent but Fair | -2,4% | -16,2% | -2.0 | 0.3 | 36 |
+| Good but Margin of Safety Required | 1,9% | -7,0% | -0.9 | 2.3 | 5 |
+| Cheap Slow Compounder | 14,5% | +2,2% | 0.4 | 3.2 | 0 |
+| Interesting but Requires Attention | -0,5% | -11,8% | -2.2 | 5.1 | 10 |
+| Cheap but Aggressive | 17,7% | +5,1% | 1.0 | 2.6 | 10 |
+| Expensive for what you get | 4,3% | -7,4% | -1.5 | 1.9 | 9 |
+| Investable but Not Good | 3,6% | -7,8% | -1.0 | 0.9 | 23 |
+| Expensive | -8,8% | -20,1% | -2.7 | 1.5 | 11 |
+| Do not Waste Time | 12,7% | +1,4% | 1.0 | 60.9 | 0 |
+| *Universo EW* | 11,9% | | | 96 | |
+| *BOVA11* | 10,9% | | | | |
+| *SMAL11* | 4,9% | | | | |
+
+## Variante A (ROIC 20%/10%), corte zGrowth 0,9 (início 30/06/2014)
+
+| Carteira | Retorno anual | vs Universo EW | t | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|
+| Opportunity of Lifetime | -10,5% | -16,2% | -1.9 | 1.9 | 7 |
+| Good Companies, Great Returns | 11,0% | -1,1% | -0.2 | 6.6 | 0 |
+| Excellent but Fair | -1,5% | -16,2% | -2.1 | 0.1 | 45 |
+| Good but Margin of Safety Required | -1,8% | -13,7% | -1.8 | 0.8 | 23 |
+| Cheap Slow Compounder | 5,9% | -7,3% | -1.0 | 0.9 | 26 |
+| Interesting but Requires Attention | 8,0% | -3,5% | -0.9 | 12.2 | 0 |
+| Cheap but Aggressive | 16,2% | +3,4% | 0.8 | 5.9 | 0 |
+| Expensive for what you get | 10,1% | +1,0% | 0.1 | 2.3 | 2 |
+| Investable but Not Good | 5,5% | -5,5% | -1.0 | 2.2 | 2 |
+| Expensive | 2,0% | -9,2% | -1.1 | 0.5 | 25 |
+| Do not Waste Time | 12,4% | +1,1% | 0.8 | 61.9 | 0 |
+| *Universo EW* | 11,9% | | | 96 | |
+| *BOVA11* | 10,9% | | | | |
+| *SMAL11* | 4,9% | | | | |
+
+## Variante B (ROIC 22,5%/12,5%), corte zGrowth 2,93 (início 30/06/2014)
+
+| Carteira | Retorno anual | vs Universo EW | t | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|
+| Opportunity of Lifetime | 6,3% | -0,5% | -0.1 | 2.8 | 0 |
+| Good Companies, Great Returns | 12,4% | +0,0% | 0.0 | 9.4 | 0 |
+| Excellent but Fair | -2,1% | -16,2% | -2.1 | 0.2 | 39 |
+| Good but Margin of Safety Required | 1,2% | -5,1% | -0.4 | 1.2 | 13 |
+| Cheap Slow Compounder | 15,8% | +3,3% | 0.7 | 3.4 | 0 |
+| Interesting but Requires Attention | 4,7% | -7,3% | -1.2 | 4.2 | 14 |
+| Cheap but Aggressive | 15,0% | +2,2% | 0.4 | 2.2 | 11 |
+| Expensive for what you get | 7,5% | -4,0% | -0.7 | 1.8 | 8 |
+| Investable but Not Good | 4,1% | -7,9% | -1.0 | 0.8 | 26 |
+| Expensive | -7,8% | -20,6% | -2.6 | 0.5 | 33 |
+| Do not Waste Time | 12,2% | +0,8% | 0.7 | 68.9 | 0 |
+| *Universo EW* | 11,9% | | | 96 | |
+| *BOVA11* | 10,9% | | | | |
+| *SMAL11* | 4,9% | | | | |
+
+## Variante B (ROIC 22,5%/12,5%), corte zGrowth 0,9 (início 30/06/2014)
+
+| Carteira | Retorno anual | vs Universo EW | t | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|
+| Opportunity of Lifetime | -13,1% | -18,8% | -2.1 | 1.6 | 7 |
+| Good Companies, Great Returns | 8,2% | -2,8% | -0.6 | 5.4 | 0 |
+| Excellent but Fair | -1,5% | -16,2% | -2.1 | 0.1 | 45 |
+| Good but Margin of Safety Required | -1,0% | -13,8% | -1.6 | 0.3 | 32 |
+| Cheap Slow Compounder | 7,2% | -6,0% | -0.9 | 0.9 | 23 |
+| Interesting but Requires Attention | 11,1% | -1,1% | -0.2 | 8.5 | 2 |
+| Cheap but Aggressive | 15,6% | +3,4% | 0.7 | 5.5 | 0 |
+| Expensive for what you get | 5,5% | -0,4% | -0.0 | 1.8 | 1 |
+| Investable but Not Good | 0,4% | -10,3% | -1.7 | 1.9 | 5 |
+| Expensive | -7,5% | -20,7% | -2.5 | 0.2 | 40 |
+| Do not Waste Time | 12,2% | +0,8% | 0.7 | 69.2 | 0 |
+| *Universo EW* | 11,9% | | | 96 | |
+| *BOVA11* | 10,9% | | | | |
+| *SMAL11* | 4,9% | | | | |
+
+2.93
+0.9
+# Brasil v3: liquidez ≥ R$ 10 mi/dia e ROIC alto ≥ 17%
+
+> ⚠️ **ROIC:** corte alto reduzido para 17% (baixo 10%); ROIC clássico, ROE para financeiras.
+
+WACC 11%; g 9,5% → 6% (operacionais e financeiras); crescimento 17,5%/8,5%; retorno 22,5%/10,5%; ROIC 17%/10%.
+
+## Corte zGrowth 2,93 — início 31/03/2015, 81 empresas classificadas por trimestre (mediana)
+
+| Carteira | Retorno anual | vs Universo EW | t | Max DD | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|---|
+| Opportunity of Lifetime | -6,7% | -13,3% | -1,4 | -89,2% | 3,4 | 2 |
+| Good Companies, Great Returns | 14,7% | +1,3% | 0,5 | -52,8% | 11,2 | 0 |
+| Excellent but Fair | 4,5% | -10,7% | -1,5 | -38,6% | 0,3 | 33 |
+| Good but Margin of Safety Required | -0,1% | -11,1% | -1,5 | -53,3% | 2,2 | 5 |
+| Cheap Slow Compounder | 14,4% | +0,8% | 0,1 | -45,6% | 1,8 | 4 |
+| Interesting but Requires Attention | -1,0% | -12,5% | -1,9 | -74,2% | 3,6 | 4 |
+| Cheap but Aggressive | 10,8% | -1,4% | -0,2 | -54,2% | 1,4 | 9 |
+| Expensive for what you get | 0,9% | -11,7% | -1,9 | -45,4% | 1,0 | 17 |
+| Investable but Not Good | 4,8% | -9,5% | -1,1 | -41,8% | 0,3 | 32 |
+| Expensive | -3,0% | -14,2% | -1,7 | -69,7% | 1,7 | 6 |
+| Do not Waste Time | 14,0% | +1,5% | 1,0 | -49,6% | 46,3 | 0 |
+| *Universo EW (contraprova)* | 13,3% | | | -48,0% | 73 | |
+| *BOVA11* | 12,1% | | | -46,9% | | |
+| *SMAL11* | 7,3% | | | -51,1% | | |
+
+### Atribuição: Opportunity of Lifetime
+
+- Ações distintas: 26 · sem as maiores: sem top 1: -11,5% · sem top 3: -15,4% · sem top 5: -17,3%
+
+**10 maiores**
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | UNIP6 | UNIPAR CARBOCLORO S.A. | Petroquímicos e Borracha | +32,0% | 12 | +5,7% | 2021–2023 |
+| 2 | YDUQ3 | YDUQS PARTICIPACOES S.A. | Emp. Adm. Part. - Educação | +30,7% | 8 | +1,4% | 2015–2016 |
+| 3 | PRIO3 | PRIO S.A. | Petróleo e Gás | +17,2% | 14 | +6,5% | 2023–2026 |
+| 4 | ITUB4 | ITAU UNIBANCO HOLDING S.A. | Bancos | +16,4% | 4 | +10,3% | 2017–2017 |
+| 5 | VBBR3 | VIBRA ENERGIA S/A | Comércio (Atacado e Varejo) | +8,8% | 4 | +19,7% | 2025–2025 |
+| 6 | CURY3 | Cury Construtora e Incorporadora S.A. | Construção Civil, Mat. Constr. e Decoração | +7,8% | 10 | +7,6% | 2024–2026 |
+| 7 | BBSE3 | BB SEGURIDADE PARTICIPAÇÕES S.A. | Emp. Adm. Part. - Seguradoras e Corretoras | +6,1% | 8 | +5,0% | 2017–2024 |
+| 8 | WEGE3 | WEG S.A. | Emp. Adm. Part. - Máqs., Equip., Veíc. e Peças | +5,8% | 8 | +5,9% | 2024–2025 |
+| 9 | TTEN3 | Três Tentos Agroindustrial S/A | Agricultura (Açúcar, Álcool e Cana) | +3,8% | 7 | +5,0% | 2024–2025 |
+| 10 | CMIG4 | CIA ENERGETICA DE MINAS GERAIS - CEMIG | Energia Elétrica | +3,5% | 6 | +5,2% | 2025–2026 |
+
+**10 menores**
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | CVCB3 | CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A. | Hospedagem e Turismo | -34,4% | 6 | -5,7% | 2019–2020 |
+| 2 | BLAU3 | Blau Farmacêutica S.A. | Farmacêutico e Higiene | -32,4% | 4 | -16,8% | 2021–2022 |
+| 3 | MGLU3 | MAGAZINE LUIZA S.A. | Comércio (Atacado e Varejo) | -8,5% | 2 | -13,8% | 2021–2021 |
+| 4 | EZTC3 | EZ TEC EMPREEND. E PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | -7,9% | 1 | -23,7% | 2015–2015 |
+| 5 | TOTS3 | TOTVS S.A. | Comunicação e Informática | -5,8% | 5 | -1,9% | 2015–2016 |
+| 6 | INTB3 | Intelbras S.A. Ind. de Telecomunicação Eletrônica Brasileira | Comércio (Atacado e Varejo) | -4,8% | 8 | -4,8% | 2023–2024 |
+| 7 | SEER3 | SER EDUCACIONAL S.A. | Educação | -3,4% | 5 | -3,7% | 2017–2018 |
+| 8 | LAVV3 | Lavvi Empreendimentos Imobiliários S.A. | Construção Civil, Mat. Constr. e Decoração | -2,2% | 1 | -19,5% | 2026–2026 |
+| 9 | GGPS3 | GPS PARTICIPAÇÕES E EMPREENDIMENTOS S.A. | Emp. Adm. Part. - Sem Setor Principal | -1,7% | 10 | -1,8% | 2024–2026 |
+| 10 | RADL3 | Raia Drogasil S.A. | Comércio (Atacado e Varejo) | -1,3% | 1 | -13,4% | 2024–2024 |
+
+### Atribuição: Good Companies, Great Returns
+
+- Ações distintas: 68 · sem as maiores: sem top 1: 14,1% · sem top 3: 12,6% · sem top 5: 10,6%
+
+**10 maiores**
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | BBDC4 | BCO BRADESCO S.A. | Bancos | +22,7% | 16 | +7,8% | 2015–2026 |
+| 2 | YDUQ3 | YDUQS PARTICIPACOES S.A. | Emp. Adm. Part. - Educação | +22,7% | 11 | +20,2% | 2017–2020 |
+| 3 | CSAN3 | COSAN S.A. | Agricultura (Açúcar, Álcool e Cana) | +16,9% | 15 | +9,3% | 2017–2020 |
+| 4 | CVCB3 | CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A. | Hospedagem e Turismo | +11,8% | 10 | +10,7% | 2016–2018 |
+| 5 | MGLU3 | MAGAZINE LUIZA S.A. | Comércio (Atacado e Varejo) | +11,7% | 7 | +19,8% | 2019–2022 |
+| 6 | PETR4 | PETROLEO BRASILEIRO S.A. PETROBRAS | Petróleo e Gás | +7,9% | 10 | +12,0% | 2023–2026 |
+| 7 | ITSA4 | ITAÚSA S.A. | Emp. Adm. Part. - Intermediação Financeira | +7,7% | 8 | +6,5% | 2015–2017 |
+| 8 | JHSF3 | JHSF PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | +7,4% | 17 | +5,8% | 2022–2026 |
+| 9 | FLRY3 | FLEURY S.A. | Serviços médicos | +7,0% | 10 | +12,0% | 2019–2026 |
+| 10 | UGPA3 | ULTRAPAR PARTICIPACOES S.A. | Emp. Adm. Part. - Petróleo e Gás | +6,7% | 13 | +6,5% | 2016–2025 |
+
+**10 menores**
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | TEND3 | CONSTRUTORA TENDA S.A. | Construção Civil, Mat. Constr. e Decoração | -5,7% | 4 | -21,6% | 2021–2021 |
+| 2 | COGN3 | COGNA EDUCAÇÃO S.A. | Emp. Adm. Part. - Educação | -5,6% | 16 | -1,9% | 2016–2019 |
+| 3 | DXCO3 | DEXCO S.A. | Construção Civil, Mat. Constr. e Decoração | -3,6% | 4 | -16,9% | 2022–2022 |
+| 4 | POSI3 | POSITIVO TECNOLOGIA S.A. | Comunicação e Informática | -2,5% | 2 | -18,2% | 2024–2024 |
+| 5 | LIGT3 | LIGHT S.A. | Emp. Adm. Part. - Energia Elétrica | -2,4% | 2 | -4,8% | 2015–2015 |
+| 6 | TTEN3 | Três Tentos Agroindustrial S/A | Agricultura (Açúcar, Álcool e Cana) | -2,0% | 2 | -19,0% | 2026–2026 |
+| 7 | VULC3 | VULCABRAS S.A. | Têxtil e Vestuário | -1,2% | 2 | -10,8% | 2026–2026 |
+| 8 | CAML3 | CAMIL ALIMENTOS S.A. | Alimentos | -1,2% | 7 | -3,2% | 2021–2022 |
+| 9 | MDNE3 | MOURA DUBEUX ENGENHARIA S/A | Construção Civil, Mat. Constr. e Decoração | -1,1% | 2 | -10,6% | 2026–2026 |
+| 10 | LREN3 | LOJAS RENNER S.A. | Comércio (Atacado e Varejo) | -1,0% | 2 | -9,7% | 2026–2026 |
+
+## Corte zGrowth 0,9 — início 31/03/2015, 81 empresas classificadas por trimestre (mediana)
+
+| Carteira | Retorno anual | vs Universo EW | t | Max DD | Ações em média | Trimestres vazios |
+|---|---|---|---|---|---|---|
+| Opportunity of Lifetime | -14,5% | -22,3% | -2,5 | -90,4% | 1,8 | 10 |
+| Good Companies, Great Returns | 8,3% | -4,3% | -1,0 | -74,2% | 6,3 | 0 |
+| Excellent but Fair | 2,0% | -14,1% | -1,9 | -29,4% | 0,1 | 43 |
+| Good but Margin of Safety Required | 0,7% | -11,4% | -1,5 | -64,3% | 0,6 | 21 |
+| Cheap Slow Compounder | 1,4% | -14,6% | -2,0 | -17,8% | 0,2 | 42 |
+| Interesting but Requires Attention | 14,5% | +0,9% | 0,2 | -43,3% | 9,5 | 0 |
+| Cheap but Aggressive | 18,1% | +4,5% | 0,9 | -49,4% | 3,6 | 0 |
+| Expensive for what you get | 3,0% | -8,6% | -1,3 | -58,2% | 2,3 | 5 |
+| Investable but Not Good | -1,2% | -13,8% | -2,0 | -62,3% | 0,8 | 17 |
+| Expensive | 2,5% | -9,6% | -1,2 | -57,9% | 0,7 | 22 |
+| Do not Waste Time | 13,8% | +1,1% | 0,8 | -48,6% | 47,3 | 0 |
+| *Universo EW (contraprova)* | 13,3% | | | -48,0% | 73 | |
+| *BOVA11* | 12,1% | | | -46,9% | | |
+| *SMAL11* | 7,3% | | | -51,1% | | |
+
+# Atribuição no Brasil: Cheap but Aggressive, Cheap Slow Compounder, Do not Waste Time
+
+> ⚠️ **ROIC:** classes dependem do corte de ROIC 20%/10%, mais restritivo no Brasil.
+
+Parâmetros: WACC 11%; g 9,5% → 6%; crescimento 17,5%/8,5%; retorno 22,5%/10,5%; ROIC 20%/10%; zGrowth 2,93. Contribuição = soma de (1/N × retorno trimestral) nos trimestres em que a ação esteve na classe.
+
+## Cheap but Aggressive
+
+- Retorno anual: **17,7%** · ações distintas: 22 · ações em média: 3,2
+- Sem as maiores: sem top 1: 16,5% · sem top 3: 6,7% · sem top 5: 2,0%
+- 10 maiores somam 103,8% da contribuição total
+
+### 10 maiores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | ISAE4 | ISA ENERGIA BRASIL | Energia Elétrica | +52,5% | 16 | +6,4% | 2017–2020 |
+| 2 | PSSA3 | PORTO SEGURO S.A. | Seguradoras e Corretoras | +45,5% | 11 | +10,1% | 2016–2018 |
+| 3 | FESA4 | CIA FERRO LIGAS DA BAHIA - FERBASA | Metalurgia e Siderurgia | +41,0% | 8 | +19,3% | 2020–2022 |
+| 4 | AGRO3 | BRASILAGRO - CIA BRAS DE PROP AGRICOLAS | Agricultura (Açúcar, Álcool e Cana) | +36,0% | 4 | +10,9% | 2020–2021 |
+| 5 | SLCE3 | SLC AGRICOLA S.A. | Agricultura (Açúcar, Álcool e Cana) | +30,3% | 1 | +30,3% | 2026–2026 |
+| 6 | ALUP11 | ALUPAR INVESTIMENTO S/A | Emp. Adm. Part. - Energia Elétrica | +13,7% | 8 | +5,5% | 2020–2023 |
+| 7 | DXCO3 | DEXCO S.A. | Construção Civil, Mat. Constr. e Decoração | +12,6% | 4 | +9,4% | 2023–2023 |
+| 8 | TFCO4 | TRACK & FIELD CO S.A. | Têxtil e Vestuário | +10,2% | 2 | +30,7% | 2024–2025 |
+| 9 | ITSA4 | ITAÚSA S.A. | Emp. Adm. Part. - Intermediação Financeira | +9,3% | 12 | +4,7% | 2022–2025 |
+| 10 | CYRE3 | CYRELA BRAZIL REALTY S.A.EMPREEND E PART | Construção Civil, Mat. Constr. e Decoração | +5,2% | 4 | +7,1% | 2025–2025 |
+
+### 10 menores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | AZZA3 | AZZAS 2154 S.A. | Têxtil e Vestuário | -11,4% | 3 | -21,0% | 2024–2024 |
+| 2 | RIAA3 | GUARARAPES CONFECCOES S.A. | Têxtil e Vestuário | -5,8% | 4 | -4,3% | 2019–2019 |
+| 3 | VALE3 | VALE S.A. | Extração Mineral | -4,1% | 3 | -4,1% | 2019–2019 |
+| 4 | ALOS3 | ALLOS S.A. | Emp. Adm. Part. - Comércio (Atacado e Varejo) | -2,8% | 4 | -2,6% | 2024–2024 |
+| 5 | VLID3 | VALID SOLUÇÕES S.A. | Comunicação e Informática | -1,3% | 4 | -1,2% | 2025–2025 |
+| 6 | TEND3 | CONSTRUTORA TENDA S.A. | Construção Civil, Mat. Constr. e Decoração | -0,9% | 4 | +0,6% | 2022–2022 |
+| 7 | SYNE3 | SYN PROP & TECH S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | -0,8% | 9 | +0,4% | 2022–2025 |
+| 8 | BRSR6 | BANCO DO ESTADO DO RIO GRANDE DO SUL SA | Bancos | +1,1% | 4 | +2,0% | 2022–2022 |
+| 9 | BMOB3 | BEMOBI MOBILE TECH S.A. | Comunicação e Informática | +2,7% | 6 | +1,5% | 2023–2024 |
+| 10 | CGAS5 | CIA GAS DE SAO PAULO - COMGAS | Emp. Adm. Part. - Saneamento, Serv. Água e Gás | +4,3% | 4 | +1,8% | 2016–2019 |
+
+## Cheap Slow Compounder
+
+- Retorno anual: **14,5%** · ações distintas: 22 · ações em média: 3,2
+- Sem as maiores: sem top 1: 13,4% · sem top 3: 13,1% · sem top 5: 2,9%
+- 10 maiores somam 108,6% da contribuição total
+
+### 10 maiores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | ITUB4 | ITAU UNIBANCO HOLDING S.A. | Bancos | +41,1% | 16 | +7,0% | 2018–2026 |
+| 2 | ABCB4 | BCO ABC BRASIL S.A. | Bancos | +40,9% | 23 | +7,5% | 2014–2020 |
+| 3 | BBDC4 | BCO BRADESCO S.A. | Bancos | +32,3% | 17 | +8,1% | 2014–2018 |
+| 4 | ITSA4 | ITAÚSA S.A. | Emp. Adm. Part. - Intermediação Financeira | +27,7% | 29 | +6,0% | 2014–2026 |
+| 5 | PSSA3 | PORTO SEGURO S.A. | Seguradoras e Corretoras | +23,7% | 13 | +5,1% | 2019–2026 |
+| 6 | BBAS3 | BCO BRASIL S.A. | Bancos | +21,9% | 9 | +14,4% | 2016–2025 |
+| 7 | ALUP11 | ALUPAR INVESTIMENTO S/A | Emp. Adm. Part. - Energia Elétrica | +14,6% | 9 | +1,8% | 2021–2026 |
+| 8 | CGAS5 | CIA GAS DE SAO PAULO - COMGAS | Emp. Adm. Part. - Saneamento, Serv. Água e Gás | +10,7% | 3 | +8,0% | 2018–2018 |
+| 9 | TAEE11 | TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A. | Emp. Adm. Part. - Energia Elétrica | +8,1% | 8 | +4,5% | 2015–2016 |
+| 10 | SAPR11 | CIA SANEAMENTO DO PARANA - SANEPAR | Saneamento, Serv. Água e Gás | +8,1% | 1 | +48,4% | 2018–2018 |
+
+### 10 menores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | HBOR3 | HELBOR EMPREENDIMENTOS S.A. | Construção Civil, Mat. Constr. e Decoração | -12,4% | 4 | -13,3% | 2014–2015 |
+| 2 | PNVL3 | DIMED S.A. DISTRIBUIDORA DE MEDICAMENTOS | Comércio (Atacado e Varejo) | -9,5% | 3 | -12,8% | 2020–2020 |
+| 3 | RIAA3 | GUARARAPES CONFECCOES S.A. | Têxtil e Vestuário | -4,6% | 1 | -18,4% | 2015–2015 |
+| 4 | SHUL4 | SCHULZ S.A. | Metalurgia e Siderurgia | -1,4% | 2 | -5,6% | 2026–2026 |
+| 5 | EGIE3 | ENGIE BRASIL ENERGIA S.A. | Energia Elétrica | -1,3% | 3 | +2,7% | 2020–2023 |
+| 6 | CYRE3 | CYRELA BRAZIL REALTY S.A.EMPREEND E PART | Construção Civil, Mat. Constr. e Decoração | -0,2% | 2 | +1,2% | 2026–2026 |
+| 7 | MILS3 | MILLS LOCAÇÃO, SERVIÇOS E LOGÍSTICA S.A. | Serviços Transporte e Logística | +0,4% | 3 | +3,3% | 2014–2026 |
+| 8 | RENT3 | Localiza Rent a Car S.A. | Serviços Transporte e Logística | +0,5% | 1 | +2,1% | 2015–2015 |
+| 9 | BLAU3 | Blau Farmacêutica S.A. | Farmacêutico e Higiene | +0,6% | 1 | +5,6% | 2026–2026 |
+| 10 | GMAT3 | GRUPO MATEUS S.A. | Emp. Adm. Part. - Comércio (Atacado e Varejo) | +1,1% | 2 | +8,3% | 2026–2026 |
+
+## Do not Waste Time
+
+- Retorno anual: **12,7%** · ações distintas: 158 · ações em média: 60,9
+- Sem as maiores: sem top 1: 11,8% · sem top 3: 11,2% · sem top 5: 10,7%
+- 15 maiores somam 37,6% da contribuição total
+
+### 15 maiores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | AMBP3 | AMBIPAR PARTICIP. E EMPREEND. S.A. - EM RECUPERAÇÃO JUDICIAL | Saneamento, Serv. Água e Gás | +11,2% | 11 | +79,5% | 2023–2026 |
+| 2 | MGLU3 | MAGAZINE LUIZA S.A. | Comércio (Atacado e Varejo) | +7,2% | 23 | +15,2% | 2015–2026 |
+| 3 | BRAP4 | BRADESPAR S.A. | Emp. Adm. Part. - Extração Mineral | +5,8% | 45 | +7,7% | 2014–2026 |
+| 4 | CSMG3 | CIA SANEAMENTO DE MINAS GERAIS-COPASA MG | Saneamento, Serv. Água e Gás | +5,5% | 49 | +6,9% | 2014–2026 |
+| 5 | USIM5 | USINAS SID DE MINAS GERAIS S.A.-USIMINAS | Metalurgia e Siderurgia | +5,0% | 18 | +16,1% | 2016–2026 |
+| 6 | B3SA3 | B3 S.A. - BRASIL, BOLSA, BALCÃO | Bolsas de Valores/Mercadorias e Futuros | +4,4% | 29 | +7,8% | 2014–2026 |
+| 7 | ALPA4 | ALPARGATAS S.A. | Têxtil e Vestuário | +4,4% | 48 | +4,7% | 2014–2026 |
+| 8 | CYRE3 | CYRELA BRAZIL REALTY S.A.EMPREEND E PART | Construção Civil, Mat. Constr. e Decoração | +4,2% | 43 | +5,4% | 2014–2024 |
+| 9 | SBSP3 | CIA SANEAMENTO BASICO EST SAO PAULO | Saneamento, Serv. Água e Gás | +4,2% | 44 | +5,7% | 2014–2025 |
+| 10 | BHIA3 | Grupo Casas Bahia S.A. - Em Recuperação Judicial | Comércio (Atacado e Varejo) | +4,1% | 8 | +29,5% | 2019–2020 |
+| 11 | SLCE3 | SLC AGRICOLA S.A. | Agricultura (Açúcar, Álcool e Cana) | +4,1% | 27 | +9,3% | 2014–2021 |
+| 12 | VALE3 | VALE S.A. | Extração Mineral | +4,0% | 34 | +7,3% | 2014–2026 |
+| 13 | EZTC3 | EZ TEC EMPREEND. E PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | +3,9% | 42 | +4,7% | 2016–2026 |
+| 14 | ROMI3 | ROMI S.A. | Máquinas, Equipamentos, Veículos e Peças | +3,8% | 13 | +17,7% | 2019–2022 |
+| 15 | WEGE3 | WEG S.A. | Emp. Adm. Part. - Máqs., Equip., Veíc. e Peças | +3,8% | 25 | +8,7% | 2014–2020 |
+
+### 15 menores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | DASA3 | DIAGNOSTICOS DA AMERICA S.A. | Serviços médicos | -3,0% | 12 | -18,0% | 2021–2024 |
+| 2 | MILS3 | MILLS LOCAÇÃO, SERVIÇOS E LOGÍSTICA S.A. | Serviços Transporte e Logística | -2,6% | 13 | -9,3% | 2014–2018 |
+| 3 | HAPV3 | HAPVIDA PARTICIPAÇÕES E INVESTIMENTOS S.A. | Serviços médicos | -2,5% | 20 | -9,1% | 2021–2025 |
+| 4 | TCSA3 | TECNISA S.A. | Construção Civil, Mat. Constr. e Decoração | -2,0% | 13 | -7,9% | 2015–2019 |
+| 5 | RSID3 | ROSSI RESIDENCIAL S.A. - EM RECUPERAÇÃO JUDICIAL | Construção Civil, Mat. Constr. e Decoração | -1,9% | 2 | -43,4% | 2015–2015 |
+| 6 | CVCB3 | CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A. | Hospedagem e Turismo | -1,8% | 8 | -14,5% | 2021–2022 |
+| 7 | QUAL3 | QUALICORP CONSULTORIA E CORRETORA DE SEGUROS S.A. | Seguradoras e Corretoras | -1,7% | 30 | -4,2% | 2017–2026 |
+| 8 | AERI3 | AERIS IND. E COM. DE EQUIP. PARA GER. DE ENG. S.A. | Máquinas, Equipamentos, Veículos e Peças | -1,6% | 6 | -19,8% | 2023–2025 |
+| 9 | PFRM3 | PROFARMA DISTRIB PROD FARMACEUTICOS S.A. | Comércio (Atacado e Varejo) | -1,5% | 2 | -33,9% | 2014–2014 |
+| 10 | IRBR3 | IRB - BRASIL RESSEGUROS S.A. | Seguradoras e Corretoras | -1,2% | 12 | -6,9% | 2021–2023 |
+| 11 | HBOR3 | HELBOR EMPREENDIMENTOS S.A. | Construção Civil, Mat. Constr. e Decoração | -1,0% | 13 | -3,9% | 2017–2026 |
+| 12 | CSAN3 | COSAN S.A. | Agricultura (Açúcar, Álcool e Cana) | -0,7% | 18 | -4,3% | 2016–2026 |
+| 13 | OIBR3 | OI S.A. - EM RECUPERAÇÃO JUDICIAL | Telecomunicações | -0,7% | 16 | -1,4% | 2014–2018 |
+| 14 | POSI3 | POSITIVO TECNOLOGIA S.A. | Comunicação e Informática | -0,7% | 11 | -3,6% | 2019–2026 |
+| 15 | JALL3 | Jalles Machado S.A. | Agricultura (Açúcar, Álcool e Cana) | -0,6% | 8 | -6,3% | 2024–2026 |
+
+# Atribuição no Brasil: Opportunity of Lifetime, Good Companies, Great Returns
+
+> ⚠️ **ROIC:** classes dependem do corte de ROIC 20%/10%, mais restritivo no Brasil.
+
+Parâmetros: WACC 11%; g 9,5% → 6%; crescimento 17,5%/8,5%; retorno 22,5%/10,5%; ROIC 20%/10%; zGrowth 2,93. Contribuição = soma de (1/N × retorno trimestral) nos trimestres em que a ação esteve na classe.
+
+## Opportunity of Lifetime
+
+- Retorno anual: **9,1%** · ações distintas: 24 · ações em média: 3,3
+- Sem as maiores: sem top 1: -8,3% · sem top 3: -9,0% · sem top 5: -11,6%
+- 10 maiores somam 138,7% da contribuição total
+
+### 10 maiores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | UNIP6 | UNIPAR CARBOCLORO S.A. | Petroquímicos e Borracha | +146,4% | 20 | +9,3% | 2019–2023 |
+| 2 | SEER3 | SER EDUCACIONAL S.A. | Educação | +38,0% | 18 | +1,5% | 2014–2018 |
+| 3 | PRIO3 | PRIO S.A. | Petróleo e Gás | +17,2% | 12 | +7,9% | 2023–2025 |
+| 4 | ANIM3 | ANIMA HOLDING S.A. | Educação | +15,6% | 1 | +46,7% | 2016–2016 |
+| 5 | LAVV3 | Lavvi Empreendimentos Imobiliários S.A. | Construção Civil, Mat. Constr. e Decoração | +14,4% | 4 | +19,6% | 2023–2023 |
+| 6 | ITUB4 | ITAU UNIBANCO HOLDING S.A. | Bancos | +13,7% | 4 | +10,3% | 2017–2017 |
+| 7 | CURY3 | Cury Construtora e Incorporadora S.A. | Construção Civil, Mat. Constr. e Decoração | +10,8% | 10 | +7,6% | 2024–2026 |
+| 8 | BRKM5 | BRASKEM S.A. | Petroquímicos e Borracha | +9,5% | 4 | +4,7% | 2018–2018 |
+| 9 | TGMA3 | TEGMA GESTAO LOGISTICA S.A. | Serviços Transporte e Logística | +8,2% | 6 | +5,5% | 2025–2026 |
+| 10 | WEGE3 | WEG S.A. | Emp. Adm. Part. - Máqs., Equip., Veíc. e Peças | +7,2% | 8 | +5,9% | 2024–2025 |
+
+### 10 menores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | BLAU3 | Blau Farmacêutica S.A. | Farmacêutico e Higiene | -31,7% | 15 | -6,8% | 2021–2024 |
+| 2 | CVCB3 | CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A. | Hospedagem e Turismo | -17,2% | 6 | -5,7% | 2019–2020 |
+| 3 | CRPG5 | TRONOX PIGMENTOS DO BRASIL S.A. | Petroquímicos e Borracha | -9,9% | 2 | -14,9% | 2021–2021 |
+| 4 | DEXP3 | DEXXOS PARTICIPAÇÕES S.A. | Emp. Adm. Part. - Sem Setor Principal | -9,7% | 2 | -14,5% | 2022–2022 |
+| 5 | MGLU3 | MAGAZINE LUIZA S.A. | Comércio (Atacado e Varejo) | -8,5% | 2 | -13,8% | 2021–2021 |
+| 6 | TOTS3 | TOTVS S.A. | Comunicação e Informática | -6,2% | 9 | +0,5% | 2014–2016 |
+| 7 | INTB3 | Intelbras S.A. Ind. de Telecomunicação Eletrônica Brasileira | Comércio (Atacado e Varejo) | -5,1% | 8 | -4,8% | 2023–2024 |
+| 8 | EZTC3 | EZ TEC EMPREEND. E PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | -2,3% | 3 | -2,3% | 2014–2014 |
+| 9 | BMEB4 | BCO MERCANTIL DO BRASIL S.A. | Bancos | -1,6% | 1 | -8,0% | 2026–2026 |
+| 10 | VIVA3 | Vivara Participações S.A. | Comércio (Atacado e Varejo) | -1,6% | 2 | -4,3% | 2026–2026 |
+
+## Good Companies, Great Returns
+
+- Retorno anual: **10,9%** · ações distintas: 85 · ações em média: 13,4
+- Sem as maiores: sem top 1: 10,0% · sem top 3: 9,1% · sem top 5: 7,6%
+- 15 maiores somam 81,0% da contribuição total
+
+### 15 maiores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | CVCB3 | CVC BRASIL OPERADORA E AGÊNCIA DE VIAGENS S.A. | Hospedagem e Turismo | +20,6% | 12 | +12,8% | 2016–2018 |
+| 2 | YDUQ3 | YDUQS PARTICIPACOES S.A. | Emp. Adm. Part. - Educação | +18,9% | 22 | +8,7% | 2014–2020 |
+| 3 | CSAN3 | COSAN S.A. | Agricultura (Açúcar, Álcool e Cana) | +15,8% | 15 | +9,3% | 2017–2020 |
+| 4 | MGLU3 | MAGAZINE LUIZA S.A. | Comércio (Atacado e Varejo) | +12,4% | 7 | +19,8% | 2019–2022 |
+| 5 | CSUD3 | CSU DIGITAL S.A. | Emp. Adm. Part. - Sem Setor Principal | +10,0% | 10 | +10,1% | 2020–2022 |
+| 6 | ALUP11 | ALUPAR INVESTIMENTO S/A | Emp. Adm. Part. - Energia Elétrica | +7,2% | 9 | +4,3% | 2017–2019 |
+| 7 | UGPA3 | ULTRAPAR PARTICIPACOES S.A. | Emp. Adm. Part. - Petróleo e Gás | +6,9% | 18 | +4,8% | 2014–2025 |
+| 8 | JHSF3 | JHSF PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | +6,3% | 18 | +7,2% | 2022–2026 |
+| 9 | QUAL3 | QUALICORP CONSULTORIA E CORRETORA DE SEGUROS S.A. | Seguradoras e Corretoras | +6,2% | 4 | +18,6% | 2019–2019 |
+| 10 | SANB11 | BCO SANTANDER (BRASIL) S.A. | Bancos | +6,1% | 8 | +8,1% | 2020–2021 |
+| 11 | SMTO3 | SAO MARTINHO S.A. | Agricultura (Açúcar, Álcool e Cana) | +5,9% | 25 | +2,0% | 2020–2026 |
+| 12 | BRKM5 | BRASKEM S.A. | Petroquímicos e Borracha | +5,6% | 13 | +3,9% | 2016–2020 |
+| 13 | FLRY3 | FLEURY S.A. | Serviços médicos | +5,5% | 10 | +12,0% | 2019–2026 |
+| 14 | VBBR3 | VIBRA ENERGIA S/A | Comércio (Atacado e Varejo) | +5,2% | 8 | +12,3% | 2021–2025 |
+| 15 | CXSE3 | CAIXA SEGURIDADE PARTICIPAÇÕES S.A. | Emp. Adm. Part. - Seguradoras e Corretoras | +5,1% | 10 | +9,5% | 2021–2023 |
+
+### 15 menores
+
+| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |
+|---|---|---|---|---|---|---|---|
+| 1 | COGN3 | COGNA EDUCAÇÃO S.A. | Emp. Adm. Part. - Educação | -7,8% | 16 | -1,9% | 2016–2019 |
+| 2 | MYPK3 | IOCHPE MAXION S.A. | Máquinas, Equipamentos, Veículos e Peças | -7,7% | 3 | -19,3% | 2014–2014 |
+| 3 | TEND3 | CONSTRUTORA TENDA S.A. | Construção Civil, Mat. Constr. e Decoração | -5,1% | 4 | -21,6% | 2021–2021 |
+| 4 | VVEO3 | CM Hospitalar S.A | Comércio (Atacado e Varejo) | -4,0% | 4 | -25,3% | 2024–2024 |
+| 5 | DXCO3 | DEXCO S.A. | Construção Civil, Mat. Constr. e Decoração | -3,1% | 4 | -16,9% | 2022–2022 |
+| 6 | MOTV3 | MOTIVA INFRAESTRUTURA DE MOBILIDADE S.A. | Emp. Adm. Part. - Serviços Transporte e Logística | -2,9% | 11 | -1,9% | 2014–2024 |
+| 7 | JSLG3 | JSL S.A. | Serviços Transporte e Logística | -2,8% | 4 | -17,8% | 2024–2024 |
+| 8 | VITT3 | VITTIA S.A. | Agricultura (Açúcar, Álcool e Cana) | -2,6% | 5 | -10,2% | 2023–2024 |
+| 9 | EZTC3 | EZ TEC EMPREEND. E PARTICIPACOES S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | -2,4% | 4 | -1,4% | 2015–2015 |
+| 10 | TASA4 | TAURUS ARMAS S.A. | Máquinas, Equipamentos, Veículos e Peças | -2,1% | 8 | -6,6% | 2023–2024 |
+| 11 | MTRE3 | Mitre Realty Empreendimentos e Participações S.A. | Construção Civil, Mat. Constr. e Decoração | -1,5% | 1 | -32,2% | 2022–2022 |
+| 12 | LIGT3 | LIGHT S.A. | Emp. Adm. Part. - Energia Elétrica | -1,4% | 9 | -0,7% | 2014–2016 |
+| 13 | SOJA3 | BOA SAFRA SEMENTES S.A. | Alimentos | -1,3% | 4 | -6,4% | 2025–2025 |
+| 14 | DESK3 | DESKTOP S.A. | Telecomunicações | -1,2% | 2 | -16,3% | 2024–2024 |
+| 15 | VULC3 | VULCABRAS S.A. | Têxtil e Vestuário | -0,9% | 2 | -10,8% | 2026–2026 |
+
+== Dois paises e historico de ROIC
+# Opportunity of Lifetime × Good Companies, Great Returns: EUA e Brasil
+
+> ⚠️ **ROIC:** dois dos quatro defeitos são de ROIC; régua de ROIC de 20%/10% nos EUA e 17%/10% no Brasil.
+
+EUA: cenário-base (g 7%, ROIC 20%/10%), 2012–2026. Brasil: v3 (liquidez ≥ R$ 10 mi/dia, ROIC 17%/10%, parâmetros EUA + 2,5 p.p.), 2015–2026. Corte zGrowth 2,93 nos dois. Retornos: média trimestral anualizada (aritmética).
+
+## 1. O que tirou a empresa de Opportunity of Lifetime: desempenho de cada defeito
+
+### EUA
+
+| Grupo | Ações (média) | % de GCGR | Retorno médio a.a. | vs OoL (a.a.) | t vs OoL | vs Universo EW | Contribuição para GCGR − OoL |
+|---|---|---|---|---|---|---|---|
+| **Opportunity of Lifetime (referência)** | 29,7 | — | 18,8% | — | — | +2,1% | — |
+| Growth instável (zGrowth) | 5,5 | 13,8% | 15,7% | -3,0% | -0,7 | -0,9% | **-0,3%** |
+| Growth médio | 4,9 | 12,6% | 17,9% | -0,9% | -0,2 | +1,3% | **-0,4%** |
+| ROIC instável (zROIC) | 4,1 | 9,8% | 23,2% | +3,7% | 0,8 | +6,6% | **+0,3%** |
+| ROIC médio | 25,0 | 63,8% | 22,0% | +3,3% | 1,4 | +5,4% | **+2,2%** |
+| **Good Companies, Great Returns (total)** | 39,2 | 100% | 20,6% | +1,9% | | +4,0% | |
+
+### Brasil
+
+| Grupo | Ações (média) | % de GCGR | Retorno médio a.a. | vs OoL (a.a.) | t vs OoL | vs Universo EW | Contribuição para GCGR − OoL |
+|---|---|---|---|---|---|---|---|
+| **Opportunity of Lifetime (referência)** | 3,5 | — | 3,1% | — | — | -12,1% | — |
+| Growth instável (zGrowth) | 1,6 | 12,9% | 15,0% | +5,3% | 0,4 | -6,2% | **+0,0%** |
+| Growth médio | 1,8 | 17,8% | 24,8% | +18,6% | 1,6 | +5,7% | **+4,4%** |
+| ROIC instável (zROIC) | 1,9 | 3,1% | 28,5% | +28,1% | 1,1 | +20,5% | **+1,0%** |
+| ROIC médio | 7,6 | 66,2% | 15,8% | +11,7% | 1,2 | -0,4% | **+8,0%** |
+| **Good Companies, Great Returns (total)** | 11,2 | 100% | 17,5% | +14,0% | | +1,3% | |
+
+## 2. Perfil na entrada: piores 20%, todos e melhores 20% dos episódios (medianas)
+
+### EUA
+
+Episódios: OoL 227, GCGR 449.
+
+| Indicador | OoL piores 20% | OoL todos | OoL melhores 20% | GCGR piores 20% | GCGR todos | GCGR melhores 20% |
+|---|---|---|---|---|---|---|
+| Growth (mediana 5 anos) | 26,2% | 27,1% | 37,7% | 23,1% | 23,6% | 32,5% |
+| zGrowth | 0,9 | 0,9 | 0,9 | 1,4 | 1,3 | 1,2 |
+| Último crescimento anual | 43,8% | 29,7% | 34,2% | 30,1% | 28,1% | 30,1% |
+| ROIC | 27,0% | 28,7% | 30,2% | 19,4% | 18,2% | 15,4% |
+| zROIC | 0,3 | 0,3 | 0,3 | 0,2 | 0,3 | 0,3 |
+| Retorno esperado | 41,5% | 38,8% | 50,7% | 30,0% | 31,6% | 43,4% |
+| P/L de entrada | 22,1 | 26,1 | 25,8 | 21,2 | 20,2 | 19,6 |
+| P/E justo | 36,5 | 36,7 | 39,7 | 27,6 | 27,2 | 27,6 |
+| P/L ÷ P/E justo | 0,7 | 0,7 | 0,6 | 0,8 | 0,8 | 0,7 |
+| Dividend yield | 0,9% | 0,7% | 0,2% | 1,3% | 1,2% | 0,4% |
+| Retorno 12m antes | 23,3% | 18,8% | 20,0% | 9,0% | 10,0% | 10,2% |
+| Trimestres na classe | 4,0 | 6,0 | 12,0 | 4,0 | 4,0 | 8,0 |
+| Retorno do episódio | -18,7% | 25,2% | 117,5% | -12,0% | 19,4% | 83,0% |
+
+### Brasil
+
+Episódios: OoL 31, GCGR 99.
+
+| Indicador | OoL piores 20% | OoL todos | OoL melhores 20% | GCGR piores 20% | GCGR todos | GCGR melhores 20% |
+|---|---|---|---|---|---|---|
+| Growth (mediana 5 anos) | 27,2% | 32,5% | 54,1% | 34,8% | 31,1% | 39,4% |
+| zGrowth | 0,6 | 1,0 | 1,1 | 1,7 | 1,5 | 1,4 |
+| Último crescimento anual | 11,7% | 20,7% | 34,2% | 34,6% | 25,8% | 30,5% |
+| ROIC | 31,9% | 21,5% | 23,9% | 13,8% | 15,6% | 16,9% |
+| zROIC | 0,3 | 0,3 | 0,3 | 0,4 | 0,3 | 0,2 |
+| Retorno esperado | 38,2% | 71,2% | 116,1% | 56,0% | 46,1% | 47,9% |
+| P/L de entrada | 22,8 | 10,6 | 10,0 | 10,8 | 10,4 | 11,0 |
+| P/E justo | 30,6 | 28,7 | 32,8 | 15,0 | 18,5 | 17,5 |
+| P/L ÷ P/E justo | 0,8 | 0,4 | 0,2 | 0,6 | 0,6 | 0,6 |
+| Dividend yield | 0,8% | 2,7% | 1,6% | 4,5% | 4,7% | 3,6% |
+| Retorno 12m antes | 6,4% | 6,4% | 6,4% | 15,1% | 14,2% | 17,6% |
+| Trimestres na classe | 3,5 | 4,0 | 6,0 | 2,0 | 4,0 | 5,5 |
+| Retorno do episódio | -35,3% | 0,1% | 50,7% | -19,8% | 13,2% | 89,8% |
+
+EUA (corte 20%) 148
+Ticker                              Empresa  Trimestres em GCGR por ROIC médio  ROIC do modelo (mediana)   2017   2018   2019   2020   2021   2022   2023   2024   2025
+   DGX                    Quest Diagnostics                                 33                     0.129  0.104  0.099  0.103  0.155  0.191  0.117  0.095  0.083  0.095
+   SWK               Stanley Black & Decker                                 31                     0.136  0.153  0.098  0.147  0.150    NaN    NaN    NaN    NaN    NaN
+    FN                             Fabrinet                                 28                     0.177  0.181  0.154  0.159  0.142  0.178  0.185  0.194  0.198  0.181
+  ACGL              Arch Capital Group Ltd.                                 26                     0.120  0.067  0.080  0.142  0.107  0.159  0.114  0.242  0.207  0.182
+  ODFL      Old Dominion Freight Line, Inc.                                 26                     0.147  0.211  0.239  0.225  0.224  0.313  0.388  0.318  0.282  0.243
+   WRB            W. R. Berkley Corporation                                 23                     0.120  0.101  0.118  0.112  0.084  0.154  0.205  0.185  0.209  0.183
+  CRUS                   Cirrus Logic, Inc.                                 20                     0.192  0.173  0.105  0.163  0.222  0.264  0.142  0.197  0.217  0.289
+  EBAY                            eBay Inc.                                 20                     0.153  0.075  0.141  0.176  0.192  0.115  0.173  0.128  0.238  0.225
+   CDW                      CDW Corporation                                 20                     0.173  0.169  0.191  0.215  0.248  0.150  0.182  0.197  0.166  0.187
+   UNP            Union Pacific Corporation                                 20                     0.138  0.200  0.158  0.154  0.143  0.167  0.172  0.152  0.158  0.156
+  QCOM                QUALCOMM Incorporated                                 20                     0.174  0.140  0.071  0.691  0.390  0.521  0.477  0.278  0.311  0.203
+   WFC                Wells Fargo & Company                                 20                     0.110  0.107  0.114  0.105  0.018  0.118  0.076  0.103  0.110  0.118
+   SYY                                Sysco                                 20                     0.176  0.145  0.178  0.192  0.069  0.142  0.172  0.203  0.193  0.178
+   ALB                Albemarle Corporation                                 20                     0.172  0.065  0.157  0.088  0.061  0.082  0.214  0.010 -0.114 -0.026
+   FIX                  Comfort Systems USA                                 20                     0.166  0.123  0.216  0.162  0.170  0.125  0.213  0.312  0.480  0.645
+   RJF              Raymond James Financial                                 20                     0.129  0.114  0.135  0.157  0.115  0.170  0.160  0.170  0.177  0.171
+   DOV                    Dover Corporation                                 19                     0.130  0.099  0.129  0.139  0.127  0.151  0.155  0.133  0.120  0.121
+  EWBC              East West Bancorp, Inc.                                 19                     0.133  0.132  0.159  0.134  0.108  0.150  0.188  0.167  0.151  0.149
+   FDX                                FedEx                                 19                     0.110  0.111  0.131  0.112  0.053  0.126  0.129  0.093  0.101  0.092
+  CPAY                               Corpay                                 19                     0.175  0.201  0.243  0.241  0.210  0.293  0.331  0.299  0.321  0.275
+   JPM                 JPMorgan Chase & Co.                                 18                     0.142  0.096  0.127  0.139  0.104  0.164  0.129  0.151  0.170  0.157
+   IBP    Installed Building Products, Inc.                                 17                     0.151  0.110  0.129  0.139  0.184  0.152  0.226  0.235  0.226  0.225
+   GIS                        General Mills                                 17                     0.160  0.158  0.128  0.114  0.139  0.138  0.149  0.139  0.136  0.114
+  CSCO                                Cisco                                 17                     0.123  0.110  0.103  0.268  0.269  0.235  0.274  0.259  0.239  0.171
+   ABT                  Abbott Laboratories                                 16                     0.127  0.016  0.064  0.091  0.108  0.165  0.160  0.120  0.126  0.110
+   AFL                                Aflac                                 16                     0.158  0.187  0.124  0.114  0.142  0.248  0.219  0.212  0.209  0.124
+    PH                      Parker Hannifin                                 16                     0.145  0.136  0.134  0.189  0.118  0.134  0.132  0.128  0.161  0.180
+   TSN                          Tyson Foods                                 16                     0.108  0.101  0.142  0.098  0.095  0.142  0.130 -0.012  0.040  0.029
+  FITB                  Fifth Third Bancorp                                 16                     0.104  0.135  0.135  0.118  0.062  0.125  0.141  0.123  0.118  0.116
+   ITW             Illinois Tool Works Inc.                                 16                     0.162  0.200  0.296  0.296  0.257  0.294  0.329  0.324  0.356  0.331
+  HSIC                         Henry Schein                                 16                     0.135  0.096  0.124  0.156  0.126  0.158  0.131  0.088  0.091  0.092
+  CBRE                     CBRE Group, Inc.                                 16                     0.133  0.121  0.142  0.170  0.115  0.164  0.170  0.092  0.114  0.116
+   EXP                 Eagle Materials Inc.                                 16                     0.134  0.148  0.161  0.126  0.167  0.196  0.235  0.233    NaN    NaN
+   AJG            Arthur J. Gallagher & Co.                                 16                     0.127  0.114  0.141  0.130  0.132  0.107  0.122  0.090  0.073  0.064
+  AMGN                           Amgen Inc.                                 15                     0.122  0.088  0.229  0.248  0.226  0.210  0.244  0.113  0.119  0.144
+   TEL                      TE Connectivity                                 15                     0.148  0.138  0.179  0.152  0.023  0.177  0.188  0.144  0.195  0.114
+    DE                      Deere & Company                                 15                     0.123  0.095  0.074  0.092  0.080  0.145  0.479  0.705  0.450    NaN
+    MS                       Morgan Stanley                                 14                     0.113  0.079  0.109  0.111  0.108  0.143  0.110  0.092  0.128  0.151
+  SCHW       The Charles Schwab Corporation                                 14                     0.130  0.127  0.170  0.170  0.059  0.104  0.196  0.124  0.123  0.179
+  GNRC                              Generac                                 14                     0.135  0.145  0.193  0.191  0.238  0.197  0.130  0.081  0.121  0.067
+   USB                         U.S. Bancorp                                 14                     0.133  0.127  0.139  0.133  0.093  0.145  0.115  0.098  0.108  0.116
+   UNH                   UnitedHealth Group                                 13                     0.168  0.176  0.173  0.181  0.189  0.198  0.198  0.202  0.169  0.112
+  ILMN                       Illumina, Inc.                                 13                     0.137  0.146  0.220  0.235  0.125 -0.011 -0.543 -0.137 -0.241  0.226
+  NFLX                        Netflix, Inc.                                 12                     0.181  0.116  0.134  0.136  0.212  0.221  0.160  0.219  0.296  0.371
+    DG                       Dollar General                                 12                     0.149  0.191  0.185  0.191  0.294  0.250  0.212  0.154  0.110  0.142
+   DRI             Darden Restaurants, Inc.                                 12                     0.190  0.183  0.257  0.267  0.015  0.257  0.379  0.388  0.337  0.287
+    KR                       The Kroger Co.                                 12                     0.127  0.122  0.093  0.080  0.105  0.146  0.157  0.119  0.152  0.087
+   LRN                         Stride, Inc.                                 12                     0.132  0.019  0.072  0.102  0.052  0.115  0.137  0.128  0.174  0.244
+   STM              STMicroelectronics N.V.                                 12                     0.149  0.160  0.217  0.160  0.143  0.244  0.323  0.249  0.077  0.005
+   AMP                 Ameriprise Financial                                 12                     0.143  0.247  0.375  0.320  0.250  0.706  0.828  0.540  0.651  0.544
+   LEN                               Lennar                                 12                     0.131  0.183  0.144  0.087  0.122    NaN    NaN    NaN    NaN    NaN
+    IP                  International Paper                                 12                     0.134    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN
+   VLO                        Valero Energy                                 12                     0.149  0.146  0.133  0.109 -0.044  0.068  0.436  0.306  0.109  0.087
+  ORLY                  O'Reilly Automotive                                 12                     0.150  0.333  0.380  0.351  0.493  0.915  0.997  0.937  0.841  0.672
+  CPRT                         Copart, Inc.                                 11                     0.193  0.272  0.328  0.302  0.296  0.329  0.345  0.235  0.208  0.216
+   SNA                              Snap-on                                 11                     0.139  0.169  0.187  0.178  0.167  0.189  0.191  0.194  0.200  0.188
+   EXR                  Extra Space Storage                                 11                     0.121  0.127  0.116  0.250  0.172  0.176  0.173  0.055  0.059  0.059
+    HD                 The Home Depot, Inc.                                 11                     0.164  0.418  0.506  0.506  0.459  0.679  0.458  0.418  0.291  0.261
+  SWKS                   Skyworks Solutions                                 11                     0.155  0.411  0.270  0.259  0.227  0.227  0.200  0.161  0.100  0.089
+   WAB                               Wabtec                                 10                     0.173  0.071  0.086  0.035  0.040  0.049  0.056  0.069  0.091  0.084
+  AMZN                     Amazon.com, Inc.                                 10                     0.164  0.102  0.302  0.238  0.239  0.143  0.059  0.153  0.224  0.164
+   LOW               Lowe's Companies, Inc.                                 10                     0.171  0.198  0.156  0.267  0.418  0.474  0.386  0.422  0.396  0.363
+  KNSL          Kinsale Capital Group, Inc.                                  9                     0.162  0.105  0.128  0.156  0.153  0.218  0.213  0.283  0.280  0.257
+  ADBE                           Adobe Inc.                                  9                     0.134  0.214  0.222  0.339  0.328  0.325  0.359  0.408  0.509  0.573
+  MSFT                Microsoft Corporation                                  9                     0.171  0.157  0.119  0.236  0.263  0.324  0.358  0.328  0.303  0.297
+  NSSC    Napco Security Technologies, Inc.                                  9                     0.174  0.100  0.135  0.200  0.129  0.251  0.227  0.253  0.419  0.469
+  TSEM             Tower Semiconductor Ltd.                                  9                     0.129  0.377  0.173  0.067  0.056  0.101  0.162  0.207  0.073  0.063
+   EME                                Emcor                                  8                     0.154  0.157  0.176  0.167  0.096  0.230  0.235  0.378  0.615  0.494
+   THC         Tenet Healthcare Corporation                                  8                     0.141  0.113  0.157  0.100  0.151  0.158  0.114  0.133  0.324  0.206
+    VZ                              Verizon                                  8                     0.145  0.176  0.115  0.164  0.129  0.112  0.102  0.071  0.103  0.100
+  ZBRA                   Zebra Technologies                                  8                     0.136  0.055  0.180  0.218  0.205  0.237  0.101  0.086  0.129  0.090
+    TT                   Trane Technologies                                  8                     0.138  0.162  0.120  0.120  0.141  0.184  0.206  0.218  0.265  0.280
+  MCHP                 Microchip Technology                                  8                     0.121  0.086  0.047  0.044  0.071  0.121  0.188  0.168  0.012  0.035
+   LVS                      Las Vegas Sands                                  8                     0.168  0.258  0.258  0.221 -0.074 -0.037 -0.054  0.167  0.219  0.192
+  MEDP               Medpace Holdings, Inc.                                  8                     0.127  0.065  0.120  0.172  0.273  0.364  0.675  0.905  2.432    NaN
+  TRGP                      Targa Resources                                  8                     0.126 -0.009  0.017  0.012 -0.101  0.099  0.114  0.137  0.130  0.129
+   NOC         Northrop Grumman Corporation                                  8                     0.157  0.195  0.155  0.171  0.168  0.200  0.118  0.087  0.134  0.133
+   LUV                   Southwest Airlines                                  8                     0.179  0.297  0.232  0.252 -0.380  0.155  0.081  0.018  0.026  0.035
+   NSC                     Norfolk Southern                                  8                     0.139  0.142  0.119  0.117  0.093  0.132  0.142  0.079  0.109  0.112
+   ICE      Intercontinental Exchange, Inc.                                  8                     0.103  0.149  0.116  0.112  0.107  0.179  0.064  0.092  0.100  0.115
+  CIEN                                Ciena                                  8                     0.123  0.103  0.061  0.144  0.184  0.218  0.067  0.083  0.034  0.049
+   CNC                  Centene Corporation                                  8                     0.122  0.112  0.077  0.092  0.063  0.040  0.027  0.083  0.079 -0.308
+    CB                        Chubb Limited                                  8                     0.105  0.075  0.079  0.080  0.059  0.146  0.104  0.152  0.145  0.140
+   MAA    Mid-America Apartment Communities                                  7                     0.134    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN
+  SMCI                           Supermicro                                  7                     0.136  0.084  0.073  0.113  0.094  0.121  0.161  0.356  0.272  0.877
+   URI                       United Rentals                                  7                     0.133  0.123  0.095  0.109  0.100  0.110  0.132  0.149  0.143  0.130
+   RMD                          ResMed Inc.                                  7                     0.176  0.157  0.153  0.142  0.215  0.150  0.211  0.173  0.200  0.260
+  ISRG             Intuitive Surgical, Inc.                                  7                     0.195  0.156  0.181  0.178  0.114  0.157  0.139  0.155  0.143  0.177
+   HIG                       Hartford (The)                                  6                     0.151 -0.232  0.138  0.128  0.094  0.133  0.133  0.163  0.189  0.202
+   TRV            Travelers Companies (The)                                  6                     0.107  0.087  0.110  0.101  0.092  0.127  0.132  0.120  0.179  0.191
+  CTAS                   Cintas Corporation                                  6                     0.143  0.105  0.158  0.167  0.171  0.247  0.230  0.231  0.275  0.276
+  PYPL                PayPal Holdings, Inc.                                  6                     0.169  0.112  0.134  0.146  0.210  0.192  0.119  0.202  0.203  0.258
+   AON                              Aon plc                                  6                     0.177  0.276  0.283  0.454  0.563  1.183    NaN    NaN  0.434  0.395
+   HWM                Howmet Aerospace Inc.                                  6                     0.123  0.025  0.058  0.039  0.089  0.085  0.102  0.132  0.187  0.219
+   LHX                             L3Harris                                  5                     0.119  0.130  0.136  0.046  0.067  0.067  0.039  0.048  0.061  0.060
+  BIIB                               Biogen                                  5                     0.154  0.164  0.252  0.396  0.218  0.184    NaN    NaN    NaN    NaN
+  MSCI                            MSCI Inc.                                  5                     0.149  0.758    NaN    NaN    NaN    NaN    NaN    NaN    NaN    NaN
+   CVS                           CVS Health                                  5                     0.107  0.121  0.016  0.072  0.085  0.086  0.054  0.081  0.050  0.030
+  AAON                           AAON, Inc.                                  4                     0.194  0.243  0.162  0.204  0.290  0.127  0.184  0.246  0.207  0.137
+     A                 Agilent Technologies                                  4                     0.158  0.179  0.109  0.182  0.126  0.181  0.193  0.179  0.159  0.168
+  TROW                        T. Rowe Price                                  4                     0.199  0.257  0.300  0.300  0.308  0.342  0.176  0.188  0.203  0.192
+  TMUS                          T-Mobile US                                  4                     0.106  0.146  0.110  0.083  0.041  0.046  0.039  0.080  0.103  0.101
+  TECH                           Bio-Techne                                  4                     0.111  0.068  0.105  0.081  0.083  0.132  0.146  0.118  0.084  0.036
+   TGT                   Target Corporation                                  4                     0.199  0.174  0.164  0.189  0.311  0.377  0.135  0.187  0.182  0.159
+   AOS                          A. O. Smith                                  4                     0.126  0.193  0.291  0.263  0.282  0.335  0.213  0.347  0.293  0.303
+  BALL                     Ball Corporation                                  4                     0.171  0.054  0.072  0.110  0.089  0.101  0.094  0.092    NaN    NaN
+   AIZ                             Assurant                                  4                     0.128  0.122  0.049  0.068  0.074  0.249  0.065  0.134  0.149  0.149
+  COST         Costco Wholesale Corporation                                  4                     0.169  0.216  0.242  0.307  0.304  0.392  0.347  0.359  0.360  0.375
+   CSX                      CSX Corporation                                  4                     0.126  0.142  0.141  0.142  0.127  0.156  0.159  0.144  0.136  0.113
+    CF                        CF Industries                                  4                     0.136  0.025  0.086  0.128  0.094  0.280  0.733  0.274  0.231  0.304
+    CI                                Cigna                                  4                     0.104  0.153  0.040  0.087  0.091  0.087  0.102  0.125  0.108  0.115
+    EG                        Everest Group                                  4                     0.114  0.058  0.011  0.111  0.053  0.136  0.071  0.191  0.099  0.103
+  FICO               Fair Isaac Corporation                                  4                     0.166  0.257  0.199  0.337  0.295  5.636  6.356  4.414  4.188  3.973
+   HAL                          Halliburton                                  4                     0.155  0.042  0.126 -0.022 -0.167  0.141  0.151  0.219  0.198  0.107
+   KEY                              KeyCorp                                  4                     0.103  0.086  0.120  0.101  0.075  0.151  0.142  0.066 -0.009  0.090
+  LDOS                               Leidos                                  4                     0.108  0.086  0.120  0.124  0.101  0.111  0.110  0.039  0.183  0.191
+   TXN       Texas Instruments Incorporated                                  4                     0.187  0.289  0.482  0.408  0.426  0.475  0.436  0.256  0.176  0.195
+   UHS            Universal Health Services                                  4                     0.102  0.097  0.098  0.100  0.116  0.102  0.072  0.082  0.118  0.129
+   NYT           The New York Times Company                                  4                     0.141  0.092  0.132  0.159  0.148  0.167  0.108  0.144  0.156  0.184
+  NXPI                   NXP Semiconductors                                  4                     0.159  0.133  0.180  0.038  0.029  0.158  0.215  0.193  0.173  0.137
+   SLB                             Slb N.V.                                  4                     0.134  0.062  0.070  0.084  0.070  0.103  0.154  0.188    NaN    NaN
+  STLD                       Steel Dynamics                                  4                     0.148  0.195  0.244  0.141  0.113  0.406  0.411  0.229  0.131  0.095
+   IFF   International Flavors & Fragrances                                  4                     0.179  0.103  0.044  0.055  0.047  0.015 -0.038 -0.070  0.030 -0.016
+    LH                              Labcorp                                  4                     0.123  0.080  0.083  0.080  0.143  0.169  0.077  0.050  0.072  0.083
+   HLT       Hilton Worldwide Holdings Inc.                                  4                     0.102  0.082  0.193    NaN    NaN    NaN    NaN    NaN    NaN    NaN
+  FSLR                    First Solar, Inc.                                  4                     0.188  0.027  0.009 -0.030  0.070  0.101 -0.003  0.154  0.190  0.220
+   DVA                          DaVita Inc.                                  4                     0.153  0.104  0.100  0.140  0.144  0.159  0.116  0.146  0.201  0.506
+   MLM            Martin Marietta Materials                                  4                     0.107  0.112  0.070  0.089  0.098  0.070  0.080  0.097  0.134  0.076
+    PG         The Procter & Gamble Company                                  4                     0.147  0.159  0.148  0.068  0.229  0.239  0.234  0.230  0.223  0.241
+  MPWR       Monolithic Power Systems, Inc.                                  4                     0.160  0.139  0.216  0.164  0.244  0.221  0.318  0.267  0.221  0.243
+   MCK                 McKesson Corporation                                  4                     0.164  0.051  0.035  0.289    NaN    NaN    NaN    NaN    NaN    NaN
+   MKC                  McCormick & Company                                  4                     0.166  0.073  0.124  0.110  0.107  0.091  0.083  0.083  0.094  0.091
+   PTC                             PTC Inc.                                  3                     0.116  0.030  0.058  0.020  0.094  0.121  0.105  0.083  0.113  0.163
+  QLYS                         Qualys, Inc.                                  3                     0.192  0.145  0.159  0.209  0.263  0.232  0.914  0.841  0.633  0.574
+   BEN                   Franklin Resources                                  3                     0.188  0.134  0.077  0.121  0.079  0.163  0.113  0.074  0.037  0.043
+  AVGO                        Broadcom Inc.                                  3                     0.188  0.079  0.129  0.065  0.070  0.162  0.266  0.319  0.067  0.201
+  FFIV                             F5, Inc.                                  3                     0.176  0.741  0.516  0.353  0.174  0.158  0.197  0.192  0.261  0.292
+  EXPE                        Expedia Group                                  3                     0.108  0.094  0.109  0.119 -0.338  0.023  0.156  0.196  0.288  0.753
+   MPC                   Marathon Petroleum                                  3                     0.156  0.172  0.062  0.056 -0.192  0.085  0.375  0.262  0.148  0.157
+  NDAQ                         Nasdaq, Inc.                                  3                     0.157  0.124  0.084  0.137  0.145  0.186  0.183  0.098  0.100  0.146
+   PPG                       PPG Industries                                  2                     0.149  0.193  0.192  0.191  0.180  0.146  0.127  0.161    NaN    NaN
+  NVDA                   NVIDIA Corporation                                  2                     0.105  0.561  0.361  0.812  0.194  0.277  0.142  0.639  0.892  0.713
+    GS        The Goldman Sachs Group, Inc.                                  2                     0.114  0.052  0.116  0.094  0.099  0.197  0.096  0.073  0.117  0.137
+  FISV                               Fiserv                                  2                     0.101  0.456  0.518  0.027  0.030  0.043  0.082  0.103  0.116  0.135
+   BRO                        Brown & Brown                                  1                     0.146  0.155  0.115  0.119  0.128  0.140  0.146  0.156  0.154  0.084
+    BR Broadridge Financial Solutions, Inc.                                  1                     0.149  0.194  0.242  0.223  0.186  0.099  0.109  0.137  0.154  0.176
+  KEYS          Keysight Technologies, Inc.                                  1                     0.186  0.037 -0.140  0.193  0.189  0.271  0.298  0.266  0.116  0.108
+   EFX                              Equifax                                  1                     0.117  0.120  0.069 -0.047  0.088  0.103  0.084  0.071  0.081  0.085
+Brasil (corte 17%) 47
+Ticker                                           Empresa  Trimestres em GCGR por ROIC médio  ROIC do modelo (mediana)   2017   2018   2019   2020   2021   2022   2023   2024   2025
+ SMTO3                                 SAO MARTINHO S.A.                                 25                     0.132  0.077  0.110  0.100  0.131  0.138  0.164  0.141  0.159  0.104
+ BBAS3                                   BCO BRASIL S.A.                                 23                     0.125  0.105  0.132  0.149  0.104  0.135  0.183  0.191  0.158  0.087
+SAPR11                CIA SANEAMENTO DO PARANA - SANEPAR                                 22                     0.120  0.116  0.129  0.135  0.118  0.126  0.105  0.122  0.113  0.149
+ JHSF3                           JHSF PARTICIPACOES S.A.                                 17                     0.127  0.028  0.094  0.113  0.159  0.194  0.108  0.082  0.120  0.283
+ COGN3                               COGNA EDUCAÇÃO S.A.                                 16                     0.110  0.120  0.059  0.038 -0.105  0.003  0.010  0.026  0.071  0.069
+ CPFE3                                 CPFL ENERGIA S.A.                                 16                     0.133  0.080  0.096  0.110  0.145  0.149  0.190  0.179  0.164  0.158
+ CSAN3                                        COSAN S.A.                                 15                     0.130  0.131  0.119  0.151  0.084  0.141  0.086  0.125  0.024 -0.002
+ EQTL3                                   EQUATORIAL S.A.                                 15                     0.151  0.160  0.140  0.153  0.169  0.168  0.073  0.122  0.115  0.093
+ UGPA3                       ULTRAPAR PARTICIPACOES S.A.                                 13                     0.137  0.111  0.066  0.032  0.051  0.060  0.142  0.153  0.115  0.110
+ RAPT4                                   RANDONCORP S.A.                                 12                     0.137  0.053  0.099  0.122  0.182  0.192  0.155  0.142  0.098  0.055
+ CMIG4            CIA ENERGETICA DE MINAS GERAIS - CEMIG                                 12                     0.146  0.060  0.060  0.069  0.129  0.196  0.194  0.189  0.201  0.128
+ FLRY3                                       FLEURY S.A.                                 10                     0.111  0.171  0.168  0.163  0.138  0.118  0.110  0.086  0.109  0.118
+ PSSA3                                 PORTO SEGURO S.A.                                  8                     0.167  0.143  0.171  0.167  0.188  0.165  0.107  0.181  0.187  0.213
+ BRKM5                                      BRASKEM S.A.                                  8                     0.116  0.306  0.285 -0.002 -0.002  0.697  0.079 -0.070 -0.019 -0.042
+ B3SA3                   B3 S.A. - BRASIL, BOLSA, BALCÃO                                  8                     0.153  0.053  0.083  0.107  0.169  0.210  0.208  0.204  0.249  0.263
+ MOTV3          MOTIVA INFRAESTRUTURA DE MOBILIDADE S.A.                                  8                     0.131  0.125  0.052  0.098  0.047  0.062  0.187  0.105  0.074  0.121
+SANB11                       BCO SANTANDER (BRASIL) S.A.                                  8                     0.130  0.102  0.137  0.169  0.126  0.147  0.130  0.083  0.112  0.102
+ CAML3                              CAMIL ALIMENTOS S.A.                                  7                     0.117  0.127  0.127  0.118  0.088  0.135  0.128  0.103  0.108  0.100
+ TOTS3                                        TOTVS S.A.                                  6                     0.142  0.083  0.067  0.183  0.177  0.135  0.140  0.152  0.166  0.165
+ MULT3            MULTIPLAN - EMPREEND IMOBILIARIOS S.A.                                  6                     0.124  0.076  0.080  0.076  0.127  0.065  0.117  0.137  0.153  0.146
+ GMAT3                                 GRUPO MATEUS S.A.                                  6                     0.144    NaN    NaN  0.157  0.182  0.118  0.150  0.145  0.174  0.180
+ AGRO3           BRASILAGRO - CIA BRAS DE PROP AGRICOLAS                                  6                     0.120 -0.000  0.146  0.154  0.091  0.198  0.236  0.099  0.061  0.062
+ POMO4                                    MARCOPOLO S.A.                                  6                     0.129  0.024  0.088  0.073  0.048  0.054  0.060  0.168  0.231  0.198
+ TIMS3                                          TIM S.A.                                  4                     0.146    NaN  0.035  0.175  0.124  0.187  0.120  0.170    NaN    NaN
+ VBBR3                                 VIBRA ENERGIA S/A                                  4                     0.121  0.120  0.130  0.069  0.212  0.091  0.122  0.226  0.213  0.097
+ DXCO3                                        DEXCO S.A.                                  4                     0.107  0.053  0.086  0.082  0.086  0.201  0.123  0.119  0.040  0.040
+ DIRR3                        DIRECIONAL ENGENHARIA S.A.                                  4                     0.150 -0.043 -0.013  0.100  0.124  0.164  0.189  0.176  0.309  0.305
+ CPLE3                 CIA PARANAENSE DE ENERGIA - COPEL                                  4                     0.104  0.071  0.068  0.093  0.118  0.135  0.094  0.095  0.083  0.104
+ BRSR6           BANCO DO ESTADO DO RIO GRANDE DO SUL SA                                  4                     0.138  0.149  0.123  0.163  0.000  0.119  0.000  0.000  0.000  0.150
+ ITSA4                                       ITAÚSA S.A.                                  4                     0.159  0.149  0.162  0.177  0.116  0.176  0.179  0.155  0.156  0.177
+ ISAE4                                ISA ENERGIA BRASIL                                  4                     0.149  0.114  0.148  0.134  0.220  0.168  0.130  0.144  0.146  0.106
+ YDUQ3                          YDUQS PARTICIPACOES S.A.                                  4                     0.167  0.189  0.294  0.213  0.055  0.079  0.056  0.107  0.119  0.123
+ HYPE3                                       HYPERA S.A.                                  4                     0.122  0.155  0.158  0.138  0.132  0.130  0.143  0.133  0.092  0.087
+ RADL3                                Raia Drogasil S.A.                                  4                     0.167  0.165  0.139  0.228  0.142  0.180  0.215  0.213  0.218  0.231
+ TEND3                            CONSTRUTORA TENDA S.A.                                  4                     0.166  0.113  0.218  0.223  0.160 -0.039 -0.137  0.034  0.181  0.327
+ENGI11                                     ENERGISA S.A.                                  4                     0.114  0.107  0.101  0.060  0.092  0.138  0.127  0.108  0.125  0.115
+ QUAL3 QUALICORP CONSULTORIA E CORRETORA DE SEGUROS S.A.                                  4                     0.143  0.157  0.169  0.275  0.233  0.287  0.068 -0.064  0.005  0.008
+ RDOR3                           Rede D'Or São Luiz S.A.                                  4                     0.159    NaN  0.133  0.121  0.070  0.102  0.145  0.173  0.222  0.296
+ALUP11                           ALUPAR INVESTIMENTO S/A                                  3                     0.122  0.115  0.107  0.151  0.150  0.154  0.130  0.093  0.133  0.110
+ BBDC4                                 BCO BRADESCO S.A.                                  2                     0.114  0.145  0.133  0.155  0.110  0.156  0.134  0.087  0.104  0.134
+ LIGT3                                        LIGHT S.A.                                  2                     0.112  0.056  0.044  0.065  0.086  0.046 -0.110  0.066  0.095  0.047
+ MDNE3                       MOURA DUBEUX ENGENHARIA S/A                                  2                     0.117  0.036 -0.026  0.050 -0.045  0.053  0.069  0.101  0.131  0.211
+ LREN3                                 LOJAS RENNER S.A.                                  2                     0.132  0.201  0.236  0.240  0.126  0.110  0.146  0.100  0.128  0.171
+ TTEN3                    Três Tentos Agroindustrial S/A                                  2                     0.156    NaN    NaN    NaN  0.287  0.182  0.177  0.130  0.217  0.064
+ SBSP3               CIA SANEAMENTO BASICO EST SAO PAULO                                  2                     0.126  0.104  0.126  0.126  0.091  0.075  0.079  0.102  0.192  0.130
+ MILS3          MILLS LOCAÇÃO, SERVIÇOS E LOGÍSTICA S.A.                                  1                     0.127 -0.123 -0.103 -0.025  0.007  0.098  0.159  0.175  0.147  0.157
+ ROMI3                                         ROMI S.A.                                  1                     0.111  0.046  0.049  0.085  0.104  0.148  0.134  0.095  0.062  0.042
+== fim

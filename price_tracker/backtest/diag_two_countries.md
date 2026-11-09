@@ -10,12 +10,12 @@ EUA: cenário-base (g 7%, ROIC 20%/10%), 2012–2026. Brasil: v3 (liquidez ≥ R
 
 | Grupo | Ações (média) | % de GCGR | Retorno médio a.a. | vs OoL (a.a.) | t vs OoL | vs Universo EW | Contribuição para GCGR − OoL |
 |---|---|---|---|---|---|---|---|
-| **Opportunity of Lifetime (referência)** | 30,1 | — | 19,0% | — | — | +2,3% | — |
-| Growth instável (zGrowth) | 5,2 | 13,5% | 15,1% | -3,9% | -1,1 | -1,6% | **-0,3%** |
-| Growth médio | 4,9 | 12,8% | 17,4% | -1,6% | -0,4 | +0,7% | **-0,5%** |
-| ROIC instável (zROIC) | 3,4 | 8,0% | 26,9% | +6,6% | 1,2 | +9,8% | **+0,3%** |
-| ROIC médio | 25,2 | 65,8% | 22,0% | +3,0% | 1,3 | +5,3% | **+2,1%** |
-| **Good Companies, Great Returns (total)** | 38,3 | 100% | 20,6% | +1,6% | | +3,9% | |
+| **Opportunity of Lifetime (referência)** | 29,7 | — | 18,8% | — | — | +2,1% | — |
+| Growth instável (zGrowth) | 5,5 | 13,8% | 15,7% | -3,0% | -0,7 | -0,9% | **-0,3%** |
+| Growth médio | 4,9 | 12,6% | 17,9% | -0,9% | -0,2 | +1,3% | **-0,4%** |
+| ROIC instável (zROIC) | 4,1 | 9,8% | 23,2% | +3,7% | 0,8 | +6,6% | **+0,3%** |
+| ROIC médio | 25,0 | 63,8% | 22,0% | +3,3% | 1,4 | +5,4% | **+2,2%** |
+| **Good Companies, Great Returns (total)** | 39,2 | 100% | 20,6% | +1,9% | | +4,0% | |
 
 ### Brasil
 
@@ -32,23 +32,23 @@ EUA: cenário-base (g 7%, ROIC 20%/10%), 2012–2026. Brasil: v3 (liquidez ≥ R
 
 ### EUA
 
-Episódios: OoL 225, GCGR 443.
+Episódios: OoL 227, GCGR 449.
 
 | Indicador | OoL piores 20% | OoL todos | OoL melhores 20% | GCGR piores 20% | GCGR todos | GCGR melhores 20% |
 |---|---|---|---|---|---|---|
-| Growth (mediana 5 anos) | 27,9% | 27,2% | 37,7% | 22,9% | 23,1% | 32,7% |
-| zGrowth | 1,0 | 0,9 | 0,9 | 1,3 | 1,3 | 1,2 |
-| Último crescimento anual | 50,5% | 31,3% | 34,1% | 30,8% | 27,9% | 29,7% |
-| ROIC | 27,0% | 28,3% | 28,0% | 18,0% | 17,9% | 15,4% |
-| zROIC | 0,3 | 0,3 | 0,3 | 0,2 | 0,2 | 0,3 |
-| Retorno esperado | 41,5% | 38,7% | 53,7% | 30,2% | 31,6% | 43,3% |
-| P/L de entrada | 22,1 | 26,0 | 24,0 | 21,1 | 20,0 | 19,5 |
-| P/E justo | 36,5 | 36,7 | 39,7 | 26,1 | 26,9 | 27,3 |
+| Growth (mediana 5 anos) | 26,2% | 27,1% | 37,7% | 23,1% | 23,6% | 32,5% |
+| zGrowth | 0,9 | 0,9 | 0,9 | 1,4 | 1,3 | 1,2 |
+| Último crescimento anual | 43,8% | 29,7% | 34,2% | 30,1% | 28,1% | 30,1% |
+| ROIC | 27,0% | 28,7% | 30,2% | 19,4% | 18,2% | 15,4% |
+| zROIC | 0,3 | 0,3 | 0,3 | 0,2 | 0,3 | 0,3 |
+| Retorno esperado | 41,5% | 38,8% | 50,7% | 30,0% | 31,6% | 43,4% |
+| P/L de entrada | 22,1 | 26,1 | 25,8 | 21,2 | 20,2 | 19,6 |
+| P/E justo | 36,5 | 36,7 | 39,7 | 27,6 | 27,2 | 27,6 |
 | P/L ÷ P/E justo | 0,7 | 0,7 | 0,6 | 0,8 | 0,8 | 0,7 |
-| Dividend yield | 0,8% | 0,7% | 0,5% | 1,4% | 1,3% | 0,4% |
-| Retorno 12m antes | 23,5% | 18,8% | 10,9% | 9,1% | 10,1% | 10,1% |
+| Dividend yield | 0,9% | 0,7% | 0,2% | 1,3% | 1,2% | 0,4% |
+| Retorno 12m antes | 23,3% | 18,8% | 20,0% | 9,0% | 10,0% | 10,2% |
 | Trimestres na classe | 4,0 | 6,0 | 12,0 | 4,0 | 4,0 | 8,0 |
-| Retorno do episódio | -18,7% | 23,8% | 117,5% | -11,9% | 19,4% | 82,9% |
+| Retorno do episódio | -18,7% | 25,2% | 117,5% | -12,0% | 19,4% | 83,0% |
 
 ### Brasil
 

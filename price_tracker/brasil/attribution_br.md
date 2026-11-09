@@ -1,4 +1,4 @@
-# Atribuição no Brasil: 3 melhores classes
+# Atribuição no Brasil: Cheap but Aggressive, Cheap Slow Compounder, Do not Waste Time
 
 > ⚠️ **ROIC:** classes dependem do corte de ROIC 20%/10%, mais restritivo no Brasil.
 
