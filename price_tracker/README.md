@@ -50,6 +50,13 @@ O ranking que define o `g` (7% → 3,5%) e, por tabela, o P/E justo passa a usar
 Anos com EPS-base negativo não têm crescimento definido; com menos de 2 anos válidos a ação fica sem `rank_growth`
 (MNST, WDC, ROG.SW, CPRX, SAF.PA, GIVN.SW, COLO-B.CO, 6367.T, 7741.T, HOOD, SOFI), sem `g`, e o retorno cai no fallback do Excel (média do crescimento projetado).
 
+## Método 2: só histórico (`hist_method.py`, `venn.py`)
+
+Sem nenhuma estimativa de analista. Growth = mediana do crescimento do EPS nos últimos 3 anos; zGrowth = variação desses 3 anos
+(corte recalibrado por percentil: 0,9 → 1,70); retorno = P/E justo e múltiplo constante sobre o EPS dos últimos 12 meses
+crescido pelo Growth histórico. ROIC, `g` e P/E justo iguais ao método 1. `venn.py` gera `report_ool_<data>.md` com as listas de
+Opportunity of Lifetime: Excel × método 1 (estimativas) × método 2 (histórico).
+
 ## Bug do coletor da SEC (corrigido em 2026-11-09)
 
 `fetch_edgar.py` parava no primeiro conceito/unidade XBRL com algum dado (ex.: EPS de COST só até 2010). Isso deixava dívida, caixa,

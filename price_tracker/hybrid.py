@@ -130,7 +130,8 @@ def build_row(w, y, e, fx=None):
     a = [hist.get(last_fy - 2), hist.get(last_fy - 1), hist.get(last_fy)]
     # crescimento normalizado para o ranking do g: mediana do crescimento do EPS nos ultimos 3 anos realizados
     hs = [hist.get(last_fy - 3 + i) for i in range(4)]
-    hg = [x for x in (ratio(hs[i + 1], hs[i]) for i in range(3)) if np.isfinite(x)]
+    hr = [ratio(hs[i + 1], hs[i]) for i in range(3)]
+    hg = [x for x in hr if np.isfinite(x)]
     rank_growth = float(np.median(hg)) if len(hg) >= 2 else np.nan
     if len(hg) < 3:
         flags.append(f'rank_growth com {len(hg)} anos')
@@ -154,7 +155,8 @@ def build_row(w, y, e, fx=None):
     return dict(
         row=w['row'], ticker=w['ticker'], fin=w['fin'], price=price, currency=info.get('currency'),
         eps_m1=e_m1, eps_0=e_0, eps_1=e_1, disp1=disp1, n_analysts=num(est.get('+1y', {}).get('numberOfAnalysts')), eps_src=hsrc, a_m2=a[0], a_m1=a[1], a_0=a[2],
-        rank_growth=rank_growth, rank_n=len(hg), h1=gr[0], h2=gr[1], f0=gr[2], f1=gr[3], growth=growth, zgrowth=zgrowth,
+        rank_growth=rank_growth, rank_n=len(hg), hg1=hr[0], hg2=hr[1], hg3=hr[2],
+        eps_ttm=num(info.get('trailingEps')), fin_ccy=info.get('financialCurrency'), h1=gr[0], h2=gr[1], f0=gr[2], f1=gr[3], growth=growth, zgrowth=zgrowth,
         **{f'roic{k}': ry.get(k) for k in YEARS}, roic=roic, zroic=zroic,
         roic_n=len(ry), roic_src=','.join(sorted(set(rsrc.values()))), dy=dy, flags='; '.join(flags))
 
