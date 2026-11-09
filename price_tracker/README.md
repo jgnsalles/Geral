@@ -45,17 +45,20 @@ Com o ROIC clássico (mesmo snapshot): ROIC mediano das operacionais vai de 14,7
 
 ## Ranking do `g` (decisão do usuário, 2026-11-09)
 
-O ranking que define o `g` (7% → 3,5%) e, por tabela, o P/E justo passa a usar a **mediana do crescimento do EPS nos últimos 3 anos realizados**
+O ranking que define o `g` (7% → 3,5%) e, por tabela, o P/E justo passa a usar a **mediana do crescimento do EPS nos últimos 5 anos realizados** (`HIST_N = 5`, decisão do usuário; era 3)
 (`rank_growth` em `hybrid.py`), como crescimento normalizado. O Growth que entra no código da classe continua sendo o projetado.
 Anos com EPS-base negativo não têm crescimento definido; com menos de 2 anos válidos a ação fica sem `rank_growth`
 (MNST, WDC, ROG.SW, CPRX, SAF.PA, GIVN.SW, COLO-B.CO, 6367.T, 7741.T, HOOD, SOFI), sem `g`, e o retorno cai no fallback do Excel (média do crescimento projetado).
 
 ## Método 2: só histórico (`hist_method.py`, `venn.py`)
 
-Sem nenhuma estimativa de analista. Growth = mediana do crescimento do EPS nos últimos 3 anos; zGrowth = variação desses 3 anos
-(corte recalibrado por percentil: 0,9 → 1,70); retorno = P/E justo e múltiplo constante sobre o EPS dos últimos 12 meses
+Sem nenhuma estimativa de analista. Growth = mediana do crescimento do EPS nos últimos 5 anos; zGrowth = variação desses 5 anos
+(corte recalibrado por percentil: 0,9 → 2,93, frouxo demais; a revisar); retorno = P/E justo e múltiplo constante sobre o EPS dos últimos 12 meses
 crescido pelo Growth histórico. ROIC, `g` e P/E justo iguais ao método 1. `venn.py` gera `report_ool_<data>.md` com as listas de
 Opportunity of Lifetime: Excel × método 1 (estimativas) × método 2 (histórico).
+
+**Limite da janela de 5 anos:** só 129 das 224 ações têm os 5 anos completos (o Yahoo tem 4 anos de EPS); as demais entram com 3 ou 4 anos válidos
+(mínimo 3), misturando janelas no mesmo ranking, e 15 ficam sem ranking. Em teste, 3 → 5 anos mudou a classe de 52 ações, e o P2 passou de 26 para 28 Opportunity of Lifetime.
 
 ## Bug do coletor da SEC (corrigido em 2026-11-09)
 

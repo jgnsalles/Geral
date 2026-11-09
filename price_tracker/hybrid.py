@@ -42,7 +42,7 @@ def edgar_series(e, key):
 #  'wise': NOPAT / (ativo total - passivo circulante)          -- o que o Wisesheets faz (so para comparacao)
 # Setor financeiro: sempre ROE (lucro liquido / patrimonio), pois nao ha ROIC para financeiras.
 ROIC_DEF = 'classic'
-HIST_N = 3  # janela (anos realizados) da mediana de crescimento usada no ranking do g e no metodo 2
+HIST_N = 5  # janela (anos realizados) da mediana de crescimento usada no ranking do g e no metodo 2
 
 
 def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
