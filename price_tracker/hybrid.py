@@ -37,7 +37,7 @@ def edgar_series(e, key):
     return by_year(x['values']) if x else {}
 
 
-def roic_years(y, e):
+def roic_years(y, e, roe_mode=False):
     """ROIC por ano = NOPAT / (Ativo total - Passivo circulante), definicao calibrada contra o Wisesheets."""
     src, out = {}, {}
     ed = {k: edgar_series(e, k) for k in ('op_income', 'pretax', 'tax', 'assets', 'cur_liab')}
@@ -47,8 +47,17 @@ def roic_years(y, e):
         'pretax': by_year(inc.get('Pretax Income')), 'tax': by_year(inc.get('Tax Provision')),
         'assets': by_year(bal.get('Total Assets')), 'cur_liab': by_year(bal.get('Current Liabilities')),
     }
+    # setor financeiro: o Wisesheets usa ROE (lucro liquido / patrimonio) -- confirmado contra os valores dele
+    ed['net_income'], ed['equity'] = edgar_series(e, 'net_income'), edgar_series(e, 'equity')
+    yh['net_income'] = by_year(inc.get('Net Income'))
+    yh['equity'] = by_year(bal.get('Stockholders Equity'))
+    no_cl = roe_mode or (not ed['cur_liab'] and not yh['cur_liab'])
     for yr in YEARS:
         for name, s in (('sec', ed), ('yahoo', yh)):
+            if no_cl and yr in s['net_income'] and s['equity'].get(yr, 0) > 0:
+                out[yr] = s['net_income'][yr] / s['equity'][yr]
+                src[yr] = name + '-roe'
+                break
             if all(yr in s[k] for k in ('op_income', 'assets', 'cur_liab')):
                 pt, tx = s['pretax'].get(yr), s['tax'].get(yr)
                 t = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
@@ -96,7 +105,7 @@ def build_row(w, y, e, fx=None):
 
     growth = engine.growth_metric(gr)
     zgrowth = engine.cv(gr, growth)
-    ry, rsrc = roic_years(y, e)
+    ry, rsrc = roic_years(y, e, roe_mode=(w.get('sector') == 'Financial Services'))
     roic = engine.roic_metric([ry.get(k) for k in YEARS])
     zroic = engine.cv([ry.get(k) for k in YEARS], roic)
 
@@ -112,18 +121,32 @@ def build_row(w, y, e, fx=None):
         roic_n=len(ry), roic_src=','.join(sorted(set(rsrc.values()))), dy=dy, flags='; '.join(flags))
 
 
+# Configuracao escolhida no teste controlado (experiments.py, 2026-11-09):
+#  - Growth e zGrowth so com os 2 anos projetados (o historico GAAP misturado com estimativa ajustada distorce)
+#  - zGrowth com 2 pontos tem outra escala: corte recalibrado por percentil (0,9 no Wise -> 0,49 aqui)
+#  - Retorno "multiplo constante" = crescimento do EPS no ano +1 (+ dividend yield)
+ZGROWTH_CUT = 0.49
+
+
 def finish(df):
+    df['growth_mixed'], df['zgrowth_mixed'] = df['growth'], df['zgrowth']
+    df['growth'] = [engine.growth_metric([a, b]) for a, b in zip(df.f0, df.f1)]
+    df['zgrowth'] = [engine.cv([a, b], g) for a, b, g in zip(df.f0, df.f1, df.growth)]
     df['g'] = engine.block_g(df)
     df['fair_pe'] = engine.fair_pe(df.g, df.roic)
     eps2 = df.eps_1 * (1 + df.f1)                         # extrapola 1 ano com o ultimo crescimento projetado
     base = df.fair_pe * eps2 / df.price
     df['ret_fair'] = np.where(base > 0, np.sqrt(base.clip(lower=0)) - 1, np.nan) + df.dy
-    grow2 = df.eps_1 / df.eps_m1
-    df['ret_const'] = np.where(grow2 > 0, np.sqrt(grow2.clip(lower=0)) - 1, np.nan) + df.dy
+    df['ret_const'] = df.f1 + df.dy
     fallback = df[['f0', 'f1']].mean(axis=1)              # AGGREGATE(1,6,R:S)
     both = df.ret_fair.notna() & df.ret_const.notna()
     df['ret'] = np.where(both, (df.ret_fair + df.ret_const) / 2, fallback)
-    return engine.classify(df)
+    saved = engine.TH['zGrowth']
+    engine.TH['zGrowth'] = ZGROWTH_CUT
+    try:
+        return engine.classify(df)
+    finally:
+        engine.TH['zGrowth'] = saved
 
 
 def main(day):
