@@ -42,6 +42,7 @@ def edgar_series(e, key):
 #  'wise': NOPAT / (ativo total - passivo circulante)          -- o que o Wisesheets faz (so para comparacao)
 # Setor financeiro: sempre ROE (lucro liquido / patrimonio), pois nao ha ROIC para financeiras.
 ROIC_DEF = 'classic'
+HIST_N = 3  # janela (anos realizados) da mediana de crescimento usada no ranking do g e no metodo 2
 
 
 def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
@@ -129,11 +130,11 @@ def build_row(w, y, e, fx=None):
     last_fy = fy(pd.Timestamp(info['lastFiscalYearEnd'], unit='s')) if num(info.get('lastFiscalYearEnd')) == num(info.get('lastFiscalYearEnd')) and info.get('lastFiscalYearEnd') else max(hist, default=np.nan)
     a = [hist.get(last_fy - 2), hist.get(last_fy - 1), hist.get(last_fy)]
     # crescimento normalizado para o ranking do g: mediana do crescimento do EPS nos ultimos 3 anos realizados
-    hs = [hist.get(last_fy - 3 + i) for i in range(4)]
-    hr = [ratio(hs[i + 1], hs[i]) for i in range(3)]
+    hs = [hist.get(last_fy - HIST_N + i) for i in range(HIST_N + 1)]
+    hr = [ratio(hs[i + 1], hs[i]) for i in range(HIST_N)]
     hg = [x for x in hr if np.isfinite(x)]
-    rank_growth = float(np.median(hg)) if len(hg) >= 2 else np.nan
-    if len(hg) < 3:
+    rank_growth = float(np.median(hg)) if len(hg) >= (HIST_N + 1) // 2 else np.nan
+    if len(hg) < HIST_N:
         flags.append(f'rank_growth com {len(hg)} anos')
     if np.isfinite(num(a[2])) and np.isfinite(e_m1) and e_m1 > 0 and not 0.6 < a[2] / e_m1 < 1.6:
         flags.append(f'EPS realizado {a[2]:.2f} vs base da estimativa {e_m1:.2f}')
@@ -155,7 +156,7 @@ def build_row(w, y, e, fx=None):
     return dict(
         row=w['row'], ticker=w['ticker'], fin=w['fin'], price=price, currency=info.get('currency'),
         eps_m1=e_m1, eps_0=e_0, eps_1=e_1, disp1=disp1, n_analysts=num(est.get('+1y', {}).get('numberOfAnalysts')), eps_src=hsrc, a_m2=a[0], a_m1=a[1], a_0=a[2],
-        rank_growth=rank_growth, rank_n=len(hg), hg1=hr[0], hg2=hr[1], hg3=hr[2],
+        rank_growth=rank_growth, rank_n=len(hg), **{f'hg{i + 1}': v for i, v in enumerate(hr)},
         eps_ttm=num(info.get('trailingEps')), fin_ccy=info.get('financialCurrency'), h1=gr[0], h2=gr[1], f0=gr[2], f1=gr[3], growth=growth, zgrowth=zgrowth,
         **{f'roic{k}': ry.get(k) for k in YEARS}, roic=roic, zroic=zroic,
         roic_n=len(ry), roic_src=','.join(sorted(set(rsrc.values()))), dy=dy, flags='; '.join(flags))
@@ -189,7 +190,7 @@ def finish(df):
         engine.TH['zGrowth'] = saved
 
 
-def main(day):
+def main(day, tag=''):
     w = pd.read_csv('data/wise_snapshot.csv')
     fxf = pathlib.Path(f'data/raw/yahoo/{day}/_fx.json')
     fx = json.loads(fxf.read_text()) if fxf.exists() else {}
@@ -201,7 +202,7 @@ def main(day):
         e = json.loads(ef.read_text()) if ef.exists() else None
         rows.append(build_row(r, y, e, fx) if y else dict(row=r.row, ticker=r.ticker, fin=r.fin, flags='sem dados Yahoo'))
     df = finish(pd.DataFrame(rows))
-    out = f'data/hybrid_{day}.csv'
+    out = f'data/hybrid_{day}{tag}.csv'
     df.to_csv(out, index=False)
     print(out, len(df), df.category.value_counts().to_dict())
 

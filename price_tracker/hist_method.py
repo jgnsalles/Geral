@@ -13,13 +13,13 @@ from compare import wise_baseline
 from experiments import quantile_cut
 
 
-def main(day):
-    h = pd.read_csv(f'data/hybrid_{day}.csv')
+def main(day, tag=''):
+    h = pd.read_csv(f'data/hybrid_{day}{tag}.csv')
     fxf = pathlib.Path(f'data/raw/yahoo/{day}/_fx.json')
     fx = json.loads(fxf.read_text()) if fxf.exists() else {}
     d = h.copy()
     d['growth'] = d.rank_growth
-    rates = d[['hg1', 'hg2', 'hg3']].to_numpy()
+    rates = d[[c for c in d.columns if c.startswith('hg') and c[2:].isdigit()]].to_numpy()
     d['zgrowth'] = [engine.cv(list(r), g) if np.isfinite(g) else np.nan for r, g in zip(rates, d.growth)]
     rate = [1.0 if (a == b or pd.isna(a) or pd.isna(b)) else fx.get(f'{a}{b}', np.nan) for a, b in zip(d.fin_ccy, d.currency)]
     base_eps = d.eps_ttm * np.array(rate, dtype=float)
@@ -39,7 +39,7 @@ def main(day):
         out = engine.classify(d.drop(columns=['category', 'code', 'order'], errors='ignore'))
     finally:
         engine.TH['zGrowth'] = saved
-    out.to_csv(f'data/hist_{day}.csv', index=False)
+    out.to_csv(f'data/hist_{day}{tag}.csv', index=False)
     print(f'zGrowth corte recalibrado: {cut:.3f}')
     print(out.category.value_counts().to_dict())
 
