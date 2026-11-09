@@ -1,0 +1,70 @@
+# Protocolo de validação (pré-registro) — Price Tracker
+
+Data do registro: 2026-11-10. Este documento congela hipóteses, regras e critérios de sucesso **antes** dos testes de
+confirmação. Qualquer mudança depois desta data deve ser registrada no fim do arquivo, com data e motivo.
+
+> ⚠️ **ROIC:** a definição oficial de ROIC será escolhida na Fase 1 por critérios de validade econômica, sem olhar retorno,
+> e só então congelada. Os demais parâmetros abaixo valem para qualquer definição.
+
+## 1. Histórico de exploração (transparência)
+
+Até esta data foram testadas cerca de **400 configurações** no mesmo período (EUA, 2012–2026): combinações de cortes
+(ROIC, zROIC, Growth, zGrowth, retorno), g e WACC do P/E justo, definições de ROIC, ajustes de P/E justo, exclusões,
+setores e duas parametrizações de Brasil. Esse número entra no cálculo do Deflated Sharpe Ratio e no limiar de significância.
+
+## 2. Estratégias candidatas (congeladas)
+
+Todas: método histórico point-in-time (só dados arquivados até a data), equal weight, rebalanceamento trimestral no último
+pregão do trimestre, retorno total, custo de 10 bps por ponta. g por ranking da mediana de 5 anos do crescimento do EPS;
+P/E justo `(1 − g/ROIC)/(WACC − g)`; retorno = média de (P/E converge ao justo em 2 anos) e (múltiplo constante) + dividend yield.
+
+| # | Estratégia | ROIC alto / baixo | Growth alto / baixo | zGrowth | zROIC | Retorno alto / baixo | g / WACC |
+|---|---|---|---|---|---|---|---|
+| C1 | Good Companies, Great Returns (original) | 20% / 10% | 15% / 6% | 2,93 | 0,7 | 20% / 8% | 7%→3,5% / 8,5% |
+| C2a | Esboço: OoL Base (ROIC ≥ 12%, sem HR/HG) | 12% / 10% | 15% / 6% | 2,93 | 0,7 | 20% / 8% | 7%→3,5% / 8,5% |
+| C2b | Esboço: OoL High Returns (OoL com ROIC > 30%) | idem | idem | idem | idem | idem | idem |
+| C2c | Esboço: OoL High Growth (OoL com EPS > 30%) | idem | idem | idem | idem | idem | idem |
+| C2d | Esboço: OoL inteira (corte 12%) | idem | idem | idem | idem | idem | idem |
+| C3 | Controle: Opportunity of Lifetime original | 20% / 10% | 15% / 6% | 2,93 | 0,7 | 20% / 8% | 7%→3,5% / 8,5% |
+
+Quem tem ROIC > 30% e EPS > 30% entra em C2b e C2c. Financeiras: ROE no lugar do ROIC.
+
+## 3. Testes de confirmação
+
+1. **ROIC oficial (Fase 1):** escolhido entre (A) patrimônio + dívida − caixa com capital operacional quando ≤ 0 (atual),
+   (B) capital operacional com ágio e intangíveis de aquisição, capital médio do ano, (C) ROIC marginal de 5 anos.
+   Critérios, nesta ordem: % de valores absurdos (< 0 ou > 100%), persistência de um ano para o outro (correlação de postos),
+   concordância com ROIC calculado à mão em ~30 empresas revisadas pelo usuário. **Retorno não entra na escolha.**
+   Robustez: as estratégias são rodadas também com as outras duas definições.
+2. **Universo point-in-time (Fase 2):** S&P 500 da data de cada rebalanceamento (base pública desde 1996). Empresas sem preço
+   (deslistadas): teste de limites — cenário pessimista (−100% no trimestre da saída), neutro (retorno do universo) e otimista
+   (retorno do S&P 500). Período: o mais longo que os balanços da SEC permitirem (≈ 2012 em diante).
+3. **Fatores (Fase 3):** regressão mensal contra Fama-French 5 fatores + momentum + Quality Minus Junk (AQR).
+4. **Overfitting (Fase 4):** Deflated Sharpe Ratio com ~400 tentativas; Probability of Backtest Overfitting (CSCV) na grade de
+   configurações; walk-forward com calibração em 2012–2018 e teste em 2019–2026 **sem ajuste**; intervalos por bootstrap em blocos;
+   placebo com carteiras aleatórias do mesmo tamanho.
+5. **Japão (Fase 5):** mesmas regras (parâmetros dos EUA, sem recalibrar), dados EDINET + preços Yahoo (.T), universo TOPIX 500
+   ou equivalente líquido, período disponível (≈ 2015 em diante).
+6. **Implementação (Fase 6), poucas variantes definidas aqui:** rebalanceamento trimestral × mensal; equal weight × peso por score
+   (rank de crescimento + rank de ROIC) com teto de 10% por ação × inverso da volatilidade; teto setorial de 35%.
+
+## 4. Critérios de sucesso (definidos antes de testar)
+
+Uma estratégia candidata é considerada **confirmada** se cumprir todos:
+
+1. Excesso sobre o universo equal weight point-in-time > 0 no cenário **neutro** e ≥ 0 no **pessimista** do teste de limites.
+2. Alfa contra FF5 + momentum + QMJ > 0, com t ≥ 2.
+3. Deflated Sharpe Ratio com probabilidade ≥ 90% (considerando ~400 tentativas).
+4. Excesso > 0 no período de teste do walk-forward (2019–2026), com parâmetros congelados.
+5. Japão: excesso > 0 sobre o universo equal weight japonês (com amostra mais curta, basta o sinal).
+
+Estratégias que cumprirem 1–4 e falharem em 5 são **confirmadas só para os EUA**. As demais ficam como **exploratórias**.
+
+## 5. Expectativa de retorno do produto
+
+O retorno esperado será reportado como uma faixa, aplicando ao excesso medido um desconto de 30% a 50% (decaimento fora da
+amostra documentado na literatura), além de custos e do resultado do teste de limites de sobrevivência.
+
+## 6. Registro de mudanças
+
+- 2026-11-10 — criação do protocolo.
