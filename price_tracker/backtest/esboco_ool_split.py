@@ -89,10 +89,10 @@ def main():
            'Opportunity of Lifetime (todas, corte 12%)': ('#0a3069', ':', 1.6), 'Good Companies, Great Returns (ROIC médio 10–12%)': ('#e8590c', '-', 2.0)}
     for k, (col, ls, lw) in sty.items():
         s = (navs[k] - 1) * 100
-        ax.plot(s.index, s, color=col, ls=ls, lw=lw, label=f'{k} ({s.iloc[-1]:+,.0f}%)'.replace(',', '.'))
+        ax.plot(s.index, s, color=col, ls=ls, lw=lw, label=f'{k} (' + f'{s.iloc[-1]:+,.0f}%'.replace(',', '.') + ')')
     for k, s0, col in (('Universo EW', univ, '#57606a'), ('S&P 500 / SPY', spy, '#000000')):
         s = (s0 - 1) * 100
-        ax.plot(s.index, s, color=col, ls='--', lw=1.5, label=f'{k} ({s.iloc[-1]:+,.0f}%)'.replace(',', '.'))
+        ax.plot(s.index, s, color=col, ls='--', lw=1.5, label=f'{k} (' + f'{s.iloc[-1]:+,.0f}%'.replace(',', '.') + ')')
     ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f'{v:,.0f}%'.replace(',', '.'))); ax.grid(alpha=.3); ax.legend(fontsize=8, loc='upper left')
     ax.set_title('Esboço: OoL a partir de ROIC 12% e subclasses (retorno total acumulado, 2012–2026)', fontsize=10)
     fig.tight_layout(); fig.savefig(ROOT / 'esboco_ool_split.png'); plt.close(fig)
