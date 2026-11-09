@@ -21,17 +21,17 @@ Série anual com os dados mais recentes da SEC (inclui reapresentações). "Mode
 | OoL | TPR | sim | não | não | 83% | 23% | -43% |
 | OoL | FOSL | sim | sim | não | 41% | 7% | -65% |
 | GCGR | WYNN | sim | sim | sim | 32% | 7% | -84% |
-| GCGR | MOH | sim | não | não | 111% | 22% | -52% |
-| GCGR | ETR | sim | não | não | 166% | 4% | -27% |
 | GCGR | HPQ | não | não | não | 13% | 12% | +74% |
+| GCGR | MOH | sim | não | não | 26% | 12% | -52% |
 | GCGR | ETSY | sim | sim | sim | 33% | 33% | -59% |
-| GCGR | IT | sim | sim | sim | 29% | 45% | +5% |
 | GCGR | PODD | sim | sim | sim | 23% | — | — |
+| GCGR | IT | sim | sim | sim | 29% | 45% | +5% |
 | GCGR | BEN | sim | não | sim | 21% | 13% | -11% |
 | GCGR | WU | sim | não | não | 60% | 13% | -62% |
 | GCGR | OTIS | sim | sim | não | 123% | — | — |
+| GCGR | HOG | sim | sim | sim | 33% | 25% | -18% |
 | **OoL: total** | | 9/10 | 3/10 | 4/10 | | | |
-| **GCGR: total** | | 9/10 | 5/10 | 5/10 | | | |
+| **GCGR: total** | | 9/10 | 6/10 | 6/10 | | | |
 
 ## 3. ROIC absurdo (> 100% ou negativo): de onde vem
 
@@ -41,22 +41,6 @@ Componentes do capital B no fim do exercício (US$ mi): imobilizado + ágio + in
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | TDC | 2009 | **169%** | 257 | 95 | 109 | — | 491 | 543 | 152 | 152 | 910 | 103% |
 | TDC | 2010 | **174%** | 302 | 105 | 136 | — | 523 | 569 | 195 | 174 | 1.189 | 99% |
-| MOH | 2017 | **-289%** | -438 | 342 | 186 | 69 | 4.325 | 4.904 | 18 | 152 | 1.337 | — |
-| MOH | 2018 | **2001%** | 800 | 241 | 143 | 47 | 3.636 | 4.005 | 62 | 40 | 1.647 | — |
-| MOH | 2019 | **179%** | 792 | 385 | 143 | 29 | 3.515 | 3.251 | 821 | 442 | 1.960 | 106% |
-| MOH | 2020 | **166%** | 755 | 391 | 692 | 249 | 3.722 | 4.965 | 89 | 455 | 2.096 | 1094% |
-| MOH | 2021 | **486%** | 768 | 396 | 982 | 270 | 5.626 | 7.047 | 227 | 158 | 2.630 | 210% |
-| MOH | 2022 | **159%** | 874 | 259 | 1.115 | 275 | 6.078 | 6.855 | 872 | 550 | 2.964 | 77% |
-| MOH | 2023 | **111%** | 1.172 | 270 | 1.241 | 208 | 7.694 | 8.168 | 1.245 | 1.058 | 4.215 | 76% |
-| ETR | 2008 | **245%** | 1.536 | 231 | 377 | — | 3.240 | 3.221 | 627 | 627 | 7.967 | 9% |
-| ETR | 2009 | **190%** | 1.517 | 248 | 377 | — | 2.825 | 2.482 | 967 | 797 | 8.613 | 9% |
-| ETR | 2010 | **141%** | 1.526 | 258 | 377 | — | 3.045 | 2.477 | 1.203 | 1.085 | 8.496 | 8% |
-| ETR | 2011 | **166%** | 1.665 | 260 | 377 | — | 2.928 | 2.758 | 808 | 1.005 | 8.961 | 8% |
-| ETR | 2012 | **209%** | 1.257 | 256 | 377 | — | 3.151 | 3.388 | 396 | 602 | 9.197 | 6% |
-| ETR | 2013 | **370%** | 1.035 | 199 | 377 | — | 3.191 | 3.603 | 164 | 280 | 9.632 | 5% |
-| ETR | 2014 | **322%** | 1.243 | 214 | 377 | — | 2.968 | 2.950 | 609 | 386 | 10.008 | 6% |
-| ETR | 2015 | **-45%** | -236 | 220 | 377 | — | 2.716 | 2.876 | 438 | 524 | 9.257 | -1% |
-| ETR | 2016 | **-181%** | -644 | 234 | 377 | — | 2.496 | 2.835 | 272 | 355 | 8.082 | -3% |
 | ETSY | 2015 | **-1%** | -1 | 105 | 28 | 3 | 88 | 80 | 143 | 136 | 330 | -3% |
 | ETSY | 2022 | **-34%** | -520 | 250 | 138 | 535 | 592 | 632 | 884 | 1.541 | -547 | -247% |
 | IT | 2017 | **-0%** | -5 | 222 | 2.987 | 1.292 | 2.050 | 2.443 | 4.108 | 2.242 | 983 | -0% |
@@ -276,47 +260,6 @@ Na carteira de 03/2014 a 12/2018 (12 trimestres; exercícios 2013 a 2017 eram os
 | 2020 | -19,37 | -1784% | -11% | -973 | 8.574 | -352 | depois |
 | 2021 | -6,64 | — | -4% | -312 | 8.347 | -214 | depois |
 
-### MOH — Molina Healthcare, Inc.
-
-Na carteira de 06/2024 a 12/2025 (7 trimestres; exercícios 2023 a 2024 eram os últimos disponíveis). Modelo na compra: ROIC 385%, crescimento 8%, zGrowth 1.85. Sinais: EPS no pico **sim**, ROIC no pico **não**, crescimento de base deprimida **não**.
-
-| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
-|---|---|---|---|---|---|---|---|
-| 2016 | 0,92 | -64% | 33% | 153 | 462 | 1.649 |  |
-| 2017 | -9,07 | -1086% | -289% | -438 | 152 | 1.337 |  |
-| 2018 | 10,61 | — | 2001% | 800 | 40 | 1.647 |  |
-| 2019 | 11,47 | +8% | 179% | 792 | 442 | 1.960 |  |
-| 2020 | 11,23 | -2% | 166% | 755 | 455 | 2.096 |  |
-| 2021 | 11,25 | +0% | 486% | 768 | 158 | 2.630 |  |
-| 2022 | 13,55 | +20% | 159% | 874 | 550 | 2.964 |  |
-| 2023 | 18,77 | +39% | 111% | 1.172 | 1.058 | 4.215 | compra |
-| 2024 | 20,42 | +9% | 69% | 1.267 | 1.843 | 4.496 | na carteira |
-| 2025 | 8,92 | -56% | 22% | 626 | 2.880 | 4.069 | depois |
-
-### ETR — Entergy
-
-Na carteira de 03/2012 a 12/2020 (8 trimestres; exercícios 2011 a 2019 eram os últimos disponíveis). Modelo na compra: ROIC 159%, crescimento 8%, zGrowth 0.55. Sinais: EPS no pico **sim**, ROIC no pico **não**, crescimento de base deprimida **não**.
-
-| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
-|---|---|---|---|---|---|---|---|
-| 2007 | 2,80 | — | 21% | 1.425 | — | 7.957 |  |
-| 2008 | 3,10 | +11% | 245% | 1.536 | 627 | 7.967 |  |
-| 2009 | 3,15 | +2% | 190% | 1.517 | 797 | 8.613 |  |
-| 2010 | 3,33 | +6% | 141% | 1.526 | 1.085 | 8.496 |  |
-| 2011 | 3,77 | +13% | 166% | 1.665 | 1.005 | 8.961 | compra |
-| 2012 | 2,38 | -37% | 209% | 1.257 | 602 | 9.197 | na carteira |
-| 2013 | 2,00 | -16% | 370% | 1.035 | 280 | 9.632 | na carteira |
-| 2014 | 2,61 | +31% | 322% | 1.243 | 386 | 10.008 | na carteira |
-| 2015 | -0,49 | -119% | -45% | -236 | 524 | 9.257 | na carteira |
-| 2016 | -1,63 | — | -181% | -644 | 355 | 8.082 | na carteira |
-| 2017 | 1,14 | — | 3% | 680 | -431 | 7.993 | na carteira |
-| 2018 | 2,31 | +103% | 2% | 371 | -1.384 | 8.844 | na carteira |
-| 2019 | 3,15 | +36% | 5% | 1.390 | -1.565 | 10.224 | na carteira |
-| 2020 | 3,45 | +10% | 6% | 1.769 | -1.935 | 10.926 | depois |
-| 2021 | 2,77 | -20% | 4% | 1.576 | -1.805 | 11.637 | depois |
-| 2022 | 2,68 | -3% | 5% | 2.051 | -341 | 12.967 | depois |
-| 2023 | 5,55 | +107% | 907% | 2.618 | 289 | 14.623 | depois |
-
 ### HPQ — HP Inc.
 
 Na carteira de 12/2011 a 09/2012 (4 trimestres; exercícios 2011 a 2011 eram os últimos disponíveis). Modelo na compra: ROIC 18%, crescimento 7%, zGrowth 1.89. Sinais: EPS no pico **não**, ROIC no pico **não**, crescimento de base deprimida **não**.
@@ -332,6 +275,23 @@ Na carteira de 12/2011 a 09/2012 (4 trimestres; exercícios 2011 a 2011 eram os 
 | 2013 | 2,62 | — | 12% | 5.601 | 45.178 | 27.269 | depois |
 | 2014 | 2,62 | +0% | 11% | 3.221 | 29.167 | 26.731 | depois |
 | 2015 | 2,48 | -5% | 45% | 3.920 | 8.653 | 27.768 | depois |
+
+### MOH — Molina Healthcare, Inc.
+
+Na carteira de 06/2024 a 12/2025 (6 trimestres; exercícios 2023 a 2024 eram os últimos disponíveis). Modelo na compra: ROIC 29%, crescimento 8%, zGrowth 1.85. Sinais: EPS no pico **sim**, ROIC no pico **não**, crescimento de base deprimida **não**.
+
+| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
+|---|---|---|---|---|---|---|---|
+| 2016 | 0,92 | -64% | 3% | 153 | 462 | 1.649 |  |
+| 2017 | -9,07 | -1086% | -38% | -438 | 152 | 1.337 |  |
+| 2018 | 10,61 | — | 43% | 800 | 40 | 1.647 |  |
+| 2019 | 11,47 | +8% | 38% | 792 | 442 | 1.960 |  |
+| 2020 | 11,23 | -2% | 32% | 755 | 455 | 2.096 |  |
+| 2021 | 11,25 | +0% | 25% | 768 | 158 | 2.630 |  |
+| 2022 | 13,55 | +20% | 27% | 874 | 550 | 2.964 |  |
+| 2023 | 18,77 | +39% | 26% | 1.172 | 1.058 | 4.215 | compra |
+| 2024 | 20,42 | +9% | 26% | 1.267 | 1.843 | 4.496 | na carteira |
+| 2025 | 8,92 | -56% | 12% | 626 | 2.880 | 4.069 | depois |
 
 ### ETSY — ETSY INC
 
@@ -352,6 +312,22 @@ Na carteira de 03/2022 a 06/2024 (10 trimestres; exercícios 2021 a 2023 eram os
 | 2024 | 2,35 | +5% | 39% | 281 | 715 | -759 | depois |
 | 2025 | 1,39 | -41% | 33% | 176 | 527 | -1.098 | depois |
 
+### PODD — Insulet Corporation
+
+Na carteira de 03/2025 a 09/2026 (7 trimestres; exercícios 2024 a 2025 eram os últimos disponíveis). Modelo na compra: ROIC 13%, crescimento 97%, zGrowth 16.88. Sinais: EPS no pico **sim**, ROIC no pico **sim**, crescimento de base deprimida **sim**.
+
+| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
+|---|---|---|---|---|---|---|---|
+| 2017 | -0,46 | — | -2% | -6 | 301 | 179 |  |
+| 2018 | 0,05 | — | 4% | 17 | 439 | 212 |  |
+| 2019 | 0,19 | +280% | 7% | 40 | 606 | 76 |  |
+| 2020 | 0,10 | -47% | 5% | 36 | 677 | 604 |  |
+| 2021 | 0,24 | +140% | 13% | 103 | 807 | 556 |  |
+| 2022 | 0,07 | -71% | 2% | 19 | 973 | 476 |  |
+| 2023 | 2,94 | +4100% | 18% | 212 | 1.153 | 733 |  |
+| 2024 | 5,78 | +97% | 23% | 309 | 1.329 | 1.212 | compra |
+| 2025 | 3,48 | -40% | 24% | 345 | 1.445 | 1.515 | na carteira |
+
 ### IT — Gartner, Inc.
 
 Na carteira de 03/2022 a 12/2025 (12 trimestres; exercícios 2021 a 2024 eram os últimos disponíveis). Modelo na compra: ROIC 18%, crescimento 92%, zGrowth 13.75. Sinais: EPS no pico **sim**, ROIC no pico **sim**, crescimento de base deprimida **sim**.
@@ -370,22 +346,6 @@ Na carteira de 03/2022 a 12/2025 (12 trimestres; exercícios 2021 a 2024 eram os
 | 2023 | 11,08 | +11% | 44% | 952 | 2.160 | 681 | na carteira |
 | 2024 | 16,00 | +44% | 53% | 1.045 | 1.960 | 1.359 | na carteira |
 | 2025 | 9,65 | -40% | 45% | 773 | 1.723 | 320 | depois |
-
-### PODD — Insulet Corporation
-
-Na carteira de 03/2025 a 09/2026 (7 trimestres; exercícios 2024 a 2025 eram os últimos disponíveis). Modelo na compra: ROIC 13%, crescimento 97%, zGrowth 16.88. Sinais: EPS no pico **sim**, ROIC no pico **sim**, crescimento de base deprimida **sim**.
-
-| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
-|---|---|---|---|---|---|---|---|
-| 2017 | -0,46 | — | -2% | -6 | 301 | 179 |  |
-| 2018 | 0,05 | — | 4% | 17 | 439 | 212 |  |
-| 2019 | 0,19 | +280% | 7% | 40 | 606 | 76 |  |
-| 2020 | 0,10 | -47% | 5% | 36 | 677 | 604 |  |
-| 2021 | 0,24 | +140% | 13% | 103 | 807 | 556 |  |
-| 2022 | 0,07 | -71% | 2% | 19 | 973 | 476 |  |
-| 2023 | 2,94 | +4100% | 18% | 212 | 1.153 | 733 |  |
-| 2024 | 5,78 | +97% | 23% | 309 | 1.329 | 1.212 | compra |
-| 2025 | 3,48 | -40% | 24% | 345 | 1.445 | 1.515 | na carteira |
 
 ### BEN — Franklin Resources
 
@@ -441,46 +401,30 @@ Na carteira de 03/2025 a 09/2026 (7 trimestres; exercícios 2024 a 2025 eram os 
 | 2024 | 4,07 | +20% | 123% | 1.708 | 1.389 | -4.848 | compra |
 | 2025 | 3,50 | -14% | 113% | 1.605 | 1.426 | -5.392 | na carteira |
 
-## 4. Os sinais separam as piores das melhores? (teste em todas as posições, não só nas 20)
+### HOG — HARLEY-DAVIDSON, INC.
 
-**Frequência dos sinais na compra** (% das posições):
+Na carteira de 03/2015 a 12/2017 (12 trimestres; exercícios 2014 a 2016 eram os últimos disponíveis). Modelo na compra: ROIC 26%, crescimento 19%, zGrowth 6.60. Sinais: EPS no pico **sim**, ROIC no pico **sim**, crescimento de base deprimida **sim**.
 
-| Grupo | EPS no pico | ROIC no pico | Base deprimida |
-|---|---|---|---|
-| OoL: 10 piores | 72% | 15% | 23% |
-| OoL: 10 melhores | 86% | 69% | 43% |
-| OoL: todas | 75% | 47% | 40% |
-| GCGR: 10 piores | 75% | 42% | 53% |
-| GCGR: 10 melhores | 59% | 45% | 50% |
-| GCGR: todas | 67% | 44% | 60% |
+| Exercício | EPS | Cresc. EPS | ROIC (oficial) | NOPAT (US$ mi) | Capital B médio (US$ mi) | Patrimônio (US$ mi) | Situação |
+|---|---|---|---|---|---|---|---|
+| 2007 | 3,74 | — | 47% | 919 | — | 2.375 |  |
+| 2008 | 2,79 | -25% | 20% | 680 | 3.451 | 2.116 |  |
+| 2009 | -0,24 | -109% | 3% | 98 | 3.083 | 2.108 |  |
+| 2010 | 0,62 | — | 16% | 373 | 2.295 | 2.207 |  |
+| 2011 | 2,55 | +311% | 28% | 574 | 2.036 | 2.420 |  |
+| 2012 | 2,72 | +7% | 26% | 649 | 2.479 | 2.558 |  |
+| 2013 | 3,28 | +21% | 29% | 760 | 2.612 | 3.009 |  |
+| 2014 | 3,88 | +18% | 33% | 843 | 2.518 | 2.909 | compra |
+| 2015 | 3,69 | -5% | 31% | 756 | 2.467 | 1.840 | na carteira |
+| 2016 | 3,83 | +4% | 30% | 707 | 2.356 | 1.920 | na carteira |
+| 2017 | 3,02 | -21% | 23% | 533 | 2.271 | 1.844 | depois |
+| 2018 | 3,19 | +6% | 25% | 552 | 2.204 | 1.774 | depois |
+| 2019 | 2,68 | -16% | 17% | 422 | 2.525 | 1.804 | depois |
+| 2020 | 0,01 | -100% | 0% | 8 | 2.144 | 1.723 | depois |
 
-"EPS no pico" aparece em quase todas, inclusive nas vencedoras (NVIDIA, Arista também compraram com lucro recorde). Não discrimina.
+## 4. Correções aplicadas em 2026-11-10 (aprovadas)
 
-**Tendência na compra — excesso médio a.a. sobre o universo (posições da OoL)**
-
-| ROIC do último ano vs mediana dos 5 anteriores | Posições | Média | Mediana | 2012–18 | 2019–26 |
-|---|---|---|---|---|---|
-| Caindo > 20% | 372 | +1,6% | +1,4% | −0,8% | +3,7% |
-| Caindo 0–20% | 368 | −2,7% | −5,7% | −6,1% | +3,3% |
-| Subindo 0–20% | 639 | +0,7% | +1,4% | −3,8% | +6,6% |
-| Subindo > 20% | 1289 | +3,6% | +0,7% | +2,8% | +4,1% |
-
-| Crescimento dos 2 últimos anos vs mediana de 5 | Posições | Média | Mediana | 2012–18 | 2019–26 |
-|---|---|---|---|---|---|
-| Desacelerando > 10 p.p. | 846 | +3,1% | +0,4% | −0,7% | +6,6% |
-| Desacelerando 0–10 p.p. | 779 | −0,2% | −2,2% | −2,6% | +3,5% |
-| Acelerando 0–10 p.p. | 572 | +1,5% | +1,2% | −0,5% | +3,2% |
-| Acelerando > 10 p.p. | 566 | +3,7% | +2,4% | +2,0% | +4,5% |
-
-Sem relação monotônica, e na GCGR o padrão se inverte. **Nenhum dos sinais de "pico" ou de "tendência" disponíveis na compra separa as perdedoras das vencedoras.**
-
-## 5. Bug de dado encontrado: imobilizado de concessionárias e REITs
-
-O conceito de imobilizado do coletor (`PropertyPlantAndEquipmentNet`) não pega o imobilizado de concessionárias (`PublicUtilitiesPropertyPlantAndEquipmentNet`)
-nem de REITs (`RealEstateInvestmentPropertyNet`). Resultado: Entergy com imobilizado de US$ 0,2–0,5 bi (o real é ~US$ 40 bi) e ROIC de 140–370%.
-Afetados (imobilizado < 5% do patrimônio): **AEP, ETR** (utilities) e **ARE, PLD, EXR, INVH, REG, VICI** (REITs). Outros nomes da lista
-(software, homebuilders) têm imobilizado pequeno de verdade.
-
-**Seguradoras de saúde (Molina, e por extensão UNH, CI, ELV, HUM, CNC):** o capital B fica perto de zero porque o ativo circulante são
-aplicações financeiras e o passivo circulante são sinistros a pagar — ROIC de 111% a 2.001%. Não é bug de coleta, é a definição B que não
-serve para seguradoras; o tratamento coerente seria ROE, como nas financeiras.
+- **Seguradoras de saúde** (UNH, ELV, CNC, HUM, MOH, CI) passaram a usar **ROE** e o bloco de g das financeiras. Molina: ROIC de 111%–2.001% → ROE de 26%.
+- **Bug do imobilizado de utilities e REITs corrigido** (67 empresas rebaixadas da SEC). Entergy: ROIC de 140%–370% → 4%–8%; AEP ≈ 5%, NEE ≈ 6%, PLD ≈ 2%.
+- Em aberto: VICI (ativos são arrendamentos financeiros), patrimônio negativo (Otis) e ROIC > 100% em empresas leves em ativos.
+- Os sinais de "pico" e de "tendência" foram retestados depois das correções: continuam sem separar as piores das melhores.

@@ -4,6 +4,9 @@ import numpy as np, pandas as pd
 
 HERE = pathlib.Path(__file__).parent
 TABLE = pd.read_csv(HERE / 'data/class_table.csv')
+# Seguradoras de saude (planos): tratadas como financeiras (ROE e bloco de g das financeiras). Decisao do usuario em 2026-11-10.
+HEALTH_INSURERS = {'UNH', 'ELV', 'CNC', 'HUM', 'MOH', 'CI'}
+
 TH = json.loads((HERE / 'data/thresholds.json').read_text())
 WACC = 0.085
 LOOKUP = {''.join(r[['growth', 'zgrowth', 'roic', 'zroic', 'ret']]): r['category'] for _, r in TABLE.iterrows()}

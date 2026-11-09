@@ -17,6 +17,8 @@ Revisar os cortes faz parte da investigação pendente.
 **Qualidade do dado do ROIC clássico:** dívida = só longo prazo (SEC) ou Total Debt (Yahoo); em ~35 empresas dívida/caixa ausentes
 são assumidos 0 (ver `flags` em `price_tracker/data/hybrid_*.csv`). Um bug do coletor da SEC (unidade/conceito desatualizado) foi corrigido em 2026-11-09.
 
+**Correções de 2026-11-10 (aprovadas):** seguradoras de saúde (UNH, ELV, CNC, HUM, MOH, CI) usam **ROE**, como financeiras (`engine.HEALTH_INSURERS`). Bug corrigido: o imobilizado de utilities e REITs não era lido (Entergy com ROIC de 140–370%). Ainda em aberto: VICI (ativos são arrendamentos financeiros, não imobilizado), empresas com patrimônio negativo (Otis, etc.) e ROIC > 100% em empresas leves em ativos.
+
 O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 - O ROIC vem do Wisesheets e **não é o ROIC clássico**. Calibrado: NOPAT ÷ (ativo total − passivo circulante),
   com valores de fim de ano. Isso inclui caixa e goodwill no denominador e não trata leasing.

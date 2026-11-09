@@ -22,7 +22,8 @@ CONCEPTS = {
     'cash': ['CashAndCashEquivalentsAtCarryingValue', 'CashAndCashEquivalents',
              'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents', 'Cash'],
     # capital operacional (usado quando patrimonio <= 0 ou patrimonio + divida - caixa <= 0)
-    'ppe': ['PropertyPlantAndEquipmentNet',
+    'ppe': ['PublicUtilitiesPropertyPlantAndEquipmentNet', 'RealEstateInvestmentPropertyNet',  # utilities e REITs (bug corrigido 2026-11-10)
+            'PropertyPlantAndEquipmentNet',
             'PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization',
             'PropertyPlantAndEquipment'],
     'assets_cur': ['AssetsCurrent', 'CurrentAssets'],

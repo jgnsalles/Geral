@@ -80,7 +80,7 @@ BR,1383312,False,"Broadridge Financial Solutions, Inc.",ambos,Industrials,Data P
 HWM,4281,False,Howmet Aerospace Inc.,ambos,Industrials,Aerospace & Defense
 NVR,906163,False,"NVR, Inc.",ambos,Consumer Discretionary,Homebuilding
 CPRT,900075,False,"Copart, Inc.",ambos,Industrials,Diversified Support Services
-MOH,1179929,False,"Molina Healthcare, Inc.",planilha,Health Care,Medical - Healthcare Plans
+MOH,1179929,True,"Molina Healthcare, Inc.",planilha,Health Care,Medical - Healthcare Plans
 CAT,18230,False,Caterpillar Inc.,ambos,Industrials,Construction Machinery & Heavy Transportation Equipment
 TSCO,916365,False,Tractor Supply Company,ambos,Consumer Discretionary,Other Specialty Retail
 MSFT,789019,False,Microsoft Corporation,ambos,Information Technology,Systems Software
@@ -229,7 +229,7 @@ CASY,726958,False,Casey's,sp500,Consumer Staples,Food Retail
 CBOE,1374310,True,Cboe Global Markets,sp500,Financials,Financial Exchanges & Data
 CDW,1402057,False,CDW Corporation,sp500,Information Technology,Technology Distributors
 COR,1140859,False,Cencora,sp500,Health Care,Health Care Distributors
-CNC,1071739,False,Centene Corporation,sp500,Health Care,Managed Health Care
+CNC,1071739,True,Centene Corporation,sp500,Health Care,Managed Health Care
 CNP,1130310,False,CenterPoint Energy,sp500,Utilities,Multi-Utilities
 CF,1324404,False,CF Industries,sp500,Materials,Fertilizers & Agricultural Chemicals
 CRL,1100682,False,Charles River Laboratories,sp500,Health Care,Life Sciences Tools & Services
@@ -237,7 +237,7 @@ CHTR,1091667,False,Charter Communications,sp500,Communication Services,Cable & S
 CVX,93410,False,Chevron Corporation,sp500,Energy,Integrated Oil & Gas
 CB,896159,True,Chubb Limited,sp500,Financials,Property & Casualty Insurance
 CIEN,936395,False,Ciena,sp500,Information Technology,Communications Equipment
-CI,1739940,False,Cigna,sp500,Health Care,Health Care Services
+CI,1739940,True,Cigna,sp500,Health Care,Health Care Services
 CINF,20286,True,Cincinnati Financial,sp500,Financials,Property & Casualty Insurance
 CSCO,858877,False,Cisco,sp500,Information Technology,Communications Equipment
 C,831001,True,Citigroup,sp500,Financials,Diversified Banks
@@ -286,7 +286,7 @@ ECHO,1415404,False,EchoStar,sp500,Communication Services,Wireless Telecommunicat
 ECL,31462,False,Ecolab,sp500,Materials,Specialty Chemicals
 EIX,827052,False,Edison International,sp500,Utilities,Electric Utilities
 EW,1099800,False,Edwards Lifesciences,sp500,Health Care,Health Care Equipment
-ELV,1156039,False,Elevance Health,sp500,Health Care,Managed Health Care
+ELV,1156039,True,Elevance Health,sp500,Health Care,Managed Health Care
 EME,105634,False,Emcor,sp500,Industrials,Construction & Engineering
 EMR,32604,False,Emerson Electric,sp500,Industrials,Electrical Components & Equipment
 ETR,65984,False,Entergy,sp500,Utilities,Electric Utilities
@@ -345,7 +345,7 @@ HON,773840,False,Honeywell Technologies,sp500,Industrials,Industrial Conglomerat
 HRL,48465,False,Hormel Foods,sp500,Consumer Staples,Packaged Foods & Meats
 HST,1070750,False,Host Hotels & Resorts,sp500,Real Estate,Hotel & Resort REITs
 HUBB,48898,False,Hubbell Incorporated,sp500,Industrials,Industrial Machinery & Supplies & Components
-HUM,49071,False,Humana,sp500,Health Care,Managed Health Care
+HUM,49071,True,Humana,sp500,Health Care,Managed Health Care
 HBAN,49196,True,Huntington Bancshares,sp500,Financials,Regional Banks
 IBM,51143,False,IBM,sp500,Information Technology,IT Consulting & Other Services
 IEX,832101,False,IDEX Corporation,sp500,Industrials,Industrial Machinery & Supplies & Components
@@ -508,7 +508,7 @@ UNP,100885,False,Union Pacific Corporation,sp500,Industrials,Rail Transportation
 UAL,100517,False,United Airlines Holdings,sp500,Industrials,Passenger Airlines
 UPS,1090727,False,United Parcel Service,sp500,Industrials,Air Freight & Logistics
 URI,1067701,False,United Rentals,sp500,Industrials,Trading Companies & Distributors
-UNH,731766,False,UnitedHealth Group,sp500,Health Care,Managed Health Care
+UNH,731766,True,UnitedHealth Group,sp500,Health Care,Managed Health Care
 UHS,352915,False,Universal Health Services,sp500,Health Care,Health Care Facilities
 VLO,1035002,False,Valero Energy,sp500,Energy,Oil & Gas Refining & Marketing
 VEEV,1393052,False,Veeva Systems,sp500,Health Care,Health Care Technology

@@ -145,7 +145,7 @@ def build_row(w, y, e, fx=None):
     growth = engine.growth_metric(gr)
     zgrowth = engine.cv(gr, growth)
     icd = []
-    ry, rsrc = roic_years(y, e, roe_mode=(w.get('sector') == 'Financial Services'), ic_defaults=icd)
+    ry, rsrc = roic_years(y, e, roe_mode=(w.get('sector') == 'Financial Services' or w['ticker'] in engine.HEALTH_INSURERS), ic_defaults=icd)
     if icd:
         flags.append('ROIC com divida/caixa ausente assumido 0: ' + ','.join(icd))
     roic = engine.roic_metric([ry.get(k) for k in YEARS])

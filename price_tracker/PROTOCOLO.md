@@ -78,3 +78,9 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   falha em todas (maior t = 1,22, C1). Critério 3 (Deflated Sharpe ≥ 90%): falha em todas (0% a 5%). Critério 4 (excesso no teste
   2019–2026): passa em todas, mas todas tiveram excesso negativo em 2012–2018. PBO da grade = 58%. Viés de sobrevivência do universo
   antigo: +4 a +9 p.p. ao ano nas candidatas. Status de todas: **exploratória**. Fase 5 (Japão) pendente da chave da EDINET.
+- 2026-11-10 — **Correções no ROIC (aprovadas pelo usuário; mudam a definição congelada):** (1) seguradoras de saúde (UNH, ELV, CNC, HUM,
+  MOH, CI) passam a ser tratadas como financeiras: ROE no lugar do ROIC e bloco de g das financeiras. Motivo: o capital operacional (B) fica
+  perto de zero (ativo circulante = aplicações; passivo circulante = sinistros a pagar), gerando ROIC de 111% a 2.001%. (2) Bug de coleta:
+  o imobilizado de concessionárias (`PublicUtilitiesPropertyPlantAndEquipmentNet`) e de REITs (`RealEstateInvestmentPropertyNet`) não era
+  lido; Entergy tinha imobilizado de US$ 0,2–0,5 bi (real ≈ US$ 50 bi) e ROIC de 140–370%. 67 empresas tiveram os dados da SEC rebaixados.
+  Todos os testes point-in-time foram refeitos depois disso. Achado de exploração, não de confirmação.

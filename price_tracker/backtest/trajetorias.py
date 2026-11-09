@@ -14,7 +14,7 @@ from validation_core import load_prices, universe_table  # noqa: E402
 
 OOL, GCGR = 'Opportunity of Lifetime', 'Good Companies, Great Returns'
 WORST = {OOL: ['LULU', 'CLF', 'SIG', 'CPRI', 'TDC', 'AYI', 'UA', 'AMG', 'TPR', 'FOSL'],
-         GCGR: ['WYNN', 'MOH', 'ETR', 'HPQ', 'ETSY', 'IT', 'PODD', 'BEN', 'WU', 'OTIS']}
+         GCGR: ['WYNN', 'HPQ', 'MOH', 'ETSY', 'PODD', 'IT', 'BEN', 'WU', 'OTIS', 'HOG']}
 pc = lambda x: '—' if x is None or not np.isfinite(x) else f'{x:.0%}'
 sg = lambda x: '—' if x is None or not np.isfinite(x) else f'{x:+.0%}'
 mm = lambda x: '—' if x is None or not np.isfinite(x) else f'{x / 1e6:,.0f}'.replace(',', '.')
