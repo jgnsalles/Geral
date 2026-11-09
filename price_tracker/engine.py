@@ -60,3 +60,19 @@ def classify(df):
     df['category'] = df['code'].map(LOOKUP).fillna('Do not Waste Time')
     df['order'] = df['category'].map(ORDER).fillna(11).astype(int)
     return df
+
+
+def invested_capital(equity, debt, cash, ppe=None, assets_cur=None, cur_liab=None, debt_cur=None):
+    """Capital investido para o ROIC de empresas operacionais.
+    Padrao: patrimonio + divida - caixa. Se o patrimonio for <= 0 (ex.: recompras) ou esse valor for <= 0, usa o
+    capital operacional = imobilizado liquido + capital de giro operacional
+    ((ativo circulante - caixa) - (passivo circulante - divida de curto prazo)). Devolve (valor, 'classico'|'operacional'|None)."""
+    nz = lambda v: 0.0 if v is None or not np.isfinite(v) else float(v)
+    if equity is None or not np.isfinite(equity): return np.nan, None
+    classic = equity + nz(debt) - nz(cash)
+    if equity > 0 and classic > 0:
+        return classic, 'classico'
+    if ppe is None or not np.isfinite(ppe) or assets_cur is None or not np.isfinite(assets_cur) or cur_liab is None or not np.isfinite(cur_liab):
+        return np.nan, None
+    op = ppe + (assets_cur - nz(cash)) - (cur_liab - nz(debt_cur))
+    return (op, 'operacional') if op > 0 else (np.nan, None)

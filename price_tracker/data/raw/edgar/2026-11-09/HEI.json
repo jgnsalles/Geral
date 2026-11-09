@@ -279,6 +279,90 @@
     "us-gaap:CashAndCashEquivalentsAtCarryingValue@2016-10-31",
     "us-gaap:CashAndCashEquivalentsAtCarryingValue@2017-10-31"
    ]
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+   "unit": "USD",
+   "values": {
+    "2009-10-31": 60528000,
+    "2010-10-31": 59003000,
+    "2011-10-31": 67074000,
+    "2012-10-31": 80518000,
+    "2013-10-31": 97737000,
+    "2014-10-31": 93865000,
+    "2015-10-31": 105670000,
+    "2016-10-31": 121611000,
+    "2017-10-31": 129883000,
+    "2018-10-31": 154739000,
+    "2019-10-31": 173345000,
+    "2020-10-31": 168848000,
+    "2021-10-31": 193638000,
+    "2022-10-31": 225879000,
+    "2023-10-31": 321848000,
+    "2024-10-31": 339034000,
+    "2025-10-31": 431710000
+   },
+   "filled": []
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2009-10-31": 243577000,
+    "2010-10-31": 259249000,
+    "2011-10-31": 316638000,
+    "2012-10-31": 367911000,
+    "2013-10-31": 441472000,
+    "2014-10-31": 431293000,
+    "2015-10-31": 503612000,
+    "2016-10-31": 543158000,
+    "2017-10-31": 631892000,
+    "2018-10-31": 733808000,
+    "2019-10-31": 813731000,
+    "2020-10-31": 1165625000,
+    "2021-10-31": 937385000,
+    "2022-10-31": 1152730000,
+    "2023-10-31": 1855342000,
+    "2024-10-31": 2062292000,
+    "2025-10-31": 2356366000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:LongTermDebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2009-10-31": 237000,
+    "2010-10-31": 148000,
+    "2011-10-31": 335000,
+    "2012-10-31": 626000,
+    "2013-10-31": 697000,
+    "2014-10-31": 418000,
+    "2015-10-31": 357000,
+    "2016-10-31": 411000,
+    "2017-10-31": 451000,
+    "2018-10-31": 859000,
+    "2019-10-31": 906000,
+    "2020-10-31": 1045000,
+    "2021-10-31": 1515000,
+    "2022-10-31": 1654000,
+    "2023-10-31": 4269000,
+    "2024-10-31": 4107000,
+    "2025-10-31": 3358000
+   },
+   "filled": [
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2011-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2012-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2013-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2014-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2015-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2016-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2017-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2018-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2019-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2020-10-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2021-10-31"
+   ]
   }
  }
 }

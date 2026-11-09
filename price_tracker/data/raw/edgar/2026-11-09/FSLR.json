@@ -286,6 +286,96 @@
     "2025-12-31": 2803514000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+   "unit": "USD",
+   "values": {
+    "2008-12-27": 842622000,
+    "2009-12-26": 988782000,
+    "2010-12-31": 1430789000,
+    "2011-12-31": 1815958000,
+    "2012-12-31": 1525382000,
+    "2013-12-31": 1385084000,
+    "2014-12-31": 1419988000,
+    "2015-12-31": 1284136000,
+    "2016-12-31": 629142000,
+    "2017-12-31": 1154537000,
+    "2018-12-31": 1756211000,
+    "2019-12-31": 2181149000,
+    "2020-12-31": 2402285000,
+    "2021-12-31": 2649587000,
+    "2022-12-31": 3536902000,
+    "2023-12-31": 4397285000,
+    "2024-12-31": 5413683000,
+    "2025-12-31": 5675794000
+   },
+   "filled": []
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2008-12-27": 1077401000,
+    "2009-12-26": 1351271000,
+    "2010-12-31": 1584460000,
+    "2011-12-31": 2613261000,
+    "2012-12-31": 2832324000,
+    "2013-12-31": 3792764000,
+    "2014-12-31": 3077654000,
+    "2015-12-31": 3345586000,
+    "2016-12-31": 3787829000,
+    "2017-12-31": 3832772000,
+    "2018-12-31": 3859523000,
+    "2019-12-31": 3599834000,
+    "2020-12-31": 3014535000,
+    "2021-12-31": 3191243000,
+    "2022-12-31": 3791421000,
+    "2023-12-31": 4634809000,
+    "2024-12-31": 5089033000,
+    "2025-12-31": 6028832000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:DebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2008-12-27": 34951000,
+    "2009-12-26": 28559000,
+    "2010-12-31": 26587000,
+    "2011-12-31": 44505000,
+    "2012-12-31": 62349000,
+    "2013-12-31": 60543000,
+    "2014-12-31": 51399000,
+    "2015-12-31": 38090000,
+    "2016-12-31": 27966000,
+    "2017-12-31": 13075000,
+    "2018-12-31": 5570000,
+    "2019-12-31": 17510000,
+    "2020-12-31": 41540000,
+    "2021-12-31": 3896000,
+    "2022-12-31": 0,
+    "2023-12-31": 96238000,
+    "2024-12-31": 236424000,
+    "2025-12-31": 215979000
+   },
+   "filled": [
+    "us-gaap:LongTermDebtCurrent@2019-12-31",
+    "us-gaap:LongTermDebtCurrent@2020-12-31",
+    "us-gaap:LongTermDebtCurrent@2021-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2008-12-27",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2009-12-26",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2010-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2011-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2012-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2013-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2014-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2015-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2016-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2017-12-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligationsCurrent@2018-12-31"
+   ]
   }
  }
 }

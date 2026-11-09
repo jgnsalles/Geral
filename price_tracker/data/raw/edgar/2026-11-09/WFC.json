@@ -208,6 +208,69 @@
     "2025-12-31": 172593000000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization",
+   "unit": "USD",
+   "values": {
+    "2008-12-31": 11269000000,
+    "2009-12-31": 10736000000,
+    "2010-12-31": 9644000000,
+    "2011-12-31": 9531000000,
+    "2012-12-31": 9428000000,
+    "2013-12-31": 9156000000,
+    "2014-12-31": 8743000000,
+    "2015-12-31": 8704000000,
+    "2016-12-31": 8333000000,
+    "2017-12-31": 8847000000,
+    "2018-12-31": 8920000000,
+    "2019-12-31": 9309000000,
+    "2020-12-31": 8895000000,
+    "2021-12-31": 8571000000,
+    "2022-12-31": 8350000000,
+    "2023-12-31": 9266000000,
+    "2024-12-31": 10297000000,
+    "2025-12-31": 11395000000
+   },
+   "filled": [
+    "us-gaap:PropertyPlantAndEquipmentNet@2008-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2009-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2010-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2011-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2012-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2013-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2014-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2015-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2016-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2017-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2018-12-31"
+   ]
+  },
+  "assets_cur": null,
+  "debt_cur": {
+   "concept": "us-gaap:ShortTermBorrowings",
+   "unit": "USD",
+   "values": {
+    "2008-12-31": 108074000000,
+    "2009-12-31": 38966000000,
+    "2010-12-31": 55401000000,
+    "2011-12-31": 49091000000,
+    "2012-12-31": 57175000000,
+    "2013-12-31": 53883000000,
+    "2014-12-31": 63518000000,
+    "2015-12-31": 97528000000,
+    "2016-12-31": 96781000000,
+    "2017-12-31": 103256000000,
+    "2018-12-31": 105787000000,
+    "2019-12-31": 104512000000,
+    "2020-12-31": 58999000000,
+    "2021-12-31": 34409000000,
+    "2022-12-31": 51145000000,
+    "2023-12-31": 89559000000,
+    "2024-12-31": 2704000000,
+    "2025-12-31": 18323000000
+   },
+   "filled": []
   }
  }
 }

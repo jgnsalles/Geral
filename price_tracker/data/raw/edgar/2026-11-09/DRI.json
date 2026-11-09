@@ -270,6 +270,97 @@
     "2026-05-31": 219500000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization",
+   "unit": "USD",
+   "values": {
+    "2009-05-31": 3306700000,
+    "2010-05-30": 3403700000,
+    "2011-05-29": 3622000000,
+    "2012-05-27": 3951300000,
+    "2013-05-26": 4391100000,
+    "2014-05-25": 3381000000,
+    "2015-05-31": 3215800000,
+    "2016-05-29": 2041600000,
+    "2017-05-28": 2272300000,
+    "2018-05-27": 2429800000,
+    "2019-05-26": 2552600000,
+    "2020-05-31": 2756900000,
+    "2021-05-30": 2869200000,
+    "2022-05-29": 3356000000,
+    "2023-05-28": 3725100000,
+    "2024-05-26": 4184300000,
+    "2025-05-25": 4716000000,
+    "2026-05-31": 5048600000
+   },
+   "filled": [
+    "us-gaap:PropertyPlantAndEquipmentNet@2009-05-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2010-05-30",
+    "us-gaap:PropertyPlantAndEquipmentNet@2011-05-29",
+    "us-gaap:PropertyPlantAndEquipmentNet@2012-05-27",
+    "us-gaap:PropertyPlantAndEquipmentNet@2013-05-26",
+    "us-gaap:PropertyPlantAndEquipmentNet@2014-05-25",
+    "us-gaap:PropertyPlantAndEquipmentNet@2015-05-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2016-05-29",
+    "us-gaap:PropertyPlantAndEquipmentNet@2017-05-28",
+    "us-gaap:PropertyPlantAndEquipmentNet@2018-05-27",
+    "us-gaap:PropertyPlantAndEquipmentNet@2019-05-26"
+   ]
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2009-05-31": 554800000,
+    "2010-05-30": 690200000,
+    "2011-05-29": 663800000,
+    "2012-05-27": 757600000,
+    "2013-05-26": 764900000,
+    "2014-05-25": 1975800000,
+    "2015-05-31": 1056400000,
+    "2016-05-29": 820300000,
+    "2017-05-28": 587900000,
+    "2018-05-27": 553600000,
+    "2019-05-26": 892600000,
+    "2020-05-31": 1101400000,
+    "2021-05-30": 1871100000,
+    "2022-05-29": 1179400000,
+    "2023-05-28": 997700000,
+    "2024-05-26": 822800000,
+    "2025-05-25": 937700000,
+    "2026-05-31": 942900000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:LongTermDebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2009-05-31": 150000000,
+    "2010-05-30": 225000000,
+    "2011-05-29": 0,
+    "2012-05-27": 349900000,
+    "2013-05-26": 0,
+    "2014-05-25": 15000000,
+    "2015-05-31": 15000000,
+    "2016-05-29": 0,
+    "2019-05-26": 0,
+    "2020-05-31": 270000000,
+    "2021-05-30": 0,
+    "2023-05-28": 0,
+    "2024-05-26": 86800000,
+    "2025-05-25": 0,
+    "2026-05-31": 693600000
+   },
+   "filled": [
+    "us-gaap:ShortTermBorrowings@2009-05-31",
+    "us-gaap:ShortTermBorrowings@2019-05-26",
+    "us-gaap:ShortTermBorrowings@2020-05-31",
+    "us-gaap:ShortTermBorrowings@2021-05-30",
+    "us-gaap:ShortTermBorrowings@2023-05-28",
+    "us-gaap:ShortTermBorrowings@2024-05-26"
+   ]
   }
  }
 }

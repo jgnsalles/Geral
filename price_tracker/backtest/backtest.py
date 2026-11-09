@@ -89,9 +89,10 @@ def features(pit, t, fin, splits):
     growth = float(np.median(ok)) if len(ok) >= (N_HIST + 1) // 2 else np.nan
     zgrowth = engine.cv(rates, growth) if np.isfinite(growth) else np.nan
 
-    s = {k: asof(pit[k], t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income')}
+    s = {k: asof(pit.get(k, []), t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income',
+                                                'ppe', 'assets_cur', 'cur_liab', 'debt_cur')}
     g = lambda k, y: s[k][y][0] if y in s[k] else None
-    roics, num, den = [], {}, {}
+    roics, num, den, n_op = [], {}, {}, 0
     for y in range(last - 5, last + 1):
         if fin:
             ni, eq = g('net_income', y), g('equity', y)
@@ -104,7 +105,8 @@ def features(pit, t, fin, splits):
             roics.append(np.nan); continue
         pt, tx = g('pretax', y), g('tax', y)
         tr = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
-        ic = eq + (g('lt_debt', y) or 0.0) - (g('cash', y) or 0.0)
+        ic, src = engine.invested_capital(eq, g('lt_debt', y), g('cash', y), g('ppe', y), g('assets_cur', y), g('cur_liab', y), g('debt_cur', y))
+        n_op += src == 'operacional'
         num[y], den[y] = oi * (1 - tr), ic
         roics.append(oi * (1 - tr) / ic if ic > 0 else np.nan)
     roic = engine.roic_metric(roics)
@@ -116,7 +118,7 @@ def features(pit, t, fin, splits):
         d_ic = den[y1] - den[y0]
         if d_ic > 0:
             roic_marg = (num[y1] - num[y0]) / d_ic
-    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_marg=roic_marg, d_ic=d_ic, eps=e[last], last_fy=last,
+    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_marg=roic_marg, d_ic=d_ic, n_ic_op=n_op, eps=e[last], last_fy=last,
                 n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()))
 
 

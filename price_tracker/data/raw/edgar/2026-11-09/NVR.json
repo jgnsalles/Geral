@@ -176,6 +176,9 @@
     "us-gaap:CashAndCashEquivalentsAtCarryingValue@2014-12-31",
     "us-gaap:CashAndCashEquivalentsAtCarryingValue@2015-12-31"
    ]
-  }
+  },
+  "ppe": null,
+  "assets_cur": null,
+  "debt_cur": null
  }
 }

@@ -49,7 +49,7 @@ def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
     definition = definition or ROIC_DEF
     ic_defaults = [] if ic_defaults is None else ic_defaults
     src, out = {}, {}
-    keys = ('op_income', 'pretax', 'tax', 'assets', 'cur_liab', 'net_income', 'equity', 'lt_debt', 'cash')
+    keys = ('op_income', 'pretax', 'tax', 'assets', 'cur_liab', 'net_income', 'equity', 'lt_debt', 'cash', 'ppe', 'assets_cur', 'debt_cur')
     ed = {k: edgar_series(e, k) for k in keys}
     inc, bal = y.get('income', {}), y.get('balance', {})
     yh = {
@@ -58,6 +58,7 @@ def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
         'assets': by_year(bal.get('Total Assets')), 'cur_liab': by_year(bal.get('Current Liabilities')),
         'net_income': by_year(inc.get('Net Income')), 'equity': by_year(bal.get('Stockholders Equity')),
         'lt_debt': by_year(bal.get('Total Debt')), 'cash': by_year(bal.get('Cash And Cash Equivalents')),
+        'ppe': {}, 'assets_cur': {}, 'debt_cur': {},  # Yahoo: nao coletado; capital operacional so via SEC
     }
     roe = roe_mode or (not ed['cur_liab'] and not yh['cur_liab'])
     for yr in YEARS:
@@ -89,7 +90,8 @@ def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
                     parts.append(v)
                 if miss:
                     ic_defaults.append(f'{yr}:{"+".join(miss)}=0')
-                ic = s['equity'][yr] + parts[0] - parts[1]
+                ic = engine.invested_capital(s['equity'][yr], parts[0], parts[1], s['ppe'].get(yr), s['assets_cur'].get(yr),
+                                             s['cur_liab'].get(yr), s['debt_cur'].get(yr))[0]
             if ic > 0:
                 out[yr] = s['op_income'][yr] * (1 - t) / ic
                 src[yr] = name

@@ -48,7 +48,7 @@ def features(f, t, r, sp):
             roics.append(x.ni / x.equity if pd.notna(x.ni) and x.equity > 0 else np.nan); continue
         if pd.isna(x.ebit) or pd.isna(x.equity): roics.append(np.nan); continue
         tr = min(max(-x.tax / x.pretax, 0), 0.5) if pd.notna(x.tax) and pd.notna(x.pretax) and x.pretax > 0 else 0.34
-        ic = x.equity + (x.debt or 0) - (x.cash or 0)
+        ic = engine.invested_capital(x.equity, x.debt, x.cash, x.get('ppe'), x.get('ac'), x.get('cl'), x.get('debt_cur'))[0]
         roics.append(x.ebit * (1 - tr) / ic if ic > 0 else np.nan)
     roic = engine.roic_metric(roics); zroic = engine.cv(roics, roic)
     x = k.loc[last]

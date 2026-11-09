@@ -7,6 +7,7 @@ import numpy as np, pandas as pd
 ROOT = pathlib.Path(__file__).parent
 sys.path.insert(0, str(ROOT.parent)); sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT.parent / 'brasil'))
 import diag_two_countries as dg  # noqa: E402
+import engine  # noqa: E402
 from backtest import load_pit, asof, D as DUS  # noqa: E402
 
 YEARS = list(range(2009, 2026))
@@ -24,7 +25,7 @@ def roic_us(tk, fin):
     pit = load_pit(tk)
     if pit is None: return {}
     t = pd.Timestamp('2026-11-08')
-    s = {k: asof(pit[k], t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income')}
+    s = {k: asof(pit.get(k, []), t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income', 'ppe', 'assets_cur', 'cur_liab', 'debt_cur')}
     g = lambda k, y: s[k][y][0] if y in s[k] else None
     out = {}
     for y in YEARS:
@@ -36,7 +37,7 @@ def roic_us(tk, fin):
         if oi is None or eq is None: continue
         pt, tx = g('pretax', y), g('tax', y)
         tr = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
-        ic = eq + (g('lt_debt', y) or 0.0) - (g('cash', y) or 0.0)
+        ic = engine.invested_capital(eq, g('lt_debt', y), g('cash', y), g('ppe', y), g('assets_cur', y), g('cur_liab', y), g('debt_cur', y))[0]
         if ic > 0: out[y] = oi * (1 - tr) / ic
     return out
 
@@ -52,7 +53,7 @@ def roic_br(cvm, fin, fund):
             continue
         if pd.isna(x.ebit) or pd.isna(x.equity): continue
         tr = min(max(-x.tax / x.pretax, 0), 0.5) if pd.notna(x.tax) and pd.notna(x.pretax) and x.pretax > 0 else 0.34
-        ic = x.equity + (x.debt or 0) - (x.cash or 0)
+        ic = engine.invested_capital(x.equity, x.debt, x.cash, x.get('ppe'), x.get('ac'), x.get('cl'), x.get('debt_cur'))[0]
         if ic > 0: out[y] = x.ebit * (1 - tr) / ic
     return out
 

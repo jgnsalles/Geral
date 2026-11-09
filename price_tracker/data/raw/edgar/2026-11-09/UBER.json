@@ -164,6 +164,57 @@
     "2025-12-31": 7105000000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization",
+   "unit": "USD",
+   "values": {
+    "2018-12-31": 1641000000,
+    "2019-12-31": 1731000000,
+    "2020-12-31": 1814000000,
+    "2021-12-31": 1853000000,
+    "2022-12-31": 2082000000,
+    "2023-12-31": 2073000000,
+    "2024-12-31": 1952000000,
+    "2025-12-31": 1897000000
+   },
+   "filled": [
+    "us-gaap:PropertyPlantAndEquipmentNet@2018-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2019-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2020-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2021-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2022-12-31"
+   ]
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2018-12-31": 8658000000,
+    "2019-12-31": 13925000000,
+    "2020-12-31": 9882000000,
+    "2021-12-31": 8819000000,
+    "2022-12-31": 9249000000,
+    "2023-12-31": 11297000000,
+    "2024-12-31": 12245000000,
+    "2025-12-31": 13993000000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:LongTermDebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2018-12-31": 27000000,
+    "2019-12-31": 27000000,
+    "2020-12-31": 27000000,
+    "2021-12-31": 27000000,
+    "2022-12-31": 27000000,
+    "2023-12-31": 25000000,
+    "2024-12-31": 1150000000,
+    "2025-12-31": 0
+   },
+   "filled": []
   }
  }
 }

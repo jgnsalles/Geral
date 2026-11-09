@@ -148,6 +148,35 @@
    "filled": [
     "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents@2017-12-31"
    ]
-  }
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+   "unit": "USD",
+   "values": {
+    "2019-12-31": 31589000,
+    "2020-12-31": 29541000,
+    "2021-12-31": 31304000,
+    "2022-12-31": 69170000,
+    "2023-12-31": 47758000,
+    "2024-12-31": 39638000,
+    "2025-12-31": 51960000
+   },
+   "filled": []
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2019-12-31": 1214153000,
+    "2020-12-31": 2257429000,
+    "2021-12-31": 2863250000,
+    "2022-12-31": 3041577000,
+    "2023-12-31": 4138618000,
+    "2024-12-31": 5934289000,
+    "2025-12-31": 8358174000
+   },
+   "filled": []
+  },
+  "debt_cur": null
  }
 }

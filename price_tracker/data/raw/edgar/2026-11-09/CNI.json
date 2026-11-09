@@ -11,6 +11,9 @@
   "cur_liab": null,
   "equity": null,
   "lt_debt": null,
-  "cash": null
+  "cash": null,
+  "ppe": null,
+  "assets_cur": null,
+  "debt_cur": null
  }
 }

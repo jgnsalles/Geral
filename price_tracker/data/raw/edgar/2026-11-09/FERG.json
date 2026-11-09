@@ -111,6 +111,36 @@
     "2025-07-31": 674000000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentNet",
+   "unit": "USD",
+   "values": {
+    "2023-07-31": 1595000000,
+    "2024-07-31": 1752000000,
+    "2025-07-31": 1846000000
+   },
+   "filled": []
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2023-07-31": 9077000000,
+    "2024-07-31": 9410000000,
+    "2025-07-31": 10146000000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:LongTermDebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2023-07-31": 55000000,
+    "2024-07-31": 150000000,
+    "2025-07-31": 400000000
+   },
+   "filled": []
   }
  }
 }

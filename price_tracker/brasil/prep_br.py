@@ -31,6 +31,11 @@ def extract(g):
     p3 = bpp[bpp.L == 2]
     out['debt'] = p3.loc[p3.DS_CONTA.str.strip().str.startswith('Empréstimos'), 'V'].sum()
     a3 = bpa[bpa.L == 2]
+    a2 = bpa[bpa.L == 1]
+    out['ppe'] = first(a3, a3.DS_CONTA.str.strip().eq('Imobilizado') & a3.CD_CONTA.str.startswith('1.02.'))
+    out['ac'] = first(a2, a2.DS_CONTA.str.strip().str.startswith('Ativo Circulante'))
+    out['cl'] = first(p2, p2.DS_CONTA.str.strip().str.startswith('Passivo Circulante'))
+    out['debt_cur'] = p3.loc[p3.DS_CONTA.str.strip().str.startswith('Empréstimos') & p3.CD_CONTA.str.startswith('2.01.'), 'V'].sum()
     out['cash'] = a3.loc[a3.DS_CONTA.str.strip().isin(['Caixa e Equivalentes de Caixa', 'Aplicações Financeiras']) & a3.CD_CONTA.str.startswith('1.01.'), 'V'].sum()
     return pd.Series(out)
 

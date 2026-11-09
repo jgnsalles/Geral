@@ -254,6 +254,89 @@
     "2025-12-31": 2178200000
    },
    "filled": []
+  },
+  "ppe": {
+   "concept": "us-gaap:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization",
+   "unit": "USD",
+   "values": {
+    "2010-12-31": 93409000,
+    "2011-12-31": 119411000,
+    "2012-12-31": 154084000,
+    "2013-12-31": 233373000,
+    "2014-12-31": 302273000,
+    "2015-12-31": 350300000,
+    "2016-12-31": 380300000,
+    "2017-12-31": 478300000,
+    "2018-12-31": 555900000,
+    "2019-12-31": 548100000,
+    "2020-12-31": 632300000,
+    "2021-12-31": 531400000,
+    "2022-12-31": 541500000,
+    "2023-12-31": 604900000,
+    "2024-12-31": 605900000,
+    "2025-12-31": 582800000
+   },
+   "filled": [
+    "us-gaap:PropertyPlantAndEquipmentNet@2010-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2011-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2012-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2013-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2014-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2015-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2016-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2017-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2018-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2019-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2020-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2021-12-31",
+    "us-gaap:PropertyPlantAndEquipmentNet@2022-12-31"
+   ]
+  },
+  "assets_cur": {
+   "concept": "us-gaap:AssetsCurrent",
+   "unit": "USD",
+   "values": {
+    "2010-12-31": 240435000,
+    "2011-12-31": 453654000,
+    "2012-12-31": 390559000,
+    "2013-12-31": 474845000,
+    "2014-12-31": 384483000,
+    "2015-12-31": 604600000,
+    "2016-12-31": 500900000,
+    "2017-12-31": 597600000,
+    "2018-12-31": 644500000,
+    "2019-12-31": 744900000,
+    "2020-12-31": 794200000,
+    "2021-12-31": 907400000,
+    "2022-12-31": 925100000,
+    "2023-12-31": 810100000,
+    "2024-12-31": 911600000,
+    "2025-12-31": 2765400000
+   },
+   "filled": []
+  },
+  "debt_cur": {
+   "concept": "us-gaap:DebtCurrent",
+   "unit": "USD",
+   "values": {
+    "2010-12-31": 437717000,
+    "2011-12-31": 5554000,
+    "2012-12-31": 195263000,
+    "2013-12-31": 4448000,
+    "2014-12-31": 336058000,
+    "2015-12-31": 874800000,
+    "2016-12-31": 106800000,
+    "2017-12-31": 724400000,
+    "2018-12-31": 672800000,
+    "2019-12-31": 499400000,
+    "2020-12-31": 514300000,
+    "2021-12-31": 971300000,
+    "2022-12-31": 1392900000,
+    "2023-12-31": 14500000,
+    "2024-12-31": 514200000,
+    "2025-12-31": 1508900000
+   },
+   "filled": []
   }
  }
 }

@@ -110,6 +110,9 @@
     "2025-12-31": 20591000000
    },
    "filled": []
-  }
+  },
+  "ppe": null,
+  "assets_cur": null,
+  "debt_cur": null
  }
 }

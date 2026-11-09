@@ -21,6 +21,13 @@ CONCEPTS = {
                 'SeniorNotes', 'NoncurrentPortionOfNoncurrentBorrowings'],
     'cash': ['CashAndCashEquivalentsAtCarryingValue', 'CashAndCashEquivalents',
              'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents', 'Cash'],
+    # capital operacional (usado quando patrimonio <= 0 ou patrimonio + divida - caixa <= 0)
+    'ppe': ['PropertyPlantAndEquipmentNet',
+            'PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization',
+            'PropertyPlantAndEquipment'],
+    'assets_cur': ['AssetsCurrent', 'CurrentAssets'],
+    'debt_cur': ['LongTermDebtCurrent', 'DebtCurrent', 'LongTermDebtAndCapitalLeaseObligationsCurrent', 'ShortTermBorrowings',
+                 'CurrentPortionOfNoncurrentBorrowings'],
 }
 FORMS = {'10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A'}
 

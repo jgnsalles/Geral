@@ -6,6 +6,7 @@ import numpy as np, pandas as pd
 ROOT = pathlib.Path(__file__).parent
 sys.path.insert(0, str(ROOT.parent)); sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT.parent / 'brasil'))
 import diag_two_countries as dg  # noqa: E402
+import engine  # noqa: E402
 from backtest import load_pit, asof  # noqa: E402
 from zroic_breakdown import perf, row  # noqa: E402
 
@@ -13,7 +14,7 @@ pc = lambda x: '—' if pd.isna(x) else f'{x:.1%}'.replace('.', ',')
 
 
 def roic_series(pit, t, fin, last):
-    s = {k: asof(pit[k], t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income')}
+    s = {k: asof(pit.get(k, []), t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income', 'ppe', 'assets_cur', 'cur_liab', 'debt_cur')}
     g = lambda k, y: s[k][y][0] if y in s[k] else None
     out = []
     for y in range(last - 5, last + 1):
@@ -24,7 +25,7 @@ def roic_series(pit, t, fin, last):
         if oi is None or eq is None: out.append(np.nan); continue
         pt, tx = g('pretax', y), g('tax', y)
         tr = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
-        ic = eq + (g('lt_debt', y) or 0.0) - (g('cash', y) or 0.0)
+        ic = engine.invested_capital(eq, g('lt_debt', y), g('cash', y), g('ppe', y), g('assets_cur', y), g('cur_liab', y), g('debt_cur', y))[0]
         out.append(oi * (1 - tr) / ic if ic > 0 else np.nan)
     return out
 

@@ -1,6 +1,6 @@
 # Opportunity of Lifetime (2026-11-09)
 
-Totais: Excel 13, P1 21, P2 28
+Totais: Excel 13, P1 22, P2 29
 
 ## Excel + P1 + P2 (7)
 
@@ -25,17 +25,18 @@ Totais: Excel 13, P1 21, P2 28
 
 ## Excel + P2 (0)
 
-## P1 + P2 (sem Excel) (7)
+## P1 + P2 (sem Excel) (8)
 
-| ticker   | Excel              | P1      | P2      |
-|:---------|:-------------------|:--------|:--------|
-| 2330.TW  | Good Co/Great Ret  | **OoL** | **OoL** |
-| GOOG     | Good Co/Great Ret  | **OoL** | **OoL** |
-| MPWR     | Good Co/Great Ret  | **OoL** | **OoL** |
-| JBL      | Good Co/Great Ret  | **OoL** | **OoL** |
-| MAR      | Do not Waste Time  | **OoL** | **OoL** |
-| 6098.T   | Good/Margin Safety | **OoL** | **OoL** |
-| IBKR     | Good/Margin Safety | **OoL** | **OoL** |
+| ticker   | Excel               | P1      | P2      |
+|:---------|:--------------------|:--------|:--------|
+| 2330.TW  | Good Co/Great Ret   | **OoL** | **OoL** |
+| GOOG     | Good Co/Great Ret   | **OoL** | **OoL** |
+| MPWR     | Good Co/Great Ret   | **OoL** | **OoL** |
+| JBL      | Good Co/Great Ret   | **OoL** | **OoL** |
+| MAR      | Do not Waste Time   | **OoL** | **OoL** |
+| DVA      | Investable not Good | **OoL** | **OoL** |
+| 6098.T   | Good/Margin Safety  | **OoL** | **OoL** |
+| IBKR     | Good/Margin Safety  | **OoL** | **OoL** |
 
 ## So Excel (2)
 
@@ -58,9 +59,9 @@ Totais: Excel 13, P1 21, P2 28
 |:----------|:----------------------|:----------------------|:--------|
 | FICO      | Expensive for what    | Interesting/Attention | **OoL** |
 | NFLX      | Good Co/Great Ret     | Good Co/Great Ret     | **OoL** |
+| TDG       | Expensive for what    | Good Co/Great Ret     | **OoL** |
 | NOVO-B.CO | Do not Waste Time     | Do not Waste Time     | **OoL** |
 | CMG       | Good/Margin Safety    | Interesting/Attention | **OoL** |
-| HCA       | Expensive for what    | Do not Waste Time     | **OoL** |
 | DECK      | Good Co/Great Ret     | Interesting/Attention | **OoL** |
 | QCOM      | Interesting/Attention | Interesting/Attention | **OoL** |
 | ONON      | Investable not Good   | Good Co/Great Ret     | **OoL** |
