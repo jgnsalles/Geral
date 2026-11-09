@@ -14,7 +14,8 @@
     "2023-12-31": -301158000,
     "2024-12-31": 233345000,
     "2025-12-31": 525857000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -27,7 +28,8 @@
     "2023-12-31": -416000,
     "2024-12-31": -265320000,
     "2025-12-31": 44537000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -40,7 +42,8 @@
     "2023-12-31": -300742000,
     "2024-12-31": 498665000,
     "2025-12-31": 481320000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -53,7 +56,8 @@
     "2023-12-31": -0.36,
     "2024-12-31": 0.39,
     "2025-12-31": 0.39
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -65,14 +69,16 @@
     "2023-12-31": 30074858000,
     "2024-12-31": 36250951000,
     "2025-12-31": 50660478000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
    "unit": "USD",
    "values": {
     "2020-12-31": 183450
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -87,21 +93,27 @@
     "2023-12-31": 5234612000,
     "2024-12-31": 6525134000,
     "2025-12-31": 10489495000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
-   "concept": "us-gaap:LongTermDebt",
+   "concept": "us-gaap:DebtLongtermAndShorttermCombinedAmount",
    "unit": "USD",
    "values": {
     "2020-12-31": 4798925000,
     "2021-12-31": 3947983000,
-    "2022-12-31": 5485882000
-   }
+    "2022-12-31": 5485882000,
+    "2023-12-31": 5233416000,
+    "2024-12-31": 3092692000,
+    "2025-12-31": 1815162000
+   },
+   "filled": []
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
    "unit": "USD",
    "values": {
+    "2018-12-31": 537003000,
     "2019-12-31": 499486000,
     "2020-07-09": 0,
     "2020-12-31": 872582000,
@@ -110,7 +122,10 @@
     "2023-12-31": 3085020000,
     "2024-12-31": 2538293000,
     "2025-12-31": 4929452000
-   }
+   },
+   "filled": [
+    "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents@2018-12-31"
+   ]
   }
  }
 }

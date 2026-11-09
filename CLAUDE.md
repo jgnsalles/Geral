@@ -14,6 +14,9 @@ operacionais e ROE para financeiras (`ROIC_DEF` em `price_tracker/hybrid.py`). O
 desenhados com a fórmula do Wise: com o ROIC clássico, 52% das operacionais passam de 20% (contra 31%).
 Revisar os cortes faz parte da investigação pendente.
 
+**Qualidade do dado do ROIC clássico:** dívida = só longo prazo (SEC) ou Total Debt (Yahoo); em ~35 empresas dívida/caixa ausentes
+são assumidos 0 (ver `flags` em `price_tracker/data/hybrid_*.csv`). Um bug do coletor da SEC (unidade/conceito desatualizado) foi corrigido em 2026-11-09.
+
 O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 - O ROIC vem do Wisesheets e **não é o ROIC clássico**. Calibrado: NOPAT ÷ (ativo total − passivo circulante),
   com valores de fim de ano. Isso inclui caixa e goodwill no denominador e não trata leasing.

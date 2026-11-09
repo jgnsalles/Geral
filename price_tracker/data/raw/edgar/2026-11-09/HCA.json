@@ -20,7 +20,8 @@
     "2023-12-31": 7706000000,
     "2024-12-31": 8523000000,
     "2025-12-31": 9832000000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -43,7 +44,8 @@
     "2023-12-31": 1615000000,
     "2024-12-31": 1866000000,
     "2025-12-31": 2050000000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -66,7 +68,8 @@
     "2023-12-31": 5242000000,
     "2024-12-31": 5760000000,
     "2025-12-31": 6784000000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -89,7 +92,8 @@
     "2023-12-31": 18.97,
     "2024-12-31": 22,
     "2025-12-31": 28.33
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -111,7 +115,8 @@
     "2023-12-31": 56211000000,
     "2024-12-31": 59513000000,
     "2025-12-31": 60720000000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -133,12 +138,15 @@
     "2023-12-31": 12655000000,
     "2024-12-31": 15177000000,
     "2025-12-31": 16350000000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2008-12-31": -9260000000,
+    "2009-12-31": -7978000000,
     "2010-12-31": 11926000000,
     "2011-12-31": -8258000000,
     "2012-12-31": -9660000000,
@@ -155,7 +163,11 @@
     "2023-12-31": -1774000000,
     "2024-12-31": -2499000000,
     "2025-12-31": -6027000000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2008-12-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2009-12-31"
+   ]
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
@@ -177,7 +189,8 @@
     "2023-12-31": 39593000000,
     "2024-12-31": 43031000000,
     "2025-12-31": 44285000000
-   }
+   },
+   "filled": []
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -201,7 +214,8 @@
     "2023-12-31": 935000000,
     "2024-12-31": 1933000000,
     "2025-12-31": 1040000000
-   }
+   },
+   "filled": []
   }
  }
 }

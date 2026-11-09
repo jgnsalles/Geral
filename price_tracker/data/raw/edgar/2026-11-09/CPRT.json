@@ -24,7 +24,8 @@
     "2024-07-31": 1572023000,
     "2025-07-31": 1696714000,
     "2026-07-31": 1652590000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -48,7 +49,8 @@
     "2024-07-31": 1714601000,
     "2025-07-31": 1895581000,
     "2026-07-31": 1834977000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -72,7 +74,8 @@
     "2024-07-31": 352254000,
     "2025-07-31": 347218000,
     "2026-07-31": 354580000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -96,7 +99,8 @@
     "2024-07-31": 1363020000,
     "2025-07-31": 1552449000,
     "2026-07-31": 1484270000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -120,7 +124,8 @@
     "2024-07-31": 1.4,
     "2025-07-31": 1.59,
     "2026-07-31": 1.55
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -143,7 +148,8 @@
     "2024-07-31": 8427764000,
     "2025-07-31": 10090902000,
     "2026-07-31": 10027810000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -166,10 +172,11 @@
     "2024-07-31": 628567000,
     "2025-07-31": 683281000,
     "2026-07-31": 703741000
-   }
+   },
+   "filled": []
   },
   "equity": {
-   "concept": "us-gaap:StockholdersEquity",
+   "concept": "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
    "unit": "USD",
    "values": {
     "2008-07-31": 798996000,
@@ -181,17 +188,32 @@
     "2014-07-31": 1003499000,
     "2015-07-31": 964464000,
     "2016-07-31": 774456000,
+    "2017-07-31": 1098600000,
+    "2018-07-31": 1581099000,
+    "2018-08-01": -22954000,
     "2019-07-31": 1778381000,
     "2020-07-31": 2489516000,
     "2021-07-31": 3529201000,
     "2022-07-31": 4625599000,
-    "2023-07-31": 5987440000
-   }
+    "2023-07-31": 5987440000,
+    "2024-07-31": 7524011000,
+    "2025-07-31": 9187033000,
+    "2026-07-31": 9097295000
+   },
+   "filled": [
+    "us-gaap:StockholdersEquity@2008-07-31",
+    "us-gaap:StockholdersEquity@2009-07-31",
+    "us-gaap:StockholdersEquity@2010-07-31",
+    "us-gaap:StockholdersEquity@2011-07-31",
+    "us-gaap:StockholdersEquity@2012-07-31",
+    "us-gaap:StockholdersEquity@2013-07-31"
+   ]
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
    "unit": "USD",
    "values": {
+    "2010-07-31": 601000,
     "2011-07-31": 375139000,
     "2012-07-31": 443750000,
     "2013-07-31": 368750000,
@@ -204,11 +226,16 @@
     "2020-07-31": 400000000,
     "2021-07-31": 400000000,
     "2022-07-31": 0,
-    "2023-07-31": 11006000
-   }
+    "2023-07-31": 11006000,
+    "2024-07-31": 0
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2010-07-31",
+    "us-gaap:LongTermDebtAndCapitalLeaseObligations@2024-07-31"
+   ]
   },
   "cash": {
-   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
    "unit": "USD",
    "values": {
     "2009-07-31": 162691000,
@@ -221,8 +248,25 @@
     "2016-07-31": 155849000,
     "2017-07-31": 210100000,
     "2018-07-31": 274520000,
-    "2019-07-31": 186319000
-   }
+    "2019-07-31": 186319000,
+    "2020-07-31": 477718000,
+    "2021-07-31": 1048260000,
+    "2022-07-31": 1384236000,
+    "2023-07-31": 957395000,
+    "2024-07-31": 1514111000,
+    "2025-07-31": 2780531000,
+    "2026-07-31": 1907901000
+   },
+   "filled": [
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2009-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2010-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2011-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2012-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2013-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2014-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2015-07-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2016-07-31"
+   ]
   }
  }
 }

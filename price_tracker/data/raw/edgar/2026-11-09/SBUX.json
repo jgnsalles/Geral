@@ -25,7 +25,8 @@
     "2023-10-01": 5870800000,
     "2024-09-29": 5408800000,
     "2025-09-28": 2936600000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -48,7 +49,8 @@
     "2023-10-01": 5401900000,
     "2024-09-29": 4969600000,
     "2025-09-28": 2507300000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -73,7 +75,8 @@
     "2023-10-01": 1277200000,
     "2024-09-29": 1207300000,
     "2025-09-28": 650600000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -98,7 +101,8 @@
     "2023-10-01": 4124500000,
     "2024-09-29": 3760900000,
     "2025-09-28": 1856400000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -123,7 +127,8 @@
     "2023-10-01": 3.58,
     "2024-09-29": 3.31,
     "2025-09-28": 1.63
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -147,7 +152,8 @@
     "2023-10-01": 29445500000,
     "2024-09-29": 31339300000,
     "2025-09-28": 32019700000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -171,7 +177,8 @@
     "2023-10-01": 9345300000,
     "2024-09-29": 9070000000,
     "2025-09-28": 10210400000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -197,14 +204,18 @@
     "2023-10-01": -7994800000,
     "2024-09-29": -7448900000,
     "2025-09-28": -8096600000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
    "unit": "USD",
    "values": {
+    "2008-09-28": 549600000,
     "2009-09-27": 549500000,
     "2010-10-03": 549400000,
+    "2011-10-02": 549500000,
+    "2012-09-30": 549600000,
     "2013-09-29": 1299400000,
     "2014-09-28": 2048300000,
     "2015-09-27": 2347500000,
@@ -218,10 +229,15 @@
     "2023-10-01": 15366200000,
     "2024-09-29": 15568400000,
     "2025-09-28": 16074800000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2008-09-28",
+    "us-gaap:LongTermDebtNoncurrent@2011-10-02",
+    "us-gaap:LongTermDebtNoncurrent@2012-09-30"
+   ]
   },
   "cash": {
-   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
    "unit": "USD",
    "values": {
     "2006-10-01": 312600000,
@@ -239,8 +255,27 @@
     "2018-09-30": 8756300000,
     "2019-09-29": 2686600000,
     "2020-09-27": 4350900000,
-    "2021-10-03": 6455700000
-   }
+    "2021-10-03": 6455700000,
+    "2022-10-02": 2818400000,
+    "2023-10-01": 3551500000,
+    "2024-09-29": 3286200000,
+    "2025-09-28": 3219800000
+   },
+   "filled": [
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2006-10-01",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2007-09-30",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2008-09-28",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2009-09-27",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2010-10-03",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2011-10-02",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2012-09-30",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2013-09-29",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2014-09-28",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2015-09-27",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2016-10-02",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2017-10-01",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2018-09-30"
+   ]
   }
  }
 }

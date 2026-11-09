@@ -23,7 +23,8 @@
     "2023-12-31": 227494000,
     "2024-12-31": 209118000,
     "2025-12-31": 146248000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -46,7 +47,8 @@
     "2023-12-31": 223154000,
     "2024-12-31": 206591000,
     "2025-12-31": 128752000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -69,7 +71,8 @@
     "2023-12-31": 45531000,
     "2024-12-31": 38032000,
     "2025-12-31": 21159000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -92,7 +95,8 @@
     "2023-12-31": 177623000,
     "2024-12-31": 168559000,
     "2025-12-31": 107593000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -115,7 +119,8 @@
     "2023-12-31": 2.13,
     "2024-12-31": 2.02,
     "2025-12-31": 1.29
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -143,7 +148,8 @@
     "2023-12-31": 941436000,
     "2024-12-31": 1175234000,
     "2025-12-31": 1686510000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -171,7 +177,8 @@
     "2023-12-31": 126749000,
     "2024-12-31": 174905000,
     "2025-12-31": 330855000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
@@ -201,7 +208,8 @@
     "2023-12-31": 735224000,
     "2024-12-31": 824582000,
     "2025-12-31": 894985000
-   }
+   },
+   "filled": []
   },
   "lt_debt": null,
   "cash": {
@@ -226,7 +234,8 @@
     "2023-12-31": 287000,
     "2024-12-31": 14000,
     "2025-12-31": 13000
-   }
+   },
+   "filled": []
   }
  }
 }

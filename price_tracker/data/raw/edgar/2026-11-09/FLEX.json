@@ -13,12 +13,16 @@
     "2024-03-31": 853000000,
     "2025-03-31": 1169000000,
     "2026-03-31": 1368000000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
    "unit": "USD",
    "values": {
+    "2008-03-31": 23654000,
+    "2009-03-31": -6130309000,
+    "2010-03-31": -10746000,
     "2011-03-31": 634310000,
     "2012-03-31": 574730000,
     "2013-03-31": 328815000,
@@ -35,7 +39,12 @@
     "2024-03-31": 666000000,
     "2025-03-31": 1023000000,
     "2026-03-31": 1143000000
-   }
+   },
+   "filled": [
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2008-03-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2009-03-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2010-03-31"
+   ]
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -60,12 +69,15 @@
     "2024-03-31": -206000000,
     "2025-03-31": 185000000,
     "2026-03-31": 263000000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
    "unit": "USD",
    "values": {
+    "2008-03-31": -681383000,
+    "2009-03-31": -6135518000,
     "2010-03-31": 18594000,
     "2011-03-31": 596219000,
     "2012-03-31": 488765000,
@@ -83,7 +95,11 @@
     "2024-03-31": 1006000000,
     "2025-03-31": 838000000,
     "2026-03-31": 880000000
-   }
+   },
+   "filled": [
+    "us-gaap:ProfitLoss@2008-03-31",
+    "us-gaap:ProfitLoss@2009-03-31"
+   ]
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -108,7 +124,8 @@
     "2024-03-31": 2.28,
     "2025-03-31": 2.11,
     "2026-03-31": 2.33
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -132,7 +149,8 @@
     "2024-03-31": 18257000000,
     "2025-03-31": 18381000000,
     "2026-03-31": 22060000000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -156,12 +174,15 @@
     "2024-03-31": 8539000000,
     "2025-03-31": 9850000000,
     "2026-03-31": 12016000000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2007-03-31": 6295060000,
+    "2008-03-31": 8240832000,
     "2009-03-31": 1861168000,
     "2010-03-31": 1984567000,
     "2011-03-31": 2294696000,
@@ -172,17 +193,28 @@
     "2016-03-31": 2570872000,
     "2017-03-31": 2644533000,
     "2018-03-31": 3018573000,
+    "2019-03-31": 2973000000,
+    "2020-03-31": 2831000000,
+    "2021-03-31": 3436000000,
     "2022-03-31": 4129000000,
     "2023-03-31": 5351000000,
     "2024-03-31": 5325000000,
     "2025-03-31": 5002000000,
     "2026-03-31": 5144000000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2007-03-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2008-03-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2019-03-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2020-03-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2021-03-31"
+   ]
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
    "unit": "USD",
    "values": {
+    "2009-03-31": 2733680000,
     "2010-03-31": 2254830000,
     "2011-03-31": 2219872000,
     "2012-03-31": 2188673000,
@@ -200,7 +232,10 @@
     "2024-03-31": 3261000000,
     "2025-03-31": 3692000000,
     "2026-03-31": 3751000000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtAndCapitalLeaseObligations@2009-03-31"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -226,7 +261,8 @@
     "2024-03-31": 2474000000,
     "2025-03-31": 2289000000,
     "2026-03-31": 2389000000
-   }
+   },
+   "filled": []
   }
  }
 }

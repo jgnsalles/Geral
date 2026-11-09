@@ -44,8 +44,9 @@ def edgar_series(e, key):
 ROIC_DEF = 'classic'
 
 
-def roic_years(y, e, roe_mode=False, definition=None):
+def roic_years(y, e, roe_mode=False, definition=None, ic_defaults=None):
     definition = definition or ROIC_DEF
+    ic_defaults = [] if ic_defaults is None else ic_defaults
     src, out = {}, {}
     keys = ('op_income', 'pretax', 'tax', 'assets', 'cur_liab', 'net_income', 'equity', 'lt_debt', 'cash')
     ed = {k: edgar_series(e, k) for k in keys}
@@ -77,7 +78,17 @@ def roic_years(y, e, roe_mode=False, definition=None):
             if definition == 'wise':
                 ic = s['assets'][yr] - s['cur_liab'][yr]
             else:
-                ic = s['equity'][yr] + s['lt_debt'].get(yr, 0) - s['cash'].get(yr, 0)
+                # dado ausente nao pode virar zero em silencio: tenta a outra fonte e, so entao, assume 0 (com alerta)
+                miss = []
+                parts = []
+                for k in ('lt_debt', 'cash'):
+                    v = s[k].get(yr, (ed if s is yh else yh)[k].get(yr))
+                    if v is None or not np.isfinite(v):
+                        v = 0.0; miss.append(k)
+                    parts.append(v)
+                if miss:
+                    ic_defaults.append(f'{yr}:{"+".join(miss)}=0')
+                ic = s['equity'][yr] + parts[0] - parts[1]
             if ic > 0:
                 out[yr] = s['op_income'][yr] * (1 - t) / ic
                 src[yr] = name
@@ -117,13 +128,22 @@ def build_row(w, y, e, fx=None):
     hist, hsrc = eps_history(y, e)
     last_fy = fy(pd.Timestamp(info['lastFiscalYearEnd'], unit='s')) if num(info.get('lastFiscalYearEnd')) == num(info.get('lastFiscalYearEnd')) and info.get('lastFiscalYearEnd') else max(hist, default=np.nan)
     a = [hist.get(last_fy - 2), hist.get(last_fy - 1), hist.get(last_fy)]
+    # crescimento normalizado para o ranking do g: mediana do crescimento do EPS nos ultimos 3 anos realizados
+    hs = [hist.get(last_fy - 3 + i) for i in range(4)]
+    hg = [x for x in (ratio(hs[i + 1], hs[i]) for i in range(3)) if np.isfinite(x)]
+    rank_growth = float(np.median(hg)) if len(hg) >= 2 else np.nan
+    if len(hg) < 3:
+        flags.append(f'rank_growth com {len(hg)} anos')
     if np.isfinite(num(a[2])) and np.isfinite(e_m1) and e_m1 > 0 and not 0.6 < a[2] / e_m1 < 1.6:
         flags.append(f'EPS realizado {a[2]:.2f} vs base da estimativa {e_m1:.2f}')
     gr = [ratio(a[1], a[0]), ratio(a[2], a[1]), ratio(e_0, e_m1), ratio(e_1, e_0)]
 
     growth = engine.growth_metric(gr)
     zgrowth = engine.cv(gr, growth)
-    ry, rsrc = roic_years(y, e, roe_mode=(w.get('sector') == 'Financial Services'))
+    icd = []
+    ry, rsrc = roic_years(y, e, roe_mode=(w.get('sector') == 'Financial Services'), ic_defaults=icd)
+    if icd:
+        flags.append('ROIC com divida/caixa ausente assumido 0: ' + ','.join(icd))
     roic = engine.roic_metric([ry.get(k) for k in YEARS])
     zroic = engine.cv([ry.get(k) for k in YEARS], roic)
 
@@ -134,7 +154,7 @@ def build_row(w, y, e, fx=None):
     return dict(
         row=w['row'], ticker=w['ticker'], fin=w['fin'], price=price, currency=info.get('currency'),
         eps_m1=e_m1, eps_0=e_0, eps_1=e_1, disp1=disp1, n_analysts=num(est.get('+1y', {}).get('numberOfAnalysts')), eps_src=hsrc, a_m2=a[0], a_m1=a[1], a_0=a[2],
-        h1=gr[0], h2=gr[1], f0=gr[2], f1=gr[3], growth=growth, zgrowth=zgrowth,
+        rank_growth=rank_growth, rank_n=len(hg), h1=gr[0], h2=gr[1], f0=gr[2], f1=gr[3], growth=growth, zgrowth=zgrowth,
         **{f'roic{k}': ry.get(k) for k in YEARS}, roic=roic, zroic=zroic,
         roic_n=len(ry), roic_src=','.join(sorted(set(rsrc.values()))), dy=dy, flags='; '.join(flags))
 
@@ -150,7 +170,7 @@ def finish(df):
     df['growth_mixed'], df['zgrowth_mixed'] = df['growth'], df['zgrowth']
     df['growth'] = [engine.growth_metric([a, b]) for a, b in zip(df.f0, df.f1)]
     df['zgrowth'] = [engine.cv([a, b], g) for a, b, g in zip(df.f0, df.f1, df.growth)]
-    df['g'] = engine.block_g(df)
+    df['g'] = engine.block_g(df, 'rank_growth')  # ranking pela mediana do crescimento historico (3 anos)
     df['fair_pe'] = engine.fair_pe(df.g, df.roic)
     eps2 = df.eps_1 * (1 + df.f1)                         # extrapola 1 ano com o ultimo crescimento projetado
     base = df.fair_pe * eps2 / df.price

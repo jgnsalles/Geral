@@ -16,8 +16,11 @@ CONCEPTS = {
     'cur_liab': ['LiabilitiesCurrent', 'CurrentLiabilities'],
     'equity': ['StockholdersEquity', 'EquityAttributableToOwnersOfParent',
                'StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest'],
-    'lt_debt': ['LongTermDebt', 'LongTermDebtNoncurrent', 'NoncurrentPortionOfNoncurrentBorrowings'],
-    'cash': ['CashAndCashEquivalentsAtCarryingValue', 'CashAndCashEquivalents'],
+    'lt_debt': ['LongTermDebt', 'LongTermDebtNoncurrent', 'LongTermDebtAndCapitalLeaseObligations',
+                'DebtAndCapitalLeaseObligations', 'DebtLongtermAndShorttermCombinedAmount', 'LongTermNotesPayable',
+                'SeniorNotes', 'NoncurrentPortionOfNoncurrentBorrowings'],
+    'cash': ['CashAndCashEquivalentsAtCarryingValue', 'CashAndCashEquivalents',
+             'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents', 'Cash'],
 }
 FORMS = {'10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A'}
 
@@ -31,25 +34,47 @@ def cik_for(tk):
             return h['_id'].zfill(10)
     return None
 
+def _series(node):
+    """{unit: {fim_do_exercicio: (valor, data_de_arquivamento)}} so com exercicios anuais, usando o ultimo arquivamento."""
+    res = {}
+    for unit, vals in node['units'].items():
+        out = {}
+        for x in vals:
+            if x.get('form') not in FORMS: continue
+            if 'start' in x:
+                days = (pd.Timestamp(x['end']) - pd.Timestamp(x['start'])).days
+                if not 350 <= days <= 380: continue
+            key = x['end']
+            if key not in out or x['filed'] > out[key][1]:
+                out[key] = (x['val'], x['filed'])
+        if out: res[unit] = out
+    return res
+
 def annual(facts, names):
-    """Escolhe o primeiro conceito disponivel; devolve {ano_fiscal_fim: valor} usando o ultimo arquivamento."""
+    """Escolhe, entre os conceitos candidatos, o primeiro (por prioridade) que tenha dado ate o ultimo exercicio
+    disponivel entre os candidatos (as empresas trocam de tag XBRL ao longo do tempo) e completa os anos que
+    faltam com os demais candidatos. Corrige o bug anterior, que parava no primeiro conceito com qualquer dado."""
+    cands = []
     for tax in ('us-gaap', 'ifrs-full'):
         for n in names:
             node = facts.get(tax, {}).get(n)
             if not node: continue
-            for unit, vals in node['units'].items():
-                out = {}
-                for x in vals:
-                    if x.get('form') not in FORMS: continue
-                    if 'start' in x:
-                        days = (pd.Timestamp(x['end']) - pd.Timestamp(x['start'])).days
-                        if not 350 <= days <= 380: continue
-                    key = x['end']
-                    if key not in out or x['filed'] > out[key][1]:
-                        out[key] = (x['val'], x['filed'])
-                if out:
-                    return {'concept': f'{tax}:{n}', 'unit': unit, 'values': {k: v[0] for k, v in sorted(out.items())}}
-    return None
+            for unit, out in _series(node).items():   # um conceito pode vir em varias unidades ('pure', 'USD/shares'...)
+                cands.append((f'{tax}:{n}', unit, out))
+    if not cands: return None
+    latest = max(max(c[2]) for c in cands)
+    cutoff = (pd.Timestamp(latest) - pd.Timedelta(days=400)).strftime('%Y-%m-%d')
+    eligible = [c for c in cands if max(c[2]) >= cutoff]
+    main = eligible[0]
+    eligible_same = [c for c in eligible if c[1] == main[1]]
+    values = {k: v[0] for k, v in main[2].items()}
+    filled = []
+    for c in cands:
+        if c is main or c[1] != main[1]: continue
+        for k, v in c[2].items():
+            if k not in values and not any(abs((pd.Timestamp(k) - pd.Timestamp(e)).days) < 30 for e in values):
+                values[k] = v[0]; filled.append(f'{c[0]}@{k}')
+    return {'concept': main[0], 'unit': main[1], 'values': dict(sorted(values.items())), 'filled': filled}
 
 def main(src, day=None):
     day = day or dt.date.today().isoformat()

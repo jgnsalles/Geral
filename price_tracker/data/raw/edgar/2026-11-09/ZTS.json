@@ -22,7 +22,8 @@
     "2023-12-31": 2936000000,
     "2024-12-31": 3133000000,
     "2025-12-31": 3360000000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -43,7 +44,8 @@
     "2023-12-31": 596000000,
     "2024-12-31": 637000000,
     "2025-12-31": 687000000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -64,7 +66,8 @@
     "2023-12-31": 2344000000,
     "2024-12-31": 2486000000,
     "2025-12-31": 2673000000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -85,7 +88,8 @@
     "2023-12-31": 5.07,
     "2024-12-31": 5.47,
     "2025-12-31": 6.02
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -105,7 +109,8 @@
     "2023-12-31": 14286000000,
     "2024-12-31": 14237000000,
     "2025-12-31": 15467000000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -125,12 +130,15 @@
     "2023-12-31": 1889000000,
     "2024-12-31": 3412000000,
     "2025-12-31": 2235000000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2010-12-31": 3344000000,
+    "2011-12-31": 3736000000,
     "2012-12-31": 4026000000,
     "2013-12-31": 940000000,
     "2014-12-31": 1311000000,
@@ -145,7 +153,11 @@
     "2023-12-31": 4997000000,
     "2024-12-31": 4770000000,
     "2025-12-31": 3331000000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2010-12-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2011-12-31"
+   ]
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebtNoncurrent",
@@ -165,10 +177,11 @@
     "2023-12-31": 6564000000,
     "2024-12-31": 5220000000,
     "2025-12-31": 9042000000
-   }
+   },
+   "filled": []
   },
   "cash": {
-   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
    "unit": "USD",
    "values": {
     "2010-12-31": 63000000,
@@ -178,8 +191,23 @@
     "2014-12-31": 882000000,
     "2015-12-31": 1154000000,
     "2016-12-31": 727000000,
-    "2017-12-31": 1564000000
-   }
+    "2017-12-31": 1564000000,
+    "2018-12-31": 1602000000,
+    "2019-12-31": 1934000000,
+    "2020-12-31": 3604000000,
+    "2021-12-31": 3485000000,
+    "2022-12-31": 3581000000,
+    "2023-12-31": 2041000000,
+    "2024-12-31": 1987000000,
+    "2025-12-31": 2312000000
+   },
+   "filled": [
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2010-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2011-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2012-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2013-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2014-12-31"
+   ]
   }
  }
 }

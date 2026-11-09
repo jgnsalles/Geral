@@ -22,7 +22,8 @@
     "2024-06-30": 53818000,
     "2025-06-30": 46259000,
     "2026-06-30": 45638000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -44,7 +45,8 @@
     "2024-06-30": 56386000,
     "2025-06-30": 50069000,
     "2026-06-30": 49822000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -66,7 +68,8 @@
     "2024-06-30": 6568000,
     "2025-06-30": 6663000,
     "2026-06-30": 6795000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -88,7 +91,8 @@
     "2024-06-30": 49818000,
     "2025-06-30": 43406000,
     "2026-06-30": 43027000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -110,7 +114,8 @@
     "2024-06-30": 1.34,
     "2025-06-30": 1.19,
     "2026-06-30": 1.2
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -132,7 +137,8 @@
     "2024-06-30": 207752000,
     "2025-06-30": 198141000,
     "2026-06-30": 238668000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -154,7 +160,8 @@
     "2024-06-30": 22229000,
     "2025-06-30": 24057000,
     "2026-06-30": 42454000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -177,7 +184,8 @@
     "2024-06-30": 178889000,
     "2025-06-30": 168606000,
     "2026-06-30": 191002000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
@@ -191,9 +199,13 @@
     "2016-06-30": 4800000,
     "2017-06-30": 3500000,
     "2018-06-30": 0,
+    "2019-06-30": 0,
     "2020-06-30": 2110000,
     "2021-06-30": 3904000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2019-06-30"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -216,7 +228,8 @@
     "2024-06-30": 65341000,
     "2025-06-30": 83081000,
     "2026-06-30": 126928000
-   }
+   },
+   "filled": []
   }
  }
 }

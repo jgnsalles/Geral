@@ -33,12 +33,12 @@ def rank_g(growth, top=0.07):
     rk = growth.apply(lambda x: np.nan if pd.isna(x) else 1 + (r > x).sum())
     return top - (rk - 1) * 0.035 / (len(r) - 1)
 
-def block_g(df):
-    """Aplica rank_g por bloco (coluna 'fin': True para financeiras)."""
+def block_g(df, col='growth'):
+    """Aplica rank_g por bloco (coluna 'fin': True para financeiras), ranqueando pela coluna `col`."""
     out = pd.Series(np.nan, index=df.index)
     for fin, top in ((False, 0.07), (True, 0.065)):
         m = df['fin'] == fin
-        if m.any(): out[m] = rank_g(df.loc[m, 'growth'], top)
+        if m.any(): out[m] = rank_g(df.loc[m, col], top)
     return out
 
 def fair_pe(g, roic):

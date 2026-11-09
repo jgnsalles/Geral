@@ -19,7 +19,8 @@
     "2023-12-31": 5028000000,
     "2024-12-31": 5325000000,
     "2025-12-31": 6065000000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -35,7 +36,8 @@
     "2020-12-31": 5065000000,
     "2021-12-31": 4099000000,
     "2022-12-31": 3366000000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -54,7 +56,8 @@
     "2023-12-31": 1165000000,
     "2024-12-31": 1182000000,
     "2025-12-31": 1059000000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -73,7 +76,8 @@
     "2023-12-31": 4246000000,
     "2024-12-31": 4147000000,
     "2025-12-31": 5233000000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -92,7 +96,8 @@
     "2023-12-31": 3.84,
     "2024-12-31": 3.99,
     "2025-12-31": 5.41
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -110,7 +115,8 @@
     "2023-12-31": 82166000000,
     "2024-12-31": 78725000000,
     "2025-12-31": 80173000000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -128,7 +134,8 @@
     "2023-12-31": 48466000000,
     "2024-12-31": 45490000000,
     "2025-12-31": 46443000000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -148,7 +155,8 @@
     "2023-12-31": 21051000000,
     "2024-12-31": 20417000000,
     "2025-12-31": 20256000000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebtNoncurrent",
@@ -162,7 +170,8 @@
     "2023-12-31": 9676000000,
     "2024-12-31": 9879000000,
     "2025-12-31": 9987000000
-   }
+   },
+   "filled": []
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -182,7 +191,8 @@
     "2023-12-31": 9081000000,
     "2024-12-31": 6662000000,
     "2025-12-31": 8049000000
-   }
+   },
+   "filled": []
   }
  }
 }

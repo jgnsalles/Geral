@@ -13,7 +13,8 @@
     "2024-03-31": 163878000,
     "2025-03-31": 227800000,
     "2026-03-31": 214920000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -26,7 +27,8 @@
     "2024-03-31": 185202000,
     "2025-03-31": 263574000,
     "2026-03-31": 250005000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -39,7 +41,8 @@
     "2024-03-31": 37620000,
     "2025-03-31": 40389000,
     "2026-03-31": 53954000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -52,7 +55,8 @@
     "2024-03-31": 147582000,
     "2025-03-31": 223185000,
     "2026-03-31": 196051000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -65,7 +69,8 @@
     "2024-03-31": 0.72,
     "2025-03-31": 1.11,
     "2026-03-31": 0.98
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -77,7 +82,8 @@
     "2024-03-31": 1079374000,
     "2025-03-31": 1264309000,
     "2026-03-31": 1123687000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -89,7 +95,8 @@
     "2024-03-31": 147250000,
     "2025-03-31": 156257000,
     "2026-03-31": 154973000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -103,20 +110,27 @@
     "2024-03-31": 901397000,
     "2025-03-31": 1082625000,
     "2026-03-31": 950837000
-   }
+   },
+   "filled": []
   },
   "lt_debt": null,
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
    "unit": "USD",
    "values": {
+    "2019-03-31": 33607000,
+    "2020-03-31": 48430000,
     "2021-03-31": 66393000,
     "2022-03-31": 112809000,
     "2023-03-31": 158027000,
     "2024-03-31": 96785000,
     "2025-03-31": 209614000,
     "2026-03-31": 219178000
-   }
+   },
+   "filled": [
+    "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents@2019-03-31",
+    "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents@2020-03-31"
+   ]
   }
  }
 }

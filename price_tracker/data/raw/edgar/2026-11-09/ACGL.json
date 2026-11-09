@@ -24,7 +24,8 @@
     "2023-12-31": 3570000000,
     "2024-12-31": 4674000000,
     "2025-12-31": 5159000000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -48,12 +49,14 @@
     "2023-12-31": -873000000,
     "2024-12-31": 362000000,
     "2025-12-31": 760000000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
    "unit": "USD",
    "values": {
+    "2008-12-31": 290966000,
     "2009-12-31": 876945000,
     "2010-12-31": 842672000,
     "2011-12-31": 436163000,
@@ -71,7 +74,10 @@
     "2023-12-31": 4443000000,
     "2024-12-31": 4312000000,
     "2025-12-31": 4399000000
-   }
+   },
+   "filled": [
+    "us-gaap:ProfitLoss@2008-12-31"
+   ]
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -95,7 +101,8 @@
     "2023-12-31": 11.62,
     "2024-12-31": 11.19,
     "2025-12-31": 11.6
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -118,13 +125,17 @@
     "2023-12-31": 58906000000,
     "2024-12-31": 70906000000,
     "2025-12-31": 79241000000
-   }
+   },
+   "filled": []
   },
   "cur_liab": null,
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2008-12-31": 3432965000,
+    "2009-12-31": 4323349000,
+    "2010-12-31": 4476786000,
     "2011-12-31": 4592074000,
     "2012-12-31": 5168878000,
     "2013-12-31": 5647496000,
@@ -140,7 +151,12 @@
     "2023-12-31": 18353000000,
     "2024-12-31": 20820000000,
     "2025-12-31": 24206000000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2008-12-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2009-12-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2010-12-31"
+   ]
   },
   "lt_debt": null,
   "cash": {
@@ -166,7 +182,8 @@
     "2023-12-31": 917000000,
     "2024-12-31": 979000000,
     "2025-12-31": 993000000
-   }
+   },
+   "filled": []
   }
  }
 }

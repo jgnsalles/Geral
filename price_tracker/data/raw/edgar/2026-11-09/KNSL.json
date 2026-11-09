@@ -19,7 +19,8 @@
     "2023-12-31": 384017000,
     "2024-12-31": 514716000,
     "2025-12-31": 634302000
-   }
+   },
+   "filled": []
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -37,7 +38,8 @@
     "2023-12-31": 75924000,
     "2024-12-31": 99873000,
     "2025-12-31": 130688000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -55,7 +57,8 @@
     "2023-12-31": 308093000,
     "2024-12-31": 414843000,
     "2025-12-31": 503614000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -70,7 +73,8 @@
     "2023-12-31": 13.22,
     "2024-12-31": 17.78,
     "2025-12-31": 21.65
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -87,7 +91,8 @@
     "2023-12-31": 3772974000,
     "2024-12-31": 4886704000,
     "2025-12-31": 6043561000
-   }
+   },
+   "filled": []
   },
   "cur_liab": null,
   "equity": {
@@ -107,7 +112,8 @@
     "2023-12-31": 1086832000,
     "2024-12-31": 1483561000,
     "2025-12-31": 1959583000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
@@ -118,10 +124,11 @@
     "2023-12-31": 183846000,
     "2024-12-31": 184122000,
     "2025-12-31": 224397000
-   }
+   },
+   "filled": []
   },
   "cash": {
-   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "concept": "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
    "unit": "USD",
    "values": {
     "2013-12-31": 16218000,
@@ -132,8 +139,20 @@
     "2018-12-31": 75089000,
     "2019-12-31": 100408000,
     "2020-12-31": 77093000,
-    "2021-12-31": 121040000
-   }
+    "2021-12-31": 121040000,
+    "2022-12-31": 156274000,
+    "2023-12-31": 126694000,
+    "2024-12-31": 113213000,
+    "2025-12-31": 163361000
+   },
+   "filled": [
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2013-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2014-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2015-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2016-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2017-12-31",
+    "us-gaap:CashAndCashEquivalentsAtCarryingValue@2018-12-31"
+   ]
   }
  }
 }

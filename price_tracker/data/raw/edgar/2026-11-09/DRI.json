@@ -20,12 +20,25 @@
     "2024-05-26": 1314200000,
     "2025-05-25": 1362300000,
     "2026-05-31": 1582800000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
    "unit": "USD",
    "values": {
+    "2008-05-25": 514700000,
+    "2009-05-31": 512500000,
+    "2010-05-30": 543600000,
+    "2011-05-29": 647600000,
+    "2012-05-27": 355100000,
+    "2013-05-26": 274000000,
+    "2014-05-25": 174600000,
+    "2015-05-31": 175300000,
+    "2016-05-29": 449700000,
+    "2017-05-28": 637300000,
+    "2018-05-27": 605700000,
+    "2019-05-26": 782300000,
     "2020-05-31": -161000000,
     "2021-05-30": 576500000,
     "2022-05-29": 1093500000,
@@ -33,7 +46,21 @@
     "2024-05-26": 1175500000,
     "2025-05-25": 1187200000,
     "2026-05-31": 1388600000
-   }
+   },
+   "filled": [
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2008-05-25",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2009-05-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2010-05-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2011-05-29",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2012-05-27",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2013-05-26",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2014-05-25",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2015-05-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2016-05-29",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2017-05-28",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2018-05-27",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2019-05-26"
+   ]
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -58,7 +85,8 @@
     "2024-05-26": 145000000,
     "2025-05-25": 136200000,
     "2026-05-31": 174900000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -83,7 +111,8 @@
     "2024-05-26": 1027600000,
     "2025-05-25": 1049600000,
     "2026-05-31": 1206700000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -108,7 +137,8 @@
     "2024-05-26": 8.51,
     "2025-05-25": 8.86,
     "2026-05-31": 10.38
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -132,7 +162,8 @@
     "2024-05-26": 11323000000,
     "2025-05-25": 12587000000,
     "2026-05-31": 12862400000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -156,7 +187,8 @@
     "2024-05-26": 2192500000,
     "2025-05-25": 2247500000,
     "2026-05-31": 3005400000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -182,12 +214,14 @@
     "2024-05-26": 2242500000,
     "2025-05-25": 2311300000,
     "2026-05-31": 2207500000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
    "unit": "USD",
    "values": {
+    "2009-05-31": 1632300000,
     "2010-05-30": 1634800000,
     "2011-05-29": 1407300000,
     "2012-05-27": 1803600000,
@@ -205,7 +239,10 @@
     "2024-05-26": 1370400000,
     "2025-05-25": 2128900000,
     "2026-05-31": 1637700000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2009-05-31"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -231,7 +268,8 @@
     "2024-05-26": 194800000,
     "2025-05-25": 240000000,
     "2026-05-31": 219500000
-   }
+   },
+   "filled": []
   }
  }
 }

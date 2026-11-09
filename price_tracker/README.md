@@ -43,7 +43,23 @@ Com o ROIC clássico (mesmo snapshot): ROIC mediano das operacionais vai de 14,7
 31% para 52%, o tier A vai para 57 nomes e a Opportunity of Lifetime para 22. Empresas com capital investido ≤ 0
 (patrimônio negativo/recompras: MSCI, DPZ, HLT, PM; MOH) ficam sem ROIC. **Os cortes 20%/10% precisam ser revistos para essa definição.**
 
-## Resultado (snapshot 2026-11-09)
+## Ranking do `g` (decisão do usuário, 2026-11-09)
+
+O ranking que define o `g` (7% → 3,5%) e, por tabela, o P/E justo passa a usar a **mediana do crescimento do EPS nos últimos 3 anos realizados**
+(`rank_growth` em `hybrid.py`), como crescimento normalizado. O Growth que entra no código da classe continua sendo o projetado.
+Anos com EPS-base negativo não têm crescimento definido; com menos de 2 anos válidos a ação fica sem `rank_growth`
+(MNST, WDC, ROG.SW, CPRX, SAF.PA, GIVN.SW, COLO-B.CO, 6367.T, 7741.T, HOOD, SOFI), sem `g`, e o retorno cai no fallback do Excel (média do crescimento projetado).
+
+## Bug do coletor da SEC (corrigido em 2026-11-09)
+
+`fetch_edgar.py` parava no primeiro conceito/unidade XBRL com algum dado (ex.: EPS de COST só até 2010). Isso deixava dívida, caixa,
+patrimônio e EPS desatualizados em dezenas de empresas e, no ROIC clássico, dívida/caixa ausentes viravam zero. Agora o coletor escolhe o
+conceito que chega ao último exercício e completa os anos que faltam. **Resultados anteriores com o ROIC clássico estavam contaminados.**
+
+**Pendência para a investigação do ROIC:** em 35 empresas nem a SEC nem o Yahoo trouxeram dívida e/ou caixa, e o modelo assume 0 (sinalizado em `flags`).
+Para dívida real (UL, DEO, RELX, AZN, ações japonesas) isso infla o ROIC. Além disso a dívida da SEC é só de longo prazo, sem arrendamentos.
+
+## Resultado (snapshot 2026-11-09) — medido ANTES das duas mudanças acima, com a fórmula de ROIC do Wise
 
 | | Modelo inicial | Modelo corrigido |
 |---|---|---|

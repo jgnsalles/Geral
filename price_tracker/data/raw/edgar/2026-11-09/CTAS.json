@@ -24,12 +24,17 @@
     "2024-05-31": 2068633000,
     "2025-05-31": 2359726000,
     "2026-05-31": 2606512000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
    "unit": "USD",
    "values": {
+    "2009-05-31": 361593000,
+    "2010-05-31": 343892000,
+    "2011-05-31": 392669000,
+    "2012-05-31": 470944000,
     "2013-05-31": 500675000,
     "2014-05-31": 537127000,
     "2015-05-31": 640556000,
@@ -44,7 +49,13 @@
     "2024-05-31": 1973635000,
     "2025-05-31": 2264202000,
     "2026-05-31": 2505334000
-   }
+   },
+   "filled": [
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2009-05-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2010-05-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2011-05-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2012-05-31"
+   ]
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -68,12 +79,14 @@
     "2024-05-31": 402043000,
     "2025-05-31": 451921000,
     "2026-05-31": 505366000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
    "unit": "USD",
    "values": {
+    "2009-05-31": 226357000,
     "2010-05-31": 215620000,
     "2011-05-31": 246989000,
     "2012-05-31": 297637000,
@@ -91,7 +104,10 @@
     "2024-05-31": 1571592000,
     "2025-05-31": 1812281000,
     "2026-05-31": 1999968000
-   }
+   },
+   "filled": [
+    "us-gaap:ProfitLoss@2009-05-31"
+   ]
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -115,7 +131,8 @@
     "2024-05-31": 3.79,
     "2025-05-31": 4.4,
     "2026-05-31": 4.91
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -139,7 +156,8 @@
     "2024-05-31": 9168817000,
     "2025-05-31": 9825241000,
     "2026-05-31": 10529140000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -162,12 +180,16 @@
     "2024-05-31": 1828519000,
     "2025-05-31": 1644502000,
     "2026-05-31": 2686959000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2008-05-31": 2254131000,
+    "2009-05-31": 2367409000,
+    "2010-05-31": 2534029000,
     "2011-05-31": 2302649000,
     "2012-05-31": 2139135000,
     "2013-05-31": 2201492000,
@@ -185,14 +207,23 @@
     "2024-05-31": 4316372000,
     "2025-05-31": 4684481000,
     "2026-05-31": 5139887000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2008-05-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2009-05-31",
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2010-05-31"
+   ]
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
    "unit": "USD",
    "values": {
+    "2010-05-31": 785444000,
     "2011-05-31": 1286125000,
     "2012-05-31": 1284802000,
+    "2013-05-31": 1300979000,
+    "2014-05-31": 1300477000,
+    "2015-05-31": 1300000000,
     "2016-05-31": 1044422000,
     "2017-05-31": 2770624000,
     "2018-05-31": 2535309000,
@@ -204,7 +235,13 @@
     "2024-05-31": 2025934000,
     "2025-05-31": 2424999000,
     "2026-05-31": 1429086000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2010-05-31",
+    "us-gaap:LongTermDebtNoncurrent@2013-05-31",
+    "us-gaap:LongTermDebtNoncurrent@2014-05-31",
+    "us-gaap:LongTermDebtNoncurrent@2015-05-31"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -229,7 +266,8 @@
     "2024-05-31": 342015000,
     "2025-05-31": 263973000,
     "2026-05-31": 289018000
-   }
+   },
+   "filled": []
   }
  }
 }

@@ -25,12 +25,24 @@
     "2024-09-30": 733629000,
     "2025-09-30": 924850000,
     "2026-09-30": 1265694000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
    "unit": "USD",
    "values": {
+    "2008-09-30": 112995000,
+    "2009-09-30": 97570000,
+    "2010-09-30": 92304000,
+    "2011-09-30": 97455000,
+    "2012-09-30": 136243000,
+    "2013-09-30": 131984000,
+    "2014-09-30": 133131000,
+    "2015-09-30": 109238000,
+    "2016-09-30": 144569000,
+    "2017-09-30": 156283000,
+    "2018-09-30": 156932000,
     "2019-09-30": 216072000,
     "2020-09-30": 257000000,
     "2021-09-30": 473142000,
@@ -39,7 +51,20 @@
     "2024-09-30": 642025000,
     "2025-09-30": 802595000,
     "2026-09-30": 1100050000
-   }
+   },
+   "filled": [
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2008-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2009-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2010-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2011-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2012-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2013-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2014-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2015-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2016-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2017-09-30",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2018-09-30"
+   ]
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -64,7 +89,8 @@
     "2024-09-30": 129214000,
     "2025-09-30": 150649000,
     "2026-09-30": 265083000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -89,7 +115,8 @@
     "2024-09-30": 512811000,
     "2025-09-30": 651946000,
     "2026-09-30": 834967000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -114,7 +141,8 @@
     "2024-09-30": 20.45,
     "2025-09-30": 26.54,
     "2026-09-30": 36.32
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -138,7 +166,8 @@
     "2024-09-30": 1717884000,
     "2025-09-30": 1868133000,
     "2026-09-30": 2075022000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -162,7 +191,8 @@
     "2024-09-30": 380285000,
     "2025-09-30": 849215000,
     "2026-09-30": 919694000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
@@ -188,7 +218,8 @@
     "2024-09-30": -962679000,
     "2025-09-30": -1745784000,
     "2026-09-30": -3873211000
-   }
+   },
+   "filled": []
   },
   "lt_debt": {
    "concept": "us-gaap:LongTermDebt",
@@ -205,10 +236,16 @@
     "2019-09-30": 485000000,
     "2020-09-30": 750000000,
     "2021-09-30": 750000000,
+    "2022-09-30": 1823669000,
+    "2023-09-30": 1811658000,
     "2024-09-30": 2209021000,
     "2025-09-30": 3055691000,
     "2026-09-30": 5259104000
-   }
+   },
+   "filled": [
+    "us-gaap:LongTermDebtNoncurrent@2022-09-30",
+    "us-gaap:LongTermDebtNoncurrent@2023-09-30"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -234,7 +271,8 @@
     "2024-09-30": 150667000,
     "2025-09-30": 134136000,
     "2026-09-30": 217599000
-   }
+   },
+   "filled": []
   }
  }
 }

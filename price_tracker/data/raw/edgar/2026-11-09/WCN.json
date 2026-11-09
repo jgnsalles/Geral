@@ -22,12 +22,22 @@
     "2023-12-31": 1236312000,
     "2024-12-31": 1067659000,
     "2025-12-31": 1710174000
-   }
+   },
+   "filled": []
   },
   "pretax": {
    "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
    "unit": "USD",
    "values": {
+    "2010-12-31": 137945000,
+    "2011-12-31": -146292000,
+    "2012-12-31": 161520000,
+    "2013-12-31": 176265000,
+    "2014-12-31": 385662000,
+    "2015-12-31": -126286000,
+    "2016-12-31": 361365000,
+    "2017-12-31": 508510000,
+    "2018-12-31": 707140000,
     "2019-12-31": 705891000,
     "2020-12-31": 253914000,
     "2021-12-31": 770742000,
@@ -35,7 +45,18 @@
     "2023-12-31": 983501000,
     "2024-12-31": 762933000,
     "2025-12-31": 1417916000
-   }
+   },
+   "filled": [
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2010-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2011-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2012-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2013-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2014-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2015-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2016-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2017-12-31",
+    "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments@2018-12-31"
+   ]
   },
   "tax": {
    "concept": "us-gaap:IncomeTaxExpenseBenefit",
@@ -57,7 +78,8 @@
     "2023-12-31": 220675000,
     "2024-12-31": 146363000,
     "2025-12-31": 341359000
-   }
+   },
+   "filled": []
   },
   "net_income": {
    "concept": "us-gaap:NetIncomeLoss",
@@ -79,7 +101,8 @@
     "2023-12-31": 762800000,
     "2024-12-31": 617573000,
     "2025-12-31": 1076557000
-   }
+   },
+   "filled": []
   },
   "eps_diluted": {
    "concept": "us-gaap:EarningsPerShareDiluted",
@@ -101,7 +124,8 @@
     "2023-12-31": 2.95,
     "2024-12-31": 2.39,
     "2025-12-31": 4.17
-   }
+   },
+   "filled": []
   },
   "assets": {
    "concept": "us-gaap:Assets",
@@ -123,7 +147,8 @@
     "2023-12-31": 17915876000,
     "2024-12-31": 19817809000,
     "2025-12-31": 21129363000
-   }
+   },
+   "filled": []
   },
   "cur_liab": {
    "concept": "us-gaap:LiabilitiesCurrent",
@@ -145,12 +170,14 @@
     "2023-12-31": 1687932000,
     "2024-12-31": 1878834000,
     "2025-12-31": 2124261000
-   }
+   },
+   "filled": []
   },
   "equity": {
    "concept": "us-gaap:StockholdersEquity",
    "unit": "USD",
    "values": {
+    "2009-12-31": 1015546000,
     "2010-12-31": 1646595000,
     "2011-12-31": 1293141000,
     "2012-12-31": 1272581000,
@@ -167,22 +194,38 @@
     "2023-12-31": 7692809000,
     "2024-12-31": 7860354000,
     "2025-12-31": 8245381000
-   }
+   },
+   "filled": [
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest@2009-12-31"
+   ]
   },
   "lt_debt": {
-   "concept": "us-gaap:LongTermDebt",
+   "concept": "us-gaap:LongTermDebtAndCapitalLeaseObligations",
    "unit": "USD",
    "values": {
-    "2012-12-31": 1683388000,
-    "2013-12-31": 1541140000,
-    "2014-12-31": 1551433000,
-    "2015-12-31": 2157285000,
+    "2010-12-31": 1258159000,
+    "2011-12-31": 1311593000,
+    "2012-12-31": 1681370000,
+    "2013-12-31": 1542289000,
+    "2014-12-31": 1552617000,
+    "2015-12-31": 1550226000,
     "2016-12-31": 3632692000,
     "2017-12-31": 3926321000,
     "2018-12-31": 4174693000,
-    "2019-12-31": 4375885000,
-    "2020-12-31": 4743635000
-   }
+    "2019-12-31": 4353782000,
+    "2020-12-31": 4708678000,
+    "2021-12-31": 5040500000,
+    "2022-12-31": 6890149000,
+    "2023-12-31": 6724771000,
+    "2024-12-31": 8072928000,
+    "2025-12-31": 8811104000
+   },
+   "filled": [
+    "us-gaap:LongTermDebt@2016-12-31",
+    "us-gaap:LongTermDebt@2017-12-31",
+    "us-gaap:LongTermDebt@2018-12-31",
+    "us-gaap:LongTermDebtNoncurrent@2010-12-31"
+   ]
   },
   "cash": {
    "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -205,7 +248,8 @@
     "2023-12-31": 78399000,
     "2024-12-31": 62366000,
     "2025-12-31": 45968000
-   }
+   },
+   "filled": []
   }
  }
 }
