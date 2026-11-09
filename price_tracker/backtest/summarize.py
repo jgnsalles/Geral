@@ -1,7 +1,7 @@
 """Gera tabelas (markdown) e graficos do backtest por classe. Uso: python3 backtest/summarize.py"""
 import pathlib
 import numpy as np, pandas as pd
-import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
+import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt, matplotlib.ticker
 
 D = pathlib.Path(__file__).parent / 'data'
 OUT = pathlib.Path(__file__).parent
@@ -47,11 +47,11 @@ def chart(cut):
     for ax, grp in zip(axes, groups):
         for i, c in enumerate(grp):
             lw = 2.8 if c == 'Opportunity of Lifetime' else 1.6
-            ax.plot(nav.index, nav[c], color=colors[i], lw=lw, label=f'{c} ({nav[c].iloc[-1]:.1f}x)')
+            ax.plot(nav.index, (nav[c] - 1) * 100, color=colors[i], lw=lw, label=f'{c} (' + f'{(nav[c].iloc[-1] - 1) * 100:+,.0f}%'.replace(',', '.') + ')')
         for c, col in (('Universo EW', '#57606a'), ('SPY', '#000000'), ('QQQ', '#e377c2')):
-            ax.plot(nav.index, nav[c], color=col, lw=1.6, ls='--', label=f'{c} ({nav[c].iloc[-1]:.1f}x)')
-        ax.set_yscale('log'); ax.grid(alpha=.3); ax.legend(fontsize=8, loc='upper left')
-    axes[0].set_ylabel('Crescimento de 1 (escala log)')
+            ax.plot(nav.index, (nav[c] - 1) * 100, color=col, lw=1.6, ls='--', label=f'{c} (' + f'{(nav[c].iloc[-1] - 1) * 100:+,.0f}%'.replace(',', '.') + ')')
+        ax.grid(alpha=.3); ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f'{v:,.0f}%'.replace(',', '.'))); ax.legend(fontsize=8, loc='upper left')
+    axes[0].set_ylabel('Retorno total acumulado')
     fig.suptitle(f'Uma carteira por classe: equal weight, rebalanceamento trimestral, 2012–2026 (corte zGrowth {cut[2:].replace(".", ",")})')
     fig.tight_layout(); fig.savefig(OUT / f'classes_{cut}.png'); plt.close(fig)
 
