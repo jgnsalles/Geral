@@ -34,7 +34,8 @@ def classified():
     return c
 
 
-def main():
+def main(classes=None, tag=''):
+    classes = classes or CLASSES
     c = classified()
     u = pd.read_csv(D / 'universe.csv').set_index('yf')
     adj = pd.read_csv(D / 'prices_adj_close.csv.gz', index_col=0, parse_dates=True)
@@ -42,11 +43,11 @@ def main():
     cov = c.groupby('date').cat.apply(lambda s: s.notna().sum()); start = cov[cov >= 60].index.min()
     dates = [d for d in bb.rebalance_dates(close) if d >= start]
     px = adj.reindex(pd.DatetimeIndex(dates)).ffill(); fwd = px.shift(-1) / px - 1
-    out = ['# Atribuição no Brasil: 3 melhores classes\n',
+    out = [f'# Atribuição no Brasil: {", ".join(classes)}\n',
            '> ⚠️ **ROIC:** classes dependem do corte de ROIC 20%/10%, mais restritivo no Brasil.\n',
            'Parâmetros: WACC 11%; g 9,5% → 6%; crescimento 17,5%/8,5%; retorno 22,5%/10,5%; ROIC 20%/10%; zGrowth 2,93. '
            'Contribuição = soma de (1/N × retorno trimestral) nos trimestres em que a ação esteve na classe.\n']
-    for cat in CLASSES:
+    for cat in classes:
         x = c[(c.cat == cat) & c.date.isin(dates[:-1])].copy()
         x['n'] = x.groupby('date').ticker.transform('size')
         x['r'] = [fwd.at[d, t] for d, t in zip(x.date, x.ticker)]
@@ -70,9 +71,12 @@ def main():
         out += ['', f'### {n} menores\n', '| # | Ticker | Empresa | Setor | Contribuição | Trim. | Retorno médio/trim. | Período |', '|---|---|---|---|---|---|---|---|']
         out += [row(i + 1, t, r) for i, (t, r) in enumerate(a.tail(n).iloc[::-1].iterrows())]
         out.append('')
-    (ROOT / 'attribution_br.md').write_text('\n'.join(out))
+    (ROOT / f'attribution_br{tag}.md').write_text('\n'.join(out))
     print('\n'.join(out))
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1 and sys.argv[1] == 'ool_gcgr':
+        main(['Opportunity of Lifetime', 'Good Companies, Great Returns'], '_ool_gcgr')
+    else:
+        main()
