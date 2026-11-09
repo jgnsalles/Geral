@@ -26,6 +26,9 @@ CONCEPTS = {
             'PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization',
             'PropertyPlantAndEquipment'],
     'assets_cur': ['AssetsCurrent', 'CurrentAssets'],
+    # ROIC operacional com aquisicoes (definicao B da Fase 1)
+    'goodwill': ['Goodwill'],
+    'intangibles': ['IntangibleAssetsNetExcludingGoodwill', 'FiniteLivedIntangibleAssetsNet'],
     'debt_cur': ['LongTermDebtCurrent', 'DebtCurrent', 'LongTermDebtAndCapitalLeaseObligationsCurrent', 'ShortTermBorrowings',
                  'CurrentPortionOfNoncurrentBorrowings'],
 }
