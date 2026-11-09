@@ -166,14 +166,13 @@ TIERS = {'Opportunity of Lifetime': 'A', 'Good Companies, Great Returns': 'A', '
 
 
 def portfolios(cls, col):
-    """{nome: {data: [tickers]}} para cada classe, cada tier e o universo inteiro."""
+    """{nome: {data: [tickers]}} para cada classe e para o universo inteiro (contraprova)."""
     p = {}
     for d, x in cls.groupby('date'):
         x = x[x[col].notna()]
         groups = {c: g.ticker.tolist() for c, g in x.groupby(col)}
         for c, tks in groups.items():
             p.setdefault(c, {})[d] = tks
-            p.setdefault('Tier ' + TIERS[c], {}).setdefault(d, []).extend(tks)
         p.setdefault('Universo EW', {})[d] = x.ticker.tolist()
     return p
 
@@ -257,5 +256,6 @@ def main():
 if __name__ == '__main__':
     res, start, dates = main()
     for k, v in res.items():
+        v.to_csv(D / f'stats_{k}.csv', index=False)
         print('\n==', k)
         print(v.sort_values('CAGR', ascending=False).to_string(index=False, float_format=lambda x: f'{x:.3f}'))
