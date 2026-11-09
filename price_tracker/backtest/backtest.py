@@ -132,7 +132,8 @@ def features(pit, t, fin, splits):
         if d_ic > 0:
             roic_marg = (num[y1] - num[y0]) / d_ic
     return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_a=roic_a, zroic_a=zroic_a, roic_marg=roic_marg,
-                d_ic=d_ic, n_ic_fallback=n_fb, eps=e[last], last_fy=last, n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()))
+                d_ic=d_ic, n_ic_fallback=n_fb, eps=e[last], last_fy=last, n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()),
+                **{f'ry{i + 1}': v for i, v in enumerate(roics)}, **{f'gy{i + 1}': v for i, v in enumerate(rates)})
 
 
 # ---------------------------------------------------------------- classificacao em cada data
