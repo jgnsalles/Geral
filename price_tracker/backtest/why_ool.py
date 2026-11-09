@@ -12,6 +12,8 @@ from backtest import run_portfolio, stats, D  # noqa: E402
 import validation_portfolios as vp  # noqa: E402
 from validation_core import load_prices  # noqa: E402
 
+SEM_Z = '--sem-zroic' in sys.argv; SUF = '_sem_zroic' if SEM_Z else ''
+NOTA = ' **Variante sem o critério de estabilidade do ROIC (zROIC desligado).**' if SEM_Z else ''
 OOL, GCGR = 'Opportunity of Lifetime', 'Good Companies, Great Returns'
 FLAW = {0: 'Crescimento médio (6–15%)', 1: 'Crescimento instável (zGrowth ≥ 2,93)', 2: 'ROIC médio (10–12%)', 3: 'ROIC instável (zROIC ≥ 0,7)'}
 pc = lambda x: '—' if pd.isna(x) else f'{x:.1%}'.replace('.', ',')
@@ -24,6 +26,7 @@ def main():
     first = f[f.pit_member].groupby('date').size(); start = first[first >= 300].index.min()
     dates = sorted(d for d in f.date.unique() if d >= start)
     f = f[f.date.isin(dates) & f.pit_member]
+    if SEM_Z: f = f.assign(zroic=0.0)
     adj = load_prices()['adj_close']
     u = pd.concat([pd.read_csv(D / 'universe.csv')[['ticker', 'name', 'sector']],
                    pd.read_csv(D / 'universe_pit_extra.csv').rename(columns={'sec_name': 'name'})[['ticker', 'name']]]).drop_duplicates('ticker').set_index('ticker')
@@ -42,7 +45,7 @@ def main():
     for k, v in FLAW.items(): groups[f'GCGR — {v}'] = c.flaw == k
     groups['Good Companies, Great Returns (todas)'] = c.cat == GCGR
     out = ['# Por que Good Companies, Great Returns acompanha ou supera a Opportunity of Lifetime? (EUA, point-in-time)\n',
-           '> ⚠️ **ROIC:** ROIC oficial; dois dos quatro motivos de desqualificação são de ROIC.\n',
+           '> ⚠️ **ROIC:** ROIC oficial; dois dos quatro motivos de desqualificação são de ROIC.' + NOTA + '\n',
            'Unidade = posição (ação × trimestre). Retorno = média do retorno do trimestre seguinte, anualizada; excesso sobre a média do universo no mesmo trimestre. '
            'Perfil = medianas no momento da compra.\n',
            '## 1. Perfil e desempenho por grupo\n',
@@ -92,7 +95,7 @@ def main():
         print(k, flush=True)
     out.append(f"| *Universo EW* | {pc(stats(univ)['CAGR'])} | — | {sg(stats(univ)['CAGR'] - stats(spy)['CAGR'])} | | |")
     out.append(f"| *S&P 500 (SPY)* | {pc(stats(spy)['CAGR'])} | | — | | |")
-    (ROOT / 'why_ool.md').write_text('\n'.join(out))
+    (ROOT / f'why_ool{SUF}.md').write_text('\n'.join(out))
     print('\n'.join(out))
 
 

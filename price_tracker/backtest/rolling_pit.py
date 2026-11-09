@@ -12,6 +12,8 @@ from backtest import run_portfolio, stats, D  # noqa: E402
 import validation_portfolios as vp  # noqa: E402
 from validation_core import load_prices  # noqa: E402
 
+SEM_Z = '--sem-zroic' in sys.argv; SUF = '_sem_zroic' if SEM_Z else ''
+NOTA = ' **Variante sem o critério de estabilidade do ROIC (zROIC desligado).**' if SEM_Z else ''
 OOL, GCGR = 'Opportunity of Lifetime', 'Good Companies, Great Returns'
 pc = lambda x: '—' if pd.isna(x) else f'{x:.1%}'.replace('.', ',')
 sg = lambda x: '—' if pd.isna(x) else f'{x:+.1%}'.replace('.', ',')
@@ -23,6 +25,7 @@ def main():
     first = f[f.pit_member].groupby('date').size(); start = first[first >= 300].index.min()
     dates = sorted(d for d in f.date.unique() if d >= start)
     f = f[f.date.isin(dates) & f.pit_member]
+    if SEM_Z: f = f.assign(zroic=0.0)
     adj = load_prices()['adj_close']
     c = vp.classify(f, 'sketch', 'B')
     ool = c.cat == OOL
@@ -44,7 +47,7 @@ def main():
     N = pd.DataFrame(nav).ffill()
     M = N.resample('ME').last()
     out = ['# Universo point-in-time: retorno acumulado e janelas móveis (EUA)\n',
-           '> ⚠️ **ROIC:** ROIC oficial (B com reserva em A); estrutura do esboço (OoL a partir de ROIC 12%, ROIC médio 10–12%).\n',
+           '> ⚠️ **ROIC:** ROIC oficial (B com reserva em A); estrutura do esboço (OoL a partir de ROIC 12%, ROIC médio 10–12%).' + NOTA + '\n',
            f'Universo = membros do S&P 500 na foto de cada trimestre. Período {dates[0]:%m/%Y} a {dates[-1]:%m/%Y}. '
            'Membros sem dados (27% em 2011, caindo para ~0 em 2026) ficam de fora (cenário neutro do teste de limites).\n',
            '## 1. Retorno acumulado no período todo\n', '| Carteira | Retorno total | CAGR | Vol | Max DD | Ações (média) |', '|---|---|---|---|---|---|']
@@ -62,7 +65,7 @@ def main():
         ax.plot(s.index, s, color=col, ls=ls, lw=lw, label=f'{k} (' + f'{s.dropna().iloc[-1]:+,.0f}%'.replace(',', '.') + ')')
     ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f'{v:,.0f}%'.replace(',', '.'))); ax.grid(alpha=.3); ax.legend(fontsize=8, loc='upper left')
     ax.set_title('Universo point-in-time (S&P 500 de cada trimestre): retorno total acumulado', fontsize=10)
-    fig.tight_layout(); fig.savefig(ROOT / 'rolling_pit_acumulado.png'); plt.close(fig)
+    fig.tight_layout(); fig.savefig(ROOT / f'rolling_pit_acumulado{SUF}.png'); plt.close(fig)
 
     # 2) janelas moveis
     O, G, R, U = 'Opportunity of Lifetime (todas)', 'Good Companies, Great Returns (ROIC 10–12%)', 'Demais classes (todas as outras)', 'Universo EW (contraprova)'
@@ -95,7 +98,7 @@ def main():
         hr, hg, bs = 'OoL High Returns (ROIC > 30%)', 'OoL High Growth (EPS > 30%)', 'OoL Base'
         out.append(f'| {yrs} ano{"s" if yrs > 1 else ""} | {(W[hr] > W[S]).mean():.0%} | {(W[hg] > W[S]).mean():.0%} | {(W[bs] > W[S]).mean():.0%} | '
                    f'{sg((ann[hr] - ann[S]).median())} | {sg((ann[hg] - ann[S]).median())} | {sg((ann[bs] - ann[S]).median())} |')
-    (ROOT / 'rolling_pit.md').write_text('\n'.join(out))
+    (ROOT / f'rolling_pit{SUF}.md').write_text('\n'.join(out))
     # grafico das janelas
     fig, ax = plt.subplots(figsize=(11, 5), dpi=140)
     for (yrs, s), col in zip(curves.items(), ['#d0d7de', '#8c959f', '#1f6feb', '#8250df', '#000000']):
@@ -103,7 +106,7 @@ def main():
     ax.axhline(0, color='#cf222e', lw=1); ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f'{v:+.0f} p.p.'))
     ax.grid(alpha=.3); ax.legend(fontsize=8)
     ax.set_title('Opportunity of Lifetime − S&P 500: excesso anualizado em cada janela (data = fim da janela)', fontsize=10)
-    fig.tight_layout(); fig.savefig(ROOT / 'rolling_pit_janelas.png'); plt.close(fig)
+    fig.tight_layout(); fig.savefig(ROOT / f'rolling_pit_janelas{SUF}.png'); plt.close(fig)
     print('\n'.join(out))
 
 
