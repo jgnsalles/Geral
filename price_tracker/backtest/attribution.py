@@ -35,6 +35,7 @@ def main(cut='2.93'):
         a = x.groupby('ticker').agg(contrib=('c', 'sum'), trims=('c', 'size'), ret_trim=('r', 'mean'),
                                     first=('date', 'min'), last=('date', 'max')).sort_values('contrib', ascending=False)
         a['setor'] = a.index.map(u.sector)
+        a['empresa'] = a.index.map(u['name'])
         total = a.contrib.sum()
         hold = {d: g.ticker.tolist() for d, g in x.groupby('date')}
         full = stats(run_portfolio(hold, adj, dates)[0])['CAGR']
@@ -48,8 +49,8 @@ def main(cut='2.93'):
 
         def row(i, t, r):
             per = f"{r['first'].year}–{r['last'].year}"
-            return f"| {i} | {t} | {r.setor} | {sg(r.contrib)} | {pc(r.contrib / total)} | {int(r.trims)} | {sg(r.ret_trim)} | {per} |"
-        hdr = ['| # | Ação | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |', '|---|---|---|---|---|---|---|---|']
+            return f"| {i} | {t} | {r.empresa} | {r.setor} | {sg(r.contrib)} | {pc(r.contrib / total)} | {int(r.trims)} | {sg(r.ret_trim)} | {per} |"
+        hdr = ['| # | Ticker | Empresa | Setor | Contribuição | % do total | Trimestres | Retorno médio/trim. | Período |', '|---|---|---|---|---|---|---|---|---|']
         lines += [f'## {cat}\n', f'- CAGR da carteira: **{pc(full)}** · ações distintas: {len(a)} · contribuição total: {sg(total)}',
                   '- Sem as maiores contribuições: ' + ' · '.join(f'sem top {k}: {pc(c)}' for k, c in sens),
                   f'- Sem as 10 piores: {pc(stats(navb)["CAGR"])}',
