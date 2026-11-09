@@ -37,36 +37,54 @@ def edgar_series(e, key):
     return by_year(x['values']) if x else {}
 
 
-def roic_years(y, e, roe_mode=False):
-    """ROIC por ano = NOPAT / (Ativo total - Passivo circulante), definicao calibrada contra o Wisesheets."""
+# Definicao de ROIC para empresas operacionais:
+#  'classic' (padrao): NOPAT / (patrimonio + divida - caixa)  -- capital investido conceitualmente correto
+#  'wise': NOPAT / (ativo total - passivo circulante)          -- o que o Wisesheets faz (so para comparacao)
+# Setor financeiro: sempre ROE (lucro liquido / patrimonio), pois nao ha ROIC para financeiras.
+ROIC_DEF = 'classic'
+
+
+def roic_years(y, e, roe_mode=False, definition=None):
+    definition = definition or ROIC_DEF
     src, out = {}, {}
-    ed = {k: edgar_series(e, k) for k in ('op_income', 'pretax', 'tax', 'assets', 'cur_liab')}
+    keys = ('op_income', 'pretax', 'tax', 'assets', 'cur_liab', 'net_income', 'equity', 'lt_debt', 'cash')
+    ed = {k: edgar_series(e, k) for k in keys}
     inc, bal = y.get('income', {}), y.get('balance', {})
     yh = {
         'op_income': by_year(inc.get('Operating Income') or inc.get('EBIT')),
         'pretax': by_year(inc.get('Pretax Income')), 'tax': by_year(inc.get('Tax Provision')),
         'assets': by_year(bal.get('Total Assets')), 'cur_liab': by_year(bal.get('Current Liabilities')),
+        'net_income': by_year(inc.get('Net Income')), 'equity': by_year(bal.get('Stockholders Equity')),
+        'lt_debt': by_year(bal.get('Total Debt')), 'cash': by_year(bal.get('Cash And Cash Equivalents')),
     }
-    # setor financeiro: o Wisesheets usa ROE (lucro liquido / patrimonio) -- confirmado contra os valores dele
-    ed['net_income'], ed['equity'] = edgar_series(e, 'net_income'), edgar_series(e, 'equity')
-    yh['net_income'] = by_year(inc.get('Net Income'))
-    yh['equity'] = by_year(bal.get('Stockholders Equity'))
-    no_cl = roe_mode or (not ed['cur_liab'] and not yh['cur_liab'])
+    roe = roe_mode or (not ed['cur_liab'] and not yh['cur_liab'])
     for yr in YEARS:
         for name, s in (('sec', ed), ('yahoo', yh)):
-            if no_cl and yr in s['net_income'] and s['equity'].get(yr, 0) > 0:
-                out[yr] = s['net_income'][yr] / s['equity'][yr]
-                src[yr] = name + '-roe'
-                break
-            if all(yr in s[k] for k in ('op_income', 'assets', 'cur_liab')):
-                pt, tx = s['pretax'].get(yr), s['tax'].get(yr)
-                t = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
+            if roe:
+                if yr in s['net_income'] and s['equity'].get(yr, 0) > 0:
+                    out[yr] = s['net_income'][yr] / s['equity'][yr]
+                    src[yr] = name + '-roe'
+                    break
+                continue
+            if definition == 'wise':
+                need = ('op_income', 'assets', 'cur_liab')
+            else:
+                need = ('op_income', 'equity')
+            if not all(yr in s[k] for k in need):
+                continue
+            pt, tx = s['pretax'].get(yr), s['tax'].get(yr)
+            t = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
+            if definition == 'wise':
                 ic = s['assets'][yr] - s['cur_liab'][yr]
-                if ic > 0:
-                    out[yr] = s['op_income'][yr] * (1 - t) / ic
-                    src[yr] = name
-                break
-    return out, src
+            else:
+                ic = s['equity'][yr] + s['lt_debt'].get(yr, 0) - s['cash'].get(yr, 0)
+            if ic > 0:
+                out[yr] = s['op_income'][yr] * (1 - t) / ic
+                src[yr] = name
+            else:
+                src[yr] = name + '-ic<=0'  # capital investido nao positivo: ano descartado
+            break
+    return out, {k: v for k, v in src.items() if k in out}
 
 
 def eps_history(y, e):

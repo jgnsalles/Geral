@@ -32,6 +32,17 @@ Tudo roda sobre snapshots datados em `data/raw/`: o mesmo snapshot gera sempre o
 - **Growth (coluna T)** = média de (mediana dos 4 anos, média dos 4 anos, média das colunas R:S).
 - O bloco de financeiras (linhas 211–233) tem `g` próprio: de 6,5% a 3%, ranqueado só entre elas.
 
+## ROIC usado no modelo
+
+Por decisão do usuário, o padrão é o **ROIC clássico** = NOPAT ÷ (patrimônio + dívida − caixa) para empresas operacionais
+e **ROE** para o setor financeiro. A fórmula do Wise (ativo total − passivo circulante) está errada como capital investido
+e fica disponível só para comparação (`ROIC_DEF = 'wise'` em `hybrid.py`). Os números da tabela abaixo foram medidos
+com a fórmula do Wise, para isolar as outras distorções.
+
+Com o ROIC clássico (mesmo snapshot): ROIC mediano das operacionais vai de 14,7% para 22,1%, a fração acima de 20% vai de
+31% para 52%, o tier A vai para 57 nomes e a Opportunity of Lifetime para 22. Empresas com capital investido ≤ 0
+(patrimônio negativo/recompras: MSCI, DPZ, HLT, PM; MOH) ficam sem ROIC. **Os cortes 20%/10% precisam ser revistos para essa definição.**
+
 ## Resultado (snapshot 2026-11-09)
 
 | | Modelo inicial | Modelo corrigido |
