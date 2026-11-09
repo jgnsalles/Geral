@@ -1,0 +1,38 @@
+growth,zgrowth,roic,zroic,ret,category,order
+H,O,G,N,G,Opportunity of Lifetime,1
+H,O,G,U,G,"Good Companies, Great Returns",2
+H,P,G,N,G,"Good Companies, Great Returns",2
+H,O,O,N,G,"Good Companies, Great Returns",2
+O,O,G,N,G,"Good Companies, Great Returns",2
+H,O,G,N,O,Excellent but Fair,3
+H,P,G,U,G,Interesting but Requires Attention,5
+H,O,O,U,G,Interesting but Requires Attention,5
+H,P,O,N,G,Interesting but Requires Attention,5
+O,O,G,U,G,Interesting but Requires Attention,5
+O,P,G,N,G,Interesting but Requires Attention,5
+O,O,O,N,G,Cheap Slow Compounder,4
+H,O,G,U,O,Good but Margin of Safety Required,6
+H,P,G,N,O,Good but Margin of Safety Required,6
+H,O,O,N,O,Good but Margin of Safety Required,6
+O,O,G,N,O,Good but Margin of Safety Required,6
+H,P,O,U,G,Cheap but Aggressive,7
+O,P,G,U,G,Cheap but Aggressive,7
+O,O,O,U,G,Cheap but Aggressive,7
+O,P,O,N,G,Cheap but Aggressive,7
+H,P,G,U,O,Expensive for what you get,8
+H,O,O,U,O,Expensive for what you get,8
+H,P,O,N,O,Expensive for what you get,8
+O,O,G,U,O,Expensive for what you get,8
+O,P,G,N,O,Expensive for what you get,8
+O,O,O,N,O,Expensive for what you get,8
+O,P,O,U,G,Investable but Not Good,9
+H,P,O,U,O,Investable but Not Good,9
+O,P,G,U,O,Investable but Not Good,9
+O,O,O,U,O,Investable but Not Good,9
+O,P,O,N,O,Investable but Not Good,9
+O,P,O,U,O,Investable but Not Good,9
+H,O,G,N,B,Expensive,10
+H,O,G,U,B,Expensive,10
+H,P,G,N,B,Expensive,10
+H,O,O,N,B,Expensive,10
+O,O,G,N,B,Expensive,10

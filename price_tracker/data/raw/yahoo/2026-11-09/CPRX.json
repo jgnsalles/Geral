@@ -1,0 +1,25 @@
+{
+ "ticker": "CPRX",
+ "info": {
+  "currentPrice": null,
+  "regularMarketPrice": null,
+  "currency": null,
+  "financialCurrency": null,
+  "trailingEps": null,
+  "forwardEps": null,
+  "dividendYield": null,
+  "trailingAnnualDividendYield": null,
+  "lastFiscalYearEnd": null,
+  "nextFiscalYearEnd": null,
+  "mostRecentQuarter": null,
+  "sector": null,
+  "industry": null,
+  "quoteType": "EQUITY",
+  "trailingPE": null,
+  "forwardPE": null
+ },
+ "earnings_estimate": {},
+ "income": {},
+ "balance": {},
+ "dividends_12m": null
+}

@@ -1,0 +1,10 @@
+{
+ "Growth_Hi": 0.15,
+ "Growth_Lo": 0.06,
+ "zGrowth": 0.9,
+ "Roic_Hi": 0.2,
+ "Roic_Lo": 0.1,
+ "zRoic": 0.7,
+ "Return_Hi": 0.2,
+ "Return_Lo": 0.08
+}

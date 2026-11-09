@@ -1,0 +1,16 @@
+{
+ "ticker": "CNI",
+ "cik": "0000016868",
+ "data": {
+  "op_income": null,
+  "pretax": null,
+  "tax": null,
+  "net_income": null,
+  "eps_diluted": null,
+  "assets": null,
+  "cur_liab": null,
+  "equity": null,
+  "lt_debt": null,
+  "cash": null
+ }
+}

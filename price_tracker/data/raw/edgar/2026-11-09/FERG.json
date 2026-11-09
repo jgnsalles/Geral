@@ -1,0 +1,103 @@
+{
+ "ticker": "FERG",
+ "cik": "0002011641",
+ "data": {
+  "op_income": {
+   "concept": "us-gaap:OperatingIncomeLoss",
+   "unit": "USD",
+   "values": {
+    "2022-07-31": 2820000000,
+    "2023-07-31": 2659000000,
+    "2024-07-31": 2652000000,
+    "2025-07-31": 2606000000
+   }
+  },
+  "pretax": {
+   "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+   "unit": "USD",
+   "values": {
+    "2022-07-31": 2708000000,
+    "2023-07-31": 2464000000,
+    "2024-07-31": 2464000000,
+    "2025-07-31": 2423000000
+   }
+  },
+  "tax": {
+   "concept": "us-gaap:IncomeTaxExpenseBenefit",
+   "unit": "USD",
+   "values": {
+    "2022-07-31": 609000000,
+    "2023-07-31": 575000000,
+    "2024-07-31": 729000000,
+    "2025-07-31": 567000000
+   }
+  },
+  "net_income": {
+   "concept": "us-gaap:NetIncomeLoss",
+   "unit": "USD",
+   "values": {
+    "2022-07-31": 2122000000,
+    "2023-07-31": 1889000000,
+    "2024-07-31": 1735000000,
+    "2025-07-31": 1856000000
+   }
+  },
+  "eps_diluted": {
+   "concept": "us-gaap:EarningsPerShareDiluted",
+   "unit": "USD/shares",
+   "values": {
+    "2022-07-31": 9.69,
+    "2023-07-31": 9.12,
+    "2024-07-31": 8.53,
+    "2025-07-31": 9.32
+   }
+  },
+  "assets": {
+   "concept": "us-gaap:Assets",
+   "unit": "USD",
+   "values": {
+    "2023-07-31": 15994000000,
+    "2024-07-31": 16572000000,
+    "2025-07-31": 17729000000
+   }
+  },
+  "cur_liab": {
+   "concept": "us-gaap:LiabilitiesCurrent",
+   "unit": "USD",
+   "values": {
+    "2023-07-31": 5429000000,
+    "2024-07-31": 5216000000,
+    "2025-07-31": 6028000000
+   }
+  },
+  "equity": {
+   "concept": "us-gaap:StockholdersEquity",
+   "unit": "USD",
+   "values": {
+    "2021-07-31": 5003000000,
+    "2022-07-31": 4665000000,
+    "2023-07-31": 5037000000,
+    "2024-07-31": 5616000000,
+    "2025-07-31": 5832000000
+   }
+  },
+  "lt_debt": {
+   "concept": "us-gaap:LongTermDebt",
+   "unit": "USD",
+   "values": {
+    "2024-07-31": 3950000000,
+    "2025-07-31": 4175000000
+   }
+  },
+  "cash": {
+   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "unit": "USD",
+   "values": {
+    "2022-07-31": 771000000,
+    "2023-07-31": 601000000,
+    "2024-07-31": 571000000,
+    "2025-07-31": 674000000
+   }
+  }
+ }
+}

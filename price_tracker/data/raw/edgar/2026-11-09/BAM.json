@@ -1,0 +1,73 @@
+{
+ "ticker": "BAM",
+ "cik": "0001937926",
+ "data": {
+  "op_income": null,
+  "pretax": {
+   "concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+   "unit": "USD",
+   "values": {
+    "2023-12-31": 2554000000,
+    "2024-12-31": 2546000000,
+    "2025-12-31": 2925000000
+   }
+  },
+  "tax": {
+   "concept": "us-gaap:IncomeTaxExpenseBenefit",
+   "unit": "USD",
+   "values": {
+    "2023-12-31": 417000000,
+    "2024-12-31": 438000000,
+    "2025-12-31": 527000000
+   }
+  },
+  "net_income": {
+   "concept": "us-gaap:NetIncomeLoss",
+   "unit": "USD",
+   "values": {
+    "2023-12-31": 2137000000,
+    "2024-12-31": 2108000000,
+    "2025-12-31": 2398000000
+   }
+  },
+  "eps_diluted": {
+   "concept": "us-gaap:EarningsPerShareDiluted",
+   "unit": "USD/shares",
+   "values": {
+    "2023-12-31": 1.13
+   }
+  },
+  "assets": {
+   "concept": "us-gaap:Assets",
+   "unit": "USD",
+   "values": {
+    "2022-12-31": 3161000000,
+    "2023-12-31": 3205000000,
+    "2024-12-31": 14157000000,
+    "2025-12-31": 17047000000
+   }
+  },
+  "cur_liab": null,
+  "equity": {
+   "concept": "us-gaap:StockholdersEquity",
+   "unit": "USD",
+   "values": {
+    "2022-07-03": 0,
+    "2022-12-31": 2377000000,
+    "2023-12-31": 2076000000,
+    "2024-12-31": 3247000000
+   }
+  },
+  "lt_debt": null,
+  "cash": {
+   "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+   "unit": "USD",
+   "values": {
+    "2022-12-31": 1000000,
+    "2023-12-31": 9000000,
+    "2024-12-31": 404000000,
+    "2025-12-31": 1583000000
+   }
+  }
+ }
+}
