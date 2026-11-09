@@ -91,10 +91,12 @@ def features(pit, t, fin, splits):
 
     s = {k: asof(pit[k], t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income')}
     g = lambda k, y: s[k][y][0] if y in s[k] else None
-    roics = []
+    roics, num, den = [], {}, {}
     for y in range(last - 5, last + 1):
         if fin:
             ni, eq = g('net_income', y), g('equity', y)
+            if ni is not None and eq is not None:
+                num[y], den[y] = ni, eq
             roics.append(ni / eq if ni is not None and eq and eq > 0 else np.nan)
             continue
         oi, eq = g('op_income', y), g('equity', y)
@@ -103,10 +105,18 @@ def features(pit, t, fin, splits):
         pt, tx = g('pretax', y), g('tax', y)
         tr = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
         ic = eq + (g('lt_debt', y) or 0.0) - (g('cash', y) or 0.0)
+        num[y], den[y] = oi * (1 - tr), ic
         roics.append(oi * (1 - tr) / ic if ic > 0 else np.nan)
     roic = engine.roic_metric(roics)
     zroic = engine.cv(roics, roic)
-    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, eps=e[last], last_fy=last,
+    # ROIC marginal de 5 anos: delta NOPAT / delta capital investido (financeiras: delta lucro / delta patrimonio)
+    y1, y0 = last, last - 5
+    roic_marg, d_ic = np.nan, np.nan
+    if y1 in num and y0 in num:
+        d_ic = den[y1] - den[y0]
+        if d_ic > 0:
+            roic_marg = (num[y1] - num[y0]) / d_ic
+    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_marg=roic_marg, d_ic=d_ic, eps=e[last], last_fy=last,
                 n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()))
 
 
