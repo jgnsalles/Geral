@@ -1,0 +1,215 @@
+tickers a tentar: 321
+0 AABA
+40 BIO
+80 CVC
+120 FLS
+160 JEF
+200 MWV
+240 R
+280 TGNA
+320 ZION
+Crumb fetch rate-limited (HTTP 429), continuing without crumb
+$ATGE: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+HTTP Error 401: Unauthorized{"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+HTTP Error 401: Unauthorized{"finance":{"result":null,"error":{"code":"Unauthorized","description":"Invalid Crumb"}}}
+$CMA: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$ARNC: possibly delisted; no timezone found
+HTTP Error 401: Unauthorized{"finance":{"result":null,"error":{"code":"Unauthorized","description":"User is unable to access this feature - https://bit.ly/yahoo-finance-api-feedback"}}}
+$CHK: possibly delisted; no timezone found
+$AVP: possibly delisted; no timezone found
+HTTP Error 401: Unauthorized{"finance":{"result":null,"error":{"code":"Unauthorized","description":"User is unable to access this feature - https://bit.ly/yahoo-finance-api-feedback"}}}
+$CBS: possibly delisted; no timezone found
+$CTXS: possibly delisted; no timezone found
+$ANDV: possibly delisted; no timezone found
+$DNR: possibly delisted; no timezone found
+$ANRZQ: possibly delisted; no timezone found
+$APOL: possibly delisted; no timezone found
+$ARG: possibly delisted; no timezone found
+$CCE: possibly delisted; no timezone found
+$DFS: possibly delisted; no timezone found
+$BCR: possibly delisted; no timezone found
+$AKS: possibly delisted; no timezone found
+$CTL: possibly delisted; no timezone found
+$CVC: possibly delisted; no timezone found
+$AVB: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$DWDP: possibly delisted; no timezone found
+$ABC: possibly delisted; no timezone found
+$CA: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$DRE: possibly delisted; no timezone found
+$BMS: possibly delisted; no timezone found
+$CXO: possibly delisted; no timezone found
+$EA: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$DISCK: possibly delisted; no timezone found
+$CDAY: possibly delisted; no timezone found
+$BHGE: possibly delisted; no timezone found
+$BTUUQ: possibly delisted; no timezone found
+$COL: possibly delisted; no timezone found
+$ANTM: possibly delisted; no timezone found
+$BLL: possibly delisted; no timezone found
+$BK: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$DF: possibly delisted; no timezone found
+$BIG: possibly delisted; no timezone found
+$BXLT: possibly delisted; no timezone found
+$ALXN: possibly delisted; no timezone found
+$CBE: possibly delisted; no timezone found
+$CELG: possibly delisted; no timezone found
+$ADS: possibly delisted; no timezone found
+$DISH: possibly delisted; no timezone found
+$ATVI: possibly delisted; no timezone found
+$COG: possibly delisted; no timezone found
+$CTLT: possibly delisted; no timezone found
+$DO: possibly delisted; no timezone found
+$COV: possibly delisted; no timezone found
+$DAY: possibly delisted; no timezone found
+$BMC: possibly delisted; no timezone found
+$CFN: possibly delisted; no timezone found
+$CMCSK: possibly delisted; no timezone found
+$CTRA: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$BRCM: possibly delisted; no timezone found
+$CVH: possibly delisted; no timezone found
+$AET: possibly delisted; no timezone found
+$AGN: possibly delisted; no timezone found
+$AABA: possibly delisted; no timezone found
+$CPGX: possibly delisted; no timezone found
+$DTV: possibly delisted; no timezone found
+$CERN: possibly delisted; no timezone found
+$DNB: possibly delisted; no timezone found
+$ALTR: possibly delisted; no timezone found
+
+65 Failed downloads:
+['ATGE', 'CMA', 'AVB', 'CA', 'EA', 'BK', 'CTRA']: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+['ARNC', 'CHK', 'AVP', 'CBS', 'CTXS', 'ANDV', 'DNR', 'ANRZQ', 'APOL', 'ARG', 'CCE', 'DFS', 'BCR', 'AKS', 'CTL', 'CVC', 'DWDP', 'ABC', 'DRE', 'BMS', 'CXO', 'DISCK', 'CDAY', 'BHGE', 'BTUUQ', 'COL', 'ANTM', 'BLL', 'DF', 'BIG', 'BXLT', 'ALXN', 'CBE', 'CELG', 'ADS', 'DISH', 'ATVI', 'COG', 'CTLT', 'DO', 'COV', 'DAY', 'BMC', 'CFN', 'CMCSK', 'BRCM', 'CVH', 'AET', 'AGN', 'AABA', 'CPGX', 'DTV', 'CERN', 'DNB', 'ALTR']: possibly delisted; no timezone found
+['ANSS', 'ABMD', 'DISCA']: YFRateLimitError('Too Many Requests. Rate limited. Try after a while.')
+$JEC: possibly delisted; no timezone found
+$FDO: possibly delisted; no timezone found
+$EVHC: possibly delisted; no timezone found
+$FII: possibly delisted; no timezone found
+$JOY: possibly delisted; no timezone found
+$ESRX: possibly delisted; no timezone found
+$HOT: possibly delisted; no timezone found
+$HNZ: possibly delisted; no timezone found
+$FLT: possibly delisted; no timezone found
+$JCP: possibly delisted; no timezone found
+$KSU: possibly delisted; no timezone found
+$MON: possibly delisted; no timezone found
+$EQR: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$FRX: possibly delisted; no timezone found
+$HSH: possibly delisted; no timezone found
+$GR: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$ETFC: possibly delisted; no timezone found
+$KVUE: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$MHS: possibly delisted; no timezone found
+$LO: possibly delisted; no timezone found
+$MMC: possibly delisted; no timezone found
+$HOLX: possibly delisted; no timezone found
+$FLIR: possibly delisted; no timezone found
+$HCBK: possibly delisted; no timezone found
+$LLL: possibly delisted; no timezone found
+$K: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$LSI: possibly delisted; no timezone found
+$LLTC: possibly delisted; no timezone found
+$KRFT: possibly delisted; no timezone found
+$LVLT: possibly delisted; no timezone found
+$HAR: possibly delisted; no timezone found
+$MOLX: possibly delisted; no timezone found
+$IGT: possibly delisted; no timezone found
+$FTR: possibly delisted; no timezone found
+$MRO: possibly delisted; no timezone found
+$GGP: possibly delisted; no timezone found
+$KORS: possibly delisted; no timezone found
+$HBI: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$ESV: possibly delisted; no timezone found
+$LEG: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$GMCR: possibly delisted; no timezone found
+$ENDP: possibly delisted; no timezone found
+$HRS: possibly delisted; no timezone found
+$JWN: possibly delisted; no timezone found
+$HCP: possibly delisted; no timezone found
+$LXK: possibly delisted; no timezone found
+$HES: possibly delisted; no timezone found
+$LM: possibly delisted; no timezone found
+$FI: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$GPS: possibly delisted; no timezone found
+$MNK: possibly delisted; no timezone found
+$JNPR: possibly delisted; no timezone found
+$HFC: possibly delisted; no timezone found
+$MJN: possibly delisted; no timezone found
+$IPG: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$HSP: possibly delisted; no timezone found
+
+60 Failed downloads:
+['JEC', 'FDO', 'EVHC', 'FII', 'JOY', 'ESRX', 'HOT', 'HNZ', 'FLT', 'JCP', 'KSU', 'MON', 'FRX', 'HSH', 'ETFC', 'MHS', 'LO', 'MMC', 'HOLX', 'FLIR', 'HCBK', 'LLL', 'LSI', 'LLTC', 'KRFT', 'LVLT', 'HAR', 'MOLX', 'IGT', 'FTR', 'MRO', 'GGP', 'KORS', 'ESV', 'GMCR', 'ENDP', 'HRS', 'JWN', 'HCP', 'LXK', 'HES', 'LM', 'GPS', 'MNK', 'JNPR', 'HFC', 'MJN', 'HSP']: possibly delisted; no timezone found
+['EQR', 'GR', 'KVUE', 'K', 'HBI', 'LEG', 'FI', 'IPG']: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+['FL', 'FBHS', 'GAS', 'FRC']: YFRateLimitError('Too Many Requests. Rate limited. Try after a while.')
+$SEE: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$SWN: possibly delisted; no timezone found
+$TEG: possibly delisted; no timezone found
+$QEP: possibly delisted; no timezone found
+$SIVB: possibly delisted; no timezone found
+$QRVO: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$PBCT: possibly delisted; no timezone found
+$TWTR: possibly delisted; no timezone found
+$SUNEQ: possibly delisted; no timezone found
+$TIE: possibly delisted; no timezone found
+$PKI: possibly delisted; no timezone found
+$PETM: possibly delisted; no timezone found
+$MWV: possibly delisted; no timezone found
+$TIF: possibly delisted; no timezone found
+$RHT: possibly delisted; no timezone found
+$VAR: possibly delisted; no timezone found
+$STJ: possibly delisted; no timezone found
+$RTN: possibly delisted; no timezone found
+$PLL: possibly delisted; no timezone found
+$RRD: possibly delisted; no timezone found
+$PEAK: possibly delisted; no timezone found
+$SVU: possibly delisted; no timezone found
+$UTX: possibly delisted; no timezone found
+$MWW: possibly delisted; no timezone found
+$TGNA: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$RDC: possibly delisted; no timezone found
+$MXIM: possibly delisted; no timezone found
+$MYL: possibly delisted; no timezone found
+$RE: possibly delisted; no timezone found
+$VIAC: possibly delisted; no timezone found
+$NVLS: possibly delisted; no timezone found
+$TWC: possibly delisted; no timezone found
+$NLSN: possibly delisted; no timezone found
+$NLOK: possibly delisted; no timezone found
+$PCP: possibly delisted; no timezone found
+$VIAB: possibly delisted; no timezone found
+$PX: possibly delisted; no timezone found
+$SWY: possibly delisted; no timezone found
+$SNI: possibly delisted; no timezone found
+$RAI: possibly delisted; no timezone found
+$TMK: possibly delisted; no timezone found
+$PGN: possibly delisted; no timezone found
+$NYX: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$TLAB: possibly delisted; no timezone found
+$TSS: possibly delisted; no timezone found
+$TWX: possibly delisted; no timezone found
+$PXD: possibly delisted; no timezone found
+$SYMC: possibly delisted; no timezone found
+$PDCO: possibly delisted; no timezone found
+
+53 Failed downloads:
+['SEE', 'QRVO', 'TGNA', 'NYX']: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+['SWN', 'TEG', 'QEP', 'SIVB', 'PBCT', 'TWTR', 'SUNEQ', 'TIE', 'PKI', 'PETM', 'MWV', 'TIF', 'RHT', 'VAR', 'STJ', 'RTN', 'PLL', 'RRD', 'PEAK', 'SVU', 'UTX', 'MWW', 'RDC', 'MXIM', 'MYL', 'RE', 'VIAC', 'NVLS', 'TWC', 'NLSN', 'NLOK', 'PCP', 'VIAB', 'PX', 'SWY', 'SNI', 'RAI', 'TMK', 'PGN', 'TLAB', 'TSS', 'TWX', 'PXD', 'SYMC', 'PDCO']: possibly delisted; no timezone found
+['SIAL', 'SCG', 'SRCL', 'NBL']: YFRateLimitError('Too Many Requests. Rate limited. Try after a while.')
+$WRK: possibly delisted; no timezone found
+$WIN: possibly delisted; no timezone found
+$WBA: possibly delisted; no timezone found
+$WYND: possibly delisted; no timezone found
+$XLNX: possibly delisted; no timezone found
+$XEC: possibly delisted; no timezone found
+$WFM: possibly delisted; no timezone found
+$X: possibly delisted; no timezone found
+$XL: possibly delisted; no timezone found
+$WLTW: possibly delisted; no timezone found
+$WPX: possibly delisted; no timezone found
+$WBD: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+$WCG: possibly delisted; no timezone found
+
+13 Failed downloads:
+['WRK', 'WIN', 'WBA', 'WYND', 'XLNX', 'XEC', 'WFM', 'X', 'XL', 'WLTW', 'WPX', 'WCG']: possibly delisted; no timezone found
+['WBD']: possibly delisted; no price data found  (1d 2005-01-01 -> 2026-11-08)
+com SEC: 119 | com preco: 130 | com os dois: 118

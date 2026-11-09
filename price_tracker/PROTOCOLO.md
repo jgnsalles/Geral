@@ -68,3 +68,8 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
 ## 6. Registro de mudanças
 
 - 2026-11-10 — criação do protocolo.
+- 2026-11-10 — **ROIC oficial congelado (Fase 1):** definição (B) operacional com aquisições — NOPAT ÷ média do ano de
+  [imobilizado + ágio + intangíveis + (ativo circulante − caixa) − (passivo circulante − dívida de curto prazo)] — com reserva em (A)
+  (patrimônio + dívida − caixa; capital operacional se ≤ 0) quando (B) não é calculável. Teto de 100% no ROIC usado no P/E justo
+  (a classificação usa o valor sem teto). Financeiras: ROE. Escolha por validade econômica (absurdos 10,8%, cobertura 98,6%,
+  persistência 0,82), sem olhar retorno; aprovada pelo usuário.

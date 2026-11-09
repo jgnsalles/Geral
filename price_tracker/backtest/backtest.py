@@ -90,36 +90,49 @@ def features(pit, t, fin, splits):
     zgrowth = engine.cv(rates, growth) if np.isfinite(growth) else np.nan
 
     s = {k: asof(pit.get(k, []), t)[0] for k in ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income',
-                                                'ppe', 'assets_cur', 'cur_liab', 'debt_cur')}
+                                                'ppe', 'assets_cur', 'cur_liab', 'debt_cur', 'goodwill', 'intangibles')}
     g = lambda k, y: s[k][y][0] if y in s[k] else None
-    roics, num, den, n_op = [], {}, {}, 0
+
+    def cap_b(y):
+        """Capital (B): imobilizado + agio + intangiveis + capital de giro operacional (fim do exercicio y)."""
+        ac, cl, ppe = g('assets_cur', y), g('cur_liab', y), g('ppe', y)
+        if ac is None or cl is None or ppe is None: return None
+        return ppe + (g('goodwill', y) or 0) + (g('intangibles', y) or 0) + (ac - (g('cash', y) or 0)) - (cl - (g('debt_cur', y) or 0))
+
+    roics, roics_a, num, den, n_fb = [], [], {}, {}, 0
     for y in range(last - 5, last + 1):
         if fin:
             ni, eq = g('net_income', y), g('equity', y)
             if ni is not None and eq is not None:
                 num[y], den[y] = ni, eq
-            roics.append(ni / eq if ni is not None and eq and eq > 0 else np.nan)
+            v = ni / eq if ni is not None and eq and eq > 0 else np.nan
+            roics.append(v); roics_a.append(v)
             continue
         oi, eq = g('op_income', y), g('equity', y)
-        if oi is None or eq is None:
-            roics.append(np.nan); continue
+        if oi is None:
+            roics.append(np.nan); roics_a.append(np.nan); continue
         pt, tx = g('pretax', y), g('tax', y)
         tr = min(max(tx / pt, 0), 0.5) if pt and tx is not None and pt > 0 else 0.21
-        ic, src = engine.invested_capital(eq, g('lt_debt', y), g('cash', y), g('ppe', y), g('assets_cur', y), g('cur_liab', y), g('debt_cur', y))
-        n_op += src == 'operacional'
-        num[y], den[y] = oi * (1 - tr), ic
-        roics.append(oi * (1 - tr) / ic if ic > 0 else np.nan)
-    roic = engine.roic_metric(roics)
-    zroic = engine.cv(roics, roic)
-    # ROIC marginal de 5 anos: delta NOPAT / delta capital investido (financeiras: delta lucro / delta patrimonio)
+        nopat = oi * (1 - tr)
+        ic_a = engine.invested_capital(eq, g('lt_debt', y), g('cash', y), g('ppe', y), g('assets_cur', y), g('cur_liab', y), g('debt_cur', y))[0] if eq is not None else np.nan
+        ra = nopat / ic_a if ic_a and ic_a > 0 else np.nan
+        cb_y, cb_p = cap_b(y), cap_b(y - 1)
+        cap = (cb_y + cb_p) / 2 if cb_y is not None and cb_p is not None else cb_y
+        rb = nopat / cap if cap is not None and cap > 0 else np.nan
+        if not np.isfinite(rb) and np.isfinite(ra): n_fb += 1
+        roics.append(rb if np.isfinite(rb) else ra)        # ROIC oficial: (B) com reserva em (A)
+        roics_a.append(ra)
+        if cb_y is not None: num[y], den[y] = nopat, cb_y   # marginal (C) sobre o capital (B)
+    roic = engine.roic_metric(roics); zroic = engine.cv(roics, roic)
+    roic_a = engine.roic_metric(roics_a); zroic_a = engine.cv(roics_a, roic_a)
     y1, y0 = last, last - 5
     roic_marg, d_ic = np.nan, np.nan
     if y1 in num and y0 in num:
         d_ic = den[y1] - den[y0]
         if d_ic > 0:
             roic_marg = (num[y1] - num[y0]) / d_ic
-    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_marg=roic_marg, d_ic=d_ic, n_ic_op=n_op, eps=e[last], last_fy=last,
-                n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()))
+    return dict(growth=growth, zgrowth=zgrowth, roic=roic, zroic=zroic, roic_a=roic_a, zroic_a=zroic_a, roic_marg=roic_marg,
+                d_ic=d_ic, n_ic_fallback=n_fb, eps=e[last], last_fy=last, n_rates=len(ok), n_roic=int(np.isfinite(roics).sum()))
 
 
 # ---------------------------------------------------------------- classificacao em cada data
@@ -153,7 +166,7 @@ def classify_all(u, close, divs, splits_all, dates):
     for d, x in df.groupby('date'):
         x = x.copy()
         x['g'] = engine.block_g(x)
-        x['fair_pe'] = engine.fair_pe(x.g, x.roic)
+        x['fair_pe'] = engine.fair_pe(x.g, x.roic.clip(upper=1.0))  # teto de 100% no ROIC do P/E justo (protocolo)
         base = x.fair_pe * x.eps * (1 + x.growth) ** 2 / x.price
         x['ret_fair'] = np.where(base > 0, np.sqrt(base.clip(lower=0)) - 1, np.nan) + x.dy
         x['ret_const'] = x.growth + x.dy
