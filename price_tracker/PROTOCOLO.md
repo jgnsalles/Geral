@@ -120,3 +120,7 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   EUA e Brasil (no Brasil, crescimento do lucro líquido dos controladores, como no modelo brasileiro). Exploratória até o Japão.
 - 2026-11-10 — **Resultado dos filtros (crescimento anual > 150% e P/L < 6 fora): piorou nos dois países.** EUA 18,8% a.a. (sem os filtros 19,7%;
   pior queda −38,1% contra −28,6%). Brasil 7,7% a.a. (sem os filtros 12,5%; Ibovespa 10,9%). Filtros rejeitados; fica a Top 20 sem eles.
+- 2026-11-10 — **Correção de leitura:** o usuário quis o filtro de crescimento só no **último ano** (y/y > 150%), não em qualquer um dos 5 anos
+  (que tirava 46% das posições). Com a leitura certa saem 10% das posições. O teste anterior fica registrado como leitura errada; roda-se o correto.
+- 2026-11-10 — **Resultado com a leitura certa (último ano > 150% ou P/L < 6 fora):** EUA 19,3% a.a. (sem filtro 19,7%; pior queda −32,2% contra
+  −28,6%). Brasil 9,9% a.a. (sem filtro 12,5%; Ibovespa 10,9%). Também piora; filtros rejeitados.
