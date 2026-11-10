@@ -121,3 +121,29 @@ Cada linha é uma **passagem** de uma ação pela carteira: da entrada até a sa
 | META | Meta Platforms, Inc. | 03/2021 | **+77%** | +12% | +56% | -28% |
 | AMP | Ameriprise Financial | 03/2018 | **+19%** | +1% | +14% | -28% |
 | AMG | Affiliated Managers Group, Inc. | 06/2018 | **-9%** | -27% | +15% | -27% |
+## Diagnóstico das 20 maiores perdas: caiu o lucro ou o múltiplo?
+
+Lucro por ação e P/L na entrada e na saída (último balanço anual conhecido em cada data). Retorno de preço ≈ variação do lucro × variação do P/L.
+
+| Ação | Empresa | Entrada → saída | EPS na entrada → saída | P/L na entrada → saída | Maior taxa de crescimento do EPS nos 5 anos antes | Retorno |
+|---|---|---|---|---|---|---|
+| FSLR | First Solar, Inc. | 09/2011 → 06/2012 | 7,68 → -0,46 (-106%) | 8 → — | +109% | -76% |
+| CHTR | Charter Communications | 09/2025 → 09/2026 | 34,97 → 36,21 (+4%) | 8 → 3 | +107% | -60% |
+| TTD | Trade Desk, Inc. | 09/2025 → 03/2026 | 0,78 → 0,90 (+15%) | 63 → 25 | +227% | -54% |
+| BLDR | Builders FirstSource, Inc. | 12/2023 → 03/2026 | 16,82 → 3,89 (-77%) | 10 → 21 | +418% | -51% |
+| PODD | Insulet Corporation | 03/2025 → 09/2026 | 5,78 → 3,48 (-40%) | 45 → 37 | +4100% | -50% |
+| PAYC | Paycom Software, Inc. | 03/2025 → 03/2026 | 8,92 → 8,92 (+0%) | 24 → 14 | +52% | -44% |
+| SIG | Signet Jewelers Ltd | 03/2017 → 03/2018 | 7,08 → 7,08 (+0%) | 10 → 5 | +24% | -43% |
+| BIO | Bio-Rad Laboratories, Inc. | 03/2022 → 09/2024 | 140,56 → -21,82 (-116%) | 4 → — | +382% | -41% |
+| AMP | Ameriprise Financial | 12/2019 → 03/2020 | 14,20 → 13,92 (-2%) | 12 → 7 | +50% | -38% |
+| ON | ON Semiconductor Corporation | 12/2024 → 03/2025 | 4,89 → 3,63 (-26%) | 13 → 11 | +305% | -35% |
+| LRCX | Lam Research Corporation | 09/2021 → 09/2022 | 2,69 → 3,27 (+22%) | 21 → 11 | +78% | -35% |
+| AYI | Acuity Inc. (De) | 12/2017 → 06/2018 | 7,43 → 7,43 (+0%) | 24 → 15 | +37% | -34% |
+| URI | United Rentals | 03/2018 → 03/2019 | 15,73 → 13,12 (-17%) | 11 → 8 | +361% | -34% |
+| ALGN | Align Technology | 12/2021 → 03/2022 | 22,41 → 9,69 (-57%) | 29 → 45 | +305% | -34% |
+| BWA | Borgwarner Inc | 06/2015 → 03/2016 | 2,52 → 2,38 (-6%) | 20 → 12 | +1235% | -32% |
+| LYB | LyondellBasell | 03/2015 → 03/2020 | 7,99 → 9,58 (+20%) | 11 → 3 | +37% | -31% |
+| GT | Goodyear Tire & Rubber Co /Oh/ | 03/2015 → 03/2019 | 8,78 → 1,37 (-84%) | 3 → 13 | +285% | -29% |
+| META | Meta Platforms, Inc. | 03/2021 → 03/2023 | 10,09 → 8,59 (-15%) | 29 → 24 | +171% | -28% |
+| AMP | Ameriprise Financial | 03/2018 → 12/2018 | 9,44 → 9,44 (+0%) | 16 → 10 | +39% | -28% |
+| AMG | Affiliated Managers Group, Inc. | 06/2018 → 03/2019 | 12,03 → 4,52 (-62%) | 12 → 23 | +100% | -27% |

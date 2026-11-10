@@ -76,3 +76,27 @@ for _, r in S.sort_values('r').head(20).iterrows():
     out2.append(f'| {r.t} | {nm(r.t)} | {r.ini:%m/%Y} | **{pc(r.m12)}** | {pc(r.m6)} | {pc(r.spy12)} | {pc(r.r)} |')
 with open(ROOT / 'top20_erros.md', 'a') as fh: fh.write('\n'.join(out2))
 print('\n'.join(out2))
+
+# --- decomposicao das 20 maiores perdas: lucro x multiplo
+fv = pd.read_csv(D / 'val_features.csv', parse_dates=['date'], usecols=['date', 'ticker', 'eps', 'price', 'gy1', 'gy2', 'gy3', 'gy4', 'gy5'])
+fv = fv.drop_duplicates(['date', 'ticker']).set_index(['ticker', 'date']).sort_index()
+def at(t, d):
+    try:
+        s = fv.loc[t]; s = s[s.index <= d]
+        return s.iloc[-1] if len(s) else None
+    except KeyError:
+        return None
+rows = ['', '## Diagnóstico das 20 maiores perdas: caiu o lucro ou o múltiplo?\n',
+        'Lucro por ação e P/L na entrada e na saída (último balanço anual conhecido em cada data). Retorno de preço ≈ variação do lucro × variação do P/L.\n',
+        '| Ação | Empresa | Entrada → saída | EPS na entrada → saída | P/L na entrada → saída | Maior taxa de crescimento do EPS nos 5 anos antes | Retorno |', '|---|---|---|---|---|---|---|']
+for _, r in S.sort_values('r').head(20).iterrows():
+    a, b = at(r.t, r.ini), at(r.t, r.fim)
+    if a is None: continue
+    e0 = a.eps; e1 = b.eps if b is not None else np.nan
+    p1 = adj[r.t].loc[:r.fim].dropna().iloc[-1]
+    pe0 = a.price / e0 if e0 > 0 else np.nan; pe1 = p1 / e1 if pd.notna(e1) and e1 > 0 else np.nan
+    gmax = np.nanmax([a[f'gy{i}'] for i in range(1, 6)])
+    rows.append(f"| {r.t} | {nm(r.t)} | {r.ini:%m/%Y} → {r.fim:%m/%Y} | {e0:.2f} → {e1:.2f} ({pc(e1 / e0 - 1) if e0 > 0 and pd.notna(e1) else '—'}) | "
+                f"{'—' if pd.isna(pe0) else f'{pe0:.0f}'} → {'—' if pd.isna(pe1) else f'{pe1:.0f}'} | {pc(gmax)} | {pc(r.r)} |".replace('.', ','))
+with open(ROOT / 'top20_erros.md', 'a') as fh: fh.write('\n'.join(rows))
+print('\n'.join(rows))
