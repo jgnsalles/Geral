@@ -138,3 +138,8 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
 - 2026-11-10 — **Resultado nas estrangeiras listadas nos EUA (inconclusivo):** com início quando há ≥ 50 empresas classificadas (03/2018): Top 20
   26,8% a.a. contra universo estrangeiro 7,3%, EFA 8,0% e S&P 15,1%; com ≥ 100 (03/2022): 34,1% contra 3,2%. Mas só ~9 a 12 ações elegíveis por
   trimestre (a Top 20 nunca enche) e a lista parte de quem tem ticker hoje (viés de sobrevivência). Sinal na direção certa, amostra fraca.
+- 2026-11-10 — **Teste fora da amostra nas médias e pequenas dos EUA (antes de rodar):** universo = empresas americanas listadas na Nasdaq/NYSE
+  (lista atual da SEC, sem as estrangeiras) que **não** estão no S&P 500 na data, com valor de mercado ≥ US$ 1 bi (preço × lucro líquido ÷ EPS),
+  preço ≥ US$ 5 e giro mediano ≥ US$ 5 milhões/dia. Regra candidata congelada, sem ajuste, mesmos parâmetros. Setores por SIC (mesmo mapeamento
+  das estrangeiras). Critério: Top 20 acima do universo de peso igual e dos ETFs de médias e pequenas (IJH, IJR, IWM). Limite conhecido: lista
+  parte de quem tem ticker hoje (viés de sobrevivência).
