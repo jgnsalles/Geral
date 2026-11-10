@@ -98,3 +98,13 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   cíclicos da régua com as exceções da opção B (lista no registro anterior). **Ponderação principal: raiz do valor de mercado** (peso igual como
   controle). Rebalanceamento trimestral. Subclasses reportadas: High ROIC (ROIC > 30%) e High Growth (EPS > 30%).
   Brasil: os setores cíclicos e o vestuário são mapeados para os setores da CVM antes de rodar (lista em `brasil/oos_congelado.py`).
+- 2026-11-10 — **Pré-registro da carteira de tamanho fixo (antes de rodar):** produto = **20 ações** (escolha do usuário); 10 e 15 são
+  reportadas como sensibilidade, sem escolher depois. Elegíveis: ROIC do modelo ≥ 12% e crescimento do EPS (mediana de 5 anos) ≥ 15%, sem
+  vestuário/calçados/têxteis e sem subsetores cíclicos (régua + exceções B; no Brasil, o mapeamento de `brasil/oos_congelado.py`). Nota = percentil
+  do ROIC + percentil do crescimento entre os elegíveis da data; ficam as N maiores notas (empate: maior ROIC); com menos de N elegíveis, ficam todos.
+  Sem P/E justo, retorno esperado ou zGrowth. Peso = raiz do valor de mercado com teto de 2/N por ação (redistribuído); peso igual como controle.
+  Rebalanceamento trimestral. EUA: S&P 500 de cada trimestre, comparar com os 9 comparativos e o QQQ. Brasil: universo líquido da CVM, comparar
+  com Ibovespa e universo.
+- 2026-11-10 — **Resultado da carteira de tamanho fixo (pré-registrada):** EUA (dentro da amostra) Top 20 raiz com teto 22,2% a.a. (S&P 15,6%,
+  QQQ 20,3%; alfa FF5+UMD+QMJ +3,9, t 1,76). **Brasil (fora da amostra): falhou** — Top 20 9,8% a.a. contra Ibovespa 10,9% e universo 11,9%;
+  10 e 15 ações também abaixo. A OoL novo da regra congelada (com P/E justo e retorno esperado) passou no Brasil (13,5%, +2,6 p.p. sobre o Ibovespa).
