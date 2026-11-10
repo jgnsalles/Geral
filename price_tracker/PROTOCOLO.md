@@ -143,3 +143,7 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   preço ≥ US$ 5 e giro mediano ≥ US$ 5 milhões/dia. Regra candidata congelada, sem ajuste, mesmos parâmetros. Setores por SIC (mesmo mapeamento
   das estrangeiras). Critério: Top 20 acima do universo de peso igual e dos ETFs de médias e pequenas (IJH, IJR, IWM). Limite conhecido: lista
   parte de quem tem ticker hoje (viés de sobrevivência).
+- 2026-11-10 — **Resultado nas médias e pequenas dos EUA (06/2011–09/2026, 684 classificadas e 93 elegíveis por data):** Top 20 raiz com teto
+  16,5% a.a. contra universo de peso igual 11,9%, S&P 400 (IJH) 10,5%, S&P 600 (IJR) 10,6% e Russell 2000 9,8%. **Passou.** Mas as elegíveis de
+  qualidade com peso igual renderam 17,1% (97% das janelas de 5 anos acima do universo, contra 58% da Top 20): a ordenação por retorno esperado não
+  agregou aqui. Lista parte de quem tem ticker hoje (viés de sobrevivência; o universo de peso igual sofre o mesmo viés).

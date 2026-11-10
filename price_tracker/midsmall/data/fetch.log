@@ -1,0 +1,26 @@
+sec ok
+Crumb fetch rate-limited (HTTP 429), continuing without crumb
+yahoo 0
+yahoo 400
+yahoo 800
+yahoo 1200
+yahoo 1600
+Failed to get ticker 'HLF' reason: Failed to perform, curl: (28) Operation timed out after 10001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+yahoo 2000
+yahoo 2400
+Failed to get ticker 'MP' reason: Failed to perform, curl: (56) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+yahoo 2800
+yahoo 3200
+$PTRN: possibly delisted; no price data found  (1d 2009-06-01 -> 2026-11-10)
+
+1 Failed download:
+['PTRN']: possibly delisted; no price data found  (1d 2009-06-01 -> 2026-11-10)
+yahoo 3600
+yahoo 4000
+$UAMY: possibly delisted; no price data found  (1d 2009-06-01 -> 2026-11-10)
+
+1 Failed download:
+['UAMY']: possibly delisted; no price data found  (1d 2009-06-01 -> 2026-11-10)
+yahoo 4400
+yahoo 4800
+ok 4759
