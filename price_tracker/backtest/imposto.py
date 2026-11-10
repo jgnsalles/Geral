@@ -18,8 +18,10 @@ from backtest import stats  # noqa: E402
 RATE = 0.15
 
 
-def run_tax(holdings, adj, dates, rate=RATE):
-    """NAV diario com IR sobre ganho realizado. Devolve (nav, ir_pago_total, ganho_nao_realizado_final, prejuizo_a_compensar_final)."""
+def run_tax(holdings, adj, dates, rate=RATE, harvest=None):
+    """NAV diario com IR sobre ganho realizado. Devolve (nav, ir_pago_total, ganho_nao_realizado_final, prejuizo_a_compensar_final).
+    harvest: None = sem colheita de prejuizo; 'match' = a cada venda com ganho, vende e recompra posicoes com prejuizo ate o mesmo valor
+    em dinheiro do ganho (o custo delas cai para o preco atual); 'all' = realiza todo prejuizo latente a cada trimestre."""
     val, basis, carry, paid = {}, {}, 0.0, 0.0
     navs = []
     total = 1.0
@@ -35,9 +37,18 @@ def run_tax(holdings, adj, dates, rate=RATE):
                 b = basis[t]
                 if t not in tks: gains += v - b
                 elif v > target: gains += (v - target) * (1 - b / v) if v > 0 else 0.0
-            net = gains + carry
+            hv = 0.0
+            if harvest:
+                lat = sum(max(basis[t] - v, 0.0) for t, v in val.items() if t in tks)  # prejuizo latente das que ficam
+                need = max(gains + carry, 0.0) if harvest == 'match' else lat
+                hv = min(lat, need)
+            net = gains + carry - hv
             tax = rate * net if net > 0 else 0.0
             target = (V - tax) / len(tks) if tks else 0.0
+        if harvest and hv > 0:  # vende e recompra as perdedoras: custo delas cai para o valor atual, na proporcao usada
+            lat = sum(max(basis[t] - v, 0.0) for t, v in val.items() if t in tks); fr = hv / lat if lat else 0.0
+            for t, v in val.items():
+                if t in tks and basis[t] > v: basis[t] -= fr * (basis[t] - v)
         new_val, new_basis = {}, {}
         for t in tks:
             v, b = val.get(t, 0.0), basis.get(t, 0.0)
@@ -69,13 +80,17 @@ def main():
     H = {'OoL antigo': (old, old.cat == bm.OOL), 'GCGR antigo': (old, old.cat == bm.GCGR)}
     H.update({k: (new, m) for k, m in hn.items()})
     navs, n, dts, _ = bm.load_benchmarks()
-    rows, taxed = [], {}
+    rows, taxed, HV = [], {}, []
     for k, (c, m) in H.items():
         hold = {d: g.ticker.tolist() for d, g in c[m].groupby('date')}
         nav_t, paid, unreal, carry = run_tax(hold, adj, dates)
+        nav_m, paid_m, unreal_m, carry_m = run_tax(hold, adj, dates, harvest='match')
+        nav_a, paid_a, unreal_a, carry_a = run_tax(hold, adj, dates, harvest='all')
         taxed[k] = nav_t
         end = nav_t.iloc[-1]; liq = end - RATE * max(unreal + carry, 0)
         rows.append((k, navs[k], nav_t, paid, liq))
+        HV.append((k, stats(navs[k])['CAGR'], stats(nav_t)['CAGR'], paid, stats(nav_m)['CAGR'], paid_m, stats(nav_a)['CAGR'], paid_a,
+                   nav_m.iloc[-1] - RATE * max(unreal_m + carry_m, 0)))
     yrs = (dates[-1] - dates[0]).days / 365.25
     cg = lambda x: x ** (1 / yrs) - 1
     pc = lambda x: f'{x:.1%}'.replace('.', ',')
@@ -101,6 +116,14 @@ def main():
     for k, g, t, paid, liq in rows:
         fp = lambda x: f'{x * 100:+.1f}'.replace('.', ',') + ' p.p.'
         out.append(f"| {k} | {fp(stats(g)['CAGR'] - S)} | {fp(stats(t)['CAGR'] - S)} | {fp(cg(liq) - s_liq)} |")
+    out += ['', '## Com colheita de prejuízo (vender perdedoras com o ganho e recomprar em seguida)\n',
+            'A cada trimestre com venda de ganho, vende-se também ações da carteira que estão com prejuízo, no mesmo valor em dinheiro do ganho, e '
+            'elas são recompradas logo depois (a carteira não muda; o custo delas cai para o preço atual, então o imposto é adiado, não perdoado). '
+            '"Todo prejuízo" realiza todo o prejuízo latente a cada trimestre e guarda o que sobrar para compensar depois.\n',
+            '| Carteira | Sem imposto | IR nas vendas | Com colheita (mesmo valor do ganho) | Com colheita (todo prejuízo) | IR pago: sem colheita / com colheita | Com colheita, vendendo tudo no fim |',
+            '|---|---|---|---|---|---|---|']
+    for k, g0, t0, p0, tm, pm, ta, pa, liqm in HV:
+        out.append(f'| {k} | {pc(g0)} | {pc(t0)} | **{pc(tm)}** | {pc(ta)} | {p0:.0%} / {pm:.0%} | {pc(cg(liqm))} |')
     (ROOT / 'imposto.md').write_text('\n'.join(out)); print('\n'.join(out))
     plot = {k: v for k, v in navs.items() if k in ('S&P 500', 'S&P 500 equal weight')}
     for k, g, t, *_ in rows: plot[f'{k} (com IR)'] = t

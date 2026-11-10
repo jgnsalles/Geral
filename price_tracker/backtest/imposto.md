@@ -27,3 +27,17 @@
 | OoL High ROIC (novo) | +3,3 p.p. | +0,9 p.p. | +1,7 p.p. |
 | OoL High Growth (novo) | +3,8 p.p. | +1,4 p.p. | +2,2 p.p. |
 | Cyclicals | -10,1 p.p. | -10,8 p.p. | -9,8 p.p. |
+
+## Com colheita de prejuízo (vender perdedoras com o ganho e recomprar em seguida)
+
+A cada trimestre com venda de ganho, vende-se também ações da carteira que estão com prejuízo, no mesmo valor em dinheiro do ganho, e elas são recompradas logo depois (a carteira não muda; o custo delas cai para o preço atual, então o imposto é adiado, não perdoado). "Todo prejuízo" realiza todo o prejuízo latente a cada trimestre e guarda o que sobrar para compensar depois.
+
+| Carteira | Sem imposto | IR nas vendas | Com colheita (mesmo valor do ganho) | Com colheita (todo prejuízo) | IR pago: sem colheita / com colheita | Com colheita, vendendo tudo no fim |
+|---|---|---|---|---|---|---|
+| OoL antigo | 15,1% | 13,3% | **13,5%** | 13,5% | 76% / 69% | 13,2% |
+| GCGR antigo | 15,0% | 12,9% | **13,1%** | 13,1% | 87% / 78% | 12,9% |
+| OoL novo | 17,1% | 14,9% | **15,1%** | 15,2% | 100% / 93% | 14,9% |
+| GCGR novo | 16,9% | 14,4% | **14,6%** | 14,7% | 121% / 109% | 14,6% |
+| OoL High ROIC (novo) | 18,8% | 16,5% | **16,6%** | 16,7% | 119% / 113% | 16,3% |
+| OoL High Growth (novo) | 19,3% | 17,0% | **17,2%** | 17,2% | 123% / 114% | 16,8% |
+| Cyclicals | 5,5% | 4,7% | **4,8%** | 4,8% | 17% / 16% | 4,7% |
