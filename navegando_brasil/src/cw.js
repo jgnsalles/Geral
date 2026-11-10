@@ -33,7 +33,8 @@ const W=(g,r,i)=>{ const e=g.p[r]; if(!e) return 0; const k=i-g.o-e[0]; return (
 const Q=(g,r,i)=>{ if(!ok(g,i)) return null; const e=g.p[r]; if(!e) return 0; const k=i-g.o-e[0]; if(k<0||k>=e[2].length) return 0; const q=e[2][k]; return q<0?null:q; };
 const val=(g,r,i)=>W(g,r,i)*(tot(g,i)||0);
 function delta(g,r,i,k){
-  const j=i-k; const a=Q(g,r,j), b=Q(g,r,i); if(a==null||b==null) return null;
+  const j=i-k; if(BQ>0 && j<BQ && i>=BQ) return null;  // quantidades em bases diferentes (troca de método em base_q)
+  const a=Q(g,r,j), b=Q(g,r,i); if(a==null||b==null) return null;
   if(Math.max(W(g,r,i),W(g,r,j))<0.005) return null;
   if(a===0&&b===0) return null;
   if(a===0) return {d:'nova', flow:val(g,r,i)};
@@ -61,7 +62,7 @@ function bestMonth(g){
   return lastIdx(g);
 }
 const latestTot=g=>{for(let i=lastIdx(g);i>=g.o;i--){const c=cov(g,i); if(c!=null&&c>=0.9&&tot(g,i)>0) return tot(g,i);} return 0;};
-let GOOD=0;
+let GOOD=0, BQ=-1;
 function fillMonths(sel, from, to, v){ sel.innerHTML=''; for(let i=to;i>=from;i--) sel.add(new Option(mlong(i),i)); sel.value=v; }
 const maxW=(g,r,a,b)=>{let m=0; for(let j=a;j<=b;j++){const v=W(g,r,j); if(v>m) m=v;} return m;};
 const tkCell=r=>`<td><span class="cw-tkc">${logo(r)}<span class="tk">${esc(r)}</span></span></td>`;
@@ -238,17 +239,17 @@ function renderR(){
   const ra=a=>`data-r="${esc(a.r)}"`;
   $('r1s').textContent=`nº de gestoras com ≥ ${pct(l,1)} da carteira`;
   btn('r1', sTable('r1',[tkc,{k:'n',l:'Gestoras',v:a=>a.n,f:a=>`<td>${a.n}</td>`},
-    ...[3,6,12].map(k=>({k:'d'+k,l:`Δ ${k}m`,v:a=>a.dn[k]??null,f:a=>`<td>${dn(a.dn[k]??null)}</td>`})),nmc],
+    ...[3,6,12].map(k=>({k:'d'+k,l:`Δ ${k} meses`,v:a=>a.dn[k]??null,f:a=>`<td>${dn(a.dn[k]??null)}</td>`})),nmc],
     all.filter(a=>a.n>0), 'n', ra, N('r1')));
   const buy=$('r2t').value==='b', C=buy?'b':'s', F=buy?'fb':'fs';
-  $('r2s').textContent=`nº de gestoras ${buy?'comprando':'vendendo'} ≥ 10% das ações · valor em ${kSel}m`;
+  $('r2s').textContent=`Número de gestoras que ${buy?'aumentaram em 10% ou mais (ou abriram)':'reduziram em 10% ou mais (ou zeraram)'} a quantidade de ações em 1, 3, 6 e 12 meses · valor somado em ${kSel} ${kSel===1?'mês':'meses'}`;
   if(!S.sort.r2) S.sort.r2={k:'c'+kSel,dir:-1};
-  btn('r2', sTable('r2',[tkc,...KS.map(k=>({k:'c'+k,l:`${k}m`,v:a=>a[C][k]||0,f:a=>`<td${k===kSel?' style="font-weight:600"':''}>${a[C][k]||'<span class="zero">0</span>'}</td>`})),
-    {k:'f',l:`Valor ${kSel}m`,v:a=>buy?(a[F][kSel]||0):-(a[F][kSel]||0),f:a=>`<td>${brl(a[F][kSel]||0)}</td>`},nmc],
+  btn('r2', sTable('r2',[tkc,...KS.map(k=>({k:'c'+k,l:k===1?'1 mês':`${k} meses`,v:a=>a[C][k]||0,f:a=>`<td${k===kSel?' style="font-weight:600"':''}>${a[C][k]||'<span class="zero">0</span>'}</td>`})),
+    {k:'f',l:`Valor em ${kSel} ${kSel===1?'mês':'meses'}`,v:a=>buy?(a[F][kSel]||0):-(a[F][kSel]||0),f:a=>`<td>${brl(a[F][kSel]||0)}</td>`},nmc],
     all.filter(a=>KS.some(k=>a[C][k]>0)), 'c'+kSel, ra, N('r2')));
   const dv=(a,k)=>{ const x=a.dv[k]; return x&&x[1]>0?x[0]/x[1]-1:null; };
   btn('r3', sTable('r3',[tkc,{k:'v',l:'Valor',v:a=>a.v,f:a=>`<td>${brl(a.v)}</td>`},
-    ...[3,6,12].map(k=>({k:'v'+k,l:`Δ ${k}m`,v:a=>dv(a,k),f:a=>`<td>${dpct(dv(a,k))}</td>`})),
+    ...[3,6,12].map(k=>({k:'v'+k,l:`Δ ${k} meses`,v:a=>dv(a,k),f:a=>`<td>${dpct(dv(a,k))}</td>`})),
     {k:'na',l:'Gestoras',v:a=>a.nAny,f:a=>`<td>${a.nAny}</td>`},nmc],
     all.filter(a=>a.v>0), 'v', ra, N('r3')));
   $('r4s').textContent=`não existiam em ${ml(Math.max(0,i-kSel))}, hoje ≥ ${pct(l,1)}`;
@@ -400,7 +401,7 @@ function renderE(){
 
 let ROOTS=[];
 function init(data, hooks){
-  D=data; H=hooks; M=D.meses; NM=M.length; G=D.gestoras; E=D.emissores;
+  D=data; H=hooks; M=D.meses; NM=M.length; G=D.gestoras; E=D.emissores; BQ=D.base_q?M.indexOf(D.base_q):-1;
   G.forEach(g=>GI[g.id]=g);
   G.sort((a,b)=>latestTot(b)-latestTot(a));
   GOOD=(()=>{ for(let i=NM-1;i>=0;i--){ let t=0,c=0; G.forEach(g=>{t+=tot(g,i)||0; c+=cnf(g,i);}); if(t>0 && t/(t+c)>=0.8) return i; } return NM-1; })();

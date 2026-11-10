@@ -35,5 +35,9 @@ Por gestora: fundos/classes cujo gestor (registro CVM 175, ou registro do fundo 
 t = ações, ações emprestadas, recibos e BDRs (BLC_4) + investimento no exterior (BLC_7), em R$ mil; c = o mesmo no arquivo CONFID (sigilo).
 Conferência contra o json antigo (completo até fev/2026): ~60% das gestoras idênticas e ~94% do valor a menos de 5%; as diferenças vêm de fundos
 que trocaram de gestor (o registro atual da CVM é usado para todo o período reconstruído, por isso a reconstrução começa em jan/2024).
+Quantidades: o json antigo guarda uma base histórica própria por emissor (não reproduzível); de jan/2024 em diante elas são
+número de ações da CDA corrigido por eventos detectados nos próprios dados (`cw_splits.py`: desdobramentos, grupamentos, bonificações
+como SBSP 5:1, HAPV 1:15, MGLU 1:10, BBAS 2:1, ITUB/ITSA/LREN bonificações, AXIA7 distribuída em dez/2025), e `base_q = 2024-01` faz a página
+não comparar quantidades através de dez/2023 → jan/2024.
 A CVM republicou em 07/11/2026 os meses que estavam em sigilo: mar e abr/2026 ficaram 100% revelados; mai–jul/2026 ~44%, ago–set/2026 ~17%.
 Out/2026 ficou de fora (3,5% revelado, entrega ainda em curso). A série de performance dos 30 fundos continua em abr/2026 pelo mesmo motivo.
