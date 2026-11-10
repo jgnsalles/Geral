@@ -1,0 +1,46 @@
+
+/* ---- Navegando Brasil: acréscimos ---- */
+:root { --q0:#eef0f3; --q1:#fbe46b; --q2:#7ad151; --q3:#22a884; --q4:#2a788e; --q5:#3b2f73; }
+@media (prefers-color-scheme: dark){ :root { --q0:#1d2530; --q1:#3e3a7a; --q2:#2c6e8e; --q3:#22a884; --q4:#7ad151; --q5:#fde725; } }
+#nb-loading { padding: 40px 0; color: var(--color-fg-muted); }
+.nb-period { display: grid; gap: var(--cds-gap-sm); }
+.nb-period[hidden] { display: none; }
+.rx-chip[disabled] { opacity: .45; cursor: not-allowed; }
+.nb-search, .rx-controls input[type=number], .rx-controls input[type=search] { font: inherit; font-size: var(--cds-font-size-body); color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); }
+.nb-search { min-width: min(100%, 18rem); }
+.rx-controls input[type=number] { width: 4.5rem; }
+.nb-inline { font: inherit; font-size: inherit; font-weight: inherit; color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: 1px 4px; }
+.rx-card > .rx-btn[data-more] { justify-self: center; }
+.rx-table td .co, .rx-table td.co { color: var(--color-fg-muted); }
+.rx-table .zero, .zero { color: var(--color-fg-muted); }
+.rx-table td.cw-nm { color: var(--color-fg-muted); max-width: 14rem; overflow: hidden; text-overflow: ellipsis; }
+.rx-table th button + * { margin-left: 2px; }
+.cw-lg { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: var(--color-bg); border: 1px solid var(--color-border-line); font: 600 9.5px/1 var(--font-anthropic-sans); color: var(--color-fg-muted); letter-spacing: -.02em; flex: none; }
+.cw-lg.big { width: 48px; height: 48px; border-radius: 12px; font-size: 15px; }
+.cw-tkc { display: inline-flex; align-items: center; gap: 9px; text-align: left; }
+.cw-sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; }
+.cw-chip { display: inline-flex; align-items: center; gap: 5px; font-size: var(--cds-font-size-caption); font-weight: 600; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--color-border-line); color: var(--color-fg-muted); white-space: nowrap; }
+.cw-chip.warn { color: #a86a00; border-color: #a86a00; }
+.cw-chip.new { color: #2f6fd0; border-color: #2f6fd0; }
+.cw-chip.down { color: var(--color-bad); border-color: var(--color-bad); }
+.cw-wbar { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.cw-wbar i { display: inline-block; height: 6px; border-radius: 3px; background: #2f6fd0; min-width: 2px; }
+.cw-hm { overflow-x: auto; position: relative; }
+.cw-hm svg { display: block; }
+.cw-hm text { font-size: 11px; fill: var(--color-fg-muted); font-family: var(--font-anthropic-sans); }
+.cw-scale i { width: 18px; height: 10px; }
+.cw-chart { min-height: 0; }
+.cw-chart svg text { font-family: var(--font-anthropic-sans); }
+#g-casa, #g-fundos-body { gap: var(--cds-gap-md); }
+#g-casa[hidden], #g-fundos-body[hidden] { display: none !important; }
+.rx-tile-value { overflow-wrap: anywhere; }
+.nb-hoje { grid-template-columns: repeat(auto-fit, minmax(min(100%, 34rem), 1fr)); }
+.nb-gtab { font: inherit; font-size: var(--cds-font-size-heading); background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-fg-muted); padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; margin-bottom: -1px; }
+.nb-gtab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); font-weight: 600; }
+.nb-gtab:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+#gs-hoje[hidden], #gs-hist[hidden], #g-hist-card[hidden] { display: none !important; }
+.nb-attr { display: grid; gap: var(--cds-gap-xs); min-width: 0; }
+.nb-attr h3 { margin: var(--cds-gap-sm) 0 0; font-size: var(--cds-font-size-body); font-weight: 600; }
+.nb-attr td { white-space: normal; }
+.nb-attr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 36rem), 1fr)); gap: var(--cds-gap-lg); }
+.nb-attr .rx-table td:first-child, .nb-attr .rx-table td:nth-child(2) { white-space: normal; }

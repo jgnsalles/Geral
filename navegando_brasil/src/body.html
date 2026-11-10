@@ -1,0 +1,177 @@
+<body><div id="dash-root">
+<div class="rx">
+  <header class="rx-head" id="topo">
+    <h1 class="rx-title">Navegando Brasil</h1>
+    <p class="rx-lead">Gestoras de ações independentes: o que têm hoje, como chegaram lá e se deu certo. Carteiras da CVM desde 2005; performance e attribution dos 30 fundos acompanhados.</p>
+    <nav class="rx-tabs" role="tablist" aria-label="Páginas">
+      <button type="button" role="tab" class="rx-tab" data-pg="hoje" aria-selected="true">Hoje</button>
+      <button type="button" role="tab" class="rx-tab" data-pg="gestora" aria-selected="false">Gestora</button>
+      <button type="button" role="tab" class="rx-tab" data-pg="empresa" aria-selected="false">Empresa</button>
+      <button type="button" role="tab" class="rx-tab" data-pg="comparar" aria-selected="false">Comparar</button>
+    </nav>
+    <div class="nb-period" id="nb-period">
+      <div class="rx-chips-b" id="nb-presets" role="group" aria-label="Períodos"></div>
+      <div class="rx-controls">
+        <label>Início (base)
+          <select id="rx-ini" data-draw="sel-ini" data-source="serie_mensal" aria-label="Mês inicial"></select>
+        </label>
+        <label>Fim
+          <select id="rx-fim" data-draw="sel-fim" data-source="serie_mensal" aria-label="Mês final"></select>
+        </label>
+        <span class="rx-note" id="nb-period-note"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HOJE ================= -->
+  <section class="rx-page" id="pg-hoje" data-pg="hoje">
+    <div class="rx-controls">
+      <label>Mês da carteira <select id="r-m"></select></label>
+      <label>Comparar com
+        <select id="r-k"><option value="1">1 mês antes</option><option value="3">3 meses antes</option><option value="6" selected>6 meses antes</option><option value="12">12 meses antes</option></select>
+      </label>
+      <label>Posição relevante <span><input id="lim" type="number" min="0.5" max="20" step="0.5" value="2"> % da carteira</span></label>
+      <label>Carteira revelada mínima
+        <select id="covmin"><option value="0.5">≥ 50%</option><option value="0.7" selected>≥ 70%</option><option value="0.9">≥ 90%</option></select>
+      </label>
+    </div>
+    <div class="rx-head"><h2 class="rx-sec" id="r-h" style="margin:0"></h2><p class="rx-note" id="r-sub"></p></div>
+    <div class="rx-grid nb-hoje">
+      <article class="rx-card"><div class="rx-cardhead"><h2>Mais detidas</h2><span class="rx-note" id="r1s"></span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r1"></table></div><button class="rx-btn" type="button" data-more="r1">Ver mais</button></article>
+      <article class="rx-card"><div class="rx-cardhead"><h2>Maiores <select id="r2t" aria-label="Compras ou vendas" class="nb-inline"><option value="b">compras</option><option value="s">vendas</option></select></h2><span class="rx-note" id="r2s"></span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r2"></table></div><button class="rx-btn" type="button" data-more="r2">Ver mais</button></article>
+      <article class="rx-card"><div class="rx-cardhead"><h2>Maiores investimentos</h2><span class="rx-note">valor somado nas gestoras</span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r3"></table></div><button class="rx-btn" type="button" data-more="r3">Ver mais</button></article>
+      <article class="rx-card"><div class="rx-cardhead"><h2>Novas posições</h2><span class="rx-note" id="r4s"></span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r4"></table></div><button class="rx-btn" type="button" data-more="r4">Ver mais</button></article>
+    </div>
+    <p class="rx-note">Toque numa ação para abrir a página da empresa, ou numa gestora para abrir a página dela.</p>
+  </section>
+
+  <!-- ================= GESTORA ================= -->
+  <section class="rx-page" id="pg-gestora" data-pg="gestora" hidden>
+    <div class="rx-head">
+      <div class="rx-controls">
+        <label class="rx-fund">Gestora <input id="gx-q" class="nb-search" list="dl-g" placeholder="Buscar gestora…" autocomplete="off"><datalist id="dl-g"></datalist></label>
+      </div>
+      <div class="rx-chips-b" id="gx-quick" aria-label="Gestoras com performance"></div>
+      <h2 class="rx-title" id="gx-nome" style="font-size:1.5rem">—</h2>
+      <p class="rx-note" id="gx-sub"></p>
+    </div>
+
+    <nav class="rx-tabs nb-gsub" style="margin-top:4px" role="tablist" aria-label="Visão da gestora">
+      <button type="button" role="tab" class="nb-gtab" data-gsub="hoje" aria-selected="true">Hoje</button>
+      <button type="button" role="tab" class="nb-gtab" data-gsub="hist" aria-selected="false">Histórico</button>
+    </nav>
+    <div id="gs-hoje" class="rx-page">
+    <div id="g-casa-none" class="rx-card" hidden><p class="rx-note">Esta gestora não está no recorte de gestoras independentes da CVM usado nas carteiras consolidadas, então não há posições da casa. Performance, attribution e a evolução das posições do fundo estão em Histórico.</p></div>
+    <div id="g-casa" class="rx-page">
+      <div class="rx-controls"><label>Mês da carteira <select id="g-m"></select></label><span class="rx-note" id="g-rs"></span></div>
+      <div class="rx-chips-b" id="g-chips"></div>
+      <section class="rx-tiles" id="g-kpis"></section>
+      <article class="rx-card">
+        <div class="rx-cardhead"><h2 id="g-tt">Posições</h2></div>
+        <p class="rx-note">Peso = posição ÷ carteira de ações divulgada da casa (todos os fundos somados). Δ ações = variação na quantidade de ações, corrigida por desdobramentos. Toque numa linha para abrir a empresa.</p>
+        <div class="rx-tablebox"><table class="rx-table" id="g-tbl"></table></div>
+        <div id="g-outs"></div>
+      </article>
+      <article class="rx-card">
+        <div class="rx-cardhead"><h2>Compras e vendas da casa</h2><select id="g-k" aria-label="Período" class="nb-inline"><option value="3">3 meses</option><option value="6" selected>6 meses</option><option value="12">12 meses</option></select></div>
+        <div class="rx-tablebox"><table class="rx-table" id="g-mov"></table></div>
+      </article>
+    </div>
+
+    </div>
+    <div id="gs-hist" class="rx-page" hidden>
+      <article class="rx-card" id="g-hist-card">
+        <div class="rx-cardhead"><h2>Histórico de posições da casa</h2><span class="rx-subtabs" id="g-viz"></span></div>
+        <div class="rx-subtabs" id="g-rng"></div>
+        <p class="rx-note" id="g-hist-note"></p>
+        <div id="g-mapbox"><div class="rx-legend cw-scale" id="g-scale"></div><div class="cw-hm" id="g-hm"></div><div id="g-hmore"></div></div>
+        <div id="g-linebox" hidden><div class="rx-chart cw-chart" id="g-line"></div><p class="rx-note" style="margin-top:8px">Posições no gráfico (até 12): toque para incluir ou tirar.</p><div class="rx-chips-b" id="g-chips2"></div></div>
+      </article>
+    <div id="g-fundos">
+    <h2 class="rx-sec" id="g-fundos-h">Fundos da gestora: performance e attribution</h2>
+    <p class="rx-note" id="g-fundos-none" hidden>Performance e attribution existem só para os 30 fundos acompanhados (lista na aba Comparar). Esta gestora não tem fundo entre eles.</p>
+    <div id="g-fundos-body" class="rx-page">
+{{NAV:356-464}}
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ================= EMPRESA ================= -->
+  <section class="rx-page" id="pg-empresa" data-pg="empresa" hidden>
+    <div class="rx-controls">
+      <label class="rx-fund">Ação <input id="e-q" class="nb-search" list="dl-e" placeholder="Ticker ou nome, ex.: EQTL" autocomplete="off"><datalist id="dl-e"></datalist></label>
+      <label>Mês da carteira <select id="e-m"></select></label>
+    </div>
+    <h2 class="rx-title" id="e-nome" style="font-size:1.5rem"></h2>
+    <section class="rx-tiles" id="e-kpis"></section>
+    <article class="rx-card">
+      <div class="rx-cardhead"><h2 id="e-tt">Detentores</h2><span class="rx-note" id="e-cnt2"></span></div>
+      <div class="rx-controls">
+        <label>Gestora <input id="e-fq" type="search" placeholder="Filtrar por nome…" autocomplete="off" class="nb-search"></label>
+        <label>Peso <select id="e-only"><option value="0">todas as posições</option><option value="1">só posições relevantes</option></select></label>
+        <label>Valor da posição <select id="e-fv"><option value="0">qualquer</option><option value="1e6">≥ R$ 1 mi</option><option value="1e7">≥ R$ 10 mi</option><option value="5e7">≥ R$ 50 mi</option><option value="1e8">≥ R$ 100 mi</option></select></label>
+        <label>Tamanho da gestora <select id="e-fg"><option value="0">qualquer</option><option value="1e8">≥ R$ 100 mi</option><option value="5e8">≥ R$ 500 mi</option><option value="1e9">≥ R$ 1 bi</option><option value="5e9">≥ R$ 5 bi</option></select></label>
+        <label>Movimento 3m <select id="e-fd"><option value="">todos</option><option value="b">comprou ou nova</option><option value="s">vendeu</option></select></label>
+      </div>
+      <div class="rx-tablebox"><table class="rx-table" id="e-tbl"></table></div>
+    </article>
+    <div class="rx-grid">
+      <article class="rx-card">
+        <div class="rx-cardhead"><h2 id="e-ct">Gestoras com posição relevante</h2><span class="rx-subtabs" id="e-rng"></span></div>
+        <div class="rx-chart cw-chart" id="e-cnt"></div>
+      </article>
+      <article class="rx-card">
+        <div class="rx-cardhead"><h2>Compras e vendas</h2><select id="e-k" aria-label="Período" class="nb-inline"><option value="1">1 mês</option><option value="3">3 meses</option><option value="6" selected>6 meses</option><option value="12">12 meses</option></select></div>
+        <div class="rx-tablebox"><table class="rx-table" id="e-mov"></table></div>
+      </article>
+    </div>
+    <article class="rx-card">
+      <div class="rx-cardhead"><h2>Evolução por gestora</h2><span class="rx-subtabs" id="e-viz"></span></div>
+      <div id="e-mapbox"><div class="rx-legend cw-scale" id="e-scale"></div><div class="cw-hm" id="e-hm"></div><div id="e-hmore"></div><p class="rx-note">Peso na carteira de cada gestora. Toque numa linha para abrir a gestora.</p></div>
+      <div id="e-linebox" hidden><div class="rx-chart cw-chart" id="e-line"></div><p class="rx-note" style="margin-top:8px">Gestoras no gráfico (até 8): toque para incluir ou tirar.</p><div class="rx-chips-b" id="e-chips2"></div></div>
+    </article>
+    <article class="rx-card" id="emp-perf-card">
+      <h2>A ação no período e o que os 30 fundos fizeram</h2>
+      <p class="rx-note">Segue o período escolhido no topo. Linha: retorno total da ação (com dividendos) contra o Ibovespa. Barras: compras menos vendas dos 30 fundos acompanhados no mês, em R$ milhões. Tabela: quanto a ação somou ou tirou de cada fundo que a teve.</p>
+      <div data-draw="emp-perf" data-source="posicoes_1 posicoes_2 precos serie_mensal"></div>
+    </article>
+
+    <h2 class="rx-sec">Visão de mercado: os 30 fundos no período</h2>
+{{NAV:261-285}}
+  </section>
+
+  <!-- ================= COMPARAR ================= -->
+  <section class="rx-page" id="pg-comparar" data-pg="comparar" hidden>
+{{NAV:317-339}}
+    <article class="rx-card" id="cmp-risco-card">
+      <h2>Risco no período</h2>
+      <p class="rx-note">Volatilidade anualizada da cota, maior queda do pico ao vale, beta contra o Ibovespa e exposição média em ações. Um fundo com pouca exposição perde na alta e ganha na queda sem mérito na seleção: leia o retorno junto com estas colunas.</p>
+      <div class="rx-tablebox" data-draw="cmp-risk" data-source="serie_mensal"></div>
+    </article>
+{{NAV:340-352}}
+    <h2 class="rx-sec">Os 30 fundos no período</h2>
+    <article class="rx-card" id="mkt-attr-card">
+      <h2>Attribution dos 30 fundos: onde acertaram e erraram</h2>
+      <div data-draw="mkt-attr" data-source="posicoes_1 posicoes_2 serie_mensal precos acoes"></div>
+    </article>
+{{NAV:235-257}}
+  </section>
+
+  <article class="rx-card" id="metodologia">
+    <details class="rx-more" style="border:0"><summary>Como os números foram feitos</summary>
+    <div class="rx-method">
+      <p><b>Duas bases, dois denominadores.</b> Hoje, Posições da casa e Detentores usam a Composição de Carteira (CDA) da CVM agregada por gestora: soma de todos os fundos que a gestora gere, peso = posição comprada ÷ carteira de ações divulgada da casa. Performance, attribution, Comparar e a visão de mercado usam os 30 fundos acompanhados: peso = posição ÷ PL do fundo master, com posições vendidas negativas.</p>
+      <p><b>Carteira confidencial.</b> Os fundos podem manter posições em sigilo por até 6 meses; a CVM publica só o valor confidencial total. Meses com carteira revelada abaixo do mínimo ficam fora das comparações. <span id="cw-gen"></span></p>
+      <p><b>Compras e vendas</b> usam a quantidade de ações (corrigida por desdobramentos e grupamentos). Nas carteiras consolidadas, compra = aumento de pelo menos 10% ou posição nova; venda = redução de pelo menos 10% ou posição zerada; valor = ações compradas ou vendidas × preço atual. Trocas de código (ex.: ELET → AXIA) são unidas.</p>
+      <p><b>Retorno do fundo:</b> cota do master no Informe Diário da CVM, de fim de mês a fim de mês. Fica acima do retorno do cotista porque o master não desconta taxas de administração e performance cobradas no feeder.</p>
+      <p><b>Retorno das ações:</b> retorno total com dividendos (Yahoo Finance; para ações que saíram da bolsa, COTAHIST da B3 mais proventos do Fundamentus). ON, PN e units da mesma empresa aparecem juntas.</p>
+      <p><b>Attribution:</b> peso no fim do mês anterior × retorno da ação no mês, encadeado pelo crescimento da cota. O resto (caixa, derivativos, exterior, operações dentro do mês e custos) é a diferença para o retorno do fundo.</p>
+      <p><b>Períodos com nome:</b> a fronteira é o mês anterior à eleição (o mercado precifica na eleição) ou ao afastamento de Dilma (abr/2016). A série de performance dos 30 fundos vai de jan/2012 a {{END_L}}; períodos que passam disso são cortados e o aviso aparece ao lado do seletor.</p>
+      <p><b>Até onde vai a série:</b> o último mês é o último em que a CVM já publicou a carteira (CDA) dos 30 fundos; como os fundos podem manter posições em sigilo e a CVM republica os meses mais tarde, os meses seguintes ainda não têm carteira completa. De 2024 em diante, ações sem cotação na bolsa (ex.: Compass) usam o preço implícito na própria CDA (valor ÷ quantidade), e códigos trocados (ELET → AXIA, CCRO → MOTV, EMBR → EMBJ, TRPL → ISAE, BRIT → BRST, GUAR → RIAA) seguem como a mesma empresa.</p>
+      <p><b>Seleção dos 30 fundos:</b> fundos de ações de gestoras independentes relevantes em 2014 e vivos em 2018, no máximo dois por gestora, sem fundos com uma única ação acima de 50% do PL. Para períodos recentes, a lista tem viés: fundos criados depois de 2018 não estão nela.</p>
+      <p>Código e dados: <a href="https://github.com/jgnsalles/Gestoras">github.com/jgnsalles/Gestoras</a>.</p>
+    </div></details>
+  </article>
+</div>
+</div>
