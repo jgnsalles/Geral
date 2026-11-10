@@ -96,33 +96,17 @@
     try {
       show('Carregando dados…');
       // arquivos grandes vão em partes (PARTS, gerado no build); cada parte é conferida e baixada de novo se falhar
-      const PARTS = {{PARTS}}, GZ = {{GZ}};
-      let done = 0, total = 0;
-      const tick = () => show('Carregando dados… ' + Math.min(99, Math.round(100 * done / total)) + '%');
-      const get1 = async (url) => {
-        let err;
-        for (let k = 0; k < 6; k++) {
-          try { const r = await fetch(url, { cache: k ? 'reload' : 'default', credentials: 'same-origin' }); if (!r.ok) throw new Error('HTTP ' + r.status); const v = await r.text(); done++; tick(); return v; }
-          catch (e) { err = e; await new Promise((ok) => setTimeout(ok, 800 * 2 ** k)); }
-        }
-        throw new Error(url + ': ' + err.message);
-      };
-      // fila com no máximo 2 downloads ao mesmo tempo (muitos em paralelo levam a HTTP 403 no app)
-      let running = 0; const waiting = [];
-      const queued = (fn) => new Promise((ok, no) => { const go = () => { running++; fn().then(ok, no).finally(() => { running--; const nx = waiting.shift(); if (nx) nx(); }); }; running < 2 ? go() : waiting.push(go); });
+      // os dados vêm embutidos na página (gzip + base64), sem downloads
       const canGz = typeof DecompressionStream === 'function';
+      if (!canGz) throw new Error('este navegador não descomprime dados (atualize o iOS/navegador)');
       const getFile = async (name) => {
-        if (canGz && GZ[name]) {
-          const b64 = await Promise.all(Array.from({ length: GZ[name] }, (_, k) => queued(() => get1('data/' + name + '.gz' + (k + 1) + '.txt'))));
-          const bufs = b64.map((t) => { const s = atob(t.trim()); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i); return u; });
-          return new Response(new Blob(bufs).stream().pipeThrough(new DecompressionStream('gzip'))).text();
-        }
-        const n = PARTS[name];
-        return n ? (await Promise.all(Array.from({ length: n }, (_, k) => queued(() => get1('data/' + name + '.' + (k + 1) + '.txt'))))).join('') : queued(() => get1('data/' + name));
+        const el = document.getElementById('nbd-' + name); if (!el) throw new Error(name + ' não está na página');
+        const s = atob(el.textContent.trim()); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+        el.remove();
+        return new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
       };
       const names = ['carteiras.json', ...NAV.map((id) => id + '.csv')];
-      total = names.reduce((s, n) => s + (canGz && GZ[n] ? GZ[n] : PARTS[n] || 1), 0); tick();
-      const [cwTxt, ...csv] = await Promise.all([getFile('carteiras.json'), ...NAV.map((id) => getFile(id + '.csv'))]);
+      const cwTxt = await getFile('carteiras.json'); const csv = []; for (const id of NAV) csv.push(await getFile(id + '.csv'));
       let cw; try { cw = JSON.parse(cwTxt); } catch (e) { throw new Error('carteiras.json chegou incompleto (' + cwTxt.length + ' caracteres): ' + e.message); }
       NAV.forEach((id, k) => dash._load(id, d3.csvParse(csv[k].trim())));
       CW.init(cw, hooks);

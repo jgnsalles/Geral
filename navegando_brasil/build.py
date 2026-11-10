@@ -53,38 +53,16 @@ out = H / 'dist'; (out / 'data').mkdir(parents=True, exist_ok=True)
 for n in ['fundos', 'serie_mensal', 'posicoes_1', 'posicoes_2', 'precos', 'acoes', 'ibov', 'encerrados']:
     shutil.copy(CSV / (n + '.csv'), out / 'data' / (n + '.csv'))
 shutil.copy(H / 'data/carteiras.json', out / 'data/carteiras.json')
-# divide arquivos grandes em partes de até 1 MB (o app do iPhone não entrega arquivos grandes inteiros)
-LIM = 1_000_000; parts = {}
+# dados embutidos na página (gzip+base64): o app do iPhone não entrega os arquivos de data/ de forma confiável
+import gzip, base64
+emb = []
 for f in sorted((out / 'data').iterdir()):
-    if f.suffix == '.txt': f.unlink(); continue
-for f in sorted((out / 'data').iterdir()):
-    t = f.read_text()
-    if len(t.encode()) <= LIM: continue
-    chunks, cur, size = [], [], 0
-    for line in t.splitlines(keepends=True):
-        b = len(line.encode())
-        if size + b > LIM and cur: chunks.append(''.join(cur)); cur, size = [], 0
-        if b > LIM:
-            for i in range(0, len(line), 900_000): chunks.append(line[i:i + 900_000])
-            continue
-        cur.append(line); size += b
-    if cur: chunks.append(''.join(cur))
-    assert ''.join(chunks) == t
-    for k, c in enumerate(chunks): (out / 'data' / f'{f.name}.{k + 1}.txt').write_text(c)
-    parts[f.name] = len(chunks); f.unlink()
-# versão gzip+base64 dos arquivos grandes (menos bytes para o app do iPhone), em partes de até 900 KB
-import gzip
-gz = {}
-for name, n in parts.items():
-    t = ''.join((out / 'data' / f'{name}.{k + 1}.txt').read_text() for k in range(n))
-    import base64
-    b = base64.b64encode(gzip.compress(t.encode(), 9, mtime=0)).decode()
-    ch = [b[i:i + 900_000] for i in range(0, len(b), 900_000)]   # múltiplo de 4: cada parte é base64 válido
-    for k, c in enumerate(ch): (out / 'data' / f'{name}.gz{k + 1}.txt').write_text(c)
-    gz[name] = len(ch)
-html = html.replace('{{GZ}}', json.dumps(gz))
-print('gzip', gz)
-html = html.replace('{{PARTS}}', json.dumps(parts))
+    if f.suffix not in ('.csv', '.json'): f.unlink(); continue
+    b64 = base64.b64encode(gzip.compress(f.read_bytes(), 9, mtime=0)).decode()
+    emb.append(f'<script type="text/plain" id="nbd-{f.name}">{b64}</script>')
+assert html.count(d3) == 1
+html = html.replace(d3, '\n'.join(emb) + '\n' + d3, 1)
+assert 'id="nbd-carteiras.json"' in html
 (out / 'index.html').write_text(html)
-print('partes', parts)
+print('embutido', len(emb), 'arquivos; página', len(html.encode()) // 1024, 'KB')
 print('ok', len(html), sum(p.stat().st_size for p in (out / 'data').iterdir()))
