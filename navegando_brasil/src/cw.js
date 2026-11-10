@@ -41,6 +41,11 @@ function delta(g,r,i,k){
   for(let m=j+1;m<i;m++){ if(Q(g,r,m)===0) return {d:'nova', flow:val(g,r,i)}; }
   return {d:b/a-1, flow:(b-a)*val(g,r,i)/b};
 }
+function lastMove(g,r,i,k){ for(let m=i;m>i-k;m--){ const x=delta(g,r,m,1); if(isBuy(x)||isSell(x)) return m; } return null; }
+const movSort=(id,mv)=>{ const o=$(id)?$(id).value:'v';
+  const f={v:(a,b)=>Math.abs(b.x.flow)-Math.abs(a.x.flow), r:(a,b)=>((b.m??-1)-(a.m??-1))||(Math.abs(b.x.flow)-Math.abs(a.x.flow)), b:(a,b)=>b.x.flow-a.x.flow}[o]||((a,b)=>0);
+  return mv.sort(f); };
+const whenCell=m=>m==null?'<td style="text-align:left" class="co">aos poucos</td>':`<td style="text-align:left">${ml(m)}</td>`;
 const isBuy=x=>x&&(x.d==='nova'||(typeof x.d==='number'&&x.d>=0.10));
 const isSell=x=>x&&(x.d==='zerou'||(typeof x.d==='number'&&x.d<=-0.10));
 function dq(x){ if(!x) return '<span class="zero">–</span>'; if(x.d==='nova') return '<span class="cw-chip new">nova</span>'; if(x.d==='zerou') return '<span class="cw-chip down">zerou</span>';
@@ -295,9 +300,9 @@ function renderG(){
   $('g-outs').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ if(isReal(b.dataset.r)){ S.em=i; H.openE(b.dataset.r);} });
   // compras e vendas da casa
   const k=+$('g-k').value;
-  const mv=roots.map(r=>({r,x:delta(g,r,i,k)})).filter(o=>isBuy(o.x)||isSell(o.x)).sort((a,b)=>b.x.flow-a.x.flow);
+  const mv=movSort('g-ord',roots.map(r=>({r,x:delta(g,r,i,k)})).filter(o=>isBuy(o.x)||isSell(o.x)).map(o=>({...o,m:lastMove(g,o.r,i,k)})));
   $('g-mov').innerHTML=!ok(g,i-k)?`<tbody><tr><td style="text-align:left" class="rx-note">Sem carteira comparável em ${mlong(i-k)}.</td></tr></tbody>`:mv.length?
-    `<thead><tr><th style="text-align:left">Emissor</th><th>Δ ações</th><th>Valor</th><th>Peso ${ml(i-k)}</th><th>Peso ${ml(i)}</th></tr></thead><tbody>`+mv.map(o=>`<tr data-r="${esc(o.r)}">${tkCell(o.r)}<td>${dq(o.x)}</td><td class="${o.x.flow>0?'rx-pos':'rx-neg'}">${brl(o.x.flow)}</td><td>${pct(W(g,o.r,i-k),1)}</td><td>${pct(W(g,o.r,i),1)}</td></tr>`).join('')+'</tbody>'
+    `<thead><tr><th style="text-align:left">Emissor</th><th>Δ ações</th><th>Valor</th><th style="text-align:left">Quando</th><th>Peso ${ml(i-k)}</th><th>Peso ${ml(i)}</th></tr></thead><tbody>`+mv.map(o=>`<tr data-r="${esc(o.r)}">${tkCell(o.r)}<td>${dq(o.x)}</td><td class="${o.x.flow>0?'rx-pos':'rx-neg'}">${brl(o.x.flow)}</td>${whenCell(o.m)}<td>${pct(W(g,o.r,i-k),1)}</td><td>${pct(W(g,o.r,i),1)}</td></tr>`).join('')+'</tbody>'
     :'<tbody><tr><td style="text-align:left" class="rx-note">Nenhuma mudança de ≥ 10% nas ações no período.</td></tr></tbody>';
   $('g-mov').querySelectorAll('tbody tr[data-r]').forEach(tr=>tr.onclick=()=>{ if(isReal(tr.dataset.r)){ S.em=i; H.openE(tr.dataset.r);} });
   // histórico
@@ -364,9 +369,9 @@ function renderE(){
     ], rows, 'w', o=>`data-g="${o.g.id}"`, 1e9, renderE);
   else $('e-tbl').innerHTML=`<tbody><tr><td style="text-align:left" class="rx-note">${all.length?'Nenhuma gestora com esses filtros.':`Nenhuma gestora acompanhada tinha essa ação em ${mlong(i)}.`}</td></tr></tbody>`;
   $('e-tbl').querySelectorAll('tbody tr[data-g]').forEach(tr=>tr.onclick=()=>{S.gm=i; H.openG(tr.dataset.g,true);});
-  mv.sort((a,b)=>b.x.flow-a.x.flow);
-  $('e-mov').innerHTML=mv.length?`<thead><tr><th style="text-align:left">Gestora</th><th>Δ ações</th><th>Valor</th><th>Peso ${ml(i-k)}</th><th>Peso ${ml(i)}</th></tr></thead><tbody>`+
-    mv.map(o=>`<tr data-g="${o.g.id}">${L(esc(o.g.n))}<td>${dq(o.x)}</td><td class="${o.x.flow>0?'rx-pos':'rx-neg'}">${brl(o.x.flow)}</td><td>${pct(W(o.g,r,i-k),1)}</td><td>${pct(W(o.g,r,i),1)}</td></tr>`).join('')+'</tbody>'
+  mv.forEach(o=>{o.m=lastMove(o.g,r,i,k);}); movSort('e-ord',mv);
+  $('e-mov').innerHTML=mv.length?`<thead><tr><th style="text-align:left">Gestora</th><th>Δ ações</th><th>Valor</th><th style="text-align:left">Quando</th><th>Peso ${ml(i-k)}</th><th>Peso ${ml(i)}</th></tr></thead><tbody>`+
+    mv.map(o=>`<tr data-g="${o.g.id}">${L(esc(o.g.n))}<td>${dq(o.x)}</td><td class="${o.x.flow>0?'rx-pos':'rx-neg'}">${brl(o.x.flow)}</td>${whenCell(o.m)}<td>${pct(W(o.g,r,i-k),1)}</td><td>${pct(W(o.g,r,i),1)}</td></tr>`).join('')+'</tbody>'
     :'<tbody><tr><td style="text-align:left" class="rx-note">Nenhuma gestora mudou ≥ 10% das ações no período.</td></tr></tbody>';
   $('e-mov').querySelectorAll('tbody tr[data-g]').forEach(tr=>tr.onclick=()=>{S.gm=i; H.openG(tr.dataset.g,true);});
   const i1=NM-1, i0=Math.max(0,i1-S.erng+1);
@@ -408,6 +413,7 @@ function init(data, hooks){
   document.querySelectorAll('[data-more]').forEach(b=>b.addEventListener('click',()=>{ const k=b.dataset.more; S.more[k]=!S.more[k]; renderR(); }));
   $('g-m').addEventListener('change',()=>{S.gm=+$('g-m').value; renderG();});
   $('g-k').addEventListener('change',renderG);
+  $('g-ord').addEventListener('change',renderG); $('e-ord').addEventListener('change',renderE);
   $('e-q').addEventListener('change',()=>{ const r=findE($('e-q').value); if(r) H.openE(r); });
   $('e-m').addEventListener('change',()=>{S.em=+$('e-m').value; renderE();});
   ['e-k','e-only','e-fv','e-fg','e-fd'].forEach(id=>$(id).addEventListener('change',renderE));

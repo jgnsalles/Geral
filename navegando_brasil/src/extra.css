@@ -44,3 +44,4 @@
 .nb-attr td { white-space: normal; }
 .nb-attr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 36rem), 1fr)); gap: var(--cds-gap-lg); }
 .nb-attr .rx-table td:first-child, .nb-attr .rx-table td:nth-child(2) { white-space: normal; }
+.nb-ord { display: inline-flex; flex-wrap: wrap; gap: var(--cds-gap-xs); align-items: center; }
