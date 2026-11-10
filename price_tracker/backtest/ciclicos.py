@@ -43,6 +43,9 @@ GROUPS = {'Media': {'Advertising', 'Publishing', 'Cable & Satellite', 'Broadcast
           'Specialized REITs': {'Other Specialized REITs', 'Timber REITs', 'Data Center REITs', 'Self-Storage REITs', 'Telecom Tower REITs'}}
 SUB2GROUP = {sub: g for g, subs in GROUPS.items() for sub in subs}
 DEFENSIVE_SECTORS = {'Consumer Staples', 'Utilities'}
+# Decisao do usuario (2026-11-10, opcao B): passam na regua, mas o ROIC oscila por motivos que nao sao ciclo
+# (pandemia, saida de prejuizo, vencimento de patente); voltam para a OoL/GCGR. Escolha feita olhando o retorno de 2012-2026.
+NOT_CYCLICAL = {'Hotels, Resorts & Cruise Lines', 'Movies & Entertainment', 'Biotechnology', 'Automobile Manufacturers', 'Diversified Chemicals'}
 MULT, MIN_COLLAPSES = 2.0, 2
 
 
@@ -101,7 +104,7 @@ def cyclical_industries():
     p = D / 'ciclicos.csv'
     if not p.exists(): build()
     S = pd.read_csv(p)
-    return set(S[S.ciclico].industry)
+    return set(S[S.ciclico].industry) - NOT_CYCLICAL
 
 
 if __name__ == '__main__':

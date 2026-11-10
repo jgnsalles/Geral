@@ -1,7 +1,7 @@
 """Comparativos obrigatorios de toda analise de desempenho (instrucao permanente do usuario, 2026-11-10):
 S&P 500, S&P 500 equal weight, OoL antigo, GCGR antigo, OoL novo, GCGR novo, OoL High ROIC (novo), OoL High Growth (novo).
 Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboco (ROIC 12%/10%), sem zROIC, sem vestuario e sem subsetores ciclicos
-(regua de ciclicos.py); as acoes de subsetores ciclicos que seriam OoL ou GCGR vao para a classe Cyclicals (desde 2026-11-10).
+(regua de ciclicos.py, menos as excecoes NOT_CYCLICAL); as acoes de subsetores ciclicos que seriam OoL ou GCGR vao para a classe Cyclicals (desde 2026-11-10).
 Universo point-in-time, ROIC oficial (corrigido em 2026-11-10), equal weight, rebalanceamento trimestral.
 Uso: from benchmarks import load_benchmarks, bench_table, bench_plot"""
 import sys, pathlib

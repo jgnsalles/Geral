@@ -84,3 +84,11 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   o imobilizado de concessionárias (`PublicUtilitiesPropertyPlantAndEquipmentNet`) e de REITs (`RealEstateInvestmentPropertyNet`) não era
   lido; Entergy tinha imobilizado de US$ 0,2–0,5 bi (real ≈ US$ 50 bi) e ROIC de 140–370%. 67 empresas tiveram os dados da SEC rebaixados.
   Todos os testes point-in-time foram refeitos depois disso. Achado de exploração, não de confirmação.
+- 2026-11-10 — **Definição "novo" (exploratória, para testar no Japão sem ajuste):** esboço (ROIC 12%/10%), sem zROIC, sem vestuário/calçados e sem
+  subsetores cíclicos. Régua de cíclico (só fundamentos, histórico completo do ROIC, mediana do subsetor): queda média ≥ 2× a dos defensivos (30%) e
+  ≥ 2 colapsos. Exceções escolhidas pelo usuário depois de ver o retorno (opção B): hotéis/cruzeiros, entretenimento, biotecnologia, montadoras e
+  químicos básicos voltam. Excluídos (vão para a classe Cyclicals): Oil & Gas E&P, Equipment & Services, Drilling, Refining & Marketing; Copper; Steel;
+  Fertilizers & Agricultural Chemicals; Department Stores; Passenger Airlines; Motorcycle Manufacturers; Casinos & Gaming; Interactive Home
+  Entertainment; Multi-line Insurance; Health Care Distributors; Leisure Products; Apparel, Accessories & Luxury Goods; Footwear.
+  Resultado EUA 2012–2026: OoL novo 17,1% a.a.; GCGR novo 16,9%; High ROIC 18,8%; High Growth 19,3%; Cyclicals 5,5%; S&P 500 15,6%.
+  As exceções foram escolhidas olhando o retorno: o ganho delas sobre a régua pura (~0,5 p.p.) é suspeito de sobreajuste.

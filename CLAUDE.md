@@ -40,5 +40,8 @@ Toda análise de carteira/backtest deve voltar com estas 8 linhas (tabela e grá
 Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboço (ROIC 12%/10%), sem zROIC, sem vestuário e sem subsetores cíclicos.
 Subsetor cíclico (`backtest/ciclicos.py`): mediana das empresas, histórico completo do ROIC; queda média (média das quedas ano a ano ÷ ROIC médio)
 ≥ 2× a dos setores defensivos (consumo básico + utilidades) **e** ≥ 2 colapsos (ROIC ≤ metade do pico dos 3 anos anteriores); subsetor com 1 empresa
-é decidido na indústria GICS acima.
+é decidido na indústria GICS acima. **Exceções (decisão do usuário, opção B, 2026-11-10):** hotéis/cruzeiros, entretenimento, biotecnologia, montadoras e
+químicos básicos passam na régua mas NÃO são tratados como cíclicos (`NOT_CYCLICAL`). Ficam cíclicos (15): petróleo (E&P, serviços, perfuração, refino),
+cobre, aço, fertilizantes, lojas de departamento, aéreas, motos, cassinos, jogos, seguros multilinha, distribuidoras de saúde, brinquedos.
+Vestuário e calçados também saem (decisão do usuário).
 Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table()`). Se a definição de "novo" mudar, atualizar aqui e no módulo.
