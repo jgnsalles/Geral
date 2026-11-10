@@ -159,3 +159,8 @@ Ordenar por um único trimestre mistura sorte com volatilidade: as ações mais 
 | peso de ágio + intangíveis no capital | 30% | 42% | 27% | -0,06 | 53% | 39% | 53% | -0,00 |
 | Capital B médio | 4,11 | 4,02 | 4,55 | +0,05 | 5,54 | 6,13 | 6,58 | +0,05 |
 | peso do capital de giro no capital | 15% | 11% | 15% | -0,01 | 8,4% | 9,0% | 6,8% | -0,05 |
+
+> **Correção (2026-11-10, ver `metrica_retorno.md`):** a tabela por empresa acima usa a **mediana** de cada métrica ao longo das posições,
+> o que inclui trimestres depois da compra. Quando a ação sobe, o P/L sobe junto, então P/L, P/E justo ÷ P/L e retorno esperado ficam
+> mecanicamente ligados ao retorno. Medido **na primeira compra**, o P/L não tem relação com o retorno (R² 0,002 na OoL) e o retorno
+> esperado também não (0,002). A conclusão "as piores pareciam baratas" era em grande parte esse viés.
