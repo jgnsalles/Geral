@@ -67,7 +67,8 @@ def main():
         x['firm'] = x.ticker.map(lambda t: DUAL.get(t, t)); x['mcap'] = x.mcap / x.groupby(['date', 'firm']).ticker.transform('size')
         W = {'Peso igual (base)': {d: pd.Series(1.0, index=g.ticker) for d, g in x.groupby('date')},
              'Cenário 1: valor de mercado': {d: pd.Series(g.mcap.values, index=g.ticker) for d, g in x.groupby('date')},
-             'Cenário 2: retorno esperado': {d: pd.Series(g.ret.clip(lower=0).values, index=g.ticker) for d, g in x.groupby('date')}}
+             'Cenário 2: retorno esperado': {d: pd.Series(g.ret.clip(lower=0).values, index=g.ticker) for d, g in x.groupby('date')},
+             'Cenário 3: raiz do valor de mercado': {d: pd.Series(np.sqrt(g.mcap.values), index=g.ticker) for d, g in x.groupby('date')}}
         r = {'Carteira': k}
         for wn, w in W.items():
             nav = run_weighted(w, adj, dates); st = stats(nav); Mn = nav.resample('ME').last()
@@ -84,34 +85,33 @@ def main():
            'sem custos. ETFs não mudam. Empresas com duas classes de ação (GOOG/GOOGL etc.) têm o valor de mercado dividido entre as classes.\n',
            f'Referências: S&P 500 {pc(S)} a.a.; S&P 500 equal weight {pc(stats(navs["S&P 500 equal weight"])["CAGR"])} a.a.\n',
            '## Retorno anual e ganho/perda contra o peso igual\n',
-           '| Carteira | Peso igual (base) | Cenário 1: valor de mercado | Ganho/perda | Cenário 2: retorno esperado | Ganho/perda |', '|---|---|---|---|---|---|']
+           '| Carteira | Peso igual (base) | C1: valor de mercado | Ganho/perda | C2: retorno esperado | Ganho/perda | C3: raiz do valor de mercado | Ganho/perda |',
+           '|---|---|---|---|---|---|---|---|']
     for r in res:
-        b, c1, c2 = r['Peso igual (base)'], r['Cenário 1: valor de mercado'], r['Cenário 2: retorno esperado']
-        out.append(f"| {r['Carteira']} | {pc(b[0])} | {pc(c1[0])} | **{pp(c1[0] - b[0])}** | {pc(c2[0])} | **{pp(c2[0] - b[0])}** |")
-    out += ['', '## Pior queda e janelas de 5 anos acima do S&P\n', '| Carteira | Base: pior queda | C1: pior queda | C2: pior queda | Base: janelas 5a | C1: janelas 5a | C2: janelas 5a |',
-            '|---|---|---|---|---|---|---|']
+        b, c1, c2, c3 = r['Peso igual (base)'], r['Cenário 1: valor de mercado'], r['Cenário 2: retorno esperado'], r['Cenário 3: raiz do valor de mercado']
+        out.append(f"| {r['Carteira']} | {pc(b[0])} | {pc(c1[0])} | **{pp(c1[0] - b[0])}** | {pc(c2[0])} | **{pp(c2[0] - b[0])}** | {pc(c3[0])} | **{pp(c3[0] - b[0])}** |")
+    out += ['', '## Pior queda e janelas de 5 anos acima do S&P\n', '| Carteira | Pior queda: base / C1 / C2 / C3 | Janelas 5a > S&P: base / C1 / C2 / C3 |', '|---|---|---|']
     for r in res:
-        b, c1, c2 = r['Peso igual (base)'], r['Cenário 1: valor de mercado'], r['Cenário 2: retorno esperado']
-        out.append(f"| {r['Carteira']} | {pc(b[1])} | {pc(c1[1])} | {pc(c2[1])} | {b[2]:.0%} | {c1[2]:.0%} | {c2[2]:.0%} |")
-    out += ['', '## Concentração (mediana dos trimestres)\n', '| Carteira | Ponderação | Maior peso | 5 maiores pesos |', '|---|---|---|---|']
-    for k, wn, mx, t5 in conc:
-        out.append(f'| {k} | {wn} | {mx:.0%} | {t5:.0%} |')
+        v = [r[k_] for k_ in ('Peso igual (base)', 'Cenário 1: valor de mercado', 'Cenário 2: retorno esperado', 'Cenário 3: raiz do valor de mercado')]
+        out.append(f"| {r['Carteira']} | {' / '.join(pc(z[1]) for z in v)} | {' / '.join(f'{z[2]:.0%}' for z in v)} |")
+    out += ['', '## Concentração (mediana dos trimestres): maior peso / 5 maiores somados\n',
+            '| Carteira | Peso igual | C1: valor de mercado | C2: retorno esperado | C3: raiz do valor de mercado |', '|---|---|---|---|---|']
+    cd = {(k, wn): (mx, t5) for k, wn, mx, t5 in conc}
+    for k in H:
+        out.append(f'| {k} | ' + ' | '.join(f'{cd[(k, wn)][0]:.0%} / {cd[(k, wn)][1]:.0%}' for wn in ('Peso igual (base)', 'Cenário 1: valor de mercado',
+                                                                                            'Cenário 2: retorno esperado', 'Cenário 3: raiz do valor de mercado')) + ' |')
     out += ['', '## Comparativos obrigatórios (peso igual)\n'] + bm.bench_table(navs, n)
     (ROOT / 'pesos.md').write_text('\n'.join(out)); print('\n'.join(out))
-    plot = {k: navs[k] for k in ('S&P 500', 'S&P 500 equal weight')}
-    for k in ('OoL novo', 'GCGR novo', 'OoL High ROIC (novo)', 'OoL High Growth (novo)'):
-        for wn, tag in (('Peso igual (base)', 'peso igual'), ('Cenário 1: valor de mercado', 'valor de mercado'), ('Cenário 2: retorno esperado', 'retorno esperado')):
-            plot[f'{k} — {tag}'] = curves[(k, wn)]
     import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt, matplotlib.ticker as mt
     fig, axs = plt.subplots(2, 2, figsize=(15, 10), dpi=130)
     for ax, k in zip(axs.ravel(), ('OoL novo', 'GCGR novo', 'OoL High ROIC (novo)', 'OoL High Growth (novo)')):
         for nm, col, ls in (('S&P 500', '#000', '--'), ('S&P 500 equal weight', '#8c959f', ':')):
             ax.plot(navs[nm].index, (navs[nm] - 1) * 100, color=col, ls=ls, lw=1.5, label=f'{nm} ({pc(stats(navs[nm])["CAGR"])})')
-        for wn, col in (('Peso igual (base)', '#1f6feb'), ('Cenário 1: valor de mercado', '#2da44e'), ('Cenário 2: retorno esperado', '#cf222e')):
+        for wn, col in (('Peso igual (base)', '#1f6feb'), ('Cenário 1: valor de mercado', '#2da44e'), ('Cenário 2: retorno esperado', '#cf222e'), ('Cenário 3: raiz do valor de mercado', '#bf8700')):
             s = curves[(k, wn)]; ax.plot(s.index, (s - 1) * 100, color=col, lw=2, label=f'{wn} ({pc(stats(s)["CAGR"])})')
         ax.set_title(k, fontsize=10); ax.grid(alpha=.3); ax.legend(fontsize=7, loc='upper left')
         ax.yaxis.set_major_formatter(mt.FuncFormatter(lambda v, _: f'{v:,.0f}%'.replace(',', '.')))
-    fig.suptitle('Peso igual × valor de mercado × retorno esperado — retorno total acumulado', fontsize=11)
+    fig.suptitle('Peso igual × valor de mercado × retorno esperado × raiz do valor de mercado — retorno total acumulado', fontsize=11)
     fig.tight_layout(rect=(0, 0, 1, .97)); fig.savefig(ROOT / 'pesos.png'); plt.close(fig)
 
 

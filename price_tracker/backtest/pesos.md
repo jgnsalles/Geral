@@ -8,53 +8,39 @@ Referências: S&P 500 15,6% a.a.; S&P 500 equal weight 13,2% a.a.
 
 ## Retorno anual e ganho/perda contra o peso igual
 
-| Carteira | Peso igual (base) | Cenário 1: valor de mercado | Ganho/perda | Cenário 2: retorno esperado | Ganho/perda |
-|---|---|---|---|---|---|
-| OoL antigo | 15,1% | 19,6% | **+4,5 p.p.** | 13,8% | **-1,4 p.p.** |
-| GCGR antigo | 15,0% | 19,3% | **+4,3 p.p.** | 15,7% | **+0,7 p.p.** |
-| OoL novo | 17,1% | 20,2% | **+3,1 p.p.** | 16,9% | **-0,2 p.p.** |
-| GCGR novo | 16,9% | 19,4% | **+2,5 p.p.** | 18,8% | **+1,9 p.p.** |
-| OoL High ROIC (novo) | 18,8% | 21,3% | **+2,4 p.p.** | 20,0% | **+1,2 p.p.** |
-| OoL High Growth (novo) | 19,3% | 20,1% | **+0,7 p.p.** | 17,5% | **-1,9 p.p.** |
-| Cyclicals | 5,5% | 2,7% | **-2,8 p.p.** | 5,7% | **+0,3 p.p.** |
+| Carteira | Peso igual (base) | C1: valor de mercado | Ganho/perda | C2: retorno esperado | Ganho/perda | C3: raiz do valor de mercado | Ganho/perda |
+|---|---|---|---|---|---|---|---|
+| OoL antigo | 15,1% | 19,6% | **+4,5 p.p.** | 13,8% | **-1,4 p.p.** | 17,8% | **+2,7 p.p.** |
+| GCGR antigo | 15,0% | 19,3% | **+4,3 p.p.** | 15,7% | **+0,7 p.p.** | 16,8% | **+1,8 p.p.** |
+| OoL novo | 17,1% | 20,2% | **+3,1 p.p.** | 16,9% | **-0,2 p.p.** | 18,9% | **+1,8 p.p.** |
+| GCGR novo | 16,9% | 19,4% | **+2,5 p.p.** | 18,8% | **+1,9 p.p.** | 18,0% | **+1,0 p.p.** |
+| OoL High ROIC (novo) | 18,8% | 21,3% | **+2,4 p.p.** | 20,0% | **+1,2 p.p.** | 20,4% | **+1,6 p.p.** |
+| OoL High Growth (novo) | 19,3% | 20,1% | **+0,7 p.p.** | 17,5% | **-1,9 p.p.** | 20,0% | **+0,6 p.p.** |
+| Cyclicals | 5,5% | 2,7% | **-2,8 p.p.** | 5,7% | **+0,3 p.p.** | 4,1% | **-1,4 p.p.** |
 
 ## Pior queda e janelas de 5 anos acima do S&P
 
-| Carteira | Base: pior queda | C1: pior queda | C2: pior queda | Base: janelas 5a | C1: janelas 5a | C2: janelas 5a |
-|---|---|---|---|---|---|---|
-| OoL antigo | -35,9% | -41,2% | -34,7% | 37% | 44% | 39% |
-| GCGR antigo | -37,2% | -32,4% | -33,7% | 46% | 64% | 39% |
-| OoL novo | -35,8% | -39,6% | -33,5% | 55% | 58% | 39% |
-| GCGR novo | -32,3% | -31,6% | -32,6% | 60% | 64% | 63% |
-| OoL High ROIC (novo) | -33,8% | -45,8% | -31,6% | 66% | 57% | 66% |
-| OoL High Growth (novo) | -35,0% | -50,0% | -38,3% | 60% | 54% | 55% |
-| Cyclicals | -52,8% | -58,1% | -44,6% | 0% | 0% | 0% |
+| Carteira | Pior queda: base / C1 / C2 / C3 | Janelas 5a > S&P: base / C1 / C2 / C3 |
+|---|---|---|
+| OoL antigo | -35,9% / -41,2% / -34,7% / -36,7% | 37% / 44% / 39% / 39% |
+| GCGR antigo | -37,2% / -32,4% / -33,7% / -31,3% | 46% / 64% / 39% / 61% |
+| OoL novo | -35,8% / -39,6% / -33,5% / -33,2% | 55% / 58% / 39% / 67% |
+| GCGR novo | -32,3% / -31,6% / -32,6% / -30,4% | 60% / 64% / 63% / 63% |
+| OoL High ROIC (novo) | -33,8% / -45,8% / -31,6% / -37,6% | 66% / 57% / 66% / 66% |
+| OoL High Growth (novo) | -35,0% / -50,0% / -38,3% / -41,2% | 60% / 54% / 55% / 62% |
+| Cyclicals | -52,8% / -58,1% / -44,6% / -53,9% | 0% / 0% / 0% / 0% |
 
-## Concentração (mediana dos trimestres)
+## Concentração (mediana dos trimestres): maior peso / 5 maiores somados
 
-| Carteira | Ponderação | Maior peso | 5 maiores pesos |
-|---|---|---|---|
-| OoL antigo | Peso igual (base) | 4% | 19% |
-| OoL antigo | Cenário 1: valor de mercado | 32% | 72% |
-| OoL antigo | Cenário 2: retorno esperado | 14% | 41% |
-| GCGR antigo | Peso igual (base) | 3% | 15% |
-| GCGR antigo | Cenário 1: valor de mercado | 30% | 65% |
-| GCGR antigo | Cenário 2: retorno esperado | 13% | 37% |
-| OoL novo | Peso igual (base) | 2% | 12% |
-| OoL novo | Cenário 1: valor de mercado | 25% | 63% |
-| OoL novo | Cenário 2: retorno esperado | 11% | 32% |
-| GCGR novo | Peso igual (base) | 5% | 23% |
-| GCGR novo | Cenário 1: valor de mercado | 29% | 71% |
-| GCGR novo | Cenário 2: retorno esperado | 14% | 43% |
-| OoL High ROIC (novo) | Peso igual (base) | 6% | 31% |
-| OoL High ROIC (novo) | Cenário 1: valor de mercado | 33% | 83% |
-| OoL High ROIC (novo) | Cenário 2: retorno esperado | 16% | 52% |
-| OoL High Growth (novo) | Peso igual (base) | 7% | 33% |
-| OoL High Growth (novo) | Cenário 1: valor de mercado | 41% | 88% |
-| OoL High Growth (novo) | Cenário 2: retorno esperado | 21% | 55% |
-| Cyclicals | Peso igual (base) | 20% | 100% |
-| Cyclicals | Cenário 1: valor de mercado | 32% | 100% |
-| Cyclicals | Cenário 2: retorno esperado | 36% | 100% |
+| Carteira | Peso igual | C1: valor de mercado | C2: retorno esperado | C3: raiz do valor de mercado |
+|---|---|---|---|---|
+| OoL antigo | 4% / 19% | 32% / 72% | 14% / 41% | 14% / 44% |
+| GCGR antigo | 3% / 15% | 30% / 65% | 13% / 37% | 11% / 36% |
+| OoL novo | 2% / 12% | 25% / 63% | 11% / 32% | 9% / 33% |
+| GCGR novo | 5% / 23% | 29% / 71% | 14% / 43% | 15% / 46% |
+| OoL High ROIC (novo) | 6% / 31% | 33% / 83% | 16% / 52% | 18% / 57% |
+| OoL High Growth (novo) | 7% / 33% | 41% / 88% | 21% / 55% | 21% / 64% |
+| Cyclicals | 20% / 100% | 32% / 100% | 36% / 100% | 26% / 100% |
 
 ## Comparativos obrigatórios (peso igual)
 
