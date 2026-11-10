@@ -124,3 +124,11 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   (que tirava 46% das posições). Com a leitura certa saem 10% das posições. O teste anterior fica registrado como leitura errada; roda-se o correto.
 - 2026-11-10 — **Resultado com a leitura certa (último ano > 150% ou P/L < 6 fora):** EUA 19,3% a.a. (sem filtro 19,7%; pior queda −32,2% contra
   −28,6%). Brasil 9,9% a.a. (sem filtro 12,5%; Ibovespa 10,9%). Também piora; filtros rejeitados.
+- 2026-11-10 — **CANDIDATA FINAL CONGELADA (aprovada pelo usuário) para o teste no Japão, sem nenhum ajuste depois:**
+  1. Elegíveis: ROIC do modelo ≥ 12% e crescimento do EPS (mediana de 5 anos) ≥ 15%; sem vestuário/calçados/têxteis e sem subsetores cíclicos
+     (régua + exceções B); **fora se P/L < 4** (lucro positivo). Sem corte de crescimento do último ano.
+  2. Ordenação: retorno esperado do modelo (P/E justo com ROIC limitado a 100% + múltiplo constante + dividendos), sem o corte de 20%; ficam as
+     **20** maiores (empate: maior ROIC).
+  3. Peso: raiz do valor de mercado com teto de 10% por ação. Rebalanceamento trimestral.
+  Resultado conhecido (dentro da amostra/exploratório): EUA 19,7% a.a. (S&P 15,6%); Brasil 12,9% a.a. (Ibovespa 10,9%).
+  Comparar no Japão com o TOPIX e o universo com peso igual; critério de sucesso: retorno acima dos dois.
