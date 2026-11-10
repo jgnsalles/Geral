@@ -115,3 +115,8 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   Por ter sido proposta depois dos resultados, conta como exploratória até o Japão.
 - 2026-11-10 — **Resultado da Top 20 por retorno esperado:** EUA 19,7% a.a. (S&P 15,6%, QQQ 20,3%; pior queda −28,6%, a menor das carteiras;
   alfa +4,5, t 1,82). Brasil 12,5% a.a. (Ibovespa 10,9%, universo 11,9%). Primeira regra que fica acima do índice nos dois países.
+- 2026-11-10 — **Pré-registro (regra do usuário, depois de ver os erros):** Top 20 por retorno esperado com dois filtros a mais nas elegíveis:
+  fora se alguma taxa anual de crescimento do lucro nos 5 anos da janela passar de **150%**, e fora se o **P/L < 6** (lucro positivo). O resto igual.
+  EUA e Brasil (no Brasil, crescimento do lucro líquido dos controladores, como no modelo brasileiro). Exploratória até o Japão.
+- 2026-11-10 — **Resultado dos filtros (crescimento anual > 150% e P/L < 6 fora): piorou nos dois países.** EUA 18,8% a.a. (sem os filtros 19,7%;
+  pior queda −38,1% contra −28,6%). Brasil 7,7% a.a. (sem os filtros 12,5%; Ibovespa 10,9%). Filtros rejeitados; fica a Top 20 sem eles.

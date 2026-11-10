@@ -12,6 +12,8 @@ from backtest import stats, D  # noqa: E402
 from validation_factors import factors, reg  # noqa: E402
 
 NS = (20, 15, 10)
+EXTRA_US = None  # filtro extra opcional sobre as elegiveis dos EUA (funcao df -> mascara)
+EXTRA_BR = None
 pc = lambda x: '—' if pd.isna(x) else f'{x:.1%}'.replace('.', ',')
 pp = lambda x: '—' if pd.isna(x) else f'{x * 100:+.1f}'.replace('.', ',')
 n2 = lambda x: '—' if pd.isna(x) else f'{x:.2f}'.replace('.', ',')
@@ -55,6 +57,7 @@ def main():
     f, dates = bm.base_data(); adj = bm.load_prices()['adj_close']
     c = bm.classify_new(f)
     el = c[~c.excluded & (c.roic >= .12) & (c.growth >= .15) & c.roic.notna() & c.growth.notna()].copy()
+    if EXTRA_US is not None: el = el[EXTRA_US(el)].copy()
     el['mcap'] = mcap_us(c, el)
     navs, n_, dts, _ = bm.load_benchmarks()
     E = pd.read_csv(D / 'etfs_rivais.csv', index_col=0, parse_dates=True)
@@ -94,6 +97,7 @@ def main():
     cyc = b.ticker.map(sec).isin(oc.CYC_SECTORS) | b.ticker.map(tkr).isin(oc.CYC_TICKERS); app = b.ticker.map(tkr).isin(oc.APPAREL)
     fund = pd.read_csv(BD / 'fund.csv.gz', parse_dates=['DT_REFER', 'DT_RECEB']); fund['fy'] = fund.DT_REFER.dt.year
     elb = b[~cyc & ~app & (b.roic >= .12) & (b.growth >= .15) & b['cat_zg2.93'].notna()].copy()
+    if EXTRA_BR is not None: elb = elb[EXTRA_BR(elb, fund if 'fund' in dir() else None, cvm)].copy()
     sh = []
     for rr in elb.itertuples():
         ff = fund[(fund.CD_CVM == cvm.get(rr.ticker)) & (fund.DT_RECEB <= rr.date) & (fund.fy == rr.last_fy)]
