@@ -22,6 +22,7 @@
   .pt-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: var(--cds-pad-sm); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; min-width: 12rem; z-index: 2; }
   .pt-tip div { display: flex; justify-content: space-between; gap: var(--cds-gap-md); }
   .pt-scroll { overflow-x: auto; }
+  .pt-tall { max-height: 26rem; overflow-y: auto; }
   .pt-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
   .pt-table th, .pt-table td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
   .pt-table th:first-child, .pt-table td:first-child, .pt-table .l { text-align: left; }
@@ -73,7 +74,7 @@
     <div class="pt-kpi" id="kpi-carteira"><span class="pt-kpi-label">Carteira: retorno ao ano</span><span class="pt-kpi-value" data-draw="k-ann">—</span><span class="pt-kpi-sub">Total no período: <span data-draw="k-tot">—</span></span></div>
     <div class="pt-kpi" id="kpi-sp"><span class="pt-kpi-label">S&amp;P 500: retorno ao ano</span><span class="pt-kpi-value" data-draw="k-spy">—</span><span class="pt-kpi-sub">Total no período: <span data-draw="k-spytot">—</span></span></div>
     <div class="pt-kpi" id="kpi-excesso"><span class="pt-kpi-label">Excesso sobre o S&amp;P 500</span><span class="pt-kpi-value" data-draw="k-ex">—</span><span class="pt-kpi-sub">pontos percentuais ao ano</span></div>
-    <div class="pt-kpi" id="kpi-queda"><span class="pt-kpi-label">Pior queda na janela</span><span class="pt-kpi-value" data-draw="k-dd">—</span><span class="pt-kpi-sub">S&amp;P 500: <span data-draw="k-spydd">—</span></span></div>
+    <div class="pt-kpi" id="kpi-queda"><span class="pt-kpi-label">Pior queda na janela (fins de mês)</span><span class="pt-kpi-value" data-draw="k-dd">—</span><span class="pt-kpi-sub">S&amp;P 500: <span data-draw="k-spydd">—</span></span></div>
     <div class="pt-kpi" id="kpi-meses"><span class="pt-kpi-label">Meses acima do S&amp;P 500</span><span class="pt-kpi-value" data-draw="k-hit">—</span><span class="pt-kpi-sub">dos meses da janela</span></div>
   </section>
 
@@ -87,7 +88,7 @@
     <h2>Comparativos na janela</h2>
     <div class="pt-scroll" data-source="navs">
       <table class="pt-table">
-        <thead><tr><th>Carteira</th><th>Retorno total</th><th>Ao ano</th><th>Excesso sobre o S&amp;P 500 (p.p. a.a.)</th><th>Pior queda</th></tr></thead>
+        <thead><tr><th>Carteira</th><th>Retorno total</th><th>Ao ano</th><th>Excesso sobre o S&amp;P 500 (p.p. a.a.)</th><th>Pior queda (fins de mês)</th></tr></thead>
         <tbody data-draw="perf"></tbody>
       </table>
     </div>
@@ -100,7 +101,7 @@
         <select class="dash-select" data-draw="sel-q" data-source="posicoes" aria-label="Trimestre da composição"></select>
       </label>
       <p class="pt-note">Peso de cada ação na compra do trimestre e o retorno dela até o rebalanceamento seguinte.</p>
-      <div class="pt-scroll" data-source="posicoes">
+      <div class="pt-scroll pt-tall" data-source="posicoes">
         <table class="pt-table">
           <thead><tr><th>Ação</th><th class="l">Empresa</th><th class="l">Subsetor</th><th>Peso</th><th>Retorno no trimestre</th></tr></thead>
           <tbody data-draw="comp"></tbody>
@@ -331,7 +332,7 @@
     el.replaceChildren(); const a = attr(); if (!a) { el.textContent = '—'; return; }
     const m = new Map(); for (const o of a.list) { const k = PTS[o.s] || o.s; const v = m.get(k) || {k, w: 0, c: 0}; v.w += o.w / a.nq; v.c += o.c; m.set(k, v); }
     const d = [...m.values()].sort((x, y) => y.w - x.w);
-    const W = Math.max(280, el.clientWidth), rowH = 24, H = d.length * rowH + 24, left = 150, right = 70;
+    const W = Math.max(280, el.clientWidth), rowH = 24, H = d.length * rowH + 24, left = 175, right = 95;
     const x = d3.scaleLinear().domain([0, d3.max(d, (v) => v.w) || 1]).range([left, W - right]);
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Peso médio e contribuição por setor na janela');
     const g = svg.selectAll('g').data(d).join('g').attr('transform', (v, i) => `translate(0,${i * rowH + 4})`);
