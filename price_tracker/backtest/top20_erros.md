@@ -79,3 +79,45 @@ Cada linha é uma **passagem** de uma ação pela carteira: da entrada até a sa
 | VZ | Verizon | 03/2020–03/2021 | 4 | 18 | 67% | 19% | 24% | 12 | **+13%** | +56% |
 
 **Setores com mais erros:** Information Technology (29), Consumer Discretionary (20), Financials (14), Health Care (13), Industrials (12), Communication Services (9)
+## O que a ação vinha fazendo antes de entrar
+
+| Grupo | Passagens | Retorno nos 12 meses antes (mediana) | Nos 6 meses antes (mediana) | 12 meses antes vs S&P (mediana) | % que vinha caindo em 12 meses |
+|---|---|---|---|---|---|
+| Erros: perdeu do S&P | 112 | +9% | +1% | -4% | 36% |
+| Acertos: bateu o S&P | 142 | +8% | +0% | -4% | 37% |
+| 20 maiores perdas | 20 | +3% | +0% | -9% | 45% |
+
+### Desempenho conforme o que a ação vinha fazendo nos 12 meses antes
+
+| Retorno nos 12 meses antes | Passagens | % que perdeu dinheiro | % que perdeu do S&P | Excesso mediano |
+|---|---|---|---|---|
+| caiu mais de 20% | 32 | 25% | 38% | +6% |
+| caiu até 20% | 61 | 28% | 46% | +1% |
+| subiu até 20% | 79 | 22% | 46% | +2% |
+| subiu 20–50% | 52 | 23% | 42% | +2% |
+| subiu mais de 50% | 30 | 40% | 47% | +3% |
+
+### As 20 maiores perdas: o que vinham fazendo antes
+
+| Ação | Empresa | Entrada | 12 meses antes | 6 meses antes | S&P 12 meses antes | Retorno na carteira |
+|---|---|---|---|---|---|---|
+| FSLR | First Solar, Inc. | 09/2011 | **-57%** | -59% | +1% | -76% |
+| CHTR | Charter Communications | 09/2025 | **-15%** | -25% | +18% | -60% |
+| TTD | Trade Desk, Inc. | 09/2025 | **-55%** | -12% | +18% | -54% |
+| BLDR | Builders FirstSource, Inc. | 12/2023 | **+156%** | +23% | +26% | -51% |
+| PODD | Insulet Corporation | 03/2025 | **+53%** | +13% | +8% | -50% |
+| PAYC | Paycom Software, Inc. | 03/2025 | **+11%** | +32% | +8% | -44% |
+| SIG | Signet Jewelers Ltd | 03/2017 | **-43%** | -6% | +17% | -43% |
+| BIO | Bio-Rad Laboratories, Inc. | 03/2022 | **-1%** | -24% | +15% | -41% |
+| AMP | Ameriprise Financial | 12/2019 | **+64%** | +16% | +31% | -38% |
+| ON | ON Semiconductor Corporation | 12/2024 | **-25%** | -8% | +25% | -35% |
+| LRCX | Lam Research Corporation | 09/2021 | **+73%** | -0% | +30% | -35% |
+| AYI | Acuity Inc. (De) | 12/2017 | **-24%** | -11% | +21% | -34% |
+| URI | United Rentals | 03/2018 | **+40%** | +24% | +14% | -34% |
+| ALGN | Align Technology | 12/2021 | **+23%** | +8% | +29% | -34% |
+| BWA | Borgwarner Inc | 06/2015 | **-12%** | +3% | +7% | -32% |
+| LYB | LyondellBasell | 03/2015 | **+2%** | -18% | +13% | -31% |
+| GT | Goodyear Tire & Rubber Co /Oh/ | 03/2015 | **+5%** | +21% | +13% | -29% |
+| META | Meta Platforms, Inc. | 03/2021 | **+77%** | +12% | +56% | -28% |
+| AMP | Ameriprise Financial | 03/2018 | **+19%** | +1% | +14% | -28% |
+| AMG | Affiliated Managers Group, Inc. | 06/2018 | **-9%** | -27% | +15% | -27% |

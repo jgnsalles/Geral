@@ -50,3 +50,29 @@ out += ['', '## 20 piores contra o S&P (subiram, mas menos que o índice, ou ca�
 by = S[S.ex < 0].groupby('sector').size().sort_values(ascending=False).head(6)
 out += ['', '**Setores com mais erros:** ' + ', '.join(f'{k} ({v})' for k, v in by.items())]
 (ROOT / 'top20_erros.md').write_text('\n'.join(out)); print('\n'.join(out))
+
+# --- retorno antes da entrada
+def prior(t, d, m):
+    s = adj[t].loc[:d].dropna()
+    if s.empty: return np.nan
+    p0 = adj[t].loc[:d - pd.DateOffset(months=m)].dropna()
+    return s.iloc[-1] / p0.iloc[-1] - 1 if len(p0) else np.nan
+S['m12'] = [prior(r.t, r.ini, 12) for r in S.itertuples()]; S['m6'] = [prior(r.t, r.ini, 6) for r in S.itertuples()]
+S['spy12'] = [prior('SPY', r.ini, 12) for r in S.itertuples()]
+S['rel12'] = S.m12 - S.spy12
+out2 = ['', '## O que a ação vinha fazendo antes de entrar\n',
+        '| Grupo | Passagens | Retorno nos 12 meses antes (mediana) | Nos 6 meses antes (mediana) | 12 meses antes vs S&P (mediana) | % que vinha caindo em 12 meses |',
+        '|---|---|---|---|---|---|']
+for lab, m in (('Erros: perdeu do S&P', S.ex < 0), ('Acertos: bateu o S&P', S.ex >= 0), ('20 maiores perdas', S.index.isin(S.sort_values('r').head(20).index))):
+    x = S[m]
+    out2.append(f'| {lab} | {len(x)} | {pc(x.m12.median())} | {pc(x.m6.median())} | {pc(x.rel12.median())} | {(x.m12 < 0).mean():.0%} |')
+out2 += ['', '### Desempenho conforme o que a ação vinha fazendo nos 12 meses antes\n',
+         '| Retorno nos 12 meses antes | Passagens | % que perdeu dinheiro | % que perdeu do S&P | Excesso mediano |', '|---|---|---|---|---|']
+for a, b, l in ((-9, -.2, 'caiu mais de 20%'), (-.2, 0, 'caiu até 20%'), (0, .2, 'subiu até 20%'), (.2, .5, 'subiu 20–50%'), (.5, 99, 'subiu mais de 50%')):
+    x = S[(S.m12 >= a) & (S.m12 < b)]
+    out2.append(f'| {l} | {len(x)} | {(x.r < 0).mean():.0%} | {(x.ex < 0).mean():.0%} | {pc(x.ex.median())} |')
+out2 += ['', '### As 20 maiores perdas: o que vinham fazendo antes\n', '| Ação | Empresa | Entrada | 12 meses antes | 6 meses antes | S&P 12 meses antes | Retorno na carteira |', '|---|---|---|---|---|---|---|']
+for _, r in S.sort_values('r').head(20).iterrows():
+    out2.append(f'| {r.t} | {nm(r.t)} | {r.ini:%m/%Y} | **{pc(r.m12)}** | {pc(r.m6)} | {pc(r.spy12)} | {pc(r.r)} |')
+with open(ROOT / 'top20_erros.md', 'a') as fh: fh.write('\n'.join(out2))
+print('\n'.join(out2))
