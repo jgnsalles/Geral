@@ -1,0 +1,1128 @@
+cik,name,tickers,exchanges,country,country_code,inc,sic,sicdesc,last_form,last_year,ticker
+1447028,Arbutus Biopharma Corp,ABUS,Nasdaq,PA,PA,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,20-F,2012,ABUS
+1134115,INTERNATIONAL TOWER HILL MINES LTD,THM,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1000.0,Metal Mining,40-F,2012,THM
+1173420,NOVAGOLD RESOURCES INC,NG,NYSE,UT,UT,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2012,NG
+1375205,UR-ENERGY INC,URG,NYSE,WY,WY,Canada (Federal Level),1040.0,Gold and Silver Ores,40-F,2012,URG
+1530721,Capri Holdings Ltd,CPRI,NYSE,United Kingdom,X0,"Virgin Islands, British",3100.0,Leather & Leather Products,20-F,2012,CPRI
+1460329,"Fluent, Inc.",FLNT,Nasdaq,NY,NY,DE,7310.0,Services-Advertising,20-F,2012,FLNT
+1576427,Criteo S.A.,CRTO,Nasdaq,,,Luxembourg,7311.0,Services-Advertising Agencies,20-F,2015,CRTO
+1607962,Lifeward Ltd.,LFWD,Nasdaq,MA,MA,Israel,3842.0,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",20-F,2015,LFWD
+818686,TEVA PHARMACEUTICAL INDUSTRIES LTD,TEVA,NYSE,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2015,TEVA
+16875,CANADIAN PACIFIC KANSAS CITY LTD/CN,CP,NYSE,"Alberta, Canada",A0,Canada (Federal Level),4011.0,"Railroads, Line-Haul Operating",40-F,2015,CP
+1385849,ENERGY FUELS INC,UUUU,NYSE,CO,CO,"Ontario, Canada",1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),40-F,2015,UUUU
+1318220,"Waste Connections, Inc.",WCN,NYSE,TX,TX,"Ontario, Canada",4953.0,Refuse Systems,40-F,2015,WCN
+1046102,RB GLOBAL INC.,RBA,NYSE,,,"Ontario, Canada",7389.0,"Services-Business Services, NEC",40-F,2015,RBA
+1590560,uniQure N.V.,QURE,Nasdaq,,,,2834.0,Pharmaceutical Preparations,20-F,2015,QURE
+1096056,LUXFER HOLDINGS PLC,LXFR,NYSE,United Kingdom,X0,United Kingdom,2810.0,Industrial Inorganic Chemicals,20-F,2018,LXFR
+1609804,Orion S.A.,OEC,NYSE,TX,TX,,2890.0,Miscellaneous Chemical Products,20-F,2018,OEC
+1668243,UroGen Pharma Ltd.,URGN,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2018,URGN
+1600620,Aurinia Pharmaceuticals Inc.,AUPH,Nasdaq,"Alberta, Canada",A0,,2834.0,Pharmaceutical Preparations,40-F,2018,AUPH
+1070235,BLACKBERRY Ltd,BB,NYSE,"Ontario, Canada",A6,,7372.0,Services-Prepackaged Software,40-F,2018,BB
+1635327,Flutter Entertainment plc,FLUT,NYSE,NY,NY,Ireland,7370.0,"Services-Computer Programming, Data Processing, Etc.",40-F,2018,FLUT
+1444192,"Grace Therapeutics, Inc.",GRCE,Nasdaq,NJ,NJ,DE,2834.0,Pharmaceutical Preparations,20-F,2018,GRCE
+1413447,NXP Semiconductors N.V.,NXPI,Nasdaq,,,,3674.0,Semiconductors & Related Devices,20-F,2018,NXPI
+1599298,Summit Therapeutics Inc.,SMMT,Nasdaq,FL,FL,,2834.0,Pharmaceutical Preparations,20-F,2018,SMMT
+1704292,Zai Lab Ltd,ZLAB,Nasdaq,,,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2018,ZLAB
+1737927,Canopy Growth Corp,CGC,Nasdaq,"Ontario, Canada",A6,Canada (Federal Level),2833.0,Medicinal Chemicals & Botanical Products,40-F,2018,CGC
+1656472,Cronos Group Inc.,CRON,Nasdaq,"Ontario, Canada",A6,"British Columbia, Canada",2833.0,Medicinal Chemicals & Botanical Products,40-F,2018,CRON
+1771910,ADC Therapeutics SA,ADCT,NYSE,Switzerland,V8,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2021,ADCT
+1730463,Autolus Therapeutics plc,AUTL,Nasdaq,United Kingdom,X0,United Kingdom,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2021,AUTL
+1567094,CNH Industrial N.V.,CNH,NYSE,,,Netherlands,3531.0,Construction Machinery & Equip,20-F,2021,CNH
+1816590,COMPASS Pathways plc,CMPS,Nasdaq,United Kingdom,X0,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2021,CMPS
+849395,CRH PUBLIC LTD CO,CRH,NYSE,Ireland,L2,Ireland,3241.0,"Cement, Hydraulic",20-F,2021,CRH
+1671502,Quoin Pharmaceuticals Ltd.,QNRX,Nasdaq,VA,VA,Israel,2834.0,Pharmaceutical Preparations,20-F,2021,QNRX
+1638097,Entera Bio Ltd.,ENTX,Nasdaq,,,Israel,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2021,ENTX
+1671927,Immunocore Holdings plc,IMCR,Nasdaq,United Kingdom,X0,United Kingdom,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2021,IMCR
+1719714,Mereo BioPharma Group plc,MREO,Nasdaq,,,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2021,MREO
+1526243,PERPETUA RESOURCES CORP.,PPTA,Nasdaq,ID,ID,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2021,PPTA
+1541157,Akari Therapeutics Plc,AKTX,Nasdaq,FL,FL,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2021,AKTX
+1707919,Cenntro Inc.,CENN,Nasdaq,NJ,NJ,NV,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2021,CENN
+795800,NexMetals Mining Corp.,NEXM,Nasdaq,,,"British Columbia, Canada",1000.0,Metal Mining,20-F,2021,NEXM
+1339688,Lion Copper Corp.,LCU,Nasdaq,,,"British Columbia, Canada",1000.0,Metal Mining,20-F,2021,LCU
+1591956,DarkHorse Technologies Inc.,DRK,Nasdaq,DE,DE,"British Columbia, Canada",6199.0,Finance Services,20-F,2021,DRK
+1701963,Versus Systems Inc.,VS,Nasdaq,,,"British Columbia, Canada",7374.0,Services-Computer Processing & Data Preparation,20-F,2021,VS
+1650372,Atlassian Corp,TEAM,Nasdaq,CA,CA,,7372.0,Services-Prepackaged Software,20-F,2021,TEAM
+1720420,IBEX Ltd,IBEX,Nasdaq,DC,DC,Bermuda,7374.0,Services-Computer Processing & Data Preparation,20-F,2021,IBEX
+1610820,BriaCell Therapeutics Corp.,"BCTX,BCTXL,BCTXZ","Nasdaq,Nasdaq,Nasdaq","British Columbia, Canada",A1,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2021,BCTX
+1610820,BriaCell Therapeutics Corp.,"BCTX,BCTXL,BCTXZ","Nasdaq,Nasdaq,Nasdaq","British Columbia, Canada",A1,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2021,BCTX
+1610820,BriaCell Therapeutics Corp.,"BCTX,BCTXL,BCTXZ","Nasdaq,Nasdaq,Nasdaq","British Columbia, Canada",A1,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2021,BCTX
+1714562,"GameSquare Holdings, Inc.",GAME,Nasdaq,TX,TX,DE,7900.0,Services-Amusement & Recreation Services,40-F,2021,GAME
+1710350,"Bit Digital, Inc",BTBT,Nasdaq,NY,NY,Cayman Islands,6199.0,Finance Services,20-F,2024,BTBT
+1714174,Burford Capital Ltd,BUR,NYSE,,,Guernsey,6199.0,Finance Services,20-F,2024,BUR
+1030894,CELESTICA INC,CLS,NYSE,"Ontario, Canada",A6,"Ontario, Canada",3672.0,Printed Circuit Boards,20-F,2024,CLS
+1563411,CONSTELLIUM SE,CSTM,NYSE,France,I0,,3341.0,Secondary Smelting & Refining of  Nonferrous Metals,20-F,2024,CSTM
+1053092,CREDIT SUISSE AG,"GLDI,SLVO,USOI","Nasdaq,Nasdaq,Nasdaq",Switzerland,V8,Switzerland,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2024,GLDI
+1053092,CREDIT SUISSE AG,"GLDI,SLVO,USOI","Nasdaq,Nasdaq,Nasdaq",Switzerland,V8,Switzerland,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2024,GLDI
+1053092,CREDIT SUISSE AG,"GLDI,SLVO,USOI","Nasdaq,Nasdaq,Nasdaq",Switzerland,V8,Switzerland,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2024,GLDI
+1625297,"Supernus, Inc.","SUPN,INDV","Nasdaq,Nasdaq",MD,MD,DE,2834.0,Pharmaceutical Preparations,20-F,2024,SUPN
+1625297,"Supernus, Inc.","SUPN,INDV","Nasdaq,Nasdaq",MD,MD,DE,2834.0,Pharmaceutical Preparations,20-F,2024,SUPN
+1966983,LITHIUM AMERICAS CORP.,LAC,NYSE,,,"British Columbia, Canada",1000.0,Metal Mining,20-F,2024,LAC
+1883085,Pagaya Technologies Ltd.,"PGY,PGYWW","Nasdaq,Nasdaq",NY,NY,Israel,6199.0,Finance Services,20-F,2024,PGY
+1883085,Pagaya Technologies Ltd.,"PGY,PGYWW","Nasdaq,Nasdaq",NY,NY,Israel,6199.0,Finance Services,20-F,2024,PGY
+1737706,SEADRILL Ltd,SDRL,NYSE,,,,1381.0,Drilling Oil & Gas Wells,20-F,2024,SDRL
+1937926,Brookfield Asset Management Ltd.,BAM,NYSE,NY,NY,"British Columbia, Canada",6282.0,Investment Advice,40-F,2024,BAM
+1628808,Profound Medical Corp.,PROF,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",3841.0,Surgical & Medical Instruments & Apparatus,40-F,2024,PROF
+1594805,SHOPIFY INC.,SHOP,Nasdaq,,,Canada (Federal Level),7372.0,Services-Prepackaged Software,40-F,2024,SHOP
+1500881,enCore Energy Corp.,EU,Nasdaq,TX,TX,"British Columbia, Canada",1090.0,Miscellaneous Metal Ores,40-F,2024,EU
+1853962,i-80 Gold Corp.,"IAUX,IAUX-WT","NYSE,NYSE",,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2024,IAUX
+1853962,i-80 Gold Corp.,"IAUX,IAUX-WT","NYSE,NYSE",,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2024,IAUX
+1677940,BeyondSpring Inc.,BYSI,Nasdaq,NJ,NJ,,2834.0,Pharmaceutical Preparations,20-F,2024,BYSI
+1835268,Connect Biopharma Holdings Ltd,CNTB,Nasdaq,CA,CA,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2024,CNTB
+1687542,"Freight Technologies, Inc.",FRGT,Nasdaq,TX,TX,"Virgin Islands, British",4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2024,FRGT
+1816007,Lufax Holding Ltd,LU,NYSE,,,Cayman Islands,6199.0,Finance Services,20-F,2024,LU
+1987240,SCHMID Group N.V.,"SHMD,SHMDW","Nasdaq,Nasdaq",,,Netherlands,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2024,SHMD
+1987240,SCHMID Group N.V.,"SHMD,SHMDW","Nasdaq,Nasdaq",,,Netherlands,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2024,SHMD
+1084201,SINOVAC BIOTECH LTD,SVA,Nasdaq,,,Antigua and Barbuda,2834.0,Pharmaceutical Preparations,20-F,2024,SVA
+1874315,Satellogic Inc.,"SATL,SATLW","Nasdaq,Nasdaq",NC,NC,"Virgin Islands, British",3663.0,Radio & Tv Broadcasting & Communications Equipment,20-F,2024,SATL
+1874315,Satellogic Inc.,"SATL,SATLW","Nasdaq,Nasdaq",NC,NC,"Virgin Islands, British",3663.0,Radio & Tv Broadcasting & Communications Equipment,20-F,2024,SATL
+1840416,Sono Group N.V.,SSM,Nasdaq,Germany,2M,Netherlands,6199.0,Finance Services,20-F,2024,SSM
+1878848,IREN Ltd,IREN,Nasdaq,,,Australia,6199.0,Finance Services,20-F,2024,IREN
+1668438,Integrated Media Technology Ltd,IMTE,Nasdaq,,,Australia,3651.0,Household Audio & Video Equipment,20-F,2024,IMTE
+1966750,Zhibao Technology Inc.,ZBAO,Nasdaq,China,F4,Cayman Islands,6411.0,"Insurance Agents, Brokers & Service",20-F,2024,ZBAO
+1866030,A2Z CUST2MATE SOLUTIONS CORP.,AZ,Nasdaq,"Ontario, Canada",A6,"British Columbia, Canada",3569.0,"General Industrial Machinery & Equipment, NEC",20-F,2025,AZ
+1651625,AC Immune SA,ACIU,Nasdaq,Switzerland,V8,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2025,ACIU
+1167379,ALCON INC,ALC,NYSE,TX,TX,Switzerland,3851.0,Ophthalmic Goods,20-F,2025,ALC
+1565025,AMBEV S.A.,ABEV,NYSE,,,Brazil,2080.0,Beverages,20-F,2025,ABEV
+1809691,AMTD Digital Inc.,HKD,NYSE,France,I0,Cayman Islands,6199.0,Finance Services,20-F,2025,HKD
+925261,ANDINA BOTTLING CO INC,"AKO-A,AKO-B","NYSE,NYSE",Chile,F3,,2086.0,Bottled & Canned Soft Drinks & Carbonated Waters,20-F,2025,AKO-A
+925261,ANDINA BOTTLING CO INC,"AKO-A,AKO-B","NYSE,NYSE",Chile,F3,,2086.0,Bottled & Canned Soft Drinks & Carbonated Waters,20-F,2025,AKO-A
+1697862,ARGENX SE,ARGX,Nasdaq,,,Netherlands,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,ARGX
+1122411,"ASE Technology Holding Co., Ltd.",ASX,NYSE,,,Taiwan,3674.0,Semiconductors & Related Devices,20-F,2025,ASX
+1026980,ASIA PACIFIC WIRE & CABLE CORP LTD,APWC,Nasdaq,,,Bermuda,3357.0,Drawing & Insulating of  Nonferrous Wire,20-F,2025,APWC
+1267395,ASPEN INSURANCE HOLDINGS LTD,"AHL-PD,AHL-PE,AHL-PF","NYSE,NYSE,NYSE",Bermuda,D0,Bermuda,6331.0,"Fire, Marine & Casualty Insurance",20-F,2025,AHL-PD
+1267395,ASPEN INSURANCE HOLDINGS LTD,"AHL-PD,AHL-PE,AHL-PF","NYSE,NYSE,NYSE",Bermuda,D0,Bermuda,6331.0,"Fire, Marine & Casualty Insurance",20-F,2025,AHL-PD
+1267395,ASPEN INSURANCE HOLDINGS LTD,"AHL-PD,AHL-PE,AHL-PF","NYSE,NYSE,NYSE",Bermuda,D0,Bermuda,6331.0,"Fire, Marine & Casualty Insurance",20-F,2025,AHL-PD
+901832,ASTRAZENECA PLC,AZN,NYSE,,,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2025,AZN
+1684688,ATLAS CRITICAL MINERALS Corp,ATCX,Nasdaq,Brazil,D5,Marshall Islands,1040.0,Gold and Silver Ores,20-F,2025,ATCX
+1086434,AUDIOCODES LTD,AUDC,Nasdaq,Israel,L3,Israel,3661.0,Telephone & Telegraph Apparatus,20-F,2025,AUDC
+1818838,Adagene Inc.,ADAG,Nasdaq,China,F4,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,ADAG
+1378789,AerCap Holdings N.V.,AER,NYSE,,,Netherlands,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,AER
+1725332,Alarum Technologies Ltd.,ALAR,Nasdaq,,,Israel,7372.0,Services-Prepackaged Software,20-F,2025,ALAR
+1365767,Allot Ltd.,ALLT,Nasdaq,,,Israel,3576.0,Computer Communications Equipment,20-F,2025,ALLT
+1871321,Alpha Tau Medical Ltd.,"DRTS,DRTSW","Nasdaq,Nasdaq",Israel,L3,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,DRTS
+1871321,Alpha Tau Medical Ltd.,"DRTS,DRTSW","Nasdaq,Nasdaq",Israel,L3,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,DRTS
+1967621,Alpha Technology Group Ltd,ATGL,Nasdaq,,,Hong Kong,7371.0,Services-Computer Programming Services,20-F,2025,ATGL
+1898416,Alvotech,"ALVO,ALVOW","Nasdaq,Nasdaq",Luxembourg,N4,Luxembourg,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,ALVO
+1898416,Alvotech,"ALVO,ALVOW","Nasdaq,Nasdaq",Luxembourg,N4,Luxembourg,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,ALVO
+1494558,Ambow Education Holding Ltd.,AMBO,NYSE,CA,CA,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,AMBO
+1988894,"Amer Sports, Inc.",AS,NYSE,,,Cayman Islands,2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,20-F,2025,AS
+1861841,Arbe Robotics Ltd.,ARBE,Nasdaq,,,Israel,7373.0,Services-Computer Integrated Systems Design,20-F,2025,ARBE
+1845097,Ardagh Metal Packaging S.A.,AMBP,NYSE,,,Luxembourg,3411.0,Metal Cans,20-F,2025,AMBP
+1577437,Ardmore Shipping Corp,ASC,NYSE,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,ASC
+1612042,Ascendis Pharma A/S,ASND,Nasdaq,,,Denmark,2834.0,Pharmaceutical Preparations,20-F,2025,ASND
+1817740,Austin Gold Corp.,AUST,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,20-F,2025,AUST
+1959726,Autozi Internet Technology (Global) Ltd.,AZI,Nasdaq,,,Cayman Islands,7500.0,"Services-Automotive Repair, Services & Parking",20-F,2025,AZI
+1027552,BANCO SANTANDER CHILE,BSAC,NYSE,,,Chile,6029.0,"Commercial Banks, NEC",20-F,2025,BSAC
+1160330,BANK BRADESCO,"BBD,BBDO","NYSE,NYSE",,,,6022.0,State Commercial Banks,20-F,2025,BBD
+1160330,BANK BRADESCO,"BBD,BBDO","NYSE,NYSE",,,,6022.0,State Commercial Banks,20-F,2025,BBD
+1889109,"BELITE BIO, INC",BLTE,Nasdaq,CA,CA,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,BLTE
+1779578,BGM Group Ltd.,BGM,Nasdaq,,,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,BGM
+1005516,BOS BETTER ONLINE SOLUTIONS LTD,BOSC,Nasdaq,,,Israel,3576.0,Computer Communications Equipment,20-F,2025,BOSC
+1071438,BRASKEM SA,BAK,NYSE,,,,2860.0,Industrial Organic Chemicals,20-F,2025,BAK
+1649313,BW LPG Ltd,BWLP,NYSE,,,Singapore,4700.0,Transportation Services,20-F,2025,BWLP
+1471055,Banco Santander (Brasil) S.A.,BSBR,NYSE,Brazil,D5,Brazil,6029.0,"Commercial Banks, NEC",20-F,2025,BSBR
+1653242,Bank of N.T. Butterfield & Son Ltd,NTB,NYSE,,,Bermuda,6029.0,"Commercial Banks, NEC",20-F,2025,NTB
+1899005,Beamr Imaging Ltd.,BMR,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,BMR
+1498403,BioLineRx Ltd.,BLRX,Nasdaq,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,BLRX
+1776985,BioNTech SE,BNTX,Nasdaq,Germany,2M,Germany,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,BNTX
+1816815,Bon Natural Life Ltd,BON,Nasdaq,China,F4,Cayman Islands,2833.0,Medicinal Chemicals & Botanical Products,20-F,2025,BON
+1715497,Borr Drilling Ltd,BORR,NYSE,Bermuda,D0,Bermuda,1381.0,Drilling Oil & Gas Wells,20-F,2025,BORR
+1472326,Brazil Potash Corp.,GRO,NYSE,"Ontario, Canada",A6,"Ontario, Canada",1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),20-F,2025,GRO
+1901215,BRENX LTD.,BRNX,Nasdaq,,,Israel,3433.0,"Heating Equipment, Except Electric & Warm Air Furnaces",20-F,2025,BRNX
+1788348,Brookfield Infrastructure Corp,BIPC,NYSE,NY,NY,"British Columbia, Canada",4923.0,Natural Gas Transmisison & Distribution,20-F,2025,BIPC
+1545772,Brookfield Property Partners L.P.,"BPYPP,BPYPM,BPYPN,BPYPO","Nasdaq,Nasdaq,Nasdaq,Nasdaq",Bermuda,D0,Bermuda,6500.0,Real Estate,20-F,2025,BPYPP
+1545772,Brookfield Property Partners L.P.,"BPYPP,BPYPM,BPYPN,BPYPO","Nasdaq,Nasdaq,Nasdaq,Nasdaq",Bermuda,D0,Bermuda,6500.0,Real Estate,20-F,2025,BPYPP
+1545772,Brookfield Property Partners L.P.,"BPYPP,BPYPM,BPYPN,BPYPO","Nasdaq,Nasdaq,Nasdaq,Nasdaq",Bermuda,D0,Bermuda,6500.0,Real Estate,20-F,2025,BPYPP
+1545772,Brookfield Property Partners L.P.,"BPYPP,BPYPM,BPYPN,BPYPO","Nasdaq,Nasdaq,Nasdaq,Nasdaq",Bermuda,D0,Bermuda,6500.0,Real Estate,20-F,2025,BPYPP
+1791863,Brookfield Renewable Corp,BEPC,NYSE,NY,NY,"British Columbia, Canada",4911.0,Electric Services,20-F,2025,BEPC
+1533232,Brookfield Renewable Partners L.P.,"BEP,BEPH,BEPI,BEPJ,BEP-PA","NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,4911.0,Electric Services,20-F,2025,BEP
+1533232,Brookfield Renewable Partners L.P.,"BEP,BEPH,BEPI,BEPJ,BEP-PA","NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,4911.0,Electric Services,20-F,2025,BEP
+1533232,Brookfield Renewable Partners L.P.,"BEP,BEPH,BEPI,BEPJ,BEP-PA","NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,4911.0,Electric Services,20-F,2025,BEP
+1533232,Brookfield Renewable Partners L.P.,"BEP,BEPH,BEPI,BEPJ,BEP-PA","NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,4911.0,Electric Services,20-F,2025,BEP
+1533232,Brookfield Renewable Partners L.P.,"BEP,BEPH,BEPI,BEPJ,BEP-PA","NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,4911.0,Electric Services,20-F,2025,BEP
+1837429,Brookfield Wealth Solutions Ltd.,BNT,NYSE,Bermuda,D0,Bermuda,6399.0,"Insurance Carriers, NEC",20-F,2025,BNT
+1109138,CAMTEK LTD,CAMT,Nasdaq,,,Israel,3827.0,Optical Instruments & Lenses,20-F,2025,CAMT
+1119769,CERAGON NETWORKS LTD,CRNT,Nasdaq,Israel,L3,Israel,3663.0,Radio & Tv Broadcasting & Communications Equipment,20-F,2025,CRNT
+1015922,CHECK POINT SOFTWARE TECHNOLOGIES LTD,CHKP,Nasdaq,,,,7372.0,Services-Prepackaged Software,20-F,2025,CHKP
+1868995,CI&T Inc,CINT,NYSE,Cayman Islands,E9,Cayman Islands,7371.0,Services-Computer Programming Services,20-F,2025,CINT
+1780785,CN ENERGY GROUP. INC.,CNEY,Nasdaq,China,F4,"Virgin Islands, British",2860.0,Industrial Organic Chemicals,20-F,2025,CNEY
+1650107,COCA-COLA EUROPACIFIC PARTNERS plc,CCEP,Nasdaq,,,United Kingdom,2086.0,Bottled & Canned Soft Drinks & Carbonated Waters,20-F,2025,CCEP
+1119774,COMPUGEN LTD,CGEN,Nasdaq,Israel,L3,Israel,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,CGEN
+1717393,CORPORACION AMERICA AIRPORTS S.A.,CAAP,NYSE,,,Luxembourg,4581.0,"Airports, Flying Fields & Airport Terminal Services",20-F,2025,CAAP
+1504379,Caesarstone Ltd.,CSTE,Nasdaq,,,,3281.0,Cut Stone & Stone Products,20-F,2025,CSTE
+1725123,Cango Inc.,CANG,NYSE,TX,TX,Cayman Islands,6199.0,Finance Services,20-F,2025,CANG
+1854587,Cellebrite DI Ltd.,CLBT,Nasdaq,Israel,L3,,7372.0,Services-Prepackaged Software,20-F,2025,CLBT
+1627281,Cellectis S.A.,CLLS,Nasdaq,,,France,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,CLLS
+1738758,"Cheer Holding, Inc.",CHR,Nasdaq,China,F4,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,CHR
+1892500,Clearmind Medicine Inc.,CMND,Nasdaq,Canada (Federal Level),Z4,Canada (Federal Level),2834.0,Pharmaceutical Preparations,20-F,2025,CMND
+1631487,CollPlant Biotechnologies Ltd,CLGN,Nasdaq,Israel,L3,Israel,3842.0,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",20-F,2025,CLGN
+1503584,Costamare Inc.,"CMRE,CMRE-PC,CMRE-PB,CMRE-PD","NYSE,NYSE,NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CMRE
+1503584,Costamare Inc.,"CMRE,CMRE-PC,CMRE-PB,CMRE-PD","NYSE,NYSE,NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CMRE
+1503584,Costamare Inc.,"CMRE,CMRE-PC,CMRE-PB,CMRE-PD","NYSE,NYSE,NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CMRE
+1503584,Costamare Inc.,"CMRE,CMRE-PC,CMRE-PB,CMRE-PD","NYSE,NYSE,NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CMRE
+1967822,Creative Global Technology Holdings Ltd,CGTL,Nasdaq,Hong Kong,K3,Cayman Islands,5045.0,Wholesale-Computers & Peripheral Equipment & Software,20-F,2025,CGTL
+1331284,"DHT Holdings, Inc.",DHT,NYSE,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,DHT
+1318885,DIANA SHIPPING INC.,"DSX,DSX-PB,DSX-WT","NYSE,NYSE,NYSE",Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,DSX
+1318885,DIANA SHIPPING INC.,"DSX,DSX-PB,DSX-WT","NYSE,NYSE,NYSE",Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,DSX
+1318885,DIANA SHIPPING INC.,"DSX,DSX-PB,DSX-WT","NYSE,NYSE,NYSE",Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,DSX
+1369241,Danaos Corp,DAC,NYSE,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,DAC
+1958133,Decent Holding Inc.,DXST,Nasdaq,China,F4,,4950.0,Sanitary Services,20-F,2025,DXST
+1854368,Digi Power X Inc.,DGXX,Nasdaq,"Ontario, Canada",A6,"British Columbia, Canada",6199.0,Finance Services,20-F,2025,DGXX
+1922446,Diversified Energy Co,DEC,NYSE,AL,AL,DE,1311.0,Crude Petroleum & Natural Gas,20-F,2025,DEC
+1857475,Dole plc,DOLE,NYSE,,,,100.0,Agricultural Production-Crops,20-F,2025,DOLE
+1786286,Draganfly Inc.,DPRO,Nasdaq,"Saskatchewan, Canada",A9,"British Columbia, Canada",3721.0,Aircraft,20-F,2025,DPRO
+1861974,ECARX Holdings Inc.,"ECX,ECXWW","Nasdaq,Nasdaq",China,F4,,7373.0,Services-Computer Integrated Systems Design,20-F,2025,ECX
+1861974,ECARX Holdings Inc.,"ECX,ECXWW","Nasdaq,Nasdaq",China,F4,,7373.0,Services-Computer Integrated Systems Design,20-F,2025,ECX
+1041934,EDAP TMS SA,FOCL,Nasdaq,France,I0,,3845.0,Electromedical & Electrotherapeutic Apparatus,20-F,2025,FOCL
+1027664,ELBIT SYSTEMS LTD,ESLT,Nasdaq,Israel,L3,Israel,3728.0,"Aircraft Parts & Auxiliary Equipment, NEC",20-F,2025,ESLT
+1846715,Eco Wave Power Global AB (publ),WAVE,Nasdaq,Sweden,V7,Sweden,4911.0,Electric Services,20-F,2025,WAVE
+1922641,Enlight Renewable Energy Ltd.,ENLT,Nasdaq,Israel,L3,Israel,4911.0,Electric Services,20-F,2025,ENLT
+1781397,EpicQuest Education Group International Ltd,EEIQ,Nasdaq,OH,OH,"Virgin Islands, British",8200.0,Services-Educational Services,20-F,2025,EEIQ
+1877787,Ermenegildo Zegna N.V.,ZGN,NYSE,Italy,L6,Netherlands,2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,20-F,2025,ZGN
+1574565,Evogene Ltd.,EVGN,Nasdaq,Israel,L3,Israel,2870.0,Agricultural Chemicals,20-F,2025,EVGN
+1701261,"Farmmi, Inc.",FAMI,Nasdaq,China,F4,Cayman Islands,2033.0,"Canned, Fruits, Veg, Preserves, Jams & Jellies",20-F,2025,FAMI
+1648416,Ferrari N.V.,RACE,NYSE,Italy,L6,Netherlands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,RACE
+1468522,Ferrovial N.V.,FER,Nasdaq,,,Netherlands,1600.0,Heavy Construction Other Than Bldg Const - Contractors,20-F,2025,FER
+1636639,Pelagos Insurance Capital Ltd,PLGO,NYSE,,,Bermuda,6331.0,"Fire, Marine & Casualty Insurance",20-F,2025,PLGO
+1762301,Fiverr International Ltd.,FVRR,NYSE,Israel,L3,Israel,7389.0,"Services-Business Services, NEC",20-F,2025,FVRR
+1772253,Flex LNG Ltd.,FLNG,NYSE,Bermuda,D0,Bermuda,4400.0,Water Transportation,20-F,2025,FLNG
+1691221,Foresight Autonomous Holdings Ltd.,FRSX,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,FRSX
+1927719,Freightos Ltd,"CRGO,CRGOW","Nasdaq,Nasdaq",Spain,U3,Cayman Islands,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,CRGO
+1927719,Freightos Ltd,"CRGO,CRGOW","Nasdaq,Nasdaq",Spain,U3,Cayman Islands,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,CRGO
+1848739,GDEV Inc.,GDEV,Nasdaq,,,"Virgin Islands, British",7371.0,Services-Computer Programming Services,20-F,2025,GDEV
+1073404,GERDAU S.A.,GGB,NYSE,,,Brazil,3310.0,"Steel Works, Blast Furnaces & Rolling & Finishing Mills",20-F,2025,GGB
+1855129,GH Research PLC,GHRS,Nasdaq,Ireland,L2,Ireland,2834.0,Pharmaceutical Preparations,20-F,2025,GHRS
+897322,GILAT SATELLITE NETWORKS LTD,GILT,Nasdaq,VA,VA,,3663.0,Radio & Tv Broadcasting & Communications Equipment,20-F,2025,GILT
+1709048,GLOBALFOUNDRIES Inc.,GFS,Nasdaq,NY,NY,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,GFS
+1499780,GLOBUS MARITIME LTD,GLBS,Nasdaq,Greece,J3,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,GLBS
+1207179,GOLAR LNG LTD,GLNG,Nasdaq,Bermuda,D0,Bermuda,4400.0,Water Transportation,20-F,2025,GLNG
+1928340,GOLDEN HEAVEN GROUP HOLDINGS LTD.,GDHG,Nasdaq,,,Cayman Islands,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,GDHG
+1839799,GRANDSTAND Ltd,GRSD,Nasdaq,,,,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,GRSD
+1598655,GasLog Partners LP,"GLOP-PA,GLOP-PB,GLOP-PC","NYSE,NYSE,NYSE",Greece,J3,Marshall Islands,4400.0,Water Transportation,20-F,2025,GLOP-PA
+1598655,GasLog Partners LP,"GLOP-PA,GLOP-PB,GLOP-PC","NYSE,NYSE,NYSE",Greece,J3,Marshall Islands,4400.0,Water Transportation,20-F,2025,GLOP-PA
+1598655,GasLog Partners LP,"GLOP-PA,GLOP-PB,GLOP-PC","NYSE,NYSE,NYSE",Greece,J3,Marshall Islands,4400.0,Water Transportation,20-F,2025,GLOP-PA
+1781446,Gauzy Ltd.,GAUZ,Nasdaq,,,Israel,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,GAUZ
+1838716,Genenta Science S.p.A.,GNTA,Nasdaq,Italy,L6,Italy,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,GNTA
+1838716,Genenta Science S.p.A.,GNTA,Nasdaq,Italy,L6,Italy,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,GNTA
+1834489,Genius Sports Ltd,GENI,NYSE,United Kingdom,X0,Guernsey,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,GENI
+1913749,Global Mofy AI Ltd,GMM,Nasdaq,China,F4,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,GMM
+1430725,"Global Ship Lease, Inc.","GSL,GSL-PB","NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,GSL
+1430725,"Global Ship Lease, Inc.","GSL,GSL-PB","NYSE,NYSE",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,GSL
+1835963,Global-E Online Ltd.,GLBE,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,GLBE
+1557860,Globant S.A.,GLOB,NYSE,Luxembourg,N4,Spain,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,GLOB
+1978527,Globavend Holdings Ltd,GVH,Nasdaq,,,Cayman Islands,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,GVH
+1886190,Gogoro Inc.,"GGR,GGROW","Nasdaq,Nasdaq",Taiwan,F5,Taiwan,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,GGR
+1886190,Gogoro Inc.,"GGR,GGROW","Nasdaq,Nasdaq",Taiwan,F5,Taiwan,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,GGR
+1834026,Gold Royalty Corp.,"GROY,GROY-WT","NYSE,NYSE","British Columbia, Canada",A1,Canada (Federal Level),1040.0,Gold and Silver Ores,20-F,2025,GROY
+1834026,Gold Royalty Corp.,"GROY,GROY-WT","NYSE,NYSE","British Columbia, Canada",A1,Canada (Federal Level),1040.0,Gold and Silver Ores,20-F,2025,GROY
+1826376,Golden Sun Technology Group Ltd.,GSUN,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,GSUN
+1855612,Grab Holdings Ltd,"GRAB,GRABW","Nasdaq,Nasdaq",Singapore,U0,Singapore,7389.0,"Services-Business Services, NEC",20-F,2025,GRAB
+1855612,Grab Holdings Ltd,"GRAB,GRABW","Nasdaq,Nasdaq",Singapore,U0,Singapore,7389.0,"Services-Business Services, NEC",20-F,2025,GRAB
+1928948,High-Trend International Group,HTCO,Nasdaq,,,Cayman Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,HTCO
+1959455,Himalaya Shipping Ltd.,HSHP,NYSE,Bermuda,D0,Bermuda,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,HSHP
+1791725,"Huadi International Group Co., Ltd.",HUDI,Nasdaq,China,F4,Cayman Islands,3317.0,Steel Pipe & Tubes,20-F,2025,HUDI
+941221,ICL Group Ltd.,ICL,NYSE,,,Israel,2870.0,Agricultural Chemicals,20-F,2025,ICL
+1060955,ICON PLC,ICLR,Nasdaq,Ireland,L2,,8731.0,Services-Commercial Physical & Biological Research,20-F,2025,ICLR
+1876183,IHS Holding Ltd,IHS,NYSE,,,Mauritius,4812.0,Radiotelephone Communications,20-F,2025,IHS
+1792030,IM Cannabis Corp.,IMCC,Nasdaq,Israel,L3,"British Columbia, Canada",2833.0,Medicinal Chemicals & Botanical Products,20-F,2025,IMCC
+1584371,IceCure Medical Ltd.,ICCM,Nasdaq,,,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,ICCM
+1809196,Immatics N.V.,IMTX,Nasdaq,Germany,2M,Netherlands,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,IMTX
+1742692,InMode Ltd.,INMD,Nasdaq,Israel,L3,Israel,3845.0,Electromedical & Electrotherapeutic Apparatus,20-F,2025,INMD
+1708688,InflaRx N.V.,IFRX,Nasdaq,Germany,2M,Netherlands,2834.0,Pharmaceutical Preparations,20-F,2025,IFRX
+1835654,Innoviz Technologies Ltd.,INVZ,Nasdaq,,,Israel,3714.0,Motor Vehicle Parts & Accessories,20-F,2025,INVZ
+1837493,QTREX Quantum Ltd.,QTEX,Nasdaq,,,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,QTEX
+1619762,Brightstar Lottery PLC,BRSL,NYSE,,,United Kingdom,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,BRSL
+1885408,Nexera Technologies Ltd,"NEXR,NEXRW","Nasdaq,Nasdaq",,,Israel,5900.0,Retail-Miscellaneous Retail,20-F,2025,NEXR
+1885408,Nexera Technologies Ltd,"NEXR,NEXRW","Nasdaq,Nasdaq",,,Israel,5900.0,Retail-Miscellaneous Retail,20-F,2025,NEXR
+1837821,Jin Medical International Ltd.,ZJYL,Nasdaq,China,F4,Cayman Islands,3842.0,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",20-F,2025,ZJYL
+1816172,"Jiuzi Holdings, Inc.",JZXN,Nasdaq,China,F4,Cayman Islands,5500.0,Retail-Auto Dealers & Gasoline Stations,20-F,2025,JZXN
+1985487,Joint Stock Co Kaspi.kz,KSPI,Nasdaq,Kazakhstan,1P,Kazakhstan,7389.0,"Services-Business Services, NEC",20-F,2025,KSPI
+1756708,Jumia Technologies AG,JMIA,NYSE,,,Germany,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,JMIA
+1567529,KAMADA LTD,KMDA,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,KMDA
+1564180,KNOT Offshore Partners LP,KNOP,NYSE,,,Marshall Islands,4400.0,Water Transportation,20-F,2025,KNOP
+1713539,Kaixin Holdings,KXIN,Nasdaq,,,Cayman Islands,5500.0,Retail-Auto Dealers & Gasoline Stations,20-F,2025,KXIN
+1625791,Kornit Digital Ltd.,KRNT,Nasdaq,,,Israel,3555.0,Printing Trades Machinery & Equipment,20-F,2025,KRNT
+1047716,LATAM AIRLINES GROUP S.A.,LTM,NYSE,,,,4512.0,"Air Transportation, Scheduled",20-F,2025,LTM
+1801198,Legend Biotech Corp,LEGN,Nasdaq,NJ,NJ,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,LEGN
+1985139,"Leishen Energy Holding Co., Ltd.",LSE,Nasdaq,China,F4,Cayman Islands,3533.0,Oil & Gas Field Machinery & Equipment,20-F,2025,LSE
+1969401,Linkage Global Inc,UZX,Nasdaq,Japan,M0,Japan,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,UZX
+1440972,Lithium Argentina AG,LAR,NYSE,,,Switzerland,1000.0,Metal Mining,20-F,2025,LAR
+1954694,Lucas GC Ltd,LGCL,Nasdaq,China,F4,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,LGCL
+1874252,Quantum Cyber N.V.,QUCY,Nasdaq,,,Netherlands,2834.0,Pharmaceutical Preparations,20-F,2025,QUCY
+1872529,MDxHealth SA,MDXH,Nasdaq,Belgium,C9,Belgium,8071.0,Services-Medical Laboratories,20-F,2025,MDXH
+1119083,MIND CTI LTD,MNDO,Nasdaq,Israel,L3,,7371.0,Services-Computer Programming Services,20-F,2025,MNDO
+1745114,MOLECULAR PARTNERS AG,MOLN,Nasdaq,Switzerland,V8,Switzerland,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,MOLN
+1997464,Marex Group Ltd,MRX,Nasdaq,,,Bermuda,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,MRX
+1872964,Maris Tech Ltd.,"MTEK,MTEKW","Nasdaq,Nasdaq",Israel,L3,Israel,3669.0,"Communications Equipment, NEC",20-F,2025,MTEK
+1872964,Maris Tech Ltd.,"MTEK,MTEKW","Nasdaq,Nasdaq",Israel,L3,Israel,3669.0,"Communications Equipment, NEC",20-F,2025,MTEK
+1593984,MediWound Ltd.,MDWD,Nasdaq,Israel,L3,Israel,2833.0,Medicinal Chemicals & Botanical Products,20-F,2025,MDWD
+1953021,Mega Matrix Inc,MPU,NYSE,Cayman Islands,E9,Cayman Islands,7812.0,Services-Motion Picture & Video Tape Production,20-F,2025,MPU
+1381640,Melco Resorts & Entertainment LTD,MLCO,Nasdaq,Hong Kong,K3,Cayman Islands,7011.0,Hotels & Motels,20-F,2025,MLCO
+1841209,MicroCloud Hologram Inc.,"HOLO,HOLOW","Nasdaq,Nasdaq",NY,NY,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,HOLO
+1841209,MicroCloud Hologram Inc.,"HOLO,HOLOW","Nasdaq,Nasdaq",NY,NY,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,HOLO
+1898643,Mobilicom Ltd,"MOB,MOBBW","Nasdaq,Nasdaq",Australia,C3,Australia,3721.0,Aircraft,20-F,2025,MOB
+1898643,Mobilicom Ltd,"MOB,MOBBW","Nasdaq,Nasdaq",Australia,C3,Australia,3721.0,Aircraft,20-F,2025,MOB
+1708441,"Mynd.ai, Inc.",MYND,NYSE,GA,GA,Cayman Islands,3577.0,"Computer Peripheral Equipment, NEC",20-F,2025,MYND
+1109345,NOVA LTD.,NVMI,Nasdaq,Israel,L3,,3827.0,Optical Instruments & Lenses,20-F,2025,NVMI
+1698514,National Energy Services Reunited Corp.,NESR,Nasdaq,TX,TX,"Virgin Islands, British",1389.0,"Oil & Gas Field Services, NEC",20-F,2025,NESR
+1581804,Navigator Holdings Ltd.,NVGS,NYSE,United Kingdom,X0,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,NVGS
+1415921,Navios Maritime Partners L.P.,NMM,NYSE,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,NMM
+1901279,Nayax Ltd.,NYAX,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,NYAX
+1927578,NetClass Technology Inc,NTCL,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,NTCL
+1968043,New Century Logistics (BVI) Ltd,NCEW,Nasdaq,China,F4,"Virgin Islands, British",4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,NCEW
+1713930,Nexa Resources S.A.,NEXA,NYSE,,,Luxembourg,1000.0,Metal Mining,20-F,2025,NEXA
+1849396,Nexxen International Ltd.,NEXN,Nasdaq,,,Israel,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,NEXN
+1651717,Nomad Foods Ltd,NOMD,NYSE,United Kingdom,X0,"Virgin Islands, British",2000.0,Food and Kindred Products,20-F,2025,NOMD
+1709626,NuCana plc,NCNA,Nasdaq,United Kingdom,X0,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2025,NCNA
+1857190,Nyxoah SA,NYXH,Nasdaq,,,Belgium,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,NYXH
+1129928,ONCOLYTICS BIOTECH INC,ONCY,Nasdaq,CA,CA,NV,2834.0,Pharmaceutical Preparations,20-F,2025,ONCY
+1843586,Oatly Group AB,OTLY,Nasdaq,,,Sweden,2000.0,Food and Kindred Products,20-F,2025,OTLY
+1953530,Oculis Holding AG,"OCS,OCSAW","Nasdaq,Nasdaq",Switzerland,V8,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2025,OCS
+1953530,Oculis Holding AG,"OCS,OCSAW","Nasdaq,Nasdaq",Switzerland,V8,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2025,OCS
+1907085,Oddity Tech Ltd,ODD,Nasdaq,Israel,L3,Israel,2844.0,"Perfumes, Cosmetics & Other Toilet Preparations",20-F,2025,ODD
+1964954,Okeanis Eco Tankers Corp.,ECO,NYSE,Greece,J3,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,ECO
+1858985,On Holding AG,ONON,NYSE,Switzerland,V8,Switzerland,3021.0,Rubber & Plastics Footwear,20-F,2025,ONON
+1321851,Origin Agritech LTD,SEED,Nasdaq,China,F4,British Indian Ocean Territory,100.0,Agricultural Production-Crops,20-F,2025,SEED
+1803407,"Ostin Technology Group Co., Ltd.",OST,Nasdaq,China,F4,Cayman Islands,3679.0,"Electronic Components, NEC",20-F,2025,OST
+1614744,PURPLE BIOTECH LTD.,PPBT,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,PPBT
+1916241,ParaZero Technologies Ltd.,PRZO,Nasdaq,Israel,L3,Israel,3728.0,"Aircraft Parts & Auxiliary Equipment, NEC",20-F,2025,PRZO
+1986247,"Park Ha Biological Technology Co., Ltd.",BYAH,Nasdaq,China,F4,China,2840.0,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",20-F,2025,BYAH
+1833835,Paysafe Ltd,PSFE,NYSE,United Kingdom,X0,Bermuda,7389.0,"Services-Business Services, NEC",20-F,2025,PSFE
+1338940,Perion Network Ltd.,PERI,Nasdaq,Israel,L3,Israel,7371.0,Services-Computer Programming Services,20-F,2025,PERI
+1970544,iTonic Holdings Ltd,ITOC,Nasdaq,,,,3845.0,Electromedical & Electrotherapeutic Apparatus,20-F,2025,ITOC
+2018462,PicoCELA Inc.,PCLA,Nasdaq,Japan,M0,Japan,3640.0,Electric Lighting & Wiring Equipment,20-F,2025,PCLA
+1868395,Planet Image International Ltd,YIBO,Nasdaq,,,Cayman Islands,3577.0,"Computer Peripheral Equipment, NEC",20-F,2025,YIBO
+1611842,PolyPid Ltd.,PYPD,Nasdaq,Israel,L3,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,PYPD
+1893645,Polyrizon Ltd.,PLRZ,Nasdaq,,,Israel,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,PLRZ
+1765850,Aurelion Inc.,AURE,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,AURE
+1612940,ProQR Therapeutics N.V.,PRQR,Nasdaq,,,Netherlands,2834.0,Pharmaceutical Preparations,20-F,2025,PRQR
+1640043,Pyxis Tankers Inc.,PXS,Nasdaq,Greece,J3,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,PXS
+1015820,QIAGEN N.V.,QGEN,NYSE,,,Netherlands,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,QGEN
+1771885,Quantum Biopharma Ltd.,QNTM,Nasdaq,,,"Ontario, Canada",2834.0,Pharmaceutical Preparations,20-F,2025,QNTM
+1016838,RADCOM LTD,RDCM,Nasdaq,,,Israel,3577.0,"Computer Peripheral Equipment, NEC",20-F,2025,RDCM
+1094366,RADWARE LTD,RDWR,Nasdaq,Israel,L3,,7389.0,"Services-Business Services, NEC",20-F,2025,RDWR
+1851112,RISKIFIED LTD.,RSKD,NYSE,NY,NY,Israel,7389.0,"Services-Business Services, NEC",20-F,2025,RSKD
+1743905,Rail Vision Ltd.,"RVSN,RVSNW","Nasdaq,Nasdaq",,,Israel,3743.0,Railroad Equipment,20-F,2025,RVSN
+1743905,Rail Vision Ltd.,"RVSN,RVSNW","Nasdaq,Nasdaq",,,Israel,3743.0,Railroad Equipment,20-F,2025,RVSN
+1434754,"SAFE BULKERS, INC.","SB,SB-PC,SB-PD","NYSE,NYSE,NYSE",Monaco,O9,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SB
+1434754,"SAFE BULKERS, INC.","SB,SB-PC,SB-PD","NYSE,NYSE,NYSE",Monaco,O9,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SB
+1434754,"SAFE BULKERS, INC.","SB,SB-PC,SB-PD","NYSE,NYSE,NYSE",Monaco,O9,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SB
+1951222,SEALSQ Corp,LAES,Nasdaq,Switzerland,V8,"Virgin Islands, British",3674.0,Semiconductors & Related Devices,20-F,2025,LAES
+1289877,SFL Corp Ltd.,SFL,NYSE,Bermuda,D0,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SFL
+1863218,SHENGFENG DEVELOPMENT Ltd,SFWL,Nasdaq,China,F4,Cayman Islands,4210.0,Trucking & Courier Services (No Air),20-F,2025,SFWL
+1842731,SIMILARWEB LTD.,SMWB,NYSE,,,Israel,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,SMWB
+1840706,SOPHiA GENETICS SA,SOPH,Nasdaq,Switzerland,V8,Switzerland,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,SOPH
+1517396,STRATASYS LTD.,SSYS,Nasdaq,MN,MN,Israel,3577.0,"Computer Peripheral Equipment, NEC",20-F,2025,SSYS
+1713334,STUDIO CITY INTERNATIONAL HOLDINGS Ltd,MSC,NYSE,Hong Kong,K3,"Virgin Islands, British",7011.0,Hotels & Motels,20-F,2025,MSC
+1969863,SU Group Holdings Ltd,SUGP,Nasdaq,,,Cayman Islands,7381.0,"Services-Detective, Guard & Armored Car Services",20-F,2025,SUGP
+1894693,SaverOne 2014 Ltd.,"SVRE,SVREW","Nasdaq,Nasdaq",Israel,L3,Israel,7371.0,Services-Computer Programming Services,20-F,2025,SVRE
+1894693,SaverOne 2014 Ltd.,"SVRE,SVREW","Nasdaq,Nasdaq",Israel,L3,Israel,7371.0,Services-Computer Programming Services,20-F,2025,SVRE
+1483934,Scorpio Tankers Inc.,STNG,NYSE,Monaco,O9,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,STNG
+1448397,Seanergy Maritime Holdings Corp.,SHIP,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SHIP
+1308106,Seapeak LLC,"SEAL-PA,SEAL-PB","NYSE,NYSE",Bermuda,D0,Marshall Islands,4400.0,Water Transportation,20-F,2025,SEAL-PA
+1308106,Seapeak LLC,"SEAL-PA,SEAL-PB","NYSE,NYSE",Bermuda,D0,Marshall Islands,4400.0,Water Transportation,20-F,2025,SEAL-PA
+1957132,"SharkNinja, Inc.",SN,NYSE,MA,MA,Cayman Islands,3630.0,Household Appliances,20-F,2025,SN
+1734107,Sohu.com Ltd,SOHU,Nasdaq,,,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,SOHU
+1836470,Sportradar Group AG,SRAD,Nasdaq,Switzerland,V8,Switzerland,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,SRAD
+1639920,Spotify Technology S.A.,SPOT,NYSE,,,Luxembourg,4832.0,Radio Broadcasting Stations,20-F,2025,SPOT
+1386716,Star Bulk Carriers Corp.,SBLK,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SBLK
+1605484,Stellantis N.V.,STLA,NYSE,Netherlands,P7,Netherlands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,STLA
+1849853,Stevanato Group S.p.A.,STVN,NYSE,,,,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,STVN
+808439,TAT TECHNOLOGIES LTD,TATT,Nasdaq,,,,3724.0,Aircraft Engines & Engine Parts,20-F,2025,TATT
+911971,TEEKAY CORP LTD,TK,NYSE,Bermuda,D0,Bermuda,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TK
+1419945,TEEKAY TANKERS LTD.,TNK,NYSE,Bermuda,D0,Bermuda,4400.0,Water Transportation,20-F,2025,TNK
+1066119,TELEFONICA BRASIL S.A.,VIV,NYSE,Brazil,D5,,4813.0,Telephone Communications (No Radiotelephone),20-F,2025,VIV
+1655891,TORM plc,TRMD,Nasdaq,United Kingdom,X0,United Kingdom,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TRMD
+1845840,Telesat Corp,TSAT,Nasdaq,"Ontario, Canada",A6,"British Columbia, Canada",4899.0,"Communications Services, NEC",20-F,2025,TSAT
+1342874,Ternium S.A.,TX,NYSE,Luxembourg,N4,Luxembourg,3312.0,"Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)",20-F,2025,TX
+1743340,Token Cat Ltd,TC,Nasdaq,China,F4,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,TC
+879764,TotalEnergies SE,TTE,NYSE,France,I0,France,1311.0,Crude Petroleum & Natural Gas,20-F,2025,TTE
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1660734,Triton International Ltd,"TRTN-PA,TRTN-PB,TRTN-PC,TRTN-PD,TRTN-PE,TRTN-PF,TRTN-PG","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",,,Bermuda,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,TRTN-PA
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1114446,UBS AG,"AMUB,BDCX,BDCZ,CEFD,HDLB,IFED,MLPB,MLPR,MVRL,PFFL,SMHB,UCIB","NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE",Switzerland,V8,Switzerland,6021.0,National Commercial Banks,20-F,2025,AMUB
+1610520,UBS Group AG,UBS,NYSE,,,Switzerland,6021.0,National Commercial Banks,20-F,2025,UBS
+1793663,VTEX,VTEX,NYSE,Cayman Islands,E9,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,VTEX
+917851,Vale S.A.,VALE,NYSE,,,,1000.0,Metal Mining,20-F,2025,VALE
+1863006,Valens Semiconductor Ltd.,VLN,NYSE,Israel,L3,Israel,3674.0,Semiconductors & Related Devices,20-F,2025,VLN
+1836564,Valneva SE,VALN,Nasdaq,France,I0,France,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,VALN
+1745201,Viking Holdings Ltd,VIK,NYSE,CA,CA,Bermuda,4400.0,Water Transportation,20-F,2025,VIK
+1979610,WF International Ltd.,WXM,Nasdaq,China,F4,Cayman Islands,1700.0,Construction - Special Trade Contractors,20-F,2025,WXM
+1929783,WORK Medical Technology Group LTD,WOK,Nasdaq,,,China,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,WOK
+1887673,Wearable Devices Ltd.,"WLDS,WLDSW","Nasdaq,Nasdaq",Israel,L3,Israel,3576.0,Computer Communications Equipment,20-F,2025,WLDS
+1887673,Wearable Devices Ltd.,"WLDS,WLDSW","Nasdaq,Nasdaq",Israel,L3,Israel,3576.0,Computer Communications Equipment,20-F,2025,WLDS
+1576789,Wix.com Ltd.,WIX,Nasdaq,,,Israel,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,WIX
+1769256,XChange TEC.INC,XHG,Nasdaq,China,F4,,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,XHG
+904851,YPF SOCIEDAD ANONIMA,YPF,NYSE,,,Argentina,2911.0,Petroleum Refining,20-F,2025,YPF
+1964946,Youxin Technology Ltd,YAAS,Nasdaq,China,F4,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,YAAS
+1654126,ZIM Integrated Shipping Services Ltd.,ZIM,NYSE,,,Israel,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,ZIM
+1687451,"ZK International Group Co., Ltd.",ZKIN,Nasdaq,China,F4,"Virgin Islands, British",3490.0,Miscellaneous Fabricated Metal Products,20-F,2025,ZKIN
+1992818,ZOOZ Strategy Ltd.,"ZOOZ,ZOOZW","Nasdaq,Nasdaq",,,Israel,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2025,ZOOZ
+1992818,ZOOZ Strategy Ltd.,"ZOOZ,ZOOZW","Nasdaq,Nasdaq",,,Israel,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2025,ZOOZ
+1722608,"iQIYI, Inc.",IQ,Nasdaq,,,Cayman Islands,7841.0,Services-Video Tape Rental,20-F,2025,IQ
+1845338,monday.com Ltd.,MNDY,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,MNDY
+1683825,trivago N.V.,TRVG,Nasdaq,Germany,2M,Netherlands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,TRVG
+1775898,uCloudlink Group Inc.,UCL,Nasdaq,,,Cayman Islands,4899.0,"Communications Services, NEC",20-F,2025,UCL
+1178819,ALAMOS GOLD INC,AGI,NYSE,,,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,AGI
+316888,AVINO SILVER & GOLD MINES LTD,ASM,NYSE,"British Columbia, Canada",A1,,1000.0,Metal Mining,40-F,2025,ASM
+1860805,Algoma Steel Group Inc.,"ASTL,ASTLW","Nasdaq,Nasdaq","Ontario, Canada",A6,"British Columbia, Canada",3312.0,"Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)",40-F,2025,ASTL
+1286973,Americas Gold & Silver Corp,USAS,NYSE,,,Canada (Federal Level),1000.0,Metal Mining,40-F,2025,USAS
+1964504,Aris Mining Corp,ARIS,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,ARIS
+1429937,B2GOLD CORP,BTG,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,BTG
+756894,BARRICK MINING CORP,B,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,B
+1279495,BAYTEX ENERGY CORP.,BTE,NYSE,,,,1381.0,Drilling Oil & Gas Wells,40-F,2025,BTE
+1723464,BIOHARVEST SCIENCES INC.,BHST,Nasdaq,"British Columbia, Canada",A1,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2025,BHST
+1748797,BRP Inc.,DOO,Nasdaq,,,"Quebec, Canada",3790.0,Miscellaneous Transportation Equipment,40-F,2025,DOO
+1453015,Ballard Power Systems Inc.,BLDP,Nasdaq,,,,3620.0,Electrical Industrial Apparatus,40-F,2025,BLDP
+1867834,Bragg Gaming Group Inc.,BRAG,Nasdaq,,,Canada (Federal Level),7377.0,Services-Computer Rental & Leasing,40-F,2025,BRAG
+1009001,CAMECO CORP,CCJ,NYSE,,,,1090.0,Miscellaneous Metal Ores,40-F,2025,CCJ
+16868,CANADIAN NATIONAL RAILWAY CO,CNI,NYSE,"Quebec, Canada",A8,"Quebec, Canada",4011.0,"Railroads, Line-Haul Operating",40-F,2025,CNI
+1017413,CANADIAN NATURAL RESOURCES Ltd,CNQ,NYSE,,,"Alberta, Canada",1311.0,Crude Petroleum & Natural Gas,40-F,2025,CNQ
+1475260,CENOVUS ENERGY INC.,CVE,NYSE,"Alberta, Canada",A0,,1311.0,Crude Petroleum & Natural Gas,40-F,2025,CVE
+1702123,Cardiol Therapeutics Inc.,CRDL,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",2836.0,"Biological Products, (No Diagnostic Substances)",40-F,2025,CRDL
+1854640,Centerra Gold Inc.,CGAU,NYSE,"Ontario, Canada",A6,Canada (Federal Level),1040.0,Gold and Silver Ores,40-F,2025,CGAU
+1953575,Collective Mining Ltd.,CNL,Nasdaq,FL,FL,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,CNL
+913353,Colliers International Group Inc.,CIGI,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",6500.0,Real Estate,40-F,2025,CIGI
+1063259,DENISON MINES CORP.,DNN,NYSE,,,"Ontario, Canada",1090.0,Miscellaneous Metal Ores,40-F,2025,DNN
+1829959,Docebo Inc.,DCBO,Nasdaq,,,"Ontario, Canada",7372.0,Services-Prepackaged Software,40-F,2025,DCBO
+918608,ELDORADO GOLD CORP /FI,EGO,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,EGO
+1277866,ENDEAVOUR SILVER CORP,EXK,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,EXK
+1581178,EUPRAXIA PHARMACEUTICALS INC.,EPRX,Nasdaq,,,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2025,EPRX
+1904856,Enerflex Ltd.,EFXT,NYSE,Canada (Federal Level),Z4,Canada (Federal Level),3560.0,General Industrial Machinery & Equipment,40-F,2025,EFXT
+1756607,Equinox Gold Corp.,EQX,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,EQX
+1853860,Ero Copper Corp.,ERO,NYSE,,,"British Columbia, Canada",1000.0,Metal Mining,40-F,2025,ERO
+1341335,FORTUNA MINING CORP.,FSM,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,FSM
+1456346,FRANCO NEVADA Corp,FNV,NYSE,"Ontario, Canada",A6,Canada (Federal Level),1040.0,Gold and Silver Ores,40-F,2025,FNV
+1637810,FirstService Corp,FSV,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",6500.0,Real Estate,40-F,2025,FSV
+1780232,GFL Environmental Inc.,GFL,NYSE,FL,FL,"Ontario, Canada",4953.0,Refuse Systems,40-F,2025,GFL
+1377757,Galiano Gold Inc.,GAU,NYSE,,,"British Columbia, Canada",1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),40-F,2025,GAU
+1061894,Gildan Activewear Inc.,GIL,NYSE,,,Canada (Federal Level),2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,40-F,2025,GIL
+1848731,Glass House Brands Inc.,GLAS,NYSE,CA,CA,"British Columbia, Canada",2833.0,Medicinal Chemicals & Botanical Products,40-F,2025,GLAS
+1538847,GoldMining Inc.,GLDG,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,GLDG
+1847409,High Tide Inc.,HITI,Nasdaq,"Alberta, Canada",A0,"Alberta, Canada",5990.0,"Retail-Retail Stores, NEC",40-F,2025,HITI
+1322422,Hudbay Minerals Inc.,HBM,NYSE,,,,1000.0,Metal Mining,40-F,2025,HBM
+1203464,IAMGOLD CORP,IAG,NYSE,"Ontario, Canada",A6,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,IAG
+1722387,Integra Resources Corp.,ITRG,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,ITRG
+1477081,Kolibri Global Energy Inc.,KGEI,Nasdaq,CA,CA,FL,1311.0,Crude Petroleum & Natural Gas,40-F,2025,KGEI
+1400438,Largo Inc.,LGO,Nasdaq,,,"Ontario, Canada",1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),40-F,2025,LGO
+749098,MAGNA INTERNATIONAL INC,MGA,NYSE,"Ontario, Canada",A6,,3714.0,Motor Vehicle Parts & Accessories,40-F,2025,MGA
+886977,METHANEX CORP,MEOH,Nasdaq,"British Columbia, Canada",A1,"British Columbia, Canada",2860.0,Industrial Organic Chemicals,40-F,2025,MEOH
+1722606,Metalla Royalty & Streaming Ltd.,MTA,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,MTA
+1164771,NORTHERN DYNASTY MINERALS LTD,NAK,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,NAK
+1840616,New Found Gold Corp.,NFGC,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,NFGC
+1698535,NexGen Energy Ltd.,NXE,NYSE,,,"British Columbia, Canada",1090.0,Miscellaneous Metal Ores,40-F,2025,NXE
+1368519,North American Construction Group Ltd.,NOA,NYSE,,,"Alberta, Canada",1389.0,"Oil & Gas Field Services, NEC",40-F,2025,NOA
+1649752,Nouveau Monde Graphite Inc.,NMG,NYSE,,,Canada (Federal Level),1090.0,Miscellaneous Metal Ores,40-F,2025,NMG
+1725964,Nutrien Ltd.,NTR,NYSE,"Saskatchewan, Canada",A9,Canada (Federal Level),2870.0,Agricultural Chemicals,40-F,2025,NTR
+1334388,OBSIDIAN ENERGY LTD.,OBE,NYSE,"Alberta, Canada",A0,"Alberta, Canada",1311.0,Crude Petroleum & Natural Gas,40-F,2025,OBE
+1627272,OR Royalties Inc.,OR,NYSE,,,"Quebec, Canada",1040.0,Gold and Silver Ores,40-F,2025,OR
+1013605,PRECISION DRILLING Corp,PDS,NYSE,"Alberta, Canada",A0,"Alberta, Canada",1381.0,Drilling Oil & Gas Wells,40-F,2025,PDS
+1231346,SEABRIDGE GOLD INC,SA,NYSE,"Ontario, Canada",A6,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,SA
+1766600,SNDL Inc.,SNDL,Nasdaq,,,"Alberta, Canada",2833.0,Medicinal Chemicals & Botanical Products,40-F,2025,SNDL
+1512920,SPROTT INC.,SII,NYSE,"Ontario, Canada",A6,"Ontario, Canada",6199.0,Finance Services,40-F,2025,SII
+1539190,SPROTT PHYSICAL PLATINUM & PALLADIUM TRUST,SPPP,NYSE,"Ontario, Canada",A6,"Ontario, Canada",6221.0,Commodity Contracts Brokers & Dealers,40-F,2025,SPPP
+1537137,STANDARD LITHIUM LTD.,SLI,NYSE,,,"British Columbia, Canada",2800.0,Chemicals & Allied Products,40-F,2025,SLI
+1131383,STANTEC INC,STN,NYSE,"Alberta, Canada",A0,,8711.0,Services-Engineering Services,40-F,2025,STN
+311337,SUNCOR ENERGY INC,SU,NYSE,"Alberta, Canada",A0,"Alberta, Canada",2911.0,Petroleum Refining,40-F,2025,SU
+1848309,Sigma Lithium Corp,SGML,Nasdaq,Brazil,D5,Canada (Federal Level),1000.0,Metal Mining,40-F,2025,SGML
+1713748,Skeena Resources Ltd,SKE,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,SKE
+2019103,Solaris Resources Inc.,SLSR,NYSE,,,,1040.0,Gold and Silver Ores,40-F,2025,SLSR
+2019061,South Bow Corp,SOBO,NYSE,,,Canada (Federal Level),4610.0,Pipe Lines (No Natural Gas),40-F,2025,SOBO
+1726122,Sprott Physical Gold & Silver Trust,CEF,NYSE,"Ontario, Canada",A6,"Ontario, Canada",6221.0,Commodity Contracts Brokers & Dealers,40-F,2025,CEF
+1477049,Sprott Physical Gold Trust,PHYS,NYSE,"Ontario, Canada",A6,,6221.0,Commodity Contracts Brokers & Dealers,40-F,2025,PHYS
+1494728,Sprott Physical Silver Trust,PSLV,NYSE,"Ontario, Canada",A6,"Ontario, Canada",6221.0,Commodity Contracts Brokers & Dealers,40-F,2025,PSLV
+878518,Trekor Metals Ltd,TGB,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,TGB
+868675,TELUS CORP,TU,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",4812.0,Radiotelephone Communications,40-F,2025,TU
+1588823,TFI International Inc.,TFII,NYSE,"Quebec, Canada",A8,"Quebec, Canada",4210.0,Trucking & Courier Services (No Air),40-F,2025,TFII
+99070,TRANSCANADA PIPELINES LTD,TCPA,NYSE,"Alberta, Canada",A0,,4922.0,Natural Gas Transmission,40-F,2025,TCPA
+1829726,Triple Flag Precious Metals Corp.,TFPM,NYSE,"Ontario, Canada",A6,Canada (Federal Level),6795.0,Mineral Royalty Traders,40-F,2025,TFPM
+1293135,VERMILION ENERGY INC.,VET,NYSE,"Alberta, Canada",A0,"Alberta, Canada",1311.0,Crude Petroleum & Natural Gas,40-F,2025,VET
+1907909,VOX ROYALTY CORP.,VOXR,Nasdaq,CO,CO,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,VOXR
+1402388,"WEST FRASER TIMBER CO., LTD",WFG,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",2421.0,"Sawmills & Planting Mills, General",40-F,2025,WFG
+1370416,AETHERION TECHNOLOGIES INC.,"AETR,WPRT","Nasdaq,Nasdaq",,,"Alberta, Canada",3510.0,Engines & Turbines,40-F,2025,AETR
+1364125,Western Copper & Gold Corp,WRN,NYSE,,,"British Columbia, Canada",1000.0,Metal Mining,40-F,2025,WRN
+1323404,Wheaton Precious Metals Corp.,WPM,NYSE,"British Columbia, Canada",A1,"Ontario, Canada",1040.0,Gold and Silver Ores,40-F,2025,WPM
+1738906,"111, Inc.",YI,Nasdaq,,,Cayman Islands,5912.0,Retail-Drug Stores and Proprietary Stores,20-F,2025,YI
+1821468,17 Education & Technology Group Inc.,YQ,Nasdaq,,,China,8200.0,Services-Educational Services,20-F,2025,YQ
+1779476,36Kr Holdings Inc.,KRKR,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,KRKR
+1659494,51Talk Online Education Group,COE,NYSE,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,COE
+1705402,"AGM GROUP HOLDINGS, INC.",AGMH,Nasdaq,,,"Virgin Islands, British",7371.0,Services-Computer Programming Services,20-F,2025,AGMH
+1413855,AIFU Inc.,AIFU,Nasdaq,,,Cayman Islands,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,AIFU
+1413745,Yueda Digital Holding,YDKG,Nasdaq,CA,CA,Cayman Islands,6199.0,Finance Services,20-F,2025,YDKG
+1888014,AKANDA CORP.,AKAN,Nasdaq,United Kingdom,X0,"Ontario, Canada",4899.0,"Communications Services, NEC",20-F,2025,AKAN
+1769731,AMTD IDEA GROUP,AMTD,NYSE,,,Cayman Islands,6199.0,Finance Services,20-F,2025,AMTD
+1973239,ARM HOLDINGS PLC /UK,ARM,Nasdaq,United Kingdom,X0,United Kingdom,3674.0,Semiconductors & Related Devices,20-F,2025,ARM
+2023311,ASCENTAGE PHARMA GROUP INTERNATIONAL,AAPG,Nasdaq,,,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,AAPG
+1420529,ATA Creativity Global,AACG,Nasdaq,China,F4,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,AACG
+1838957,ATRenew Inc.,RERE,NYSE,,,,5990.0,"Retail-Retail Stores, NEC",20-F,2025,RERE
+1799207,AUNA S.A.,AUNA,NYSE,,,,8011.0,Services-Offices & Clinics of  Doctors of  Medicine,20-F,2025,AUNA
+1864055,Abits Group Inc,ABTS,Nasdaq,,,"Virgin Islands, British",6199.0,Finance Services,20-F,2025,ABTS
+1957489,Able View Global Inc.,"ABLV,ABLVW","Nasdaq,Nasdaq",,,Cayman Islands,5960.0,Retail-Nonstore Retailers,20-F,2025,ABLV
+1957489,Able View Global Inc.,"ABLV,ABLVW","Nasdaq,Nasdaq",,,Cayman Islands,5960.0,Retail-Nonstore Retailers,20-F,2025,ABLV
+1574232,Addex Therapeutics Ltd.,ADXN,Nasdaq,Switzerland,V8,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2025,ADXN
+1499505,Adecoagro S.A.,AGRO,NYSE,Luxembourg,N4,,100.0,Agricultural Production-Crops,20-F,2025,AGRO
+1944552,Adlai Nortye Group Ltd.,ANL,Nasdaq,,,Singapore,2834.0,Pharmaceutical Preparations,20-F,2025,ANL
+1879248,Ads-Tec Energy Public Ltd Co,"ADSE,ADSEW","Nasdaq,Nasdaq",,,Ireland,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,ADSE
+1879248,Ads-Tec Energy Public Ltd Co,"ADSE,ADSEW","Nasdaq,Nasdaq",,,Ireland,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,ADSE
+1771007,Afya Ltd,AFYA,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,AFYA
+1802883,"Agora, Inc.",API,Nasdaq,CA,CA,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,API
+2009233,Agroz Inc.,AGRZ,Nasdaq,,,Cayman Islands,100.0,Agricultural Production-Crops,20-F,2025,AGRZ
+1697818,Amber International Holding Ltd,AMBR,Nasdaq,,,,6199.0,Finance Services,20-F,2025,AMBR
+1937441,Ambipar Emergency Response,AMBIQ,,Brazil,D5,Cayman Islands,4955.0,Hazardous Waste Management,20-F,2025,AMBIQ
+1982708,Anbio Biotechnology,NNNN,Nasdaq,Germany,2M,Cayman Islands,2835.0,In Vitro & In Vivo Diagnostic Substances,20-F,2025,NNNN
+1871983,Anghami Inc,"ANGH,ANGHW","Nasdaq,Nasdaq",,,Cayman Islands,4899.0,"Communications Services, NEC",20-F,2025,ANGH
+1871983,Anghami Inc,"ANGH,ANGHW","Nasdaq,Nasdaq",,,Cayman Islands,4899.0,"Communications Services, NEC",20-F,2025,ANGH
+1973832,AngloGold Ashanti PLC,AU,NYSE,,,United Kingdom,1040.0,Gold and Silver Ores,20-F,2025,AU
+1470683,Antelope Enterprise Holdings Ltd,AEHL,Nasdaq,NY,NY,"Virgin Islands, British",4899.0,"Communications Services, NEC",20-F,2025,AEHL
+1944885,Apollomics Inc.,"APLM,APLMW","Nasdaq,Nasdaq",CA,CA,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,APLM
+1944885,Apollomics Inc.,"APLM,APLMW","Nasdaq,Nasdaq",CA,CA,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,APLM
+1734005,"Niki BioSolutions, Inc.",NIKI,Nasdaq,NJ,NJ,Cayman Islands,3829.0,"Measuring & Controlling Devices, NEC",20-F,2025,NIKI
+1508478,Arcos Dorados Holdings Inc.,ARCO,NYSE,Uruguay,X3,,5812.0,Retail-Eating  Places,20-F,2025,ARCO
+1841675,Argo Blockchain Plc,ARBK,Nasdaq,,,United Kingdom,6199.0,Finance Services,20-F,2025,ARBK
+1853717,Atour Lifestyle Holdings Ltd,ATAT,Nasdaq,,,Cayman Islands,7011.0,Hotels & Motels,20-F,2025,ATAT
+1737339,Aurora Mobile Ltd,JG,Nasdaq,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,JG
+1527636,Autohome Inc.,ATHM,NYSE,,,,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,ATHM
+1161125,BANK OF CHILE,BCH,NYSE,Chile,F3,,6029.0,"Commercial Banks, NEC",20-F,2025,BCH
+1978954,BBB FOODS INC,TBBB,NYSE,Mexico,O5,"Virgin Islands, British",5411.0,Retail-Grocery Stores,20-F,2025,TBBB
+1788257,"BETTERWARE DE MEXICO, S.A.P.I. DE C.V",BWMX,NYSE,,,Mexico,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,BWMX
+1796514,BTC Digital Ltd.,BTCT,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,BTCT
+1013131,BUENAVENTURA MINING CO INC,BVN,NYSE,Peru,R5,,1000.0,Metal Mining,20-F,2025,BVN
+1982444,Baird Medical Investment Holdings Ltd,"BDMD,BDMDW","Nasdaq,Nasdaq",,,Cayman Islands,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,BDMD
+1982444,Baird Medical Investment Holdings Ltd,"BDMD,BDMDW","Nasdaq,Nasdaq",,,Cayman Islands,3841.0,Surgical & Medical Instruments & Apparatus,20-F,2025,BDMD
+1944712,Baiya International Group Inc.,BIYA,Nasdaq,NY,NY,,7361.0,Services-Employment Agencies,20-F,2025,BIYA
+913059,Banco BBVA Argentina S.A.,BBAR,NYSE,,,,6029.0,"Commercial Banks, NEC",20-F,2025,BBAR
+1811216,Baosheng Media Group Holdings Ltd,BAOS,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,BAOS
+1625414,Baozun Inc.,BZUN,Nasdaq,China,F4,Cayman Islands,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,BZUN
+1982448,BeLive Holdings,BLIV,Nasdaq,Singapore,U0,Cayman Islands,7373.0,Services-Computer Integrated Systems Design,20-F,2025,BLIV
+1858724,BingEx Ltd,FLX,Nasdaq,China,F4,Cayman Islands,4210.0,Trucking & Courier Services (No Air),20-F,2025,FLX
+1643918,Biodexa Pharmaceuticals Plc,BDRX,Nasdaq,,,United Kingdom,2834.0,Pharmaceutical Preparations,20-F,2025,BDRX
+1899123,Bitdeer Technologies Group,BTDR,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,BTDR
+1921158,Bitfufu Inc.,"FUFU,FUFUW","Nasdaq,Nasdaq",,,Cayman Islands,6199.0,Finance Services,20-F,2025,FUFU
+1921158,Bitfufu Inc.,"FUFU,FUFUW","Nasdaq,Nasdaq",,,Cayman Islands,6199.0,Finance Services,20-F,2025,FUFU
+1939965,Solmate Infrastructure PLC,SLMT,Nasdaq,,,Ireland,6199.0,Finance Services,20-F,2025,SLMT
+1654795,Brookfield Business Corp,BBUC,NYSE,NY,NY,"British Columbia, Canada",1700.0,Construction - Special Trade Contractors,20-F,2025,BBUC
+1792267,Burning Rock Biotech Ltd,BNR,Nasdaq,,,,8071.0,Services-Medical Laboratories,20-F,2025,BNR
+1951067,C3is Inc.,CISS,Nasdaq,Greece,J3,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CISS
+1914805,CBL International Ltd,BANL,Nasdaq,Malaysia,N8,Cayman Islands,5172.0,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),20-F,2025,BANL
+1793895,CDT Environmental Technology Investment Holdings Ltd,CDTG,Nasdaq,China,F4,Cayman Islands,4950.0,Sanitary Services,20-F,2025,CDTG
+1221029,CEMENTOS PACASMAYO SAA,CPAC,NYSE,Peru,R5,,3241.0,"Cement, Hydraulic",20-F,2025,CPAC
+1717161,CENTRAL PUERTO S.A.,CEPU,NYSE,,,Argentina,4911.0,Electric Services,20-F,2025,CEPU
+909037,CHEMICAL & MINING CO OF CHILE INC,SQM,NYSE,Chile,F3,Chile,1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),20-F,2025,SQM
+793628,CHINA NATURAL RESOURCES INC,CHNR,Nasdaq,,,"Virgin Islands, British",1040.0,Gold and Silver Ores,20-F,2025,CHNR
+932695,CHINA YUCHAI INTERNATIONAL LTD,CYD,NYSE,Singapore,U0,,3510.0,Engines & Turbines,20-F,2025,CYD
+1123134,CHIPMOS TECHNOLOGIES INC,IMOS,Nasdaq,Taiwan,F5,Taiwan,3674.0,Semiconductors & Related Devices,20-F,2025,IMOS
+1132924,CHUNGHWA TELECOM CO LTD,CHT,NYSE,,,,4812.0,Radiotelephone Communications,20-F,2025,CHT
+1604481,CMB.TECH NV,CMBT,NYSE,Belgium,C9,Belgium,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CMBT
+1733868,CNFinance Holdings Ltd.,CNF,NYSE,China,F4,Cayman Islands,6199.0,Finance Services,20-F,2025,CNF
+1170858,COMPANHIA DE SANEAMENTO BASICO DO ESTADO DE SAO PAULO-SABESP,SBS,NYSE,,,Brazil,4941.0,Water Supply,20-F,2025,SBS
+1001290,CREDICORP LTD,BAP,NYSE,,,,6029.0,"Commercial Banks, NEC",20-F,2025,BAP
+766011,Caledonia Mining Corp Plc,CMCL,NYSE,,,,1040.0,Gold and Silver Ores,20-F,2025,CMCL
+1536196,Can-Fite BioPharma Ltd.,CANF,NYSE,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,CANF
+1780652,Canaan Inc.,CAN,Nasdaq,Singapore,U0,Cayman Islands,6199.0,Finance Services,20-F,2025,CAN
+1690511,Canada Goose Holdings Inc.,GOOS,NYSE,"Ontario, Canada",A6,"British Columbia, Canada",2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,20-F,2025,GOOS
+1375877,Canadian Solar Inc.,CSIQ,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",3674.0,Semiconductors & Related Devices,20-F,2025,CSIQ
+1392326,Capital Clean Energy Carriers Corp.,CCEC,Nasdaq,Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CCEC
+1720161,Castor Maritime Inc.,CTRM,Nasdaq,Cyprus,G4,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,CTRM
+1825349,Chanson International Holding,CHSN,Nasdaq,China,F4,Cayman Islands,2000.0,Food and Kindred Products,20-F,2025,CHSN
+1965473,Cheche Group Inc.,"CCG,CCGWW","Nasdaq,Nasdaq",China,F4,,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,CCG
+1965473,Cheche Group Inc.,"CCG,CCGWW","Nasdaq,Nasdaq",China,F4,,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,CCG
+1597835,Cheetah Mobile Inc.,CMCM,NYSE,China,F4,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,CMCM
+1534248,Chemomab Therapeutics Ltd.,CMMB,Nasdaq,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,CMMB
+1957413,Digital Currency X Technology Inc.,DCX,Nasdaq,,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,DCX
+1866782,"Codere Online Luxembourg, S.A.","CDRO,CDROW","Nasdaq,Nasdaq",Luxembourg,N4,Luxembourg,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,CDRO
+1866782,"Codere Online Luxembourg, S.A.","CDRO,CDROW","Nasdaq,Nasdaq",Luxembourg,N4,Luxembourg,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,CDRO
+1824814,Cognyte Software Ltd.,CGNT,Nasdaq,Israel,L3,Israel,7372.0,Services-Prepackaged Software,20-F,2025,CGNT
+1472072,Concord Medical Services Holdings Ltd,CCM,NYSE,,,Cayman Islands,8011.0,Services-Offices & Clinics of  Doctors of  Medicine,20-F,2025,CCM
+2001794,Concorde International Group Ltd.,CIGL,Nasdaq,Singapore,U0,"Virgin Islands, British",7381.0,"Services-Detective, Guard & Armored Car Services",20-F,2025,CIGL
+1345105,"Copa Holdings, S.A.",CPA,NYSE,Panama,R1,Panama,4512.0,"Air Transportation, Scheduled",20-F,2025,CPA
+2003977,Cre8 Enterprise Ltd,CRE,Nasdaq,Hong Kong,K3,,2750.0,Commercial Printing,20-F,2025,CRE
+1995704,Cuprina Holdings (Cayman) LTD,CUPR,Nasdaq,Singapore,U0,Cayman Islands,3842.0,"Orthopedic, Prosthetic & Surgical Appliances & Supplies",20-F,2025,CUPR
+1873093,CytoMed Therapeutics Ltd,GDTC,Nasdaq,Singapore,U0,Singapore,2834.0,Pharmaceutical Preparations,20-F,2025,GDTC
+1850235,D-MARKET Electronic Services & Trading,HEPS,Nasdaq,,,Turkey,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,HEPS
+1477641,DAQO NEW ENERGY CORP.,DQ,NYSE,,,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,DQ
+1808110,DDC Enterprise Ltd,DDC,NYSE,NC,NC,Cayman Islands,2000.0,Food and Kindred Products,20-F,2025,DDC
+1135951,DR REDDYS LABORATORIES LTD,RDY,NYSE,,,India,2834.0,Pharmaceutical Preparations,20-F,2025,RDY
+2025218,Delixy Holdings Ltd,DLXY,Nasdaq,Singapore,U0,Cayman Islands,5172.0,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),20-F,2025,DLXY
+1854545,Dingdong (Cayman) Ltd,DDL,NYSE,China,F4,Cayman Islands,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,DDL
+1762417,DouYu International Holdings Ltd,DOYU,Nasdaq,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,DOYU
+1799567,"DoubleDown Interactive Co., Ltd.",DDI,Nasdaq,,,"Korea, Republic of",7374.0,Services-Computer Processing & Data Preparation,20-F,2025,DDI
+1578453,Dynagas LNG Partners LP,"DLNG,DLNG-PA","NYSE,NYSE",,,Marshall Islands,4400.0,Water Transportation,20-F,2025,DLNG
+1578453,Dynagas LNG Partners LP,"DLNG,DLNG-PA","NYSE,NYSE",,,Marshall Islands,4400.0,Water Transportation,20-F,2025,DLNG
+1444406,ECOPETROL S.A.,EC,NYSE,,,Colombia,1311.0,Crude Petroleum & Natural Gas,20-F,2025,EC
+1395213,EDENOR,EDN,NYSE,,,Argentina,4911.0,Electric Services,20-F,2025,EDN
+1759783,EHang Holdings Ltd,EH,Nasdaq,,,Cayman Islands,3728.0,"Aircraft Parts & Auxiliary Equipment, NEC",20-F,2025,EH
+1024672,ELTEK LTD,ELTK,Nasdaq,,,Israel,3672.0,Printed Circuit Boards,20-F,2025,ELTK
+1355444,EMBRAER S.A.,EMBJ,NYSE,Brazil,D5,,3721.0,Aircraft,20-F,2025,EMBJ
+1157557,ENERGY CO OF MINAS GERAIS,"CIG,CIG-C","NYSE,NYSE",,,,4911.0,Electric Services,20-F,2025,CIG
+1157557,ENERGY CO OF MINAS GERAIS,"CIG,CIG-C","NYSE,NYSE",,,,4911.0,Electric Services,20-F,2025,CIG
+1041792,ENERGY CO OF PARANA,ELPC,NYSE,,,,4911.0,Electric Services,20-F,2025,ELPC
+1957538,OIO Group,"OIO,OIOWW","Nasdaq,Nasdaq",,,Cayman Islands,4953.0,Refuse Systems,20-F,2025,OIO
+1957538,OIO Group,"OIO,OIOWW","Nasdaq,Nasdaq",,,Cayman Islands,4953.0,Refuse Systems,20-F,2025,OIO
+1847846,EUDA Health Holdings Ltd,"EUDA,EUDAW","Nasdaq,Nasdaq",,,"Virgin Islands, British",8000.0,Services-Health Services,20-F,2025,EUDA
+1847846,EUDA Health Holdings Ltd,"EUDA,EUDAW","Nasdaq,Nasdaq",,,"Virgin Islands, British",8000.0,Services-Health Services,20-F,2025,EUDA
+1026662,EURO TECH HOLDINGS CO LTD,CLWT,Nasdaq,,,"Virgin Islands, British",5040.0,Wholesale-Professional & Commercial Equipment & Supplies,20-F,2025,CLWT
+1341170,EUROSEAS LTD.,ESEA,Nasdaq,Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,ESEA
+1799290,Ebang International Holdings Inc.,EBON,Nasdaq,NC,NC,Cayman Islands,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,EBON
+1907184,Electra Battery Materials Corp,ELBM,Nasdaq,,,"Ontario, Canada",1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),20-F,2025,ELBM
+946394,Ellomay Capital Ltd.,ELLO,NYSE,Israel,L3,Israel,4911.0,Electric Services,20-F,2025,ELLO
+1659939,Enel Chile S.A.,ENIC,NYSE,Chile,F3,Chile,4911.0,Electric Services,20-F,2025,ENIC
+1596812,Enlivex Ltd.,ENLV,Nasdaq,,,Israel,6199.0,Finance Services,20-F,2025,ENLV
+1883437,Epsium Enterprise Ltd,EPSM,Nasdaq,China,F4,"Virgin Islands, British",5180.0,"Wholesale-Beer, Wine & Distilled Alcoholic Beverages",20-F,2025,EPSM
+1825875,Erayak Power Solution Group Inc.,RAYA,Nasdaq,China,F4,Cayman Islands,3621.0,Motors & Generators,20-F,2025,RAYA
+1731388,EuroDry Ltd.,EDRY,Nasdaq,Greece,J3,Marshall Islands,4400.0,Water Transportation,20-F,2025,EDRY
+2032779,Euroholdings Ltd.,EHLD,Nasdaq,Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,EHLD
+1828253,Evaxion A/S,EVAX,Nasdaq,,,Denmark,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,EVAX
+2024876,Everbright Digital Holding Ltd.,EDHL,Nasdaq,Hong Kong,K3,Cayman Islands,7310.0,Services-Advertising,20-F,2025,EDHL
+1938534,FBS Global Ltd,FBGL,Nasdaq,Singapore,U0,Cayman Islands,1520.0,General Bldg Contractors - Residential Bldgs,20-F,2025,FBGL
+890541,"BLADEX, INC.",BLX,NYSE,,,,6029.0,"Commercial Banks, NEC",20-F,2025,BLX
+1045986,FORMULA SYSTEMS (1985) LTD,FORTY,Nasdaq,Israel,L3,Israel,7371.0,Services-Computer Programming Services,20-F,2025,FORTY
+1514597,FURY GOLD MINES LTD,FURY,NYSE,"Ontario, Canada",A6,"British Columbia, Canada",1040.0,Gold and Silver Ores,20-F,2025,FURY
+1750593,Fangdd Network Group Ltd.,DUO,Nasdaq,China,F4,Cayman Islands,6500.0,Real Estate,20-F,2025,DUO
+1957001,Fenbo Holdings Ltd,FEBO,Nasdaq,Hong Kong,K3,Cayman Islands,3634.0,Electric Housewares & Fans,20-F,2025,FEBO
+1639877,Ferroglobe PLC,GSM,Nasdaq,,,United Kingdom,1000.0,Metal Mining,20-F,2025,GSM
+2023796,Fitness Champs Holdings Ltd,FCHL,Nasdaq,Singapore,U0,Singapore,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,FCHL
+1903870,Forafric Global PLC,"AFRI,AFRIW","Nasdaq,Nasdaq",Gibraltar,J1,Gibraltar,2040.0,Grain Mill Products,20-F,2025,AFRI
+1903870,Forafric Global PLC,"AFRI,AFRIW","Nasdaq,Nasdaq",Gibraltar,J1,Gibraltar,2040.0,Grain Mill Products,20-F,2025,AFRI
+1935418,Foremost Clean Energy Ltd.,"FMST,FMSTW","Nasdaq,Nasdaq",,,"British Columbia, Canada",1090.0,Miscellaneous Metal Ores,20-F,2025,FMST
+1935418,Foremost Clean Energy Ltd.,"FMST,FMSTW","Nasdaq,Nasdaq",,,"British Columbia, Canada",1090.0,Miscellaneous Metal Ores,20-F,2025,FMST
+1989930,Founder Group Ltd,FGL,Nasdaq,,,"Virgin Islands, British",1700.0,Construction - Special Trade Contractors,20-F,2025,FGL
+1709819,Four Seasons Education (Cayman) Inc.,FEDU,NYSE,,,China,8200.0,Services-Educational Services,20-F,2025,FEDU
+913290,Frontline plc,FRO,NYSE,Cyprus,G4,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,FRO
+1838413,Full Truck Alliance Co. Ltd.,YMM,NYSE,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,YMM
+1819794,Fusion Fuel Green PLC,HTOO,Nasdaq,,,Ireland,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2025,HTOO
+1754581,Futu Holdings Ltd,FUTU,Nasdaq,China,F4,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,FUTU
+931427,GAS TRANSPORTER OF THE SOUTH INC,TGS,NYSE,Argentina,C1,,4922.0,Natural Gas Transmission,20-F,2025,TGS
+2034520,GIBO HOLDINGS Ltd,"GIBO,GIBOW","Nasdaq,Nasdaq",Hong Kong,K3,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,GIBO
+2034520,GIBO HOLDINGS Ltd,"GIBO,GIBOW","Nasdaq,Nasdaq",Hong Kong,K3,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,GIBO
+1105101,GIGAMEDIA Ltd,GIGM,Nasdaq,Taiwan,F5,,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,GIGM
+1313310,"GRAVITY Co., Ltd.",GRVY,Nasdaq,"Korea, Republic of",M5,"Korea, Republic of",7374.0,Services-Computer Processing & Data Preparation,20-F,2025,GRVY
+1114700,GRUPO FINANCIERO GALICIA SA,GGAL,Nasdaq,Argentina,C1,Argentina,6029.0,"Commercial Banks, NEC",20-F,2025,GGAL
+887153,"GRUPO SIMEC, S.A.B. de C.V.",SIM,NYSE,NY,NY,,3312.0,"Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)",20-F,2025,SIM
+1595353,EoCene Ltd.,EOCN,Nasdaq,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,EOCN
+1768259,Gaotu Techedu Inc.,GOTU,NYSE,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,GOTU
+1847806,Genius Group Ltd,GNS,NYSE,Singapore,U0,Singapore,7372.0,Services-Prepackaged Software,20-F,2025,GNS
+1464591,GeoPark Ltd,GPRK,NYSE,Colombia,F8,Bermuda,1311.0,Crude Petroleum & Natural Gas,20-F,2025,GPRK
+1903145,Gorilla Technology Group Inc.,"GRRR,GRRRW","Nasdaq,Nasdaq",,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,GRRR
+1903145,Gorilla Technology Group Inc.,"GRRR,GRRRW","Nasdaq,Nasdaq",,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,GRRR
+1724755,GreenTree Hospitality Group Ltd.,GHG,NYSE,,,Cayman Islands,7011.0,Hotels & Motels,20-F,2025,GHG
+1504764,Grupo Aval Acciones Y Valores S.A.,AVAL,NYSE,Colombia,F8,,6029.0,"Commercial Banks, NEC",20-F,2025,AVAL
+1517399,Grupo Supervielle S.A.,SUPV,NYSE,Argentina,C1,,6029.0,"Commercial Banks, NEC",20-F,2025,SUPV
+1804469,"Guardforce AI Co., Ltd.",GFAI,Nasdaq,Singapore,U0,Cayman Islands,7381.0,"Services-Detective, Guard & Armored Car Services",20-F,2025,GFAI
+1026785,HIGHWAY HOLDINGS LTD,HIHO,Nasdaq,,,,3490.0,Miscellaneous Fabricated Metal Products,20-F,2025,HIHO
+1945415,HUHUTECH International Group Inc.,HUHU,Nasdaq,,,China,3360.0,Nonferrous Foundries (Castings),20-F,2025,HUHU
+1728190,HUYA Inc.,HUYA,NYSE,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,HUYA
+1815779,Hafnia Ltd,HAFN,NYSE,,,Bermuda,4700.0,Transportation Services,20-F,2025,HAFN
+1936817,Haoxin Holdings Ltd,HXHX,Nasdaq,China,F4,China,4210.0,Trucking & Courier Services (No Air),20-F,2025,HXHX
+2029471,Heidmar Maritime Holdings Corp.,HMR,Nasdaq,Greece,J3,,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,HMR
+1610601,Hello Group Inc.,MOMO,Nasdaq,,,,7372.0,Services-Prepackaged Software,20-F,2025,MOMO
+1742341,"Biddance AI Systems, Inc.",BDAI,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,BDAI
+1342338,"Himax Technologies, Inc.",HIMX,Nasdaq,,,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,HIMX
+2023153,HomesToLife Ltd,HTLM,Nasdaq,,,,5712.0,Retail-Furniture Stores,20-F,2025,HTLM
+1855557,Hongli Group Inc.,HLP,Nasdaq,,,Cayman Islands,3569.0,"General Industrial Machinery & Equipment, NEC",20-F,2025,HLP
+1958399,"Huachen AI Parking Management Technology Holding Co., Ltd",HCAI,Nasdaq,,,,3990.0,Miscellaneous Manufacturing Industries,20-F,2025,HCAI
+1905660,Hub Cyber Security Ltd.,"HUBC,HUBCW,HUBCZ","Nasdaq,Nasdaq,Nasdaq",Israel,L3,Israel,3576.0,Computer Communications Equipment,20-F,2025,HUBC
+1905660,Hub Cyber Security Ltd.,"HUBC,HUBCW,HUBCZ","Nasdaq,Nasdaq,Nasdaq",Israel,L3,Israel,3576.0,Computer Communications Equipment,20-F,2025,HUBC
+1905660,Hub Cyber Security Ltd.,"HUBC,HUBCW,HUBCZ","Nasdaq,Nasdaq,Nasdaq",Israel,L3,Israel,3576.0,Computer Communications Equipment,20-F,2025,HUBC
+1778982,Huize Holding Ltd,HUIZ,Nasdaq,,,Cayman Islands,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,HUIZ
+1778016,NovaBridge Biosciences,NBP,Nasdaq,MD,MD,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,NBP
+1991592,INLIF Ltd,INLF,Nasdaq,,,"Virgin Islands, British",3569.0,"General Industrial Machinery & Equipment, NEC",20-F,2025,INLF
+1933951,INNEOVA Holdings Ltd,INEO,Nasdaq,,,Cayman Islands,5010.0,Wholesale-Motor Vehicles & Motor Vehicle Parts & Supplies,20-F,2025,INEO
+1995574,Icon Energy Corp,ICON,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,ICON
+1876581,Imperial Petroleum Inc./Marshall Islands,"IMPP,IMPPP","Nasdaq,Nasdaq",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,IMPP
+1876581,Imperial Petroleum Inc./Marshall Islands,"IMPP,IMPPP","Nasdaq,Nasdaq",,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,IMPP
+1757840,Indonesia Energy Corp Ltd,INDO,NYSE,Indonesia,K8,Cayman Islands,1311.0,Crude Petroleum & Natural Gas,20-F,2025,INDO
+1815566,"Infobird Co., Ltd",IFBD,Nasdaq,Hong Kong,K3,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,IFBD
+1924482,Innovation Beverage Group Ltd,IBG,Nasdaq,,,Australia,2080.0,Beverages,20-F,2025,IBG
+1895597,Intchains Group Ltd,ICG,Nasdaq,,,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,ICG
+1916416,Intelligent Group Ltd,INTJ,Nasdaq,,,,8742.0,Services-Management Consulting Services,20-F,2025,INTJ
+1814963,Intelligent Living Application Group Inc.,ILAG,Nasdaq,Hong Kong,K3,Hong Kong,2540.0,"Partitions, Shelvg, Lockers, & of fice & Store Fixtures",20-F,2025,ILAG
+1864163,"Inter & Co, Inc.",INTR,Nasdaq,Brazil,D5,Cayman Islands,6029.0,"Commercial Banks, NEC",20-F,2025,INTR
+1615903,Intercorp Financial Services Inc.,IFS,NYSE,Peru,R5,,6029.0,"Commercial Banks, NEC",20-F,2025,IFS
+1857030,Intercure Ltd.,INCR,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,INCR
+1794338,International General Insurance Holdings Ltd.,IGIC,Nasdaq,Jordan,M2,Bermuda,6399.0,"Insurance Carriers, NEC",20-F,2025,IGIC
+1132597,Itau Unibanco Holding S.A.,ITUB,NYSE,Brazil,D5,Brazil,6022.0,State Commercial Banks,20-F,2025,ITUB
+1337117,Ituran Location & Control Ltd.,ITRN,Nasdaq,,,Israel,5065.0,"Wholesale-Electronic Parts & Equipment, NEC",20-F,2025,ITRN
+1905511,JE Cleantech Holdings Ltd,JCSE,Nasdaq,Singapore,U0,Cayman Islands,3990.0,Miscellaneous Manufacturing Industries,20-F,2025,JCSE
+1976908,JIADE Ltd,JDZG,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,JDZG
+1530238,JOYY Inc.,JOYY,Nasdaq,Singapore,U0,,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,JOYY
+1546383,JX Luxventure Group Inc.,JXG,Nasdaq,China,F4,Marshall Islands,5000.0,Wholesale-Durable Goods,20-F,2025,JXG
+1938186,Jayud Global Logistics Ltd,JYD,Nasdaq,,,Cayman Islands,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,JYD
+1852440,Jianzhi Education Technology Group Co Ltd,JZ,Nasdaq,China,F4,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,JZ
+1743102,Jiayin Group Inc.,JFIN,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,JFIN
+1481513,Jinko Holdings Ltd,JKS,NYSE,,,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,JKS
+1967631,Jinxin Technology Holding Co,NAMI,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,NAMI
+1805594,Jowell Global Ltd.,JWEL,Nasdaq,China,F4,Cayman Islands,5960.0,Retail-Nonstore Retailers,20-F,2025,JWEL
+2000756,Nexus Advanced Technologies Inc.,"NXAT,NXATW","Nasdaq,Nasdaq",,,Cayman Islands,7819.0,Services-Allied To Motion Picture Production,20-F,2025,NXAT
+2000756,Nexus Advanced Technologies Inc.,"NXAT,NXATW","Nasdaq,Nasdaq",,,Cayman Islands,7819.0,Services-Allied To Motion Picture Production,20-F,2025,NXAT
+1445930,KB Financial Group Inc.,KB,NYSE,"Korea, Republic of",M5,"Korea, Republic of",6029.0,"Commercial Banks, NEC",20-F,2025,KB
+1809587,KE Holdings Inc.,BEKE,NYSE,,,Cayman Islands,6531.0,Real Estate Agents & Managers (For Others),20-F,2025,BEKE
+887225,KOREA ELECTRIC POWER CORP,KEP,NYSE,,,"Korea, Republic of",4911.0,Electric Services,20-F,2025,KEP
+892450,KT CORP,KT,NYSE,,,,4813.0,Telephone Communications (No Radiotelephone),20-F,2025,KT
+1720250,"Kandi Technologies Group, Inc.",KNDI,Nasdaq,,,,3714.0,Motor Vehicle Parts & Accessories,20-F,2025,KNDI
+1842827,Kanzhun Ltd,BZ,Nasdaq,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,BZ
+1828102,Karooooo Ltd.,KARO,Nasdaq,,,Singapore,7372.0,Services-Prepackaged Software,20-F,2025,KARO
+1611005,Kenon Holdings Ltd.,KEN,NYSE,Singapore,U0,Singapore,4911.0,Electric Services,20-F,2025,KEN
+1290109,"LG Display Co., Ltd.",LPL,NYSE,,,"Korea, Republic of",3679.0,"Electronic Components, NEC",20-F,2025,LPL
+1932072,LOBO TECHNOLOGIES LTD.,LOBO,Nasdaq,,,,3751.0,"Motorcycles, Bicycles & Parts",20-F,2025,LOBO
+1967397,LZ Technology Holdings Ltd,LZMH,Nasdaq,China,F4,Cayman Islands,7371.0,Services-Computer Programming Services,20-F,2025,LZMH
+1708259,LexinFintech Holdings Ltd.,LX,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,LX
+1876766,Lichen International Ltd,LICN,Nasdaq,China,F4,Cayman Islands,8742.0,Services-Management Consulting Services,20-F,2025,LICN
+1958217,Lifezone Metals Ltd,"LZM,LZM-WT","NYSE,NYSE",Isle of Man,Y8,Isle of Man,1000.0,Metal Mining,20-F,2025,LZM
+1958217,Lifezone Metals Ltd,"LZM,LZM-WT","NYSE,NYSE",Isle of Man,Y8,Isle of Man,1000.0,Metal Mining,20-F,2025,LZM
+1523836,"LightInTheBox Holding Co., Ltd.",LITB,NYSE,,,,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,LITB
+1806524,Lion Group Holding Ltd,LGHL,Nasdaq,,,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,LGHL
+1814067,Lixiang Education Holding Co. Ltd.,LXEH,Nasdaq,China,F4,,8200.0,Services-Educational Services,20-F,2025,LXEH
+1997711,Logistic Properties of the Americas,LPA,NYSE,,,,6500.0,Real Estate,20-F,2025,LPA
+1711375,Loma Negra Compania Industrial Argentina Sociedad Anonima,LOMA,NYSE,Argentina,C1,,3241.0,"Cement, Hydraulic",20-F,2025,LOMA
+1962746,Lotus Technology Inc.,"LOT,LOTWW","Nasdaq,Nasdaq",,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,LOT
+1962746,Lotus Technology Inc.,"LOT,LOTWW","Nasdaq,Nasdaq",,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,LOT
+1984124,Luda Technology Group Ltd,LUD,NYSE,,,,3317.0,Steel Pipe & Tubes,20-F,2025,LUD
+2027265,MASTERBEEF GROUP,MB,Nasdaq,Hong Kong,K3,Hong Kong,5812.0,Retail-Eating  Places,20-F,2025,MB
+1091223,MATERIALISE NV,MTLS,Nasdaq,,,,7372.0,Services-Prepackaged Software,20-F,2025,MTLS
+1061736,MEXICAN ECONOMIC DEVELOPMENT INC,FMX,NYSE,,,Mexico,2086.0,Bottled & Canned Soft Drinks & Carbonated Waters,20-F,2025,FMX
+1991332,MKDWELL Tech Inc.,"MKDW,MKDWW","Nasdaq,Nasdaq",Taiwan,F5,"Virgin Islands, British",3600.0,Electronic & Other Electrical Equipment (No Computer Equip),20-F,2025,MKDW
+1991332,MKDWELL Tech Inc.,"MKDW,MKDWW","Nasdaq,Nasdaq",Taiwan,F5,"Virgin Islands, British",3600.0,Electronic & Other Electrical Equipment (No Computer Equip),20-F,2025,MKDW
+1742518,"MMTEC, INC.",MTC,Nasdaq,,,"Virgin Islands, British",6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,MTC
+1347426,Macro Bank Inc.,BMA,NYSE,,,Argentina,6029.0,"Commercial Banks, NEC",20-F,2025,BMA
+1881472,Magic Empire Global Ltd,MEGL,Nasdaq,Hong Kong,K3,"Virgin Islands, British",6199.0,Finance Services,20-F,2025,MEGL
+1495153,MakeMyTrip Ltd,MMYT,Nasdaq,India,K7,Mauritius,4700.0,Transportation Services,20-F,2025,MMYT
+1852767,"Marti Technologies, Inc.",MRT,NYSE,,,Cayman Islands,7510.0,Services-Auto Rental & Leasing (No Drivers),20-F,2025,MRT
+1796898,"Maxeon Solar Technologies, Ltd.",MAXNQ,,,,Singapore,3674.0,Semiconductors & Related Devices,20-F,2025,MAXNQ
+1819704,Medirom Healthcare Technologies Inc.,MRM,Nasdaq,,,Japan,7200.0,Services-Personal Services,20-F,2025,MRM
+1787803,Meiwu Technology Co Ltd,WNW,Nasdaq,,,"Virgin Islands, British",2840.0,"Soap, Detergents, Cleang Preparations, Perfumes, Cosmetics",20-F,2025,WNW
+1527762,Chaince Digital Holdings Inc.,CD,Nasdaq,NY,NY,,6199.0,Finance Services,20-F,2025,CD
+1993431,Micropolis AI Robotics,MCRP,NYSE,,,Cayman Islands,3714.0,Motor Vehicle Parts & Accessories,20-F,2025,MCRP
+1948099,Mingteng International Corp Inc.,MTEN,Nasdaq,,,,3442.0,"Metal Doors, Sash, Frames, Moldings & Trim",20-F,2025,MTEN
+1602842,Orion Digital Corp.,ORIO,Nasdaq,,,"British Columbia, Canada",6199.0,Finance Services,20-F,2025,ORIO
+1974044,MoneyHero Ltd,"MNY,MNYWW","Nasdaq,Nasdaq",Singapore,U0,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,MNY
+1974044,MoneyHero Ltd,"MNY,MNYWW","Nasdaq,Nasdaq",Singapore,U0,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,MNY
+1941500,Multi Ways Holdings Ltd,MWG,NYSE,Singapore,U0,,3990.0,Miscellaneous Manufacturing Industries,20-F,2025,MWG
+1988776,Murano Global Investments Plc,"MRNO,MRNOW","Nasdaq,Nasdaq",United Kingdom,X0,Jersey,7011.0,Hotels & Motels,20-F,2025,MRNO
+1988776,Murano Global Investments Plc,"MRNO,MRNOW","Nasdaq,Nasdaq",United Kingdom,X0,Jersey,7011.0,Hotels & Motels,20-F,2025,MRNO
+1049659,NATIONAL STEEL CO,SID,NYSE,,,Brazil,3310.0,"Steel Works, Blast Furnaces & Rolling & Finishing Mills",20-F,2025,SID
+900391,NATUZZI S P A,NTZ,,,,,2510.0,Household Furniture,20-F,2025,NTZ
+1958713,NFT Ltd,MI,NYSE,Hong Kong,K3,Cayman Islands,6199.0,Finance Services,20-F,2025,MI
+1966233,NIP Group Inc.,NIPG,Nasdaq,Sweden,V7,Cayman Islands,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,NIPG
+1783036,NewcelX Ltd.,NCEL,Nasdaq,,,Switzerland,2834.0,Pharmaceutical Preparations,20-F,2025,NCEL
+1000177,NORDIC AMERICAN TANKERS Ltd,NAT,NYSE,Bermuda,D0,,4400.0,Water Transportation,20-F,2025,NAT
+1932737,ROBO.AI INC.,"AIIO,AIIOW","Nasdaq,Nasdaq",,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,AIIO
+1932737,ROBO.AI INC.,"AIIO,AIIOW","Nasdaq,Nasdaq",,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,AIIO
+2026514,Namib Minerals,"NAMM,NAMMW","Nasdaq,Nasdaq",,,Cayman Islands,1040.0,Gold and Silver Ores,20-F,2025,NAMM
+2026514,Namib Minerals,"NAMM,NAMMW","Nasdaq,Nasdaq",,,Cayman Islands,1040.0,Gold and Silver Ores,20-F,2025,NAMM
+1643303,Nano Dimension Ltd.,NNDM,Nasdaq,MA,MA,Israel,3672.0,Printed Circuit Boards,20-F,2025,NNDM
+1795251,Nano-X Imaging Ltd.,NNOX,Nasdaq,Israel,L3,Israel,3844.0,X-Ray Apparatus & Tubes & Related Irradiation Apparatus,20-F,2025,NNOX
+1948294,CL Workshop Group Ltd,NWGL,Nasdaq,,,"Virgin Islands, British",2400.0,Lumber & Wood Products (No Furniture),20-F,2025,NWGL
+1513845,Nebius Group N.V.,NBIS,Nasdaq,,,Netherlands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,NBIS
+1916331,Neo-Concept International Group Holdings Ltd,NCI,Nasdaq,,,Hong Kong,2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,20-F,2025,NCI
+1875091,NeuroSense Therapeutics Ltd.,"NRSN,NRSNW","Nasdaq,Nasdaq",Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,NRSN
+1875091,NeuroSense Therapeutics Ltd.,"NRSN,NRSNW","Nasdaq,Nasdaq",Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,NRSN
+1981662,NewGenIvf Group Ltd,"NIVF,NIVFW","Nasdaq,Nasdaq",Thailand,W1,"Virgin Islands, British",8090.0,"Services-Misc Health & Allied Services, NEC",20-F,2025,NIVF
+1981662,NewGenIvf Group Ltd,"NIVF,NIVFW","Nasdaq,Nasdaq",Thailand,W1,"Virgin Islands, British",8090.0,"Services-Misc Health & Allied Services, NEC",20-F,2025,NIVF
+1474627,"Newegg Commerce, Inc.",NEGG,Nasdaq,CA,CA,"Virgin Islands, British",5990.0,"Retail-Retail Stores, NEC",20-F,2025,NEGG
+1603993,AIOS Tech Inc.,AIOS,Nasdaq,,,"Virgin Islands, British",7373.0,Services-Computer Integrated Systems Design,20-F,2025,AIOS
+1744781,Niu Technologies,NIU,Nasdaq,,,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,NIU
+1499543,NOAH HOLDINGS LTD,NOAH,NYSE,,,,6282.0,Investment Advice,20-F,2025,NOAH
+1691493,Nu Holdings Ltd.,NU,NYSE,Brazil,D5,Cayman Islands,6199.0,Finance Services,20-F,2025,NU
+1979407,ORANGEKLOUD TECHNOLOGY INC.,ORKT,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,ORKT
+1869467,"SVRN, Inc.",SVRN,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,SVRN
+1944902,Ohmyhome Ltd,OMH,Nasdaq,Singapore,U0,Cayman Islands,6531.0,Real Estate Agents & Managers (For Others),20-F,2025,OMH
+1737450,Opera Ltd,OPRA,Nasdaq,Norway,Q8,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,OPRA
+1776067,Oriental Culture Holding LTD,OCG,Nasdaq,,,Cayman Islands,7380.0,Services-Miscellaneous Business Services,20-F,2025,OCG
+1801834,PRF Technologies Ltd.,PRFX,Nasdaq,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,PRFX
+1737806,PDD Holdings Inc.,PDD,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,PDD
+1001807,PERUSAHAAN PERSEROAN PERSERO PT TELEKOMUNIKASI INDONESIA TBK,TLK,NYSE,Indonesia,K8,,4813.0,Telephone Communications (No Radiotelephone),20-F,2025,TLK
+1119639,PETROBRAS - PETROLEO BRASILEIRO SA,"PBR,PBR-A","NYSE,NYSE",,,Brazil,1311.0,Crude Petroleum & Natural Gas,20-F,2025,PBR
+1119639,PETROBRAS - PETROLEO BRASILEIRO SA,"PBR,PBR-A","NYSE,NYSE",,,Brazil,1311.0,Crude Petroleum & Natural Gas,20-F,2025,PBR
+1437424,POET TECHNOLOGIES INC.,POET,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",3674.0,Semiconductors & Related Devices,20-F,2025,POET
+889132,POSCO HOLDINGS INC.,PKX,NYSE,"Korea, Republic of",M5,,3312.0,"Steel Works, Blast Furnaces & Rolling Mills (Coke Ovens)",20-F,2025,PKX
+1997201,PS International Group Ltd.,PSIG,Nasdaq,,,Cayman Islands,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,PSIG
+1985062,PSYENCE BIOMEDICAL LTD.,"PBM,PBMWW","Nasdaq,Nasdaq",,,"Ontario, Canada",2834.0,Pharmaceutical Preparations,20-F,2025,PBM
+1985062,PSYENCE BIOMEDICAL LTD.,"PBM,PBMWW","Nasdaq,Nasdaq",,,"Ontario, Canada",2834.0,Pharmaceutical Preparations,20-F,2025,PBM
+2016337,PTL Ltd,PTLE,Nasdaq,Hong Kong,K3,,5172.0,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),20-F,2025,PTLE
+1712807,PagSeguro Digital Ltd.,PAGS,NYSE,,,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,PAGS
+1825570,Patria Investments Ltd,PAX,Nasdaq,Cayman Islands,E9,Cayman Islands,6282.0,Investment Advice,20-F,2025,PAX
+1481241,Performance Shipping Inc.,PSHG,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,PSHG
+1828316,Pharming Group N.V.,PHAR,Nasdaq,Netherlands,P7,Netherlands,2834.0,Pharmaceutical Preparations,20-F,2025,PHAR
+1830487,Pharvaris N.V.,PHVS,Nasdaq,,,Netherlands,2834.0,Pharmaceutical Preparations,20-F,2025,PHVS
+1509646,Phoenix New Media Ltd,FENG,NYSE,,,,4833.0,Television Broadcasting Stations,20-F,2025,FENG
+1716338,J & Friends Holdings Ltd,JF,Nasdaq,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,JF
+1933021,Plutus Financial Group Ltd,PLUT,Nasdaq,China,F4,Cayman Islands,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,PLUT
+2012096,Powell Max Ltd,PMAX,Nasdaq,Hong Kong,K3,"Virgin Islands, British",7380.0,Services-Miscellaneous Business Services,20-F,2025,PMAX
+1876431,Prenetics Global Ltd,"PRE,PRENW","Nasdaq,Nasdaq",Hong Kong,K3,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,PRE
+1876431,Prenetics Global Ltd,"PRE,PRENW","Nasdaq,Nasdaq",Hong Kong,K3,Cayman Islands,2834.0,Pharmaceutical Preparations,20-F,2025,PRE
+1781193,QUHUO Ltd,QH,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,QH
+1692705,High Templar Tech Ltd,HTT,NYSE,,,Cayman Islands,6199.0,Finance Services,20-F,2025,HTT
+1920294,REZOLVE AI PLC,"RZLV,RZLVW","Nasdaq,Nasdaq",,,United Kingdom,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,RZLV
+1920294,REZOLVE AI PLC,"RZLV,RZLVW","Nasdaq,Nasdaq",,,United Kingdom,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,RZLV
+1828365,RLX Technology Inc.,RLX,NYSE,,,Cayman Islands,2111.0,Cigarettes,20-F,2025,RLX
+1687277,"ReTo Eco-Solutions, Inc.",RETO,Nasdaq,China,F4,"Virgin Islands, British",3290.0,"Abrasive, Asbestos & Misc Nonmetallic Mineral Prods",20-F,2025,RETO
+2027360,RedCloud Holdings plc,RCT,Nasdaq,,,United Kingdom,5990.0,"Retail-Retail Stores, NEC",20-F,2025,RCT
+1553846,RedHill Biopharma Ltd.,RDHL,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,RDHL
+2039060,Robin Energy Ltd.,RBNE,Nasdaq,Cyprus,G4,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,RBNE
+1971115,Ryde Group Ltd,RYDE,NYSE,Singapore,U0,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,RYDE
+2029138,SAGTEC GLOBAL Ltd,SAGT,Nasdaq,Malaysia,N8,Malaysia,7372.0,Services-Prepackaged Software,20-F,2025,SAGT
+1847075,SAIHEAT Ltd,"SAIH,SAIHW","Nasdaq,Nasdaq",NY,NY,,6199.0,Finance Services,20-F,2025,SAIH
+1847075,SAIHEAT Ltd,"SAIH,SAIHW","Nasdaq,Nasdaq",NY,NY,,6199.0,Finance Services,20-F,2025,SAIH
+1926792,SAMFINE CREATION HOLDINGS GROUP Ltd,SFHG,Nasdaq,,,Cayman Islands,2750.0,Commercial Printing,20-F,2025,SFHG
+1383395,SEQUANS COMMUNICATIONS,SQNS,NYSE,France,I0,France,3674.0,Semiconductors & Related Devices,20-F,2025,SQNS
+1263043,SHINHAN FINANCIAL GROUP CO LTD,SHG,NYSE,,,,6021.0,National Commercial Banks,20-F,2025,SHG
+1094324,SIFY TECHNOLOGIES LTD,SIFY,Nasdaq,,,,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,SIFY
+916793,SILICOM LTD.,SILC,Nasdaq,Israel,L3,,3576.0,Computer Communications Equipment,20-F,2025,SILC
+1948697,SIMPPLE LTD.,SPPL,Nasdaq,,,,8744.0,Services-Facilities Support Management Services,20-F,2025,SPPL
+1015650,SK TELECOM CO LTD,SKM,NYSE,,,,4812.0,Radiotelephone Communications,20-F,2025,SKM
+1991261,Rantizo,RNTZ,Nasdaq,,,Cayman Islands,1623.0,"Water, Sewer, Pipeline, Comm & Power Line Construction",20-F,2025,RNTZ
+1940674,SMX (Security Matters) Public Ltd Co,"SMX,SMXWW","Nasdaq,Nasdaq",Ireland,L2,Ireland,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2025,SMX
+1940674,SMX (Security Matters) Public Ltd Co,"SMX,SMXWW","Nasdaq,Nasdaq",Ireland,L2,Ireland,3590.0,Misc Industrial & Commercial Machinery & Equipment,20-F,2025,SMX
+1346610,SOS Ltd,SOS,NYSE,China,F4,Cayman Islands,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,SOS
+2002236,SPRINGVIEW HOLDINGS LTD,SPHL,Nasdaq,Cayman Islands,E9,Cayman Islands,1520.0,General Bldg Contractors - Residential Bldgs,20-F,2025,SPHL
+1611746,SciSparc Ltd.,SPRC,Nasdaq,Israel,L3,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,SPRC
+1753673,Scienjoy Holding Corp,SJ,Nasdaq,China,F4,"Virgin Islands, British",7374.0,Services-Computer Processing & Data Preparation,20-F,2025,SJ
+1611747,Scinai Immunotherapeutics Ltd.,SCNI,Nasdaq,Israel,L3,Israel,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,SCNI
+16859,Scully Royalty Ltd.,SRL,NYSE,,,Cayman Islands,6795.0,Mineral Royalty Traders,20-F,2025,SRL
+1703399,Sea Ltd,SE,NYSE,Singapore,U0,Cayman Islands,7380.0,Services-Miscellaneous Business Services,20-F,2025,SE
+1993727,Senstar Technologies Corp,SNT,Nasdaq,,,"Ontario, Canada",3669.0,"Communications Equipment, NEC",20-F,2025,SNT
+1810467,Sentage Holdings Inc.,SNTG,Nasdaq,China,F4,Cayman Islands,6199.0,Finance Services,20-F,2025,SNTG
+1329394,Silicon Motion Technology CORP,SIMO,Nasdaq,Hong Kong,K3,Cayman Islands,3674.0,Semiconductors & Related Devices,20-F,2025,SIMO
+1976443,Silynxcom Ltd.,SYNX,NYSE,Israel,L3,Israel,3651.0,Household Audio & Video Equipment,20-F,2025,SYNX
+1649009,"Core AI Holdings, Inc.",CHAI,Nasdaq,,,"British Columbia, Canada",4812.0,Radiotelephone Communications,20-F,2025,CHAI
+1758530,So-Young International Inc.,SY,Nasdaq,,,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,SY
+1684693,Sol-Gel Technologies Ltd.,SLGL,Nasdaq,,,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,SLGL
+1959224,"Solowin Holdings, Ltd.",AXG,Nasdaq,,,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,AXG
+1783407,Sound Group Inc.,SOGP,Nasdaq,Singapore,U0,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,SOGP
+1328919,StealthGas Inc.,GASS,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,GASS
+1745431,StoneCo Ltd.,STNE,Nasdaq,Cayman Islands,E9,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,STNE
+1936804,SunCar Technology Group Inc.,"SDA,SDAWW","Nasdaq,Nasdaq",China,F4,Cayman Islands,7500.0,"Services-Automotive Repair, Services & Parking",20-F,2025,SDA
+1936804,SunCar Technology Group Inc.,"SDA,SDAWW","Nasdaq,Nasdaq",China,F4,Cayman Islands,7500.0,"Services-Automotive Repair, Services & Parking",20-F,2025,SDA
+1723935,Sunlands Technology Group,STG,NYSE,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,STG
+1780731,E-Power Inc.,EPOW,Nasdaq,,,China,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,EPOW
+1878057,Super Group (SGHC) Ltd,SGHC,NYSE,Guernsey,Y7,Guernsey,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,SGHC
+1291855,SuperCom Ltd,SPCB,Nasdaq,,,Israel,3674.0,Semiconductors & Related Devices,20-F,2025,SPCB
+909327,Suzano S.A.,SUZ,NYSE,Brazil,D5,,2621.0,Paper Mills,20-F,2025,SUZ
+1875609,Swvl Holdings Corp,"SWVL,SWVLW","Nasdaq,Nasdaq",United Arab Emirates,C0,"Virgin Islands, British",7389.0,"Services-Business Services, NEC",20-F,2025,SWVL
+1875609,Swvl Holdings Corp,"SWVL,SWVLW","Nasdaq,Nasdaq",United Arab Emirates,C0,"Virgin Islands, British",7389.0,"Services-Business Services, NEC",20-F,2025,SWVL
+1499620,TAL Education Group,TAL,NYSE,China,F4,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,TAL
+1588084,TANTECH HOLDINGS LTD,TANH,Nasdaq,China,F4,"Virgin Islands, British",2860.0,Industrial Organic Chemicals,20-F,2025,TANH
+1592560,VisionSys AI Inc,VSA,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,VSA
+1684425,"TDH Holdings, Inc.",PETZ,Nasdaq,China,F4,"Virgin Islands, British",6531.0,Real Estate Agents & Managers (For Others),20-F,2025,PETZ
+1877333,TH International Ltd,THCH,Nasdaq,NY,NY,Cayman Islands,5812.0,Retail-Eating  Places,20-F,2025,THCH
+1826168,TIM S.A.,TIMB,NYSE,Brazil,D5,Brazil,4813.0,Telephone Communications (No Radiotelephone),20-F,2025,TIMB
+1296484,TOP SHIPS INC.,TOPS,NYSE,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TOPS
+1941131,TORO CORP.,TORO,Nasdaq,,,Marshall Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TORO
+928876,TOWER SEMICONDUCTOR LTD,TSEM,Nasdaq,,,Israel,3674.0,Semiconductors & Related Devices,20-F,2025,TSEM
+888721,TRINITY BIOTECH PLC,TRIB,Nasdaq,,,Ireland,2835.0,In Vitro & In Vivo Diagnostic Substances,20-F,2025,TRIB
+1166663,TSAKOS ENERGY NAVIGATION LTD,"TEN,TEN-PE,TEN-PF","NYSE,NYSE,NYSE",,,Greece,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TEN
+1166663,TSAKOS ENERGY NAVIGATION LTD,"TEN,TEN-PE,TEN-PF","NYSE,NYSE,NYSE",,,Greece,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TEN
+1166663,TSAKOS ENERGY NAVIGATION LTD,"TEN,TEN-PE,TEN-PF","NYSE,NYSE,NYSE",,,Greece,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,TEN
+1071321,TURKCELL ILETISIM HIZMETLERI A S,TKC,NYSE,,,Turkey,4813.0,Telephone Communications (No Radiotelephone),20-F,2025,TKC
+1552670,Taoping Inc.,TAOP,Nasdaq,,,"Virgin Islands, British",7372.0,Services-Prepackaged Software,20-F,2025,TAOP
+1982012,Ten-League International Holdings Ltd,TLIH,Nasdaq,Singapore,U0,Cayman Islands,5080.0,"Wholesale-Machinery, Equipment & Supplies",20-F,2025,TLIH
+1296774,The9 LTD,NCTY,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,NCTY
+2035304,Titan America SA,TTAM,NYSE,,,Belgium,1400.0,Mining & Quarrying of  Nonmetallic Minerals (No Fuels),20-F,2025,TTAM
+1723069,Tiziana Life Sciences Ltd,TLSA,Nasdaq,United Kingdom,X0,Bermuda,2834.0,Pharmaceutical Preparations,20-F,2025,TLSA
+1938865,Nexpu Ltd.,DPU,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,DPU
+1978057,Top Wealth Group Holding Ltd,TWG,Nasdaq,,,Cayman Islands,2090.0,Miscellaneous Food Preparations & Kindred Products,20-F,2025,TWG
+2033515,AsiaStrategy,SORA,Nasdaq,,,Cayman Islands,5094.0,"Wholesale-Jewelry, Watches, Precious Stones & Metals",20-F,2025,SORA
+1983550,Trident Digital Tech Holdings Ltd,TDTH,Nasdaq,,,,7389.0,"Services-Business Services, NEC",20-F,2025,TDTH
+1412095,"Troops, Inc. /Cayman Islands/",TROO,Nasdaq,,,Cayman Islands,6159.0,Miscellaneous Business Credit Institution,20-F,2025,TROO
+1943444,Tungray Technologies Inc,TRSG,Nasdaq,Singapore,U0,Cayman Islands,3530.0,"Construction, Mining & Materials Handling Machinery & Equip",20-F,2025,TRSG
+1597095,Tuniu Corp,TOUR,Nasdaq,,,Cayman Islands,4700.0,Transportation Services,20-F,2025,TOUR
+1963439,"Turbo Energy, S.A.",TURB,Nasdaq,,,Spain,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,TURB
+1829118,Tuya Inc.,TUYA,NYSE,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,TUYA
+1939780,U Power Ltd,UCAR,Nasdaq,,,Cayman Islands,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,UCAR
+1094972,ULTRAPAR HOLDINGS INC,UGP,NYSE,Brazil,D5,,4924.0,Natural Gas Distribution,20-F,2025,UGP
+888746,UNITED BREWERIES CO INC,CCU,NYSE,Chile,F3,,2082.0,Malt Beverages,20-F,2025,CCU
+1033767,UNITED MICROELECTRONICS CORP,UMC,NYSE,Taiwan,F5,Taiwan,3674.0,Semiconductors & Related Devices,20-F,2025,UMC
+1756699,UP Fintech Holding Ltd,TIGR,Nasdaq,,,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,TIGR
+1030471,UTSTARCOM HOLDINGS CORP.,UTSI,Nasdaq,China,F4,Cayman Islands,3669.0,"Communications Equipment, NEC",20-F,2025,UTSI
+1821424,Ucommune International Ltd,UK,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,UK
+2021688,Uni-Fuels Holdings Ltd,UFG,Nasdaq,,,,5172.0,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),20-F,2025,UFG
+1912847,United Maritime Corp,USEA,Nasdaq,,,Marshall Islands,4400.0,Water Transportation,20-F,2025,USEA
+1809616,Universe Pharmaceuticals INC,UPC,Nasdaq,China,F4,China,2834.0,Pharmaceutical Preparations,20-F,2025,UPC
+1729173,Uxin Ltd,UXIN,Nasdaq,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,UXIN
+1930510,VCI Global Ltd,VCIG,Nasdaq,,,Malaysia,8744.0,Services-Facilities Support Management Services,20-F,2025,VCIG
+1468091,VEON Ltd.,VEON,Nasdaq,,,Bermuda,4812.0,Radiotelephone Communications,20-F,2025,VEON
+1508475,"VNET Group, Inc.",VNET,Nasdaq,China,F4,,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,VNET
+1951294,Forcendra Holding Ltd,"FCDH,VSME","Nasdaq,Nasdaq",,,"Virgin Islands, British",7311.0,Services-Advertising Agencies,20-F,2025,FCDH
+1969373,"Vesta Real Estate Corporation, S.A.B. de C.V.",VTMX,NYSE,Mexico,O5,Mexico,6500.0,Real Estate,20-F,2025,VTMX
+1913510,VinFast Auto Ltd.,"VFS,VFSWW","Nasdaq,Nasdaq",Singapore,U0,Singapore,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,VFS
+1913510,VinFast Auto Ltd.,"VFS,VFSWW","Nasdaq,Nasdaq",Singapore,U0,Singapore,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,VFS
+1826286,Vinci Compass Investments Ltd.,VINP,Nasdaq,,,Cayman Islands,6282.0,Investment Advice,20-F,2025,VINP
+1529192,Vipshop Holdings Ltd,VIPS,NYSE,,,,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,VIPS
+1946703,WEBUY GLOBAL LTD,WBUY,Nasdaq,,,Cayman Islands,5900.0,Retail-Miscellaneous Retail,20-F,2025,WBUY
+1980210,WF Holding Ltd,WFF,Nasdaq,Malaysia,N8,Cayman Islands,3990.0,Miscellaneous Manufacturing Industries,20-F,2025,WFF
+1123799,WIPRO LTD,WIT,NYSE,,,,7371.0,Services-Computer Programming Services,20-F,2025,WIT
+1264136,WOORI FINANCIAL GROUP INC.,WF,NYSE,,,"Korea, Republic of",6029.0,"Commercial Banks, NEC",20-F,2025,WF
+1866501,Wallbox N.V.,WBX,NYSE,Spain,U3,Netherlands,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,WBX
+1823986,Waterdrop Inc.,WDH,NYSE,,,Cayman Islands,6411.0,"Insurance Agents, Brokers & Service",20-F,2025,WDH
+1866364,Webull Corp,"BULL,BULLW","Nasdaq,Nasdaq",FL,FL,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,BULL
+1866364,Webull Corp,"BULL,BULLW","Nasdaq,Nasdaq",FL,FL,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,BULL
+1990251,Wellchange Holdings Co Ltd,WCT,Nasdaq,China,F4,,7372.0,Services-Prepackaged Software,20-F,2025,WCT
+1770088,WiMi Hologram Cloud Inc.,WIMI,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,WIMI
+1999860,Wing Yip Food Holdings Group Ltd,WYHG,Nasdaq,China,F4,Hong Kong,2013.0,Sausages & Other Prepared Meat Products,20-F,2025,WYHG
+1725033,X Financial,XYF,NYSE,China,F4,Cayman Islands,6199.0,Finance Services,20-F,2025,XYF
+1979887,XCHG Ltd,XCH,Nasdaq,,,Cayman Islands,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,XCH
+1729214,XORTX Therapeutics Inc.,XRTX,Nasdaq,"British Columbia, Canada",A1,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,20-F,2025,XRTX
+1787425,XP Inc.,XP,Nasdaq,Cayman Islands,E9,Cayman Islands,6211.0,"Security Brokers, Dealers & Flotation Companies",20-F,2025,XP
+1023549,XTL BIOPHARMACEUTICALS LTD,XTLB,Nasdaq,NY,NY,Israel,2834.0,Pharmaceutical Preparations,20-F,2025,XTLB
+1935172,Xiao-I Corp,AIXI,Nasdaq,China,F4,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,AIXI
+1510593,Xunlei Ltd,XNET,Nasdaq,,,,7372.0,Services-Prepackaged Software,20-F,2025,XNET
+1872090,YXT.COM GROUP HOLDING Ltd,YXT,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,YXT
+1985337,YYForce Inc.,YFOR,Nasdaq,,,"Virgin Islands, British",7363.0,Services-Help Supply Services,20-F,2025,YFOR
+1794350,Yalla Group Ltd,YALA,NYSE,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,YALA
+1819580,Yatsen Holding Ltd,YSG,NYSE,,,Cayman Islands,2844.0,"Perfumes, Cosmetics & Other Toilet Preparations",20-F,2025,YSG
+1631761,Yiren Digital Ltd.,YRD,NYSE,,,Cayman Islands,6199.0,Finance Services,20-F,2025,YRD
+1781753,"Youdao, Inc.",DAO,NYSE,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,DAO
+1759614,Yunji Inc.,YJ,Nasdaq,,,Cayman Islands,5990.0,"Retail-Retail Stores, NEC",20-F,2025,YJ
+1941506,"ZJK Industrial Co., Ltd.",ZJK,Nasdaq,,,Cayman Islands,3452.0,"Bolts, Nuts, Screws, Rivets & Washers",20-F,2025,ZJK
+1862044,ZKH Group Ltd,ZKH,NYSE,,,Cayman Islands,5200.0,"Retail-Building Materials, Hardware, Garden Supply",20-F,2025,ZKH
+1997403,"ZenaTech, Inc.",ZENA,Nasdaq,"British Columbia, Canada",A1,Canada (Federal Level),7372.0,Services-Prepackaged Software,20-F,2025,ZENA
+1720446,Zepp Health Corp,ZEPP,NYSE,,,Cayman Islands,3571.0,Electronic Computers,20-F,2025,ZEPP
+1785566,Zhongchao Inc.,ZCMD,Nasdaq,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,ZCMD
+1846832,dLocal Ltd,DLO,Nasdaq,Uruguay,X3,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,DLO
+1814423,iHuman Inc.,IH,NYSE,,,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,IH
+1997637,iOThree Ltd,IOTR,Nasdaq,Singapore,U0,Cayman Islands,4899.0,"Communications Services, NEC",20-F,2025,IOTR
+1940941,mF International Ltd,MFI,Nasdaq,Hong Kong,K3,"Virgin Islands, British",7371.0,Services-Computer Programming Services,20-F,2025,MFI
+1394832,ATS Corp /ATS,ATS,NYSE,"Ontario, Canada",A6,"Ontario, Canada",3569.0,"General Industrial Machinery & Equipment, NEC",40-F,2025,ATS
+1683541,AURORA CANNABIS INC,ACB,Nasdaq,"Alberta, Canada",A0,"British Columbia, Canada",2833.0,Medicinal Chemicals & Botanical Products,40-F,2025,ACB
+1812477,Keel Infrastructure Corp.,KEEL,Nasdaq,NY,NY,DE,6199.0,Finance Services,40-F,2025,KEEL
+1173382,CAE INC,CAE,Nasdaq,"Quebec, Canada",A8,,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",40-F,2025,CAE
+1050140,DESCARTES SYSTEMS GROUP INC,DSGX,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",7372.0,Services-Prepackaged Software,40-F,2025,DSGX
+1308648,FIRST MAJESTIC SILVER CORP,AG,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,AG
+1720424,HIVE Digital Technologies Ltd.,HIVE,Nasdaq,"British Columbia, Canada",A1,"British Columbia, Canada",6199.0,Finance Services,40-F,2025,HIVE
+1823306,Lightspeed Commerce Inc.,LSPD,NYSE,Canada (Federal Level),Z4,Canada (Federal Level),7372.0,Services-Prepackaged Software,40-F,2025,LSPD
+1340677,SILVERCORP METALS INC,SVM,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,SVM
+1619544,9F Inc.,JFU,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,JFU
+1702318,Akso Health Group,AHG,Nasdaq,China,F4,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,AHG
+2019435,Blue Gold Ltd,"BGL,BGLWW","Nasdaq,Nasdaq",,,Cayman Islands,1000.0,Metal Mining,20-F,2025,BGL
+2019435,Blue Gold Ltd,"BGL,BGLWW","Nasdaq,Nasdaq",,,Cayman Islands,1000.0,Metal Mining,20-F,2025,BGL
+2027815,Bluemount Holdings Ltd,BMHL,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,BMHL
+1815021,Boqii Holding Ltd,BQ,NYSE,,,Cayman Islands,5990.0,"Retail-Retail Stores, NEC",20-F,2025,BQ
+2000230,BrilliA Inc,BRIA,NYSE,Singapore,U0,,2300.0,Apparel & Other Finishd Prods of  Fabrics & Similar Matl,20-F,2025,BRIA
+1931717,CCSC Technology International Holdings Ltd,CCTG,Nasdaq,,,Cayman Islands,3640.0,Electric Lighting & Wiring Equipment,20-F,2025,CCTG
+1969928,TJGC GROUP Ltd,TJGC,Nasdaq,,,,7311.0,Services-Advertising Agencies,20-F,2025,TJGC
+1610590,MBody AI Ltd.,MBAI,Nasdaq,,,Israel,7373.0,Services-Computer Integrated Systems Design,20-F,2025,MBAI
+1723980,"China SXT Pharmaceuticals, Inc.",SXTC,Nasdaq,,,"Virgin Islands, British",2834.0,Pharmaceutical Preparations,20-F,2025,SXTC
+1913847,Coincheck Group N.V.,"CNCK,CNCKW","Nasdaq,Nasdaq",,,Netherlands,6199.0,Finance Services,20-F,2025,CNCK
+1913847,Coincheck Group N.V.,"CNCK,CNCKW","Nasdaq,Nasdaq",,,Netherlands,6199.0,Finance Services,20-F,2025,CNCK
+946936,DESWELL INDUSTRIES INC,DSWL,Nasdaq,,,,3089.0,"Plastics Products, NEC",20-F,2025,DSWL
+2010499,Diginex Ltd,DGNX,Nasdaq,,,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,DGNX
+2041338,Dreamland Ltd,TDIC,Nasdaq,Hong Kong,K3,Cayman Islands,8741.0,Services-Management Services,20-F,2025,TDIC
+1879754,EShallGo Inc.,EHGO,Nasdaq,China,F4,Cayman Islands,7359.0,"Services-Equipment Rental & Leasing, NEC",20-F,2025,EHGO
+1944399,Perpetuals.com Ltd,PDC,Nasdaq,,,Japan,7371.0,Services-Computer Programming Services,20-F,2025,PDC
+1499494,Eason Technology Ltd,DXF,NYSE,China,F4,Cayman Islands,6199.0,Finance Services,20-F,2025,DXF
+2015691,Elong Power Holding Ltd.,ELPW,Nasdaq,,,Cayman Islands,3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",20-F,2025,ELPW
+1656081,Endava plc,DAVA,NYSE,United Kingdom,X0,United Kingdom,7371.0,Services-Computer Programming Services,20-F,2025,DAVA
+2002045,GCL Global Holdings Ltd,"GCL,GCLWW","Nasdaq,Nasdaq",,,,7372.0,Services-Prepackaged Software,20-F,2025,GCL
+2002045,GCL Global Holdings Ltd,"GCL,GCLWW","Nasdaq,Nasdaq",,,,7372.0,Services-Prepackaged Software,20-F,2025,GCL
+1584547,GREENPOWER MOTOR Co INC.,GP,Nasdaq,"British Columbia, Canada",A1,"British Columbia, Canada",3713.0,Truck & Bus Bodies,20-F,2025,GP
+1954269,Garden Stage Ltd,GSIW,Nasdaq,,,Cayman Islands,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,GSIW
+2027722,Grande Group Ltd/HK,GRAN,Nasdaq,Hong Kong,K3,,6199.0,Finance Services,20-F,2025,GRAN
+1144967,HDFC BANK LTD,HDB,NYSE,,,India,6029.0,"Commercial Banks, NEC",20-F,2025,HDB
+2007702,"Cellyan Biotechnology Co., Ltd",HKPD,Nasdaq,,,Cayman Islands,5122.0,"Wholesale-Drugs, Proprietaries & Druggists' Sundries",20-F,2025,HKPD
+2054507,Hotel101 Global Holdings Corp.,HBNB,Nasdaq,,,Cayman Islands,7011.0,Hotels & Motels,20-F,2025,HBNB
+1103838,ICICI BANK LTD,IBN,NYSE,India,K7,,6029.0,"Commercial Banks, NEC",20-F,2025,IBN
+1715925,MindWalk Holdings Corp.,HYFT,Nasdaq,,,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,20-F,2025,HYFT
+1660046,Immuron Ltd,IMRN,Nasdaq,Australia,C3,Australia,2834.0,Pharmaceutical Preparations,20-F,2025,IMRN
+1067491,Infosys Ltd,INFY,NYSE,,,,7371.0,Services-Computer Programming Services,20-F,2025,INFY
+1948436,J-Long Group Ltd,JL,Nasdaq,Hong Kong,K3,Cayman Islands,5600.0,Retail-Apparel & Accessory Stores,20-F,2025,JL
+2049187,K-TECH SOLUTIONS CO LTD,KMRK,Nasdaq,Hong Kong,K3,,3944.0,"Games, Toys & Children's Vehicles (No Dolls & Bicycles)",20-F,2025,KMRK
+2024656,Kandal M Venture Ltd,FMFC,Nasdaq,,,,3100.0,Leather & Leather Products,20-F,2025,FMFC
+2062440,Kyivstar Group Ltd.,"KYIV,KYIVW","Nasdaq,Nasdaq",,,Bermuda,4812.0,Radiotelephone Communications,20-F,2025,KYIV
+2062440,Kyivstar Group Ltd.,"KYIV,KYIVW","Nasdaq,Nasdaq",,,Bermuda,4812.0,Radiotelephone Communications,20-F,2025,KYIV
+2040290,LOGPROSTYLE INC.,LGPS,NYSE,Japan,M0,Japan,1531.0,Operative Builders,20-F,2025,LGPS
+2004024,Lianhe Sowell International Group Ltd,LHSW,Nasdaq,,,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,LHSW
+1743971,MOGU Inc.,MOGU,NYSE,,,Cayman Islands,7389.0,"Services-Business Services, NEC",20-F,2025,MOGU
+2046117,Magnitude International Ltd,MAGH,Nasdaq,Singapore,U0,Cayman Islands,1731.0,Electrical Work,20-F,2025,MAGH
+1549107,Manchester United plc,MANU,NYSE,United Kingdom,X0,,7900.0,Services-Amusement & Recreation Services,20-F,2025,MANU
+2020228,Masonglory Ltd,"FFTT,MSGY","Nasdaq,Nasdaq",Hong Kong,K3,Cayman Islands,1700.0,Construction - Special Trade Contractors,20-F,2025,FFTT
+1682241,Metalpha Technology Holding Ltd,MATH,Nasdaq,,,Hong Kong,6199.0,Finance Services,20-F,2025,MATH
+1956166,PMA Graphene Technology Group Inc.,PMA,Nasdaq,,,Cayman Islands,1700.0,Construction - Special Trade Contractors,20-F,2025,PMA
+1998560,Axonex AI Group Ltd,AXNX,Nasdaq,,,,7389.0,"Services-Business Services, NEC",20-F,2025,AXNX
+1712178,NaaS Technology Inc.,NAAS,Nasdaq,,,Cayman Islands,5990.0,"Retail-Retail Stores, NEC",20-F,2025,NAAS
+1852551,Nova Minerals Corp,"NVA,NVA-WT","NYSE,NYSE",,,NV,1040.0,Gold and Silver Ores,20-F,2025,NVA
+1852551,Nova Minerals Corp,"NVA,NVA-WT","NYSE,NYSE",,,NV,1040.0,Gold and Silver Ores,20-F,2025,NVA
+2036307,OFA Group,OFAL,Nasdaq,CA,CA,Cayman Islands,8711.0,Services-Engineering Services,20-F,2025,OFAL
+1849296,OKYO Pharma Ltd,OKYO,Nasdaq,United Kingdom,X0,,2836.0,"Biological Products, (No Diagnostic Substances)",20-F,2025,OKYO
+2012219,OMS Energy Technologies Inc.,OMSE,Nasdaq,,,,3533.0,Oil & Gas Field Machinery & Equipment,20-F,2025,OMSE
+2030834,OneConstruction Group Ltd,ONEG,Nasdaq,,,,1520.0,General Bldg Contractors - Residential Bldgs,20-F,2025,ONEG
+1095435,Alpha Compute Corp,ALP,Nasdaq,,,"Virgin Islands, British",6199.0,Finance Services,20-F,2025,ALP
+1751876,Paranovus Entertainment Technology Ltd.,PAVS,Nasdaq,NY,NY,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,PAVS
+2024258,PHAOS TECHNOLOGY HOLDINGS (CAYMAN) Ltd,POAS,NYSE,,,Singapore,3823.0,"Industrial Instruments For Measurement, Display, and Control",20-F,2025,POAS
+2035709,Phoenix Asia Holdings Ltd,PHOE,Nasdaq,Hong Kong,K3,Cayman Islands,1700.0,Construction - Special Trade Contractors,20-F,2025,PHOE
+2032755,Pinnacle Food Group Ltd,PFAI,Nasdaq,"British Columbia, Canada",A1,United States,700.0,Agricultural Services,20-F,2025,PFAI
+1891944,Primech Holdings Ltd,PMEC,Nasdaq,,,,7340.0,Services-To Dwellings & Other Buildings,20-F,2025,PMEC
+1966678,"DirectBooking Technology Co., Ltd.",ZDAI,Nasdaq,,,Cayman Islands,1540.0,General Bldg Contractors - Nonresidential Bldgs,20-F,2025,ZDAI
+1948443,"Atlas Trinity Tech Co., Ltd.",ATTT,Nasdaq,,,"Virgin Islands, British",3630.0,Household Appliances,20-F,2025,ATTT
+1848763,ReNew Energy Global plc,RNW,Nasdaq,India,K7,India,4911.0,Electric Services,20-F,2025,RNW
+1983324,Real Messenger Corp,"RMSG,RMSGW","Nasdaq,Nasdaq",CA,CA,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,RMSG
+1983324,Real Messenger Corp,"RMSG,RMSGW","Nasdaq,Nasdaq",CA,CA,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,RMSG
+1995116,Rectitude Holdings Ltd.,RECT,Nasdaq,Singapore,U0,Cayman Islands,3420.0,"Cutlery, Handtools & General Hardware",20-F,2025,RECT
+1856084,Ridgetech Inc.,RDGT,Nasdaq,China,F4,Cayman Islands,5912.0,Retail-Drug Stores and Proprietary Stores,20-F,2025,RDGT
+2007599,"Robot Consulting Co., Ltd.",LAWR,Nasdaq,Japan,M0,Japan,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,LAWR
+1945240,Roma Green Finance Ltd,ROMA,Nasdaq,Hong Kong,K3,Cayman Islands,8742.0,Services-Management Consulting Services,20-F,2025,ROMA
+1873454,Ruanyun Edai Technology Inc.,RYET,Nasdaq,China,F4,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,RYET
+1973368,SRIVARU Holding Ltd,SVUHF,,Cayman Islands,E9,Cayman Islands,3711.0,Motor Vehicles & Passenger Car Bodies,20-F,2025,SVUHF
+1782309,Skillful Craftsman Education Technology Ltd,EDTK,Nasdaq,China,F4,Cayman Islands,8200.0,Services-Educational Services,20-F,2025,EDTK
+2031009,Skyline Builders Group Holding Ltd,KAZR,Nasdaq,,,,1700.0,Construction - Special Trade Contractors,20-F,2025,KAZR
+2009714,TMD Energy Ltd,TMDE,NYSE,,,Cayman Islands,5172.0,Wholesale-Petroleum & Petroleum Products (No Bulk Stations),20-F,2025,TMDE
+1848275,TOP Financial Group Ltd,TOP,Nasdaq,TX,TX,Cayman Islands,6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,TOP
+1836242,"Tokyo Lifestyle Co., Ltd.",TKLF,Nasdaq,Japan,M0,Japan,5990.0,"Retail-Retail Stores, NEC",20-F,2025,TKLF
+1789299,UTime Ltd,FXHO,Nasdaq,,,Cayman Islands,3600.0,Electronic & Other Electrical Equipment (No Computer Equip),20-F,2025,FXHO
+2027160,Vantage Corp (Singapore),VNTG,NYSE,Singapore,U0,,4731.0,Arrangement of  Transportation of  Freight & Cargo,20-F,2025,VNTG
+1742770,"Viomi Technology Co., Ltd",VIOT,Nasdaq,,,Cayman Islands,3630.0,Household Appliances,20-F,2025,VIOT
+1885827,Virax Biolabs Group Ltd,VRAX,Nasdaq,United Kingdom,X0,Cayman Islands,2835.0,In Vitro & In Vivo Diagnostic Substances,20-F,2025,VRAX
+1716770,Wah Fu Education & Technology Group Ltd.,WAFU,Nasdaq,,,"Virgin Islands, British",8200.0,Services-Educational Services,20-F,2025,WAFU
+1987363,Waton Financial Ltd,WTF,Nasdaq,Hong Kong,K3,"Virgin Islands, British",6200.0,"Security & Commodity Brokers, Dealers, Exchanges & Services",20-F,2025,WTF
+1993463,"YSX Tech Co., Ltd",YSXT,Nasdaq,,,Cayman Islands,7500.0,"Services-Automotive Repair, Services & Parking",20-F,2025,YSXT
+1516899,"Yatra Online, Inc.",YTRA,Nasdaq,India,K7,Cayman Islands,4700.0,Transportation Services,20-F,2025,YTRA
+2028177,Youlife Group Inc.,YOUL,Nasdaq,China,F4,,8200.0,Services-Educational Services,20-F,2025,YOUL
+1975641,Zhengye Biotechnology Holding Ltd,ZYBT,Nasdaq,,,China,2834.0,Pharmaceutical Preparations,20-F,2025,ZYBT
+1863934,ADURO CLEAN TECHNOLOGIES INC.,ADUR,Nasdaq,"Ontario, Canada",A6,"British Columbia, Canada",2800.0,Chemicals & Allied Products,40-F,2025,ADUR
+1833141,Helus Pharma Inc.,HELP,Nasdaq,,,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2025,HELP
+1369085,NEW PACIFIC METALS CORP,NEWP,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,NEWP
+1753368,Sangoma Technologies Corp,SANG,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",7370.0,"Services-Computer Programming, Data Processing, Etc.",40-F,2025,SANG
+1796073,Vizsla Silver Corp.,VZLA,NYSE,"British Columbia, Canada",A1,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,VZLA
+1993097,3 E Network Technology Group Ltd,MASK,Nasdaq,,,"Virgin Islands, British",7371.0,Services-Computer Programming Services,20-F,2025,MASK
+1062579,AMDOCS LTD,DOX,Nasdaq,,,United Kingdom,7371.0,Services-Computer Programming Services,20-F,2025,DOX
+1930179,ARB IOT Group Ltd,ARBB,Nasdaq,,,Cayman Islands,7373.0,Services-Computer Integrated Systems Design,20-F,2025,ARBB
+1755058,ATIF Holdings Ltd,AUC,Nasdaq,CA,CA,"Virgin Islands, British",8742.0,Services-Management Consulting Services,20-F,2025,AUC
+2038378,Acco Group Holdings Ltd,ACCL,Nasdaq,Hong Kong,K3,,8742.0,Services-Management Consulting Services,20-F,2025,ACCL
+1859690,Arqit Quantum Inc.,ARQQ,Nasdaq,United Kingdom,X0,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,ARQQ
+1959994,Australian Oilseeds Holdings Ltd,"COOT,COOTW","Nasdaq,Nasdaq",Australia,C3,Cayman Islands,2070.0,Fats & Oils,20-F,2025,COOT
+1959994,Australian Oilseeds Holdings Ltd,"COOT,COOTW","Nasdaq,Nasdaq",Australia,C3,Cayman Islands,2070.0,Fats & Oils,20-F,2025,COOT
+1735556,SANGRIX INC.,SGRX,Nasdaq,,,Cayman Islands,6199.0,Finance Services,20-F,2025,SGRX
+2047273,BUUU Group Ltd,BUUU,Nasdaq,Hong Kong,K3,,7900.0,Services-Amusement & Recreation Services,20-F,2025,BUUU
+2004489,Basel Medical Group Ltd,BMGL,Nasdaq,Singapore,U0,"Virgin Islands, British",8011.0,Services-Offices & Clinics of  Doctors of  Medicine,20-F,2025,BMGL
+1999297,Big Tree Cloud Holdings Ltd,"DSY,DSYWW","Nasdaq,Nasdaq",China,F4,Cayman Islands,2670.0,Converted Paper & Paperboard Prods (No Contaners/Boxes),20-F,2025,DSY
+1999297,Big Tree Cloud Holdings Ltd,"DSY,DSYWW","Nasdaq,Nasdaq",China,F4,Cayman Islands,2670.0,Converted Paper & Paperboard Prods (No Contaners/Boxes),20-F,2025,DSY
+1769484,Bioceres Crop Solutions Corp.,BIOX,Nasdaq,Cayman Islands,E9,Cayman Islands,2870.0,Agricultural Chemicals,20-F,2025,BIOX
+1977102,Birkenstock Holding plc,BIRK,NYSE,,,Jersey,3140.0,"Footwear, (No Rubber)",20-F,2025,BIRK
+2034400,Black Titan Corp,BTTC,Nasdaq,NY,NY,,7371.0,Services-Computer Programming Services,20-F,2025,BTTC
+1499849,BrasilAgro - Brazilian Agricultural Real Estate Co,LND,NYSE,,,Brazil,100.0,Agricultural Production-Crops,20-F,2025,LND
+1724542,CLPS Inc,CLPS,Nasdaq,Hong Kong,K3,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,CLPS
+1034957,CRESUD INC,CRESY,Nasdaq,Argentina,C1,Argentina,6500.0,Real Estate,20-F,2025,CRESY
+2047148,CTW,CTW,Nasdaq,,,Japan,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,CTW
+2020027,Click Holdings Ltd.,CLIK,Nasdaq,Hong Kong,K3,"Virgin Islands, British",7361.0,Services-Employment Agencies,20-F,2025,CLIK
+1889823,DEFSEC Technologies Inc.,"DFSC,DFSCW","Nasdaq,Nasdaq",,,"British Columbia, Canada",7372.0,Services-Prepackaged Software,20-F,2025,DFSC
+1889823,DEFSEC Technologies Inc.,"DFSC,DFSCW","Nasdaq,Nasdaq",,,"British Columbia, Canada",7372.0,Services-Prepackaged Software,20-F,2025,DFSC
+1707303,Dogness (International) Corp,DOGZ,Nasdaq,,,"Virgin Islands, British",3990.0,Miscellaneous Manufacturing Industries,20-F,2025,DOGZ
+1769768,E-Home Household Service Holdings Ltd,EJH,Nasdaq,China,F4,Cayman Islands,7600.0,Services-Miscellaneous Repair Services,20-F,2025,EJH
+1806904,EZGO Technologies Ltd.,EZGO,Nasdaq,China,F4,"Virgin Islands, British",3751.0,"Motorcycles, Bicycles & Parts",20-F,2025,EZGO
+1971828,Energys Group Ltd,ENGS,Nasdaq,United Kingdom,X0,Cayman Islands,1731.0,Electrical Work,20-F,2025,ENGS
+1928581,GMEX Robotics Corp,GMEX,Nasdaq,,,Cayman Islands,3949.0,"Sporting & Athletic Goods, NEC",20-F,2025,GMEX
+1905920,Galaxy Payroll Group Ltd,GLXG,Nasdaq,,,"Virgin Islands, British",8700.0,"Services-Engineering, Accounting, Research, Management",20-F,2025,GLXG
+2000530,Gamehaus Holdings Inc.,GMHS,Nasdaq,China,F4,Cayman Islands,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,GMHS
+1920092,Gelteq Ltd,GELS,Nasdaq,,,Australia,2834.0,Pharmaceutical Preparations,20-F,2025,GELS
+1908705,Global Engine Group Holding Ltd,GLE,Nasdaq,Hong Kong,K3,"Virgin Islands, British",7374.0,Services-Computer Processing & Data Preparation,20-F,2025,GLE
+1954594,Haoxi Health Technology Ltd,HAO,Nasdaq,,,Cayman Islands,7311.0,Services-Advertising Agencies,20-F,2025,HAO
+2001699,Helport AI Ltd,"HPAI,HPAIW","Nasdaq,Nasdaq",,,,7372.0,Services-Prepackaged Software,20-F,2025,HPAI
+2001699,Helport AI Ltd,"HPAI,HPAIW","Nasdaq,Nasdaq",,,,7372.0,Services-Prepackaged Software,20-F,2025,HPAI
+1854572,ICZOOM Group Inc.,IZM,Nasdaq,,,Cayman Islands,5731.0,"Retail-Radio, Tv & Consumer Electronics Stores",20-F,2025,IZM
+1898601,IPERIONX Ltd,IPX,Nasdaq,VA,VA,Australia,1090.0,Miscellaneous Metal Ores,20-F,2025,IPX
+933267,IRSA INVESTMENTS & REPRESENTATIONS INC,IRS,NYSE,Argentina,C1,,6552.0,Land Subdividers & Developers (No Cemeteries),20-F,2025,IRS
+2018529,Intercont (Cayman) Ltd,NCT,Nasdaq,,,Cayman Islands,4412.0,Deep Sea Foreign Transportation of  Freight,20-F,2025,NCT
+1964314,JBDI Holdings Ltd,JBDI,Nasdaq,Singapore,U0,Cayman Islands,3412.0,"Metal Shipping Barrels, Drums, Kegs & Pails",20-F,2025,JBDI
+1075880,KAZIA THERAPEUTICS LTD,KZIA,Nasdaq,,,Australia,2834.0,Pharmaceutical Preparations,20-F,2025,KZIA
+1888980,"LEAD REAL ESTATE CO., LTD",LRE,Nasdaq,,,Japan,1531.0,Operative Builders,20-F,2025,LRE
+1896425,Li Bang International Corp Inc.,LBGJ,Nasdaq,,,Cayman Islands,3580.0,Refrigeration & Service Industry Machinery,20-F,2025,LBGJ
+1972074,Linkers Industries Ltd,LNKS,Nasdaq,Malaysia,N8,,3670.0,Electronic Components & Accessories,20-F,2025,LNKS
+1875547,Locafy Ltd,"LCFY,LCFYW","Nasdaq,Nasdaq",Australia,C3,Australia,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,LCFY
+1875547,Locafy Ltd,"LCFY,LCFYW","Nasdaq,Nasdaq",Australia,C3,Australia,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,LCFY
+1831907,LuxExperience B.V.,LUXE,NYSE,,,Netherlands,5961.0,Retail-Catalog & Mail-Order Houses,20-F,2025,LUXE
+1981519,MIXED MARTIAL ARTS GROUP LTD,MMA,NYSE,,,Australia,7380.0,Services-Miscellaneous Business Services,20-F,2025,MMA
+1750264,Maase Inc.,MAAS,Nasdaq,,,Cayman Islands,6282.0,Investment Advice,20-F,2025,MAAS
+1903995,Millennium Group International Holdings Ltd,MGIH,Nasdaq,Hong Kong,K3,Cayman Islands,2750.0,Commercial Printing,20-F,2025,MGIH
+1976695,Mobile-health Network Solutions,MNDR,Nasdaq,Cayman Islands,E9,Cayman Islands,7372.0,Services-Prepackaged Software,20-F,2025,MNDR
+1937737,Moolec Science SA,"MLEC,MLECW","Nasdaq,Nasdaq",,,Cayman Islands,2000.0,Food and Kindred Products,20-F,2025,MLEC
+1937737,Moolec Science SA,"MLEC,MLECW","Nasdaq,Nasdaq",,,Cayman Islands,2000.0,Food and Kindred Products,20-F,2025,MLEC
+1807389,"Pop Culture Group Co., Ltd",CPOP,Nasdaq,China,F4,Cayman Islands,7900.0,Services-Amusement & Recreation Services,20-F,2025,CPOP
+1998056,Premium Catering (Holdings) Ltd,PC,Nasdaq,Singapore,U0,Cayman Islands,5812.0,Retail-Eating  Places,20-F,2025,PC
+1932770,Here Group Ltd,HERE,Nasdaq,,,Cayman Islands,5945.0,"Retail-Hobby, Toy & Game Shops",20-F,2025,HERE
+1442620,"Recon Technology, Ltd",RCON,Nasdaq,,,Cayman Islands,1389.0,"Oil & Gas Field Services, NEC",20-F,2025,RCON
+1829667,Regencell Bioscience Holdings Ltd,RGC,Nasdaq,,,Cayman Islands,2833.0,Medicinal Chemicals & Botanical Products,20-F,2025,RGC
+1912884,Republic Power Group Ltd,RPGL,Nasdaq,Singapore,U0,"Virgin Islands, British",7372.0,Services-Prepackaged Software,20-F,2025,RPGL
+2002453,STAK Inc.,STAK,Nasdaq,China,F4,Cayman Islands,3533.0,Oil & Gas Field Machinery & Equipment,20-F,2025,STAK
+1785680,BitVentures Ltd,BVC,Nasdaq,,,Cayman Islands,6282.0,Investment Advice,20-F,2025,BVC
+2000366,Scage Future,"SCAG,SCAGW","Nasdaq,Nasdaq",,,Cayman Islands,3713.0,Truck & Bus Bodies,20-F,2025,SCAG
+2000366,Scage Future,"SCAG,SCAGW","Nasdaq,Nasdaq",,,Cayman Islands,3713.0,Truck & Bus Bodies,20-F,2025,SCAG
+1990950,Semilux International Ltd.,SELXF,,,,Taiwan,3674.0,Semiconductors & Related Devices,20-F,2025,SELXF
+1769697,Frontier Nuclear & Minerals Inc.,FNUC,Nasdaq,,,"Manitoba, Canada",1090.0,Miscellaneous Metal Ores,20-F,2025,FNUC
+2003061,Star Fashion Culture Holdings Ltd,STFS,Nasdaq,,,,7310.0,Services-Advertising,20-F,2025,STFS
+1897087,SuperX AI Technology Ltd,SUPX,Nasdaq,,,"Virgin Islands, British",8742.0,Services-Management Consulting Services,20-F,2025,SUPX
+2014337,Texxon Holding Ltd,NPT,Nasdaq,,,Cayman Islands,5160.0,Wholesale-Chemicals & Allied Products,20-F,2025,NPT
+2044241,TryHard Holdings Ltd,THH,Nasdaq,,,Cayman Islands,7990.0,Services-Miscellaneous Amusement & Recreation,20-F,2025,THH
+1888525,MindForge Inc.,MF,Nasdaq,,,Cayman Islands,7370.0,"Services-Computer Programming, Data Processing, Etc.",20-F,2025,MF
+1813783,Vision Marine Technologies Inc.,VMAR,Nasdaq,,,"Quebec, Canada",3730.0,Ship & Boat Building & Repairing,20-F,2025,VMAR
+1681348,VivoPower PLC,VIVO,Nasdaq,,,United Kingdom,7374.0,Services-Computer Processing & Data Preparation,20-F,2025,VIVO
+1941158,Wetour Robotics Ltd,WETO,Nasdaq,TX,TX,Cayman Islands,4100.0,Local & Suburban Transit & Interurban Hwy Passenger Trans,20-F,2025,WETO
+1747661,Zeta Network Group,ZNB,Nasdaq,NY,NY,Cayman Islands,6199.0,Finance Services,20-F,2025,ZNB
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+927971,BANK OF MONTREAL /CAN/,"BMO,FNGD,BRZL,AIQD,AIQU,BERZ,BNKD,BNKU,BRZD,BULZ,CARD,CARU,DULL,FLYD,FLYU,FNGO,FNGS,FNGU,GDXD,GDXU,HYGD,HYGU,JETD,JETU,JPND,JPNU,LQDD,LQDU,MNGU,NRGD,NRGU,OILD,OILU,SHNY,SMHD,SMHU,SPYU,TAWN,TPEI,WTID,WTIU,XLCD,XLCU,XLPD,XLPU","NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE,NYSE,NYSE,NYSE,NYSE,NYSE,NYSE,CBOE,CBOE,NYSE,CBOE,CBOE,NYSE,NYSE,CBOE,CBOE,CBOE,CBOE","Ontario, Canada",A6,"Ontario, Canada",6029.0,"Commercial Banks, NEC",40-F,2025,BMO
+9631,BANK OF NOVA SCOTIA,BNS,NYSE,"Ontario, Canada",A6,Canada (Federal Level),6022.0,State Commercial Banks,40-F,2025,BNS
+1827401,BRIGHT MINDS BIOSCIENCES INC.,DRUG,Nasdaq,IL,IL,"British Columbia, Canada",2834.0,Pharmaceutical Preparations,40-F,2025,DRUG
+1061574,CGI INC,GIB,NYSE,"Quebec, Canada",A8,,8742.0,Services-Management Consulting Services,40-F,2025,GIB
+1844450,Electrovaya Inc.,ELVA,Nasdaq,"Ontario, Canada",A6,"Ontario, Canada",3690.0,"Miscellaneous Electrical Machinery, Equipment & Supplies",40-F,2025,ELVA
+1620737,ORGANIGRAM GLOBAL INC.,OGI,Nasdaq,,,Canada (Federal Level),2834.0,Pharmaceutical Preparations,40-F,2025,OGI
+1095052,PLATINUM GROUP METALS LTD,PLG,NYSE,,,"British Columbia, Canada",1040.0,Gold and Silver Ores,40-F,2025,PLG
+2011053,POWERBANK Corp,PBK,Nasdaq,,,"Ontario, Canada",1700.0,Construction - Special Trade Contractors,40-F,2025,PBK
+1846839,SOL Strategies Inc.,STKE,Nasdaq,,,"Ontario, Canada",6199.0,Finance Services,40-F,2025,STKE
+1173643,TRX GOLD Corp,TRX,NYSE,"Ontario, Canada",A6,"Alberta, Canada",1040.0,Gold and Silver Ores,40-F,2025,TRX
+1690639,VersaBank,VBNK,Nasdaq,"Ontario, Canada",A6,Canada (Federal Level),6029.0,"Commercial Banks, NEC",40-F,2025,VBNK

@@ -132,3 +132,9 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   3. Peso: raiz do valor de mercado com teto de 10% por ação. Rebalanceamento trimestral.
   Resultado conhecido (dentro da amostra/exploratório): EUA 19,7% a.a. (S&P 15,6%); Brasil 12,9% a.a. (Ibovespa 10,9%).
   Comparar no Japão com o TOPIX e o universo com peso igual; critério de sucesso: retorno acima dos dois.
+- 2026-11-10 — **Teste fora da amostra nas estrangeiras listadas nos EUA (antes de rodar):** regra candidata congelada, sem ajuste, mesmos
+  parâmetros dos EUA. Setores por código SIC da SEC (mapeamento fixado em `estrangeiras/backtest_fpi.py` antes de rodar). Só empresas com lucro por
+  ação em dólar; preço ≥ US$ 2 e giro ≥ US$ 2 milhões/dia. Critério: Top 20 acima do universo estrangeiro de peso igual e dos ETFs ex-EUA.
+- 2026-11-10 — **Resultado nas estrangeiras listadas nos EUA (inconclusivo):** com início quando há ≥ 50 empresas classificadas (03/2018): Top 20
+  26,8% a.a. contra universo estrangeiro 7,3%, EFA 8,0% e S&P 15,1%; com ≥ 100 (03/2022): 34,1% contra 3,2%. Mas só ~9 a 12 ações elegíveis por
+  trimestre (a Top 20 nunca enche) e a lista parte de quem tem ticker hoje (viés de sobrevivência). Sinal na direção certa, amostra fraca.
