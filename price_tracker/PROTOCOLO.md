@@ -150,3 +150,7 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
 - 2026-11-10 — **Teste fora da amostra na China, ações A (antes de rodar):** regra candidata congelada, mesmos parâmetros dos EUA. Fundamentos
   anuais em lote do Eastmoney com data de divulgação; preços do Yahoo em yuan. Diferenças forçadas pelos dados e mapeamento de setores Shenwan
   fixados em `china/backtest_cn.py` antes de rodar. Critério: Top 20 acima do universo de peso igual e do CSI 300/CSI 500.
+- 2026-11-10 — **Resultado na China, ações A (06/2013–09/2026): FALHOU.** Top 20 raiz com teto 3,7% a.a. contra universo de peso igual 8,5%,
+  CSI 300 5,3% e CSI 500 6,5% (índices sem dividendos). O próprio filtro de qualidade também ficou abaixo do universo (elegíveis 6,1–6,6%).
+  Ressalvas: ROIC reconstruído com poucos itens; crescimento pelo lucro líquido; universo de peso igual com viés de sobrevivência e efeito
+  pequenas-empresas típico do mercado chinês.
