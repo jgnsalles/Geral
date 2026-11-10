@@ -1,0 +1,127 @@
+sector,industry,empresas,queda,var_total,colapsos,anos,nivel,ciclico
+Communication Services,Advertising,4,0.13701965338689695,0.2331727453826471,1.5,19.0,indústria GICS: Media,False
+Communication Services,Cable & Satellite,2,0.15115590881570223,0.25156240686717424,1.5,17.5,subsetor,False
+Communication Services,Integrated Telecommunication Services,2,0.27510182652375625,0.5433622140488801,2.0,19.0,subsetor,False
+Communication Services,Interactive Home Entertainment,4,0.40206401071450265,5.058103059170318,2.5,18.0,indústria GICS: Entertainment,True
+Communication Services,Interactive Media & Services,5,0.1886244653134661,0.3838414329502068,1.0,15.0,subsetor,False
+Communication Services,Movies & Entertainment,3,0.3980249609191137,0.8283959209600525,2.0,17.0,subsetor,True
+Communication Services,Publishing,4,0.13701965338689695,0.31000623879921135,1.5,18.0,indústria GICS: Media,False
+Communication Services,Wireless Telecommunication Services,1,0.4596359968328892,0.9683525637968343,2.0,18.0,uma empresa só (sem evidência suficiente),False
+Consumer Discretionary,Apparel Retail,3,0.18870173328935722,0.38899177903125953,2.0,18.0,subsetor,False
+Consumer Discretionary,"Apparel, Accessories & Luxury Goods",8,0.2934508511849398,0.4561872955272612,2.5,18.0,subsetor,False
+Consumer Discretionary,Automobile Manufacturers,3,0.5363903107424918,0.9756998434041154,2.0,9.0,subsetor,True
+Consumer Discretionary,Automotive Parts & Equipment,2,0.1658168081434173,0.312678827083513,2.0,17.0,subsetor,False
+Consumer Discretionary,Automotive Retail,4,0.06546342420106552,0.158064952327342,0.0,18.0,subsetor,False
+Consumer Discretionary,Broadline Retail,3,0.4426667502847803,0.5521865657332837,1.0,18.0,subsetor,False
+Consumer Discretionary,Casinos & Gaming,3,0.42258264928189054,0.6867664794006836,3.0,18.0,subsetor,True
+Consumer Discretionary,Computer & Electronics Retail,15,0.09820472342655721,1.3779048877779845,1.0,18.0,indústria GICS: Specialty Retail,False
+Consumer Discretionary,Consumer Electronics,5,0.13455558473814358,0.1205211176213156,1.0,19.0,indústria GICS: Household Durables,False
+Consumer Discretionary,Department Stores,2,0.5751320423020134,1.1038667896977468,2.0,19.0,subsetor,True
+Consumer Discretionary,Distributors,1,0.09600505049266111,0.1411285523908444,0.0,12.0,uma empresa só (sem evidência suficiente),False
+Consumer Discretionary,Footwear,9,0.20938962870566089,0.3398400608172161,2.0,18.0,"indústria GICS: Textiles, Apparel & Luxury Goods",False
+Consumer Discretionary,Home Furnishings,5,0.13455558473814358,0.9566386430221284,1.0,18.0,indústria GICS: Household Durables,False
+Consumer Discretionary,Home Improvement Retail,2,0.08891394271340967,0.2017841427889502,0.5,15.5,subsetor,False
+Consumer Discretionary,Homebuilding,2,0.07680426140138641,0.46546149449805163,0.5,12.5,subsetor,False
+Consumer Discretionary,Homefurnishing Retail,15,0.09820472342655721,0.32161112175021517,1.0,17.0,indústria GICS: Specialty Retail,False
+Consumer Discretionary,"Hotels, Resorts & Cruise Lines",7,0.4499629702678137,0.9873218255833063,2.0,18.0,subsetor,True
+Consumer Discretionary,Household Appliances,5,0.13455558473814358,0.8057008863442008,1.0,18.0,indústria GICS: Household Durables,False
+Consumer Discretionary,Leisure Products,2,0.33076111392269053,0.5447711894999785,2.5,18.5,subsetor,True
+Consumer Discretionary,Motorcycle Manufacturers,4,0.4516742810630275,0.41881707233257626,2.0,19.0,indústria GICS: Automobiles,True
+Consumer Discretionary,Other Specialty Retail,4,0.10843494889262187,0.2328940708340082,1.0,17.5,subsetor,False
+Consumer Discretionary,Restaurants,6,0.10706473027343467,0.291999898536514,1.0,17.5,subsetor,False
+Consumer Staples,Consumer Staples Merchandise Retail,5,0.11573766803414916,0.1955688415715323,1.0,18.0,subsetor,False
+Consumer Staples,Distillers & Vintners,2,0.1833676495611034,0.37770032916768326,1.0,18.0,subsetor,False
+Consumer Staples,Education & Training Services,1,0.09930407181846149,0.29522192153603916,1.0,17.0,uma empresa só (sem evidência suficiente),False
+Consumer Staples,Food Distributors,7,0.12720736827045206,0.2418131052844782,1.0,19.0,indústria GICS: Consumer Staples Distribution & Retail,False
+Consumer Staples,Food Retail,7,0.12720736827045206,0.36232565855196985,1.0,19.0,indústria GICS: Consumer Staples Distribution & Retail,False
+Consumer Staples,Household Products,4,0.10044922563846555,0.1973761478240168,0.0,18.0,subsetor,False
+Consumer Staples,Packaged Foods & Meats,10,0.20718773102473756,0.3086296040456311,1.5,18.0,subsetor,False
+Consumer Staples,Personal Care Products,2,0.15545086705109756,0.2775163062064081,1.5,18.5,subsetor,False
+Consumer Staples,Soft Drinks & Non-alcoholic Beverages,4,0.13651253056435325,0.2293924097407228,1.0,18.0,subsetor,False
+Consumer Staples,Tobacco,2,0.1673806400630453,0.34157323637256803,1.0,19.0,subsetor,False
+Energy,Oil & Gas Drilling,4,0.540225400064526,0.7861773150136232,4.0,19.0,indústria GICS: Energy Equipment & Services,True
+Energy,Oil & Gas Equipment & Services,3,0.5812530772391018,1.0024569407839805,4.0,19.0,subsetor,True
+Energy,Oil & Gas Exploration & Production,4,0.6947271108886701,1.201180376079411,3.0,17.5,subsetor,True
+Energy,Oil & Gas Refining & Marketing,2,0.3595947621538167,0.7557077703298541,2.5,17.5,subsetor,True
+Energy,Oil & Gas Storage & Transportation,4,0.24024399097156773,0.39868706605141285,2.5,18.0,subsetor,False
+Financials,Asset Management & Custody Banks,11,0.19214108060321441,0.40300693709224805,1.0,19.0,subsetor,False
+Financials,Consumer Finance,4,0.19041222550781317,0.4164923084910598,2.5,19.0,subsetor,False
+Financials,Diversified Banks,7,0.16605872613894992,0.3053302450832302,1.0,19.0,subsetor,False
+Financials,Financial Exchanges & Data,8,0.13349593873965815,0.29765847739233653,1.5,17.5,subsetor,False
+Financials,Insurance Brokers,6,0.08335149334472661,0.20173965539220107,0.5,18.0,subsetor,False
+Financials,Investment Banking & Brokerage,5,0.13658181460484697,0.30856675599400213,1.0,19.0,subsetor,False
+Financials,Life & Health Insurance,5,0.2936543105643503,0.5809475959721079,3.0,19.0,subsetor,False
+Financials,Multi-Sector Holdings,10,0.13118297376424964,0.7398129636514974,0.5,18.0,indústria GICS: Financial Services,False
+Financials,Multi-line Insurance,2,0.3414427065594011,0.6689095709296513,3.5,19.0,subsetor,True
+Financials,Property & Casualty Insurance,9,0.14112438265120017,0.32040182347319424,1.0,18.0,subsetor,False
+Financials,Regional Banks,9,0.26112556198831904,0.702979782362064,0.0,18.0,subsetor,False
+Financials,Reinsurance,23,0.17961311966206928,0.7020940666157185,2.0,18.0,indústria GICS: Insurance,False
+Financials,Transaction & Payment Processing Services,9,0.0943650079703282,0.22993936306307167,0.0,18.0,subsetor,False
+Health Care,Biotechnology,8,0.3051925216366762,0.6696579774947223,2.0,16.0,subsetor,True
+Health Care,Health Care Distributors,4,0.3376693547720448,0.8006593985163913,2.5,19.0,subsetor,True
+Health Care,Health Care Equipment,13,0.14841189486456494,0.2510523334029802,1.0,18.0,subsetor,False
+Health Care,Health Care Facilities,2,0.12039750270469393,0.24852780775723746,0.5,17.5,subsetor,False
+Health Care,Health Care Services,5,0.17057561956831155,0.25743016447022393,2.0,19.0,subsetor,False
+Health Care,Health Care Supplies,3,0.17412400535916403,0.32937808356517007,2.0,18.0,subsetor,False
+Health Care,Health Care Technology,1,0.70045366323651,0.7157612140315371,2.0,14.0,uma empresa só (sem evidência suficiente),False
+Health Care,Life Sciences Tools & Services,10,0.2292227261971494,0.42611800003200595,1.0,18.0,subsetor,False
+Health Care,Managed Health Care,5,0.16569372928915937,0.2819425947312457,2.0,19.0,subsetor,False
+Health Care,Pharmaceuticals,2,0.3310627951104615,0.4866154517574199,1.5,9.5,subsetor,False
+Industrials,Aerospace & Defense,11,0.1349209282712572,0.2431923119240859,1.0,18.0,subsetor,False
+Industrials,Agricultural & Farm Machinery,20,0.14585419197322433,0.40793032636045173,0.0,17.0,indústria GICS: Machinery,False
+Industrials,Air Freight & Logistics,4,0.12614740952167525,0.23621055064688967,1.5,19.0,subsetor,False
+Industrials,Building Products,8,0.12868744008783556,0.2622600358237431,0.5,16.0,subsetor,False
+Industrials,Cargo Ground Transportation,2,0.15368488785675843,0.24463926456972818,1.0,18.0,subsetor,False
+Industrials,Construction & Engineering,5,0.13046041398551048,0.3429525875234782,1.0,18.0,subsetor,False
+Industrials,Construction Machinery & Heavy Transportation Equipment,3,0.1693384560323525,0.3139798306837642,1.0,19.0,subsetor,False
+Industrials,Data Processing & Outsourced Services,5,0.09621357765074703,0.16477985116215932,1.0,18.0,indústria GICS: Professional Services,False
+Industrials,Diversified Support Services,3,0.058865660974229746,0.12069098599448229,0.0,18.0,subsetor,False
+Industrials,Electrical Components & Equipment,3,0.08767375095416899,0.13212152244772596,0.0,18.0,subsetor,False
+Industrials,Environmental & Facilities Services,3,0.2150688814382363,0.31076175392359273,2.0,19.0,subsetor,False
+Industrials,Heavy Electrical Equipment,4,0.09606545972006175,0.2839875546987623,0.0,16.0,indústria GICS: Electrical Equipment,False
+Industrials,Human Resource & Employment Services,2,0.13886489385703144,0.2568513660085793,1.0,17.5,subsetor,False
+Industrials,Industrial Conglomerates,1,0.3344621979426212,0.605955778587348,1.0,19.0,uma empresa só (sem evidência suficiente),False
+Industrials,Industrial Machinery & Supplies & Components,16,0.1175597254227696,0.20728489314313914,0.0,18.0,subsetor,False
+Industrials,Passenger Airlines,4,0.5261949400309311,1.0783492115566065,2.5,17.5,subsetor,True
+Industrials,Rail Transportation,3,0.1204109487436821,0.17765418433358296,1.0,19.0,subsetor,False
+Industrials,Research & Consulting Services,2,0.1670543578205073,0.28753034488734625,1.0,17.0,subsetor,False
+Industrials,Security & Protection Services,8,0.17056287916588675,0.24754275054590752,1.0,16.0,indústria GICS: Commercial Services & Supplies,False
+Industrials,Specialty Business Services,8,0.17056287916588675,0.316130677188787,1.0,10.0,indústria GICS: Commercial Services & Supplies,False
+Industrials,Trading Companies & Distributors,3,0.09367162016186548,0.1619232202637706,1.0,18.0,subsetor,False
+Information Technology,Application Software,15,0.18646309273157638,0.34356506973296536,1.0,18.0,subsetor,False
+Information Technology,Communications Equipment,6,0.23504617583798887,0.5490379339801654,1.5,18.0,subsetor,False
+Information Technology,Electronic Components,4,0.27586229488945246,0.46347463029914737,1.5,18.0,subsetor,False
+Information Technology,Electronic Equipment & Instruments,4,0.17166610608155747,0.3213903413317984,2.0,18.0,subsetor,False
+Information Technology,Electronic Manufacturing Services,3,0.26106129123341754,0.7236118245007521,2.0,18.0,subsetor,False
+Information Technology,IT Consulting & Other Services,4,0.2498477948756747,0.36569564972229085,1.0,16.5,subsetor,False
+Information Technology,Internet Services & Infrastructure,3,0.09299471588994584,0.32156286573305787,1.0,16.0,subsetor,False
+Information Technology,Semiconductor Materials & Equipment,3,0.18053643991215357,0.4068186068680441,1.0,18.0,subsetor,False
+Information Technology,Semiconductors,18,0.2407607333245641,0.47678451876663314,2.0,18.0,subsetor,False
+Information Technology,Systems Software,5,0.6222873166840128,1.2700188309067881,1.0,16.0,subsetor,False
+Information Technology,Technology Distributors,12,0.22409789904322588,0.11446400337338929,2.0,16.0,"indústria GICS: Electronic Equipment, Instruments & Components",False
+Information Technology,"Technology Hardware, Storage & Peripherals",7,0.1722357339731916,0.4236660901454879,2.0,17.0,subsetor,False
+Materials,Construction Materials,6,0.19832803950264494,0.31950173612884836,1.0,16.5,subsetor,False
+Materials,Copper,4,0.7348348418148997,3.8471354460938896,3.0,19.0,indústria GICS: Metals & Mining,True
+Materials,Diversified Chemicals,2,0.5317939200025686,0.6731144430331607,2.5,15.0,subsetor,True
+Materials,Fertilizers & Agricultural Chemicals,3,0.4052740841501946,0.659804512836025,3.0,19.0,subsetor,True
+Materials,Industrial Gases,2,0.2621734720004717,0.35351084105333513,1.0,14.5,subsetor,False
+Materials,"Metal, Glass & Plastic Containers",3,0.24105833203847998,0.28739908822905763,2.0,16.0,indústria GICS: Containers & Packaging,False
+Materials,Paper & Plastic Packaging Products & Materials,2,0.6267425310129479,0.6647975983219625,1.5,14.0,subsetor,False
+Materials,Specialty Chemicals,6,0.17752284133115204,0.28370571682748974,1.5,16.0,subsetor,False
+Materials,Steel,3,0.5423833258277467,0.9568092512531228,3.0,19.0,subsetor,True
+Real Estate,Data Center REITs,2,0.16020863867197516,0.27624393945873016,1.0,17.5,subsetor,False
+Real Estate,Hotel & Resort REITs,1,0.4597799363007491,0.9537931683918718,1.0,16.0,uma empresa só (sem evidência suficiente),False
+Real Estate,Industrial REITs,1,0.25198402440434986,0.6079318289380914,1.0,17.0,uma empresa só (sem evidência suficiente),False
+Real Estate,Multi-Family Residential REITs,3,0.12768609193516278,0.23559368165586986,2.0,18.0,subsetor,False
+Real Estate,Office REITs,1,0.07536746014879694,0.09896531435904869,0.0,11.0,uma empresa só (sem evidência suficiente),False
+Real Estate,Other Specialized REITs,9,0.14904395981350646,0.25955517575684145,1.0,18.0,indústria GICS: Specialized REITs,False
+Real Estate,Real Estate Services,1,0.2613962567981919,0.40485323666700584,2.0,17.0,uma empresa só (sem evidência suficiente),False
+Real Estate,Retail REITs,3,0.20134314324045693,0.3083515715225391,1.0,18.0,subsetor,False
+Real Estate,Self-Storage REITs,2,0.10128516709141716,0.22840839552925218,1.0,13.0,subsetor,False
+Real Estate,Telecom Tower REITs,3,0.07293334088293538,0.2499453397809887,1.0,19.0,subsetor,False
+Real Estate,Timber REITs,9,0.14904395981350646,0.8994195458470068,1.0,19.0,indústria GICS: Specialized REITs,False
+Utilities,Electric Utilities,14,0.18025885115653778,0.2490015219139356,1.5,19.0,subsetor,False
+Utilities,Gas Utilities,1,0.11837172120152759,0.15631899317798448,1.0,18.0,uma empresa só (sem evidência suficiente),False
+Utilities,Independent Power Producers & Energy Traders,1,0.5278595524539416,0.9761470748069851,3.0,19.0,uma empresa só (sem evidência suficiente),False
+Utilities,Multi-Utilities,11,0.19833983731608987,0.2740323118864174,1.0,19.0,subsetor,False
+Utilities,Water Utilities,1,0.03578314180091798,0.21048186154621443,0.0,18.0,uma empresa só (sem evidência suficiente),False

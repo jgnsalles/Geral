@@ -35,6 +35,10 @@ O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 
 Toda análise de carteira/backtest deve voltar com estas 8 linhas (tabela e gráfico, retorno total acumulado linear):
 1. S&P 500 (SPY); 2. S&P 500 equal weight (RSP); 3. Opportunity of Lifetime **antigo**; 4. Good Companies, Great Returns **antigo**;
-5. Opportunity of Lifetime **novo**; 6. Good Companies, Great Returns **novo**; 7. OoL **High ROIC** (novo, ROIC > 30%); 8. OoL **High Growth** (novo, EPS > 30%).
-Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboço (ROIC 12%/10%), sem zROIC, sem Energia, Materiais e vestuário.
+5. Opportunity of Lifetime **novo**; 6. Good Companies, Great Returns **novo**; 7. OoL **High ROIC** (novo, ROIC > 30%); 8. OoL **High Growth** (novo, EPS > 30%);
+9. **Cyclicals** (classe criada em 2026-11-10: ações de subsetores cíclicos que seriam OoL ou GCGR).
+Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboço (ROIC 12%/10%), sem zROIC, sem vestuário e sem subsetores cíclicos.
+Subsetor cíclico (`backtest/ciclicos.py`): mediana das empresas, histórico completo do ROIC; queda média (média das quedas ano a ano ÷ ROIC médio)
+≥ 2× a dos setores defensivos (consumo básico + utilidades) **e** ≥ 2 colapsos (ROIC ≤ metade do pico dos 3 anos anteriores); subsetor com 1 empresa
+é decidido na indústria GICS acima.
 Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table()`). Se a definição de "novo" mudar, atualizar aqui e no módulo.

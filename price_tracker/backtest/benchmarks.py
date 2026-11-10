@@ -1,6 +1,7 @@
 """Comparativos obrigatorios de toda analise de desempenho (instrucao permanente do usuario, 2026-11-10):
 S&P 500, S&P 500 equal weight, OoL antigo, GCGR antigo, OoL novo, GCGR novo, OoL High ROIC (novo), OoL High Growth (novo).
-Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboco (ROIC 12%/10%), sem zROIC, sem Energia, Materiais e vestuario.
+Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboco (ROIC 12%/10%), sem zROIC, sem vestuario e sem subsetores ciclicos
+(regua de ciclicos.py); as acoes de subsetores ciclicos que seriam OoL ou GCGR vao para a classe Cyclicals (desde 2026-11-10).
 Universo point-in-time, ROIC oficial (corrigido em 2026-11-10), equal weight, rebalanceamento trimestral.
 Uso: from benchmarks import load_benchmarks, bench_table, bench_plot"""
 import sys, pathlib
@@ -14,10 +15,10 @@ from validation_core import load_prices  # noqa: E402
 OOL, GCGR = 'Opportunity of Lifetime', 'Good Companies, Great Returns'
 EXCL_SECTORS = {'Energy', 'Materials'}
 APPAREL = {'Apparel, Accessories & Luxury Goods', 'Footwear', 'Textiles'}
-ORDER = ['S&P 500', 'S&P 500 equal weight', 'OoL antigo', 'GCGR antigo', 'OoL novo', 'GCGR novo', 'OoL High ROIC (novo)', 'OoL High Growth (novo)']
+ORDER = ['S&P 500', 'S&P 500 equal weight', 'OoL antigo', 'GCGR antigo', 'OoL novo', 'GCGR novo', 'OoL High ROIC (novo)', 'OoL High Growth (novo)', 'Cyclicals']
 STYLE = {'S&P 500': ('#000000', '--', 2.0), 'S&P 500 equal weight': ('#8c959f', ':', 1.8), 'OoL antigo': ('#54aeff', '-', 1.4),
          'GCGR antigo': ('#f0a35e', '-', 1.4), 'OoL novo': ('#1f6feb', '-', 2.6), 'GCGR novo': ('#e8590c', '-', 2.4),
-         'OoL High ROIC (novo)': ('#2da44e', '-', 1.8), 'OoL High Growth (novo)': ('#8250df', '-', 1.8)}
+         'OoL High ROIC (novo)': ('#2da44e', '-', 1.8), 'OoL High Growth (novo)': ('#8250df', '-', 1.8), 'Cyclicals': ('#bf8700', '--', 1.8)}
 
 
 def sector_maps():
@@ -42,14 +43,18 @@ def classify_new(f, stability=None):
     c = vp.classify(f.assign(zroic=z), 'sketch', 'B')
     sec, ind = sector_maps()
     c['sector'] = c.ticker.map(sec); c['industry'] = c.ticker.map(ind)
-    c['excluded'] = c.sector.isin(EXCL_SECTORS) | c.industry.isin(APPAREL)
+    from ciclicos import cyclical_industries, canon
+    cyc = cyclical_industries()
+    c['cyclical'] = c.industry.map(canon).isin(cyc)
+    c['excluded'] = c.cyclical | c.industry.isin(APPAREL)
     return c
 
 
 def holdings_new(c):
     ok = ~c.excluded; ool = (c.cat == OOL) & ok
     return {'OoL novo': ool, 'GCGR novo': (c.cat == GCGR) & ok, 'OoL High ROIC (novo)': ool & (c.roic > 0.30),
-            'OoL High Growth (novo)': ool & (c.growth > 0.30)}
+            'OoL High Growth (novo)': ool & (c.growth > 0.30),
+            'Cyclicals': c.cat.isin([OOL, GCGR]) & c.cyclical & ~c.industry.isin(APPAREL)}
 
 
 def load_benchmarks(extra=None):
