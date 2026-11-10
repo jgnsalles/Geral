@@ -1,0 +1,344 @@
+<meta name="dash-one-writer">
+<style>
+  .pt { display: flex; flex-direction: column; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .pt-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  .pt-lead { margin: 0; color: var(--color-fg-muted); max-width: 70ch; line-height: 1.5; }
+  .pt-lead b { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .pt-warn { margin: 0; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); border-left: 3px solid var(--color-warn); padding-left: var(--cds-pad-sm); }
+  .pt-controls { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); align-items: end; }
+  .pt-field { display: flex; flex-direction: column; gap: var(--cds-gap-xs); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); min-width: 0; }
+  .pt-field select { min-width: 9rem; max-width: 100%; }
+  .pt-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--cds-gap-md); }
+  .pt-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .pt-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); letter-spacing: .02em; }
+  .pt-kpi-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; }
+  .pt-kpi-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .pt-good { color: var(--color-ok); } .pt-bad { color: var(--color-bad); }
+  .pt-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+  .pt-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .pt-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; line-height: 1.45; }
+  .pt-chart { position: relative; min-height: 340px; width: 100%; }
+  .pt-chart-sm { position: relative; min-height: 260px; width: 100%; }
+  .pt-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: var(--cds-pad-sm); font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; min-width: 12rem; z-index: 2; }
+  .pt-tip div { display: flex; justify-content: space-between; gap: var(--cds-gap-md); }
+  .pt-scroll { overflow-x: auto; }
+  .pt-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .pt-table th, .pt-table td { text-align: right; padding: 6px 8px; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .pt-table th:first-child, .pt-table td:first-child, .pt-table .l { text-align: left; }
+  .pt-table th { color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); }
+  .pt-table tr.sel td { font-weight: var(--cds-font-weight-medium); }
+  .pt-sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+  .pt-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: var(--cds-gap-lg); }
+  .pt-chart svg text, .pt-chart-sm svg text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); }
+  [data-dash-source-state=refreshing] { opacity: .5; }
+</style>
+
+<div class="pt">
+  <header style="display:flex;flex-direction:column;gap:var(--cds-gap-sm)">
+    <h1 class="pt-title" id="titulo">Price Tracker: navegador de janelas</h1>
+    <p class="pt-lead" id="resumo" data-source="navs">Na janela <b data-draw="w-label">—</b>, a carteira <b data-draw="w-class">—</b> rendeu <b data-draw="w-ann">—</b> ao ano, contra <b data-draw="w-spy">—</b> do S&amp;P 500.</p>
+    <p class="pt-warn">O ROIC usado para formar as classes pode estar errado (patrimônio negativo e ROIC acima de 100% em empresas leves em ativos ainda estão em aberto). Backtest point-in-time do S&amp;P 500 de cada trimestre, 2011–2026, sem impostos nem custos.</p>
+  </header>
+
+  <section class="pt-controls" id="controles" aria-label="Filtros">
+    <label class="pt-field">Classe
+      <select class="dash-select" id="f-classe">
+        <option>OoL novo</option><option>GCGR novo</option><option>OoL High ROIC</option><option>OoL High Growth</option>
+        <option>Cyclicals</option><option>OoL antigo</option><option>GCGR antigo</option>
+      </select>
+    </label>
+    <label class="pt-field">Ponderação
+      <select class="dash-select" id="f-peso">
+        <option>Peso igual</option><option>Raiz do valor de mercado</option><option>Valor de mercado</option>
+      </select>
+    </label>
+    <label class="pt-field">Janela
+      <select class="dash-select" id="f-janela">
+        <option value="all">Período todo</option><option value="y1">Últimos 12 meses</option><option value="y3">Últimos 3 anos</option>
+        <option value="y5">Últimos 5 anos</option><option value="y10">Últimos 10 anos</option>
+        <option value="2012-01|2015-12">2012–2015</option><option value="2016-01|2019-12">2016–2019</option>
+        <option value="2020-01|2021-12">2020–2021 (pandemia)</option><option value="2022-01|2022-12">2022 (alta de juros)</option>
+        <option value="2023-01|2026-12">2023–2026 (IA)</option><option value="custom">Personalizada</option>
+      </select>
+    </label>
+    <label class="pt-field">Início
+      <select class="dash-select" data-draw="sel-ini" data-source="navs" aria-label="Início da janela"></select>
+    </label>
+    <label class="pt-field">Fim
+      <select class="dash-select" data-draw="sel-fim" data-source="navs" aria-label="Fim da janela"></select>
+    </label>
+  </section>
+
+  <section class="pt-kpis" id="indicadores" data-source="navs">
+    <div class="pt-kpi" id="kpi-carteira"><span class="pt-kpi-label">Carteira: retorno ao ano</span><span class="pt-kpi-value" data-draw="k-ann">—</span><span class="pt-kpi-sub">Total no período: <span data-draw="k-tot">—</span></span></div>
+    <div class="pt-kpi" id="kpi-sp"><span class="pt-kpi-label">S&amp;P 500: retorno ao ano</span><span class="pt-kpi-value" data-draw="k-spy">—</span><span class="pt-kpi-sub">Total no período: <span data-draw="k-spytot">—</span></span></div>
+    <div class="pt-kpi" id="kpi-excesso"><span class="pt-kpi-label">Excesso sobre o S&amp;P 500</span><span class="pt-kpi-value" data-draw="k-ex">—</span><span class="pt-kpi-sub">pontos percentuais ao ano</span></div>
+    <div class="pt-kpi" id="kpi-queda"><span class="pt-kpi-label">Pior queda na janela</span><span class="pt-kpi-value" data-draw="k-dd">—</span><span class="pt-kpi-sub">S&amp;P 500: <span data-draw="k-spydd">—</span></span></div>
+    <div class="pt-kpi" id="kpi-meses"><span class="pt-kpi-label">Meses acima do S&amp;P 500</span><span class="pt-kpi-value" data-draw="k-hit">—</span><span class="pt-kpi-sub">dos meses da janela</span></div>
+  </section>
+
+  <section class="pt-card" id="grafico-acumulado">
+    <h2>Retorno acumulado na janela</h2>
+    <p class="pt-note">Linhas: as 9 carteiras de comparação, com a ponderação escolhida; a classe escolhida em destaque. Escala linear, retorno total.</p>
+    <div class="pt-chart" data-draw="chart" data-source="navs"></div>
+  </section>
+
+  <section class="pt-card" id="tabela-comparativos">
+    <h2>Comparativos na janela</h2>
+    <div class="pt-scroll" data-source="navs">
+      <table class="pt-table">
+        <thead><tr><th>Carteira</th><th>Retorno total</th><th>Ao ano</th><th>Excesso sobre o S&amp;P 500 (p.p. a.a.)</th><th>Pior queda</th></tr></thead>
+        <tbody data-draw="perf"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="pt-grid2">
+    <section class="pt-card" id="composicao">
+      <h2>Composição</h2>
+      <label class="pt-field">Trimestre
+        <select class="dash-select" data-draw="sel-q" data-source="posicoes" aria-label="Trimestre da composição"></select>
+      </label>
+      <p class="pt-note">Peso de cada ação na compra do trimestre e o retorno dela até o rebalanceamento seguinte.</p>
+      <div class="pt-scroll" data-source="posicoes">
+        <table class="pt-table">
+          <thead><tr><th>Ação</th><th class="l">Empresa</th><th class="l">Subsetor</th><th>Peso</th><th>Retorno no trimestre</th></tr></thead>
+          <tbody data-draw="comp"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="pt-card" id="setores">
+      <h2>Setores na janela</h2>
+      <p class="pt-note">Peso médio de cada setor nos trimestres da janela (barras) e contribuição dele para o excesso sobre o S&amp;P 500, em p.p. somados no período (número).</p>
+      <div class="pt-chart-sm" data-draw="sectors" data-source="posicoes"></div>
+    </section>
+  </div>
+
+  <section class="pt-card" id="atribuicao">
+    <h2>Atribuição por empresa na janela</h2>
+    <p class="pt-note">Contribuição = peso × (retorno da ação − retorno do S&amp;P 500) em cada trimestre da janela, somada. É aritmética: a soma aproxima, sem juros compostos, o excesso acumulado da carteira.</p>
+    <div class="pt-grid2">
+      <div class="pt-scroll" data-source="posicoes">
+        <table class="pt-table" id="melhores">
+          <thead><tr><th>Maiores contribuições</th><th class="l">Empresa</th><th>Trimestres</th><th>Peso médio</th><th>Contribuição (p.p.)</th></tr></thead>
+          <tbody data-draw="attr-top"></tbody>
+        </table>
+      </div>
+      <div class="pt-scroll" data-source="posicoes">
+        <table class="pt-table" id="piores">
+          <thead><tr><th>Menores contribuições</th><th class="l">Empresa</th><th>Trimestres</th><th>Peso médio</th><th>Contribuição (p.p.)</th></tr></thead>
+          <tbody data-draw="attr-bot"></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="pt-note">Soma de todas as contribuições na janela: <b data-draw="attr-sum" data-source="posicoes">—</b> p.p.</p>
+  </section>
+
+  <details class="pt-card" id="definicoes">
+    <summary>Como as classes e as ponderações são definidas</summary>
+    <p class="pt-note"><b>Antigo</b>: cortes originais (ROIC 20%/10%, zROIC 0,7). <b>Novo</b>: ROIC a partir de 12%, sem critério de estabilidade do ROIC, sem vestuário e sem subsetores cíclicos (petróleo, cobre, aço, fertilizantes, lojas de departamento, aéreas, motos, cassinos, jogos, seguros multilinha, distribuidoras de saúde, brinquedos). <b>High ROIC</b>: OoL novo com ROIC acima de 30%. <b>High Growth</b>: OoL novo com crescimento do lucro acima de 30%. <b>Cyclicals</b>: ações desses subsetores cíclicos que entrariam na OoL ou na GCGR.</p>
+    <p class="pt-note"><b>Peso igual</b>: todas as ações com o mesmo peso. <b>Valor de mercado</b>: como o S&amp;P 500 (valor de mercado = preço × lucro líquido ÷ lucro por ação). <b>Raiz do valor de mercado</b>: peso proporcional à raiz quadrada do valor de mercado, que dá mais peso às grandes sem concentrar tanto. Rebalanceamento trimestral.</p>
+  </details>
+</div>
+
+<script>
+(() => {
+  const L = d3.formatLocale({decimal: ',', thousands: '.', grouping: [3], currency: ['R$', '']});
+  const P1 = L.format('.1%'), SG = L.format('+.1f'), P0 = L.format('.0%'), PP = (x) => L.format('+.1%')(x).replace('%', '');
+  const MES = (s) => { const [y, m] = s.split('-'); return ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'][+m - 1] + '/' + y; };
+  const CLASSES = ['OoL antigo', 'GCGR antigo', 'OoL novo', 'GCGR novo', 'OoL High ROIC', 'OoL High Growth', 'Cyclicals'];
+  const WCOL = {'Peso igual': 'w_ew', 'Raiz do valor de mercado': 'w_raiz', 'Valor de mercado': 'w_mv'};
+  const S = window.PT = window.PT || {classe: 'OoL novo', peso: 'Peso igual', janela: 'all', ini: null, fim: null, q: null};
+
+  let cacheNav = null, cacheRows = null;
+  window.PT_nav = () => {
+    const g = dash.data('navs'); if (g.status !== 'ok') return null;
+    if (cacheRows === g.data && cacheNav) return cacheNav;
+    const by = new Map();
+    for (const r of g.data) { const k = r.serie; if (!by.has(k)) by.set(k, new Map()); by.get(k).set(r.mes, +r.nav); }
+    const months = [...by.get('S&P 500').keys()].sort();
+    cacheRows = g.data; cacheNav = {by, months}; return cacheNav;
+  };
+  window.PT_window = (nav) => {
+    const ms = nav.months, last = ms[ms.length - 1];
+    if (S.janela === 'custom' && S.ini && S.fim) return [S.ini, S.fim];
+    if (S.janela === 'all' || S.janela === 'custom') return [ms[0], last];
+    if (S.janela.startsWith('y')) { const n = +S.janela.slice(1) * 12; return [ms[Math.max(0, ms.length - 1 - n)], last]; }
+    const [a, b] = S.janela.split('|');
+    const ini = ms.filter((m) => m.slice(0, 7) < a).pop() || ms[0];
+    const fim = ms.filter((m) => m.slice(0, 7) <= b).pop() || last;
+    return [ini, fim];
+  };
+  window.PT_series = () => ['S&P 500', 'S&P 500 equal weight', ...CLASSES.map((c) => c + '|' + S.peso)];
+  window.PT_label = (k) => k.includes('|') ? k.split('|')[0] : k;
+  window.PT_stats = (nav, key, ini, fim) => {
+    const m = nav.by.get(key); if (!m) return null;
+    const ms = nav.months.filter((x) => x >= ini && x <= fim);
+    const v0 = m.get(ini), v1 = m.get(fim); if (!v0 || !v1 || ms.length < 2) return null;
+    const yrs = (new Date(fim) - new Date(ini)) / (365.25 * 864e5);
+    let pk = -Infinity, dd = 0; for (const x of ms) { const v = m.get(x); pk = Math.max(pk, v); dd = Math.min(dd, v / pk - 1); }
+    return {tot: v1 / v0 - 1, ann: Math.pow(v1 / v0, 1 / yrs) - 1, dd, ms, m};
+  };
+  window.PT_fmt = {P1, SG, P0, PP, MES, CLASSES, WCOL};
+  const redraw = () => ['sel-ini', 'sel-fim', 'sel-q', 'w-label', 'w-class', 'w-ann', 'w-spy', 'k-ann', 'k-tot', 'k-spy', 'k-spytot', 'k-ex', 'k-dd', 'k-spydd', 'k-hit',
+    'chart', 'perf', 'comp', 'sectors', 'attr-top', 'attr-bot', 'attr-sum'].forEach((n) => dash.draw(n));
+  window.PT_redraw = redraw;
+  document.querySelectorAll('#f-classe').forEach((el) => { el.value = S.classe; el.addEventListener('change', () => { S.classe = el.value; S.q = null; redraw(); }); });
+  document.querySelectorAll('#f-peso').forEach((el) => { el.value = S.peso; el.addEventListener('change', () => { S.peso = el.value; redraw(); }); });
+  document.querySelectorAll('#f-janela').forEach((el) => { el.value = S.janela; el.addEventListener('change', () => { S.janela = el.value; S.q = null;
+    if (el.value === 'custom') { const nav = window.PT_nav(); if (nav && !S.ini) [S.ini, S.fim] = [nav.months[0], nav.months[nav.months.length - 1]]; } redraw(); }); });
+})();
+</script>
+
+<script>
+(() => {
+  const F = window.PT_fmt, S = window.PT;
+  const txt = (el, s) => { el.textContent = s; };
+  const one = (name, fn) => dash.draw(name, (el) => {
+    const nav = window.PT_nav(); if (!nav) { txt(el, '—'); return; }
+    const [ini, fim] = window.PT_window(nav); fn(el, nav, ini, fim);
+  });
+  const monthSel = (name, which) => dash.draw(name, (sel) => {
+    const nav = window.PT_nav(); if (!nav) { sel.replaceChildren(); return; }
+    const [ini, fim] = window.PT_window(nav);
+    sel.replaceChildren(...nav.months.map((m) => new Option(F.MES(m), m)));
+    sel.value = which === 'ini' ? ini : fim;
+    sel.onchange = () => { S.janela = 'custom'; if (which === 'ini') { S.ini = sel.value; S.fim = S.fim || fim; } else { S.fim = sel.value; S.ini = S.ini || ini; }
+      if (S.ini > S.fim) [S.ini, S.fim] = [S.fim, S.ini];
+      document.querySelectorAll('#f-janela').forEach((j) => { j.value = 'custom'; }); S.q = null; window.PT_redraw(); };
+  });
+  monthSel('sel-ini', 'ini'); monthSel('sel-fim', 'fim');
+  const key = () => S.classe + '|' + S.peso;
+  one('w-label', (el, nav, ini, fim) => txt(el, F.MES(ini) + ' a ' + F.MES(fim)));
+  one('w-class', (el) => txt(el, S.classe + ' (' + S.peso.toLowerCase() + ')'));
+  one('w-ann', (el, nav, ini, fim) => { const s = window.PT_stats(nav, key(), ini, fim); txt(el, s ? F.P1(s.ann) : '—'); });
+  one('w-spy', (el, nav, ini, fim) => { const s = window.PT_stats(nav, 'S&P 500', ini, fim); txt(el, s ? F.P1(s.ann) : '—'); });
+  one('k-ann', (el, nav, ini, fim) => { const s = window.PT_stats(nav, key(), ini, fim); txt(el, s ? F.P1(s.ann) : '—'); });
+  one('k-tot', (el, nav, ini, fim) => { const s = window.PT_stats(nav, key(), ini, fim); txt(el, s ? F.P1(s.tot) : '—'); });
+  one('k-spy', (el, nav, ini, fim) => { const s = window.PT_stats(nav, 'S&P 500', ini, fim); txt(el, s ? F.P1(s.ann) : '—'); });
+  one('k-spytot', (el, nav, ini, fim) => { const s = window.PT_stats(nav, 'S&P 500', ini, fim); txt(el, s ? F.P1(s.tot) : '—'); });
+  one('k-ex', (el, nav, ini, fim) => { const a = window.PT_stats(nav, key(), ini, fim), b = window.PT_stats(nav, 'S&P 500', ini, fim);
+    if (!a || !b) { txt(el, '—'); return; } const x = (a.ann - b.ann) * 100; txt(el, F.SG(x)); el.className = x >= 0 ? 'pt-good' : 'pt-bad'; });
+  one('k-dd', (el, nav, ini, fim) => { const s = window.PT_stats(nav, key(), ini, fim); txt(el, s ? F.P1(s.dd) : '—'); });
+  one('k-spydd', (el, nav, ini, fim) => { const s = window.PT_stats(nav, 'S&P 500', ini, fim); txt(el, s ? F.P1(s.dd) : '—'); });
+  one('k-hit', (el, nav, ini, fim) => { const a = window.PT_stats(nav, key(), ini, fim), b = window.PT_stats(nav, 'S&P 500', ini, fim);
+    if (!a || !b) { txt(el, '—'); return; } let w = 0, n = 0;
+    for (let i = 1; i < a.ms.length; i++) { const p = a.ms[i - 1], c = a.ms[i]; n++; if (a.m.get(c) / a.m.get(p) > b.m.get(c) / b.m.get(p)) w++; }
+    txt(el, n ? F.P0(w / n) : '—'); });
+
+  dash.draw('perf', (tb) => {
+    const nav = window.PT_nav(); tb.replaceChildren(); if (!nav) return;
+    const [ini, fim] = window.PT_window(nav); const sp = window.PT_stats(nav, 'S&P 500', ini, fim);
+    window.PT_series().forEach((k, i) => {
+      const s = window.PT_stats(nav, k, ini, fim); const tr = document.createElement('tr');
+      if (k === S.classe + '|' + S.peso) tr.className = 'sel';
+      const td0 = document.createElement('td'); const sw = document.createElement('span'); sw.className = 'pt-sw';
+      sw.style.background = i === 0 ? 'var(--color-fg)' : i === 1 ? 'var(--cds-chart-muted)' : dash.colors[(i - 2) % dash.colors.length];
+      td0.append(sw, document.createTextNode(window.PT_label(k))); tr.append(td0);
+      const cells = s ? [F.P1(s.tot), F.P1(s.ann), i === 0 ? '—' : F.SG((s.ann - sp.ann) * 100), F.P1(s.dd)] : ['—', '—', '—', '—'];
+      cells.forEach((c, j) => { const td = document.createElement('td'); td.textContent = c; if (j === 2 && s && i) td.className = s.ann >= sp.ann ? 'pt-good' : 'pt-bad'; tr.append(td); });
+      tb.append(tr);
+    });
+  });
+
+  dash.draw('chart', (el) => {
+    const nav = window.PT_nav(); el.replaceChildren(); if (!nav) { el.textContent = '—'; return; }
+    const [ini, fim] = window.PT_window(nav); const keys = window.PT_series();
+    const ms = nav.months.filter((m) => m >= ini && m <= fim);
+    const W = Math.max(280, el.clientWidth), H = 340, m = {t: 10, r: 12, b: 26, l: 52};
+    const ser = keys.map((k, i) => { const mm = nav.by.get(k); const v0 = mm.get(ini); return {k, i, pts: ms.map((x) => ({d: new Date(x), v: mm.get(x) / v0 - 1}))}; });
+    const all = ser.flatMap((s) => s.pts.map((p) => p.v)).filter(Number.isFinite);
+    const x = d3.scaleUtc().domain([new Date(ini), new Date(fim)]).range([m.l, W - m.r]);
+    const y = d3.scaleLinear().domain([Math.min(0, d3.min(all)), d3.max(all)]).nice().range([H - m.b, m.t]);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', 'Retorno acumulado na janela das 9 carteiras de comparação');
+    svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(Math.max(2, Math.floor(W / 110))).tickFormat(d3.utcFormat('%Y')))
+      .call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+    svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickFormat((v) => F.P0(v)))
+      .call((g) => g.select('.domain').remove()).call((g) => g.selectAll('line').attr('x2', W - m.l - m.r).style('stroke', 'var(--cds-chart-grid)'));
+    const line = d3.line().defined((p) => Number.isFinite(p.v)).x((p) => x(p.d)).y((p) => y(p.v));
+    const sel = S.classe + '|' + S.peso;
+    const col = (s) => s.i === 0 ? 'var(--color-fg)' : s.i === 1 ? 'var(--cds-chart-muted)' : dash.colors[(s.i - 2) % dash.colors.length];
+    svg.append('g').selectAll('path').data([...ser].sort((a, b) => (a.k === sel) - (b.k === sel))).join('path')
+      .attr('d', (s) => line(s.pts)).style('fill', 'none').style('stroke', col)
+      .style('stroke-width', (s) => s.k === sel ? 3 : s.i < 2 ? 2 : 1.2).style('stroke-dasharray', (s) => s.i === 0 ? '6 3' : s.i === 1 ? '2 3' : null)
+      .style('opacity', (s) => s.k === sel || s.i < 2 ? 1 : .55);
+    const tip = document.createElement('div'); tip.className = 'pt-tip'; tip.hidden = true; el.append(tip);
+    const rule = svg.append('line').style('stroke', 'var(--cds-chart-reference)').attr('y1', m.t).attr('y2', H - m.b).style('opacity', 0);
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).style('fill', 'transparent')
+      .on('pointermove', (ev) => {
+        const [px] = d3.pointer(ev); const d = x.invert(px); const idx = d3.bisector((p) => p.d).center(ser[0].pts, d); const p0 = ser[0].pts[idx]; if (!p0) return;
+        rule.attr('x1', x(p0.d)).attr('x2', x(p0.d)).style('opacity', 1);
+        tip.replaceChildren(); const h = document.createElement('b'); h.textContent = F.MES(ms[idx]); tip.append(h);
+        [...ser].sort((a, b) => b.pts[idx].v - a.pts[idx].v).forEach((s) => { const r = document.createElement('div'); const a = document.createElement('span');
+          const sw = document.createElement('span'); sw.className = 'pt-sw'; sw.style.background = col(s); a.append(sw, document.createTextNode(window.PT_label(s.k)));
+          const b = document.createElement('span'); b.textContent = F.P1(s.pts[idx].v); r.append(a, b); tip.append(r); });
+        tip.hidden = false; const tw = tip.offsetWidth; tip.style.left = Math.min(Math.max(0, x(p0.d) + 12), W - tw) * (el.clientWidth / W) + 'px'; tip.style.top = '8px';
+      }).on('pointerleave', () => { tip.hidden = true; rule.style('opacity', 0); });
+  });
+})();
+</script>
+
+<script>
+(() => {
+  const F = window.PT_fmt, S = window.PT;
+  const posRows = () => { const g = dash.data('posicoes'); return g.status === 'ok' ? g.data : null; };
+  const inWin = () => {
+    const rows = posRows(), nav = window.PT_nav(); if (!rows || !nav) return null;
+    const [ini, fim] = window.PT_window(nav); const wc = F.WCOL[S.peso];
+    return {ini, fim, wc, rows: rows.filter((r) => r.classe === S.classe && r.trimestre >= ini && r.trimestre < fim)};
+  };
+  dash.draw('sel-q', (sel) => {
+    const w = inWin(); if (!w) { sel.replaceChildren(); return; }
+    const qs = [...new Set(w.rows.map((r) => r.trimestre))].sort();
+    sel.replaceChildren(...qs.map((q) => new Option(F.MES(q), q)));
+    if (!S.q || !qs.includes(S.q)) S.q = qs[qs.length - 1] || null;
+    if (S.q) sel.value = S.q;
+    sel.onchange = () => { S.q = sel.value; dash.draw('comp'); };
+  });
+  dash.draw('comp', (tb) => {
+    tb.replaceChildren(); const w = inWin(); if (!w) return;
+    const q = S.q || [...new Set(w.rows.map((r) => r.trimestre))].sort().pop();
+    w.rows.filter((r) => r.trimestre === q).sort((a, b) => b[w.wc] - a[w.wc]).forEach((r) => {
+      const tr = document.createElement('tr');
+      [r.ticker, r.empresa, r.subsetor, F.P1(+r[w.wc]), F.P1(+r.retorno)].forEach((c, j) => { const td = document.createElement('td'); td.textContent = c;
+        if (j === 1 || j === 2) td.className = 'l'; if (j === 4) td.className = +r.retorno >= +r.sp500 ? 'pt-good' : 'pt-bad'; tr.append(td); });
+      tb.append(tr);
+    });
+  });
+  const attr = () => {
+    const w = inWin(); if (!w) return null;
+    const by = new Map(); const nq = new Set(w.rows.map((r) => r.trimestre)).size || 1;
+    for (const r of w.rows) { const wt = +r[w.wc], c = wt * (+r.retorno - +r.sp500);
+      const o = by.get(r.ticker) || {t: r.ticker, e: r.empresa, s: r.setor || 'Sem setor', q: 0, w: 0, c: 0}; o.q++; o.w += wt; o.c += c; by.set(r.ticker, o); }
+    return {list: [...by.values()], nq};
+  };
+  const attrTable = (name, top) => dash.draw(name, (tb) => {
+    tb.replaceChildren(); const a = attr(); if (!a) return;
+    const l = [...a.list].sort((x, y) => top ? y.c - x.c : x.c - y.c).slice(0, 10);
+    l.forEach((o) => { const tr = document.createElement('tr');
+      [o.t, o.e, String(o.q), F.P1(o.w / o.q), F.PP(o.c)].forEach((c, j) => { const td = document.createElement('td'); td.textContent = c;
+        if (j === 1) td.className = 'l'; if (j === 4) td.className = o.c >= 0 ? 'pt-good' : 'pt-bad'; tr.append(td); });
+      tb.append(tr); });
+  });
+  attrTable('attr-top', true); attrTable('attr-bot', false);
+  dash.draw('attr-sum', (el) => { const a = attr(); el.textContent = a ? F.PP(d3.sum(a.list, (o) => o.c)) : '—'; });
+  const PTS = {'Information Technology': 'Tecnologia', 'Consumer Discretionary': 'Consumo discricionário', 'Consumer Staples': 'Consumo básico', 'Health Care': 'Saúde',
+    'Financials': 'Financeiro', 'Industrials': 'Indústria', 'Communication Services': 'Comunicação', 'Energy': 'Energia', 'Materials': 'Materiais',
+    'Utilities': 'Utilidades', 'Real Estate': 'Imobiliário', 'Sem setor': 'Sem setor'};
+  dash.draw('sectors', (el) => {
+    el.replaceChildren(); const a = attr(); if (!a) { el.textContent = '—'; return; }
+    const m = new Map(); for (const o of a.list) { const k = PTS[o.s] || o.s; const v = m.get(k) || {k, w: 0, c: 0}; v.w += o.w / a.nq; v.c += o.c; m.set(k, v); }
+    const d = [...m.values()].sort((x, y) => y.w - x.w);
+    const W = Math.max(280, el.clientWidth), rowH = 24, H = d.length * rowH + 24, left = 150, right = 70;
+    const x = d3.scaleLinear().domain([0, d3.max(d, (v) => v.w) || 1]).range([left, W - right]);
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Peso médio e contribuição por setor na janela');
+    const g = svg.selectAll('g').data(d).join('g').attr('transform', (v, i) => `translate(0,${i * rowH + 4})`);
+    g.append('text').attr('x', left - 8).attr('y', 14).attr('text-anchor', 'end').text((v) => v.k);
+    g.append('rect').attr('x', left).attr('y', 3).attr('height', rowH - 8).attr('width', (v) => Math.max(1, x(v.w) - left)).style('fill', dash.colors[0]);
+    g.append('text').attr('x', (v) => x(v.w) + 6).attr('y', 14).text((v) => F.P0(v.w) + ' · ' + F.PP(v.c))
+      .style('fill', (v) => v.c >= 0 ? 'var(--color-ok)' : 'var(--color-bad)');
+  });
+})();
+</script>
