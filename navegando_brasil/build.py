@@ -72,6 +72,18 @@ for f in sorted((out / 'data').iterdir()):
     assert ''.join(chunks) == t
     for k, c in enumerate(chunks): (out / 'data' / f'{f.name}.{k + 1}.txt').write_text(c)
     parts[f.name] = len(chunks); f.unlink()
+# versão gzip+base64 dos arquivos grandes (menos bytes para o app do iPhone), em partes de até 900 KB
+import gzip
+gz = {}
+for name, n in parts.items():
+    t = ''.join((out / 'data' / f'{name}.{k + 1}.txt').read_text() for k in range(n))
+    import base64
+    b = base64.b64encode(gzip.compress(t.encode(), 9, mtime=0)).decode()
+    ch = [b[i:i + 900_000] for i in range(0, len(b), 900_000)]   # múltiplo de 4: cada parte é base64 válido
+    for k, c in enumerate(ch): (out / 'data' / f'{name}.gz{k + 1}.txt').write_text(c)
+    gz[name] = len(ch)
+html = html.replace('{{GZ}}', json.dumps(gz))
+print('gzip', gz)
 html = html.replace('{{PARTS}}', json.dumps(parts))
 (out / 'index.html').write_text(html)
 print('partes', parts)
