@@ -92,3 +92,9 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   Entertainment; Multi-line Insurance; Health Care Distributors; Leisure Products; Apparel, Accessories & Luxury Goods; Footwear.
   Resultado EUA 2012–2026: OoL novo 17,1% a.a.; GCGR novo 16,9%; High ROIC 18,8%; High Growth 19,3%; Cyclicals 5,5%; S&P 500 15,6%.
   As exceções foram escolhidas olhando o retorno: o ganho delas sobre a régua pura (~0,5 p.p.) é suspeito de sobreajuste.
+- 2026-11-10 — **REGRA CONGELADA (antes dos testes fora da amostra do Brasil, do modelo nulo e dos rivais).** Nenhum ajuste a partir daqui.
+  Classe: OoL = ROIC ≥ 12% (médio 10–12%), sem zROIC, crescimento 15%/6%, zGrowth 2,93, retorno esperado 20%/8%; P/E justo com ROIC limitado a
+  100%; ROIC oficial (B com reserva em A; financeiras e seguradoras de saúde com ROE). Exclusões: vestuário, calçados e têxteis + subsetores
+  cíclicos da régua com as exceções da opção B (lista no registro anterior). **Ponderação principal: raiz do valor de mercado** (peso igual como
+  controle). Rebalanceamento trimestral. Subclasses reportadas: High ROIC (ROIC > 30%) e High Growth (EPS > 30%).
+  Brasil: os setores cíclicos e o vestuário são mapeados para os setores da CVM antes de rodar (lista em `brasil/oos_congelado.py`).
