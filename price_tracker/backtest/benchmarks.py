@@ -37,14 +37,14 @@ def base_data():
     return f, dates
 
 
-def classify_new(f, stability=None):
+def classify_new(f, stability=None, cyc=None):
     """Classificacao 'nova'. stability: None = sem criterio de estabilidade do ROIC; ou serie booleana (True = estavel)."""
     z = 0.0 if stability is None else np.where(stability, 0.0, 9.0)
     c = vp.classify(f.assign(zroic=z), 'sketch', 'B')
     sec, ind = sector_maps()
     c['sector'] = c.ticker.map(sec); c['industry'] = c.ticker.map(ind)
     from ciclicos import cyclical_industries, canon
-    cyc = cyclical_industries()
+    if cyc is None: cyc = cyclical_industries()
     c['cyclical'] = c.industry.map(canon).isin(cyc)
     c['excluded'] = c.cyclical | c.industry.isin(APPAREL)
     return c
