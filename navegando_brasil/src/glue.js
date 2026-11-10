@@ -95,7 +95,19 @@
   const boot = async () => {
     try {
       show('Carregando dados…');
-      const [cw, ...csv] = await Promise.all([fetch('data/carteiras.json').then((r) => r.json()), ...NAV.map((id) => fetch('data/' + id + '.csv').then((r) => r.text()))]);
+      // arquivos grandes vão em partes (PARTS, gerado no build); cada parte é conferida e baixada de novo se falhar
+      const PARTS = {{PARTS}};
+      const get1 = async (url) => {
+        let err;
+        for (let k = 0; k < 3; k++) {
+          try { const r = await fetch(url, { cache: k ? 'reload' : 'default' }); if (!r.ok) throw new Error('HTTP ' + r.status); return await r.text(); }
+          catch (e) { err = e; await new Promise((ok) => setTimeout(ok, 600 * (k + 1))); }
+        }
+        throw new Error(url + ': ' + err.message);
+      };
+      const getFile = async (name) => { const n = PARTS[name]; return n ? (await Promise.all(Array.from({ length: n }, (_, k) => get1('data/' + name + '.' + (k + 1) + '.txt')))).join('') : get1('data/' + name); };
+      const [cwTxt, ...csv] = await Promise.all([getFile('carteiras.json'), ...NAV.map((id) => getFile(id + '.csv'))]);
+      let cw; try { cw = JSON.parse(cwTxt); } catch (e) { throw new Error('carteiras.json chegou incompleto (' + cwTxt.length + ' caracteres): ' + e.message); }
       NAV.forEach((id, k) => dash._load(id, d3.csvParse(csv[k].trim())));
       CW.init(cw, hooks);
       FUNDOS = dash.data('fundos').data.map((f) => ({ ...f, id: String(f.id) }));

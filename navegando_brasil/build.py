@@ -53,4 +53,26 @@ out = H / 'dist'; (out / 'data').mkdir(parents=True, exist_ok=True)
 for n in ['fundos', 'serie_mensal', 'posicoes_1', 'posicoes_2', 'precos', 'acoes', 'ibov', 'encerrados']:
     shutil.copy(CSV / (n + '.csv'), out / 'data' / (n + '.csv'))
 shutil.copy(H / 'data/carteiras.json', out / 'data/carteiras.json')
+# divide arquivos grandes em partes de até 1 MB (o app do iPhone não entrega arquivos grandes inteiros)
+LIM = 1_000_000; parts = {}
+for f in sorted((out / 'data').iterdir()):
+    if f.suffix == '.txt': f.unlink(); continue
+for f in sorted((out / 'data').iterdir()):
+    t = f.read_text()
+    if len(t.encode()) <= LIM: continue
+    chunks, cur, size = [], [], 0
+    for line in t.splitlines(keepends=True):
+        b = len(line.encode())
+        if size + b > LIM and cur: chunks.append(''.join(cur)); cur, size = [], 0
+        if b > LIM:
+            for i in range(0, len(line), 900_000): chunks.append(line[i:i + 900_000])
+            continue
+        cur.append(line); size += b
+    if cur: chunks.append(''.join(cur))
+    assert ''.join(chunks) == t
+    for k, c in enumerate(chunks): (out / 'data' / f'{f.name}.{k + 1}.txt').write_text(c)
+    parts[f.name] = len(chunks); f.unlink()
+html = html.replace('{{PARTS}}', json.dumps(parts))
+(out / 'index.html').write_text(html)
+print('partes', parts)
 print('ok', len(html), sum(p.stat().st_size for p in (out / 'data').iterdir()))
