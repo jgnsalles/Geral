@@ -108,3 +108,10 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
 - 2026-11-10 — **Resultado da carteira de tamanho fixo (pré-registrada):** EUA (dentro da amostra) Top 20 raiz com teto 22,2% a.a. (S&P 15,6%,
   QQQ 20,3%; alfa FF5+UMD+QMJ +3,9, t 1,76). **Brasil (fora da amostra): falhou** — Top 20 9,8% a.a. contra Ibovespa 10,9% e universo 11,9%;
   10 e 15 ações também abaixo. A OoL novo da regra congelada (com P/E justo e retorno esperado) passou no Brasil (13,5%, +2,6 p.p. sobre o Ibovespa).
+- 2026-11-10 — **Pré-registro (sugestão do usuário, feita depois de ver EUA e Brasil):** mesma carteira de tamanho fixo, mesmas elegíveis
+  (ROIC ≥ 12%, crescimento ≥ 15%, sem cíclicos e vestuário), mas ordenadas pelo **retorno esperado do modelo** (P/E justo + múltiplo constante +
+  dividendos, ROIC limitado a 100% no P/E justo), sem o corte de 20%: ficam as N de maior retorno esperado (empate: maior ROIC). Produto N = 20;
+  15 e 10 como sensibilidade. Peso = raiz do valor de mercado com teto de 2/N; peso igual como controle. EUA e Brasil (parâmetros brasileiros).
+  Por ter sido proposta depois dos resultados, conta como exploratória até o Japão.
+- 2026-11-10 — **Resultado da Top 20 por retorno esperado:** EUA 19,7% a.a. (S&P 15,6%, QQQ 20,3%; pior queda −28,6%, a menor das carteiras;
+  alfa +4,5, t 1,82). Brasil 12,5% a.a. (Ibovespa 10,9%, universo 11,9%). Primeira regra que fica acima do índice nos dois países.
