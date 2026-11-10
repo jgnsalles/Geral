@@ -147,3 +147,6 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   16,5% a.a. contra universo de peso igual 11,9%, S&P 400 (IJH) 10,5%, S&P 600 (IJR) 10,6% e Russell 2000 9,8%. **Passou.** Mas as elegíveis de
   qualidade com peso igual renderam 17,1% (97% das janelas de 5 anos acima do universo, contra 58% da Top 20): a ordenação por retorno esperado não
   agregou aqui. Lista parte de quem tem ticker hoje (viés de sobrevivência; o universo de peso igual sofre o mesmo viés).
+- 2026-11-10 — **Teste fora da amostra na China, ações A (antes de rodar):** regra candidata congelada, mesmos parâmetros dos EUA. Fundamentos
+  anuais em lote do Eastmoney com data de divulgação; preços do Yahoo em yuan. Diferenças forçadas pelos dados e mapeamento de setores Shenwan
+  fixados em `china/backtest_cn.py` antes de rodar. Critério: Top 20 acima do universo de peso igual e do CSI 300/CSI 500.
