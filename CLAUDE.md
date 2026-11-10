@@ -30,3 +30,11 @@ O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 - O zROIC tinha um bug (o desvio incluía a coluna U, o `g`). Foi corrigido para V:AA em 2026-11-08.
 - O ROIC afeta três coisas: o corte de qualidade (20%/10%), a estabilidade (zROIC 0,7) **e** o P/E justo
   `(1 − g/ROIC)/(8,5% − g)`. Um erro nele muda a classe por mais de um caminho.
+
+## Price Tracker: comparativos obrigatórios em TODA análise de desempenho (pedido do usuário, 2026-11-10)
+
+Toda análise de carteira/backtest deve voltar com estas 8 linhas (tabela e gráfico, retorno total acumulado linear):
+1. S&P 500 (SPY); 2. S&P 500 equal weight (RSP); 3. Opportunity of Lifetime **antigo**; 4. Good Companies, Great Returns **antigo**;
+5. Opportunity of Lifetime **novo**; 6. Good Companies, Great Returns **novo**; 7. OoL **High ROIC** (novo, ROIC > 30%); 8. OoL **High Growth** (novo, EPS > 30%).
+Antigo = cortes originais (ROIC 20%/10%, zROIC 0,7). Novo = esboço (ROIC 12%/10%), sem zROIC, sem Energia, Materiais e vestuário.
+Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table()`). Se a definição de "novo" mudar, atualizar aqui e no módulo.
