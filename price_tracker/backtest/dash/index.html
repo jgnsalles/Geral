@@ -100,10 +100,10 @@
       <label class="pt-field">Trimestre
         <select class="dash-select" data-draw="sel-q" data-source="posicoes" aria-label="Trimestre da composição"></select>
       </label>
-      <p class="pt-note">Peso de cada ação na compra do trimestre e o retorno dela até o rebalanceamento seguinte.</p>
+      <p class="pt-note">Peso de cada ação na compra do trimestre, o retorno dela até o rebalanceamento seguinte (vazio na carteira de hoje) e as métricas que o modelo via na data: ROIC dos 6 últimos exercícios (do mais antigo ao último), mediana e ROIC do modelo (média de 3 e 6 anos), lucro por ação, crescimento do lucro (G), g da perpetuidade, P/L, P/E justo e retorno esperado.</p>
       <div class="pt-scroll pt-tall" data-source="posicoes">
         <table class="pt-table">
-          <thead><tr><th>Ação</th><th class="l">Empresa</th><th class="l">Subsetor</th><th>Peso</th><th>Retorno no trimestre</th></tr></thead>
+          <thead><tr><th>Ação</th><th class="l">Empresa</th><th class="l">Subsetor</th><th>Peso</th><th>Retorno no trimestre</th><th>Último exercício</th><th>ROIC −5</th><th>ROIC −4</th><th>ROIC −3</th><th>ROIC −2</th><th>ROIC −1</th><th>ROIC último</th><th>ROIC mediana</th><th>ROIC do modelo</th><th>EPS (US$)</th><th>Crescimento do EPS (G)</th><th>g</th><th>P/L</th><th>P/E justo</th><th>Retorno esperado</th></tr></thead>
           <tbody data-draw="comp"></tbody>
         </table>
       </div>
@@ -288,7 +288,7 @@
   const inWin = () => {
     const rows = posRows(), nav = window.PT_nav(); if (!rows || !nav) return null;
     const [ini, fim] = window.PT_window(nav); const wc = F.WCOL[S.peso];
-    return {ini, fim, wc, rows: rows.filter((r) => r.classe === S.classe && r.trimestre >= ini && r.trimestre < fim)};
+    return {ini, fim, wc, rows: rows.filter((r) => r.classe === S.classe && r.trimestre >= ini && r.trimestre <= fim)};
   };
   dash.draw('sel-q', (sel) => {
     const w = inWin(); if (!w) { sel.replaceChildren(); return; }
@@ -303,15 +303,21 @@
     const q = S.q || [...new Set(w.rows.map((r) => r.trimestre))].sort().pop();
     w.rows.filter((r) => r.trimestre === q).sort((a, b) => b[w.wc] - a[w.wc]).forEach((r) => {
       const tr = document.createElement('tr');
-      [r.ticker, r.empresa, r.subsetor, F.P1(+r[w.wc]), F.P1(+r.retorno)].forEach((c, j) => { const td = document.createElement('td'); td.textContent = c;
-        if (j === 1 || j === 2) td.className = 'l'; if (j === 4) td.className = +r.retorno >= +r.sp500 ? 'pt-good' : 'pt-bad'; tr.append(td); });
+      const pc = (v) => (v === '' || v == null) ? '—' : F.P1(+v), n1 = (v) => (v === '' || v == null) ? '—' : (+v).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+      const n2 = (v) => (v === '' || v == null) ? '—' : (+v).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      const cells = [r.ticker, r.empresa, r.subsetor, F.P1(+r[w.wc]), r.retorno === '' ? '—' : F.P1(+r.retorno), r.ano_fiscal,
+        pc(r.roic_1), pc(r.roic_2), pc(r.roic_3), pc(r.roic_4), pc(r.roic_5), pc(r.roic_6), pc(r.roic_mediana), pc(r.roic_modelo),
+        n2(r.eps), pc(r.cresc_eps), pc(r.g), n1(r.pl), n1(r.pe_justo), pc(r.ret_esperado)];
+      cells.forEach((c, j) => { const td = document.createElement('td'); td.textContent = c;
+        if (j === 1 || j === 2) td.className = 'l'; if (j === 4 && r.retorno !== '') td.className = +r.retorno >= +r.sp500 ? 'pt-good' : 'pt-bad'; tr.append(td); });
       tb.append(tr);
     });
   });
   const attr = () => {
     const w = inWin(); if (!w) return null;
-    const by = new Map(); const nq = new Set(w.rows.map((r) => r.trimestre)).size || 1;
-    for (const r of w.rows) { const wt = +r[w.wc], c = wt * (+r.retorno - +r.sp500);
+    const rr = w.rows.filter((r) => r.retorno !== '' && r.trimestre < w.fim);
+    const by = new Map(); const nq = new Set(rr.map((r) => r.trimestre)).size || 1;
+    for (const r of rr) { const wt = +r[w.wc], c = wt * (+r.retorno - +r.sp500);
       const o = by.get(r.ticker) || {t: r.ticker, e: r.empresa, s: r.setor || 'Sem setor', q: 0, w: 0, c: 0}; o.q++; o.w += wt; o.c += c; by.set(r.ticker, o); }
     return {list: [...by.values()], nq};
   };

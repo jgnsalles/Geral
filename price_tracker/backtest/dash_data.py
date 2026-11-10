@@ -35,12 +35,16 @@ for k, (c, m) in H.items():
     x['w_mv'] = x.mcap / x.groupby('date').mcap.transform('sum')
     for col, lab in (('w_ew', 'Peso igual'), ('w_raiz', 'Raiz do valor de mercado'), ('w_mv', 'Valor de mercado')):
         navs[f'{NAME[k]}|{lab}'] = run_weighted({d: pd.Series(g[col].values, index=g.ticker) for d, g in x.groupby('date')}, adj, dates)
-    x['r'] = [fwd.at[d, t] for d, t in zip(x.date, x.ticker)]
-    x = x[x.date < dates[-1]]
+    x['r'] = [fwd.at[d, t] if d < dates[-1] else np.nan for d, t in zip(x.date, x.ticker)]
+    R = x[[f'ry{i}' for i in range(1, 7)]]
+    extra = {f'roic_{i}': R[f'ry{i}'].round(4) for i in range(1, 7)}
+    extra.update({'ano_fiscal': x.last_fy.astype(int), 'roic_mediana': R.median(axis=1).round(4), 'roic_modelo': x.roic.round(4),
+                  'eps': x.eps.round(2), 'cresc_eps': x.growth.round(4), 'g': x.g.round(4),
+                  'pl': (x.price / x.eps.where(x.eps > 0)).round(1), 'pe_justo': x.fair_pe.round(1), 'ret_esperado': x.ret.round(4)})
     pos.append(pd.DataFrame({'trimestre': x.date.dt.strftime('%Y-%m-%d'), 'classe': NAME[k], 'ticker': x.ticker, 'empresa': x.ticker.map(nm),
                              'setor': x.ticker.map(sec).fillna(''), 'subsetor': x.ticker.map(ind).fillna(''),
                              'w_ew': x.w_ew.round(6), 'w_raiz': x.w_raiz.round(6), 'w_mv': x.w_mv.round(6),
-                             'retorno': x.r.round(6), 'sp500': x.date.map(spyq).round(6)}))
+                             'retorno': x.r.round(6), 'sp500': x.date.map(spyq).round(6), **extra}))
     print(k, flush=True)
 for b, lab in (('SPY', 'S&P 500'), ('RSP', 'S&P 500 equal weight')):
     s = adj[b].loc[dates[0]:dates[-1]]; navs[lab] = s / s.iloc[0]
