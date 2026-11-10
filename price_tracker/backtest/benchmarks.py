@@ -91,7 +91,7 @@ def bench_plot(navs, path, title):
     import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt, matplotlib.ticker as mt
     fig, ax = plt.subplots(figsize=(11.5, 6), dpi=140)
     keys = ORDER + [k for k in navs if k not in ORDER]
-    extra_cols = iter(['#cf222e', '#bf8700', '#0a7ea4', '#6e7781'])
+    extra_cols = iter(['#cf222e', '#bf8700', '#0a7ea4', '#6e7781', '#d4a72c', '#a40e26', '#116329', '#953800', '#4c2889', '#57606a'])
     for k in keys:
         if k not in navs: continue
         col, ls, lw = STYLE[k] if k in STYLE else (next(extra_cols), '-.', 2.0)
