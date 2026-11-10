@@ -84,8 +84,8 @@ def bench_table(navs, n):
     for k in keys:
         if k not in navs: continue
         s = navs[k].dropna(); st = stats(s); M = s.resample('ME').last()
-        w5 = ((M / M.shift(60)) > (Ms / Ms.shift(60))).dropna().mean() if k != 'S&P 500' else np.nan
-        w10 = ((M / M.shift(120)) > (Ms / Ms.shift(120))).dropna().mean() if k != 'S&P 500' else np.nan
+        w5 = ((M / M.shift(60)) > (Ms / Ms.shift(60)))[(M / M.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean() if k != 'S&P 500' else np.nan
+        w10 = ((M / M.shift(120)) > (Ms / Ms.shift(120)))[(M / M.shift(120)).notna() & (Ms / Ms.shift(120)).notna()].mean() if k != 'S&P 500' else np.nan
         bold = '**' if k in ('OoL novo', 'GCGR novo') else ''
         out.append(f"| {bold}{k}{bold} | {pc(s.iloc[-1] - 1)} | {bold}{pc(st['CAGR'])}{bold} | {pc(st['Vol'])} | {pc(st['MaxDD'])} | "
                    f"{'—' if k not in n else f'{n[k]:.0f}'} | {'—' if pd.isna(w5) else f'{w5:.0%}'} | {'—' if pd.isna(w10) else f'{w10:.0%}'} |")

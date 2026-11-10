@@ -90,7 +90,7 @@ def main():
     M_spy = spy.resample('ME').last()
     for k, m in cf.items():
         nav = port(m); s = stats(nav)
-        Mn = nav.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M_spy / M_spy.shift(60))).dropna()
+        Mn = nav.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M_spy / M_spy.shift(60)))[(Mn / Mn.shift(60)).notna()]
         out.append(f"| {k} | {pc(s['CAGR'])} | {sg(s['CAGR'] - stats(univ)['CAGR'])} | {sg(s['CAGR'] - stats(spy)['CAGR'])} | {c[m].groupby('date').size().mean():.0f} | {w.mean():.0%} |")
         print(k, flush=True)
     out.append(f"| *Universo EW* | {pc(stats(univ)['CAGR'])} | — | {sg(stats(univ)['CAGR'] - stats(spy)['CAGR'])} | | |")

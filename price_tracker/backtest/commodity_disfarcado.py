@@ -111,7 +111,7 @@ def main():
         for vn, vm in V.items():
             mm = m & vm
             nav = run_portfolio({d: g.ticker.tolist() for d, g in c[mm].groupby('date')}, adj, dates)[0]
-            Mn = nav.resample('ME').last(); w5 = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60))).dropna().mean()
+            Mn = nav.resample('ME').last(); w5 = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60)))[(Mn / Mn.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean()
             row.append(f"**{pc1(stats(nav)['CAGR'])}** ({c[mm].groupby('date').size().mean():.0f}; {pc(w5)})")
             if k == 'OoL': curves[vn] = nav
         out.append('| ' + ' | '.join(row) + ' |')

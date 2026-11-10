@@ -38,7 +38,7 @@ def main():
     out += ['', '### Resumo (retorno anual; janelas de 5 anos acima do S&P)\n', '| Carteira | Régua anterior | Corte 50% | Corte 35% |', '|---|---|---|---|']
     M = navs['S&P 500'].resample('ME').last()
     def cell(k):
-        s = navs[k].dropna(); Mn = s.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M / M.shift(60))).dropna().mean()
+        s = navs[k].dropna(); Mn = s.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M / M.shift(60)))[(Mn / Mn.shift(60)).notna() & (M / M.shift(60)).notna()].mean()
         return f"{stats(s)['CAGR']:.1%} ({w:.0%}; {n[k]:.0f} ações)".replace('.', ',', 1)
     for nm, base in (('OoL novo', 'OoL novo'), ('GCGR novo', 'GCGR novo'), ('OoL High ROIC', 'OoL High ROIC (novo)'), ('OoL High Growth', 'OoL High Growth (novo)'), ('Cyclicals', 'Cyclicals')):
         out.append(f'| {nm} | {cell(base)} | {cell(f"{nm} — corte 50%")} | {cell(f"{nm} — corte 35%")} |')

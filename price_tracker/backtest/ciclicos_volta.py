@@ -22,7 +22,7 @@ for lab, back in (('A: volta hotéis, entretenimento, brinquedos e distrib. de s
 navs, n, dts, adj = bm.load_benchmarks(extra)
 M = navs['S&P 500'].resample('ME').last()
 def cell(k):
-    s = navs[k].dropna(); Mn = s.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M / M.shift(60))).dropna().mean()
+    s = navs[k].dropna(); Mn = s.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (M / M.shift(60)))[(Mn / Mn.shift(60)).notna() & (M / M.shift(60)).notna()].mean()
     return f"{stats(s)['CAGR']:.1%}".replace('.', ',') + f" ({w:.0%}; {n[k]:.0f} ações)"
 out = ['# Devolvendo subsetores da lista de cíclicos (EUA, point-in-time)\n',
        '> ⚠️ **ROIC:** a régua de cíclicos usa o histórico completo do ROIC oficial (corrigido em 2026-11-10).\n',

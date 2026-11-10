@@ -67,7 +67,7 @@ def main():
         for k, cat in (('ool', OOL), ('gcgr', GCGR)):
             sel = c[c.category == cat]
             nav = run_portfolio({d: g.ticker.tolist() for d, g in sel.groupby('date')}, adj, dates)[0]
-            Mn = nav.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60))).dropna()
+            Mn = nav.resample('ME').last(); w = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60)))[(Mn / Mn.shift(60)).notna()]
             pos = sel[sel.date < dates[-1]]
             r.update({f'{k}_cagr': stats(nav)['CAGR'], f'{k}_n': sel.groupby('date').size().mean(), f'{k}_w5': w.mean(),
                       f'{k}_pos': (pos.rq - pos.date.map(uq)).mean() * 4})

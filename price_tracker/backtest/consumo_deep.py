@@ -58,7 +58,7 @@ def part_a(c, adj):
         for mm in (m, m & ~ex):
             nav = run_portfolio({d: g.ticker.tolist() for d, g in c[mm].groupby('date')}, adj, dates)[0]
             Mn = nav.resample('ME').last()
-            r.append((stats(nav)['CAGR'], ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60))).dropna().mean(), ((Mn / Mn.shift(120)) > (Ms / Ms.shift(120))).dropna().mean()))
+            r.append((stats(nav)['CAGR'], ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60)))[(Mn / Mn.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean(), ((Mn / Mn.shift(120)) > (Ms / Ms.shift(120)))[(Mn / Mn.shift(120)).notna() & (Ms / Ms.shift(120)).notna()].mean()))
         out.append(f'| {k} | {pc1(r[0][0])} | **{pc1(r[1][0])}** | {c[m & ex].groupby("date").size().reindex(c.date.unique()).fillna(0).mean():.1f} | '
                    f'{pc(r[0][1])} → {pc(r[1][1])} | {pc(r[0][2])} → {pc(r[1][2])} |')
     return out

@@ -72,7 +72,7 @@ def main():
         r = {'Carteira': k}
         for wn, w in W.items():
             nav = run_weighted(w, adj, dates); st = stats(nav); Mn = nav.resample('ME').last()
-            r[wn] = (st['CAGR'], st['MaxDD'], ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60))).dropna().mean())
+            r[wn] = (st['CAGR'], st['MaxDD'], ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60)))[(Mn / Mn.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean())
             curves[(k, wn)] = nav
             mx = np.median([s.max() / s.sum() for s in w.values() if s.sum() > 0])
             top5 = np.median([s.nlargest(5).sum() / s.sum() for s in w.values() if s.sum() > 0])

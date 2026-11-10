@@ -88,7 +88,7 @@ def main():
                   'OoL Base': (c.cat == OOL) & (c.roic <= .3) & (c.growth <= .3), 'GCGR': c.cat == GCGR}
         for k, m in groups.items():
             nav = run_portfolio({d: g.ticker.tolist() for d, g in c[m].groupby('date')}, adj, dates)[0]
-            Mn = nav.resample('ME').last(); w5 = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60))).dropna().mean()
+            Mn = nav.resample('ME').last(); w5 = ((Mn / Mn.shift(60)) > (Ms / Ms.shift(60)))[(Mn / Mn.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean()
             row[k] = stats(nav)['CAGR']; row[k + ' n'] = c[m].groupby('date').size().mean(); row[k + ' w5'] = w5
         # o retorno esperado ordena? excesso mediano por faixa (OoL+GCGR)
         x = cc[cc.cat.isin([OOL, GCGR])].copy(); x['ex'] = x.rq - x.date.map(uq)
