@@ -167,3 +167,9 @@ Vivara 2022, Tegma 2025); 425 balanços afetados, a maioria de 2021 em diante. C
 Regra congelada reaplicada sem mudança. Brasil, raiz do valor de mercado: OoL novo 13,5% → 13,3%; Top 20 12,9% → 12,5% (Ibovespa 10,9%).
 Observação do usuário (não muda nada ainda): o crescimento brasileiro é a mediana de 5 variações anuais do lucro líquido e esconde quedas recentes
 (2025: São Martinho −62%, Engie −40%, Cemig −31%) e a recuperação pós-COVID de 2021.
+
+## 2026-11-11 — Pré-registro: crescimento do Brasil sem o ano da recuperação pós-COVID (pedido do usuário)
+Motivo: o crescimento de 2021 (2021 sobre 2020) reflete a volta da pandemia, não a economia do negócio. Variantes, registradas antes de rodar:
+A) tira o crescimento de 2021 da mediana (janela de 5 anos fica com 4 variações quando inclui 2021);
+B) tira 2020 e 2021 (a queda e a volta da COVID).
+Resto da regra congelada igual. Comparação: OoL novo e Top 20 (raiz com teto), Brasil, contra a regra atual e o Ibovespa.

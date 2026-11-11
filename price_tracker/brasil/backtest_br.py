@@ -16,6 +16,7 @@ N_HIST, STALE_DAYS, MIN_ADTV = 5, 550, 2e6
 CUTS = {'zg2.93': 2.93, 'zg0.9': 0.9}
 START = '2011-01-01'
 BENCH = ['BOVA11.SA', 'SMAL11.SA']
+EXCL = set()  # anos cujo crescimento (ano y sobre y-1) fica fora da mediana; vazio = regra original
 
 
 def ratio(a, b):
@@ -36,9 +37,9 @@ def features(f, t, r, sp):
     last = k.index.max()
     if (t - k.loc[last, 'DT_REFER']).days > STALE_DAYS: return None
     ni = k.ni
-    rates = [ratio(ni.get(y), ni.get(y - 1)) for y in range(last - N_HIST + 1, last + 1)]
+    rates = [ratio(ni.get(y), ni.get(y - 1)) for y in range(last - N_HIST + 1, last + 1) if y not in EXCL]
     ok = [x for x in rates if np.isfinite(x)]
-    growth = float(np.median(ok)) if len(ok) >= (N_HIST + 1) // 2 else np.nan
+    growth = float(np.median(ok)) if len(ok) >= min((N_HIST + 1) // 2, len(rates)) and ok else np.nan
     zgrowth = engine.cv(rates, growth) if np.isfinite(growth) else np.nan
     roics = []
     for y in range(last - 5, last + 1):
