@@ -19,6 +19,12 @@ def extract(g):
     out['pretax'] = first(d2, d2.DS_CONTA.str.startswith('Resultado Antes dos Tributos'))
     out['tax'] = first(d2, d2.DS_CONTA.str.startswith('Imposto de Renda e Contribui'))
     ni = first(dre, dre.DS_CONTA.str.startswith('Atribuído a Sócios da Empresa Controladora'))
+    # 2026-11-11: algumas empresas preenchem a linha 'atribuido a controladora' com 0 (ex.: Sabesp 2023-2025); nesse caso usa o lucro
+    # consolidado do periodo (3.11) menos a parte dos nao controladores
+    tot = first(d2, d2.CD_CONTA.eq('3.11'))
+    if not np.isnan(ni) and ni == 0 and not np.isnan(tot) and tot != 0:
+        nc = first(dre, dre.DS_CONTA.str.startswith('Atribuído a Sócios Não Controladores'))
+        ni = tot - (0.0 if np.isnan(nc) else nc)
     if np.isnan(ni):
         m = d2.DS_CONTA.str.contains('Lucro', case=False) & d2.DS_CONTA.str.contains('Período|Exercício', case=False) & ~d2.CD_CONTA.str.startswith('3.99')
         ni = d2.loc[m, 'V'].iloc[-1] if m.any() else np.nan
