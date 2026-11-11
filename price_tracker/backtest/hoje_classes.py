@@ -63,20 +63,25 @@ def br():
     return b, masks(b.cat, ok, b.roic, b.growth)
 
 
-pc = lambda v: '—' if pd.isna(v) else f'{v:.0%}'
-f1 = lambda v: '—' if pd.isna(v) else f'{v:.0f}'
-out = ['# Carteiras de hoje por classe (EUA e Brasil)\n', '> ⚠️ **O ROIC pode estar errado** — ele decide quem entra na classe, quem é High ROIC e o P/E justo (logo o retorno esperado e a ordem).\n',
-       'Regra: dentro de cada classe, P/L ≥ 4; as 20 de maior retorno esperado (menos, se a classe tiver menos); peso pela raiz do valor de mercado, teto de 10%. '
-       'Sem cíclicos e vestuário. Dados da última data trimestral; preços daquela data.\n']
-rows = []
-for pais, fn in (('EUA', us), ('Brasil', br)):
-    c, M = fn()
-    out.append(f'\n# {pais} — {pd.Timestamp(c.date.max()):%d/%m/%Y}\n')
-    for k, m in M.items():
-        x = top(c[m.fillna(False).values])
-        out += [f'\n## {k}: {len(x)} ações (classe tem {int(m.sum())}; P/L < 4 fora: {int((c[m.fillna(False).values].pe < 4).sum())})\n',
-                '| # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |', '|---|---|---|---|---|---|---|---|---|---|']
-        for i, r in enumerate(x.itertuples(), 1):
-            out.append(f'| {i} | {r.ticker.replace(".SA", "")} | {r.nome} | {r.setor} | **{f'{r.peso:.1%}'.replace('.', ',')}** | {pc(r.ret)} | {pc(r.roic)} | {pc(r.growth)} | {f1(r.pe)} | {f1(r.fair_pe)} |')
-            rows.append(dict(pais=pais, classe=k, pos=i, ticker=r.ticker, empresa=r.nome, setor=r.setor, peso=r.peso, ret=r.ret, roic=r.roic, growth=r.growth, pe=r.pe, fair_pe=r.fair_pe))
-(ROOT / 'hoje_classes.md').write_text('\n'.join(out)); pd.DataFrame(rows).to_csv(ROOT / 'hoje_classes.csv', index=False); print('\n'.join(out))
+def main():
+    pc = lambda v: '—' if pd.isna(v) else f'{v:.0%}'
+    f1 = lambda v: '—' if pd.isna(v) else f'{v:.0f}'
+    out = ['# Carteiras de hoje por classe (EUA e Brasil)\n', '> ⚠️ **O ROIC pode estar errado** — ele decide quem entra na classe, quem é High ROIC e o P/E justo (logo o retorno esperado e a ordem).\n',
+           'Regra: dentro de cada classe, P/L ≥ 4; as 20 de maior retorno esperado (menos, se a classe tiver menos); peso pela raiz do valor de mercado, teto de 10%. '
+           'Sem cíclicos e vestuário. Dados da última data trimestral; preços daquela data.\n']
+    rows = []
+    for pais, fn in (('EUA', us), ('Brasil', br)):
+        c, M = fn()
+        out.append(f'\n# {pais} — {pd.Timestamp(c.date.max()):%d/%m/%Y}\n')
+        for k, m in M.items():
+            x = top(c[m.fillna(False).values])
+            out += [f'\n## {k}: {len(x)} ações (classe tem {int(m.sum())}; P/L < 4 fora: {int((c[m.fillna(False).values].pe < 4).sum())})\n',
+                    '| # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |', '|---|---|---|---|---|---|---|---|---|---|']
+            for i, r in enumerate(x.itertuples(), 1):
+                out.append(f'| {i} | {r.ticker.replace(".SA", "")} | {r.nome} | {r.setor} | **{f'{r.peso:.1%}'.replace('.', ',')}** | {pc(r.ret)} | {pc(r.roic)} | {pc(r.growth)} | {f1(r.pe)} | {f1(r.fair_pe)} |')
+                rows.append(dict(pais=pais, classe=k, pos=i, ticker=r.ticker, empresa=r.nome, setor=r.setor, peso=r.peso, ret=r.ret, roic=r.roic, growth=r.growth, pe=r.pe, fair_pe=r.fair_pe))
+    (ROOT / 'hoje_classes.md').write_text('\n'.join(out)); pd.DataFrame(rows).to_csv(ROOT / 'hoje_classes.csv', index=False); print('\n'.join(out))
+
+
+if __name__ == '__main__':
+    main()
