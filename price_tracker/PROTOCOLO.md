@@ -177,3 +177,4 @@ Resto da regra congelada igual. Comparação: OoL novo e Top 20 (raiz com teto),
 **Resultado (2026-11-11):** Top 20 (raiz, teto 10%, mesma conta dentro do script): com 2021 13,1%, sem 2021 13,5%, sem 2020–2021 12,9% (Ibovespa 10,9%).
 OoL novo (raiz): 13,3% / 12,8% / 13,5%. Diferenças pequenas, dentro do ruído. **Decisão do usuário: adotar A (sem 2021) no Brasil**
 (`EXCL = {2021}` em `brasil/backtest_br.py`; classes antigas em `classes_pit_com2021.csv`). EUA sem mudança por enquanto.
+**Número oficial da candidata no Brasil (P/L ≥ 4, `backtest/filtro_grade.py`):** 12,9% antes → 12,4% com o dado corrigido → **12,0%** sem 2021 (sem 2020–2021 também 12,0%); Ibovespa 10,9%. O script `brasil/sem2021.py` estima o valor de mercado de outro jeito e dá números mais altos; vale o oficial.

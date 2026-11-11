@@ -49,45 +49,45 @@
 
 ## Brasil: as posições que o filtro (P/L < 6 ou lucro +150% no último ano) tira
 
-191 de 766 posições (25%). "Bom tirar" = rendeu menos que o índice no trimestre seguinte.
+167 de 766 posições (22%). "Bom tirar" = rendeu menos que o índice no trimestre seguinte.
 
 | Motivo | Posições | Bom tirar | Ruim tirar | Excesso médio do trimestre (a.a.) |
 |---|---|---|---|---|
-| P/L < 6 | 138 | 74 | 64 | -1,4 |
-| Lucro +150% no último ano | 34 | 22 | 12 | +6,2 |
-| Os dois | 19 | 13 | 6 | -0,5 |
+| P/L < 6 | 117 | 58 | 59 | +1,8 |
+| Lucro +150% no último ano | 30 | 20 | 10 | +9,3 |
+| Os dois | 20 | 15 | 5 | -13,8 |
 
 **Por faixa de P/L (todas as posições da Top 20 sem filtro):**
 
 | P/L | Posições | % que perdeu do índice | Excesso médio (a.a.) |
 |---|---|---|---|
-| abaixo de 4 | 38 | 66% | -3,5 |
-| 4 a 6 | 119 | 52% | -0,5 |
-| 6 a 8 | 132 | 51% | +2,6 |
-| 8 a 12 | 160 | 52% | -6,0 |
-| acima de 12 | 194 | 49% | +6,9 |
+| abaixo de 4 | 25 | 68% | -1,4 |
+| 4 a 6 | 112 | 50% | -0,3 |
+| 6 a 8 | 140 | 54% | -1,3 |
+| 8 a 12 | 159 | 52% | -7,5 |
+| acima de 12 | 216 | 48% | +5,2 |
 
 **Por crescimento do lucro no último ano:**
 
 | Crescimento | Posições | % que perdeu do índice | Excesso médio (a.a.) |
 |---|---|---|---|
-| até 100% | 664 | 51% | -0,3 |
-| 100–150% | 24 | 54% | +11,3 |
+| até 100% | 672 | 51% | -1,6 |
+| 100–150% | 36 | 50% | +6,0 |
 | 150–200% | 11 | 64% | -17,0 |
-| 200–300% | 2 | 100% | -28,0 |
-| acima de 300% | 36 | 67% | +6,4 |
+| 200–300% | 6 | 83% | -24,8 |
+| acima de 300% | 30 | 73% | +2,2 |
 
-**Bom ter tirado:** VVEO3.SA (P/L 2, lucro +39%, -168,1), SANB11.SA (P/L 6, lucro +30%, -109,0), ANIM3.SA (P/L —, lucro +309%, -86,1), SMTO3.SA (P/L 5, lucro +45%, -82,8), SYNE3.SA (P/L 1, lucro +2440%, -80,2), JSLG3.SA (P/L 5, lucro +81%, -71,2), POSI3.SA (P/L 4, lucro -19%, -66,9), PGMN3.SA (P/L 17, lucro +23565%, -62,7)
+**Bom ter tirado:** PLPL3.SA (P/L 4, lucro +5%, -118,4), SANB11.SA (P/L 6, lucro +30%, -109,0), ALLD3.SA (P/L 4, lucro +74%, -100,0), ANIM3.SA (P/L —, lucro +309%, -86,1), SMTO3.SA (P/L 5, lucro +45%, -82,8), JSLG3.SA (P/L 5, lucro +81%, -71,2), PGMN3.SA (P/L 15, lucro +152%, -64,0), POSI3.SA (P/L 4, lucro -19%, -60,8)
 
-**Ruim ter tirado:** DEXP3.SA (P/L —, lucro +378%, +368,9), PTBL3.SA (P/L 5, lucro +20%, +163,4), PGMN3.SA (P/L 19, lucro +46977%, +138,3), POSI3.SA (P/L 3, lucro +51%, +126,2), CVCB3.SA (P/L 5, lucro +21%, +125,2), GMAT3.SA (P/L 4, lucro +39%, +118,1), LAVV3.SA (P/L 5, lucro +48%, +117,2), RAPT4.SA (P/L 5, lucro -14%, +109,6)
+**Ruim ter tirado:** DEXP3.SA (P/L —, lucro +378%, +368,9), PTBL3.SA (P/L 5, lucro +20%, +163,4), PGMN3.SA (P/L 19, lucro +46977%, +138,3), CVCB3.SA (P/L 5, lucro +21%, +125,2), CSED3.SA (P/L 5, lucro +106%, +125,1), GMAT3.SA (P/L 4, lucro +39%, +118,1), LAVV3.SA (P/L 5, lucro +48%, +117,2), RAPT4.SA (P/L 5, lucro -14%, +109,6)
 
 ### Grade de cortes (Brasil) — retorno anual da Top 20 (índice 10,9%)
 
 | P/L mínimo \ crescimento máximo no último ano | sem corte | 300% | 200% | 150% | 100% |
 |---|---|---|---|---|---|
-| sem corte | 12,5% | 12,5% | 12,5% | 12,1% | 11,9% |
-| P/L ≥ 3 | 12,9% | 12,8% | 12,8% | 12,4% | 12,0% |
-| P/L ≥ 4 | 12,9% | 12,2% | 12,2% | 11,9% | 11,6% |
-| P/L ≥ 5 | 11,9% | 10,8% | 10,9% | 11,0% | 10,8% |
-| P/L ≥ 6 | 10,2% | 9,7% | 9,8% | 9,8% | 9,9% |
-| P/L ≥ 8 | 7,8% | 7,3% | 7,3% | 7,6% | 7,4% |
+| sem corte | 11,5% | 11,9% | 12,0% | 12,3% | 11,7% |
+| P/L ≥ 3 | 11,9% | 12,1% | 12,3% | 12,4% | 11,7% |
+| P/L ≥ 4 | 12,0% | 12,0% | 12,0% | 12,2% | 11,8% |
+| P/L ≥ 5 | 11,4% | 10,6% | 10,9% | 11,0% | 10,8% |
+| P/L ≥ 6 | 11,0% | 10,3% | 10,3% | 10,4% | 10,3% |
+| P/L ≥ 8 | 8,8% | 8,0% | 8,0% | 8,1% | 8,2% |
