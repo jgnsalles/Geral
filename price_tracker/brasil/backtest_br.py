@@ -16,7 +16,7 @@ N_HIST, STALE_DAYS, MIN_ADTV = 5, 550, 2e6
 CUTS = {'zg2.93': 2.93, 'zg0.9': 0.9}
 START = '2011-01-01'
 BENCH = ['BOVA11.SA', 'SMAL11.SA']
-EXCL = set()  # anos cujo crescimento (ano y sobre y-1) fica fora da mediana; vazio = regra original
+EXCL = {2021}  # 2026-11-11 (decisao do usuario): crescimento de 2021 (volta da COVID) fica fora da mediana. set() = regra original
 
 
 def ratio(a, b):

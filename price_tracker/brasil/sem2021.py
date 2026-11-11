@@ -20,7 +20,7 @@ def build_classes(excl, path):
     fund = pd.read_csv(D / 'fund.csv.gz', parse_dates=['DT_REFER', 'DT_RECEB']); fund = {c: g for c, g in fund.groupby('CD_CVM')}
     read = lambda n: pd.read_csv(D / f'prices_{n}.csv.gz', index_col=0, parse_dates=True)
     close, vol = read('close'), read('volume'); divs, splits = read('dividends').fillna(0), read('stock_splits').fillna(0)
-    c = bb.classify_all(u, fund, close, vol, divs, splits, bb.rebalance_dates(close)); c.to_csv(path, index=False); bb.EXCL = set()
+    c = bb.classify_all(u, fund, close, vol, divs, splits, bb.rebalance_dates(close)); c.to_csv(path, index=False); bb.EXCL = {2021}
     return c
 
 
@@ -51,7 +51,7 @@ def main():
     u = pd.read_csv(D / 'universe.csv'); idx = u.set_index('yf')
     fund = pd.read_csv(D / 'fund.csv.gz', parse_dates=['DT_REFER', 'DT_RECEB']); fund['fy'] = fund.DT_REFER.dt.year
     adj = pd.read_csv(D / 'prices_adj_close.csv.gz', index_col=0, parse_dates=True)
-    V = {'Regra atual (5 anos, com 2021)': pd.read_csv(D / 'classes_pit.csv', parse_dates=['date']),
+    V = {'Regra atual (5 anos, com 2021)': pd.read_csv(D / 'classes_pit_com2021.csv', parse_dates=['date']),
          'A: sem 2021': build_classes([2021], D / 'classes_pit_sem2021.csv'),
          'B: sem 2020 e 2021': build_classes([2020, 2021], D / 'classes_pit_sem2020_2021.csv')}
     base = V['Regra atual (5 anos, com 2021)']; cov = base.groupby('date')['cat_zg2.93'].apply(lambda s: s.notna().sum()); start = cov[cov >= 60].index.min()

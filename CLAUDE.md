@@ -48,4 +48,4 @@ Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table(
 
 ## Price Tracker: estratégia candidata (congelada em 2026-11-10, ver `price_tracker/PROTOCOLO.md`)
 Top 20 por retorno esperado entre as de qualidade: ROIC ≥ 12%, crescimento do EPS ≥ 15%, sem cíclicos e vestuário, P/L ≥ 4; as 20 de maior retorno
-esperado; peso pela raiz do valor de mercado com teto de 10%; trimestral. Próximo teste: Japão (EDINET), sem ajustes. Não mudar a regra sem registro.
+esperado; peso pela raiz do valor de mercado com teto de 10%; trimestral. No Brasil, o crescimento de 2021 (volta da COVID) fica fora da mediana (decisão do usuário, 2026-11-11). Próximo teste: Japão (EDINET), sem ajustes. Não mudar a regra sem registro.

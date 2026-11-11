@@ -47,12 +47,12 @@ Top 20 nos EUA: 20–20 ações por trimestre; troca média de 20% dos nomes por
 
 | Carteira | Ações (média) | Retorno anual | vs Ibovespa | Pior queda | Janelas 3a > Ibov | Janelas 5a > Ibov |
 |---|---|---|---|---|---|---|
-| Top 20 — raiz com teto | 16 | **12,5%** | +1,5 | -44,3% | 85% | 92% |
-| Top 20 — peso igual | 16 | **11,1%** | +0,1 | -47,0% | 72% | 78% |
-| Top 15 — raiz com teto | 13 | **12,5%** | +1,6 | -44,3% | 85% | 92% |
-| Top 15 — peso igual | 13 | **11,3%** | +0,3 | -47,0% | 76% | 90% |
-| Top 10 — raiz com teto | 10 | **11,5%** | +0,5 | -46,7% | 76% | 91% |
-| Top 10 — peso igual | 10 | **11,1%** | +0,2 | -48,6% | 74% | 81% |
-| Universo (todas as classificadas), peso igual | — | **11,9%** | +1,0 | -49,3% | 73% | 84% |
+| Top 20 — raiz com teto | 16 | **11,5%** | +0,6 | -44,3% | 66% | 75% |
+| Top 20 — peso igual | 16 | **10,6%** | -0,3 | -47,0% | 72% | 76% |
+| Top 15 — raiz com teto | 13 | **11,8%** | +0,9 | -44,3% | 75% | 86% |
+| Top 15 — peso igual | 13 | **10,5%** | -0,4 | -47,0% | 72% | 76% |
+| Top 10 — raiz com teto | 10 | **10,3%** | -0,6 | -46,7% | 68% | 91% |
+| Top 10 — peso igual | 10 | **10,2%** | -0,7 | -48,6% | 72% | 76% |
+| Universo (todas as classificadas), peso igual | — | **11,5%** | +0,6 | -49,3% | 69% | 76% |
 | Ibovespa (BOVA11) | — | **10,9%** | +0,0 | -46,9% | 0% | 0% |
 | Small caps (SMAL11) | — | **4,9%** | -6,0 | -51,1% | 46% | 39% |

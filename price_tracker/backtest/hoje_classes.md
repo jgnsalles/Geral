@@ -111,66 +111,60 @@ Regra: dentro de cada classe, P/L ≥ 4; as 20 de maior retorno esperado (menos,
 # Brasil — 30/09/2026
 
 
-## Opportunity of Lifetime: 20 ações (classe tem 25; P/L < 4 fora: 0)
+## Opportunity of Lifetime: 20 ações (classe tem 23; P/L < 4 fora: 1)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | LAVV3 | Lavvi Empreendimentos Imobiliári | Construção Civil, Mat. Constr. e Decoração | **2,1%** | 127% | 19% | 48% | 5 | 16 |
-| 2 | JHSF3 | Jhsf Participacoes S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **4,2%** | 123% | 16% | 56% | 4 | 14 |
-| 3 | POMO4 | Marcopolo S.A. | Máquinas, Equipamentos, Veículos e Peças | **3,4%** | 123% | 16% | 47% | 4 | 14 |
-| 4 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **4,3%** | 110% | 77% | 46% | 8 | 25 |
-| 5 | DIRR3 | Direcional Engenharia S.A. | Construção Civil, Mat. Constr. e Decoração | **3,4%** | 98% | 24% | 41% | 7 | 17 |
-| 6 | TGMA3 | Tegma Gestao Logistica S.A. | Serviços Transporte e Logística | **2,4%** | 79% | 24% | 47% | 10 | 18 |
-| 7 | RDOR3 | Rede D'Or São Luiz S.A. | Serviços médicos | **10,0%** | 75% | 20% | 71% | 18 | 17 |
-| 8 | TTEN3 | Três Tentos Agroindustrial S/A | Agricultura (Açúcar, Álcool e Cana) | **3,4%** | 60% | 16% | 32% | 6 | 12 |
-| 9 | CMIG4 | Cia Energetica De Minas Gerais - | Energia Elétrica | **8,5%** | 60% | 17% | 23% | 7 | 13 |
-| 10 | SMTO3 | Sao Martinho S.A. | Agricultura (Açúcar, Álcool e Cana) | **3,6%** | 59% | 13% | 45% | 7 | 9 |
-| 11 | SAPR11 | Cia Saneamento Do Parana - Sanep | Saneamento, Serv. Água e Gás | **4,7%** | 44% | 13% | 18% | 5 | 9 |
-| 12 | FIQE3 | Unifique Telecomunicações S.A. | Emp. Adm. Part. - Telecomunicações | **2,0%** | 42% | 17% | 20% | 9 | 12 |
-| 13 | VIVA3 | Vivara Participações S.A. | Comércio (Atacado e Varejo) | **3,5%** | 42% | 23% | 21% | 9 | 15 |
-| 14 | GMAT3 | Grupo Mateus S.A. | Emp. Adm. Part. - Comércio (Atacado e Varejo) | **5,0%** | 40% | 16% | 16% | 6 | 12 |
-| 15 | CYRE3 | Cyrela Brazil Realty S.A.Empreen | Construção Civil, Mat. Constr. e Decoração | **5,2%** | 38% | 13% | 16% | 6 | 9 |
-| 16 | BMOB3 | Bemobi Mobile Tech S.A. | Comunicação e Informática | **2,3%** | 38% | 20% | 31% | 15 | 15 |
-| 17 | LREN3 | Lojas Renner S.A. | Comércio (Atacado e Varejo) | **5,1%** | 35% | 13% | 22% | 8 | 10 |
-| 18 | PSSA3 | Porto Seguro S.A. | Seguradoras e Corretoras | **8,3%** | 33% | 18% | 17% | 9 | 13 |
-| 19 | SBSP3 | Cia Saneamento Basico Est Sao Pa | Saneamento, Serv. Água e Gás | **10,0%** | 32% | 13% | 35% | 11 | 9 |
-| 20 | EGIE3 | Engie Brasil Energia S.A. | Energia Elétrica | **8,7%** | 30% | 18% | 25% | 13 | 13 |
+| 1 | DIRR3 | Direcional Engenharia S.A. | Construção Civil, Mat. Constr. e Decoração | **3,3%** | 116% | 24% | 49% | 7 | 20 |
+| 2 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **4,1%** | 107% | 77% | 40% | 8 | 26 |
+| 3 | LAVV3 | Lavvi Empreendimentos Imobiliári | Construção Civil, Mat. Constr. e Decoração | **2,0%** | 106% | 19% | 34% | 5 | 15 |
+| 4 | POMO4 | Marcopolo S.A. | Máquinas, Equipamentos, Veículos e Peças | **3,3%** | 106% | 16% | 35% | 4 | 14 |
+| 5 | JHSF3 | Jhsf Participacoes S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **4,1%** | 84% | 16% | 31% | 4 | 13 |
+| 6 | BBSE3 | Bb Seguridade Participações S.A. | Emp. Adm. Part. - Seguradoras e Corretoras | **10,0%** | 65% | 81% | 20% | 8 | 20 |
+| 7 | SMTO3 | Sao Martinho S.A. | Agricultura (Açúcar, Álcool e Cana) | **3,5%** | 60% | 13% | 45% | 7 | 9 |
+| 8 | TGMA3 | Tegma Gestao Logistica S.A. | Serviços Transporte e Logística | **2,3%** | 58% | 24% | 31% | 10 | 17 |
+| 9 | GMAT3 | Grupo Mateus S.A. | Emp. Adm. Part. - Comércio (Atacado e Varejo) | **4,9%** | 58% | 16% | 27% | 6 | 13 |
+| 10 | RDOR3 | Rede D'Or São Luiz S.A. | Serviços médicos | **10,0%** | 51% | 20% | 46% | 18 | 17 |
+| 11 | CMIG4 | Cia Energetica De Minas Gerais - | Energia Elétrica | **8,2%** | 49% | 17% | 16% | 7 | 12 |
+| 12 | TTEN3 | Três Tentos Agroindustrial S/A | Agricultura (Açúcar, Álcool e Cana) | **3,3%** | 43% | 16% | 20% | 6 | 12 |
+| 13 | FIQE3 | Unifique Telecomunicações S.A. | Emp. Adm. Part. - Telecomunicações | **1,9%** | 43% | 17% | 20% | 9 | 13 |
+| 14 | SAPR11 | Cia Saneamento Do Parana - Sanep | Saneamento, Serv. Água e Gás | **4,6%** | 42% | 13% | 17% | 5 | 9 |
+| 15 | PSSA3 | Porto Seguro S.A. | Seguradoras e Corretoras | **8,0%** | 42% | 18% | 22% | 9 | 14 |
+| 16 | CYRE3 | Cyrela Brazil Realty S.A.Empreen | Construção Civil, Mat. Constr. e Decoração | **5,0%** | 41% | 13% | 19% | 6 | 9 |
+| 17 | LREN3 | Lojas Renner S.A. | Comércio (Atacado e Varejo) | **5,0%** | 35% | 13% | 22% | 8 | 10 |
+| 18 | EGIE3 | Engie Brasil Energia S.A. | Energia Elétrica | **8,4%** | 33% | 18% | 27% | 13 | 14 |
+| 19 | BMOB3 | Bemobi Mobile Tech S.A. | Comunicação e Informática | **2,2%** | 28% | 20% | 22% | 15 | 15 |
+| 20 | MULT3 | Multiplan - Empreend Imobiliario | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **5,7%** | 27% | 13% | 32% | 14 | 10 |
 
-## Good Companies, Great Returns: 11 ações (classe tem 13; P/L < 4 fora: 0)
-
-| # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
-|---|---|---|---|---|---|---|---|---|---|
-| 1 | PGMN3 | Empreendimentos Pague Menos S.A. | Comércio (Atacado e Varejo) | **8,5%** | 93% | 14% | 71% | 8 | 11 |
-| 2 | VLID3 | Valid Soluções S.A. | Comunicação e Informática | **6,8%** | 67% | 16% | 24% | 5 | 12 |
-| 3 | SHUL4 | Schulz S.A. | Metalurgia e Siderurgia | **7,2%** | 56% | 20% | 13% | 5 | 13 |
-| 4 | VTRU3 | Vitru Educação S.A. | Educação | **8,3%** | 45% | 10% | 47% | 5 | 5 |
-| 5 | BBSE3 | Bb Seguridade Participações S.A. | Emp. Adm. Part. - Seguradoras e Corretoras | **10,0%** | 37% | 81% | 10% | 8 | 14 |
-| 6 | INTB3 | Intelbras S.A. Ind. De Telecomun | Comércio (Atacado e Varejo) | **10,0%** | 28% | 23% | 11% | 10 | 13 |
-| 7 | BBDC4 | Bco Bradesco S.A. | Bancos | **10,0%** | 27% | 11% | 21% | 8 | 8 |
-| 8 | BLAU3 | Blau Farmacêutica S.A. | Farmacêutico e Higiene | **9,2%** | 25% | 16% | 12% | 8 | 11 |
-| 9 | CXSE3 | Caixa Seguridade Participações S | Emp. Adm. Part. - Seguradoras e Corretoras | **10,0%** | 22% | 28% | 14% | 14 | 15 |
-| 10 | ITSA4 | Itaúsa S.A. | Emp. Adm. Part. - Intermediação Financeira | **10,0%** | 21% | 16% | 12% | 10 | 11 |
-| 11 | SAUD3 | Bradsaúde S.A. | Serviços médicos | **10,0%** | 21% | 59% | 8% | 12 | 16 |
-
-## OoL High ROIC (ROIC > 30%): 1 ações (classe tem 1; P/L < 4 fora: 0)
+## Good Companies, Great Returns: 7 ações (classe tem 8; P/L < 4 fora: 0)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **100,0%** | 110% | 77% | 46% | 8 | 25 |
+| 1 | PGMN3 | Empreendimentos Pague Menos S.A. | Comércio (Atacado e Varejo) | **14,3%** | 133% | 14% | 106% | 8 | 12 |
+| 2 | VLID3 | Valid Soluções S.A. | Comunicação e Informática | **14,3%** | 68% | 16% | 24% | 5 | 12 |
+| 3 | SHUL4 | Schulz S.A. | Metalurgia e Siderurgia | **14,3%** | 48% | 20% | 8% | 5 | 13 |
+| 4 | VTRU3 | Vitru Educação S.A. | Educação | **14,3%** | 43% | 10% | 47% | 5 | 5 |
+| 5 | VIVA3 | Vivara Participações S.A. | Comércio (Atacado e Varejo) | **14,3%** | 29% | 23% | 12% | 9 | 14 |
+| 6 | SAUD3 | Bradsaúde S.A. | Serviços médicos | **14,3%** | 25% | 59% | 11% | 12 | 17 |
+| 7 | SBSP3 | Cia Saneamento Basico Est Sao Pa | Saneamento, Serv. Água e Gás | **14,3%** | 21% | 13% | 24% | 11 | 9 |
 
-## OoL High Growth (EPS > 30%): 12 ações (classe tem 14; P/L < 4 fora: 0)
+## OoL High ROIC (ROIC > 30%): 2 ações (classe tem 3; P/L < 4 fora: 1)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | LAVV3 | Lavvi Empreendimentos Imobiliári | Construção Civil, Mat. Constr. e Decoração | **5,0%** | 127% | 19% | 48% | 5 | 16 |
-| 2 | JHSF3 | Jhsf Participacoes S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **10,0%** | 123% | 16% | 56% | 4 | 14 |
-| 3 | POMO4 | Marcopolo S.A. | Máquinas, Equipamentos, Veículos e Peças | **8,3%** | 123% | 16% | 47% | 4 | 14 |
-| 4 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **10,0%** | 110% | 77% | 46% | 8 | 25 |
-| 5 | DIRR3 | Direcional Engenharia S.A. | Construção Civil, Mat. Constr. e Decoração | **8,3%** | 98% | 24% | 41% | 7 | 17 |
-| 6 | TGMA3 | Tegma Gestao Logistica S.A. | Serviços Transporte e Logística | **5,7%** | 79% | 24% | 47% | 10 | 18 |
-| 7 | RDOR3 | Rede D'Or São Luiz S.A. | Serviços médicos | **10,0%** | 75% | 20% | 71% | 18 | 17 |
-| 8 | TTEN3 | Três Tentos Agroindustrial S/A | Agricultura (Açúcar, Álcool e Cana) | **8,2%** | 60% | 16% | 32% | 6 | 12 |
-| 9 | SMTO3 | Sao Martinho S.A. | Agricultura (Açúcar, Álcool e Cana) | **8,8%** | 59% | 13% | 45% | 7 | 9 |
-| 10 | BMOB3 | Bemobi Mobile Tech S.A. | Comunicação e Informática | **5,6%** | 38% | 20% | 31% | 15 | 15 |
-| 11 | SBSP3 | Cia Saneamento Basico Est Sao Pa | Saneamento, Serv. Água e Gás | **10,0%** | 32% | 13% | 35% | 11 | 9 |
-| 12 | MULT3 | Multiplan - Empreend Imobiliario | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **10,0%** | 26% | 13% | 31% | 14 | 10 |
+| 1 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **50,0%** | 107% | 77% | 40% | 8 | 26 |
+| 2 | BBSE3 | Bb Seguridade Participações S.A. | Emp. Adm. Part. - Seguradoras e Corretoras | **50,0%** | 65% | 81% | 20% | 8 | 20 |
+
+## OoL High Growth (EPS > 30%): 9 ações (classe tem 10; P/L < 4 fora: 0)
+
+| # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | DIRR3 | Direcional Engenharia S.A. | Construção Civil, Mat. Constr. e Decoração | **11,1%** | 116% | 24% | 49% | 7 | 20 |
+| 2 | CURY3 | Cury Construtora E Incorporadora | Construção Civil, Mat. Constr. e Decoração | **11,1%** | 107% | 77% | 40% | 8 | 26 |
+| 3 | LAVV3 | Lavvi Empreendimentos Imobiliári | Construção Civil, Mat. Constr. e Decoração | **11,1%** | 106% | 19% | 34% | 5 | 15 |
+| 4 | POMO4 | Marcopolo S.A. | Máquinas, Equipamentos, Veículos e Peças | **11,1%** | 106% | 16% | 35% | 4 | 14 |
+| 5 | JHSF3 | Jhsf Participacoes S.A. | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **11,1%** | 84% | 16% | 31% | 4 | 13 |
+| 6 | SMTO3 | Sao Martinho S.A. | Agricultura (Açúcar, Álcool e Cana) | **11,1%** | 60% | 13% | 45% | 7 | 9 |
+| 7 | TGMA3 | Tegma Gestao Logistica S.A. | Serviços Transporte e Logística | **11,1%** | 58% | 24% | 31% | 10 | 17 |
+| 8 | RDOR3 | Rede D'Or São Luiz S.A. | Serviços médicos | **11,1%** | 51% | 20% | 46% | 18 | 17 |
+| 9 | MULT3 | Multiplan - Empreend Imobiliario | Emp. Adm. Part. - Const. Civil, Mat. Const. e Decoração | **11,1%** | 27% | 13% | 32% | 14 | 10 |
