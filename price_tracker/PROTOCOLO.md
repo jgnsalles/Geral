@@ -160,3 +160,10 @@ Carteiras públicas de Kenneth French (rentabilidade operacional × valor patrim
 mercado no período todo nos EUA desde 1963 (+2,5 p.p.), Europa (+1,9), Japão (+2,2), Ásia-Pacífico ex-Japão (+2,9) e emergentes (OP alto e barata +4,4);
 quase todo o ganho veio até 2010. Desde 2011 a vantagem sumiu fora dos EUA (±0,5) e nos EUA o proxy perdeu (sem o filtro de crescimento do EPS).
 Detalhes: french/resultado.md. Script: french/proxy.py.
+
+## 2026-11-11 — Correção de dado no Brasil (não é mudança de regra)
+Bug na leitura da CVM: algumas empresas preenchem a linha "lucro atribuído à controladora" com 0 (ex.: Sabesp 2023–2025, Pague Menos 2023,
+Vivara 2022, Tegma 2025); 425 balanços afetados, a maioria de 2021 em diante. Corrigido em `brasil/prep_br.py` (usa o lucro consolidado − não controladores).
+Regra congelada reaplicada sem mudança. Brasil, raiz do valor de mercado: OoL novo 13,5% → 13,3%; Top 20 12,9% → 12,5% (Ibovespa 10,9%).
+Observação do usuário (não muda nada ainda): o crescimento brasileiro é a mediana de 5 variações anuais do lucro líquido e esconde quedas recentes
+(2025: São Martinho −62%, Engie −40%, Cemig −31%) e a recuperação pós-COVID de 2021.

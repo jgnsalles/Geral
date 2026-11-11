@@ -18,41 +18,41 @@
 | OoL High Growth (novo) | 1319,9% | 19,3% | 21,8% | -35,0% | 16 | 90% | 100% |
 | Cyclicals | 122,3% | 5,5% | 23,6% | -52,8% | 5 | 0% | 0% |
 | Nasdaq-100 (QQQ) | 1503,4% | 20,3% | 20,6% | -35,1% | — | 100% | 100% |
-| Top 20 — raiz com teto | 1309,8% | 19,3% | 19,7% | -32,2% | 20 | 100% | 100% |
-| Top 20 — peso igual | 1271,9% | 19,1% | 20,0% | -32,9% | 20 | 90% | 100% |
-| Top 15 — raiz com teto | 1265,6% | 19,0% | 20,3% | -30,3% | 15 | 96% | 100% |
-| Top 15 — peso igual | 1211,1% | 18,7% | 20,7% | -33,8% | 15 | 88% | 100% |
-| Top 10 — raiz com teto | 1789,3% | 21,6% | 21,0% | -30,0% | 10 | 100% | 100% |
-| Top 10 — peso igual | 1704,7% | 21,3% | 21,3% | -33,3% | 10 | 100% | 100% |
+| Top 20 — raiz com teto | 1388,8% | 19,7% | 19,8% | -28,6% | 20 | 100% | 100% |
+| Top 20 — peso igual | 1252,3% | 19,0% | 20,1% | -31,0% | 20 | 94% | 100% |
+| Top 15 — raiz com teto | 1359,0% | 19,6% | 20,1% | -27,6% | 15 | 100% | 100% |
+| Top 15 — peso igual | 1226,6% | 18,8% | 20,5% | -32,1% | 15 | 100% | 100% |
+| Top 10 — raiz com teto | 2521,6% | 24,3% | 20,9% | -29,6% | 10 | 100% | 100% |
+| Top 10 — peso igual | 2097,0% | 22,9% | 21,1% | -28,0% | 10 | 100% | 100% |
 
 ### Alfa contra Fama-French 5 + momentum + qualidade (mensal, Newey-West)
 
 | Carteira | Alfa a.a. | t | R² |
 |---|---|---|---|
-| Top 20 — raiz com teto | +3,5 | 1,53 | 0,83 |
-| Top 20 — peso igual | +3,4 | 1,44 | 0,85 |
-| Top 15 — raiz com teto | +3,8 | 1,43 | 0,78 |
-| Top 15 — peso igual | +3,2 | 1,22 | 0,80 |
-| Top 10 — raiz com teto | +6,2 | 1,88 | 0,71 |
-| Top 10 — peso igual | +5,3 | 1,70 | 0,73 |
+| Top 20 — raiz com teto | +4,5 | 1,82 | 0,82 |
+| Top 20 — peso igual | +3,8 | 1,57 | 0,84 |
+| Top 15 — raiz com teto | +4,4 | 1,76 | 0,80 |
+| Top 15 — peso igual | +3,5 | 1,40 | 0,80 |
+| Top 10 — raiz com teto | +8,4 | 2,50 | 0,73 |
+| Top 10 — peso igual | +6,9 | 2,26 | 0,75 |
 | OoL novo | +0,9 | 0,71 | 0,91 |
 | Nasdaq-100 (QQQ) | +3,1 | 2,19 | 0,92 |
 
-Top 20 nos EUA: 20–20 ações por trimestre; troca média de 21% dos nomes por trimestre; setores: Information Technology 28%, Consumer Discretionary 21%, Industrials 16%, Health Care 10%.
+Top 20 nos EUA: 20–20 ações por trimestre; troca média de 20% dos nomes por trimestre; setores: Information Technology 28%, Consumer Discretionary 22%, Industrials 15%, Health Care 9%.
 
-**Top 20 de hoje (EUA, 09/2026):** COIN, SMCI, APP, NVDA, LYV, MO, PODD, PGR, EXPE, BKNG, EME, SBAC, HIG, STX, PTC, CMG, WRB, FIX, TRV, LII
+**Top 20 de hoje (EUA, 09/2026):** COIN, SMCI, APP, CMCSA, NVDA, WDC, CHTR, LYV, MO, PODD, PGR, EXPE, BKNG, EME, SBAC, HIG, STX, PTC, CMG, WRB
 
 
 ## 2. Brasil (fora da amostra, 06/2014 a 09/2026, em reais)
 
 | Carteira | Ações (média) | Retorno anual | vs Ibovespa | Pior queda | Janelas 3a > Ibov | Janelas 5a > Ibov |
 |---|---|---|---|---|---|---|
-| Top 20 — raiz com teto | 15 | **9,9%** | -1,0 | -44,2% | 56% | 69% |
-| Top 20 — peso igual | 15 | **9,1%** | -1,8 | -47,0% | 54% | 68% |
-| Top 15 — raiz com teto | 13 | **10,5%** | -0,4 | -44,4% | 60% | 70% |
-| Top 15 — peso igual | 13 | **9,7%** | -1,2 | -47,0% | 54% | 68% |
-| Top 10 — raiz com teto | 9 | **11,0%** | +0,1 | -46,7% | 69% | 91% |
-| Top 10 — peso igual | 9 | **11,1%** | +0,2 | -48,6% | 71% | 82% |
+| Top 20 — raiz com teto | 16 | **12,5%** | +1,5 | -44,3% | 85% | 92% |
+| Top 20 — peso igual | 16 | **11,1%** | +0,1 | -47,0% | 72% | 78% |
+| Top 15 — raiz com teto | 13 | **12,5%** | +1,6 | -44,3% | 85% | 92% |
+| Top 15 — peso igual | 13 | **11,3%** | +0,3 | -47,0% | 76% | 90% |
+| Top 10 — raiz com teto | 10 | **11,5%** | +0,5 | -46,7% | 76% | 91% |
+| Top 10 — peso igual | 10 | **11,1%** | +0,2 | -48,6% | 74% | 81% |
 | Universo (todas as classificadas), peso igual | — | **11,9%** | +1,0 | -49,3% | 73% | 84% |
 | Ibovespa (BOVA11) | — | **10,9%** | +0,0 | -46,9% | 0% | 0% |
 | Small caps (SMAL11) | — | **4,9%** | -6,0 | -51,1% | 46% | 39% |
