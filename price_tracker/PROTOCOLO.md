@@ -154,3 +154,9 @@ amostra documentado na literatura), além de custos e do resultado do teste de l
   CSI 300 5,3% e CSI 500 6,5% (índices sem dividendos). O próprio filtro de qualidade também ficou abaixo do universo (elegíveis 6,1–6,6%).
   Ressalvas: ROIC reconstruído com poucos itens; crescimento pelo lucro líquido; universo de peso igual com viés de sobrevivência e efeito
   pequenas-empresas típico do mercado chinês.
+
+## 2026-11-11 — Proxy Fama-French (mais países e mais anos), NÃO é a regra congelada
+Carteiras públicas de Kenneth French (rentabilidade operacional × valor patrimonial/preço, peso por valor de mercado). Rentabilidade alta bateu o
+mercado no período todo nos EUA desde 1963 (+2,5 p.p.), Europa (+1,9), Japão (+2,2), Ásia-Pacífico ex-Japão (+2,9) e emergentes (OP alto e barata +4,4);
+quase todo o ganho veio até 2010. Desde 2011 a vantagem sumiu fora dos EUA (±0,5) e nos EUA o proxy perdeu (sem o filtro de crescimento do EPS).
+Detalhes: french/resultado.md. Script: french/proxy.py.
