@@ -36,7 +36,8 @@ def load_pit(f):
     return out
 
 
-def main():
+def build():
+    """Devolve (c classificada com mcap e pe, adj, dates, u, usd_rep)."""
     u = pd.read_csv(D / 'universe.csv'); u['sic'] = pd.to_numeric(u.sic, errors='coerce').fillna(0).astype(int)
     u['fin'] = u.sic.between(6000, 6499) | (u.sic.between(6700, 6799) & (u.sic != 6798))
     u['cyc'] = u.sic.map(lambda s: in_ranges(s, CYC_SIC)); u['app'] = u.sic.map(lambda s: in_ranges(s, APPAREL_SIC))
@@ -78,6 +79,11 @@ def main():
     c['pe'] = c.price / c.eps.where(c.eps > 0)
     c['sh'] = c.groupby('ticker').sh.transform(lambda s: s.ffill().bfill()); c['mcap'] = (c.price * c.sh).where(lambda s: s > 0)
     c['mcap'] = c.mcap.fillna(c.groupby('date').mcap.transform('median'))
+    return c, adj, dates, u, usd_rep
+
+
+def main():
+    c, adj, dates, u, usd_rep = build()
     el = c[~c.cyc & ~c.app & (c.roic >= .12) & (c.growth >= .15) & (c.pe >= 4)].copy()
     navs, nn, chosen = {}, {}, None
     for n in (20, 15, 10):

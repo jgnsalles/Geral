@@ -178,3 +178,12 @@ Resto da regra congelada igual. Comparação: OoL novo e Top 20 (raiz com teto),
 OoL novo (raiz): 13,3% / 12,8% / 13,5%. Diferenças pequenas, dentro do ruído. **Decisão do usuário: adotar A (sem 2021) no Brasil**
 (`EXCL = {2021}` em `brasil/backtest_br.py`; classes antigas em `classes_pit_com2021.csv`). EUA sem mudança por enquanto.
 **Número oficial da candidata no Brasil (P/L ≥ 4, `backtest/filtro_grade.py`):** 12,9% antes → 12,4% com o dado corrigido → **12,0%** sem 2021 (sem 2020–2021 também 12,0%); Ibovespa 10,9%. O script `brasil/sem2021.py` estima o valor de mercado de outro jeito e dá números mais altos; vale o oficial.
+
+## 2026-11-12 — Pré-registro: teste "mundo" (todas as bases juntas)
+Pedido do usuário: aplicar a regra congelada num só universo com todas as bases já montadas, para escolher as maiores oportunidades em qualquer lugar.
+Universo: S&P 500 point-in-time + médias e pequenas dos EUA (≥ US$ 1 bi) + estrangeiras listadas nos EUA (20-F/40-F) + Brasil (CVM), tudo em dólar.
+Cada base mantém a própria classificação, o próprio mapa de cíclicos/vestuário e o próprio retorno esperado (EUA: WACC 8,5%; Brasil: WACC 12%).
+Para comparar o Brasil com os EUA, o retorno esperado brasileiro é reduzido em 3,5 p.p. (a diferença de WACC), fixado antes de rodar.
+Preços do Brasil convertidos para dólar pelo câmbio diário (BRL=X). Mesma empresa em duas bases (ADR e ação local): fica só a de maior valor de mercado.
+Regra igual: elegíveis ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicos e vestuário; Top 20 por retorno esperado; raiz do valor de mercado, teto 10%; trimestral.
+Comparações: MSCI ACWI (ACWI), S&P 500, as Top 20 de cada base sozinha e os 9 comparativos obrigatórios dos EUA. Sensibilidade (não é o produto): sem o ajuste de 3,5 p.p.
