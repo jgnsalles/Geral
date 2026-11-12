@@ -26,7 +26,11 @@ def us_sp():
 
 
 def generic(mod, base):
-    c, adj, dates, u, _ = mod.build()
+    cache = ROOT / 'cache' / f'{mod.__name__}.pkl'
+    if cache.exists():
+        c, adj, dates, u = pd.read_pickle(cache)
+    else:
+        c, adj, dates, u, _ = mod.build(); cache.parent.mkdir(exist_ok=True); pd.to_pickle((c, adj, dates, u), cache)
     c['elig'] = ~c.cyc & ~c.app & (c.roic >= .12) & (c.growth >= .15) & (c.pe >= 4)
     nm = u.drop_duplicates('ticker').set_index('ticker')
     col = 'name' if 'name' in nm else ('title' if 'title' in nm else None)
