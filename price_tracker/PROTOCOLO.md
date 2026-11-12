@@ -187,3 +187,7 @@ Para comparar o Brasil com os EUA, o retorno esperado brasileiro é reduzido em 
 Preços do Brasil convertidos para dólar pelo câmbio diário (BRL=X). Mesma empresa em duas bases (ADR e ação local): fica só a de maior valor de mercado.
 Regra igual: elegíveis ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicos e vestuário; Top 20 por retorno esperado; raiz do valor de mercado, teto 10%; trimestral.
 Comparações: MSCI ACWI (ACWI), S&P 500, as Top 20 de cada base sozinha e os 9 comparativos obrigatórios dos EUA. Sensibilidade (não é o produto): sem o ajuste de 3,5 p.p.
+
+**Resultado do teste mundo (2026-11-12, 06/2014–09/2026, em dólares):** Top 20 mundo 14,4% a.a. (sem o ajuste do Brasil 14,6%) contra ACWI 10,3% e S&P 500 13,6%.
+Pior que a Top 20 só do S&P 500 no mesmo período (17,2%). As médias e pequenas dominam a lista (67% das posições) com retornos esperados extremos e dados ruidosos
+(hoje: Cal-Maine com crescimento de 338%, Power Solutions com ROIC de 2.258%, Rayonier com ROIC de 444%). Juntar as bases não melhorou o resultado.
