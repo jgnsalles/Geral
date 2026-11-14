@@ -272,3 +272,5 @@ Atenção: limite escolhido depois de ver o resultado de 1,5× (risco de sobreaj
 **Resultado 2× (2026-11-14):** EUA: Top 20 20,5% → 22,4% (pior queda −34,4% → −32,0%); OoL novo 18,2% = 18,2%; High ROIC 21,5% = 21,5%; High Growth 20,6% → 21,7%;
 GCGR novo 16,8% → 15,2%. Mudou 21% das observações (1,5×: 37%). Hoje sai J&J, entra Arch Capital. Brasil: Top 20 A 13,5%, B 13,2%, C 13,5%; OoL A 12,8%, B 13,6%, C 13,2%.
 Ganho grande na Top 20 com limite escolhido após ver o 1,5× — tratar com cautela. Decisão do usuário pendente.
+**Decisão do usuário (2026-11-14): regra de picos NÃO adotada** (nem 1,5× nem 2×). Argumento: o pico gera uma variação extrema para cima e outra para baixo,
+que se cancelam, e a mediana já protege. Crescimento segue como estava (EUA: mediana de 5 anos; Brasil: mediana sem 2021).
