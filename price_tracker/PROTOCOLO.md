@@ -314,3 +314,10 @@ Versões: Top 20 e Top 30 em peso igual, rebalanceamento trimestral; Top 30 com 
 **Resultado (2026-11-14, S&P 500, 2011–2026):** Fórmula Mágica Top 20 peso igual 15,1% a.a. (janelas 3a/5a/10a > S&P: 46%/28%/26%); Top 30 15,0%; Top 20 raiz com teto
 16,3% (63%/50%/61%); Top 30 troca anual 15,1%. S&P 15,6%. Top 20 da estratégia OoL 20,5% (100%/100%/100%). 2019–2026: Fórmula 12,7–17,6%; ETFs OoL 18,7–18,9%;
 SPYG 18,3%; Top 20 OoL 21,1%. A Fórmula Mágica não bate o S&P de forma consistente nas grandes empresas neste período.
+
+## 2026-11-14 — Pré-registro: "Fórmula Mágica com G" (proposta do usuário)
+Mesmo princípio de ranqueamento do Greenblatt, com três critérios somados (posição em cada um): **maior ROIC (o nosso, triangulado), maior crescimento
+do lucro (mediana de 5 anos) e menor múltiplo**. Duas versões do múltiplo: (1) EV/EBIT (como o Greenblatt; sem financeiras e utilities) e (2) P/L
+(sem financeiras e utilities, para comparar). Sensibilidade: (3) P/L com financeiras (ROE) e utilities; (4) versão 1 sem cíclicos e vestuário.
+Lucro e múltiplo positivos (EBIT > 0, P/L > 0). Montagem como no teste do Greenblatt: Top 20 e Top 30 em peso igual, trimestral; Top 20 com raiz do valor de
+mercado e teto de 10%; Top 30 com troca anual (média de 4). Comparações: Fórmula Mágica original, Top 20 da estratégia OoL, ETFs e os 9 obrigatórios, com janelas de 3, 5 e 10 anos.
