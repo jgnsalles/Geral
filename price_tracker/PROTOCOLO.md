@@ -274,3 +274,9 @@ GCGR novo 16,8% → 15,2%. Mudou 21% das observações (1,5×: 37%). Hoje sai J&
 Ganho grande na Top 20 com limite escolhido após ver o 1,5× — tratar com cautela. Decisão do usuário pendente.
 **Decisão do usuário (2026-11-14): regra de picos NÃO adotada** (nem 1,5× nem 2×). Argumento: o pico gera uma variação extrema para cima e outra para baixo,
 que se cancelam, e a mediana já protege. Crescimento segue como estava (EUA: mediana de 5 anos; Brasil: mediana sem 2021).
+**Racional registrado (2026-11-14):** um pico isolado gera uma variação muito alta seguida de uma muito baixa; na mediana de 5 anos as duas vão para as pontas
+e sobram as 3 do meio. Evidência: com a regra, OoL novo e High ROIC não mudaram (18,2% e 21,5%). A mediana só falha com várias distorções na mesma janela
+(ex.: J&J — 2021 +42%, 2023 +104% Kenvue, 2024 −58%, 2025 +90%), caso raro que nenhuma versão resolveu sem efeito colateral. O ganho da Top 20 com 2×
+(+1,9 p.p.) foi tratado como provável sobreajuste. Brasil: mantido sem 2021 (decisão de 2026-11-11); pela mesma lógica poderia voltar, a reavaliar.
+**Pendências do ROIC:** levar o triangulado ao Brasil (CVM), às médias e pequenas e às estrangeiras; separar o braço financeiro de empresas como a Deere;
+testar P&D capitalizado como variante.
