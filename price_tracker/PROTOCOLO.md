@@ -290,3 +290,6 @@ médias e pequenas com a definição anterior):
 **Nota principal = % do peso do ETF (coberto pelo nosso universo) em ações Opportunity of Lifetime (novo).** Sensibilidade: retorno esperado médio ponderado
 das ações do ETF (limitado a −50%/+100%). Estratégia: fica 1 trimestre no ETF de maior nota (sensibilidade: os 2 maiores, peso igual).
 Comparações: SPY, os ETFs em peso igual, cada ETF sozinho, a Top 20 da estratégia no mesmo período e os 9 comparativos obrigatórios.
+**Resultado (2026-11-14, 12/2019–09/2026):** os ETFs com mais OoL são os de crescimento: VUG, SPYG e IWF (33–34% do peso em OoL), depois QUAL (26%) e SPY (24%);
+valor, dividendos e baixa volatilidade ficam em 6–10%. Ficar no ETF de maior nota: 18,7% a.a. (pior queda −32,7%) contra SPY 15,2%, ETFs em peso igual 13,9%,
+SPYG parado 18,3%, VUG 18,2% e Top 20 em ações 21,1%. A rotação agrega só ~0,4 p.p. sobre ficar parado no SPYG; ~10 trocas em 7 anos. Período curto e favorável a crescimento.

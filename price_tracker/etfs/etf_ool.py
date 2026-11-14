@@ -59,7 +59,7 @@ def main():
     navs, n_ = {}, {}
     def pick(col, k):
         W = {}
-        for t, g in S[S.cov >= .5].groupby('date'):
+        for t, g in S[S['cov'] >= .5].groupby('date'):
             g = g.dropna(subset=[col]).sort_values(col, ascending=False).head(k)
             W[t] = pd.Series(1.0, index=g.etf)
         return W
