@@ -321,3 +321,7 @@ do lucro (mediana de 5 anos) e menor múltiplo**. Duas versões do múltiplo: (1
 (sem financeiras e utilities, para comparar). Sensibilidade: (3) P/L com financeiras (ROE) e utilities; (4) versão 1 sem cíclicos e vestuário.
 Lucro e múltiplo positivos (EBIT > 0, P/L > 0). Montagem como no teste do Greenblatt: Top 20 e Top 30 em peso igual, trimestral; Top 20 com raiz do valor de
 mercado e teto de 10%; Top 30 com troca anual (média de 4). Comparações: Fórmula Mágica original, Top 20 da estratégia OoL, ETFs e os 9 obrigatórios, com janelas de 3, 5 e 10 anos.
+**Resultado (2026-11-14, S&P 500 2011–2026, Top 20 raiz; janelas 3a/5a/10a > S&P):** Fórmula original 16,3% (63/50/61%); com G + EV/EBIT 16,6% (46/58/89%);
+com G + P/L 18,3% (65/64/100%); com G + P/L e financeiras/utilities 18,9% (74/81/100%); **com G + EV/EBIT sem cíclicos e vestuário 19,7% (96/99/100%)**;
+Top 20 OoL 20,5% (100/100/100%). Colocar o G melhora a Fórmula; tirar cíclicos e vestuário é o que mais ajuda (as listas sem o filtro trazem Delta, CF,
+Deckers, Lululemon, Ralph Lauren). Nenhuma versão bate a Top 20 OoL no período todo. Obs.: classes duplas (GOOG/GOOGL) não foram unificadas nestas versões.
