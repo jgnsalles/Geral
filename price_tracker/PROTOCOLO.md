@@ -207,3 +207,6 @@ P/L ≥ 4, sem cíclicos/vestuário, ordem pelo retorno esperado, raiz do valor 
 Mensal: os fundamentos são os da última data trimestral (os dados só existem por trimestre); preço, P/L, valor de mercado e retorno esperado são
 recalculados com o preço do fim de cada mês. Anual: média das 4 versões possíveis (começando em cada trimestre), para não depender do mês escolhido.
 Mesma janela para todas (a partir do 4º trimestre da amostra). Antes e depois de 15% de IR sobre ganho realizado. EUA e Brasil.
+**Resultado (2026-11-14):** EUA 06/2012–09/2026, 20 ações trimestral 19,0% (16,3% após IR); mensal 19,2%; anual 18,1%; 10 ações trimestral 22,7% (19,4% após IR),
+mas o anual com 10 ações varia de 17,9% a 22,8% conforme o mês de início (sinal de concentração/sorte). Brasil: trimestral 14,9% com 15 ou 20 ações; anual perde ~2,5 p.p.
+Mensal não agrega em nenhum dos dois. Candidata mantida (20, trimestral); 10 ações fica como observação, não como mudança.
