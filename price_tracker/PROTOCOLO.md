@@ -311,3 +311,6 @@ EBIT ÷ valor da firma (valor de mercado + dívida + minoritários − caixa −
 Sem financeiras e sem utilities. Dados do último exercício conhecido na data (SEC, point-in-time), universo S&P 500 point-in-time.
 Versões: Top 20 e Top 30 em peso igual, rebalanceamento trimestral; Top 30 com troca anual (média das 4 versões, como no livro); Top 20 com o nosso peso
 (raiz do valor de mercado, teto 10%). Comparações: 9 obrigatórios, Top 20 da estratégia, e no período 2019–2026 os ETFs (2 com mais OoL, troca mensal; SPYG).
+**Resultado (2026-11-14, S&P 500, 2011–2026):** Fórmula Mágica Top 20 peso igual 15,1% a.a. (janelas 3a/5a/10a > S&P: 46%/28%/26%); Top 30 15,0%; Top 20 raiz com teto
+16,3% (63%/50%/61%); Top 30 troca anual 15,1%. S&P 15,6%. Top 20 da estratégia OoL 20,5% (100%/100%/100%). 2019–2026: Fórmula 12,7–17,6%; ETFs OoL 18,7–18,9%;
+SPYG 18,3%; Top 20 OoL 21,1%. A Fórmula Mágica não bate o S&P de forma consistente nas grandes empresas neste período.
