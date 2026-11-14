@@ -253,3 +253,12 @@ Só os 4 anos mais antigos podem sair (os 2 mais recentes sempre ficam, para nã
 Comparação: Top 20 e classes novas com o triangulado sem e com a regra de outliers, mais os 9 comparativos obrigatórios.
 **Resultado da regra de outliers (2026-11-14):** neutra. Top 20: 20,3% → 20,5%; OoL novo 18,3% → 18,2%; High ROIC 21,7% → 21,5%. Adotada (decisão do usuário).
 Com o ROIC novo: OoL novo 18,2%, GCGR novo 16,8%, High ROIC 21,5%, High Growth 20,6%, Top 20 20,5% (S&P 15,6%).
+
+## 2026-11-14 — Pré-registro: regra de outliers no crescimento (pedido do usuário)
+Problema: o crescimento é a mediana das 5 últimas variações anuais do lucro por ação, mas um ano excepcional (ganho ou perda não recorrente, ex.: separação
+da Kenvue na J&J em 2023) gera duas variações extremas seguidas, uma para cima e outra para baixo, e distorce a mediana e o zGrowth.
+**Regra:** um ano é "pico" (ou "vale") se o lucro daquele ano for ≥ 1,5× (ou ≤ 1/1,5) a média geométrica do ano anterior e do seguinte (lucros positivos).
+O ano sai e as duas variações que o envolvem viram uma só: a variação anualizada de dois anos (do ano anterior ao seguinte). Picos tratados do maior para o
+menor, sem sobreposição; o último ano nunca sai (não tem ano seguinte). Mediana e zGrowth recalculados com as variações ajustadas.
+**Testes:** EUA (com o ROIC oficial novo): classes novas e Top 20 sem e com a regra. Brasil (lucro da controladora): (A) atual, sem 2021; (B) regra de
+picos no lugar de tirar 2021; (C) as duas juntas. Mais os 9 comparativos obrigatórios. Nada é adotado sem decisão do usuário.

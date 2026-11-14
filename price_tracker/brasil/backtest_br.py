@@ -9,6 +9,7 @@ ROOT = pathlib.Path(__file__).parent
 sys.path.insert(0, str(ROOT.parent)); sys.path.insert(0, str(ROOT.parent / 'backtest'))
 import engine  # noqa: E402
 from backtest import run_portfolio, stats  # noqa: E402
+import picos  # noqa: E402
 
 D = ROOT / 'data'
 WACC, GMAX, GMIN, FIN_SHIFT = 0.12, 0.09, 0.04, 0.005
@@ -16,6 +17,7 @@ N_HIST, STALE_DAYS, MIN_ADTV = 5, 550, 2e6
 CUTS = {'zg2.93': 2.93, 'zg0.9': 0.9}
 START = '2011-01-01'
 BENCH = ['BOVA11.SA', 'SMAL11.SA']
+SPIKE = False  # regra de picos no crescimento (pre-registro 2026-11-14); False = regra atual
 EXCL = {2021}  # 2026-11-11 (decisao do usuario): crescimento de 2021 (volta da COVID) fica fora da mediana. set() = regra original
 
 
@@ -37,7 +39,11 @@ def features(f, t, r, sp):
     last = k.index.max()
     if (t - k.loc[last, 'DT_REFER']).days > STALE_DAYS: return None
     ni = k.ni
-    rates = [ratio(ni.get(y), ni.get(y - 1)) for y in range(last - N_HIST + 1, last + 1) if y not in EXCL]
+    yrs = list(range(last - N_HIST + 1, last + 1))
+    rates = [ratio(ni.get(y), ni.get(y - 1)) for y in yrs]
+    if SPIKE:  # regra de picos (2026-11-14): funde o ano excepcional numa variacao de 2 anos; depois tira os anos de EXCL que nao foram fundidos
+        rates, yrs = picos.adjust(rates, yrs)
+    rates = [x for x, y in zip(rates, yrs) if y not in EXCL]
     ok = [x for x in rates if np.isfinite(x)]
     growth = float(np.median(ok)) if len(ok) >= min((N_HIST + 1) // 2, len(rates)) and ok else np.nan
     zgrowth = engine.cv(rates, growth) if np.isfinite(growth) else np.nan
