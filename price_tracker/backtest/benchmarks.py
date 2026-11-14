@@ -84,20 +84,32 @@ def load_benchmarks(extra=None):
     return navs, n, dates, adj
 
 
-def bench_table(navs, n):
+def windows(nav, ref, years):
+    """% das janelas moveis (mensais) de `years` anos em que nav bate ref, e a pior diferenca anualizada (p.p.)."""
+    M, R = nav.dropna().resample('ME').last(), ref.dropna().resample('ME').last()
+    k = 12 * years; a = (M / M.shift(k)) ** (1 / years); b = ((R / R.shift(k)) ** (1 / years)).reindex(a.index)
+    ok = a.notna() & b.notna()
+    if not ok.any(): return np.nan, np.nan
+    d = (a - b)[ok]
+    return (d > 0).mean(), d.min()
+
+
+def bench_table(navs, n, ref='S&P 500'):
+    """Tabela padrao (pedido do usuario, 2026-11-14): sempre com janelas moveis de 3, 5 e 10 anos contra o S&P 500 (ou `ref`)."""
     pc = lambda x: '—' if pd.isna(x) else f'{x:.1%}'.replace('.', ',')
-    Ms = navs['S&P 500'].resample('ME').last()
+    pw = lambda x: '—' if pd.isna(x) else f'{x:.0%}'
+    pp = lambda x: '—' if pd.isna(x) else f'{x * 100:+.1f}'.replace('.', ',')
+    R = navs[ref]
     keys = ORDER + [k for k in navs if k not in ORDER]
-    out = ['| Carteira | Retorno total | Retorno anual | Volatilidade | Pior queda | Ações (média) | Janelas 5a > S&P | Janelas 10a > S&P |',
-           '|---|---|---|---|---|---|---|---|']
+    out = [f'| Carteira | Retorno total | Retorno anual | Volatilidade | Pior queda | Ações (média) | Janelas 3a > {ref} | Janelas 5a > {ref} | Janelas 10a > {ref} | Pior janela 3a (p.p./ano) | Pior janela 5a (p.p./ano) |',
+           '|---|---|---|---|---|---|---|---|---|---|---|']
     for k in keys:
         if k not in navs: continue
-        s = navs[k].dropna(); st = stats(s); M = s.resample('ME').last()
-        w5 = ((M / M.shift(60)) > (Ms / Ms.shift(60)))[(M / M.shift(60)).notna() & (Ms / Ms.shift(60)).notna()].mean() if k != 'S&P 500' else np.nan
-        w10 = ((M / M.shift(120)) > (Ms / Ms.shift(120)))[(M / M.shift(120)).notna() & (Ms / Ms.shift(120)).notna()].mean() if k != 'S&P 500' else np.nan
+        s = navs[k].dropna(); st = stats(s)
+        w = {y: windows(s, R, y) if k != ref else (np.nan, np.nan) for y in (3, 5, 10)}
         bold = '**' if k in ('OoL novo', 'GCGR novo') else ''
         out.append(f"| {bold}{k}{bold} | {pc(s.iloc[-1] - 1)} | {bold}{pc(st['CAGR'])}{bold} | {pc(st['Vol'])} | {pc(st['MaxDD'])} | "
-                   f"{'—' if k not in n else f'{n[k]:.0f}'} | {'—' if pd.isna(w5) else f'{w5:.0%}'} | {'—' if pd.isna(w10) else f'{w10:.0%}'} |")
+                   f"{'—' if k not in n or pd.isna(n[k]) else f'{n[k]:.0f}'} | {pw(w[3][0])} | {pw(w[5][0])} | {pw(w[10][0])} | {pp(w[3][1])} | {pp(w[5][1])} |")
     return out
 
 

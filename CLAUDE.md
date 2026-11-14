@@ -40,7 +40,7 @@ O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 
 ## Price Tracker: comparativos obrigatórios em TODA análise de desempenho (pedido do usuário, 2026-11-10)
 
-Toda análise de carteira/backtest deve voltar com estas 8 linhas (tabela e gráfico, retorno total acumulado linear):
+Toda análise de carteira/backtest deve voltar com estas 8 linhas (tabela e gráfico, retorno total acumulado linear) **e sempre com janelas móveis de 3, 5 e 10 anos** (% das janelas que batem o S&P 500 e a pior janela, em p.p. ao ano; pedido do usuário, 2026-11-14; `bench_table` já faz isso):
 1. S&P 500 (SPY); 2. S&P 500 equal weight (RSP); 3. Opportunity of Lifetime **antigo**; 4. Good Companies, Great Returns **antigo**;
 5. Opportunity of Lifetime **novo**; 6. Good Companies, Great Returns **novo**; 7. OoL **High ROIC** (novo, ROIC > 30%); 8. OoL **High Growth** (novo, EPS > 30%);
 9. **Cyclicals** (classe criada em 2026-11-10: ações de subsetores cíclicos que seriam OoL ou GCGR).

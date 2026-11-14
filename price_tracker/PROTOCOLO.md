@@ -293,3 +293,6 @@ Comparações: SPY, os ETFs em peso igual, cada ETF sozinho, a Top 20 da estrat�
 **Resultado (2026-11-14, 12/2019–09/2026):** os ETFs com mais OoL são os de crescimento: VUG, SPYG e IWF (33–34% do peso em OoL), depois QUAL (26%) e SPY (24%);
 valor, dividendos e baixa volatilidade ficam em 6–10%. Ficar no ETF de maior nota: 18,7% a.a. (pior queda −32,7%) contra SPY 15,2%, ETFs em peso igual 13,9%,
 SPYG parado 18,3%, VUG 18,2% e Top 20 em ações 21,1%. A rotação agrega só ~0,4 p.p. sobre ficar parado no SPYG; ~10 trocas em 7 anos. Período curto e favorável a crescimento.
+**Padrão a partir de 2026-11-14 (pedido do usuário):** toda tabela de desempenho traz janelas móveis de 3, 5 e 10 anos (% que batem a referência e a pior janela).
+**ETF × OoL em janelas:** ETF com mais OoL bate o S&P em 43% das janelas de 3 anos e 82% das de 5 (Top 20 em ações: 100% e 100%). Contra o SPYG parado, a rotação
+ganha em só 39% (3a) e 23% (5a) das janelas: não agrega. Os 2 ETFs com mais OoL: 85% e 59% contra o SPYG.

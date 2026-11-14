@@ -86,7 +86,12 @@ def main():
            '| ETF | Peso coberto pelo nosso universo | % em OoL (nota) | Retorno esperado médio | % nas ações da Top 20 | Vezes escolhido |', '|---|---|---|---|---|---|']
     for e, r in avg.iterrows():
         out.append(f'| {e} | {pc(r["cov"])} | **{pc(r.s1)}** | {pc(r.s2)} | {pc(r.t20)} | {(chosen == e).sum()} de {len(chosen)} |')
-    out += ['', '## 2. Desempenho (mesmo período)\n'] + bm.bench_table(navs2, bn)
+    out += ['', '## 2. Desempenho (mesmo período) — janelas móveis contra o S&P 500\n'] + bm.bench_table(navs2, bn)
+    navs2['SPYG (S&P 500 Growth)'] = navs2['ETF SPYG']
+    sub = {k: navs2[k] for k in ('SPYG (S&P 500 Growth)', 'Top 20 da estratégia (ações)', 'ETF com mais OoL (1 por trimestre) — produto testado', 'Os 2 ETFs com mais OoL',
+                                 'ETF de maior retorno esperado médio', 'ETF VUG', 'ETF IWF', 'ETF QUAL', 'S&P 500')}
+    out += ['', '## 3. As mesmas carteiras contra o SPYG parado (a rotação agrega?)\n'] + bm.bench_table(sub, bn, ref='SPYG (S&P 500 Growth)')
+    out.append('\nPeríodo de ~7 anos: janelas de 10 anos não existem neste teste.')
     out += ['', '**ETF escolhido em cada trimestre:** ' + ', '.join(f'{t:%m/%y} {e}' for t, e in chosen.items())]
     (ROOT / 'resultado.md').write_text('\n'.join(out)); print('\n'.join(out))
     keep = {k: v for k, v in navs2.items() if k in bm.ORDER or k in ('Top 20 da estratégia (ações)', 'ETF com mais OoL (1 por trimestre) — produto testado', 'ETFs em peso igual', 'ETF QUAL', 'ETF MTUM')}
