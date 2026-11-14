@@ -296,3 +296,11 @@ SPYG parado 18,3%, VUG 18,2% e Top 20 em ações 21,1%. A rotação agrega só ~
 **Padrão a partir de 2026-11-14 (pedido do usuário):** toda tabela de desempenho traz janelas móveis de 3, 5 e 10 anos (% que batem a referência e a pior janela).
 **ETF × OoL em janelas:** ETF com mais OoL bate o S&P em 43% das janelas de 3 anos e 82% das de 5 (Top 20 em ações: 100% e 100%). Contra o SPYG parado, a rotação
 ganha em só 39% (3a) e 23% (5a) das janelas: não agrega. Os 2 ETFs com mais OoL: 85% e 59% contra o SPYG.
+
+## 2026-11-14 — Pré-registro: ETF com mais OoL trocado todo mês (pedido do usuário)
+Igual ao teste trimestral, mas a nota é recalculada no fim de cada mês: composição do ETF = último N-PORT público (só existe por trimestre); fundamentos da
+última data trimestral; preço do fim do mês → retorno esperado e classe OoL recalculados (OoL = crescimento > 15%, zGrowth < 2,93, ROIC > 12%, retorno
+esperado > 20%, sem cíclicos/vestuário). Fica 1 mês no ETF de maior nota. Comparações: versão trimestral, SPYG parado, S&P 500, Top 20 em ações; janelas de 3 e 5 anos.
+**Resultado (2026-11-14):** troca mensal 18,9% a.a. (trimestral 18,7%; SPYG parado 18,3%; S&P 15,2%; Top 20 em ações 21,1%). Bate o S&P em 59% das janelas de 3 anos
+e 95% das de 5 (trimestral: 43% e 82%). Contra o SPYG parado: 63% (3a) e 32% (5a); os 2 ETFs com mais OoL, troca mensal: 85% e 68%. 13 trocas em 82 meses.
+Melhora pouco sobre o trimestral; continua bem atrás da Top 20 em ações (100%/100% contra o S&P).
