@@ -200,3 +200,10 @@ Medidas: retorno antes e depois de 15% de IR sobre ganho realizado, trades por a
 **Resultado (2026-11-14):** top 30 não ajudou. EUA: 19,9% → 19,6% antes do IR e 17,2% → 17,0% depois; trades por ano 32 → 21. Brasil: 13,5% → 12,8% e
 11,7% → 11,2% depois do IR. O custo do IR caiu só 0,2 p.p. porque o rebalanceamento trimestral dos pesos (podar as que subiram) também realiza ganho.
 Candidata mantida sem mudança.
+
+## 2026-11-14 — Pré-registro: grade de frequência de rebalanceamento × tamanho da carteira (pedido do usuário)
+Frequência: mensal, trimestral (atual) e anual. Tamanho: 10, 15, 20 (atual), 30 e 50 ações. Resto igual à candidata (ROIC ≥ 12%, crescimento ≥ 15%,
+P/L ≥ 4, sem cíclicos/vestuário, ordem pelo retorno esperado, raiz do valor de mercado com teto de 10%; com 10 ações o teto deixa o peso igual).
+Mensal: os fundamentos são os da última data trimestral (os dados só existem por trimestre); preço, P/L, valor de mercado e retorno esperado são
+recalculados com o preço do fim de cada mês. Anual: média das 4 versões possíveis (começando em cada trimestre), para não depender do mês escolhido.
+Mesma janela para todas (a partir do 4º trimestre da amostra). Antes e depois de 15% de IR sobre ganho realizado. EUA e Brasil.
