@@ -262,3 +262,6 @@ O ano sai e as duas variações que o envolvem viram uma só: a variação anual
 menor, sem sobreposição; o último ano nunca sai (não tem ano seguinte). Mediana e zGrowth recalculados com as variações ajustadas.
 **Testes:** EUA (com o ROIC oficial novo): classes novas e Top 20 sem e com a regra. Brasil (lucro da controladora): (A) atual, sem 2021; (B) regra de
 picos no lugar de tirar 2021; (C) as duas juntas. Mais os 9 comparativos obrigatórios. Nada é adotado sem decisão do usuário.
+**Resultado (2026-11-14):** EUA pior: Top 20 20,5% → 19,7%; OoL novo 18,2% → 17,6%; High ROIC 21,5% → 20,4%; High Growth 20,6% → 21,2%. A regra mudou o crescimento
+em 37% das observações (agressiva demais: funde ciclos reais, não só eventos únicos). Brasil: Top 20 13,5% nas três versões; OoL novo A 12,8%, B 13,8%, C 13,0%.
+Nada adotado; decisão do usuário pendente.
