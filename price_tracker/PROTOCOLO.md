@@ -280,3 +280,13 @@ e sobram as 3 do meio. Evidência: com a regra, OoL novo e High ROIC não mudara
 (+1,9 p.p.) foi tratado como provável sobreajuste. Brasil: mantido sem 2021 (decisão de 2026-11-11); pela mesma lógica poderia voltar, a reavaliar.
 **Pendências do ROIC:** levar o triangulado ao Brasil (CVM), às médias e pequenas e às estrangeiras; separar o braço financeiro de empresas como a Deere;
 testar P&D capitalizado como variante.
+
+## 2026-11-14 — Pré-registro: ETF escolhido pela "cara de Opportunity of Lifetime" (pedido do usuário)
+Composição real dos ETFs pelos relatórios N-PORT da SEC (trimestrais, desde o fim de 2019; ticker pelo CUSIP via OpenFIGI). SPY: composição reconstruída
+com o S&P 500 point-in-time e peso por valor de mercado (o SPY não entrega N-PORT). ETFs: SPY, RSP, QUAL, SPHQ, JQUA, MTUM, VLUE, USMV, IWF, IWD, VUG, VTV,
+SPYG, IJH, IJR, MOAT, SCHD, COWZ.
+Em cada data trimestral, só com o que já era público (último N-PORT arquivado até a data) e a classificação daquela data (S&P 500 com o ROIC novo;
+médias e pequenas com a definição anterior):
+**Nota principal = % do peso do ETF (coberto pelo nosso universo) em ações Opportunity of Lifetime (novo).** Sensibilidade: retorno esperado médio ponderado
+das ações do ETF (limitado a −50%/+100%). Estratégia: fica 1 trimestre no ETF de maior nota (sensibilidade: os 2 maiores, peso igual).
+Comparações: SPY, os ETFs em peso igual, cada ETF sozinho, a Top 20 da estratégia no mesmo período e os 9 comparativos obrigatórios.
