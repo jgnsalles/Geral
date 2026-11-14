@@ -10,6 +10,9 @@ from backtest import stats, run_portfolio, D  # noqa: E402
 from roic3_backtest import top20  # noqa: E402
 
 GY = ['gy1', 'gy2', 'gy3', 'gy4', 'gy5']
+LIM = float(sys.argv[1]) if len(sys.argv) > 1 else 1.5
+picos.LIM = LIM
+SUF = '' if LIM == 1.5 else f'_{LIM:g}x'
 
 
 def with_picos(f):
@@ -26,11 +29,11 @@ def brasil():
     import backtest_br as bb, sem2021
     BD = ROOT.parent / 'brasil' / 'data'
     V = {}
-    for lab, excl, spike, fn in (('A: atual (sem 2021)', {2021}, False, 'classes_pit.csv'), ('B: regra de picos (2021 volta)', set(), True, 'classes_pit_picos.csv'),
-                                 ('C: picos + sem 2021', {2021}, True, 'classes_pit_picos_sem2021.csv')):
+    for lab, excl, spike, fn in (('A: atual (sem 2021)', {2021}, False, 'classes_pit.csv'), ('B: regra de picos (2021 volta)', set(), True, f'classes_pit_picos{SUF}.csv'),
+                                 ('C: picos + sem 2021', {2021}, True, f'classes_pit_picos_sem2021{SUF}.csv')):
         p = BD / fn
         if not p.exists():
-            bb.EXCL, bb.SPIKE = excl, spike
+            bb.EXCL, bb.SPIKE = excl, spike; bb.picos.LIM = LIM
             u = pd.read_csv(BD / 'universe.csv'); fund = pd.read_csv(BD / 'fund.csv.gz', parse_dates=['DT_REFER', 'DT_RECEB']); fund = {c: g for c, g in fund.groupby('CD_CVM')}
             rd = lambda n: pd.read_csv(BD / f'prices_{n}.csv.gz', index_col=0, parse_dates=True)
             close, vol = rd('close'), rd('volume'); divs, splits = rd('dividends').fillna(0), rd('stock_splits').fillna(0)
@@ -68,7 +71,7 @@ def main():
     print('EUA ok', flush=True)
     chg = (fp.growth - fp.growth_antigo).abs() > 1e-9
     out = ['# Regra de picos no crescimento (pré-registrada em 2026-11-14)\n', '> ⚠️ **O ROIC pode estar errado** (EUA já com o ROIC triangulado).\n',
-           f'Um ano é pico/vale se o lucro for ≥ 1,5× (ou ≤ 1/1,5) a média geométrica dos vizinhos; as duas variações viram uma de 2 anos. '
+           f'Limite {LIM:g}×. Um ano é pico/vale se o lucro for ≥ {LIM:g}× (ou ≤ 1/{LIM:g}) a média geométrica dos vizinhos; as duas variações viram uma de 2 anos. '
            f'Nos EUA, a regra mudou o crescimento em {chg.mean():.0%} das observações.\n', '## EUA (2011–2026)\n'] + bm.bench_table(navs, n)
     last = fp[fp.date == fp.date.max()]; ch_ = last[(last.growth - last.growth_antigo).abs() > .05].copy()
     u = pd.read_csv(D / 'universe.csv').drop_duplicates('ticker').set_index('ticker')
@@ -89,8 +92,8 @@ def main():
     A = today['A: atual (sem 2021)']
     out += [''] + [f"Top 20 de hoje, {k}: saem {', '.join(sorted(A - s)) or '—'}; entram {', '.join(sorted(s - A)) or '—'}." for k, s in today.items() if not k.startswith('A')]
     out.append('\n(Brasil: valor de mercado estimado como no script sem2021; serve para comparar as versões entre si.)')
-    (ROOT / 'crescimento_picos.md').write_text('\n'.join(out)); print('\n'.join(out))
-    bm.bench_plot({k: v for k, v in navs.items() if k in bm.ORDER or k.startswith('Top 20')}, ROOT / 'crescimento_picos.png',
+    (ROOT / f'crescimento_picos{SUF}.md').write_text('\n'.join(out)); print('\n'.join(out))
+    bm.bench_plot({k: v for k, v in navs.items() if k in bm.ORDER or k.startswith('Top 20')}, ROOT / f'crescimento_picos{SUF}.png',
                   'Regra de picos no crescimento: Top 20 com e sem × comparativos obrigatórios (EUA)')
 
 

@@ -265,3 +265,10 @@ picos no lugar de tirar 2021; (C) as duas juntas. Mais os 9 comparativos obrigat
 **Resultado (2026-11-14):** EUA pior: Top 20 20,5% → 19,7%; OoL novo 18,2% → 17,6%; High ROIC 21,5% → 20,4%; High Growth 20,6% → 21,2%. A regra mudou o crescimento
 em 37% das observações (agressiva demais: funde ciclos reais, não só eventos únicos). Brasil: Top 20 13,5% nas três versões; OoL novo A 12,8%, B 13,8%, C 13,0%.
 Nada adotado; decisão do usuário pendente.
+
+## 2026-11-14 — Pré-registro: regra de picos menos agressiva (pedido do usuário)
+Igual à anterior, mas o pico/vale exige lucro ≥ **2×** (ou ≤ ½) a média geométrica dos vizinhos (antes 1,5×). Mesmos testes (EUA e Brasil A/B/C).
+Atenção: limite escolhido depois de ver o resultado de 1,5× (risco de sobreajuste maior).
+**Resultado 2× (2026-11-14):** EUA: Top 20 20,5% → 22,4% (pior queda −34,4% → −32,0%); OoL novo 18,2% = 18,2%; High ROIC 21,5% = 21,5%; High Growth 20,6% → 21,7%;
+GCGR novo 16,8% → 15,2%. Mudou 21% das observações (1,5×: 37%). Hoje sai J&J, entra Arch Capital. Brasil: Top 20 A 13,5%, B 13,2%, C 13,5%; OoL A 12,8%, B 13,6%, C 13,2%.
+Ganho grande na Top 20 com limite escolhido após ver o 1,5× — tratar com cautela. Decisão do usuário pendente.
