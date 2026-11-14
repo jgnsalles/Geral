@@ -210,3 +210,8 @@ Mesma janela para todas (a partir do 4º trimestre da amostra). Antes e depois d
 **Resultado (2026-11-14):** EUA 06/2012–09/2026, 20 ações trimestral 19,0% (16,3% após IR); mensal 19,2%; anual 18,1%; 10 ações trimestral 22,7% (19,4% após IR),
 mas o anual com 10 ações varia de 17,9% a 22,8% conforme o mês de início (sinal de concentração/sorte). Brasil: trimestral 14,9% com 15 ou 20 ações; anual perde ~2,5 p.p.
 Mensal não agrega em nenhum dos dois. Candidata mantida (20, trimestral); 10 ações fica como observação, não como mudança.
+
+## 2026-11-14 — Investigação do ROIC, etapa 1 (diagnóstico; nada é adotado aqui)
+(1) Quanto a estratégia depende da definição do ROIC: Top 20 congelada com o ROIC oficial (B), com o clássico (A), com o menor dos dois (conservador)
+e sem o filtro de ROIC (P/E justo continua com o B). (2) Auditoria componente por componente das ações das carteiras de hoje nos EUA.
+(3) Diagnóstico dos casos extremos (ROIC > 100%, capital quase zero, patrimônio negativo, dados faltando).
