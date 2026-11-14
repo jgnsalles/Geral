@@ -18,20 +18,18 @@ def top20(c, adj, dates):
 
 
 def main():
-    f, dates = bm.base_data(); adj = bm.load_prices()['adj_close']
-    r3 = pd.read_csv(D / 'roic3.csv', parse_dates=['date'])
-    m = with_tri(f, r3).drop(columns=['roic_tri', 'roic_oficial'])
-    navs, n, _, _ = bm.load_benchmarks()
-    navs['Top 20 (estratégia) — ROIC oficial'] = top20(bm.classify_new(f), adj, dates); n['Top 20 (estratégia) — ROIC oficial'] = 20
-    ct = bm.classify_new(m)
-    navs['Top 20 (estratégia) — ROIC triangulado'] = top20(ct, adj, dates); n['Top 20 (estratégia) — ROIC triangulado'] = 20
-    for k, msk in bm.holdings_new(ct).items():
-        if k == 'Cyclicals': continue
-        lab = f'{k} — ROIC triangulado'
-        navs[lab] = run_portfolio({d: g.ticker.tolist() for d, g in ct[msk].groupby('date')}, adj, dates)[0]; n[lab] = ct[msk].groupby('date').size().mean()
+    adj = bm.load_prices()['adj_close']
+    navs, n, dates, _ = bm.load_benchmarks()  # ja com o ROIC oficial novo (triangulado com outliers)
+    for lab_, file_ in (('ROIC antigo', None), ('triangulado sem regra de outliers', 'roic3_sem_outliers.csv'), ('triangulado com outliers (oficial)', 'roic3.csv')):
+        f, dates = bm.base_data(file_); c = bm.classify_new(f)
+        navs[f'Top 20 — {lab_}'] = top20(c, adj, dates); n[f'Top 20 — {lab_}'] = 20
+        if file_ != 'roic3.csv':
+            for k, msk in bm.holdings_new(c).items():
+                if k in ('OoL novo', 'OoL High ROIC (novo)'):
+                    navs[f'{k} — {lab_}'] = run_portfolio({d: g.ticker.tolist() for d, g in c[msk].groupby('date')}, adj, dates)[0]; n[f'{k} — {lab_}'] = c[msk].groupby('date').size().mean()
     out = ['# Regra congelada com o ROIC triangulado × ROIC oficial (EUA, point-in-time)\n',
            '> ⚠️ **O ROIC pode estar errado** — aqui comparamos a definição antiga com a nova (triangulada, com a regra de "arte" do usuário).\n',
-           'As 9 linhas obrigatórias usam o ROIC oficial; as linhas "— ROIC triangulado" refazem as classes novas e a estratégia com o ROIC novo.\n'] + bm.bench_table(navs, n)
+           'As 9 linhas obrigatórias já usam o ROIC oficial novo (triangulado com a regra de outliers). As outras comparam com o ROIC antigo e com o triangulado sem a regra de outliers.\n'] + bm.bench_table(navs, n)
     (ROOT / 'roic3_backtest.md').write_text('\n'.join(out)); print('\n'.join(out))
     bm.bench_plot(navs, ROOT / 'roic3_backtest.png', 'ROIC triangulado × oficial: estratégia e classes novas × comparativos obrigatórios')
 

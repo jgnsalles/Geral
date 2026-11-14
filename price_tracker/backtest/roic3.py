@@ -41,6 +41,23 @@ def year_vals(s, y):
     return v
 
 
+OUTLIERS = True  # regra de outliers pre-registrada em 2026-11-14
+
+
+def drop_outliers(vals):
+    """vals: 6 ROICs anuais (antigo -> recente). Tira outliers so entre os 4 mais antigos; mantem no minimo 3 valores."""
+    v = np.array(vals, dtype=float); ok = np.isfinite(v)
+    if ok.sum() < 4: return list(v)
+    med = np.median(v[ok]); mad = np.median(np.abs(v[ok] - med))
+    sig = max(1.4826 * mad, .25 * abs(med), .02)
+    out = v.copy()
+    cand = sorted([i for i in range(len(v) - 2) if ok[i] and abs(v[i] - med) > 3 * sig], key=lambda i: -abs(v[i] - med))
+    for i in cand:
+        if np.isfinite(out).sum() <= 3: break
+        out[i] = np.nan
+    return list(out)
+
+
 def combine(a, p, m):
     ok = lambda x: x is not None and np.isfinite(x) and 0 <= x <= 2.0
     cl = lambda x: min(x, 1.5)
@@ -108,6 +125,7 @@ def one(args):
                 out.append(nop[y] / c if y in nop and c is not None and c > 0 else np.nan)
             return out
         ra, rp = series(ast), series(pas)
+        if OUTLIERS: ra, rp = drop_outliers(ra), drop_outliers(rp)
         a = engine.roic_metric(ra); p = engine.roic_metric(rp)
         reinv = []
         for y in range(last - 5, last):
@@ -134,7 +152,7 @@ def main():
     jobs = [(t, fn, [pd.Timestamp(d) for d in ds]) for t, fn, ds in jobs]
     with Pool(4) as pool:
         res = pool.map(one, jobs, chunksize=4)
-    out = pd.DataFrame([r for rr in res for r in rr]); out.to_csv(D / 'roic3.csv', index=False); print(out.shape)
+    out = pd.DataFrame([r for rr in res for r in rr]); out.to_csv(D / ('roic3.csv' if OUTLIERS else 'roic3_sem_outliers.csv'), index=False); print(out.shape)
     print(out.regra.value_counts(normalize=True))
 
 

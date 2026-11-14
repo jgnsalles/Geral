@@ -8,105 +8,105 @@ Regra: dentro de cada classe, P/L ≥ 4; as 20 de maior retorno esperado (menos,
 # EUA — 30/09/2026
 
 
-## Opportunity of Lifetime: 20 ações (classe tem 52; P/L < 4 fora: 1)
+## Opportunity of Lifetime: 20 ações (classe tem 52; P/L < 4 fora: 0)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | COIN | Coinbase | Financial Exchanges & Data | **3,8%** | 374% | 12% | 441% | 42 | 24 |
-| 2 | SMCI | Supermicro | Technology Hardware, Storage & Peripherals | **2,8%** | 181% | 25% | 94% | 13 | 45 |
-| 3 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 138% | 95% | 123% | 47 | 61 |
-| 4 | MO | Altria | Tobacco | **5,6%** | 102% | 57% | 43% | 16 | 50 |
-| 5 | EXPE | Expedia Group | Hotels, Resorts & Cruise Lines | **3,1%** | 93% | 26% | 69% | 27 | 45 |
-| 6 | EME | Emcor | Construction & Engineering | **3,1%** | 91% | 40% | 62% | 27 | 50 |
+| 2 | SMCI | Supermicro | Technology Hardware, Storage & Peripherals | **2,8%** | 186% | 28% | 94% | 13 | 48 |
+| 3 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 139% | 133% | 123% | 47 | 61 |
+| 4 | MO | Altria | Tobacco | **5,5%** | 101% | 48% | 43% | 16 | 48 |
+| 5 | EXPE | Expedia Group | Hotels, Resorts & Cruise Lines | **3,1%** | 91% | 23% | 69% | 27 | 43 |
+| 6 | EME | Emcor | Construction & Engineering | **3,0%** | 90% | 36% | 62% | 27 | 48 |
 | 7 | HIG | Hartford (The) | Property & Casualty Insurance | **3,1%** | 82% | 17% | 30% | 9 | 29 |
-| 8 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **7,6%** | 63% | 55% | 71% | 66 | 53 |
-| 9 | PTC | PTC Inc. | Application Software | **2,2%** | 61% | 14% | 51% | 23 | 29 |
-| 10 | CMG | Chipotle Mexican Grill, Inc. | Restaurants | **3,4%** | 60% | 55% | 39% | 28 | 47 |
+| 8 | JNJ | Johnson & Johnson | Pharmaceuticals | **10,0%** | 64% | 24% | 42% | 24 | 40 |
+| 9 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **7,6%** | 61% | 45% | 71% | 66 | 51 |
+| 10 | PTC | PTC Inc. | Application Software | **2,1%** | 58% | 13% | 51% | 23 | 27 |
 | 11 | WRB | W. R. Berkley Corporation | Property & Casualty Insurance | **2,7%** | 58% | 18% | 29% | 15 | 30 |
-| 12 | FIX | Comfort Systems USA | Construction & Engineering | **4,0%** | 57% | 42% | 62% | 57 | 50 |
+| 12 | FIX | Comfort Systems USA | Construction & Engineering | **4,0%** | 56% | 37% | 62% | 57 | 49 |
 | 13 | TRV | Travelers Companies (The) | Property & Casualty Insurance | **4,7%** | 55% | 15% | 28% | 13 | 26 |
-| 14 | AVGO | Broadcom Inc. | Semiconductors | **10,0%** | 52% | 18% | 77% | 74 | 38 |
-| 15 | LII | Lennox International | Building Products | **1,9%** | 51% | 47% | 19% | 16 | 35 |
-| 16 | GL | Globe Life | Life & Health Insurance | **1,9%** | 50% | 28% | 18% | 12 | 28 |
-| 17 | QCOM | QUALCOMM Incorporated | Semiconductors | **7,5%** | 49% | 38% | 40% | 37 | 45 |
-| 18 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 48% | 33% | 36% | 31 | 42 |
-| 19 | TROW | T. Rowe Price | Asset Management & Custody Banks | **2,5%** | 47% | 21% | 16% | 11 | 24 |
-| 20 | AMZN | Amazon.com, Inc. | Broadline Retail | **10,0%** | 46% | 22% | 42% | 35 | 39 |
+| 14 | DXCM | Dexcom | Health Care Equipment | **3,1%** | 54% | 51% | 47% | 41 | 50 |
+| 15 | AVGO | Broadcom Inc. | Semiconductors | **10,0%** | 53% | 18% | 77% | 74 | 38 |
+| 16 | CMG | Chipotle Mexican Grill, Inc. | Restaurants | **3,4%** | 51% | 23% | 39% | 28 | 38 |
+| 17 | LII | Lennox International | Building Products | **1,8%** | 50% | 39% | 19% | 16 | 34 |
+| 18 | QCOM | QUALCOMM Incorporated | Semiconductors | **7,4%** | 50% | 43% | 40% | 37 | 46 |
+| 19 | GL | Globe Life | Life & Health Insurance | **1,9%** | 50% | 28% | 18% | 12 | 28 |
+| 20 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 49% | 37% | 36% | 31 | 43 |
 
-## Good Companies, Great Returns: 20 ações (classe tem 28; P/L < 4 fora: 0)
+## Good Companies, Great Returns: 20 ações (classe tem 27; P/L < 4 fora: 0)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | APP | AppLovin Corporation | Advertising | **6,9%** | 156% | 54% | 115% | 30 | 56 |
-| 2 | CMCSA | Comcast | Cable & Satellite | **6,2%** | 144% | 15% | 30% | 4 | 28 |
-| 3 | WDC | Western Digital Corporation | Technology Hardware, Storage & Peripherals | **9,2%** | 131% | 22% | 84% | 19 | 43 |
-| 4 | PODD | Insulet Corporation | Health Care Equipment | **2,1%** | 99% | 18% | 97% | 37 | 39 |
-| 5 | PGR | Progressive Corporation | Property & Casualty Insurance | **7,6%** | 94% | 27% | 34% | 11 | 36 |
-| 6 | BKNG | Booking Holdings Inc. | Hotels, Resorts & Cruise Lines | **4,6%** | 91% | 75% | 54% | 25 | 54 |
-| 7 | SBAC | SBA Communications | Telecom Tower REITs | **2,9%** | 91% | 18% | 51% | 16 | 37 |
-| 8 | FISV | Fiserv | Transaction & Payment Processing Services | **3,4%** | 61% | 10% | 27% | 7 | 17 |
-| 9 | JBL | Jabil Inc. | Electronic Manufacturing Services | **3,9%** | 49% | 31% | 51% | 48 | 46 |
-| 10 | LDOS | Leidos | Diversified Support Services | **2,8%** | 48% | 13% | 21% | 11 | 22 |
-| 11 | FSLR | First Solar, Inc. | Semiconductors | **3,0%** | 42% | 16% | 18% | 12 | 25 |
-| 12 | TTD | The Trade Desk | Application Software | **1,7%** | 40% | 22% | 15% | 14 | 28 |
-| 13 | OTIS | Otis Worldwide Corporation | Industrial Machinery & Supplies & Components | **3,5%** | 38% | 108% | 15% | 18 | 34 |
-| 14 | TRGP | Targa Resources | Oil & Gas Storage & Transportation | **5,4%** | 34% | 10% | 48% | 32 | 20 |
-| 15 | GS | The Goldman Sachs Group, Inc. | Investment Banking & Brokerage | **10,0%** | 31% | 11% | 27% | 18 | 19 |
-| 16 | GILD | Gilead Sciences | Biotechnology | **9,5%** | 30% | 14% | 24% | 22 | 25 |
-| 17 | DPZ | Domino's Pizza, Inc. | Restaurants | **2,2%** | 29% | 123% | 9% | 17 | 30 |
-| 18 | AZO | AutoZone | Automotive Retail | **4,8%** | 29% | 67% | 13% | 20 | 32 |
-| 19 | USB | U.S. Bancorp | Diversified Banks | **6,7%** | 28% | 11% | 16% | 13 | 16 |
-| 20 | CPRT | Copart, Inc. | Diversified Support Services | **3,5%** | 27% | 24% | 13% | 18 | 27 |
+| 1 | APP | AppLovin Corporation | Advertising | **7,1%** | 154% | 46% | 115% | 30 | 55 |
+| 2 | WDC | Western Digital Corporation | Technology Hardware, Storage & Peripherals | **9,4%** | 128% | 20% | 84% | 19 | 41 |
+| 3 | PODD | Insulet Corporation | Health Care Equipment | **2,2%** | 96% | 17% | 97% | 37 | 37 |
+| 4 | PGR | Progressive Corporation | Property & Casualty Insurance | **7,8%** | 94% | 27% | 34% | 11 | 36 |
+| 5 | BKNG | Booking Holdings Inc. | Hotels, Resorts & Cruise Lines | **4,7%** | 84% | 33% | 54% | 25 | 47 |
+| 6 | SBAC | SBA Communications | Telecom Tower REITs | **2,9%** | 76% | 13% | 51% | 16 | 28 |
+| 7 | FISV | Fiserv | Transaction & Payment Processing Services | **3,5%** | 61% | 10% | 27% | 7 | 17 |
+| 8 | JBL | Jabil Inc. | Electronic Manufacturing Services | **4,0%** | 48% | 29% | 51% | 48 | 44 |
+| 9 | LDOS | Leidos | Diversified Support Services | **2,8%** | 46% | 12% | 21% | 11 | 21 |
+| 10 | FSLR | First Solar, Inc. | Semiconductors | **3,1%** | 44% | 17% | 18% | 12 | 25 |
+| 11 | TTD | The Trade Desk | Application Software | **1,7%** | 41% | 24% | 15% | 14 | 28 |
+| 12 | TRGP | Targa Resources | Oil & Gas Storage & Transportation | **5,6%** | 40% | 12% | 48% | 32 | 25 |
+| 13 | OTIS | Otis Worldwide Corporation | Industrial Machinery & Supplies & Components | **3,6%** | 38% | 91% | 15% | 18 | 34 |
+| 14 | GS | The Goldman Sachs Group, Inc. | Investment Banking & Brokerage | **10,0%** | 31% | 11% | 27% | 18 | 19 |
+| 15 | GILD | Gilead Sciences | Biotechnology | **9,7%** | 29% | 13% | 24% | 22 | 24 |
+| 16 | DPZ | Domino's Pizza, Inc. | Restaurants | **2,3%** | 28% | 68% | 9% | 17 | 29 |
+| 17 | USB | U.S. Bancorp | Diversified Banks | **6,9%** | 28% | 11% | 16% | 13 | 16 |
+| 18 | AZO | AutoZone | Automotive Retail | **5,0%** | 27% | 42% | 13% | 20 | 31 |
+| 19 | CPRT | Copart, Inc. | Diversified Support Services | **3,6%** | 27% | 24% | 13% | 18 | 27 |
+| 20 | RMD | ResMed Inc. | Health Care Equipment | **4,0%** | 24% | 23% | 15% | 21 | 28 |
 
 ## OoL High ROIC (ROIC > 30%): 20 ações (classe tem 25; P/L < 4 fora: 0)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 138% | 95% | 123% | 47 | 61 |
-| 2 | MO | Altria | Tobacco | **4,0%** | 102% | 57% | 43% | 16 | 50 |
-| 3 | EME | Emcor | Construction & Engineering | **2,2%** | 91% | 40% | 62% | 27 | 50 |
-| 4 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **5,5%** | 63% | 55% | 71% | 66 | 53 |
-| 5 | CMG | Chipotle Mexican Grill, Inc. | Restaurants | **2,5%** | 60% | 55% | 39% | 28 | 47 |
-| 6 | FIX | Comfort Systems USA | Construction & Engineering | **2,9%** | 57% | 42% | 62% | 57 | 50 |
-| 7 | LII | Lennox International | Building Products | **1,3%** | 51% | 47% | 19% | 16 | 35 |
-| 8 | QCOM | QUALCOMM Incorporated | Semiconductors | **5,4%** | 49% | 38% | 40% | 37 | 45 |
-| 9 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 48% | 33% | 36% | 31 | 42 |
-| 10 | GOOGL | Alphabet Inc. | Interactive Media & Services | **10,0%** | 44% | 33% | 34% | 32 | 41 |
-| 11 | NFLX | Netflix, Inc. | Movies & Entertainment | **6,6%** | 41% | 38% | 28% | 28 | 40 |
-| 12 | FICO | Fair Isaac Corporation | Application Software | **1,4%** | 40% | 61% | 21% | 22 | 38 |
+| 1 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 139% | 133% | 123% | 47 | 61 |
+| 2 | MO | Altria | Tobacco | **4,0%** | 101% | 48% | 43% | 16 | 48 |
+| 3 | EME | Emcor | Construction & Engineering | **2,2%** | 90% | 36% | 62% | 27 | 48 |
+| 4 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **5,5%** | 61% | 45% | 71% | 66 | 51 |
+| 5 | FIX | Comfort Systems USA | Construction & Engineering | **2,9%** | 56% | 37% | 62% | 57 | 49 |
+| 6 | DXCM | Dexcom | Health Care Equipment | **2,2%** | 54% | 51% | 47% | 41 | 50 |
+| 7 | LII | Lennox International | Building Products | **1,3%** | 50% | 39% | 19% | 16 | 34 |
+| 8 | QCOM | QUALCOMM Incorporated | Semiconductors | **5,4%** | 50% | 43% | 40% | 37 | 46 |
+| 9 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 49% | 37% | 36% | 31 | 43 |
+| 10 | GOOGL | Alphabet Inc. | Interactive Media & Services | **10,0%** | 46% | 44% | 34% | 32 | 44 |
+| 11 | NFLX | Netflix, Inc. | Movies & Entertainment | **6,5%** | 41% | 37% | 28% | 28 | 40 |
+| 12 | FICO | Fair Isaac Corporation | Application Software | **1,4%** | 39% | 55% | 21% | 22 | 38 |
 | 13 | IBKR | Interactive Brokers Group, Inc. | Investment Banking & Brokerage | **4,9%** | 31% | 76% | 28% | 38 | 41 |
-| 14 | MSI | Motorola Solutions | Communications Equipment | **3,3%** | 29% | 34% | 25% | 35 | 38 |
-| 15 | NTAP | NetApp | Technology Hardware, Storage & Peripherals | **2,5%** | 29% | 55% | 22% | 33 | 39 |
-| 16 | FTNT | Fortinet | Systems Software | **4,4%** | 25% | 234% | 38% | 74 | 50 |
-| 17 | MSFT | Microsoft Corporation | Systems Software | **10,0%** | 25% | 32% | 20% | 29 | 33 |
-| 18 | DE | Deere & Company | Agricultural & Farm Machinery | **5,1%** | 25% | 46% | 23% | 36 | 38 |
-| 19 | MCO | Moody's Corporation | Financial Exchanges & Data | **3,4%** | 23% | 62% | 21% | 33 | 34 |
-| 20 | SPGI | S&P Global Inc. | Financial Exchanges & Data | **4,3%** | 23% | 60% | 19% | 28 | 32 |
+| 14 | NTAP | NetApp | Technology Hardware, Storage & Peripherals | **2,4%** | 29% | 70% | 22% | 33 | 40 |
+| 15 | MSI | Motorola Solutions | Communications Equipment | **3,3%** | 28% | 31% | 25% | 35 | 37 |
+| 16 | MSFT | Microsoft Corporation | Systems Software | **10,0%** | 27% | 43% | 20% | 29 | 35 |
+| 17 | FTNT | Fortinet | Systems Software | **4,4%** | 25% | 150% | 38% | 74 | 50 |
+| 18 | MCO | Moody's Corporation | Financial Exchanges & Data | **3,4%** | 23% | 62% | 21% | 33 | 34 |
+| 19 | SPGI | S&P Global Inc. | Financial Exchanges & Data | **4,2%** | 23% | 60% | 19% | 28 | 32 |
+| 20 | ANET | Arista Networks, Inc. | Communications Equipment | **6,1%** | 22% | 143% | 35% | 74 | 48 |
 
-## OoL High Growth (EPS > 30%): 20 ações (classe tem 22; P/L < 4 fora: 0)
+## OoL High Growth (EPS > 30%): 20 ações (classe tem 24; P/L < 4 fora: 0)
 
 | # | Ação | Empresa | Setor | Peso | Retorno esperado | ROIC | Cresc. EPS | P/L | P/E justo |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | COIN | Coinbase | Financial Exchanges & Data | **2,7%** | 374% | 12% | 441% | 42 | 24 |
-| 2 | SMCI | Supermicro | Technology Hardware, Storage & Peripherals | **1,9%** | 181% | 25% | 94% | 13 | 45 |
-| 3 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 138% | 95% | 123% | 47 | 61 |
-| 4 | MO | Altria | Tobacco | **3,9%** | 102% | 57% | 43% | 16 | 50 |
-| 5 | EXPE | Expedia Group | Hotels, Resorts & Cruise Lines | **2,2%** | 93% | 26% | 69% | 27 | 45 |
-| 6 | EME | Emcor | Construction & Engineering | **2,1%** | 91% | 40% | 62% | 27 | 50 |
-| 7 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **5,3%** | 63% | 55% | 71% | 66 | 53 |
-| 8 | PTC | PTC Inc. | Application Software | **1,5%** | 61% | 14% | 51% | 23 | 29 |
-| 9 | CMG | Chipotle Mexican Grill, Inc. | Restaurants | **2,4%** | 60% | 55% | 39% | 28 | 47 |
-| 10 | FIX | Comfort Systems USA | Construction & Engineering | **2,8%** | 57% | 42% | 62% | 57 | 50 |
-| 11 | AVGO | Broadcom Inc. | Semiconductors | **10,0%** | 52% | 18% | 77% | 74 | 38 |
-| 12 | QCOM | QUALCOMM Incorporated | Semiconductors | **5,2%** | 49% | 38% | 40% | 37 | 45 |
-| 13 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 48% | 33% | 36% | 31 | 42 |
-| 14 | AMZN | Amazon.com, Inc. | Broadline Retail | **10,0%** | 46% | 22% | 42% | 35 | 39 |
-| 15 | GOOGL | Alphabet Inc. | Interactive Media & Services | **10,0%** | 44% | 33% | 34% | 32 | 41 |
-| 16 | DXCM | Dexcom | Health Care Equipment | **2,2%** | 42% | 18% | 47% | 41 | 36 |
-| 17 | HWM | Howmet Aerospace Inc. | Aerospace & Defense | **3,5%** | 37% | 14% | 59% | 61 | 31 |
-| 18 | FTNT | Fortinet | Systems Software | **4,3%** | 25% | 234% | 38% | 74 | 50 |
-| 19 | DELL | Dell Technologies | Technology Hardware, Storage & Peripherals | **7,0%** | 25% | 25% | 39% | 62 | 39 |
-| 20 | MPWR | Monolithic Power Systems, Inc. | Semiconductors | **3,0%** | 20% | 36% | 44% | 105 | 46 |
+| 1 | COIN | Coinbase | Financial Exchanges & Data | **2,4%** | 374% | 12% | 441% | 42 | 24 |
+| 2 | SMCI | Supermicro | Technology Hardware, Storage & Peripherals | **1,7%** | 186% | 28% | 94% | 13 | 48 |
+| 3 | NVDA | NVIDIA Corporation | Semiconductors | **10,0%** | 139% | 133% | 123% | 47 | 61 |
+| 4 | MO | Altria | Tobacco | **3,5%** | 101% | 48% | 43% | 16 | 48 |
+| 5 | EXPE | Expedia Group | Hotels, Resorts & Cruise Lines | **1,9%** | 91% | 23% | 69% | 27 | 43 |
+| 6 | EME | Emcor | Construction & Engineering | **1,9%** | 90% | 36% | 62% | 27 | 48 |
+| 7 | JNJ | Johnson & Johnson | Pharmaceuticals | **8,2%** | 64% | 24% | 42% | 24 | 40 |
+| 8 | STX | Seagate Technology | Technology Hardware, Storage & Peripherals | **4,7%** | 61% | 45% | 71% | 66 | 51 |
+| 9 | PTC | PTC Inc. | Application Software | **1,3%** | 58% | 13% | 51% | 23 | 27 |
+| 10 | FIX | Comfort Systems USA | Construction & Engineering | **2,5%** | 56% | 37% | 62% | 57 | 49 |
+| 11 | DXCM | Dexcom | Health Care Equipment | **1,9%** | 54% | 51% | 47% | 41 | 50 |
+| 12 | AVGO | Broadcom Inc. | Semiconductors | **10,0%** | 53% | 18% | 77% | 74 | 38 |
+| 13 | CMG | Chipotle Mexican Grill, Inc. | Restaurants | **2,1%** | 51% | 23% | 39% | 28 | 38 |
+| 14 | QCOM | QUALCOMM Incorporated | Semiconductors | **4,6%** | 50% | 43% | 40% | 37 | 46 |
+| 15 | META | Meta Platforms, Inc. | Interactive Media & Services | **10,0%** | 49% | 37% | 36% | 31 | 43 |
+| 16 | GOOGL | Alphabet Inc. | Interactive Media & Services | **10,0%** | 46% | 44% | 34% | 32 | 44 |
+| 17 | AMZN | Amazon.com, Inc. | Broadline Retail | **10,0%** | 42% | 18% | 42% | 35 | 35 |
+| 18 | HWM | Howmet Aerospace Inc. | Aerospace & Defense | **3,1%** | 38% | 15% | 59% | 61 | 32 |
+| 19 | FTNT | Fortinet | Systems Software | **3,8%** | 25% | 150% | 38% | 74 | 50 |
+| 20 | DELL | Dell Technologies | Technology Hardware, Storage & Peripherals | **6,2%** | 25% | 24% | 39% | 62 | 39 |
 
 # Brasil — 30/09/2026
 

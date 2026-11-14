@@ -243,3 +243,13 @@ o backtest com a regra congelada vem depois, contra o ROIC oficial atual.
 **Resultado (2026-11-14):** Top 20 com ROIC triangulado 20,3% a.a. (oficial 19,9%; S&P 15,6%), pior queda −32,7% (oficial −28,1%).
 OoL novo 17,1% → 18,3%; High ROIC 18,8% → 21,7%; High Growth 19,3% → 20,5%; GCGR novo 16,9% → 16,5%. Ganho pequeno, mas na direção certa em quase
 todas as classes, com uma definição mais defensável. Adoção depende do usuário.
+
+## 2026-11-14 — Decisão: ROIC triangulado adotado como oficial nos EUA; pré-registro da regra de outliers
+Decisão do usuário: adotar o ROIC triangulado (financeiras e seguradoras de saúde seguem com ROE). Médias e pequenas, estrangeiras e Brasil ainda não têm
+os dados novos e seguem com a definição anterior.
+**Regra de outliers (pedido do usuário: "tira outliers, não 2021 como regra")**, aplicada à série anual de cada visão (ativo e passivo) antes da média de 6 anos:
+um ano é outlier se |ROIC do ano − mediana dos 6 anos| > 3 × σ, com σ = máx(1,4826 × desvio absoluto mediano, 25% da mediana em módulo, 2 p.p.).
+Só os 4 anos mais antigos podem sair (os 2 mais recentes sempre ficam, para não punir quem está melhorando, como a NVIDIA); ficam no mínimo 3 anos.
+Comparação: Top 20 e classes novas com o triangulado sem e com a regra de outliers, mais os 9 comparativos obrigatórios.
+**Resultado da regra de outliers (2026-11-14):** neutra. Top 20: 20,3% → 20,5%; OoL novo 18,3% → 18,2%; High ROIC 21,7% → 21,5%. Adotada (decisão do usuário).
+Com o ROIC novo: OoL novo 18,2%, GCGR novo 16,8%, High ROIC 21,5%, High Growth 20,6%, Top 20 20,5% (S&P 15,6%).

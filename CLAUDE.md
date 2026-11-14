@@ -19,6 +19,13 @@ são assumidos 0 (ver `flags` em `price_tracker/data/hybrid_*.csv`). Um bug do c
 
 **Correções de 2026-11-10 (aprovadas):** seguradoras de saúde (UNH, ELV, CNC, HUM, MOH, CI) usam **ROE**, como financeiras (`engine.HEALTH_INSURERS`). Bug corrigido: o imobilizado de utilities e REITs não era lido (Entergy com ROIC de 140–370%). Ainda em aberto: VICI (ativos são arrendamentos financeiros, não imobilizado), empresas com patrimônio negativo (Otis, etc.) e ROIC > 100% em empresas leves em ativos.
 
+**ROIC oficial nos EUA desde 2026-11-14 (decisão do usuário): ROIC triangulado** (`backtest/roic3.py`, `benchmarks.ROIC_FILE`). Três visões por exercício:
+ativo (imobilizado + direito de uso + ágio + intangíveis + investimentos de longo prazo + capital de giro operacional), passivo (patrimônio + minoritários +
+dívida + dívida de arrendamento − caixa − aplicações) e marginal (Δ NOPAT 5 anos ÷ reinvestimento acumulado); NOPAT inclui juros dos arrendamentos e equivalência.
+Regra de "arte" do usuário: visão < 0 ou > 200% descartada, 150–200% conta 150%; ativo e passivo próximos (≤ 2×) → média; divergentes → a mais próxima do
+marginal, senão a menor. Regra de outliers na série anual (só os 4 anos mais antigos podem sair; 3σ robusto). Financeiras e seguradoras de saúde: ROE.
+Médias e pequenas, estrangeiras e Brasil ainda usam a definição anterior. Pendentes: empresas com banco próprio (Deere), P&D capitalizado.
+
 O que já se sabe (teste de 2026-11-09, ver `price_tracker/README.md`):
 - O ROIC vem do Wisesheets e **não é o ROIC clássico**. Calibrado: NOPAT ÷ (ativo total − passivo circulante),
   com valores de fim de ano. Isso inclui caixa e goodwill no denominador e não trata leasing.

@@ -29,11 +29,20 @@ def sector_maps():
     return sec, ind
 
 
-def base_data():
+ROIC_FILE = 'roic3.csv'  # 2026-11-14 (decisao do usuario): ROIC triangulado com regra de outliers e o oficial nos EUA; None = definicao antiga (B)
+
+
+def base_data(roic=ROIC_FILE):
+    """roic: arquivo do ROIC triangulado (empresas operacionais; financeiras seguem com ROE) ou None para a definicao antiga."""
     f = pd.read_csv(D / 'val_features.csv', parse_dates=['date'])
     first = f[f.pit_member].groupby('date').size(); start = first[first >= 300].index.min()
     dates = sorted(d for d in f.date.unique() if d >= start)
     f = f[f.date.isin(dates) & f.pit_member].reset_index(drop=True)
+    if roic:
+        r3 = pd.read_csv(D / roic, parse_dates=['date'])[['date', 'ticker', 'roic_tri']]
+        f = f.merge(r3, on=['date', 'ticker'], how='left')
+        f['roic_antigo'] = f.roic
+        f['roic'] = np.where(f.fin, f.roic, f.roic_tri); f = f.drop(columns='roic_tri')
     return f, dates
 
 
