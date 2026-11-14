@@ -8,6 +8,7 @@ import top_n  # noqa: E402
 from pesos import run_weighted  # noqa: E402
 from backtest import D  # noqa: E402
 from roic3_backtest import top20  # noqa: E402
+from pesos import DUAL  # noqa: E402
 
 
 def score(x, cols):
@@ -20,7 +21,8 @@ def score(x, cols):
 def build(F, n, wt='eq'):
     out = {}
     for d, g in F.groupby('date'):
-        ch = g.sort_values('score').head(n)
+        g = g.assign(firm=g.ticker.map(lambda t: DUAL.get(t, t))).sort_values('score').drop_duplicates('firm')  # classe dupla conta uma vez
+        ch = g.head(n)
         out[d] = pd.Series(1.0, index=ch.ticker) if wt == 'eq' else top_n.cap(pd.Series(np.sqrt(ch.mcap.values), index=ch.ticker), .10)
     return out
 
@@ -49,6 +51,8 @@ def main():
     y['score'] = score(y, [('roic', False), ('growth', False), ('pe', True)]); V['2. ROIC + G + P/L'] = y
     z = allm[allm.pe.notna() & allm.roic.notna() & allm.growth.notna() & allm.mcap.notna()].copy()
     z['score'] = score(z, [('roic', False), ('growth', False), ('pe', True)]); V['3. ROIC + G + P/L, com financeiras e utilities'] = z
+    V['5. ROIC + G + P/L, sem cíclicos e vestuário'] = y[~y.excluded].assign(score=lambda d: score(d, [('roic', False), ('growth', False), ('pe', True)]))
+    V['6. ROIC + G + P/L, sem cíclicos e vestuário, com financeiras e utilities'] = z[~z.excluded].assign(score=lambda d: score(d, [('roic', False), ('growth', False), ('pe', True)]))
     o = base[~base.fin & (base.sector != 'Utilities') & base.roc.notna() & base.ey.notna()].copy()
     o['score'] = score(o, [('roc', False), ('ey', False)])
     navs, n, _, _ = bm.load_benchmarks()
@@ -56,7 +60,7 @@ def main():
     navs['Fórmula Mágica original — Top 20, peso igual'] = run_weighted(build(o, 20), adj, dates); n['Fórmula Mágica original — Top 20, peso igual'] = 20
     navs['Fórmula Mágica original — Top 20, raiz'] = run_weighted(build(o, 20, 'sqrt'), adj, dates); n['Fórmula Mágica original — Top 20, raiz'] = 20
     for k, F in V.items():
-        main_ = k.startswith('1.') or k.startswith('2.')
+        main_ = k[:2] in ('1.', '2.', '5.')
         navs[f'{k} — Top 20, peso igual'] = run_weighted(build(F, 20), adj, dates); n[f'{k} — Top 20, peso igual'] = 20
         navs[f'{k} — Top 20, raiz'] = run_weighted(build(F, 20, 'sqrt'), adj, dates); n[f'{k} — Top 20, raiz'] = 20
         if main_:
@@ -77,14 +81,14 @@ def main():
     for col in E.columns: q = E[col].loc[t1:].dropna(); sub[col] = q / q.iloc[0]
     out += ['', f'## 2. Período dos ETFs ({t1:%m/%Y}–{dates[-1]:%m/%Y})\n'] + bm.bench_table(sub, n)
     u = pd.read_csv(D / 'universe.csv').drop_duplicates('ticker').set_index('ticker')
-    for k in ('1. ROIC + G + EV/EBIT', '2. ROIC + G + P/L'):
-        F = V[k]; l = F[F.date == F.date.max()].sort_values('score').head(20)
+    for k in ('5. ROIC + G + P/L, sem cíclicos e vestuário', '4. ROIC + G + EV/EBIT, sem cíclicos e vestuário'):
+        F = V[k]; l = F[F.date == F.date.max()].assign(firm=lambda d: d.ticker.map(lambda t: DUAL.get(t, t))).sort_values('score').drop_duplicates('firm').head(20)
         out += ['', f'## Hoje ({F.date.max():%m/%Y}) — {k}, Top 20\n', '| # | Ação | Empresa | Setor | ROIC | Crescimento | ' + ('EV/EBIT' if 'EV' in k else 'P/L') + ' |', '|---|---|---|---|---|---|---|']
         out += [f"| {i} | {r.ticker} | {str(u.name.get(r.ticker, r.ticker))[:28]} | {r.sector} | {r.roic:.0%} | {r.growth:.0%} | {(r.ev_ebit if 'EV' in k else r.pe):.1f} |".replace('.', ',')
                 for i, r in enumerate(l.itertuples(), 1)]
     (ROOT / 'magic_g.md').write_text('\n'.join(out)); print('\n'.join(out))
     bm.bench_plot({k: v for k, v in navs.items() if k in bm.ORDER or k.startswith('Top 20 da') or k in ('Fórmula Mágica original — Top 20, peso igual',
-                   '1. ROIC + G + EV/EBIT — Top 20, peso igual', '1. ROIC + G + EV/EBIT — Top 20, raiz', '2. ROIC + G + P/L — Top 20, raiz')},
+                   '1. ROIC + G + EV/EBIT — Top 20, peso igual', '1. ROIC + G + EV/EBIT — Top 20, raiz', '2. ROIC + G + P/L — Top 20, raiz', '4. ROIC + G + EV/EBIT, sem cíclicos e vestuário — Top 20, raiz', '5. ROIC + G + P/L, sem cíclicos e vestuário — Top 20, raiz')},
                   ROOT / 'magic_g.png', 'Fórmula Mágica com G × original × Top 20 OoL × comparativos obrigatórios (S&P 500)')
 
 

@@ -325,3 +325,12 @@ mercado e teto de 10%; Top 30 com troca anual (média de 4). Comparações: Fór
 com G + P/L 18,3% (65/64/100%); com G + P/L e financeiras/utilities 18,9% (74/81/100%); **com G + EV/EBIT sem cíclicos e vestuário 19,7% (96/99/100%)**;
 Top 20 OoL 20,5% (100/100/100%). Colocar o G melhora a Fórmula; tirar cíclicos e vestuário é o que mais ajuda (as listas sem o filtro trazem Delta, CF,
 Deckers, Lululemon, Ralph Lauren). Nenhuma versão bate a Top 20 OoL no período todo. Obs.: classes duplas (GOOG/GOOGL) não foram unificadas nestas versões.
+
+## 2026-11-14 — Pré-registro: ROIC + G + P/L sem cíclicos e vestuário (pedido do usuário)
+(5) ROIC + G + P/L, sem financeiras e utilities, sem cíclicos e vestuário (produto testado); (6) igual, com financeiras (ROE) e utilities (sensibilidade).
+Pensado depois de ver os resultados anteriores (risco de sobreajuste). Correção junto: classes duplas (GOOG/GOOGL etc.) contam uma vez só em todas as versões;
+todas as versões anteriores são recalculadas com essa correção.
+**Resultado (2026-11-14, com classes duplas unificadas):** (5) ROIC + G + P/L sem cíclicos e vestuário: Top 20 raiz 20,7% a.a. (janelas 3a/5a/10a 97/98/100%, pior queda −32,2%),
+peso igual 20,6% (99/100/100%); Top 20 OoL 20,5% (100/100/100%, −34,4%). (6) com financeiras e utilities: 19,7%. 2019–2026: (5) 23,5% × Top 20 OoL 21,1%.
+Empate técnico com a estratégia congelada usando só um ranking de três números — confirma que a vantagem vem de ROIC + crescimento + preço razoável + filtro de setores.
+Pensado depois dos testes anteriores: não substitui a regra congelada sem decisão do usuário.
