@@ -191,3 +191,9 @@ Comparações: MSCI ACWI (ACWI), S&P 500, as Top 20 de cada base sozinha e os 9 
 **Resultado do teste mundo (2026-11-12, 06/2014–09/2026, em dólares):** Top 20 mundo 14,4% a.a. (sem o ajuste do Brasil 14,6%) contra ACWI 10,3% e S&P 500 13,6%.
 Pior que a Top 20 só do S&P 500 no mesmo período (17,2%). As médias e pequenas dominam a lista (67% das posições) com retornos esperados extremos e dados ruidosos
 (hoje: Cal-Maine com crescimento de 338%, Power Solutions com ROIC de 2.258%, Rayonier com ROIC de 444%). Juntar as bases não melhorou o resultado.
+
+## 2026-11-14 — Pré-registro: versão de giro menor (pedido do usuário)
+Igual à candidata congelada, com uma regra de permanência: a ação que já está na carteira só sai se cair para fora do **top 30** do ranking de
+retorno esperado (ou deixar de ser elegível); as vagas são preenchidas pelas melhores do ranking que ainda não estão na carteira. Continua com 20 ações,
+raiz do valor de mercado com teto de 10%, trimestral. Produto testado: top 30. Sensibilidade: top 25 e top 40.
+Medidas: retorno antes e depois de 15% de IR sobre ganho realizado, trades por ano, giro e tempo de permanência. EUA e Brasil.
