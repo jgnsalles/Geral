@@ -339,3 +339,9 @@ Pensado depois dos testes anteriores: não substitui a regra congelada sem decis
 Top 20 OoL 20,5% (janelas 3a/5a/10a 100/100/100%); OoL High ROIC 21,5% (95/100/100%); OoL High Growth 20,6% (92/100/100%); ROIC + G + P/L sem cíclicos 20,7%
 (97/98/100%); N1 (todas com ROIC ≥ 12% e crescimento ≥ 15%, raiz) 18,9% (100/100/100%); N2 (ROIC > 30% e crescimento > 30%, ~9 ações) 24,5% raiz (86/88/100%,
 pior queda −45%); OoL novo 18,2%; S&P 15,6%. Modelos nulos recalculados com o ROIC novo e classes duplas unificadas.
+
+## 2026-11-14 — Relatório comparativo das 6 finalistas (EUA, 2011–2026)
+`relatorio/calc.py` → `relatorio/dados.json` e `relatorio/finalistas.html` (publicado). Retorno a.a. / depois do IR / janelas 3a-5a-10a / pior queda / trades por ano:
+Top 20 OoL 20,5% / 17,8% / 100-100-100% / −34% / 32; High ROIC 21,4% / 18,7% / 95-100-100% / −36% / 13; High Growth 20,7% / 18,1% / 92-100-100% / −34% / 15;
+ROIC + G + P/L 20,7% / 17,8% / 97-98-100% / −32% / 37; Todas as de qualidade 18,9% / 17,1% / 100-100-100% / −33% / 39 (giro 41%); As excepcionais 24,6% / 22,3% /
+86-88-100% / −45% / 6 (maior posição em média 43%; NVIDIA > 1/3 do ganho). Sobreposição média Top 20 × ROIC + G + P/L 53%; demais pares 16–40%.
