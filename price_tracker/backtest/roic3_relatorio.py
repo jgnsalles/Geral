@@ -65,7 +65,7 @@ def main():
         x, y = lr.loc[t], lf.loc[t]
         rows.append(dict(ticker=t, empresa=str(u.name.get(t, t))[:28], setor=str(u.industry.get(t, ''))[:30], na_carteira=t in set(h.ticker), oficial=y.roic_oficial,
                          ativo=x.roic_ativo, passivo=x.roic_passivo, marginal=x.roic_marg, triangulado=x.roic_tri, regra=x.regra, alerta=x.alerta_qualidade))
-    R = pd.DataFrame(rows); R['dif'] = R.triangulado - R.oficial; R.to_csv(ROOT / 'roic3_relatorio.csv', index=False)
+    R = pd.DataFrame(rows).drop_duplicates('ticker'); R['dif'] = R.triangulado - R.oficial; R.to_csv(ROOT / 'roic3_relatorio.csv', index=False)
     out += ['', '## 3. Empresa por empresa (exercício mais recente, resumo de 6 anos)\n',
             'Carteiras de hoje, empresas conhecidas e as 15 maiores diferenças. "Corte" = muda de lado nos 12%.\n',
             '| Ação | Empresa | Setor | Carteira | Oficial (antigo) | Ativo | Passivo | Marginal | **Triangulado** | Regra | Alerta |', '|---|---|---|---|---|---|---|---|---|---|---|']
