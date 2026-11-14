@@ -345,3 +345,9 @@ pior queda −45%); OoL novo 18,2%; S&P 15,6%. Modelos nulos recalculados com o 
 Top 20 OoL 20,5% / 17,8% / 100-100-100% / −34% / 32; High ROIC 21,4% / 18,7% / 95-100-100% / −36% / 13; High Growth 20,7% / 18,1% / 92-100-100% / −34% / 15;
 ROIC + G + P/L 20,7% / 17,8% / 97-98-100% / −32% / 37; Todas as de qualidade 18,9% / 17,1% / 100-100-100% / −33% / 39 (giro 41%); As excepcionais 24,6% / 22,3% /
 86-88-100% / −45% / 6 (maior posição em média 43%; NVIDIA > 1/3 do ganho). Sobreposição média Top 20 × ROIC + G + P/L 53%; demais pares 16–40%.
+
+## 2026-11-14 — Cenário "mundo sem NVIDIA" (pedido do usuário; análise de sensibilidade, não muda regra)
+A NVIDIA sai do universo em todas as datas (as estratégias escolhem a próxima da fila). Referência: S&P 500 sem NVIDIA (S&P 500 ajustado pela diferença
+entre um S&P sintético com peso por valor de mercado com e sem a NVIDIA). Os 9 comparativos obrigatórios também são refeitos sem a NVIDIA.
+**Resultado (sem NVIDIA):** S&P 500 15,6% → 14,9%. Top 20 OoL 20,5% → 20,3% (vantagem sobre o índice 5,0 → 5,4 p.p.; janelas 100/100/100%); High ROIC 21,4% → 20,2%;
+High Growth 20,7% → 19,8%; ROIC + G + P/L 20,7% → 19,8%; Todas as de qualidade 18,9% → 18,0%; As excepcionais 24,6% → 21,0% (vantagem 9,0 → 6,1 p.p.).
