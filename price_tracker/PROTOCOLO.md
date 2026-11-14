@@ -334,3 +334,8 @@ todas as versões anteriores são recalculadas com essa correção.
 peso igual 20,6% (99/100/100%); Top 20 OoL 20,5% (100/100/100%, −34,4%). (6) com financeiras e utilities: 19,7%. 2019–2026: (5) 23,5% × Top 20 OoL 21,1%.
 Empate técnico com a estratégia congelada usando só um ranking de três números — confirma que a vantagem vem de ROIC + crescimento + preço razoável + filtro de setores.
 Pensado depois dos testes anteriores: não substitui a regra congelada sem decisão do usuário.
+
+## 2026-11-14 — Ranking consolidado das estratégias (EUA, S&P 500, 2011–2026, ROIC triangulado)
+Top 20 OoL 20,5% (janelas 3a/5a/10a 100/100/100%); OoL High ROIC 21,5% (95/100/100%); OoL High Growth 20,6% (92/100/100%); ROIC + G + P/L sem cíclicos 20,7%
+(97/98/100%); N1 (todas com ROIC ≥ 12% e crescimento ≥ 15%, raiz) 18,9% (100/100/100%); N2 (ROIC > 30% e crescimento > 30%, ~9 ações) 24,5% raiz (86/88/100%,
+pior queda −45%); OoL novo 18,2%; S&P 15,6%. Modelos nulos recalculados com o ROIC novo e classes duplas unificadas.
