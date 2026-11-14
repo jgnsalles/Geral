@@ -215,3 +215,27 @@ Mensal não agrega em nenhum dos dois. Candidata mantida (20, trimestral); 10 a�
 (1) Quanto a estratégia depende da definição do ROIC: Top 20 congelada com o ROIC oficial (B), com o clássico (A), com o menor dos dois (conservador)
 e sem o filtro de ROIC (P/E justo continua com o B). (2) Auditoria componente por componente das ações das carteiras de hoje nos EUA.
 (3) Diagnóstico dos casos extremos (ROIC > 100%, capital quase zero, patrimônio negativo, dados faltando).
+
+## 2026-11-14 — Pré-registro: ROIC triangulado (definição do usuário + revisão da literatura)
+Referências: McKinsey *Valuation* (capital investido pelo lado operacional e pelo do financiamento), Damodaran (arrendamentos capitalizados,
+capital do início do ano), Mauboussin (ROIC incremental sobre o reinvestimento acumulado), Greenblatt (capital tangível) e o ROCE do Wisesheets (descartado).
+**Três visões, calculadas por exercício (capital médio do ano) e resumidas como hoje: média de (média dos 3 últimos anos, média dos 6):**
+1. **Ativo** = imobilizado (inclui propriedades de óleo e gás) + direito de uso de arrendamentos + ágio + intangíveis (vida definida e indefinida)
+   + investimentos de longo prazo (participações e coligadas) + capital de giro operacional
+   [(ativo circulante − caixa − aplicações de curto prazo) − (passivo circulante − dívida de curto prazo − arrendamento de curto prazo)].
+2. **Passivo** = patrimônio + minoritários + dívida total (curto + longo prazo) + dívida de arrendamento − caixa − aplicações de curto prazo.
+3. **Marginal** = (NOPAT ajustado do ano t − NOPAT ajustado de t−5) ÷ reinvestimento acumulado de t−5 a t−1 (capex − depreciação + aquisições + variação
+   do capital de giro); sem valor se o reinvestimento ≤ 0.
+**Numerador (ativo e passivo):** NOPAT = lucro operacional × (1 − alíquota efetiva, entre 0 e 50%; 21% se indefinida) + juros implícitos dos arrendamentos
+× (1 − alíquota) [dívida de arrendamento × taxa média informada; 5% se não houver] + resultado de equivalência patrimonial × (1 − alíquota).
+**Arrendamentos antes de 2019** (fora do balanço): dívida = valor presente a 5% da tabela de aluguéis futuros da nota; ativo de direito de uso = esse mesmo valor.
+**Financeiras e seguradoras de saúde:** continuam com ROE (sem mudança).
+**Regra de "arte" (combinação), definida pelo usuário:**
+ a) cada visão: < 0 ou > 200% é descartada; entre 150% e 200% conta como 150%;
+ b) ativo e passivo válidos e próximos (maior ≤ 2× a menor): ROIC = média dos dois;
+ c) muito diferentes (> 2×): vale a mais próxima do marginal; sem marginal válido, a menor;
+ d) só uma das duas válida: ela; nenhuma válida mas alguma > 200%: 150%; nenhuma: usa o marginal se válido, senão sem ROIC;
+ e) o marginal não entra na média; alerta "qualidade caindo" se marginal < 12% e reinvestimento acumulado pequeno (< 10% do capital).
+**Marginal:** ano sem capex ou depreciação é completado pela média dos anos com dado (mínimo 3 de 5). **Correções de dado incluídas:** intangíveis de vida indefinida (Comcast etc.), imobilizado de petroleiras, aplicações de curto prazo fora do capital de giro.
+**Não entra agora (variante futura):** capitalização de P&D. **Ordem:** primeiro a conferência empresa por empresa (validação qualitativa do usuário);
+o backtest com a regra congelada vem depois, contra o ROIC oficial atual.
