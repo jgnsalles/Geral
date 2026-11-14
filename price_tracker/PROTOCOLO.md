@@ -197,3 +197,6 @@ Igual à candidata congelada, com uma regra de permanência: a ação que já es
 retorno esperado (ou deixar de ser elegível); as vagas são preenchidas pelas melhores do ranking que ainda não estão na carteira. Continua com 20 ações,
 raiz do valor de mercado com teto de 10%, trimestral. Produto testado: top 30. Sensibilidade: top 25 e top 40.
 Medidas: retorno antes e depois de 15% de IR sobre ganho realizado, trades por ano, giro e tempo de permanência. EUA e Brasil.
+**Resultado (2026-11-14):** top 30 não ajudou. EUA: 19,9% → 19,6% antes do IR e 17,2% → 17,0% depois; trades por ano 32 → 21. Brasil: 13,5% → 12,8% e
+11,7% → 11,2% depois do IR. O custo do IR caiu só 0,2 p.p. porque o rebalanceamento trimestral dos pesos (podar as que subiram) também realiza ganho.
+Candidata mantida sem mudança.

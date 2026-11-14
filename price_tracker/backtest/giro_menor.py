@@ -104,7 +104,7 @@ def main():
         out += [f'\n## {lab} ({dates[0]:%m/%Y}–{dates[-1]:%m/%Y}, em {curr}; {bench[1]} {pc(sb)} a.a. antes de IR)\n',
                 '| Versão | Retorno anual antes do IR | Depois de 15% de IR | Custo do IR | Pior queda | Trades por ano | Giro de peso no ano | Tempo médio na carteira |',
                 '|---|---|---|---|---|---|---|---|']
-        out += [f'| {nm} | **{pc(a)}** | **{pc(b)}** | {(a - b) * 100:.1f} p.p.'.replace('.', ',') + f' | {pc(dd)} | {n:.0f} | {g:.0%} | {h:.0f} meses |' for nm, a, b, dd, n, g, h in rows]
+        out += [f'| {nm} | **{pc(a)}** | **{pc(b)}** | {(a - b) * 100:.1f}'.replace('.', ',') + ' p.p.' + f' | {pc(dd)} | {n:.0f} | {g:.0%} | {h:.0f} meses |' for nm, a, b, dd, n, g, h in rows]
     # comparativos obrigatorios (EUA)
     navs, nn, _, _ = bm.load_benchmarks()
     for k, v in US_navs.items():
