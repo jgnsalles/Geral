@@ -304,3 +304,10 @@ esperado > 20%, sem cíclicos/vestuário). Fica 1 mês no ETF de maior nota. Com
 **Resultado (2026-11-14):** troca mensal 18,9% a.a. (trimestral 18,7%; SPYG parado 18,3%; S&P 15,2%; Top 20 em ações 21,1%). Bate o S&P em 59% das janelas de 3 anos
 e 95% das de 5 (trimestral: 43% e 82%). Contra o SPYG parado: 63% (3a) e 32% (5a); os 2 ETFs com mais OoL, troca mensal: 85% e 68%. 13 trocas em 82 meses.
 Melhora pouco sobre o trimestral; continua bem atrás da Top 20 em ações (100%/100% contra o S&P).
+
+## 2026-11-14 — Pré-registro: Fórmula Mágica de Joel Greenblatt (comparação, pedido do usuário)
+Regra do livro (*The Little Book That Beats the Market*): retorno sobre capital = EBIT ÷ (capital de giro líquido + imobilizado líquido); rendimento =
+EBIT ÷ valor da firma (valor de mercado + dívida + minoritários − caixa − aplicações). Ordena cada um, soma as posições, compra as melhores.
+Sem financeiras e sem utilities. Dados do último exercício conhecido na data (SEC, point-in-time), universo S&P 500 point-in-time.
+Versões: Top 20 e Top 30 em peso igual, rebalanceamento trimestral; Top 30 com troca anual (média das 4 versões, como no livro); Top 20 com o nosso peso
+(raiz do valor de mercado, teto 10%). Comparações: 9 obrigatórios, Top 20 da estratégia, e no período 2019–2026 os ETFs (2 com mais OoL, troca mensal; SPYG).

@@ -77,6 +77,7 @@ def main():
     out += ['', '## Contra o SPYG parado\n'] + bm.bench_table(sub, bn, ref='SPYG parado')
     out += ['', f'**Trocas de ETF (mensal):** {sw} em {len(ch)} meses. Vezes escolhido: ' + ', '.join(f'{k} {v}' for k, v in ch.value_counts().items())]
     (ROOT / 'resultado_mensal.md').write_text('\n'.join(out)); print('\n'.join(out))
+    pd.DataFrame({k: out_n[k] for k in ('Os 2 ETFs com mais OoL — troca mensal', 'ETF com mais OoL — troca mensal', 'ETF com mais OoL — troca trimestral')}).to_csv(ROOT / 'navs_etf.csv')
     bm.bench_plot({k: v for k, v in out_n.items() if k in bm.ORDER or k in sub}, ROOT / 'resultado_mensal.png', 'ETF com mais OoL: troca mensal × trimestral × SPYG × Top 20 e comparativos obrigatórios')
 
 
