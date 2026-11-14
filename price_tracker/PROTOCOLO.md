@@ -239,3 +239,7 @@ capital do início do ano), Mauboussin (ROIC incremental sobre o reinvestimento 
 **Marginal:** ano sem capex ou depreciação é completado pela média dos anos com dado (mínimo 3 de 5). **Correções de dado incluídas:** intangíveis de vida indefinida (Comcast etc.), imobilizado de petroleiras, aplicações de curto prazo fora do capital de giro.
 **Não entra agora (variante futura):** capitalização de P&D. **Ordem:** primeiro a conferência empresa por empresa (validação qualitativa do usuário);
 o backtest com a regra congelada vem depois, contra o ROIC oficial atual.
+**2026-11-14:** conferência aceita pelo usuário ("Ok"); segue o backtest da regra congelada com o ROIC triangulado contra o oficial.
+**Resultado (2026-11-14):** Top 20 com ROIC triangulado 20,3% a.a. (oficial 19,9%; S&P 15,6%), pior queda −32,7% (oficial −28,1%).
+OoL novo 17,1% → 18,3%; High ROIC 18,8% → 21,7%; High Growth 19,3% → 20,5%; GCGR novo 16,9% → 16,5%. Ganho pequeno, mas na direção certa em quase
+todas as classes, com uma definição mais defensável. Adoção depende do usuário.
