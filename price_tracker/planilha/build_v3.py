@@ -12,9 +12,12 @@ from openpyxl.worksheet.formula import ArrayFormula
 import zipfile, shutil, re
 
 HERE = pathlib.Path(__file__).parent
-TEST = json.load(open(sys.argv[sys.argv.index('--teste') + 1])) if '--teste' in sys.argv else None
-OUT = HERE / ('Price_Tracker_v3_teste.xlsx' if TEST else 'Price_Tracker_v3.xlsx')
-TICKERS = json.load(open(HERE / 'tickers.json')) if not TEST else list(TEST['tickers'])
+API = json.load(open(HERE / 'wise_dados.json'))  # dados da API do Wisesheets (planilha/wise_api.py)
+TEST = None
+OUT = HERE / 'Price_Tracker_v3.xlsx'
+TICKERS = API['tickers']
+import datetime as _dt
+ATUALIZADO = _dt.date.today().strftime('%d/%m/%Y')
 CODES = json.load(open(HERE / 'codes.json'))
 R0, NROWS = 6, 400
 R1 = R0 + NROWS - 1
@@ -45,7 +48,7 @@ def hdr(ws, r, c, text, w=None, fill=HEAD, color=WHITE, wrap=True):
 PR.sheet_view.showGridLines = False
 PR.column_dimensions['B'].width = 34; PR.column_dimensions['C'].width = 14; PR.column_dimensions['E'].width = 34; PR.column_dimensions['F'].width = 30
 hdr(PR, 2, 2, 'Parâmetro'); hdr(PR, 2, 3, 'Valor')
-params = [('ANO', 'Último exercício fechado', 2025, '0'),  # número fixo: TODAY() é volátil e faria o Wisesheets refazer as chamadas a cada recálculo
+params = [('ATUALIZADO', 'Dados do Wisesheets (API) em', ATUALIZADO, '@'),
           ('ROIC_ALTO', 'ROIC: corte de qualidade', 0.12, PCT), ('ROIC_BAIXO', 'ROIC: piso', 0.10, PCT),
           ('CRESC_ALTO', 'Crescimento do EPS: corte', 0.15, PCT), ('CRESC_BAIXO', 'Crescimento do EPS: piso', 0.06, PCT),
           ('ZG_CORTE', 'zGrowth máximo (estabilidade)', 2.93, '0.00'),
@@ -58,44 +61,44 @@ params = [('ANO', 'Último exercício fechado', 2025, '0'),  # número fixo: TOD
           ('PL_MIN', 'P/L mínimo (Top 20)', 4, '0'), ('N_CARTEIRA', 'Ações na carteira', 20, '0'), ('TETO', 'Peso máximo por ação', 0.10, PCT0),
           ('VISAO_MAX', 'ROIC: visão descartada acima de', 2.0, PCT0), ('VISAO_TETO', 'ROIC: visão limitada a', 1.5, PCT0),
           ('DIVERG', 'ROIC: ativo e passivo "próximos" até', 2.0, '0.0x'), ('TAXA_ARR', 'Juros implícitos dos arrendamentos', 0.05, PCT),
-          ('IR_PADRAO', 'Alíquota quando o IR não faz sentido', 0.21, PCT),
-          ('ARR_ATIVO', 'Arrendamentos somam ao capital (ativo)', 'Sim', '@'), ('ARR_DIVIDA', 'Arrendamentos somam à dívida (passivo)', 'Sim' if TEST else 'Não', '@')]
+          ('IR_PADRAO', 'Alíquota quando o IR não faz sentido', 0.21, PCT)]
 for i, (nm, lab, v, f) in enumerate(params):
     r = 3 + i; PR.cell(r, 2, lab).font = fnt(); x = PR.cell(r, 3, v); x.font = fnt(color=BLUE); x.fill = INP; x.number_format = f
     x.alignment = Alignment(horizontal='right'); name(nm, f"'Parâmetros'!$C${r}")
     if nm.startswith('ARR_'):
         dv = DataValidation(type='list', formula1='"Sim,Não"', allow_blank=False); PR.add_data_validation(dv); dv.add(x)
-# listas
-hdr(PR, 2, 5, 'Cíclicas (indústria)'); hdr(PR, 2, 6, 'Vestuário (indústria)')
-CYC = ['Oil & Gas Exploration & Production', 'Oil & Gas Equipment & Services', 'Oil & Gas Drilling', 'Oil & Gas Refining & Marketing', 'Copper', 'Steel',
-       'Agricultural Inputs', 'Department Stores', 'Airlines, Airports & Air Services', 'Recreational Vehicles', 'Gambling, Resorts & Casinos',
-       'Electronic Gaming & Multimedia', 'Insurance - Diversified', 'Medical - Distribution', 'Leisure']
-APP = ['Apparel - Manufacturers', 'Apparel - Footwear & Accessories', 'Luxury Goods']
-for i in range(30):
-    for col, lst in ((5, CYC), (6, APP)):
-        x = PR.cell(3 + i, col, lst[i] if i < len(lst) else None); x.font = fnt(color=BLUE); x.fill = INP
-name('CICLICAS', "'Parâmetros'!$E$3:$E$32"); name('VESTUARIO', "'Parâmetros'!$F$3:$F$32")
-r = 4 + len(params)
-hdr(PR, r, 2, 'Usa ROE (sem ROIC)'); hdr(PR, r, 3, '')
-for i, v in enumerate(['Financial Services', 'Medical - Healthcare Plans']):
-    x = PR.cell(r + 1 + i, 2, v); x.font = fnt(color=BLUE); x.fill = INP
-name('ROE_LISTA', f"'Parâmetros'!$B${r + 1}:$B${r + 6}")
-hdr(PR, r + 8, 2, 'Fora da Fórmula Mágica (setor)')
-for i, v in enumerate(['Financial Services', 'Utilities']):
-    x = PR.cell(r + 9 + i, 2, v); x.font = fnt(color=BLUE); x.fill = INP
-name('JG_FORA', f"'Parâmetros'!$B${r + 9}:$B${r + 12}")
+# listas por código SIC (de / até)
+SIC_TABS = [('CIC', 'Cíclicas (SIC)', [(1000, 1099), (1220, 1241), (1311, 1311), (1381, 1389), (2911, 2911), (3310, 3317), (3330, 3339), (2870, 2879),
+                                       (5311, 5311), (4512, 4512), (3751, 3751), (7990, 7999), (5122, 5122), (3944, 3944)]),
+            ('VES', 'Vestuário (SIC)', [(2200, 2399), (3020, 3021), (3100, 3199)]),
+            ('ROE', 'Usa ROE (SIC)', [(6000, 6499), (6700, 6797), (6799, 6799)]),
+            ('JGF', 'Fora da Fórmula Mágica (SIC)', [(6000, 6499), (6700, 6797), (6799, 6799), (4900, 4999)])]
+for ti, (nm, title, rows) in enumerate(SIC_TABS):
+    c0 = 5 + ti * 3
+    hdr(PR, 2, c0, title, 10); PR.merge_cells(start_row=2, start_column=c0, end_row=2, end_column=c0 + 1)
+    hdr(PR, 3, c0, 'De', 9, fill=SUB, color=INK); hdr(PR, 3, c0 + 1, 'Até', 9, fill=SUB, color=INK)
+    for i in range(20):
+        for j in range(2):
+            x = PR.cell(4 + i, c0 + j, rows[i][j] if i < len(rows) else None); x.font = fnt(color=BLUE); x.fill = INP
+    name(f'{nm}_DE', f"'Parâmetros'!${L(c0)}$4:${L(c0)}$23"); name(f'{nm}_ATE', f"'Parâmetros'!${L(c0 + 1)}$4:${L(c0 + 1)}$23")
+    PR.column_dimensions[L(c0 + 2)].width = 3
+
+hdr(PR, 26, 5, 'Nunca cíclica / vestuário (ticker)', 16); PR.merge_cells(start_row=26, start_column=5, end_row=26, end_column=6)
+for i in range(10):
+    x = PR.cell(27 + i, 5, ['CTAS'][i] if i < 1 else None); x.font = fnt(color=BLUE); x.fill = INP
+name('NAO_CIC', "'Parâmetros'!$E$27:$E$36")
 
 # ------------------------------------------------------------------ Classes
 C.sheet_view.showGridLines = False
 CLASSES = [('Opportunity of Lifetime', '1B5E20', WHITE), ('Good Companies, Great Returns', '43A047', WHITE), ('Excellent but Fair', 'A5D6A7', INK),
            ('Good but Margin of Safety Required', 'C8E6C9', INK), ('Cheap Slow Compounder', 'FFF59D', INK), ('Interesting but Requires Attention', 'FFE082', INK),
            ('Cheap but Aggressive', 'FFCC80', INK), ('Expensive for what you get', 'FFAB91', INK), ('Investable but Not Good', 'EF9A9A', INK),
-           ('Expensive', 'E57373', INK), ('Do not Waste Time', 'BDBDBD', INK), ('Cyclicals', '8D6E63', WHITE)]
+           ('Expensive', 'E57373', INK), ('Do not Waste Time', 'BDBDBD', INK), ('Cyclicals', '8D6E63', WHITE), ('Sem dados', 'F2F2F2', '9E9E9E')]
 hdr(C, 2, 2, '#', 5); hdr(C, 2, 3, 'Classe', 34); hdr(C, 2, 4, 'Ações', 9)
 for i, (cl, bg, fg) in enumerate(CLASSES):
     r = 3 + i; C.cell(r, 2, i + 1).font = fnt(); x = C.cell(r, 3, cl); x.font = fnt(bold=True, color=fg); x.fill = PatternFill('solid', fgColor=bg)
     y = C.cell(r, 4, f"=COUNTIF('Ações'!$N${R0}:$N${R1},C{r})"); y.font = fnt(); y.number_format = NUM0
-name('CLASSE_ORDEM', "'Classes'!$C$3:$C$14")
+name('CLASSE_ORDEM', "'Classes'!$C$3:$C$15")
 hdr(C, 2, 7, 'Cresc.', 8); hdr(C, 2, 8, 'zG', 6); hdr(C, 2, 9, 'ROIC', 7); hdr(C, 2, 10, 'zROIC', 7); hdr(C, 2, 11, 'Retorno', 8); hdr(C, 2, 12, 'Classe', 34); hdr(C, 2, 13, 'Código', 9)
 for i, row in enumerate(CODES):
     r = 3 + i
@@ -110,40 +113,28 @@ Dd.cell(R0 - 1, 2, 'Ticker'); Dd.column_dimensions['B'].width = 11
 for r in range(R0, R1 + 1): Dd.cell(r, 2, f"='Ações'!B{r}").font = fnt()
 col = 3
 COL = {}  # chave -> coluna (ou lista de colunas por ano)
-PRICE_F = [('nome', 'Name'), ('setor', 'Sector'), ('ind', 'Industry'), ('preco', 'Price'), ('mcap', 'Market Cap')]
-for key, wise in PRICE_F:
-    hdr(Dd, R0 - 3, col, {'nome': 'Empresa', 'setor': 'Setor', 'ind': 'Indústria', 'preco': 'Preço', 'mcap': 'Valor de mercado'}[key], 14)
-    x = Dd.cell(R0 - 2, col, wise); x.font = fnt(color=BLUE); x.fill = INP
+PRICE_F = [('nome', 'name'), ('sic', 'sic'), ('ind', 'sicDescription'), ('preco', 'price'), ('mcap', 'marketCap')]
+PLAB = {'nome': 'Empresa', 'sic': 'SIC', 'ind': 'Atividade (SIC)', 'preco': 'Preço', 'mcap': 'Valor de mercado'}
+for key, api in PRICE_F:
+    hdr(Dd, R0 - 3, col, PLAB[key], 14); x = Dd.cell(R0 - 2, col, api); x.font = fnt(size=8, color=GREY)
     COL[key] = col; col += 1
-FIELDS = [('opinc', 'Operating Income', 'Lucro operacional'), ('pretax', 'Income Before Tax', 'Lucro antes do IR'), ('tax', 'Income Tax Expense', 'IR'),
-          ('ni', 'Net Income', 'Lucro líquido'), ('eps', 'EPS Diluted', 'EPS'), ('ppe', 'Property Plant Equipment Net', 'Imobilizado'),
-          ('gw', 'Goodwill', 'Ágio'), ('intang', 'Intangible Assets', 'Intangíveis'), ('ltinv', 'Long Term Investments', 'Invest. longo prazo'),
-          ('tca', 'Total Current Assets', 'Ativo circulante'), ('cash', 'Cash And Cash Equivalents', 'Caixa'), ('stinv', 'Short Term Investments', 'Aplicações'),
-          ('tcl', 'Total Current Liabilities', 'Passivo circulante'), ('std', 'Short Term Debt', 'Dívida curto prazo'), ('debt', 'Total Debt', 'Dívida total'),
-          ('lease', 'Capital Lease Obligations', 'Arrendamentos'), ('eq', 'Total Stockholders Equity', 'Patrimônio'),
-          ('capex', 'Capital Expenditure', 'Capex'), ('da', 'Depreciation And Amortization', 'Depreciação')]
-YRS = [4, 3, 2, 1, 0]  # ANO-4 ... ANO
-BLOCKS = {}  # (primeira, ultima coluna, tipo)
-for key, wise, lab in FIELDS: COL[key] = {}
-# 1 chamada: EPS de 6 exercicios (tickers x anos)
-first = col
-for k in [5] + YRS:
-    hdr(Dd, R0 - 3, col, 'EPS', 9); x = Dd.cell(R0 - 2, col, 'EPS Diluted' if k == 5 else None)
-    if k == 5: x.font = fnt(color=BLUE); x.fill = INP
-    y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'; y.alignment = Alignment(horizontal='center')
-    COL['eps'][k] = col; col += 1
-BLOCKS['eps'] = (first, col - 1, 'anos')
-# 5 chamadas: todos os demais campos de um exercicio (tickers x campos); o ultimo inclui o dividend yield
-for k in YRS:
-    first = col
-    for key, wise, lab in FIELDS + ([('dyy', 'Dividend Yield', 'Dividend yield')] if k == 0 else []):
-        if key == 'eps': continue
-        COL.setdefault(key, {})
-        hdr(Dd, R0 - 3, col, lab, 11); x = Dd.cell(R0 - 2, col, wise); x.font = fnt(color=BLUE); x.fill = INP
-        y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'; y.alignment = Alignment(horizontal='center')
+FIELDS = [('opinc', 'operating_income', 'Lucro operacional'), ('pretax', 'pretax_income', 'Lucro antes do IR'), ('tax', 'income_tax_expense', 'IR'),
+          ('ni', 'net_income', 'Lucro líquido'), ('eps', 'eps_diluted', 'EPS'), ('ppe', 'property_plant_equipment_net', 'Imobilizado'),
+          ('rou', 'operating_lease_right_of_use_assets', 'Direito de uso'), ('gw', 'goodwill', 'Ágio'), ('intang', 'intangible_assets', 'Intangíveis'),
+          ('ltinv', 'long_term_investments', 'Invest. longo prazo'), ('tca', 'total_current_assets', 'Ativo circulante'), ('cash', 'cash_and_cash_equivalents', 'Caixa'),
+          ('stinv', 'short_term_investments', 'Aplicações'), ('tcl', 'total_current_liabilities', 'Passivo circulante'), ('std', 'short_term_debt', 'Dívida curto prazo'),
+          ('debt', 'total_debt', 'Dívida total'), ('lease', 'total_lease_obligations', 'Arrendamentos'), ('eq', 'total_stockholders_equity', 'Patrimônio'),
+          ('mino', 'minority_interest', 'Minoritários'), ('capex', 'capital_expenditures', 'Capex'), ('da', 'depreciation_and_amortization', 'Depreciação'),
+          ('acq', 'acquisitions_net', 'Aquisições'), ('eqinc', 'income_from_equity_method_investments', 'Equivalência'), ('dps', 'dividends_per_share', 'Dividendo/ação')]
+YRS = [4, 3, 2, 1, 0]  # exercícios: último = 0 (cada empresa com o seu último ano fiscal)
+YLAB = {0: 'Último', 1: 'Últ. −1', 2: 'Últ. −2', 3: 'Últ. −3', 4: 'Últ. −4'}
+for key, api, lab in FIELDS:
+    COL[key] = {}
+    for k in YRS:
+        hdr(Dd, R0 - 3, col, lab, 11); x = Dd.cell(R0 - 2, col, api); x.font = fnt(size=8, color=GREY)
+        y = Dd.cell(R0 - 1, col, YLAB[k]); y.font = fnt(bold=True, size=9); y.alignment = Alignment(horizontal='center')
         COL[key][k] = col; col += 1
-    BLOCKS[k] = (first, col - 1, 'campos')
-COL['dy'] = COL['dyy'][0]
+hdr(Dd, R0 - 3, col, 'Dividend yield', 11, fill=SUB, color=INK); COL['dy'] = col; col += 1
 RAW_LAST = col - 1
 # cálculos por ano
 CALC = ['t', 'nopat', 'wc', 'ativo', 'passivo', 'ra', 'rp', 'roe']
@@ -151,15 +142,15 @@ CL = {'t': 'Alíquota', 'nopat': 'NOPAT', 'wc': 'Capital de giro', 'ativo': 'Cap
 for key in CALC:
     COL[key] = {}
     for k in YRS:
-        hdr(Dd, R0 - 3, col, CL[key], 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'
+        hdr(Dd, R0 - 3, col, CL[key], 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, YLAB[k]); y.font = fnt(bold=True, size=9)
         COL[key][k] = col; col += 1
 COL['reinv'] = {}
 for k in [3, 2, 1, 0]:
-    hdr(Dd, R0 - 3, col, 'Reinvestimento', 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'
+    hdr(Dd, R0 - 3, col, 'Reinvestimento', 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, YLAB[k]); y.font = fnt(bold=True, size=9)
     COL['reinv'][k] = col; col += 1
 COL['gr'] = {}
-for k in YRS:
-    hdr(Dd, R0 - 3, col, 'Cresc. EPS', 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'
+for k in [3, 2, 1, 0]:
+    hdr(Dd, R0 - 3, col, 'Cresc. EPS', 11, fill=SUB, color=INK); y = Dd.cell(R0 - 1, col, YLAB[k]); y.font = fnt(bold=True, size=9)
     COL['gr'][k] = col; col += 1
 SUM = [('vA', 'ROIC ativo (resumo)'), ('vP', 'ROIC passivo (resumo)'), ('vM', 'ROIC marginal'), ('vROE', 'ROE (resumo)'), ('okA', 'Ativo válido'), ('okP', 'Passivo válido'),
        ('okM', 'Marginal válido'), ('cA', 'Ativo limitado'), ('cP', 'Passivo limitado'), ('tri', 'ROIC triangulado'), ('growth', 'Crescimento'), ('zg', 'zGrowth'),
@@ -178,27 +169,18 @@ for r in range(R0, R1 + 1):
     t = f'$B{r}'
     def W(key, k=None):
         return f'{c(key, k).format(r=r)}'
-    if r == R0:  # fórmulas de matriz, como na V2: uma requisição para todas as empresas
-        p0, p1 = COL['nome'], COL['mcap']
-        TK = f'$B${R0}:INDEX($B${R0}:$B${R1},MATCH("zzzz",$B${R0}:$B${R1}))'  # só até o último ticker preenchido: nada de pedir linhas vazias
-        Dd.cell(R0, p0).value = ArrayFormula(f'{L(p0)}{R0}:{L(p1)}{R1}', f'=IFERROR(_xldudf_WISEPRICE({TK},{L(p0)}${R0 - 2}:{L(p1)}${R0 - 2}),"")')
-        for k, (a0, a1, tipo) in BLOCKS.items():
-            if tipo == 'anos':
-                f = f'=IFERROR(_xldudf_WISE({TK},{L(a0)}${R0 - 2},{L(a0)}${R0 - 1}:{L(a1)}${R0 - 1}),"")'
-            else:
-                f = f'=IFERROR(_xldudf_WISE({TK},{L(a0)}${R0 - 2}:{L(a1)}${R0 - 2},{L(a0)}${R0 - 1}),"")'
-            Dd.cell(R0, a0).value = ArrayFormula(f'{L(a0)}{R0}:{L(a1)}{R1}', f)
     N = lambda key, k: f'N({W(key, k)})' if key in COL and k in COL[key] else '0'  # vazio/texto (ou campo não puxado) vira 0
     for k in YRS:
         Dd.cell(r, COL['t'][k], f'=IF(AND(ISNUMBER({W("pretax", k)}),ISNUMBER({W("tax", k)})),IF({W("pretax", k)}>0,MIN(MAX({W("tax", k)}/{W("pretax", k)},0),0.5),IR_PADRAO),IR_PADRAO)')
         ebit_k = f'IF(ISNUMBER({W("opinc", k)}),{W("opinc", k)},{W("pretax", k)})'  # sem lucro operacional: usa o lucro antes do IR
-        Dd.cell(r, COL['nopat'][k], f'=IF(OR(ISNUMBER({W("opinc", k)}),ISNUMBER({W("pretax", k)})),({ebit_k}+{N("lease", k)}*TAXA_ARR)*(1-{W("t", k)}),"")')
+        Dd.cell(r, COL['nopat'][k], f'=IF(OR(ISNUMBER({W("opinc", k)}),ISNUMBER({W("pretax", k)})),({ebit_k}+{N("lease", k)}*TAXA_ARR+{N("eqinc", k)})*(1-{W("t", k)}),"")')
         Dd.cell(r, COL['wc'][k], f'=IF(AND(ISNUMBER({W("tca", k)}),ISNUMBER({W("tcl", k)})),({W("tca", k)}-{N("cash", k)}-{N("stinv", k)})-({W("tcl", k)}-{N("std", k)}),"")')
-        Dd.cell(r, COL['ativo'][k], f'=IF(AND(ISNUMBER({W("ppe", k)}),ISNUMBER({W("wc", k)})),{W("ppe", k)}+{N("gw", k)}+{N("intang", k)}+{N("ltinv", k)}+{W("wc", k)}+IF(ARR_ATIVO="Sim",{N("lease", k)},0),"")')
-        Dd.cell(r, COL['passivo'][k], f'=IF(ISNUMBER({W("eq", k)}),{W("eq", k)}+{N("mino", k)}+{N("debt", k)}+IF(ARR_DIVIDA="Sim",{N("lease", k)},0)-{N("cash", k)}-{N("stinv", k)},"")')
+        Dd.cell(r, COL['ativo'][k], f'=IF(AND(ISNUMBER({W("ppe", k)}),ISNUMBER({W("wc", k)})),{W("ppe", k)}+{N("rou", k)}+{N("gw", k)}+{N("intang", k)}+{N("ltinv", k)}+{W("wc", k)},"")')
+        Dd.cell(r, COL['passivo'][k], f'=IF(ISNUMBER({W("eq", k)}),{W("eq", k)}+{N("mino", k)}+{N("debt", k)}+{N("lease", k)}-{N("cash", k)}-{N("stinv", k)},"")')
         Dd.cell(r, COL['ra'][k], f'=IF(AND(ISNUMBER({W("nopat", k)}),N({W("ativo", k)})>0),{W("nopat", k)}/{W("ativo", k)},"")')
         Dd.cell(r, COL['rp'][k], f'=IF(AND(ISNUMBER({W("nopat", k)}),N({W("passivo", k)})>0),{W("nopat", k)}/{W("passivo", k)},"")')
         Dd.cell(r, COL['roe'][k], f'=IF(AND(ISNUMBER({W("ni", k)}),N({W("eq", k)})>0),{W("ni", k)}/{W("eq", k)},"")')
+        if k == 4: continue
         prev = W('eps', k + 1)
         Dd.cell(r, COL['gr'][k], f'=IF(AND(ISNUMBER({prev}),ISNUMBER({W("eps", k)})),IF({prev}>0,{W("eps", k)}/{prev}-1,""),"")')
     for k in [3, 2, 1, 0]:
@@ -216,10 +198,11 @@ for r in range(R0, R1 + 1):
     Dd.cell(r, COL['tri'], (f'=IF(AND({W("okA")},{W("okP")}),IF(AND(MIN({a},{p})>0,MAX({a},{p})<=DIVERG*MIN({a},{p})),AVERAGE({a},{p}),'
                             f'IF({W("okM")},IF(ABS({a}-{m})<=ABS({p}-{m}),{a},{p}),MIN({a},{p}))),'
                             f'IF({W("okA")},{a},IF({W("okP")},{p},IF(OR(N({W("vA")})>VISAO_MAX,N({W("vP")})>VISAO_MAX),VISAO_TETO,IF({W("okM")},MIN({m},VISAO_TETO),"")))))'))
-    gr = f'{c("gr", 4).format(r=r)}:{c("gr", 0).format(r=r)}'
+    gr = f'{c("gr", 3).format(r=r)}:{c("gr", 0).format(r=r)}'
     Dd.cell(r, COL['growth'], f'=IF(COUNT({gr})>=3,MEDIAN({gr}),"")')
     Dd.cell(r, COL['zg'], f'=IF(ISNUMBER({W("growth")}),IF({W("growth")}<>0,STDEVP({gr})/{W("growth")},""),"")')
     Dd.cell(r, COL['eps0'], f'=IF(ISNUMBER({W("eps", 0)}),{W("eps", 0)},"")')
+    Dd.cell(r, COL['dy'], f'=IF(AND(N({W("dps", 0)})>0,N({W("preco")})>0),{W("dps", 0)}/{W("preco")},0)')
     Dd.cell(r, COL['ebit'], f'=IF(ISNUMBER({W("opinc", 0)}),{W("opinc", 0)},"")')
     Dd.cell(r, COL['cap_t'], f'=IF(AND(ISNUMBER({W("wc", 0)}),ISNUMBER({W("ppe", 0)})),{W("wc", 0)}+{W("ppe", 0)},"")')
     Dd.cell(r, COL['ev'], f'=IF(ISNUMBER({W("mcap")}),{W("mcap")}+{N("debt", 0)}+0-{N("cash", 0)}-{N("stinv", 0)},"")')
@@ -237,7 +220,7 @@ for r in range(R0, R1 + 1): Dd.cell(r, COL['zg']).number_format = '0.00'
 # ------------------------------------------------------------------ Ações (a tabela principal)
 A.sheet_view.showGridLines = False; A.freeze_panes = f'C{R0}'
 dref = lambda key, r: f"'Dados'!{L(COL[key])}{r}"
-COLS = [('B', 'Ticker', 10), ('C', 'Empresa', 26), ('D', 'Setor', 16), ('E', 'Indústria', 24), ('F', 'Preço', 9), ('G', 'Valor de mercado', 12),
+COLS = [('B', 'Ticker', 10), ('C', 'Empresa', 26), ('D', 'SIC', 7), ('E', 'Atividade', 26), ('F', 'Preço', 9), ('G', 'Valor de mercado', 12),
         ('H', 'ROIC', 8), ('I', 'Cresc. EPS', 8), ('J', 'zGrowth', 7), ('K', 'P/L', 7), ('L', 'P/E justo', 8), ('M', 'Retorno esperado', 9),
         ('N', 'Classe', 30), ('O', 'Top 20', 7), ('P', 'Peso', 7), ('Q', 'High ROIC', 7), ('R', 'High Growth', 7), ('S', 'Especiais', 8),
         ('T', 'JG', 6), ('U', 'JG + G', 7), ('V', 'Cíclica / vestuário', 9), ('W', 'Usa ROE', 7)]
@@ -245,7 +228,7 @@ for cl, lab, w in COLS:
     hdr(A, R0 - 1, ord(cl) - 64, lab, w)
 A.row_dimensions[R0 - 1].height = 30
 x = A.cell(2, 2, 'Price Tracker v3'); x.font = fnt(bold=True, size=16)
-x = A.cell(3, 2, 'Digite os tickers na coluna B (amarela). O resto é automático.'); x.font = fnt(size=9, color=GREY)
+x = A.cell(3, 2, '="Dados do Wisesheets (API) em "&ATUALIZADO'); x.font = fnt(size=9, color=GREY)
 # auxiliares (agrupadas e ocultas): Y em diante
 AUX = ['fin', 'cyc', 'util', 'g', 'cG', 'cZ', 'cR', 'cRet', 'base', 'quali', 'elig', 'sTop', 'sqrtm', 'w0', 'capd', 'hrs', 'hgs', 'esp', 'espS', 'jgOk', 'jgS', 'jg2Ok', 'jg2S', 'cycS', 'jgR', 'jg2R', 'hrR', 'hgR', 'cycR']
 AX = {k: 25 + i for i, k in enumerate(AUX)}  # col Y=25
@@ -262,12 +245,12 @@ for r in range(R0, R1 + 1):
     tk = TICKERS[i] if i < len(TICKERS) else None
     x = A.cell(r, 2, tk); x.font = fnt(color=BLUE, bold=True); x.fill = INP
     e = f'$B{r}=""'
-    A.cell(r, 3, f'=IF({e},"",{dref("nome", r)})'); A.cell(r, 4, f'=IF({e},"",{dref("setor", r)})'); A.cell(r, 5, f'=IF({e},"",{dref("ind", r)})')
+    A.cell(r, 3, f'=IF({e},"",{dref("nome", r)})'); A.cell(r, 4, f'=IF({e},"",{dref("sic", r)})'); A.cell(r, 5, f'=IF({e},"",{dref("ind", r)})')
     A.cell(r, 6, f'=IF({e},"",{dref("preco", r)})'); A.cell(r, 7, f'=IF({e},"",IFERROR({dref("mcap", r)}/1000000,""))')
     ax = lambda k: f'${AXL[k]}{r}'
-    A.cell(r, AX['fin'], f'=IF({e},FALSE,OR(COUNTIF(ROE_LISTA,D{r})>0,COUNTIF(ROE_LISTA,E{r})>0))')
-    A.cell(r, AX['cyc'], f'=IF({e},FALSE,OR(COUNTIF(CICLICAS,E{r})>0,COUNTIF(VESTUARIO,E{r})>0))')
-    A.cell(r, AX['util'], f'=IF({e},FALSE,OR(COUNTIF(JG_FORA,D{r})>0,COUNTIF(ROE_LISTA,E{r})>0))')
+    A.cell(r, AX['fin'], f'=IF({e},FALSE,SUMPRODUCT((N(D{r})>=ROE_DE)*(N(D{r})<=ROE_ATE)*(ROE_DE<>""))>0)')
+    A.cell(r, AX['cyc'], f'=IF(OR({e},COUNTIF(NAO_CIC,$B{r})>0),FALSE,OR(SUMPRODUCT((N(D{r})>=CIC_DE)*(N(D{r})<=CIC_ATE)*(CIC_DE<>""))>0,SUMPRODUCT((N(D{r})>=VES_DE)*(N(D{r})<=VES_ATE)*(VES_DE<>""))>0))')
+    A.cell(r, AX['util'], f'=IF({e},FALSE,SUMPRODUCT((N(D{r})>=JGF_DE)*(N(D{r})<=JGF_ATE)*(JGF_DE<>""))>0)')
     A.cell(r, 8, f'=IF({e},"",IF({ax("fin")},{dref("vROE", r)},{dref("tri", r)}))')
     A.cell(r, 9, f'=IF({e},"",{dref("growth", r)})'); A.cell(r, 10, f'=IF({e},"",{dref("zg", r)})')
     A.cell(r, 11, f'=IF(AND(ISNUMBER(F{r}),N({dref("eps0", r)})>0),F{r}/{dref("eps0", r)},"")')
@@ -283,7 +266,7 @@ for r in range(R0, R1 + 1):
     A.cell(r, AX['cR'], f'=IF(ISNUMBER(H{r}),IF(H{r}>ROIC_ALTO,"G",IF(H{r}>=ROIC_BAIXO,"O","L")),"")')
     A.cell(r, AX['cRet'], f'=IF(ISNUMBER(M{r}),IF(M{r}>RET_ALTO,"G",IF(M{r}>=RET_BAIXO,"O","B")),"")')
     A.cell(r, AX['base'], f'=IF({e},"",IFERROR(INDEX(COD_CLASSE,MATCH({ax("cG")}&{ax("cZ")}&{ax("cR")}&"N"&{ax("cRet")},COD_CHAVE,0)),"Do not Waste Time"))')
-    A.cell(r, 14, f'=IF({e},"",IF(AND({ax("cyc")},OR({ax("base")}="Opportunity of Lifetime",{ax("base")}="Good Companies, Great Returns")),"Cyclicals",{ax("base")}))')
+    A.cell(r, 14, f'=IF({e},"",IF(AND(NOT(ISNUMBER(H{r})),NOT(ISNUMBER(I{r}))),"Sem dados",IF(AND({ax("cyc")},OR({ax("base")}="Opportunity of Lifetime",{ax("base")}="Good Companies, Great Returns")),"Cyclicals",{ax("base")})))')
     A.cell(r, AX['quali'], f'=IF({e},FALSE,AND(ISNUMBER(H{r}),ISNUMBER(I{r}),N(H{r})>=ROIC_ALTO,N(I{r})>=CRESC_ALTO,NOT({ax("cyc")})))')
     A.cell(r, AX['elig'], f'=AND({ax("quali")},ISNUMBER(K{r}),N(K{r})>=PL_MIN,ISNUMBER(M{r}))')
     A.cell(r, AX['sTop'], f'=IF({ax("elig")},M{r}+ROW()*1E-12,"")')
@@ -330,7 +313,7 @@ A.auto_filter.ref = f'B{R0 - 1}:W{R1}'
 # ------------------------------------------------------------------ Painel
 P.sheet_view.showGridLines = False
 x = P.cell(2, 2, 'Price Tracker v3'); x.font = fnt(bold=True, size=18)
-x = P.cell(3, 2, '="Último exercício: "&ANO&"   ·   "&COUNTA(\'Ações\'!B' + str(R0) + ':B' + str(R1) + ')&" ações"'); x.font = fnt(size=10, color=GREY)
+x = P.cell(3, 2, '="Dados do Wisesheets (API) em "&ATUALIZADO&"   ·   "&COUNTIF(\'Ações\'!C' + str(R0) + ':C' + str(R1) + ',"?*")&" ações com dados"'); x.font = fnt(size=10, color=GREY)
 # contagem por classe
 r = 5
 for i, (cl, bg, fg) in enumerate(CLASSES):
@@ -373,6 +356,23 @@ for cc, w in ((2, 4), (3, 9), (4, 24), (12, 4), (13, 9), (14, 24)):
 for cc in list(range(5, 11)) + list(range(15, 21)): P.column_dimensions[L(cc)].width = 10
 P.column_dimensions['I'].width = 22; P.column_dimensions['S'].width = 22
 
+# ------------------------------------------------------------------ dados da API do Wisesheets (valores)
+num = lambda v: (float(v) if v not in (None, '') else None)
+for r in range(R0, R1 + 1):
+    i = r - R0
+    if i >= len(TICKERS): break
+    t = TICKERS[i]; fin = API['fin'].get(t, {}); pr = API['price'].get(t) or {}; pf = API['profile'].get(t) or {}
+    Dd.cell(r, COL['nome']).value = pr.get('name') or pf.get('name') or fin.get('_name')
+    Dd.cell(r, COL['sic']).value = int(pf['sic']) if pf.get('sic') else None
+    Dd.cell(r, COL['ind']).value = (pf.get('sicDescription') or '').title() or None
+    Dd.cell(r, COL['preco']).value = num(pr.get('price')); Dd.cell(r, COL['mcap']).value = num(pr.get('marketCap'))
+    years = sorted([y for y in fin if not y.startswith('_')], reverse=True)
+    for k in YRS:
+        if k >= len(years): continue
+        row = fin[years[k]]
+        for key, api, lab in FIELDS:
+            Dd.cell(r, COL[key][k]).value = row.get(api)
+
 # ------------------------------------------------------------------ teste: troca Wisesheets por valores
 if TEST:
     for r in range(R0, R1 + 1):
@@ -390,7 +390,7 @@ if TEST:
 for ws in wb.worksheets:
     ws.sheet_properties.tabColor = {'Painel': '0F5499', 'Ações': '1B5E20', 'Dados': '9E9E9E', 'Classes': '9E9E9E', 'Parâmetros': 'C9A227'}[ws.title]
 wb.save(OUT)
-if not TEST:  # matriz dinâmica (spill) igual à V2: cm="1" nas células com fórmula de matriz + metadata.xml
+if False:  # (modo add-in desativado: os dados vêm da API) matriz dinâmica (spill) igual à V2: cm="1" nas células com fórmula de matriz + metadata.xml
     tmp = OUT.with_suffix('.tmp.xlsx'); shutil.move(OUT, tmp)
     with zipfile.ZipFile(tmp) as zi, zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED) as zo:
         names = zi.namelist(); sheet = None
