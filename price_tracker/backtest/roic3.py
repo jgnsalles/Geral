@@ -11,8 +11,25 @@ from backtest import load_pit, asof, D  # noqa: E402
 BASE = ('op_income', 'pretax', 'tax', 'equity', 'lt_debt', 'cash', 'net_income', 'ppe', 'assets_cur', 'cur_liab', 'debt_cur', 'goodwill', 'intangibles')
 
 
+PIT_DIR, PIT2_DIR = D / 'pit', D / 'pit2'  # medias e pequenas: trocados por main_ms (2026-11-15)
+
+
+def load_pit_any(tk):
+    if PIT_DIR == D / 'pit': return load_pit(tk)
+    f = PIT_DIR / f'{tk}.json.gz'
+    if not f.exists(): return None
+    raw = json.load(gzip.open(f, 'rt')); out = {}
+    for key, cands in raw.items():
+        cs = []
+        for c in cands:
+            df = pd.DataFrame(c['rows'], columns=['end', 'val', 'filed']); df['end'] = pd.to_datetime(df.end); df['filed'] = pd.to_datetime(df.filed)
+            cs.append((c['concept'], c['unit'], df.sort_values('filed')))
+        out[key] = cs
+    return out
+
+
 def load_pit2(tk):
-    f = D / 'pit2' / f'{tk}.json.gz'
+    f = PIT2_DIR / f'{tk}.json.gz'
     if not f.exists(): return {}
     raw = json.load(gzip.open(f, 'rt')); out = {}
     for key, cands in raw.items():
@@ -76,7 +93,7 @@ def combine(a, p, m):
 
 def one(args):
     tk, fin, dates = args
-    pit = load_pit(tk); pit2 = load_pit2(tk)
+    pit = load_pit_any(tk); pit2 = load_pit2(tk)
     if pit is None: return []
     rows = []
     for t in dates:
@@ -156,5 +173,16 @@ def main():
     print(out.regra.value_counts(normalize=True))
 
 
+def main_ms():
+    global PIT_DIR, PIT2_DIR
+    MD = ROOT.parent / 'midsmall' / 'data'; PIT_DIR, PIT2_DIR = MD / 'pit', MD / 'pit2'
+    c = pd.read_pickle(ROOT.parent / 'mundo' / 'cache' / 'backtest_ms.pkl')[0]
+    jobs = [(t, bool(g.fin.iloc[0]), [pd.Timestamp(d) for d in sorted(g.date.unique())]) for t, g in c.groupby('ticker')]
+    with Pool(4) as pool:
+        res = pool.map(one, jobs, chunksize=4)
+    out = pd.DataFrame([r for rr in res for r in rr]); out.to_csv(MD / 'roic3.csv', index=False); print(out.shape)
+    print(out.regra.value_counts(normalize=True))
+
+
 if __name__ == '__main__':
-    main()
+    main_ms() if len(sys.argv) > 1 and sys.argv[1] == 'ms' else main()

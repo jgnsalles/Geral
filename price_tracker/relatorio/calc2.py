@@ -1,6 +1,6 @@
 """8 estrategias em qualquer universo (S&P 500 PIT ou medias/pequenas). Pre-registro de 2026-11-15. Saidas: relatorio/dados2_<base>.json"""
 import sys, os, json, pathlib
-BASE = sys.argv[1] if len(sys.argv) > 1 else "sp"; sys.argv = sys.argv[:1]  # backtest_ms le sys.argv na importacao
+BASE = sys.argv[1] if len(sys.argv) > 1 else "sp"; TRI = "antigo" not in sys.argv; sys.argv = sys.argv[:1]  # backtest_ms le sys.argv na importacao
 import numpy as np, pandas as pd
 ROOT = pathlib.Path(__file__).parent; P = ROOT.parent
 sys.path.insert(0, str(P)); sys.path.insert(0, str(P / 'backtest')); sys.path.insert(0, str(ROOT))
@@ -118,7 +118,7 @@ def run(c, adj, dates, ref, rf, nm, desc_extra=''):
     return out, navs
 
 
-def sp500():
+def sp_data():
     f, dates = bm.base_data(); adj = bm.load_prices()['adj_close']; c = bm.classify_new(f)
     sec, _ = bm.sector_maps(); c['util'] = c.ticker.map(sec) == 'Utilities'
     c['pe'] = c.price / c.eps.where(c.eps > 0)
@@ -129,27 +129,38 @@ def sp500():
     bnav, _, _, _ = bm.load_benchmarks()
     u = pd.read_csv(D / 'universe.csv').drop_duplicates('ticker').set_index('ticker')
     nm = lambda t: str(u.name.get(t, u.name.get(DUAL.get(t, t), t)))
+    return c, adj, dates, bnav['S&P 500'], nm
+
+
+def sp500():
+    c, adj, dates, ref, nm = sp_data(); bnav = {'S&P 500': ref}
     out, navs = run(c, adj, dates, bnav['S&P 500'], factors()['RF'], nm)
     out['refname'] = 'S&P 500'; out['ref_cagr'] = stats(bnav['S&P 500'])['CAGR']
     (ROOT / 'dados2_sp.json').write_text(json.dumps(out, ensure_ascii=False, default=lambda o: None if (isinstance(o, float) and np.isnan(o)) else float(o)))
 
 
-def midsmall():
-    import backtest_ms as ms
+def ms_data():
     c, adj, dates, u = pd.read_pickle(P / 'mundo' / 'cache' / 'backtest_ms.pkl')
     mc = c[['date', 'ticker', 'mcap', 'cyc', 'app']].copy()
     feat = c.drop(columns=['g', 'fair_pe', 'ret_fair', 'ret_const', 'ret', 'code', 'category', 'order', 'cat', 'pe', 'mcap'])
+    r3f = P / 'midsmall' / 'data' / 'roic3.csv'
+    if TRI and r3f.exists():  # ROIC triangulado (2026-11-15); financeiras seguem com ROE
+        r3 = pd.read_csv(r3f, parse_dates=['date'])[['date', 'ticker', 'roic_tri']]
+        feat = feat.merge(r3, on=['date', 'ticker'], how='left'); feat['roic'] = np.where(feat.fin, feat.roic, feat.roic_tri); feat = feat.drop(columns='roic_tri')
     n = vp.classify(feat.assign(zroic=0.0), 'sketch', 'B')  # classes novas: sem zROIC
     n = n.merge(mc, on=['date', 'ticker'], suffixes=('', '_m'))
     sic = u.drop_duplicates('ticker').set_index('ticker').sic
     n['util'] = pd.to_numeric(n.ticker.map(sic), errors='coerce').between(4900, 4999)
     n['excluded'] = n.cyc | n.app; n['pe'] = n.price / n.eps.where(n.eps > 0)
     d0 = sorted(n.date.unique()); dates = [pd.Timestamp(d) for d in d0]
-    import yfinance as yf
-    rf = factors()['RF']
     iwm = adj['IWM'].loc[dates[0]:dates[-1]].dropna(); iwm = iwm / iwm.iloc[0]
     nmap = u.drop_duplicates('ticker').set_index('ticker').name
-    out, navs = run(n, adj, dates, iwm, rf, lambda t: str(nmap.get(t, t)).title())
+    return n, adj, dates, iwm, lambda t: str(nmap.get(t, t)).title()
+
+
+def midsmall():
+    n, adj, dates, iwm, nm = ms_data(); rf = factors()['RF']
+    out, navs = run(n, adj, dates, iwm, rf, nm)
     out['refname'] = 'Russell 2000 (IWM)'; out['ref_cagr'] = stats(iwm)['CAGR']
     for t, lab in (('IWM', 'Russell 2000 (IWM)'), ('IJR', 'S&P SmallCap 600 (IJR)'), ('IJH', 'S&P MidCap 400 (IJH)'), ('SPY', 'S&P 500 (SPY)')):
         s = adj[t].loc[dates[0]:dates[-1]].dropna(); s = s / s.iloc[0]
@@ -158,7 +169,7 @@ def midsmall():
     uni = run_weighted({d: pd.Series(1.0, index=g.ticker) for d, g in n.groupby('date')}, adj, dates)
     out['bench']['Universo médias e pequenas (peso igual)'] = dict(cagr=stats(uni)['CAGR'], maxdd=stats(uni)['MaxDD'], vol=stats(uni)['Vol'], w3=bm.windows(uni, iwm, 3)[0], w5=bm.windows(uni, iwm, 5)[0], w10=bm.windows(uni, iwm, 10)[0])
     out['universe_n'] = float(n.groupby('date').size().median()); out['period'] = [str(dates[0].date()), str(dates[-1].date())]
-    (ROOT / 'dados2_ms.json').write_text(json.dumps(out, ensure_ascii=False, default=lambda o: None if (isinstance(o, float) and np.isnan(o)) else float(o)))
+    (ROOT / ('dados2_ms.json' if TRI else 'dados2_ms_antigo.json')).write_text(json.dumps(out, ensure_ascii=False, default=lambda o: None if (isinstance(o, float) and np.isnan(o)) else float(o)))
 
 
 if __name__ == '__main__':
