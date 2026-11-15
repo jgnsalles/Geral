@@ -120,19 +120,29 @@ FIELDS = [('opinc', 'Operating Income', 'Lucro operacional'), ('pretax', 'Income
           ('gw', 'Goodwill', 'Ágio'), ('intang', 'Intangible Assets', 'Intangíveis'), ('ltinv', 'Long Term Investments', 'Invest. longo prazo'),
           ('tca', 'Total Current Assets', 'Ativo circulante'), ('cash', 'Cash And Cash Equivalents', 'Caixa'), ('stinv', 'Short Term Investments', 'Aplicações'),
           ('tcl', 'Total Current Liabilities', 'Passivo circulante'), ('std', 'Short Term Debt', 'Dívida curto prazo'), ('debt', 'Total Debt', 'Dívida total'),
-          ('lease', 'Capital Lease Obligations', 'Arrendamentos'), ('eq', 'Total Stockholders Equity', 'Patrimônio'), ('mino', 'Minority Interest', 'Minoritários'),
-          ('capex', 'Capital Expenditure', 'Capex'), ('da', 'Depreciation And Amortization', 'Depreciação'), ('acq', 'Acquisitions Net', 'Aquisições')]
+          ('lease', 'Capital Lease Obligations', 'Arrendamentos'), ('eq', 'Total Stockholders Equity', 'Patrimônio'),
+          ('capex', 'Capital Expenditure', 'Capex'), ('da', 'Depreciation And Amortization', 'Depreciação')]
 YRS = [4, 3, 2, 1, 0]  # ANO-4 ... ANO
-FIELDS.append(('dyy', 'Dividend Yield', 'Dividend yield'))
-BLOCKS = {}  # ano (k) -> (primeira coluna, ultima coluna)
+BLOCKS = {}  # (primeira, ultima coluna, tipo)
 for key, wise, lab in FIELDS: COL[key] = {}
-for k in [5] + YRS:  # um bloco por exercicio: uma unica chamada ao Wisesheets traz todas as empresas x todos os campos
+# 1 chamada: EPS de 6 exercicios (tickers x anos)
+first = col
+for k in [5] + YRS:
+    hdr(Dd, R0 - 3, col, 'EPS', 9); x = Dd.cell(R0 - 2, col, 'EPS Diluted' if k == 5 else None)
+    if k == 5: x.font = fnt(color=BLUE); x.fill = INP
+    y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'; y.alignment = Alignment(horizontal='center')
+    COL['eps'][k] = col; col += 1
+BLOCKS['eps'] = (first, col - 1, 'anos')
+# 5 chamadas: todos os demais campos de um exercicio (tickers x campos); o ultimo inclui o dividend yield
+for k in YRS:
     first = col
-    for key, wise, lab in FIELDS:
+    for key, wise, lab in FIELDS + ([('dyy', 'Dividend Yield', 'Dividend yield')] if k == 0 else []):
+        if key == 'eps': continue
+        COL.setdefault(key, {})
         hdr(Dd, R0 - 3, col, lab, 11); x = Dd.cell(R0 - 2, col, wise); x.font = fnt(color=BLUE); x.fill = INP
         y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'; y.alignment = Alignment(horizontal='center')
         COL[key][k] = col; col += 1
-    BLOCKS[k] = (first, col - 1)
+    BLOCKS[k] = (first, col - 1, 'campos')
 COL['dy'] = COL['dyy'][0]
 RAW_LAST = col - 1
 # cálculos por ano
@@ -170,10 +180,15 @@ for r in range(R0, R1 + 1):
         return f'{c(key, k).format(r=r)}'
     if r == R0:  # fórmulas de matriz, como na V2: uma requisição para todas as empresas
         p0, p1 = COL['nome'], COL['mcap']
-        Dd.cell(R0, p0).value = ArrayFormula(f'{L(p0)}{R0}:{L(p1)}{R1}', f'=IFERROR(_xldudf_WISEPRICE($B${R0}:$B${R1},{L(p0)}${R0 - 2}:{L(p1)}${R0 - 2}),"")')
-        for k, (a0, a1) in BLOCKS.items():
-            Dd.cell(R0, a0).value = ArrayFormula(f'{L(a0)}{R0}:{L(a1)}{R1}', f'=IFERROR(_xldudf_WISE($B${R0}:$B${R1},{L(a0)}${R0 - 2}:{L(a1)}${R0 - 2},{L(a0)}${R0 - 1}),"")')
-    N = lambda key, k: f'N({W(key, k)})'  # vazio/texto vira 0
+        TK = f'$B${R0}:INDEX($B${R0}:$B${R1},MATCH("zzzz",$B${R0}:$B${R1}))'  # só até o último ticker preenchido: nada de pedir linhas vazias
+        Dd.cell(R0, p0).value = ArrayFormula(f'{L(p0)}{R0}:{L(p1)}{R1}', f'=IFERROR(_xldudf_WISEPRICE({TK},{L(p0)}${R0 - 2}:{L(p1)}${R0 - 2}),"")')
+        for k, (a0, a1, tipo) in BLOCKS.items():
+            if tipo == 'anos':
+                f = f'=IFERROR(_xldudf_WISE({TK},{L(a0)}${R0 - 2},{L(a0)}${R0 - 1}:{L(a1)}${R0 - 1}),"")'
+            else:
+                f = f'=IFERROR(_xldudf_WISE({TK},{L(a0)}${R0 - 2}:{L(a1)}${R0 - 2},{L(a0)}${R0 - 1}),"")'
+            Dd.cell(R0, a0).value = ArrayFormula(f'{L(a0)}{R0}:{L(a1)}{R1}', f)
+    N = lambda key, k: f'N({W(key, k)})' if key in COL and k in COL[key] else '0'  # vazio/texto (ou campo não puxado) vira 0
     for k in YRS:
         Dd.cell(r, COL['t'][k], f'=IF(AND(ISNUMBER({W("pretax", k)}),ISNUMBER({W("tax", k)})),IF({W("pretax", k)}>0,MIN(MAX({W("tax", k)}/{W("pretax", k)},0),0.5),IR_PADRAO),IR_PADRAO)')
         ebit_k = f'IF(ISNUMBER({W("opinc", k)}),{W("opinc", k)},{W("pretax", k)})'  # sem lucro operacional: usa o lucro antes do IR
@@ -207,7 +222,7 @@ for r in range(R0, R1 + 1):
     Dd.cell(r, COL['eps0'], f'=IF(ISNUMBER({W("eps", 0)}),{W("eps", 0)},"")')
     Dd.cell(r, COL['ebit'], f'=IF(ISNUMBER({W("opinc", 0)}),{W("opinc", 0)},"")')
     Dd.cell(r, COL['cap_t'], f'=IF(AND(ISNUMBER({W("wc", 0)}),ISNUMBER({W("ppe", 0)})),{W("wc", 0)}+{W("ppe", 0)},"")')
-    Dd.cell(r, COL['ev'], f'=IF(ISNUMBER({W("mcap")}),{W("mcap")}+{N("debt", 0)}+{N("mino", 0)}-{N("cash", 0)}-{N("stinv", 0)},"")')
+    Dd.cell(r, COL['ev'], f'=IF(ISNUMBER({W("mcap")}),{W("mcap")}+{N("debt", 0)}+0-{N("cash", 0)}-{N("stinv", 0)},"")')
     Dd.cell(r, COL['roc'], f'=IF(AND(N({W("ebit")})>0,N({W("cap_t")})>0),{W("ebit")}/{W("cap_t")},"")')
     Dd.cell(r, COL['ey'], f'=IF(AND(N({W("ebit")})>0,N({W("ev")})>0),{W("ebit")}/{W("ev")},"")')
 for cc in range(3, col):
