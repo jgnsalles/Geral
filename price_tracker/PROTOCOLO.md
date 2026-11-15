@@ -362,3 +362,8 @@ vender. Imposto só na venda final (diferido).
 **Teste fora do S&P 500** com as 8 estratégias: universo das médias e pequenas dos EUA (fora do S&P 500 na data, valor de mercado ≥ US$ 1 bi, preço ≥ US$ 5,
 giro ≥ US$ 5 milhões/dia), com a definição anterior de ROIC (o triangulado ainda não existe para essa base) e classes novas sem zROIC. Referências:
 Russell 2000 (IWM), S&P SmallCap 600 (IJR), S&P MidCap 400 (IJH), S&P 500 e o universo em peso igual; janelas de 3, 5 e 10 anos contra o IWM.
+**Resultado (2026-11-15).** S&P 500 (2011–2026): excepcionais completadas até 20 22,8% a.a. (20,3% após IR; janelas 3a/5a/10a 99/100/100%; pior queda −40%; 21 meses
+atrás; maior peso 10%); excepcionais sem nunca vender 24,7% (ponderado no tempo; pior queda −50%; TIR dos aportes 24,7% antes e 23,1% após o IR final; cada
+real virou 8,2 contra 5,7 na Top 20 sem vender e 3,4 no S&P). Fora do S&P 500 (médias e pequenas, ROIC anterior; Russell 2000 9,8%, S&P 14,2%): High ROIC 20,2%
+(99/100/100% contra o IWM), High Growth 20,0%, Todas as de qualidade 16,9% (99/100/100%), Top 20 16,5% (80/77/100%; 81 meses atrás), Excepcionais até 20 16,4%,
+ROIC + G + P/L 16,3%, Excepcionais 15,5%, sem vender 13,2%. A High ROIC é a única entre as primeiras nas duas bases.

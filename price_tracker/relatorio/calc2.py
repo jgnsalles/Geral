@@ -1,5 +1,6 @@
 """8 estrategias em qualquer universo (S&P 500 PIT ou medias/pequenas). Pre-registro de 2026-11-15. Saidas: relatorio/dados2_<base>.json"""
-import sys, json, pathlib
+import sys, os, json, pathlib
+BASE = sys.argv[1] if len(sys.argv) > 1 else "sp"; sys.argv = sys.argv[:1]  # backtest_ms le sys.argv na importacao
 import numpy as np, pandas as pd
 ROOT = pathlib.Path(__file__).parent; P = ROOT.parent
 sys.path.insert(0, str(P)); sys.path.insert(0, str(P / 'backtest')); sys.path.insert(0, str(ROOT))
@@ -34,6 +35,7 @@ def weights(c):
     W['hroic'] = {d: pd.Series(1 / len(g), index=g.ticker) for d, g in ool[ool.roic > .30].groupby('date')}
     W['hgrowth'] = {d: pd.Series(1 / len(g), index=g.ticker) for d, g in ool[ool.growth > .30].groupby('date')}
     y = c[~c.fin & ~c.util & ~c.excluded & c.pe.notna() & (c.pe > 0) & c.roic.notna() & c.growth.notna() & c.mcap.notna()].copy()
+    if 'in_mf' in y: y = y[y.in_mf]  # S&P: mesmo universo do teste registrado (EBIT > 0, EV e capital > 0)
     y['score'] = y.groupby('date').roic.rank(ascending=False) + y.groupby('date').growth.rank(ascending=False) + y.groupby('date').pe.rank()
     y = y.assign(firm=y.ticker.map(lambda t: DUAL.get(t, t))).sort_values('score').drop_duplicates(['date', 'firm'])
     W['magicg'] = {d: cap_w(g.head(20)) for d, g in y.groupby('date')}
@@ -123,7 +125,7 @@ def sp500():
     need = c[~c.excluded & (c.roic >= .12) & (c.growth >= .15)].copy(); need['mcap'] = top_n.mcap_us(need, need)
     c = c.merge(need[['date', 'ticker', 'mcap']], on=['date', 'ticker'], how='left')
     mf = pd.read_csv(D / 'magic_features.csv', parse_dates=['date'])[['date', 'ticker', 'mcap']].rename(columns={'mcap': 'mcap_m'})
-    c = c.merge(mf, on=['date', 'ticker'], how='left'); c['mcap'] = c.mcap.fillna(c.mcap_m)
+    c = c.merge(mf, on=['date', 'ticker'], how='left'); c['in_mf'] = c.mcap_m.notna(); c['mcap'] = c.mcap.fillna(c.mcap_m)
     bnav, _, _, _ = bm.load_benchmarks()
     u = pd.read_csv(D / 'universe.csv').drop_duplicates('ticker').set_index('ticker')
     nm = lambda t: str(u.name.get(t, u.name.get(DUAL.get(t, t), t)))
@@ -160,4 +162,4 @@ def midsmall():
 
 
 if __name__ == '__main__':
-    (sp500 if sys.argv[1] == 'sp' else midsmall)()
+    (sp500 if BASE == 'sp' else midsmall)()
