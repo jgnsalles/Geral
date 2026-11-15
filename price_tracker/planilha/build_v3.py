@@ -8,6 +8,8 @@ from openpyxl.utils import get_column_letter as L
 from openpyxl.workbook.defined_name import DefinedName
 from openpyxl.formatting.rule import FormulaRule, CellIsRule
 from openpyxl.worksheet.datavalidation import DataValidation
+from openpyxl.worksheet.formula import ArrayFormula
+import zipfile, shutil, re
 
 HERE = pathlib.Path(__file__).parent
 TEST = json.load(open(sys.argv[sys.argv.index('--teste') + 1])) if '--teste' in sys.argv else None
@@ -121,15 +123,17 @@ FIELDS = [('opinc', 'Operating Income', 'Lucro operacional'), ('pretax', 'Income
           ('lease', 'Capital Lease Obligations', 'Arrendamentos'), ('eq', 'Total Stockholders Equity', 'Patrimônio'), ('mino', 'Minority Interest', 'Minoritários'),
           ('capex', 'Capital Expenditure', 'Capex'), ('da', 'Depreciation And Amortization', 'Depreciação'), ('acq', 'Acquisitions Net', 'Aquisições')]
 YRS = [4, 3, 2, 1, 0]  # ANO-4 ... ANO
-for key, wise, lab in FIELDS:
-    yrs = [5] + YRS if key == 'eps' else YRS
-    COL[key] = {}
-    for k in yrs:
+FIELDS.append(('dyy', 'Dividend Yield', 'Dividend yield'))
+BLOCKS = {}  # ano (k) -> (primeira coluna, ultima coluna)
+for key, wise, lab in FIELDS: COL[key] = {}
+for k in [5] + YRS:  # um bloco por exercicio: uma unica chamada ao Wisesheets traz todas as empresas x todos os campos
+    first = col
+    for key, wise, lab in FIELDS:
         hdr(Dd, R0 - 3, col, lab, 11); x = Dd.cell(R0 - 2, col, wise); x.font = fnt(color=BLUE); x.fill = INP
         y = Dd.cell(R0 - 1, col, f'=ANO-{k}' if k else '=ANO'); y.font = fnt(bold=True); y.number_format = '0'; y.alignment = Alignment(horizontal='center')
         COL[key][k] = col; col += 1
-hdr(Dd, R0 - 3, col, 'Dividend yield', 11); x = Dd.cell(R0 - 2, col, 'Dividend Yield'); x.font = fnt(color=BLUE); x.fill = INP
-Dd.cell(R0 - 1, col, '=ANO').number_format = '0'; COL['dy'] = col; col += 1
+    BLOCKS[k] = (first, col - 1)
+COL['dy'] = COL['dyy'][0]
 RAW_LAST = col - 1
 # cálculos por ano
 CALC = ['t', 'nopat', 'wc', 'ativo', 'passivo', 'ra', 'rp', 'roe']
@@ -164,13 +168,11 @@ for r in range(R0, R1 + 1):
     t = f'$B{r}'
     def W(key, k=None):
         return f'{c(key, k).format(r=r)}'
-    for key, wise in PRICE_F:
-        cc = COL[key]
-        Dd.cell(r, cc, f'=IF({t}="","",IFERROR(_xldudf_WISEPRICE({t},{L(cc)}${R0 - 2}),""))')
-    for key, wise, lab in FIELDS:
-        for k, cc in COL[key].items():
-            Dd.cell(r, cc, f'=IF({t}="","",IFERROR(_xldudf_WISE({t},{L(cc)}${R0 - 2},{L(cc)}${R0 - 1}),""))')
-    Dd.cell(r, COL['dy'], f'=IF({t}="","",IFERROR(_xldudf_WISE({t},{L(COL["dy"])}${R0 - 2},{L(COL["dy"])}${R0 - 1}),""))')
+    if r == R0:  # fórmulas de matriz, como na V2: uma requisição para todas as empresas
+        p0, p1 = COL['nome'], COL['mcap']
+        Dd.cell(R0, p0).value = ArrayFormula(f'{L(p0)}{R0}:{L(p1)}{R1}', f'=IFERROR(_xldudf_WISEPRICE($B${R0}:$B${R1},{L(p0)}${R0 - 2}:{L(p1)}${R0 - 2}),"")')
+        for k, (a0, a1) in BLOCKS.items():
+            Dd.cell(R0, a0).value = ArrayFormula(f'{L(a0)}{R0}:{L(a1)}{R1}', f'=IFERROR(_xldudf_WISE($B${R0}:$B${R1},{L(a0)}${R0 - 2}:{L(a1)}${R0 - 2},{L(a0)}${R0 - 1}),"")')
     N = lambda key, k: f'N({W(key, k)})'  # vazio/texto vira 0
     for k in YRS:
         Dd.cell(r, COL['t'][k], f'=IF(AND(ISNUMBER({W("pretax", k)}),ISNUMBER({W("tax", k)})),IF({W("pretax", k)}>0,MIN(MAX({W("tax", k)}/{W("pretax", k)},0),0.5),IR_PADRAO),IR_PADRAO)')
@@ -367,9 +369,29 @@ if TEST:
         for key, wise, lab in FIELDS:
             for k, cc in COL[key].items():
                 Dd.cell(r, cc).value = vals.get(f'{key}{k}')
-        Dd.cell(r, COL['dy']).value = vals.get('dy')
+        Dd.cell(r, COL['dy']).value = vals.get('dy0', vals.get('dy'))
     for r in range(R0 + len(TICKERS), R1 + 1):  # linhas vazias do teste: sem Wisesheets
         for cc in range(3, RAW_LAST + 1): Dd.cell(r, cc).value = None
 for ws in wb.worksheets:
     ws.sheet_properties.tabColor = {'Painel': '0F5499', 'Ações': '1B5E20', 'Dados': '9E9E9E', 'Classes': '9E9E9E', 'Parâmetros': 'C9A227'}[ws.title]
-wb.save(OUT); print('ok', OUT, 'colunas Dados', col)
+wb.save(OUT)
+if not TEST:  # matriz dinâmica (spill) igual à V2: cm="1" nas células com fórmula de matriz + metadata.xml
+    tmp = OUT.with_suffix('.tmp.xlsx'); shutil.move(OUT, tmp)
+    with zipfile.ZipFile(tmp) as zi, zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED) as zo:
+        names = zi.namelist(); sheet = None
+        wbx = zi.read('xl/workbook.xml').decode(); rels = zi.read('xl/_rels/workbook.xml.rels').decode()
+        rid = re.search(r'<sheet [^>]*name="Dados"[^>]*r:id="(rId\d+)"', wbx).group(1)
+        rel = re.search(rf'<Relationship [^>]*Id="{rid}"[^>]*/>', rels).group(0)
+        sheet = 'xl/' + re.search(r'Target="/?(?:xl/)?([^"]+)"', rel).group(1)
+        for nm in names:
+            data = zi.read(nm)
+            if nm == sheet:
+                data = re.sub(rb'<c (r="[A-Z]+\d+"[^>]*?)>(<f t="array")', rb'<c \1 cm="1">\2', data)
+            elif nm == '[Content_Types].xml':
+                data = data.replace(b'</Types>', b'<Override PartName="/xl/metadata.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheetMetadata+xml"/></Types>')
+            elif nm == 'xl/_rels/workbook.xml.rels':
+                data = data.replace(b'</Relationships>', b'<Relationship Id="rIdMeta1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sheetMetadata" Target="metadata.xml"/></Relationships>')
+            zo.writestr(nm, data)
+        zo.writestr('xl/metadata.xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><metadata xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:xda="http://schemas.microsoft.com/office/spreadsheetml/2017/dynamicarray"><metadataTypes count="1"><metadataType name="XLDAPR" minSupportedVersion="120000" copy="1" pasteAll="1" pasteValues="1" merge="1" splitFirst="1" rowColShift="1" clearFormats="1" clearComments="1" assign="1" coerce="1" cellMeta="1"/></metadataTypes><futureMetadata name="XLDAPR" count="1"><bk><extLst><ext uri="{bdbb8cdc-fa1e-496e-a857-3c3f30c029c3}"><xda:dynamicArrayProperties fDynamic="1" fCollapsed="0"/></ext></extLst></bk></futureMetadata><cellMetadata count="1"><bk><rc t="1" v="0"/></bk></cellMetadata></metadata>')
+    tmp.unlink()
+print('ok', OUT, 'colunas Dados', col)
