@@ -57,12 +57,19 @@ def compact(facts):
 
 
 def main():
-    u = pd.concat([pd.read_csv(D / 'universe.csv')[['ticker', 'cik']], pd.read_csv(D / 'universe_pit_extra.csv')[['ticker', 'cik']]]).dropna().drop_duplicates('ticker')
-    have = {p.name.split('.json')[0] for p in (D / 'pit').glob('*.json.gz')}
-    u = u[u.ticker.isin(have)]
-    (D / 'pit2').mkdir(exist_ok=True)
+    base = sys.argv[1] if len(sys.argv) > 1 else 'sp'
+    if base == 'ms':  # medias e pequenas (2026-11-15)
+        MD = D.parent.parent / 'midsmall' / 'data'
+        u = pd.read_csv(MD / 'universe.csv')[['ticker', 'cik']].dropna().drop_duplicates('ticker')
+        c = pd.read_pickle(D.parent.parent / 'mundo' / 'cache' / 'backtest_ms.pkl')[0]
+        u = u[u.ticker.isin(set(c.ticker))]; OUT = MD / 'pit2'
+    else:
+        u = pd.concat([pd.read_csv(D / 'universe.csv')[['ticker', 'cik']], pd.read_csv(D / 'universe_pit_extra.csv')[['ticker', 'cik']]]).dropna().drop_duplicates('ticker')
+        have = {p.name.split('.json')[0] for p in (D / 'pit').glob('*.json.gz')}
+        u = u[u.ticker.isin(have)]; OUT = D / 'pit2'
+    OUT.mkdir(exist_ok=True)
     for i, r in enumerate(u.itertuples()):
-        f = D / 'pit2' / f'{r.ticker}.json.gz'
+        f = OUT / f'{r.ticker}.json.gz'
         if f.exists(): continue
         for attempt in range(4):
             try:
@@ -75,7 +82,7 @@ def main():
                 print(r.ticker, 'erro', repr(e)[:100], flush=True); time.sleep(3 * (attempt + 1))
         time.sleep(0.15)
         if i % 50 == 0: print(i, r.ticker, flush=True)
-    print('ok', len(list((D / 'pit2').glob('*.gz'))), 'de', len(u))
+    print('ok', len(list(OUT.glob('*.gz'))), 'de', len(u))
 
 
 if __name__ == '__main__':

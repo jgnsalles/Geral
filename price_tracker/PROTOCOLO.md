@@ -367,3 +367,9 @@ atrás; maior peso 10%); excepcionais sem nunca vender 24,7% (ponderado no tempo
 real virou 8,2 contra 5,7 na Top 20 sem vender e 3,4 no S&P). Fora do S&P 500 (médias e pequenas, ROIC anterior; Russell 2000 9,8%, S&P 14,2%): High ROIC 20,2%
 (99/100/100% contra o IWM), High Growth 20,0%, Todas as de qualidade 16,9% (99/100/100%), Top 20 16,5% (80/77/100%; 81 meses atrás), Excepcionais até 20 16,4%,
 ROIC + G + P/L 16,3%, Excepcionais 15,5%, sem vender 13,2%. A High ROIC é a única entre as primeiras nas duas bases.
+
+## 2026-11-15 — Pré-registro: ROIC triangulado nas médias e pequenas e combinação núcleo + satélite (pedido do usuário)
+(1) Mesma definição do ROIC triangulado (com a regra de "arte" e a de outliers) aplicada às médias e pequenas (dados extras da SEC para as 1.868 empresas);
+as 8 estratégias são refeitas nessa base contra o Russell 2000.
+(2) Combinação Top 20 da OoL + OoL High ROIC, com rebalanceamento trimestral entre as duas pernas: 100/0, 70/30, 50/50, 30/70 e 0/100, no S&P 500 e nas
+médias e pequenas (ambas com o ROIC triangulado). Mesmas métricas: retorno, depois do IR, janelas de 3/5/10 anos, pior queda, meses atrás do índice, trades.
