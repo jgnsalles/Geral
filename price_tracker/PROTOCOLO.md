@@ -373,3 +373,7 @@ ROIC + G + P/L 16,3%, Excepcionais 15,5%, sem vender 13,2%. A High ROIC é a ún
 as 8 estratégias são refeitas nessa base contra o Russell 2000.
 (2) Combinação Top 20 da OoL + OoL High ROIC, com rebalanceamento trimestral entre as duas pernas: 100/0, 70/30, 50/50, 30/70 e 0/100, no S&P 500 e nas
 médias e pequenas (ambas com o ROIC triangulado). Mesmas métricas: retorno, depois do IR, janelas de 3/5/10 anos, pior queda, meses atrás do índice, trades.
+**Resultado (2026-11-15).** (1) Médias e pequenas com ROIC triangulado (Russell 2000 9,8%): High ROIC 19,9% (99/100/100% contra o IWM; 20 meses atrás), High Growth 18,7%
+(100/100/100%), Todas as de qualidade 16,8% (100/100/100%), ROIC + G + P/L 15,9%, Excepcionais até 20 15,0%, Top 20 14,7% (76/71/100%; 85 meses atrás), Excepcionais 13,9%,
+sem vender 13,9%. (2) Combinação Top 20 + High ROIC — S&P 500: 100/0 20,5%, 70/30 20,9%, 50/50 21,0%, 30/70 21,2%, 0/100 21,4% (janelas 3a 100/100/100/99/95%);
+médias e pequenas: 14,7%, 16,4%, 17,5%, 18,5%, 19,9% (janelas 3a 76/89/98/100/99%). A mais robusta nas duas bases: 30% Top 20 + 70% High ROIC.
