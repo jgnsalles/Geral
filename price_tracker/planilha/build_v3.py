@@ -45,7 +45,7 @@ def hdr(ws, r, c, text, w=None, fill=HEAD, color=WHITE, wrap=True):
 PR.sheet_view.showGridLines = False
 PR.column_dimensions['B'].width = 34; PR.column_dimensions['C'].width = 14; PR.column_dimensions['E'].width = 34; PR.column_dimensions['F'].width = 30
 hdr(PR, 2, 2, 'Parâmetro'); hdr(PR, 2, 3, 'Valor')
-params = [('ANO', 'Último exercício fechado', '=YEAR(TODAY())-1', '0'),
+params = [('ANO', 'Último exercício fechado', 2025, '0'),  # número fixo: TODAY() é volátil e faria o Wisesheets refazer as chamadas a cada recálculo
           ('ROIC_ALTO', 'ROIC: corte de qualidade', 0.12, PCT), ('ROIC_BAIXO', 'ROIC: piso', 0.10, PCT),
           ('CRESC_ALTO', 'Crescimento do EPS: corte', 0.15, PCT), ('CRESC_BAIXO', 'Crescimento do EPS: piso', 0.06, PCT),
           ('ZG_CORTE', 'zGrowth máximo (estabilidade)', 2.93, '0.00'),
