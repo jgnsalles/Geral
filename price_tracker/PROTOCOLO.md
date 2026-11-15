@@ -351,3 +351,14 @@ A NVIDIA sai do universo em todas as datas (as estratégias escolhem a próxima 
 entre um S&P sintético com peso por valor de mercado com e sem a NVIDIA). Os 9 comparativos obrigatórios também são refeitos sem a NVIDIA.
 **Resultado (sem NVIDIA):** S&P 500 15,6% → 14,9%. Top 20 OoL 20,5% → 20,3% (vantagem sobre o índice 5,0 → 5,4 p.p.; janelas 100/100/100%); High ROIC 21,4% → 20,2%;
 High Growth 20,7% → 19,8%; ROIC + G + P/L 20,7% → 19,8%; Todas as de qualidade 18,9% → 18,0%; As excepcionais 24,6% → 21,0% (vantagem 9,0 → 6,1 p.p.).
+
+## 2026-11-15 — Pré-registro: duas variações das "excepcionais" e o teste fora do S&P 500 (pedido do usuário)
+(7) **Excepcionais completadas até 20**: as que têm ROIC > 30% e crescimento > 30% entram primeiro; o resto das 20 vagas é preenchido pelas que chegam
+mais perto dos dois cortes ao mesmo tempo (nota = menor entre ROIC ÷ 30% e crescimento ÷ 30%), entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%,
+sem cíclicos e vestuário). Raiz do valor de mercado com teto de 10%; trimestral.
+(8) **Excepcionais sem nunca vender**: a cada trimestre, um aporte igual, dividido em partes iguais entre as excepcionais do momento; nada é vendido.
+Medido pelo retorno ponderado no tempo (comparável às demais) e, para os aportes, pela TIR contra o mesmo esquema de aportes no S&P 500 e na Top 20 sem
+vender. Imposto só na venda final (diferido).
+**Teste fora do S&P 500** com as 8 estratégias: universo das médias e pequenas dos EUA (fora do S&P 500 na data, valor de mercado ≥ US$ 1 bi, preço ≥ US$ 5,
+giro ≥ US$ 5 milhões/dia), com a definição anterior de ROIC (o triangulado ainda não existe para essa base) e classes novas sem zROIC. Referências:
+Russell 2000 (IWM), S&P SmallCap 600 (IJR), S&P MidCap 400 (IJH), S&P 500 e o universo em peso igual; janelas de 3, 5 e 10 anos contra o IWM.
