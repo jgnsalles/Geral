@@ -142,7 +142,7 @@ th[aria-sort="ascending"],th[aria-sort="descending"]{color:var(--fg)}
   <section id="v-gestores" hidden>
     <div style="display:grid;gap:12px">
       <h1>Gestores</h1>
-      <div class="bar-f"><div class="seg" id="g-base"></div><div class="seg" id="g-per"></div></div>
+      <div class="bar-f"><div class="seg" id="g-base"></div><div class="seg" id="g-tipo"></div><div class="seg" id="g-per"></div></div>
       <div class="card">
         <div class="head"><h2>Ranking</h2><span class="sub" id="g-ref"></span></div>
         <div class="box"><table class="cardify" id="g-rk"></table></div>
@@ -187,9 +187,9 @@ th[aria-sort="ascending"],th[aria-sort="descending"]{color:var(--fg)}
           <li><b>Presença:</b> média, entre as bases, da fração dos gestores de cada base que têm a ação. Evita que uma base com muitos gestores domine.</li>
           <li><b>Compradas e vendidas:</b> gestores que entraram menos os que saíram em 12 meses.</li>
           <li><b>Retorno da empresa:</b> preço em US$ (sem dividendos), a partir do valor ÷ quantidade informados pelos fundos.</li>
-          <li><b>Retorno do gestor:</b> Peru = carteira de ações locais (soles, sem dividendos), contra todas as AFPs; EUA = cota do fundo (com dividendos e taxas); 13F = carteira listada nos EUA (sem dividendos), contra o ETF iShares Latin America 40.</li>
+          <li><b>Retorno do gestor:</b> Peru = carteira de ações locais (soles, sem dividendos), contra todas as AFPs; EUA = cota do fundo (com dividendos e taxas); 13F = carteira listada nos EUA (sem dividendos), contra o ETF iShares Latin America 40; nas gestoras globais (ex.: GQG), só a parte LatAm.</li>
           <li><b>Attribution:</b> peso na carteira anterior × retorno da ação, somado no período.</li>
-          <li><b>Fora:</b> gestoras sediadas no Brasil e carteiras com 70% ou mais em Brasil. Colômbia, Argentina e México não publicam carteiras por empresa em arquivo.</li>
+          <li><b>Só gestão ativa:</b> fora ETFs, fundos de índice, alavancados, corretoras, bancos e fundos de pensão. ETFs dentro das carteiras não contam como empresa.</li><li><b>Fora:</b> gestoras sediadas no Brasil e carteiras com 70% ou mais em Brasil. Gestoras globais (ex.: GQG) entram com as posições em LatAm.</li><li>Colômbia, Argentina e México não publicam carteiras por empresa em arquivo.</li>
         </ul>
         <p id="s-gen"></p>
       </div>
@@ -315,7 +315,7 @@ function renderEmpresa(c) {
   $('c-n').textContent = e.n; $('c-s').innerHTML = `${esc(PAIS[e.p] || e.p || '–')} · <span class="sw" style="background:${SCOL[e.s] || SCOL.Outros}"></span>${esc(e.s)}`;
   const t = [['Gestores com a ação', String(x.n), x.net ? sgn(x.net) + ' em 12m' : 'sem mudança em 12m'], ['Retorno 12m', spct(x.r12), 'em US$'], ['Retorno 3 anos', spct(x.r36), 'em US$'],
     ['Valor nesses gestores', usd(x.v), 'soma das posições']];
-  if (e.ag) t.push(['Todos os fundos dos EUA', usd(e.ag[0]), (e.ag[1] >= 0 ? 'compraram ' : 'venderam ') + usd(Math.abs(e.ag[1])) + ' no trimestre']);
+  if (e.ag) t.push(['Fundos ativos dos EUA', usd(e.ag[0]), (e.ag[1] >= 0 ? 'compraram ' : 'venderam ') + usd(Math.abs(e.ag[1])) + ' no trimestre']);
   $('c-tiles').innerHTML = t.map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
   // gráfico: preço + nº de gestores
   seg($('c-rng'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos'], [0, 'Tudo']], CE.rng, (v) => { CE.rng = +v; renderEmpresa(c); });
@@ -336,10 +336,10 @@ function renderEmpresa(c) {
 }
 
 // ---------- gestores ----------
-const SG = { base: 'us', per: 36 };
+const SG = { base: 'us', per: 36, tipo: 'latam' };
 function gModel(b, id) {
   if (b === 'pe') { const P = D.fpe, f = P.fundos[id]; return { b, id, f, nome: f.nome, sub: 'Peru · carteira de ações locais', L: P.meses, ret: f.R, ref: P.ref.R, refName: 'Todas as AFPs', emps: Object.keys(f.p), map: (e) => C.map['pe:' + e], nm: (e) => e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.S[j], sizeName: 'Ações locais', soles: true }; }
-  if (b === 'f13') { const G = D.f13, f = G.fundos[id]; return { b, id, f, nome: f.nome, sub: '13F · carteira listada nos EUA', L: f.datas, ret: f.R, ref: f.REF, refName: 'ETF LatAm 40', emps: Object.keys(f.p), map: (e) => C.map['f13:' + e], nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.TOT[j], sizeName: 'Carteira 13F' }; }
+  if (b === 'f13') { const G = D.f13, f = G.fundos[id]; return { b, id, f, nome: f.nome, sub: f.tipo === 'global' ? '13F · só a parte LatAm da carteira' : '13F · carteira listada nos EUA', L: f.datas, ret: f.R, ref: f.REF, refName: 'ETF LatAm 40', emps: Object.keys(f.p), map: (e) => C.map['f13:' + e], nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.TOT[j], sizeName: 'Carteira 13F' }; }
   const U = D.fus, f = U.fundos[id]; return { b, id, f, nome: f.nome, sub: f.reg, L: f.datas, ret: f.RF, ref: f.EX, refName: 'Explicado pelas ações', emps: Object.keys(f.p).filter((e) => !e.startsWith('Outros')), map: (e) => C.map['us:' + e], nm: (e) => U.emp[e] ? U.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.NA[j], sizeName: 'Patrimônio' };
 }
 const setorOf = (m, e) => { const c = m.map(e); return c && C.e[c] ? C.e[c].s : 'Outros'; };
@@ -361,8 +361,10 @@ const GLIST = (b) => b === 'pe' ? Object.keys(D.fpe.fundos) : b === 'f13' ? Obje
 function renderGestores() {
   seg($('g-base'), [['us', 'Fundos dos EUA'], ['f13', 'Gestoras (13F)'], ['pe', 'AFPs do Peru']], SG.base, (v) => { SG.base = v; renderGestores(); });
   seg($('g-per'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos']], SG.per, (v) => { SG.per = +v; renderGestores(); });
+  $('g-tipo').hidden = SG.base !== 'f13';
+  seg($('g-tipo'), [['latam', 'Foco em LatAm'], ['global', 'Globais e emergentes']], SG.tipo, (v) => { SG.tipo = v; renderGestores(); });
   const b = SG.base, tol = b === 'pe' ? 0 : 3;
-  const rows = GLIST(b).map((id) => { const m = gModel(b, id), L = m.L; if (L.length < 2) return null;
+  const rows = GLIST(b).filter((id) => b !== 'f13' || (D.f13.fundos[id].tipo || 'latam') === SG.tipo).map((id) => { const m = gModel(b, id), L = m.L; if (L.length < 2) return null;
     const w = window_(L, SG.per, tol); const fresh = mdiff(L[L.length - 1], C.now) <= 9; const s = stats(m, w.a, w.z);
     const lev = /ULTRA|\b[23]X\b|LEVERAG/i.test(m.nome);
     const sw = {}; s.S.forEach((x) => { if (x.w1 > 0) sw[x.s] = (sw[x.s] || 0) + x.w1; }); const swt = Object.values(sw).reduce((p, q) => p + q, 0) || 1;
@@ -391,7 +393,7 @@ function renderGestor(b, id) {
   seg($('f-per'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos'], [0, 'Tudo']], SF.per, (v) => { SF.per = +v; renderGestor(b, id); });
   const w = window_(L, SF.per, tol), a = w.a, z = w.z, s = stats(m, a, z);
   $('f-dt').textContent = ymL(L[a]) + ' – ' + ymL(L[z]);
-  const t = [['Retorno', spct(s.R, 1), b === 'us' ? 'cota em US$' : b === 'pe' ? 'ações locais, em soles' : 'carteira 13F'], [m.refName, spct(s.RR, 1), b === 'us' ? 'peso × retorno' : 'mesmo período'],
+  const t = [['Retorno', spct(s.R, 1), b === 'us' ? 'cota em US$' : b === 'pe' ? 'ações locais, em soles' : (m.f && m.f.tipo === 'global' ? 'parte LatAm' : 'carteira 13F')], [m.refName, spct(s.RR, 1), b === 'us' ? 'peso × retorno' : 'mesmo período'],
     [b === 'us' ? 'Resto' : 'Diferença', sgn((s.R - s.RR) * 100, 1, ' p.p.'), b === 'us' ? 'dividendos, caixa, taxas' : 'pontos percentuais'], [m.sizeName, m.soles ? 'S/ ' + nf(m.size(z)) + ' mi' : usd(m.size(z)), 'no fim']];
   $('f-tiles').innerHTML = t.map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
   const cum = (arr) => { let g = 1; return L.slice(a, z + 1).map((_, k) => { if (k) g *= 1 + (arr[a + k] ?? 0); return (g - 1) * 100; }); };
@@ -491,7 +493,7 @@ function renderComp(m, a, z, s) {
 
 // ---------- sobre ----------
 function renderSobre() {
-  const MAP = [['Peru', 'SBS', 'As 4 AFPs', 'Mensal, desde 2014'], ['EUA', 'SEC · N-PORT', 'Fundos americanos focados em LatAm', 'Trimestral, desde 2019'], ['EUA', 'SEC · 13F', 'Gestoras com ações listadas nos EUA (Moneda, Fourth Sail, INCA…)', 'Trimestral, desde 2016'],
+  const MAP = [['Peru', 'SBS', 'As 4 AFPs', 'Mensal, desde 2014'], ['EUA', 'SEC · N-PORT', 'Fundos ativos americanos focados em LatAm', 'Trimestral, desde 2019'], ['EUA', 'SEC · 13F', 'Gestoras ativas com ações listadas nos EUA (Moneda, Fourth Sail, INCA, GQG…)', 'Trimestral, desde 2016'],
     ['Chile', 'CMF', 'Fundos mútuos por administradora', 'Só o último trimestre'], ['Colômbia', 'Superfinanciera', 'Fundos de pensão', 'Fora: ações locais sem empresa'], ['Argentina', 'CNV / CAFCI', '—', 'Fora: sem arquivo por empresa'], ['México', 'CNBV / CONSAR', '—', 'Fora: só PDFs por operadora']];
   $('s-map').innerHTML = '<thead><tr><th class="l">País</th><th class="l">Fonte</th><th class="l">O que mostra</th><th class="l">Cobertura</th></tr></thead><tbody>' + MAP.map((r) => `<tr><td class="l" data-l="">${r[0]}</td><td class="l" data-l="Fonte">${r[1]}</td><td class="l w" data-l="Mostra">${r[2]}</td><td class="l w" data-l="Cobertura">${r[3]}</td></tr>`).join('') + '</tbody>';
   $('s-gen').textContent = 'Carteiras até ' + ymL(C.now) + '. Dados montados em ' + D.gerado_em + '.';

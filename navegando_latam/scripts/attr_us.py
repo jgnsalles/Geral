@@ -9,6 +9,16 @@ H, I = [], []
 for f in sorted(glob.glob(W + '/nf/*.pkl')):
     d = pd.read_pickle(f); H.append(d['h']); I.append(d['info'])
 H = pd.concat(H); I = pd.concat(I)
+# fundos fechados (ex.: Mexico Fund) não têm série no N-PORT: usa o registrante como identificador
+I['SERIES_ID'] = I.SERIES_ID.fillna('R' + I.REGISTRANT_NAME.fillna('').str.upper().str.replace(r'[^A-Z0-9]+', '', regex=True).str[:20])
+I['SERIES_NAME'] = I.SERIES_NAME.fillna(I.REGISTRANT_NAME)
+# só gestão ativa: fora ETFs/fundos de índice, alavancados e smart beta por regra
+PASSIVO = r'ISHARES|\bFTSE\b|\bMSCI\b|ALPHADEX|VANECK|PROFUND|XTRACKERS|\bINDEX\b|\bSPDR\b|ULTRA|WIND ENERGY'
+I = I[~I.SERIES_NAME.fillna('').str.upper().str.contains(PASSIVO, regex=True)]
+# mesma estratégia com outra série (troca de trust, fundo convertido em ETF): junta pela denominação normalizada
+_k = I.SERIES_NAME.str.upper().str.replace(r'\b(THE|FUND|ETF|INC)\b|[^A-Z0-9 ]', '', regex=True).str.split().str.join(' ')
+_first = I.assign(_k=_k).sort_values('REPORT_DATE').groupby('_k').SERIES_ID.first()
+I['SERIES_ID'] = _k.map(_first)
 for c in ['NET_ASSETS'] + [x for x in I.columns if 'FLOW' in x]: I[c] = pd.to_numeric(I[c], errors='coerce')
 I['rd'] = pd.to_datetime(I.REPORT_DATE, format='%d-%b-%Y', errors='coerce'); H['rd'] = pd.to_datetime(H.REPORT_DATE, format='%d-%b-%Y', errors='coerce')
 I = I.sort_values(['SERIES_ID', 'rd', 'FILING_DATE']).drop_duplicates(['SERIES_ID', 'rd'], keep='last')       # 1 carteira por data

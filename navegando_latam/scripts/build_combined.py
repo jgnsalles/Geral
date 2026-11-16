@@ -25,8 +25,12 @@ def toks(ids, extra=(), pais=None):
     return t
 for e, ids in pe.get('ids', {}).items(): nodes['pe:' + e] = (e, toks(ids, pais='PE'))
 for e, v in us['emp'].items(): nodes['us:' + e] = (v[0], toks(us.get('ids', {}).get(e, []), pais=v[1]))
-for e, v in f13['emp'].items(): nodes['f13:' + e] = (v[0], toks(f13.get('ids', {}).get(e, []), ['c6:' + e]))
-for e, v in agg['emp'].items(): nodes['agg:' + e] = (v['nome'], toks(agg.get('ids', {}).get(e, []), pais=v.get('pais')))
+for e, v in f13['emp'].items():
+    if v[1]: nodes['f13:' + e] = (v[0], toks(f13.get('ids', {}).get(e, []), ['c6:' + e]))   # só empresas da LatAm (gestoras globais têm o resto do mundo)
+ETFRX = r'\bETF\b|ISHARES|\bSPDR\b|\bINDEX\b|\bMSCI\b|\bFTSE\b|VANGUARD|XTRACKERS|GLOBAL X|\bTRUST\b.*\bFD\b'
+for e, v in agg['emp'].items():
+    if re.search(ETFRX, str(v['nome']).upper()): continue
+    nodes['agg:' + e] = (v['nome'], toks(agg.get('ids', {}).get(e, []), pais=v.get('pais')))
 CL = L['cl']
 for f in CL['f']:
     for t in f['p']:
@@ -161,6 +165,7 @@ for gid, g in G.items():
 AG = {}
 ti = len(agg['tris']) - 1
 for r, es in agg['g'].items():
+    if r.endswith(' · índice'): continue          # só gestão ativa
     for e, (v, f) in es.items():
         c = cid_of.get('agg:' + e)
         if not c: continue
@@ -217,6 +222,7 @@ for gid, g in G.items():
     j = len(g['dates']) - 1
     out['g'][gid] = {'n': g['n'], 'b': g['b'], 'sub': g.get('sub', ''), 'last': g['dates'][j], 'usd': round(g['usd'][j] or 0, 1), 'cur': gid in CUR}
 for c, e in emp.items():
+    if e['s'] == 'Fundos e ETFs' or re.search(ETFRX, e['n'].upper()): continue      # investimento passivo não é empresa
     hist = QS[c]
     if not H[c] and not any(h[0] for h in hist) and c not in AG: continue
     ix = px.get(c)
