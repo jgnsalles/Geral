@@ -72,6 +72,10 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--soft)}
 .ktip .kb{font-weight:600}
 .lgb{font:inherit;font-size:.75rem;background:none;border:0;color:var(--muted);padding:2px 4px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center}
 .lgb[aria-pressed="true"]{background:var(--soft);color:var(--fg);font-weight:600}
+th button.srt::after{content:attr(data-arrow)}
+th[aria-sort="ascending"],th[aria-sort="descending"]{color:var(--fg)}
+.sortsel{display:none;align-items:center;gap:8px;font-size:.8rem;color:var(--muted);justify-self:start}
+@media (max-width:640px){ .sortsel{display:flex} }
 #loading{color:var(--muted);padding:40px 0;text-align:center}
 @media (max-width:640px){
   h1{font-size:1.4rem}
@@ -293,7 +297,8 @@ function renderEmpresas() {
   const cols = [['n', 'Empresa', (x) => `<span style="display:inline-flex;gap:8px;align-items:center">${logo(x.e.n, x.e.s)}<span><b style="font-weight:500">${esc(x.e.n)}</b><br><span class="sub">${esc(PAIS[x.e.p] || x.e.p || '–')} · ${esc(x.e.s)}</span></span></span>`, 'l w'],
     ['pres', 'Presença', (x) => pct(x.pres)], ['n_', 'Gestores', (x) => String(x.n)], ['net', '12m', (x) => sgn(x.net)], ['wmed', 'Peso médio', (x) => pct(x.wmed, 1)],
     ['r12', 'Retorno 12m', (x) => spct(x.r12)], ['r36', '3 anos', (x) => spct(x.r36)], ['v', 'Valor', (x) => usd(x.v)]];
-  const key = ST.sort, R = L.slice().sort((a, b) => key === 'n' ? ST.dir * a.e.n.localeCompare(b.e.n) : ST.dir * (((key === 'n_' ? a.n : a[key]) ?? -1e9) - ((key === 'n_' ? b.n : b[key]) ?? -1e9)));
+  const key = ST.sort, gv = (x) => key === 'n_' ? x.n : x[key], R = L.slice().sort((a, b) => { if (key === 'n') return ST.dir * a.e.n.localeCompare(b.e.n, 'pt-BR'); const x = gv(a), y = gv(b); if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1; return ST.dir * (x - y); });
+  $('e-tbl').dataset.own = '1';
   $('e-tbl').innerHTML = '<thead><tr>' + cols.map(([k, l, , cls]) => `<th class="${cls ? 'l' : ''}"><button data-k="${k}">${l}${ST.sort === k ? (ST.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`).join('') + '</tr></thead><tbody>' +
     R.slice(0, ST.n).map((x) => `<tr class="ck" data-e="${esc(x.c)}">${cols.map(([k, l, f, cls]) => `<td class="${cls || ''}" data-l="${l}">${f(x)}</td>`).join('')}</tr>`).join('') + '</tbody>';
   $('e-cnt').textContent = R.length + ' empresas';
@@ -491,6 +496,54 @@ function renderSobre() {
   $('s-map').innerHTML = '<thead><tr><th class="l">País</th><th class="l">Fonte</th><th class="l">O que mostra</th><th class="l">Cobertura</th></tr></thead><tbody>' + MAP.map((r) => `<tr><td class="l" data-l="">${r[0]}</td><td class="l" data-l="Fonte">${r[1]}</td><td class="l w" data-l="Mostra">${r[2]}</td><td class="l w" data-l="Cobertura">${r[3]}</td></tr>`).join('') + '</tbody>';
   $('s-gen').textContent = 'Carteiras até ' + ymL(C.now) + '. Dados montados em ' + D.gerado_em + '.';
 }
+
+// ---------- regra: toda tabela é ordenável por qualquer coluna ----------
+const SORTS = {};      // estado por tabela (id): coluna e direção, mantido entre redesenhos
+const cellVal = (td) => {
+  if (!td) return null;
+  if (td.dataset.v != null) return isNaN(+td.dataset.v) ? td.dataset.v.toLowerCase() : +td.dataset.v;
+  let t = td.innerText.replace(/\s+/g, ' ').trim();
+  if (!t || t === '–' || t === '-') return null;
+  if (/^(entrou|nova)$/i.test(t)) return 1e6;       // posição nova conta como a maior alta
+  td.querySelectorAll('.chip').forEach((c) => { t = t.replace(c.innerText.trim(), '').trim(); });   // etiquetas não entram na ordem
+  const m = t.replace(/^(US\$|S\/)\s*/, '').match(/^([+−-]?)\s*([\d.]+(?:,\d+)?)\s*(bi|mi|%|p\.p\.)?/);
+  if (m) { let v = parseFloat(m[2].replace(/\./g, '').replace(',', '.')); if (m[1] === '−' || m[1] === '-') v = -v; if (m[3] === 'bi') v *= 1000; return v; }
+  return t.toLowerCase();
+};
+function sortRows(tbl, i, dir) {
+  const tb = tbl.tBodies[0]; if (!tb) return;
+  const rows = [...tb.rows];
+  rows.sort((a, b) => { const x = cellVal(a.cells[i]), y = cellVal(b.cells[i]);
+    if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+    if (typeof x === 'number' && typeof y === 'number') return dir * (x - y);
+    if (typeof x === 'number') return -1; if (typeof y === 'number') return 1;
+    return dir * x.localeCompare(y, 'pt-BR'); });
+  rows.forEach((r) => tb.appendChild(r));
+}
+function mark(tbl, i, dir) {
+  tbl.querySelectorAll('thead th').forEach((th, k) => { th.setAttribute('aria-sort', k === i ? (dir < 0 ? 'descending' : 'ascending') : 'none');
+    const b = th.querySelector('.srt'); if (b) b.dataset.arrow = k === i ? (dir < 0 ? ' ↓' : ' ↑') : ''; });
+  const sel = tbl.parentElement.parentElement.querySelector(':scope > .sortsel select'); if (sel) sel.value = i + ':' + dir;
+}
+function enhance(tbl) {
+  const head = tbl.tHead; if (!head || head.dataset.s) return; head.dataset.s = '1';
+  const ths = [...head.rows[0].cells], own = tbl.dataset.own === '1';
+  if (!own) ths.forEach((th, i) => { if (th.querySelector('button')) return; const t = th.innerHTML; th.innerHTML = `<button class="srt" type="button">${t}</button>`;
+    th.querySelector('button').onclick = () => { const st = SORTS[tbl.id] || {}; const dir = st.i === i ? -st.dir : (i === 0 || i === 1 && /gestor|empresa|setor|ano|país/i.test(th.innerText) ? 1 : -1);
+      SORTS[tbl.id] = { i, dir }; sortRows(tbl, i, dir); mark(tbl, i, dir); }; });
+  // celular: seletor "Ordenar por" (os títulos ficam escondidos quando as linhas viram cartões)
+  const host = tbl.parentElement; let wrap = host.parentElement.querySelector(':scope > .sortsel');
+  if (!wrap) { wrap = document.createElement('label'); wrap.className = 'sortsel'; host.parentElement.insertBefore(wrap, host); }
+  wrap.innerHTML = '<span>Ordenar por</span><select aria-label="Ordenar por">' + ths.flatMap((th, i) => { const l = th.innerText.replace(/[↑↓]/g, '').trim() || (i === 0 ? '#' : 'Coluna ' + (i + 1));
+    return [`<option value="${i}:-1">${esc(l)} ↓</option>`, `<option value="${i}:1">${esc(l)} ↑</option>`]; }).join('') + '</select>';
+  wrap.querySelector('select').onchange = (e) => { const [i, dir] = e.target.value.split(':').map(Number);
+    if (own) { const bt = ths[i].querySelector('button'); if (bt) { bt.click(); return; } }
+    SORTS[tbl.id] = { i, dir }; sortRows(tbl, i, dir); mark(tbl, i, dir); };
+  const st = SORTS[tbl.id];
+  if (!own && st && st.i < ths.length) { sortRows(tbl, st.i, st.dir); mark(tbl, st.i, st.dir); }
+  if (own) { const k = ths.findIndex((th) => /[↑↓]/.test(th.innerText)); if (k >= 0) wrap.querySelector('select').value = k + ':' + (/↓/.test(ths[k].innerText) ? -1 : 1); }
+}
+new MutationObserver(() => document.querySelectorAll('main table').forEach(enhance)).observe(document.querySelector('main'), { childList: true, subtree: true });
 
 // ---------- rotas ----------
 const VIEWS = ['empresas', 'empresa', 'gestores', 'gestor', 'sobre'];

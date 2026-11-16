@@ -46,3 +46,9 @@ Telas: Empresas (início) → Empresa; Gestores (ranking) → Gestor; Sobre. Bus
   nome); detentores atuais e de 12 meses antes (Peru por AFP, Chile por administradora), histórico trimestral de nº de gestores,
   índice de preço em US$ (N-PORT; Peru convertido de soles). Presença = média entre as bases da fração dos gestores que têm a ação.
 - `scripts/build_app.py` monta a página com os dados embutidos. A página anterior (`src/page.html`, `scripts/build_page.py`) fica como referência.
+
+## Regra: toda tabela é ordenável
+Em `src/app.html`, um MutationObserver aplica `enhance()` a qualquer tabela que aparece em `main`: título de coluna clicável (alterna ↓/↑),
+vazios sempre por último, etiquetas (nova, saiu, base) ignoradas na ordem, números lidos de %, p.p., US$ mi/bi; no celular, seletor
+"Ordenar por". A ordem escolhida fica guardada por tabela e é reaplicada quando a tabela é redesenhada. Tabelas com ordenação própria sobre
+os dados completos (ex.: lista de empresas, que é paginada) usam `data-own="1"`. Tabelas novas não precisam de código extra.
