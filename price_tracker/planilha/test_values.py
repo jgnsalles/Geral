@@ -14,7 +14,7 @@ for tk in tick:
     p = load_pit(tk); p2 = load_pit2(tk); s = {k: asof(v, t)[0] for k, v in {**p, **p2}.items()}
     g = lambda k, y: s[k][y][0] if s.get(k) and y in s[k] else None
     v = {}
-    for k in range(0, 6):
+    for k in range(-1, 7):
         y = ANO - k
         v[f'opinc{k}'] = g('op_income', y); v[f'pretax{k}'] = g('pretax', y); v[f'tax{k}'] = g('tax', y); v[f'ni{k}'] = g('net_income', y); v[f'eps{k}'] = g('eps_diluted', y)
         ppe = [x for x in (g('ppe', y), g('ppe_og', y)) if x is not None]; v[f'ppe{k}'] = max(ppe) if ppe else None
@@ -27,7 +27,7 @@ for tk in tick:
         ld = g('ltd_tot', y); v[f'debt{k}'] = (ld + (g('st_borr', y) or 0)) if ld is not None else ((g('lt_debt', y) or 0) + (g('debt_cur', y) or 0))
         ll = g('lease_liab', y)
         if ll is None and (g('lease_liab_cur', y) is not None or g('lease_liab_nc', y) is not None): ll = (g('lease_liab_cur', y) or 0) + (g('lease_liab_nc', y) or 0)
-        v[f'lease{k}'] = ll; v[f'eq{k}'] = g('equity', y); v[f'mino{k}'] = g('minority', y)
+        v[f'lease{k}'] = ll; v[f'eq{k}'] = g('equity', y); v[f'mino{k}'] = g('minority', y); v[f'rou{k}'] = g('rou', y); v[f'eqi{k}'] = g('eq_income', y)
         cx = g('capex', y); v[f'capex{k}'] = -cx if cx is not None else None; v[f'da{k}'] = g('da', y)
         aq = g('acq', y); v[f'acq{k}'] = -aq if aq is not None else None
     if tk not in close: continue
