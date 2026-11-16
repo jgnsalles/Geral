@@ -25,7 +25,7 @@ body = f'''
 <div class="kicker">Anatomia de uma estratégia vencedora</div>
 <h1>O modelo acerta a qualidade, não o futuro. E é por isso que funciona</h1>
 <p class="deck">Quinze anos de compras do S&amp;P 500 decompostos ação por ação mostram que o retorno alto do ROIC persiste, o crescimento passado não se repete e o mercado acaba pagando mais pela qualidade que dura. Prever o negócio melhor que o modelo renderia pouco.</p>
-<div class="byline">S&amp;P 500 point-in-time, {d['n_obs']:,} observações ação-trimestre · 5 carteiras: Top 20, Opportunity of Lifetime, High ROIC, High Growth e Excepcionais · em dólares</div>
+<div class="byline">S&amp;P 500 point-in-time, {d['n_obs']:,} observações ação-trimestre · 6 carteiras: Top 20, Opportunity of Lifetime, High ROIC, High Growth, Excepcionais e JG+G (Fórmula Mágica com crescimento) · em dólares</div>
 <p class="warn"><b>⚠️ O ROIC pode estar errado.</b> Ele pesa duas vezes aqui: é o filtro das carteiras e é o objeto de um dos testes (se ele persiste). Usamos o ROIC triangulado oficial (14/11/2026); financeiras usam ROE. Erro de medida faria a persistência parecer <i>menor</i> do que é. Backtest, sem custos de transação; não é recomendação de investimento.</p>
 
 <div class="big">
@@ -46,7 +46,7 @@ body = f'''
   <li><b>As previsões se confirmaram?</b> ROIC sim, crescimento não, P/E justo em parte.</li>
   <li><b>O que explica o retorno?</b> Entre o que se sabe na compra, só o ROIC.</li>
   <li><b>Onde o modelo errou?</b> Nas grandes altas que vieram de empresas com crescimento parado.</li>
-  <li><b>Quanto vale o julgamento?</b> Sobre o negócio, pouco. Sobre o preço, muito, mas preço não se prevê.</li></ol></aside>
+  <li><b>Quanto vale o julgamento?</b> Sobre o negócio, pouco (mais na JG+G). Sobre o preço, muito, mas preço não se prevê.</li></ol></aside>
 </div>
 
 <h2 class="chap" style="margin-top:56px">1. De onde veio o retorno</h2>
@@ -54,7 +54,7 @@ body = f'''
 <figcaption class="s">Retorno anual das posições em 3 anos, decomposto em crescimento do EPS, re-rating (mudança do P/L) e dividendos. Média ponderada pelas posições de cada trimestre.</figcaption>
 <div class="legend" id="lg1"></div><div id="c1"></div>
 <div class="src">Fonte: balanços da SEC na data, preços ajustados. Só posições com EPS positivo no começo e no fim; ficam de fora {pc(T3['sem_dado'], 0)} a {pc(dec3['Excepcionais']['sem_dado'], 0)} das posições (as mais recentes, sem 3 anos de futuro, e as que deram prejuízo).</div>
-<div class="sowhat"><b>E daí</b><span>Na Top 20, o lucro cresceu {pc(T3['eps'])} ao ano, menos que o do mercado ({pc(U3['eps'])}). O retorno a mais veio todo do re-rating: {pc(T3['rr'])} ao ano, contra {pc(U3['rr'])} no mercado. As Excepcionais são a exceção: o lucro delas cresceu {pc(dec3['Excepcionais']['eps'])} ao ano. É a única carteira cujo ganho vem do negócio, e isso explica tanto o retorno quanto a volatilidade.</span></div>
+<div class="sowhat"><b>E daí</b><span>Na Top 20, o lucro cresceu {pc(T3['eps'])} ao ano, menos que o do mercado ({pc(U3['eps'])}). O retorno a mais veio todo do re-rating: {pc(T3['rr'])} ao ano, contra {pc(U3['rr'])} no mercado. As Excepcionais são a exceção: o lucro delas cresceu {pc(dec3['Excepcionais']['eps'])} ao ano. É a única carteira cujo ganho vem do negócio, e isso explica tanto o retorno quanto a volatilidade. No outro extremo está a JG+G: o lucro das ações dela cresceu só {pc(dec3['JG+G']['eps'])} ao ano, e o retorno veio quase todo do re-rating ({pc(dec3['JG+G']['rr'])}) e dos dividendos ({pc(dec3['JG+G']['div'])}). Ela funciona como uma carteira de valor: compra barato e espera o múltiplo subir.</span></div>
 </figure>
 
 <figure><figcaption class="t">No curto prazo, preço é humor; em cinco anos, é lucro</figcaption>
@@ -122,12 +122,13 @@ body = f'''
 <figcaption class="s">Ganho anual sobre a carteira original ao vetar, em cada rebalanceamento, as 20% das posições com o pior resultado futuro em cada critério (o veto vale por 4 trimestres). "Aleatório" = vetar 20% ao acaso (média de 30 sorteios).</figcaption>
 <div class="legend" id="lg11"></div><div id="c11"></div>
 <div class="sowhat"><b>E daí</b><span>É o resultado mais importante do relatório. Um oráculo que soubesse qual empresa ia perder ROIC no ano seguinte e a vetasse <b>não ganharia nada</b>. Mesmo sabendo o lucro dos 3 anos seguintes, o ganho fica entre {pp(min(eps3_gain))} e {pp(max(eps3_gain))} ao ano. Só quem soubesse o re-rating do ano seguinte ganharia muito ({pp(min(rr_gain), 0)} a {pp(max(rr_gain), 0)}), mas re-rating é humor de mercado, não análise de negócio. Nas Excepcionais, qualquer veto destrói valor: a carteira depende de poucas vencedoras.</span></div>
+<div class="sowhat"><b>A exceção</b><span>Na JG+G o julgamento sobre o negócio vale mais. Saber o lucro dos 3 anos seguintes renderia {pp(orc['JG+G']['EPS em 3 anos'])} ao ano, e saber o ROIC de 3 anos depois, {pp(orc['JG+G']['ROIC em 3 anos'])}. Nas outras carteiras, saber o ROIC futuro não ajuda (ou atrapalha) e saber o lucro rende de 1 a 3 pontos. Faz sentido: a JG+G compra empresas baratas, e entre elas estão as armadilhas de valor (as maiores perdas foram Target, HP, Boeing e Intel, com o lucro encolhendo). É na Fórmula Mágica que uma camada qualitativa tem mais espaço: separar a empresa barata que vai voltar da que está barata porque está piorando.</span></div>
 </figure>
 
-<figure><figcaption class="t">Mesmo um analista bom ganharia, na melhor hipótese, uns 2 a 3 pontos ao ano</figcaption>
+<figure><figcaption class="t">Mesmo um analista bom ganharia, na melhor hipótese, de 2 a 5 pontos ao ano</figcaption>
 <figcaption class="s">Ganho anual por grau de habilidade: a correlação entre o julgamento do analista e o crescimento real do lucro nos 3 anos seguintes (0 = acaso, 1 = oráculo). Veto de 20%, média de 40 simulações.</figcaption>
 <div class="legend" id="lg12"></div><div id="c12"></div>
-<div class="sowhat"><b>E daí</b><span>Uma correlação de 0,3 com o lucro futuro já é o nível de um analista muito bom. Ela renderia perto de {pp(dict(d['skill']['Top 20'])[0.3])} ao ano na Top 20, antes de considerar o custo dos erros de comportamento: vender na hora errada, se apaixonar por uma tese. Não é zero, mas é pouco perto dos 4 a 6 pontos que a regra já entrega sobre o S&amp;P.</span></div>
+<div class="sowhat"><b>E daí</b><span>Uma correlação de 0,3 com o lucro futuro já é o nível de um analista muito bom. Ela renderia perto de {pp(dict(d['skill']['Top 20'])[0.3])} ao ano na Top 20, antes de considerar o custo dos erros de comportamento: vender na hora errada, se apaixonar por uma tese. Não é zero, mas é pouco perto dos 4 a 6 pontos que a regra já entrega sobre o S&amp;P. Na JG+G a mesma habilidade renderia {pp(dict(d['skill']['JG+G'])[0.3])}, quase o dobro.</span></div>
 </figure>
 
 <figure><figcaption class="t">Não há um padrão dentro do padrão: nenhum sinal sobreviveu ao teste fora da amostra</figcaption>
@@ -139,7 +140,7 @@ body = f'''
 <section class="verdict"><h2>O veredito: regra como base, julgamento como freio, nunca como acelerador</h2>
 <div class="vgrid">
  <div><span class="tag" style="--c:var(--teal)">Siga</span><h4>A regra determinística como espinha</h4><p>O ganho vem de ficar com empresas cujo ROIC persiste enquanto o mercado reprecifica. Isso pede disciplina, não previsão. Nenhum sinal adicional dentro das classes passou no teste.</p></div>
- <div><span class="tag" style="--c:var(--oxford)">Use o julgamento</span><h4>Como veto estreito, com checklist</h4><p>Vete apenas por razões que o modelo não enxerga: lucro no pico de um ciclo (ROIC marginal muito acima do médio), risco de evento (Boeing 2019), fraude ou contabilidade. No máximo 2 ou 3 das 20 ações.</p></div>
+ <div><span class="tag" style="--c:var(--oxford)">Use o julgamento</span><h4>Como veto estreito, com checklist</h4><p>Vete apenas por razões que o modelo não enxerga: lucro no pico de um ciclo (ROIC marginal muito acima do médio), risco de evento (Boeing 2019), fraude ou contabilidade. No máximo 2 ou 3 das 20 ações. Na JG+G vale olhar com mais cuidado se o lucro está encolhendo: é onde o veto mais rende.</p></div>
  <div><span class="tag" style="--c:var(--claret)">Não faça</span><h4>Discordar por projeção de crescimento ou por "está caro"</h4><p>Crescimento passado não prevê o futuro, e o múltiplo das melhores sobe por anos. Os maiores ganhos (NVIDIA, Meta, Applied Materials) teriam sido vetados por "caros".</p></div>
  <div><span class="tag" style="--c:var(--wheat)">Meça</span><h4>Registre cada veto e compare em 12 trimestres</h4><p>Mantenha uma carteira-sombra da regra pura. Se depois de 3 anos os vetos não tiverem somado, volte à regra. É o único jeito de saber se o seu julgamento tem a correlação que justifica o esforço.</p></div>
 </div></section>
@@ -186,7 +187,7 @@ function draw(){
  table('c3b',['ROIC mediano das posições','Na compra','1 ano depois','3 anos','5 anos','Ainda ≥ 12% em 3 anos'],Object.entries(D.roic_port).map(([k,v])=>[k,P(v[0]),P(v[1]),P(v[2]),P(v[3]),P(v[4],0)]));
  const q=D.growth['12'].quint;legend('lg4',[['Previsto (mediana dos 5 anos anteriores)',css('--slate')],['Realizado nos 3 anos seguintes',C[0]]]);
  bars('c4',['1º quinto','2º','3º','4º','5º quinto'],[q.map(r=>r[0]),q.map(r=>r[1])],[css('--slate'),C[0]],{labels:true,lf:(v)=>P(v,0)});
- table('c4b',['Carteira','Crescimento previsto','Realizado em 3 anos','Realizado em 5 anos'],['Top 20','OoL','High ROIC','High Growth','Excepcionais'].map(k=>[k,P(D.growth['12'][k][0]),P(D.growth['12'][k][1]),P(D.growth['20'][k][1])]));
+ table('c4b',['Carteira','Crescimento previsto','Realizado em 3 anos','Realizado em 5 anos'],['Top 20','OoL','High ROIC','High Growth','Excepcionais','JG+G'].map(k=>[k,P(D.growth['12'][k][0]),P(D.growth['12'][k][1]),P(D.growth['20'][k][1])]));
  const rq=['4','12','20'].map(h=>D.rerating[h].quint.map(r=>r[1]));legend('lg5',[['1 ano',css('--slate')],['3 anos',C[1]],['5 anos',css('--claret')]]);
  bars('c5',['Muito acima do justo','Acima','Perto','Abaixo','Muito abaixo do justo'],rq,[css('--slate'),C[1],css('--claret')],{fmt:v=>(v>=0?'+':'')+(v*100).toFixed(0)+'%',labels:true,lf:v=>((v>=0?'+':'')+(Math.expm1(v)*100).toFixed(0)+'%')});
  legend('lg6',[['1 ano',css('--slate')],['3 anos',C[0]]]);
@@ -194,7 +195,7 @@ function draw(){
  const ic=D.exp_ret;table('c6b',['Ordenar as de qualidade por…','Correlação com o excesso em 1 ano','% dos trimestres positiva','Correlação em 3 anos','% positiva'],Object.keys(ic['4'].ic_qual).map(k=>[k,ic['4'].ic_qual[k].ic.toFixed(3).replace('.',','),P(ic['4'].ic_qual[k].pos,0),ic['12'].ic_qual[k].ic.toFixed(3).replace('.',','),P(ic['12'].ic_qual[k].pos,0)]));
  const f=D.fm;legend('lg7',[['1 ano',css('--slate')],['3 anos',C[0]]]);
  const ks=['ante','eps','roic','tudo'];bars('c7',['Conhecido na compra (ROIC, crescimento, P/L, retorno esperado)','Lucro realizado','Mudança do ROIC','Tudo junto'],[ks.map(k=>f['4'].r2[k]),ks.map(k=>f['12'].r2[k])],[css('--slate'),C[0]],{labels:true,lf:v=>P(v,0),b:60});
- const box=document.getElementById('c8');box.innerHTML='';const colsC={'Top 20':css('--oxford'),'OoL':css('--teal'),'Excepcionais':css('--claret')};
+ const box=document.getElementById('c8');box.innerHTML='';const colsC={'Top 20':css('--oxford'),'OoL':css('--teal'),'Excepcionais':css('--claret'),'JG+G':css('--jade')};
  Object.entries(D.contrib).forEach(([k,v])=>{const best=v.slice(10).reverse(),worst=v.slice(0,10);const row=r=>`<tr><td class="l">${r.t}</td><td class="n">${(r.contrib*100).toFixed(1).replace('.',',')}</td><td class="n">${r.tri}</td><td class="n">${P(r.eps,0)}</td><td class="n">${P(r.rr,0)}</td><td class="n">${P(r.roic0,0)} → ${P(r.roic1,0)}</td></tr>`;
   box.insertAdjacentHTML('beforeend',`<div style="--c:${colsC[k]}"><h4>${k}</h4><div class="tablebox"><table><thead><tr><th class="l">Ação</th><th>Pontos</th><th>Trim.</th><th>EPS a.a.</th><th>P/L a.a.</th><th>ROIC</th></tr></thead><tbody>${best.map(row).join('')}<tr><td colspan="6" class="l" style="color:var(--ink2);font-size:12px">… as 10 piores</td></tr>${worst.map(row).join('')}</tbody></table></div></div>`);});
  const why=Object.entries(D.misses.why).sort((a,b)=>b[1]-a[1]);
@@ -203,16 +204,16 @@ function draw(){
  const pm=D.misses.por_motivo;table('c9b',['Motivo','ROIC antes → 3 anos depois','Crescimento antes → depois','Excesso a.a.'],why.map(([k])=>[k,`${P(pm[k].roic0,0)} → ${P(pm[k].roic3,0)}`,`${P(pm[k].g0,0)} → ${P(pm[k].g3,0)}`,P(pm[k].ex,0)]));
  table('c10',['Empresa','Multiplicou por','Por que não estava em 2016','ROIC 2016 → hoje','Crescimento em 2016','EPS a.a. em 10 anos','Trimestres na Top 20','Na OoL'],D.misses.nomes.map(r=>[`${r.nome} (${r.t})`,r.tr10.toFixed(1).replace('.',',')+'×',r.why,`${P(r.roic0,0)} → ${P(r.roic_hoje,0)}`,P(r.g0,0),P(r.eps10,0),r.tri_t20,r.tri_ool]));
  const ok=['ROIC em 1 ano','ROIC em 3 anos','EPS em 1 ano','EPS em 3 anos','Re-rating em 1 ano','Retorno total em 1 ano','Aleatório'];
- const ports=['Top 20','OoL','High ROIC','High Growth','Excepcionais'];const pc5=[css('--oxford'),css('--teal'),css('--velvet'),css('--mandarin'),css('--claret')];
+ const ports=['Top 20','OoL','High ROIC','High Growth','Excepcionais','JG+G'];const pc5=[css('--oxford'),css('--teal'),css('--velvet'),css('--mandarin'),css('--claret'),css('--jade')];
  legend('lg11',ports.map((p,i)=>[p,pc5[i]]));
  bars('c11',['ROIC 1 ano','ROIC 3 anos','EPS 1 ano','EPS 3 anos','Re-rating 1 ano','Retorno total 1 ano','Aleatório'],ports.map(p=>ok.map(k=>D.oracle[p][k])),pc5,{h:340});
- legend('lg12',[['Top 20',css('--oxford')],['OoL',css('--teal')]]);
+ legend('lg12',[['Top 20',css('--oxford')],['OoL',css('--teal')],['JG+G',css('--jade')]]);
  {const W=1000,H=300,m={l:64,r:20,t:14,b:40};const s=svgBox('c12',W,H);const all=Object.values(D.skill).flat().map(r=>r[1]);
   const x=d3.scaleLinear().domain([0,1]).range([m.l,W-m.r]),y=d3.scaleLinear().domain([Math.min(0,d3.min(all))*1.2,d3.max(all)*1.2]).range([H-m.b,m.t]).nice();
   s.append('g').attr('class','ax').attr('transform',`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(v=>PP(v,0)).tickSize(-(W-m.l-m.r)));
   s.append('g').attr('class','ax').attr('transform',`translate(0,${H-m.b})`).call(d3.axisBottom(x).ticks(10).tickFormat(v=>v.toFixed(1).replace('.',',')));
   s.append('text').attr('x',W-m.r).attr('y',H-4).attr('text-anchor','end').style('font-size','12px').style('fill',css('--ink2')).text('correlação do julgamento com o lucro futuro →');
-  [['Top 20',css('--oxford')],['OoL',css('--teal')]].forEach(([k,c])=>{const pts=D.skill[k];s.append('path').attr('d',d3.line().x(r=>x(r[0])).y(r=>y(r[1]))(pts)).attr('fill','none').attr('stroke',c).attr('stroke-width',2.5);
+  [['Top 20',css('--oxford')],['OoL',css('--teal')],['JG+G',css('--jade')]].forEach(([k,c])=>{const pts=D.skill[k];s.append('path').attr('d',d3.line().x(r=>x(r[0])).y(r=>y(r[1]))(pts)).attr('fill','none').attr('stroke',c).attr('stroke-width',2.5);
    pts.forEach(r=>s.append('circle').attr('cx',x(r[0])).attr('cy',y(r[1])).attr('r',4).attr('fill',c));});
   s.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--ink'));}
  const T=v=>v==null?'—':v.toFixed(2).replace('.',',');

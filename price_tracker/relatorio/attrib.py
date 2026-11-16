@@ -1,5 +1,5 @@
 """Atribuição e calibração do modelo determinístico (S&P 500 point-in-time, ROIC triangulado), pedido de 2026-11-16.
-5 carteiras: Top 20, OoL (novo), High ROIC, High Growth, Excepcionais. Passos:
+6 carteiras: Top 20, OoL (novo), High ROIC, High Growth, Excepcionais, JG+G (Fórmula Mágica com crescimento: ROIC + crescimento do EPS + P/L). Passos:
  1. decomposição do retorno (crescimento do EPS, re-rating, dividendos) das posições, carteira x universo
  2. as previsões se confirmam? persistência do ROIC, do crescimento, convergência ao P/E justo, retorno esperado por decil
  3. o que explica o retorno: variáveis conhecidas na compra x surpresas (Fama-MacBeth)
@@ -19,7 +19,7 @@ W = calc2.weights(c)
 OOL = 'Opportunity of Lifetime'
 ool = c[(c['cat'] == OOL) & ~c.excluded]
 W['ool'] = {d: pd.Series(1 / len(g), index=g.ticker) for d, g in ool.groupby('date')}
-PORTS = {'top20': 'Top 20', 'ool': 'OoL', 'hroic': 'High ROIC', 'hgrowth': 'High Growth', 'n2': 'Excepcionais'}
+PORTS = {'top20': 'Top 20', 'ool': 'OoL', 'hroic': 'High ROIC', 'hgrowth': 'High Growth', 'n2': 'Excepcionais', 'magicg': 'JG+G'}
 D = pd.DatetimeIndex(dates); iq = {d: i for i, d in enumerate(D)}
 A = adj.reindex(D, method='ffill')
 
@@ -176,7 +176,7 @@ OUT['var_decomp'] = vd
 # ---------------- 4. onde errou ----------------
 qret = A.pct_change().shift(-1)  # retorno do trimestre seguinte
 contrib = {}
-for k in ('top20', 'ool', 'n2'):
+for k in ('top20', 'ool', 'n2', 'magicg'):
     rows = []
     for d, w in W[k].items():
         d = pd.Timestamp(d)
@@ -290,7 +290,7 @@ for k in PORTS:
 OUT['oracle'] = orc
 SKILL_COL = 'le_12'
 skill = {}
-for k in ('top20', 'ool'):
+for k in ('top20', 'ool', 'magicg'):
     base = cg(port_ret(k)); skill[PORTS[k]] = []
     for rho in (0, .1, .2, .3, .5, .7, 1.0):
         vals = [cg(port_ret(k, oracle(SKILL_COL, noise=rho))) - base for _ in range(1 if rho == 1 else 40)]
