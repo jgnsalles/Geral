@@ -21,3 +21,10 @@ Montagem: `python scripts/build_data.py` → `latam.json`; `python scripts/build
 - EUA: `scripts/nport_fundos.py` (carteira completa dos fundos com ≥ 50% em ações da LatAm, retorno mensal da cota e fluxos) e
   `scripts/attr_us.py` → `us_attr.json`. Preço em US$ = valor ÷ quantidade, mediana entre todos os fundos na mesma data; resto = cota − explicado.
 - `scripts/nport_loop2.sh` baixa o histórico do N-PORT (2019T4 em diante) e roda os dois extratores (agora com ações preferenciais, categoria EP).
+
+## Gestoras do 13F (base "13F · gestoras LatAm")
+- `scripts/f13_loop.sh` baixa os conjuntos do Form 13F desde 2016 e roda `scripts/f13.py` (gestoras com ≥ 40% do 13F em empresas da
+  LatAm e ≥ US$ 20 mi nelas, mais Moneda, Fourth Sail e INCA). CUSIPs da LatAm em `latam_cusips.txt` (vindos do N-PORT).
+- `scripts/attr_13f.py` → `f13_attr.json`: carteira 13F por trimestre, retorno = peso × preço (mediana entre gestores, sem dividendos),
+  referência iShares Latin America 40 (ILF). Só ações (títulos de dívida fora); gestoras com ≥ 50% em LatAm ou pedidas.
+- O 13F só cobre o que é listado nos EUA: ações compradas só em bolsas locais não aparecem.

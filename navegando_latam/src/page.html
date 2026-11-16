@@ -78,7 +78,7 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td
   <!-- ===== POR FUNDO ===== -->
   <section class="page" id="pg-fundo" hidden>
     <div class="controls">
-      <label>Base <select id="fu-b"><option value="pe">Peru · fundos das AFPs (mensal)</option><option value="us">EUA · fundos focados em LatAm (trimestral)</option></select></label>
+      <label>Base <select id="fu-b"><option value="pe">Peru · fundos das AFPs (mensal)</option><option value="us">EUA · fundos focados em LatAm (trimestral)</option><option value="f13">13F · gestoras LatAm (trimestral, só o listado nos EUA)</option></select></label>
     </div>
     <article class="card" id="rk-card">
       <div class="head"><h2>Ranking dos fundos</h2><div class="chips" id="rk-p" role="group" aria-label="Período do ranking"></div></div>
@@ -213,6 +213,7 @@ function bars(el, xs, vals, fmt) {
 const MAP = [
   ['Peru', 'SBS · fundos de pensão', 'As 4 AFPs (Habitat, Integra, Prima, Profuturo), por tipo de fundo', 'Por emissor e ISIN, valor e número de ações', 'Mensal', 'desde 2014', 'Excel por mês, link direto', 'on', 'No painel'],
   ['EUA → LatAm', 'SEC · Form N-PORT', 'Todos os fundos registrados nos EUA (mútuos, ETFs, fechados)', 'Por título, com ISIN e país; valor e quantidade', 'Trimestral (carteira de cada fundo)', 'desde fim de 2019', 'ZIP de ~400 MB por trimestre', 'on', 'No painel (últimos trimestres)'],
+  ['EUA → LatAm', 'SEC · Form 13F', 'Gestoras com mais de US$ 100 mi em ações listadas nos EUA: Moneda, Fourth Sail, INCA, gestoras brasileiras e outras', 'Por título listado nos EUA (ADRs e ações americanas), valor e quantidade; sem ações só de bolsas locais', 'Trimestral', 'desde 2013 (no painel, desde 2016)', 'ZIP de ~100 MB por trimestre', 'on', 'No painel (Por fundo)'],
   ['Chile', 'CMF · fondos mutuos', '440 fundos, 21 administradoras', 'Por título (nemotécnico), valor', 'Trimestral', 'só o último trimestre em arquivo', 'Excel do trimestre; histórico só em Power BI', 'part', 'No painel (um trimestre)'],
   ['Colômbia', 'Superfinanciera · fundos de pensão', 'Protección, Porvenir, Skandia, Colfondos', 'Ações locais só por tipo de título; exterior e private equity por emissor', 'Mensal', 'desde 2020 (em arquivo)', 'Excel por mês, link direto', 'off', 'Fora: sem emissor local'],
   ['Chile', 'Superintendencia de Pensiones · AFPs', 'As AFPs chilenas, por tipo de fundo', 'Diversificação por emissor em relatório mensal', 'Mensal', 'longo', 'PDF; centro de estatísticas não respondeu a acesso automatizado', 'off', 'Fora por enquanto'],
@@ -373,15 +374,21 @@ function fuModel() {
       emps: Object.keys(f.p), nm: (e) => e, w: (e, j) => { const v = f.p[e][0][j]; return v == null ? null : v / 1e4; }, c: (e, j) => { const v = f.p[e][1][j]; return v == null ? null : v / 1e6; },
       tr: (e, j) => { const v = f.p[e][2]?.[j]; return v == null ? null : v / 1e4; } };
   }
+  if (b === 'f13') {
+    const G = D.f13, f = G.fundos[id];
+    return { b, id, f, nome: f.nome, labels: f.datas, ret: f.R, ref: f.REF, refName: 'iShares Latin America 40 (ILF)', retName: 'Carteira 13F da gestora',
+      emps: Object.keys(f.p), nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => { const v = f.p[e][0][j]; return v == null ? null : v / 1e4; }, c: (e, j) => { const v = f.p[e][1][j]; return v == null ? null : v / 1e6; }, tr: () => null };
+  }
   const U = D.fus, f = U.fundos[id];
   return { b, id, f, nome: f.nome, labels: f.datas, ret: f.RF, ref: f.EX, refName: 'Explicado pelas ações (peso × retorno)', retName: 'Cota do fundo',
     emps: Object.keys(f.p).filter((e) => !e.startsWith('Outros')), nm: (e) => U.emp[e] ? U.emp[e][0] : e, w: (e, j) => { const v = f.p[e][0][j]; return v == null ? null : v / 1e4; }, c: (e, j) => { const v = f.p[e][1][j]; return v == null ? null : v / 1e6; }, tr: () => null };
 }
 function fuFill() {
   const b = $('fu-b').value; RK.p = b === 'pe' ? 60 : 12;
-  const L = b === 'pe' ? Object.entries(D.fpe.fundos).map(([k, f]) => [k, f.nome]) : Object.entries(D.fus.fundos).sort((x, y) => y[1].NA[y[1].NA.length - 1] - x[1].NA[x[1].NA.length - 1]).map(([k, f]) => [k, f.nome + ' · US$ ' + nf(f.NA[f.NA.length - 1]) + ' mi']);
+  const L = b === 'pe' ? Object.entries(D.fpe.fundos).map(([k, f]) => [k, f.nome]) : b === 'f13' ? Object.entries(D.f13.fundos).sort((x, y) => y[1].TOT[y[1].TOT.length - 1] - x[1].TOT[x[1].TOT.length - 1]).map(([k, f]) => [k, f.nome + ' · US$ ' + nf(f.TOT[f.TOT.length - 1]) + ' mi']) : Object.entries(D.fus.fundos).sort((x, y) => y[1].NA[y[1].NA.length - 1] - x[1].NA[x[1].NA.length - 1]).map(([k, f]) => [k, f.nome + ' · US$ ' + nf(f.NA[f.NA.length - 1]) + ' mi']);
   $('fu-f').innerHTML = L.map(([k, n]) => `<option value="${esc(k)}">${esc(n)}</option>`).join('');
-  if (b === 'pe') $('fu-f').value = 'PR03'; fuPer(); rkRender();
+  if (b === 'pe') $('fu-f').value = 'PR03';
+  if (b === 'f13') { const mo = Object.entries(D.f13.fundos).find(([k, f]) => /MONEDA/i.test(f.nome)); if (mo) $('fu-f').value = mo[0]; } fuPer(); rkRender();
 }
 function fuPer() {
   const m = fuModel(), L = m.labels;
@@ -405,9 +412,15 @@ function fuRender() {
   }).filter((x) => x.any || x.wmax > 0);
   const expl = S.reduce((s, x) => s + x.c, 0);
   const best = S.slice().sort((x, y) => y.c - x.c)[0], worst = S.slice().sort((x, y) => x.c - y.c)[0];
-  $('fu-lead').innerHTML = `<b>${esc(m.nome)}</b> rendeu <b>${pct(R)}</b> ${m.b === 'pe' ? 'na carteira de ações locais' : 'na cota'} entre ${ymL(L[a])} e ${ymL(L[z])}, contra <b>${pct(RR)}</b> ${m.b === 'pe' ? 'das ações locais de todas as AFPs' : 'explicados pelas ações'}. Quem mais somou: <b>${esc(m.nm(best?.e))}</b> (${sgn((best?.c || 0) * 100, 1)} p.p.); quem mais tirou: <b>${esc(m.nm(worst?.e))}</b> (${sgn((worst?.c || 0) * 100, 1)} p.p.).`;
+  $('fu-lead').innerHTML = `<b>${esc(m.nome)}</b> rendeu <b>${pct(R)}</b> ${m.b === 'pe' ? 'na carteira de ações locais' : m.b === 'f13' ? 'na carteira listada nos EUA (13F)' : 'na cota'} entre ${ymL(L[a])} e ${ymL(L[z])}, contra <b>${pct(RR)}</b> ${m.b === 'pe' ? 'das ações locais de todas as AFPs' : m.b === 'f13' ? 'do ETF iShares Latin America 40' : 'explicados pelas ações'}. Quem mais somou: <b>${esc(m.nm(best?.e))}</b> (${sgn((best?.c || 0) * 100, 1)} p.p.); quem mais tirou: <b>${esc(m.nm(worst?.e))}</b> (${sgn((worst?.c || 0) * 100, 1)} p.p.).`;
   const f = m.f;
-  const tiles = m.b === 'pe' ? [
+  const tiles = m.b === 'f13' ? [
+    ['Retorno da carteira 13F', pct(R), 'peso × preço, sem dividendos'],
+    ['iShares Latin America 40', pct(RR), 'mesma conta'],
+    ['Diferença', sgn((R - RR) * 100, 1) + ' p.p.', 'pontos percentuais'],
+    ['Carteira 13F no fim', 'US$ ' + nf(f.TOT[z]) + ' mi', 'no início: US$ ' + nf(f.TOT[a]) + ' mi'],
+    ['Em empresas da LatAm', pct(f.LAT[z], 0), 'da carteira 13F, no fim'],
+  ] : m.b === 'pe' ? [
     ['Retorno da carteira de ações', pct(R), 'no período, em soles, sem dividendos'],
     ['Ações locais de todas as AFPs', pct(RR), 'mesma conta'],
     ['Diferença', sgn((R - RR) * 100, 1) + ' p.p.', 'pontos percentuais'],
@@ -423,7 +436,7 @@ function fuRender() {
   $('fu-tiles').innerHTML = tiles.map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
   // performance acumulada
   const cum = (arr) => { let g = 1; return L.slice(a, z + 1).map((_, k) => { if (k) g *= 1 + (arr[a + k] ?? 0); return (g - 1) * 100; }); };
-  $('fu-pn').textContent = m.b === 'pe' ? 'Carteira de ações locais do fundo contra a de todas as AFPs somadas, base 0% no início.' : 'Cota do fundo (retorno informado no N-PORT) contra o que as ações explicam, base 0% no início, nas datas das carteiras.';
+  $('fu-pn').textContent = m.b === 'f13' ? 'Carteira 13F da gestora (peso no trimestre anterior × variação de preço) contra o ETF iShares Latin America 40, base 0% no início.' : m.b === 'pe' ? 'Carteira de ações locais do fundo contra a de todas as AFPs somadas, base 0% no início.' : 'Cota do fundo (retorno informado no N-PORT) contra o que as ações explicam, base 0% no início, nas datas das carteiras.';
   $('fu-plg').innerHTML = `<span><i style="background:${COL[0]}"></i>${m.retName}</span><span><i style="background:${COL[1]}"></i>${m.refName}</span>`;
   lines($('fu-perf'), L.slice(a, z + 1).map(ymL), [{ c: COL[0], v: cum(m.ret) }, { c: COL[1], v: cum(m.ref) }], (v) => nf(v, 0) + '%');
   // barras de attribution
@@ -434,7 +447,7 @@ function fuRender() {
     el.innerHTML = B.length ? `<svg viewBox="0 0 ${W_} ${H}" role="img" aria-label="Contribuições">${B.map((x, k) => { const y = k * rh + 4, w = Math.abs(x.c) * sc; return `<text x="${lab - 6}" y="${y + 12}" text-anchor="end">${esc(m.nm(x.e).slice(0, 26))}</text><rect x="${x.c >= 0 ? x0 : x0 - w}" y="${y + 2}" width="${Math.max(1, w)}" height="${rh - 6}" fill="${x.c >= 0 ? 'var(--ok)' : 'var(--bad)'}"/><text x="${x.c >= 0 ? x0 + w + 4 : x0 - w - 4}" y="${y + 12}" text-anchor="${x.c >= 0 ? 'start' : 'end'}">${(x.c >= 0 ? '+' : '−') + nf(Math.abs(x.c) * 100, 1)}</text>`; }).join('')}<line x1="${x0}" x2="${x0}" y1="0" y2="${H}" stroke="var(--line)"/></svg>` : '<p class="note">Sem dados no período.</p>'; }
   // pesos
   const topW = S.slice().sort((x, y) => y.wmed - x.wmed).slice(0, 8);
-  $('fu-wn').textContent = 'Peso das 8 maiores posições médias do período, em % da ' + (m.b === 'pe' ? 'carteira de ações locais do fundo.' : 'cota (patrimônio do fundo).');
+  $('fu-wn').textContent = 'Peso das 8 maiores posições médias do período, em % da ' + (m.b === 'pe' ? 'carteira de ações locais do fundo.' : m.b === 'f13' ? 'carteira 13F da gestora.' : 'cota (patrimônio do fundo).');
   $('fu-wlg').innerHTML = topW.map((x, k) => `<span><i style="background:${COL[k % COL.length]}${k >= COL.length ? ';opacity:.5' : ''}"></i>${esc(m.nm(x.e).slice(0, 28))}</span>`).join('');
   lines($('fu-w'), L.slice(a, z + 1).map(ymL), topW.map((x, k) => ({ c: COL[k % COL.length], v: L.slice(a, z + 1).map((_, i) => (m.w(x.e, a + i) || 0) * 100) })), (v) => nf(v, 0) + '%');
   // tabela
@@ -446,7 +459,7 @@ function fuRender() {
   $('fu-t').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; FU.dir = FU.sort === k ? -FU.dir : (k === 'e' ? 1 : -1); FU.sort = k; fuRender(); });
   // ano a ano
   const years = [...new Set(steps.map((j) => L[j].slice(0, 4)))];
-  $('fu-y').innerHTML = '<thead><tr><th>Ano</th><th>Fundo</th><th>' + (m.b === 'pe' ? 'Todas as AFPs' : 'Explicado') + '</th><th>Dif.</th><th class="l">Maiores acertos</th><th class="l">Maiores erros</th></tr></thead><tbody>' + years.map((y) => {
+  $('fu-y').innerHTML = '<thead><tr><th>Ano</th><th>Fundo</th><th>' + (m.b === 'pe' ? 'Todas as AFPs' : m.b === 'f13' ? 'ILF' : 'Explicado') + '</th><th>Dif.</th><th class="l">Maiores acertos</th><th class="l">Maiores erros</th></tr></thead><tbody>' + years.map((y) => {
     const js = steps.filter((j) => L[j].startsWith(y)); const ch = (arr) => js.reduce((g, j) => g * (1 + (arr[j] ?? 0)), 1) - 1;
     const r = ch(m.ret), rr = ch(m.ref);
     const cs = m.emps.map((e) => ({ e, c: js.reduce((s, j) => s + (m.c(e, j) || 0), 0) })).filter((x) => Math.abs(x.c) > 1e-5);
@@ -456,7 +469,7 @@ function fuRender() {
   // patrimônio e captação (EUA)
   $('fu-flow-card').hidden = m.b !== 'us';
   if (m.b === 'us') bars2($('fu-flow'), L.slice(a, z + 1).map(ymL), f.FL.slice(a, z + 1), f.NA.slice(a, z + 1));
-  $('fu-src').textContent = m.b === 'pe'
+  $('fu-src').textContent = m.b === 'f13' ? 'Fonte: SEC (Form 13F). O 13F só mostra ações e ADRs listados nos EUA: posições compradas só em bolsas locais (Santiago, Lima, B3, BMV) não aparecem, nem caixa, derivativos e operações dentro do trimestre. Preço = valor ÷ quantidade, mediana entre todos os gestores do 13F; sem dividendos. Retorno calculado só sobre a parte com preço nas duas datas. Referência: ETF iShares Latin America 40 (ILF), mesma conta.' : m.b === 'pe'
     ? 'Fonte: SBS (quadro CA-0001). Carteira = ações locais do fundo; preço de cada ação = valor ÷ quantidade informados pelas AFPs, em soles e sem dividendos (o retorno fica abaixo do retorno total). Desdobramentos corrigidos pela razão de quantidades entre os fundos. O retorno da cota das AFPs não está nos arquivos baixados, por isso a comparação é com a carteira de ações locais de todas as AFPs somadas.'
     : 'Fonte: SEC (Form N-PORT). Carteira de cada trimestre; retorno de cada ação entre duas carteiras = variação do preço em US$ (valor ÷ quantidade, mediana entre todos os fundos que informam a ação na mesma data), sem dividendos. Retorno do fundo = retorno mensal da cota informado no N-PORT (mediana das classes de cotas), encadeado. Fundos com pelo menos 50% do patrimônio em ações da América Latina.';
 }
@@ -477,6 +490,7 @@ const mdiff = (a, b) => (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7)
 function rkRender() {
   const b = $('fu-b').value;
   const list = b === 'pe' ? Object.entries(D.fpe.fundos).map(([k, f]) => ({ k, nome: f.nome, sub: '', L: D.fpe.meses, ret: f.R, ref: D.fpe.ref.R, f }))
+    : b === 'f13' ? Object.entries(D.f13.fundos).map(([k, f]) => ({ k, nome: f.nome, sub: f.pais, L: f.datas, ret: f.R, ref: f.REF, f }))
     : Object.entries(D.fus.fundos).map(([k, f]) => ({ k, nome: f.nome, sub: f.reg, L: f.datas, ret: f.RF, ref: f.EX, f }));
   const allL = [...new Set(list.flatMap((x) => x.L))].sort(); const Z = allL[allL.length - 1];
   const A = RK.p ? (() => { const y = +Z.slice(0, 4), m = +Z.slice(5, 7) - RK.p; const yy = y + Math.floor((m - 1) / 12), mm = ((m - 1) % 12 + 12) % 12 + 1; return yy + '-' + String(mm).padStart(2, '0'); })() : allL[0];
@@ -496,28 +510,28 @@ function rkRender() {
     const ann = months >= 12 ? Math.pow(1 + R, 12 / months) - 1 : null;
     const cs = Object.entries(x.f.p).filter(([e]) => !e.startsWith('Outros')).map(([e, v]) => [e, steps.reduce((s, j) => s + (v[1][j] || 0), 0) / 1e6]);
     cs.sort((p, q) => q[1] - p[1]);
-    const nm = (e) => b === 'pe' ? e : (D.fus.emp[e]?.[0] || e);
+    const nm = (e) => b === 'pe' ? e : b === 'f13' ? (D.f13.emp[e]?.[0] || e) : (D.fus.emp[e]?.[0] || e);
     const yr = {}; years.forEach((y) => { const js = steps.filter((j) => L[j].startsWith(y)); if (js.length) yr[y] = { r: ch(x.ret, js), d: ch(x.ret, js) - ch(x.ref, js) }; });
-    const size = b === 'pe' ? x.f.S[z] : x.f.NA[z];
+    const size = b === 'pe' ? x.f.S[z] : b === 'f13' ? x.f.TOT[z] : x.f.NA[z];
     const flow = b === 'us' ? steps.reduce((s, j) => s + (x.f.FL[j] || 0), 0) : null;
     const lev = /ULTRA|\b[23]X\b|LEVERAG|BULL|BEAR|INVERSE/i.test(x.nome);
     return { k: x.k, lev, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
-      extra: b === 'pe' ? (x.f.tot[z] ? x.f.S[z] / x.f.tot[z] : null) : x.f.lat[z] / 100 };
+      extra: b === 'pe' ? (x.f.tot[z] ? x.f.S[z] / x.f.tot[z] : null) : b === 'f13' ? x.f.LAT[z] : x.f.lat[z] / 100 };
   }).filter(Boolean);
   const key = RK.sort;
   rows.sort((p, q) => (q.cover - p.cover) || RK.dir * ((p[key] ?? -1e9) - (q[key] ?? -1e9)));
   let rank = 0;
   const heat = (v) => { if (v == null) return ''; const a_ = Math.min(1, Math.abs(v) / 0.25); return `background:color-mix(in srgb, ${v >= 0 ? 'var(--ok)' : 'var(--bad)'} ${Math.round(a_ * 35)}%, transparent)`; };
   const th = (k, l) => `<th><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${RK.sort === k ? (RK.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`;
-  const refL = b === 'pe' ? 'Todas as AFPs' : 'Explicado', dL = b === 'pe' ? 'vs. AFPs' : 'Resto';
-  $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
-    rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">carteiras de ${ymL(x.desde)} em diante: fora do ranking</div>`}</td>` +
+  const refL = b === 'pe' ? 'Todas as AFPs' : b === 'f13' ? 'ILF' : 'Explicado', dL = b === 'pe' ? 'vs. AFPs' : b === 'f13' ? 'vs. ILF' : 'Resto';
+  $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : b === 'f13' ? '13F US$ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
+    rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">sem carteira no início ou no fim do período: fora do ranking</div>`}</td>` +
       `<td style="${heat(x.R)}"><b>${pct(x.R)}</b></td><td>${x.ann == null ? '–' : pct(x.ann)}</td><td>${pct(x.RR)}</td><td>${sgn(x.D * 100, 1)}</td><td>${nf(x.size)}</td>${b === 'us' ? `<td>${sgn(x.flow)}</td>` : ''}<td>${x.extra == null ? '–' : pct(x.extra, 0)}</td>` +
       `<td class="l">${x.best && x.best[1] > 0 ? esc(x.nm(x.best[0]).slice(0, 22)) + ' ' + sgn(x.best[1] * 100, 1) : '–'}</td><td class="l">${x.worst && x.worst[1] < 0 ? esc(x.nm(x.worst[0]).slice(0, 22)) + ' ' + sgn(x.worst[1] * 100, 1) : '–'}</td>` +
-      years.map((y) => { const v = x.yr[y]; return `<td style="${heat(v ? (b === 'pe' ? v.d : v.r) : null)}">${v ? pct(v.r, 0) : '<span class="mut">–</span>'}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
+      years.map((y) => { const v = x.yr[y]; return `<td style="${heat(v ? (b === 'us' ? v.r : v.d) : null)}">${v ? pct(v.r, 0) : '<span class="mut">–</span>'}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
   $('rk').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; RK.dir = RK.sort === k ? -RK.dir : -1; RK.sort = k; rkRender(); });
   $('rk').querySelectorAll('tr[data-k]').forEach((tr) => tr.onclick = () => { $('fu-f').value = tr.dataset.k; fuPer(); rkRender(); $('fu-lead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
-  $('rk-n').textContent = (b === 'pe'
+  $('rk-n').textContent = (b === 'f13' ? `Carteira 13F de cada gestora (só ações e ADRs listados nos EUA), ${ymL(A)} a ${ymL(Z)}, preço sem dividendos. Cor do ano: diferença para o ETF iShares Latin America 40.` : b === 'pe'
     ? `Carteira de ações locais de cada fundo de AFP, ${ymL(A)} a ${ymL(Z)}, em soles e sem dividendos. Cor do ano: diferença para todas as AFPs (verde acima, vermelho abaixo).`
     : `Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
 }
