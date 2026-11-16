@@ -377,3 +377,20 @@ médias e pequenas (ambas com o ROIC triangulado). Mesmas métricas: retorno, de
 (100/100/100%), Todas as de qualidade 16,8% (100/100/100%), ROIC + G + P/L 15,9%, Excepcionais até 20 15,0%, Top 20 14,7% (76/71/100%; 85 meses atrás), Excepcionais 13,9%,
 sem vender 13,9%. (2) Combinação Top 20 + High ROIC — S&P 500: 100/0 20,5%, 70/30 20,9%, 50/50 21,0%, 30/70 21,2%, 0/100 21,4% (janelas 3a 100/100/100/99/95%);
 médias e pequenas: 14,7%, 16,4%, 17,5%, 18,5%, 19,9% (janelas 3a 76/89/98/100/99%). A mais robusta nas duas bases: 30% Top 20 + 70% High ROIC.
+
+## 2026-11-16 — Pré-registro: "ROIC alto descontado", setores de crescimento estável e PEG (pedido do usuário; antes de rodar qualquer carteira)
+Contexto: a atribuição (relatorio/o_que_o_modelo_acerta.html) mostrou que o ROIC persiste, o crescimento passado não, e que o P/L fecha ~30% da distância ao
+P/E justo em 3 anos. Hipótese do usuário: comprar ROIC alto descontado em relação ao P/E justo, de preferência onde o crescimento do EPS é previsível.
+Todas: S&P 500 point-in-time, ROIC triangulado (financeiras e seguradoras de saúde: ROE), sem cíclicos e vestuário, trimestrais, top 20, raiz do valor de
+mercado com teto de 10% (peso igual como controle), duplas classes deduplicadas. Desconto = log(P/E justo ÷ P/L), com P/E justo do modelo (ROIC limitado
+a 100%, g pelo ranking do crescimento) e P/L > 0.
+**Grupo** = subindústria GICS com ≥ 5 empresas no universo na data; senão, o setor GICS.
+**Setor estável (ex-ante)**: em cada data, os grupos são ordenados pela mediana do |zGrowth| das suas empresas (zGrowth = desvio-padrão dos 5 crescimentos
+anuais do EPS ÷ mediana, só dados até a data); estável = terço de grupos com a menor mediana. Robustez (secundária): terço com a maior correlação de ordem
+entre o crescimento previsto há 3 anos e o realizado desde então (dado conhecido na data).
+**Empresa estável (variante)**: |zGrowth| < 0,5 e crescimento (mediana de 5 anos) entre 5% e 30%.
+Carteiras: (i) ROIC alto descontado: ROIC ≥ 12%, ordenado pelo desconto; (ii) = (i) só em setores estáveis; (iii) = (i) só em empresas estáveis;
+(iv) Top 20 atual (qualidade, P/L ≥ 4, ordem pelo retorno esperado) só em setores estáveis; (v) contraste PEG: entre as de qualidade (ROIC ≥ 12%,
+crescimento ≥ 15%), as 20 de menor P/L ÷ (crescimento × 100).
+Comparação: Top 20, JG+G e os 9 comparativos obrigatórios, janelas de 3/5/10 anos, pior janela, pior queda, volatilidade; decomposição do retorno
+(EPS, re-rating, dividendos) e cenário sem NVIDIA para a melhor. Status: exploratória (proposta depois de ver a atribuição).
