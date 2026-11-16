@@ -1,0 +1,360 @@
+<meta charset="utf-8">
+<title>Navegando LatAm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+/* Layout: coluna única de 1200px; abas por fonte; cada aba = controles, números-resumo, tabelas lado a lado e um gráfico de detalhe */
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --fg:#15202a; --muted:#5a6672; --line:#dfe4e8; --accent:#1f6f8b; --accent-2:#c26a2b;
+  --ok:#1d8a4d; --bad:#c23a30; --chip:#e9eef1; --grid:#edf1f3;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --r:8px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f151b; --panel:#161e26; --fg:#e6ecf1; --muted:#97a4b0; --line:#28333e; --accent:#5fb3d0; --accent-2:#e39a5c;
+  --ok:#4cc27e; --bad:#f0736a; --chip:#1f2a35; --grid:#1e2833; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#0f151b; --panel:#161e26; --fg:#e6ecf1; --muted:#97a4b0; --line:#28333e; --accent:#5fb3d0; --accent-2:#e39a5c;
+  --ok:#4cc27e; --bad:#f0736a; --chip:#1f2a35; --grid:#1e2833; color-scheme:dark; }
+[hidden]{display:none!important}
+html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+h1{font-family:var(--serif);font-weight:600;font-size:1.9rem;margin:0;text-wrap:balance}
+h2{font-size:1.05rem;margin:0;font-weight:600}
+.lead{margin:0;color:var(--muted);max-width:75ch;line-height:1.5}
+.note{margin:0;color:var(--muted);font-size:.8rem;line-height:1.45;max-width:90ch}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--line)}
+.tab{font:inherit;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:8px 14px;cursor:pointer;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent);font-weight:600}
+.tab:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.page{display:grid;gap:16px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.controls label{display:grid;gap:4px;font-size:.78rem;color:var(--muted)}
+select{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:4px 8px;max-width:100%}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:2px}
+.tile .l{font-size:.75rem;color:var(--muted);letter-spacing:.02em}
+.tile .v{font-family:var(--serif);font-size:1.55rem;line-height:1.15;font-variant-numeric:tabular-nums}
+.tile .n{font-size:.75rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,30rem),1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:10px;min-width:0;align-content:start}
+.head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.box{max-height:28rem;overflow:auto;border-top:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.8rem;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;background:var(--panel);text-align:right;color:var(--muted);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td.l,th.l{text-align:left;white-space:normal}
+tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td{background:var(--bg);font-weight:600}
+.pos{color:var(--ok)} .neg{color:var(--bad)} .mut{color:var(--muted)}
+.pill{display:inline-block;font-size:.72rem;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.on{color:var(--ok)} .pill.part{color:var(--accent-2)} .pill.off{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:.78rem;background:var(--chip);border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:3px 10px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.bar{display:inline-block;height:7px;border-radius:2px;background:var(--accent);vertical-align:middle;margin-left:6px;opacity:.75}
+.chart svg{display:block;width:100%;height:auto} .chart text{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.78rem;color:var(--muted)} .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.rank{font-family:var(--serif);font-size:1.3rem;color:var(--accent)}
+#loading{color:var(--muted);padding:30px 0}
+@media (max-width:640px){ .box{max-height:24rem} td,th{padding:4px 6px} }
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+</style>
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <h1>Navegando LatAm</h1>
+    <p class="lead">O mesmo rastreamento das carteiras da CVM, aplicado aos outros países da América Latina. Primeiro, o mapa do que cada regulador publica; depois, as fontes que já dão para acompanhar, da mais fácil para a mais difícil.</p>
+    <nav class="tabs" role="tablist" aria-label="Fontes">
+      <button class="tab" role="tab" data-pg="mapa">Mapa das fontes</button>
+      <button class="tab" role="tab" data-pg="peru">Peru · AFPs</button>
+      <button class="tab" role="tab" data-pg="eua">Fundos dos EUA</button>
+      <button class="tab" role="tab" data-pg="chile">Chile · fundos mútuos</button>
+    </nav>
+  </header>
+  <p id="loading">Carregando dados…</p>
+
+  <!-- ===== MAPA ===== -->
+  <section class="page" id="pg-mapa" hidden>
+    <article class="card">
+      <h2>Do mais fácil ao mais difícil</h2>
+      <p class="note">Ordem pelo esforço para montar o mesmo rastreamento do Brasil: detalhe por empresa, frequência, histórico e se o arquivo pode ser baixado em lote. Testado com download real em 16/11/2026.</p>
+      <div class="box" style="max-height:none"><table id="map"></table></div>
+    </article>
+    <p class="note">Referência: no Brasil, a CVM publica todo mês a carteira de todos os fundos, ativo por ativo, em arquivo único, desde 2005, com o CNPJ do gestor. Nenhum outro país da região faz isso para fundos de gestoras; onde há dado bom, ele é dos fundos de pensão.</p>
+  </section>
+
+  <!-- ===== PERU ===== -->
+  <section class="page" id="pg-peru" hidden>
+    <div class="controls">
+      <label>Mês <select id="pe-m"></select></label>
+      <label>Comparar com <select id="pe-k"><option value="1">1 mês antes</option><option value="3">3 meses antes</option><option value="6">6 meses antes</option><option value="12" selected>12 meses antes</option></select></label>
+      <label>AFP <select id="pe-a"></select></label>
+    </div>
+    <section class="tiles" id="pe-tiles"></section>
+    <div class="grid">
+      <article class="card"><div class="head"><h2>Mais detidas</h2><span class="note" id="pe-h1"></span></div><div class="box"><table id="pe-top"></table></div></article>
+      <article class="card"><div class="head"><h2>Compras e vendas</h2><select id="pe-o" aria-label="Ordenar"><option value="v">maior valor</option><option value="b">compras primeiro</option><option value="s">vendas primeiro</option></select></div><p class="note">Variação na quantidade de ações (≥ 10% ou posição nova/zerada). Valor = ações compradas ou vendidas × preço do mês final.</p><div class="box"><table id="pe-mov"></table></div></article>
+    </div>
+    <article class="card">
+      <div class="head"><h2 id="pe-ct">Peso na carteira de ações locais de cada AFP</h2><span class="note">Toque numa empresa nas tabelas acima para trocar.</span></div>
+      <div class="legend" id="pe-lg"></div><div class="chart" id="pe-ch"></div>
+    </article>
+    <article class="card"><h2>Quem tem o quê</h2><p class="note">Peso de cada empresa na carteira de ações locais de cada AFP, no mês escolhido.</p><div class="box"><table id="pe-mx"></table></div></article>
+    <p class="note">Fonte: SBS, boletim estatístico do Sistema Privado de Pensões, quadro CA-0001 (ações locais em milhares de soles e em unidades), somando os fundos 0 a 3 de cada AFP. Valores em S/ milhões. Desdobramentos e grupamentos não são corrigidos: uma mudança igual em todas as AFPs no mesmo mês provavelmente é evento societário.</p>
+  </section>
+
+  <!-- ===== EUA ===== -->
+  <section class="page" id="pg-eua" hidden>
+    <div class="controls">
+      <label>Trimestre de entrega <select id="us-t"></select></label>
+      <label>Fundos <select id="us-x"><option value="1" selected>só gestão ativa</option><option value="0">incluir fundos de índice</option></select></label>
+    </div>
+    <div class="chips" id="us-c" role="group" aria-label="País"></div>
+    <section class="tiles" id="us-tiles"></section>
+    <div class="grid">
+      <article class="card"><div class="head"><h2>Maiores posições</h2><span class="note">US$ milhões</span></div><div class="box"><table id="us-top"></table></div></article>
+      <article class="card"><div class="head"><h2>Compras e vendas no trimestre</h2><select id="us-o" aria-label="Ordenar"><option value="v">maior valor</option><option value="b">compras primeiro</option><option value="s">vendas primeiro</option></select></div><p class="note">Variação de ações de cada fundo contra a carteira anterior do mesmo fundo, a preço atual; desdobramentos tratados fundo a fundo.</p><div class="box"><table id="us-mov"></table></div></article>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="head"><h2>Famílias de fundos</h2><span class="note">soma dos fundos de cada registrante na SEC</span></div><div class="box"><table id="us-g"></table></div></article>
+      <article class="card"><div class="head"><h2 id="us-dt">Empresa</h2><span class="note" id="us-dn"></span></div><div class="chart" id="us-ch"></div><div class="box"><table id="us-d"></table></div></article>
+    </div>
+    <p class="note">Fonte: SEC, Form N-PORT (conjuntos de dados trimestrais). Cada trimestre traz a carteira mais recente de cada fundo registrado nos EUA entregue naquele trimestre (fundos mútuos, ETFs e fundos fechados). Só ações (categoria EC) de empresas com país de investimento na América Latina. O N-PORT identifica o registrante (a família ou trust de fundos, como "EUPAC Fund" ou "Fidelity Investment Trust"), não a gestora contratada. "Gestão ativa" exclui fundos com índice, ETF, MSCI, FTSE, iShares, SPDR etc. no nome.</p>
+  </section>
+
+  <!-- ===== CHILE ===== -->
+  <section class="page" id="pg-chile" hidden>
+    <div class="controls"><label>Administradora <select id="cl-a"></select></label></div>
+    <section class="tiles" id="cl-tiles"></section>
+    <div class="grid">
+      <article class="card"><div class="head"><h2>Ações mais detidas</h2><span class="note" id="cl-h1"></span></div><div class="box"><table id="cl-top"></table></div></article>
+      <article class="card"><div class="head"><h2>Fundos de ações chilenas</h2><span class="note">maiores posições de cada fundo</span></div><div class="box"><table id="cl-f"></table></div></article>
+    </div>
+    <p class="note">Fonte: CMF, Portal de Fondos Mutuos, carteira por instrumento do último trimestre publicado. Só ações de sociedades anônimas abertas chilenas. Valores em CLP bilhões (miles de millones). A CMF publica um trimestre por vez em Excel; o histórico fica no painel Power BI, sem arquivo para baixar, então não há compras e vendas.</p>
+  </section>
+  <p class="note" id="foot"></p>
+</div>
+<script id="nbd" type="text/plain">{{DATA}}</script>
+<script>
+(() => {
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const ymL = (s) => MES[+s.slice(5, 7) - 1] + '/' + s.slice(2, 4);
+const nf = (x, d = 0) => x == null || !isFinite(x) ? '–' : x.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (x, d = 1) => x == null || !isFinite(x) ? '–' : nf(x * 100, d) + '%';
+const sgn = (x, d = 0) => x == null || !isFinite(x) ? '<span class="mut">–</span>' : `<span class="${x > 0 ? 'pos' : x < 0 ? 'neg' : 'mut'}">${x > 0 ? '+' : x < 0 ? '−' : ''}${nf(Math.abs(x), d)}</span>`;
+const tquar = (t) => 'T' + t.slice(5) + '/' + t.slice(2, 4);
+const COL = ['#1f6f8b', '#c26a2b', '#5a8f3d', '#8b4f9e', '#b03a5b', '#3b7dd8'];
+let D;
+
+// ---------- gráfico de linhas simples ----------
+function lines(el, xs, series, fmt) {
+  const W = Math.max(320, el.clientWidth || 640), H = 240, ml = 48, mr = 12, mt = 10, mb = 26;
+  const all = series.flatMap((s) => s.v.filter((v) => v != null));
+  if (!all.length) { el.innerHTML = '<p class="note">Sem dados.</p>'; return; }
+  let lo = Math.min(0, ...all), hi = Math.max(...all); if (hi === lo) hi = lo + 1;
+  const x = (i) => ml + (W - ml - mr) * (xs.length < 2 ? 0.5 : i / (xs.length - 1)), y = (v) => mt + (H - mt - mb) * (1 - (v - lo) / (hi - lo));
+  const ticks = 4; let g = '';
+  for (let k = 0; k <= ticks; k++) { const v = lo + (hi - lo) * k / ticks; g += `<line x1="${ml}" x2="${W - mr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${ml - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+  const every = Math.max(1, Math.ceil(xs.length / Math.floor((W - ml) / 60)));
+  xs.forEach((t, i) => { if (i % every === 0 || (i === xs.length - 1 && i % every >= every / 2)) g += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${t}</text>`; });
+  series.forEach((s) => {
+    let d = '', pen = false;
+    s.v.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1); pen = true; });
+    g += `<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2"/>`;
+    const li = s.v.map((v, i) => v == null ? -1 : i).filter((i) => i >= 0).pop();
+    if (li != null && li >= 0) g += `<circle cx="${x(li)}" cy="${y(s.v[li])}" r="3.5" fill="${s.c}"/>`;
+  });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico">${g}</svg>`;
+}
+function bars(el, xs, vals, fmt) {
+  const W = Math.max(320, el.clientWidth || 640), H = 150, ml = 48, mr = 12, mt = 10, mb = 24;
+  const hi = Math.max(1e-9, ...vals.map((v) => v || 0)); const bw = (W - ml - mr) / xs.length;
+  let g = '';
+  [0, 0.5, 1].forEach((k) => { const yy = mt + (H - mt - mb) * (1 - k); g += `<line x1="${ml}" x2="${W - mr}" y1="${yy}" y2="${yy}" stroke="var(--grid)"/><text x="${ml - 6}" y="${yy + 4}" text-anchor="end">${fmt(hi * k)}</text>`; });
+  vals.forEach((v, i) => { const h = (H - mt - mb) * (v || 0) / hi; g += `<rect x="${ml + i * bw + bw * 0.2}" y="${H - mb - h}" width="${bw * 0.6}" height="${h}" fill="var(--accent)" opacity="${i === vals.length - 1 ? 1 : 0.55}"/><text x="${ml + i * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${xs[i]}</text>`; });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de barras">${g}</svg>`;
+}
+
+// ---------- MAPA ----------
+const MAP = [
+  ['Peru', 'SBS · fundos de pensão', 'As 4 AFPs (Habitat, Integra, Prima, Profuturo), por tipo de fundo', 'Por emissor e ISIN, valor e número de ações', 'Mensal', 'desde 2014', 'Excel por mês, link direto', 'on', 'No painel'],
+  ['EUA → LatAm', 'SEC · Form N-PORT', 'Todos os fundos registrados nos EUA (mútuos, ETFs, fechados)', 'Por título, com ISIN e país; valor e quantidade', 'Trimestral (carteira de cada fundo)', 'desde fim de 2019', 'ZIP de ~400 MB por trimestre', 'on', 'No painel (últimos trimestres)'],
+  ['Chile', 'CMF · fondos mutuos', '440 fundos, 21 administradoras', 'Por título (nemotécnico), valor', 'Trimestral', 'só o último trimestre em arquivo', 'Excel do trimestre; histórico só em Power BI', 'part', 'No painel (um trimestre)'],
+  ['Colômbia', 'Superfinanciera · fundos de pensão', 'Protección, Porvenir, Skandia, Colfondos', 'Ações locais só por tipo de título; exterior e private equity por emissor', 'Mensal', 'desde 2020 (em arquivo)', 'Excel por mês, link direto', 'off', 'Fora: sem emissor local'],
+  ['Chile', 'Superintendencia de Pensiones · AFPs', 'As AFPs chilenas, por tipo de fundo', 'Diversificação por emissor em relatório mensal', 'Mensal', 'longo', 'PDF; centro de estatísticas não respondeu a acesso automatizado', 'off', 'Fora por enquanto'],
+  ['Argentina', 'CNV / CAFCI · FCI', 'Fundos comuns de investimento', 'Carteira semanal enviada à CNV; público só fichas por fundo (Ficha Única, desde mar/2026)', 'Semanal (interno) / mensal (ficha)', 'curto', 'PDFs por fundo; API da CAFCI recusa acesso automatizado', 'off', 'Fora'],
+  ['México', 'CNBV / CONSAR · fundos e Afores', 'Fondos de inversión; Afores', 'Carteira mensal de cada fundo vai à CNBV; público só PDF de cada operadora; Afores agregadas por classe', 'Mensal', '–', 'Sem arquivo em lote', 'off', 'Fora: exigiria raspar cada operadora'],
+];
+function renderMap() {
+  $('map').innerHTML = '<thead><tr><th>#</th><th class="l">País</th><th class="l">Fonte</th><th class="l">Quem aparece</th><th class="l">Detalhe</th><th class="l">Frequência</th><th class="l">Histórico</th><th class="l">Arquivo</th><th class="l">Situação</th></tr></thead><tbody>' +
+    MAP.map((r, i) => `<tr><td><span class="rank">${i + 1}</span></td>${r.slice(0, 7).map((c) => `<td class="l">${esc(c)}</td>`).join('')}<td class="l"><span class="pill ${r[7]}">${esc(r[8])}</span></td></tr>`).join('') + '</tbody>';
+}
+
+// ---------- PERU ----------
+const PE = { e: null };
+function peRender() {
+  const P = D.pe, M = P.meses, i = +$('pe-m').value, k = +$('pe-k').value, a = $('pe-a').value;
+  const afps = a ? [a] : Object.keys(P.afps);
+  const val = (e, j) => { let s = 0, any = false; afps.forEach((f) => { const x = P.p[f]?.[e]; if (x && x[0][j] != null) { s += x[0][j]; any = true; } }); return any ? s : null; };
+  const E = Object.keys(P.emissores);
+  const tot = (j) => E.reduce((s, e) => s + (val(e, j) || 0), 0);
+  const T = tot(i), T0 = i - k >= 0 ? tot(i - k) : null;
+  const held = E.map((e) => ({ e, v: val(e, i) || 0, v0: i - k >= 0 ? val(e, i - k) || 0 : null, n: afps.filter((f) => (P.p[f]?.[e]?.[0][i] || 0) > 0).length })).filter((o) => o.v > 0).sort((x, y) => y.v - x.v);
+  // compras e vendas: por AFP, pela quantidade
+  const mv = [];
+  if (i - k >= 0) E.forEach((e) => {
+    let flow = 0, nb = 0, ns = 0, any = false;
+    afps.forEach((f) => {
+      const x = P.p[f]?.[e]; if (!x) return; const q0 = x[1][i - k] || 0, q1 = x[1][i] || 0, v0 = x[0][i - k] || 0, v1 = x[0][i] || 0;
+      if (!q0 && !q1) return;
+      let fl = 0, d = null;
+      if (!q0) { fl = v1; d = 'nova'; } else if (!q1) { fl = -v0; d = 'zerou'; } else { d = q1 / q0 - 1; if (Math.abs(d) < 0.10) return; fl = (q1 - q0) * v1 / q1; }
+      flow += fl; any = true; if (fl > 0) nb++; else if (fl < 0) ns++;
+    });
+    if (any && Math.abs(flow) > 0.01) mv.push({ e, flow, nb, ns });
+  });
+  const o = $('pe-o').value; mv.sort(o === 'b' ? (x, y) => y.flow - x.flow : o === 's' ? (x, y) => x.flow - y.flow : (x, y) => Math.abs(y.flow) - Math.abs(x.flow));
+  $('pe-tiles').innerHTML = [
+    ['Ações locais nas AFPs', 'S/ ' + nf(T / 1e3, 1) + ' bi', T0 ? 'há ' + k + ' ' + (k === 1 ? 'mês' : 'meses') + ': S/ ' + nf(T0 / 1e3, 1) + ' bi' : ''],
+    ['Empresas com posição', String(held.length), 'emissores locais'],
+    ['Maior posição', held[0] ? esc(held[0].e) : '–', held[0] ? pct(held[0].v / T) + ' das ações locais' : ''],
+    ['Histórico', ymL(M[0]) + ' a ' + ymL(M[M.length - 1]), M.length + ' meses'],
+  ].map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v" style="font-size:${v.length > 14 ? '1.1rem' : ''}">${v}</span><span class="n">${n}</span></div>`).join('');
+  $('pe-h1').textContent = (a ? P.afps[a] : 'as 4 AFPs') + ' · ' + ymL(M[i]);
+  const wmax = held[0]?.v || 1;
+  $('pe-top').innerHTML = '<thead><tr><th>Empresa</th><th>S/ mi</th><th>% ações locais</th><th>AFPs</th><th>Δ valor</th></tr></thead><tbody>' + held.map((x) =>
+    `<tr class="ck${x.e === PE.e ? ' sel' : ''}" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}<div class="mut" style="font-size:.72rem">${esc(D.pe.emissores[x.e].setor)}</div></td><td>${nf(x.v)}</td><td>${pct(x.v / T)}<span class="bar" style="width:${Math.round(x.v / wmax * 50)}px"></span></td><td>${x.n}</td><td>${x.v0 == null ? '–' : x.v0 ? sgn((x.v / x.v0 - 1) * 100) + '%' : '<span class="pill on">nova</span>'}</td></tr>`).join('') + '</tbody>';
+  $('pe-mov').innerHTML = mv.length ? '<thead><tr><th>Empresa</th><th>Valor (S/ mi)</th><th>AFPs comprando</th><th>AFPs vendendo</th></tr></thead><tbody>' + mv.map((x) =>
+    `<tr class="ck" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}</td><td>${sgn(x.flow, 1)}</td><td>${x.nb || '<span class="mut">0</span>'}</td><td>${x.ns || '<span class="mut">0</span>'}</td></tr>`).join('') + '</tbody>' : '<tbody><tr><td class="l mut">Sem mudanças de 10% ou mais no período.</td></tr></tbody>';
+  if (!PE.e || !held.some((x) => x.e === PE.e)) PE.e = held[0]?.e;
+  // gráfico: peso da empresa em cada AFP
+  const AF = Object.keys(P.afps);
+  const tAfp = (f, j) => E.reduce((s, e) => s + (P.p[f]?.[e]?.[0][j] || 0), 0);
+  const ser = AF.map((f, c) => ({ c: COL[c], v: M.map((_, j) => { const t = tAfp(f, j); const v = P.p[f]?.[PE.e]?.[0][j]; return t ? (v || 0) / t * 100 : null; }) }));
+  $('pe-ct').textContent = `${PE.e}: peso na carteira de ações locais de cada AFP`;
+  $('pe-lg').innerHTML = AF.map((f, c) => `<span><i style="background:${COL[c]}"></i>${P.afps[f]}</span>`).join('');
+  lines($('pe-ch'), M.map(ymL), ser, (v) => nf(v, 0) + '%');
+  // matriz
+  const tA = Object.fromEntries(AF.map((f) => [f, tAfp(f, i)]));
+  $('pe-mx').innerHTML = '<thead><tr><th>Empresa</th>' + AF.map((f) => `<th>${P.afps[f]}</th>`).join('') + '</tr></thead><tbody>' + held.slice(0, 40).map((x) =>
+    `<tr class="ck" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}</td>${AF.map((f) => { const v = P.p[f]?.[x.e]?.[0][i] || 0; return `<td>${v ? pct(v / tA[f]) : '<span class="mut">–</span>'}</td>`; }).join('')}</tr>`).join('') + '</tbody>';
+  document.querySelectorAll('#pg-peru tr[data-e]').forEach((tr) => tr.onclick = () => { PE.e = tr.dataset.e; peRender(); $('pe-ch').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
+}
+function peInit() {
+  const P = D.pe, M = P.meses;
+  $('pe-m').innerHTML = M.map((m, j) => `<option value="${j}">${ymL(m)}</option>`).reverse().join(''); $('pe-m').value = String(M.length - 1);
+  $('pe-a').innerHTML = '<option value="">Todas</option>' + Object.entries(P.afps).map(([k, n]) => `<option value="${k}">${n}</option>`).join('');
+  ['pe-m', 'pe-k', 'pe-a', 'pe-o'].forEach((id) => $(id).addEventListener('change', peRender));
+}
+
+// ---------- EUA ----------
+const US = { c: '', e: null };
+const PAIS = { BR: 'Brasil', MX: 'México', CL: 'Chile', PE: 'Peru', CO: 'Colômbia', AR: 'Argentina', UY: 'Uruguai', PA: 'Panamá' };
+function usRender() {
+  const U = D.us, T = U.tris, i = +$('us-t').value, act = $('us-x').value === '1';
+  const regs = Object.keys(U.g).filter((r) => !act || !r.endsWith(' · índice'));
+  const ok = (e) => !US.c || U.emp[e]?.pais === US.c;
+  const agg = {}; const gtot = {};
+  regs.forEach((r) => Object.entries(U.g[r]).forEach(([e, [v, f]]) => {
+    if (!U.emp[e]) return;
+    const a = agg[e] || (agg[e] = { e, v: 0, f: 0, n: 0, nb: 0, ns: 0, vs: T.map(() => 0) });
+    T.forEach((_, j) => { a.vs[j] += v[j] || 0; });
+    if (v[i]) { a.v += v[i]; a.n++; }
+    if (f[i]) { a.f += f[i]; if (f[i] > 0.5) a.nb++; else if (f[i] < -0.5) a.ns++; }
+    if (ok(e) && v[i]) { const g = gtot[r] || (gtot[r] = { r, v: 0, n: 0, top: [] }); g.v += v[i]; g.n++; g.top.push([e, v[i]]); }
+  }));
+  const L = Object.values(agg);
+  const byC = {}; L.forEach((a) => { const c = U.emp[a.e].pais; byC[c] = (byC[c] || 0) + a.v; });
+  $('us-c').innerHTML = [['', 'Todos', Object.values(byC).reduce((s, x) => s + x, 0)], ...Object.entries(byC).sort((a, b) => b[1] - a[1]).map(([c, v]) => [c, PAIS[c] || c, v])].map(([c, n, v]) =>
+    `<button class="chip" data-c="${c}" aria-pressed="${US.c === c}">${n} · US$ ${nf(v / 1e3, 1)} bi</button>`).join('');
+  $('us-c').onclick = (ev) => { const b = ev.target.closest('[data-c]'); if (b) { US.c = b.dataset.c; usRender(); } };
+  const F = L.filter((a) => ok(a.e));
+  const tot = F.reduce((s, a) => s + a.v, 0), fl = F.reduce((s, a) => s + a.f, 0);
+  const top = F.filter((a) => a.v > 0).sort((x, y) => y.v - x.v);
+  $('us-tiles').innerHTML = [
+    ['Posição dos fundos dos EUA', 'US$ ' + nf(tot / 1e3, 1) + ' bi', (US.c ? PAIS[US.c] : 'América Latina') + ' · ' + tquar(T[i])],
+    ['Compras − vendas no trimestre', (fl >= 0 ? '+' : '−') + 'US$ ' + nf(Math.abs(fl) / 1e3, 2) + ' bi', i ? 'contra o trimestre anterior' : 'primeiro trimestre da série'],
+    ['Famílias de fundos', String(Object.keys(gtot).length), act ? 'só gestão ativa' : 'incluindo fundos de índice'],
+    ['Empresas', String(top.length), 'com posição no trimestre'],
+  ].map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
+  const nm = (e) => esc(U.emp[e].nome) + `<span class="mut" style="margin-left:6px;font-size:.72rem">${esc(U.emp[e].pais)}</span>`;
+  const wmax = top[0]?.v || 1;
+  $('us-top').innerHTML = '<thead><tr><th>Empresa</th><th>US$ mi</th><th>Famílias</th><th>Fluxo</th></tr></thead><tbody>' + top.slice(0, 150).map((a) =>
+    `<tr class="ck${a.e === US.e ? ' sel' : ''}" data-e="${esc(a.e)}"><td class="l">${nm(a.e)}</td><td>${nf(a.v)}<span class="bar" style="width:${Math.round(a.v / wmax * 50)}px"></span></td><td>${a.n}</td><td>${i ? sgn(a.f) : '–'}</td></tr>`).join('') + '</tbody>';
+  const o = $('us-o').value;
+  const mv = F.filter((a) => Math.abs(a.f) >= 1).sort(o === 'b' ? (x, y) => y.f - x.f : o === 's' ? (x, y) => x.f - y.f : (x, y) => Math.abs(y.f) - Math.abs(x.f));
+  $('us-mov').innerHTML = !i ? '<tbody><tr><td class="l mut">Escolha um trimestre a partir do segundo da série.</td></tr></tbody>' : '<thead><tr><th>Empresa</th><th>US$ mi</th><th>Famílias comprando</th><th>vendendo</th></tr></thead><tbody>' + mv.slice(0, 150).map((a) =>
+    `<tr class="ck" data-e="${esc(a.e)}"><td class="l">${nm(a.e)}</td><td>${sgn(a.f)}</td><td>${a.nb || '<span class="mut">0</span>'}</td><td>${a.ns || '<span class="mut">0</span>'}</td></tr>`).join('') + '</tbody>';
+  const G = Object.values(gtot).sort((x, y) => y.v - x.v);
+  $('us-g').innerHTML = '<thead><tr><th>Família</th><th>US$ mi</th><th>Empresas</th><th class="l">Maiores</th></tr></thead><tbody>' + G.slice(0, 120).map((g) =>
+    `<tr><td class="l">${esc(g.r.replace(' · índice', ''))}${g.r.endsWith(' · índice') ? ' <span class="pill off">índice</span>' : ''}</td><td>${nf(g.v)}</td><td>${g.n}</td><td class="l mut">${g.top.sort((x, y) => y[1] - x[1]).slice(0, 3).map(([e]) => esc(U.emp[e].nome.split(' ').slice(0, 3).join(' '))).join(' · ')}</td></tr>`).join('') + '</tbody>';
+  if (!US.e || !agg[US.e] || !ok(US.e)) US.e = top[0]?.e;
+  const a = agg[US.e];
+  if (a) {
+    $('us-dt').textContent = U.emp[US.e].nome; $('us-dn').textContent = (PAIS[U.emp[US.e].pais] || '') + (U.emp[US.e].tk ? ' · ' + U.emp[US.e].tk : '') + ' · US$ milhões por trimestre';
+    bars($('us-ch'), T.map(tquar), a.vs, (v) => nf(v));
+    const rows = regs.map((r) => { const x = U.g[r][US.e]; return x ? { r, v: x[0][i] || 0, f: x[1][i] || 0 } : null; }).filter((x) => x && (x.v || x.f)).sort((x, y) => y.v - x.v);
+    $('us-d').innerHTML = '<thead><tr><th>Família de fundos</th><th>US$ mi</th><th>Fluxo</th></tr></thead><tbody>' + rows.slice(0, 80).map((x) => `<tr><td class="l">${esc(x.r.replace(' · índice', ''))}</td><td>${nf(x.v, 1)}</td><td>${i ? sgn(x.f, 1) : '–'}</td></tr>`).join('') + '</tbody>';
+  }
+  document.querySelectorAll('#pg-eua tr[data-e]').forEach((tr) => tr.onclick = () => { US.e = tr.dataset.e; usRender(); $('us-dt').scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
+}
+function usInit() {
+  const T = D.us.tris;
+  $('us-t').innerHTML = T.map((t, j) => `<option value="${j}">${tquar(t)}</option>`).reverse().join(''); $('us-t').value = String(T.length - 1);
+  ['us-t', 'us-x', 'us-o'].forEach((id) => $(id).addEventListener('change', usRender));
+}
+
+// ---------- CHILE ----------
+function clRender() {
+  const C = D.cl, a = $('cl-a').value, F = C.f.filter((f) => !a || f.agf === a);
+  const agg = {};
+  F.forEach((f) => Object.entries(f.p).forEach(([t, [v, w]]) => { const x = agg[t] || (agg[t] = { t, v: 0, n: 0, ag: new Set() }); x.v += v; x.n++; x.ag.add(f.agf); }));
+  const L = Object.values(agg).sort((x, y) => y.v - x.v), T = L.reduce((s, x) => s + x.v, 0);
+  const eq = F.filter((f) => /Accionario nacional/i.test(f.fam));
+  $('cl-tiles').innerHTML = [
+    ['Ações chilenas nos fundos', 'CLP ' + nf(T, 0) + ' bi', (a || 'todas as administradoras') + ' · ' + ymL(C.mes.slice(0, 4) + '-' + C.mes.slice(4, 6))],
+    ['Fundos com ações', String(F.length), eq.length + ' de ações chilenas'],
+    ['Maior posição', L[0] ? L[0].t : '–', L[0] ? pct(L[0].v / T) + ' das ações' : ''],
+  ].map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${esc(n)}</span></div>`).join('');
+  $('cl-h1').textContent = 'CLP bilhões';
+  const wmax = L[0]?.v || 1;
+  $('cl-top').innerHTML = '<thead><tr><th>Ação</th><th>CLP bi</th><th>% das ações</th><th>Fundos</th><th>Administr.</th></tr></thead><tbody>' + L.slice(0, 120).map((x) =>
+    `<tr><td class="l"><b>${esc(x.t)}</b> <span class="mut">${esc((C.emissores[x.t] || '').slice(0, 28))}</span></td><td>${nf(x.v, 1)}</td><td>${pct(x.v / T)}<span class="bar" style="width:${Math.round(x.v / wmax * 50)}px"></span></td><td>${x.n}</td><td>${x.ag.size}</td></tr>`).join('') + '</tbody>';
+  $('cl-f').innerHTML = '<thead><tr><th>Fundo</th><th>CLP bi</th><th class="l">Maiores posições (% do fundo)</th></tr></thead><tbody>' + eq.sort((x, y) => y.tot - x.tot).map((f) =>
+    `<tr><td class="l">${esc(f.n)}<div class="mut" style="font-size:.72rem">${esc(f.agf)}</div></td><td>${nf(f.tot, 0)}</td><td class="l">${Object.entries(f.p).sort((x, y) => y[1][1] - x[1][1]).slice(0, 5).map(([t, [v, w]]) => `${esc(t)} ${pct(w, 0)}`).join(' · ')}</td></tr>`).join('') + '</tbody>';
+}
+function clInit() {
+  const A = [...new Set(D.cl.f.map((f) => f.agf))].sort();
+  $('cl-a').innerHTML = '<option value="">Todas</option>' + A.map((a) => `<option>${esc(a)}</option>`).join('');
+  $('cl-a').addEventListener('change', clRender);
+}
+
+// ---------- rotas ----------
+const PAGES = ['mapa', 'peru', 'eua', 'chile'];
+const R = { peru: peRender, eua: usRender, chile: clRender, mapa: renderMap };
+function go(pg) {
+  if (!PAGES.includes(pg)) pg = 'mapa';
+  document.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.pg === pg)));
+  PAGES.forEach((p) => { $('pg-' + p).hidden = p !== pg; });
+  R[pg]();
+  if (location.hash !== '#' + pg) { try { history.replaceState(null, '', '#' + pg); } catch (e) {} }
+}
+document.querySelectorAll('.tab').forEach((b) => b.addEventListener('click', () => go(b.dataset.pg)));
+window.addEventListener('hashchange', () => go(location.hash.slice(1)));
+let lw = window.innerWidth; window.addEventListener('resize', () => { if (window.innerWidth !== lw) { lw = window.innerWidth; go(location.hash.slice(1)); } });
+(async () => {
+  try {
+    if (typeof DecompressionStream !== 'function') throw new Error('este navegador não descomprime os dados; atualize o navegador');
+    const s = atob($('nbd').textContent.trim()); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    D = JSON.parse(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+    $('loading').remove();
+    peInit(); usInit(); clInit();
+    $('foot').textContent = 'Dados montados em ' + D.gerado_em + '.';
+    go(location.hash.slice(1) || 'mapa');
+  } catch (e) { console.error(e); $('loading').textContent = 'Não foi possível carregar os dados: ' + e.message; }
+})();
+})();
+</script>
