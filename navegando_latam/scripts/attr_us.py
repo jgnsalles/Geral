@@ -90,9 +90,14 @@ for sid, inf in I.groupby('SERIES_ID'):
         cv = [None if x is None else int(round(x * 1e6)) for x in C.get(e, [None] * len(dates))]
         if max(abs(v or 0) for v in wv) < 5 and max(abs(v or 0) for v in cv) < 50: continue
         p[e] = [wv, cv]
+    hl = h[h.ASSET_CAT.isin(['EC', 'EP']) & h.INVESTMENT_COUNTRY.isin(['BR', 'MX', 'CL', 'PE', 'CO', 'AR', 'UY', 'PA'])]
+    mixp = hl.groupby(['ym', 'INVESTMENT_COUNTRY']).PERCENTAGE.sum().unstack().fillna(0); mixp = mixp.div(mixp.sum(axis=1), axis=0)
+    br = float(mixp.get('BR', pd.Series(0, index=mixp.index)).median()) if len(mixp) else 0
+    if br >= 0.7: continue                                          # fundos de Brasil ficam fora: só LatAm
+    mix = mixp.iloc[-1].sort_values(ascending=False) if len(mixp) else pd.Series(dtype=float)
     out['fundos'][sid] = {'nome': inf_last.SERIES_NAME, 'reg': inf_last.REGISTRANT_NAME, 'datas': dates, 'meses': months, 'R': [None if x is None else round(x, 5) for x in R],
                           'RF': [None if x is None else round(x, 5) for x in RF], 'EX': [None if x is None else round(x, 5) for x in EXPL],
-                          'NA': [round(x / 1e6, 1) for x in inf.NET_ASSETS], 'FL': [round(x / 1e6, 1) for x in flows], 'lat': [round(x, 1) for x in inf.lat_pct], 'p': p}
+                          'NA': [round(x / 1e6, 1) for x in inf.NET_ASSETS], 'FL': [round(x / 1e6, 1) for x in flows], 'lat': [round(x, 1) for x in inf.lat_pct], 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'p': p}
 json.dump(out, open(W + '/us_attr.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 for sid, f in sorted(out['fundos'].items(), key=lambda z: -z[1]['NA'][-1])[:20]:
     rf = [x for x in f['RF'] if x is not None]; ex = [x for x in f['EX'] if x is not None]

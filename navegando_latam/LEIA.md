@@ -28,3 +28,8 @@ Montagem: `python scripts/build_data.py` → `latam.json`; `python scripts/build
 - `scripts/attr_13f.py` → `f13_attr.json`: carteira 13F por trimestre, retorno = peso × preço (mediana entre gestores, sem dividendos),
   referência iShares Latin America 40 (ILF). Só ações (títulos de dívida fora); gestoras com ≥ 50% em LatAm ou pedidas.
 - O 13F só cobre o que é listado nos EUA: ações compradas só em bolsas locais não aparecem.
+
+## Só LatAm (sem Brasil)
+Ranking e attribution dos EUA (N-PORT) e do 13F excluem quem é Brasil: gestoras sediadas no Brasil e carteiras com 70% ou mais da parte
+latino-americana em Brasil (mediana no tempo). No 13F, foco em LatAm = ≥ 5 empresas da região e ≥ 50% da carteira nelas (mediana);
+Moneda, Fourth Sail e INCA sempre entram. País de cada CUSIP em `cusip_pais.pkl` (do N-PORT). Fundos de um país só aparecem marcados.

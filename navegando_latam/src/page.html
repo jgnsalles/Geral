@@ -78,7 +78,7 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td
   <!-- ===== POR FUNDO ===== -->
   <section class="page" id="pg-fundo" hidden>
     <div class="controls">
-      <label>Base <select id="fu-b"><option value="pe">Peru · fundos das AFPs (mensal)</option><option value="us">EUA · fundos focados em LatAm (trimestral)</option><option value="f13">13F · gestoras LatAm (trimestral, só o listado nos EUA)</option></select></label>
+      <label>Base <select id="fu-b"><option value="pe">Peru · fundos das AFPs (mensal)</option><option value="us">EUA · fundos LatAm, sem os de Brasil (trimestral)</option><option value="f13">13F · gestoras LatAm, sem as de Brasil (trimestral)</option></select></label>
     </div>
     <article class="card" id="rk-card">
       <div class="head"><h2>Ranking dos fundos</h2><div class="chips" id="rk-p" role="group" aria-label="Período do ranking"></div></div>
@@ -515,7 +515,8 @@ function rkRender() {
     const size = b === 'pe' ? x.f.S[z] : b === 'f13' ? x.f.TOT[z] : x.f.NA[z];
     const flow = b === 'us' ? steps.reduce((s, j) => s + (x.f.FL[j] || 0), 0) : null;
     const lev = /ULTRA|\b[23]X\b|LEVERAG|BULL|BEAR|INVERSE/i.test(x.nome);
-    return { k: x.k, lev, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
+    const mix = (x.f.mix || []).map(([c, v]) => c + ' ' + pct(v, 0)).join(' · '), unico = (x.f.mix || [])[0]?.[1] >= 0.9;
+    return { k: x.k, lev, mix, unico, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
       extra: b === 'pe' ? (x.f.tot[z] ? x.f.S[z] / x.f.tot[z] : null) : b === 'f13' ? x.f.LAT[z] : x.f.lat[z] / 100 };
   }).filter(Boolean);
   const key = RK.sort;
@@ -525,15 +526,15 @@ function rkRender() {
   const th = (k, l) => `<th><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${RK.sort === k ? (RK.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`;
   const refL = b === 'pe' ? 'Todas as AFPs' : b === 'f13' ? 'ILF' : 'Explicado', dL = b === 'pe' ? 'vs. AFPs' : b === 'f13' ? 'vs. ILF' : 'Resto';
   $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : b === 'f13' ? '13F US$ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
-    rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">sem carteira no início ou no fim do período: fora do ranking</div>`}</td>` +
+    rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.unico ? ' <span class="pill off">país único</span>' : ''}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.mix ? `<div class="mut" style="font-size:.72rem">${esc(x.mix)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">sem carteira no início ou no fim do período: fora do ranking</div>`}</td>` +
       `<td style="${heat(x.R)}"><b>${pct(x.R)}</b></td><td>${x.ann == null ? '–' : pct(x.ann)}</td><td>${pct(x.RR)}</td><td>${sgn(x.D * 100, 1)}</td><td>${nf(x.size)}</td>${b === 'us' ? `<td>${sgn(x.flow)}</td>` : ''}<td>${x.extra == null ? '–' : pct(x.extra, 0)}</td>` +
       `<td class="l">${x.best && x.best[1] > 0 ? esc(x.nm(x.best[0]).slice(0, 22)) + ' ' + sgn(x.best[1] * 100, 1) : '–'}</td><td class="l">${x.worst && x.worst[1] < 0 ? esc(x.nm(x.worst[0]).slice(0, 22)) + ' ' + sgn(x.worst[1] * 100, 1) : '–'}</td>` +
       years.map((y) => { const v = x.yr[y]; return `<td style="${heat(v ? (b === 'us' ? v.r : v.d) : null)}">${v ? pct(v.r, 0) : '<span class="mut">–</span>'}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
   $('rk').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; RK.dir = RK.sort === k ? -RK.dir : -1; RK.sort = k; rkRender(); });
   $('rk').querySelectorAll('tr[data-k]').forEach((tr) => tr.onclick = () => { $('fu-f').value = tr.dataset.k; fuPer(); rkRender(); $('fu-lead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
-  $('rk-n').textContent = (b === 'f13' ? `Carteira 13F de cada gestora (só ações e ADRs listados nos EUA), ${ymL(A)} a ${ymL(Z)}, preço sem dividendos. Cor do ano: diferença para o ETF iShares Latin America 40.` : b === 'pe'
+  $('rk-n').textContent = (b === 'f13' ? `Gestoras com foco em América Latina no 13F: pelo menos 5 empresas da região e metade da carteira nelas, sem gestoras sediadas no Brasil nem carteiras com 70% ou mais em Brasil (Moneda, Fourth Sail e INCA sempre incluídas). Carteira listada nos EUA, ${ymL(A)} a ${ymL(Z)}, preço sem dividendos. Cor do ano: diferença para o ETF iShares Latin America 40.` : b === 'pe'
     ? `Carteira de ações locais de cada fundo de AFP, ${ymL(A)} a ${ymL(Z)}, em soles e sem dividendos. Cor do ano: diferença para todas as AFPs (verde acima, vermelho abaixo).`
-    : `Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Resto = cota − explicado pelas ações a preço; a maior parte deve ser dividendos (no Brasil, 6 a 8% ao ano). Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
+    : `Fundos americanos com metade ou mais em ações da América Latina, sem os de Brasil (70% ou mais da parte latino-americana em Brasil). Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Resto = cota − explicado pelas ações a preço; a maior parte deve ser dividendos (no Brasil, 6 a 8% ao ano). Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
 }
 
 function fuInit() {

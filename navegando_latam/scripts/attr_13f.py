@@ -18,6 +18,7 @@ H = H[H.ACCESSION_NUMBER.isin(set(best.ACCESSION_NUMBER))]
 PX = PX.groupby(['CUSIP', 'per']).px.median()
 QS = QS.groupby(['CUSIP', 'per', 'CIK']).q.sum()
 LAT = set(open(W + '/latam_cusips.txt').read().split())
+CPAIS = pd.read_pickle(W + '/cusip_pais.pkl')
 SIMPLE = sorted({Fraction(a, b) for a in range(1, 11) for b in range(1, 11)} | {Fraction(x) for x in (15, 20, 25, 50, 100)} | {Fraction(1, x) for x in (15, 20, 25, 50, 100)})
 def sret(c, a, b):
     pa, pb = PX.get((c, a)), PX.get((c, b))
@@ -64,9 +65,20 @@ for cik, h in H.groupby('CIK'):
         cv_ = [None if x is None else int(round(x * 1e6)) for x in C[e]]
         if max(abs(v or 0) for v in wv) < 10 and max(abs(v or 0) for v in cv_) < 100: continue
         p[e] = [wv, cv_]
+    # divisão por país da parte latino-americana; fora: gestoras sediadas no Brasil e carteiras ≥ 70% Brasil
+    hl = h[h.CUSIP.str.upper().isin(LAT)].assign(pais=lambda d: d.CUSIP.str.upper().map(CPAIS))
+    mixp = hl.groupby(['per', 'pais']).v.sum().unstack().fillna(0)
+    mixp = mixp.div(mixp.sum(axis=1), axis=0)
+    br = float(mixp.get('BR', pd.Series(0, index=mixp.index)).median()) if len(mixp) else 0
+    if h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1] == 'D5' or br >= 0.7: continue
+    nlat = hl.groupby('per').emp.nunique().median() if len(hl) else 0
+    shm = float((h.groupby('per').latv.first() / h.groupby('per').tot.first()).median())
+    pedida = bool(re.search(r'MONEDA|FOURTH SAIL|INCA INVEST', h.FILINGMANAGER_NAME.iloc[-1].upper()))
+    if not pedida and (nlat < 5 or shm < 0.5): continue           # foco em LatAm: ≥ 5 empresas da região e metade da carteira, na mediana
+    mix = mixp.iloc[-1].sort_values(ascending=False) if len(mixp) else pd.Series(dtype=float)
     out['fundos'][cik] = {'nome': name, 'pais': h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1], 'datas': pers, 'R': [None if x is None else round(x, 5) for x in R],
                           'REF': [None if x is None else round(x, 5) for x in REF], 'COV': COV, 'TOT': [round(x / 1e6, 1) for x in tot],
-                          'LAT': [round(float(a / b), 3) for a, b in zip(latv, tot)], 'p': p}
+                          'LAT': [round(float(a / b), 3) for a, b in zip(latv, tot)], 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'p': p}
 json.dump(out, open(W + '/f13_attr.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 for cik, f in sorted(out['fundos'].items(), key=lambda z: -z[1]['TOT'][-1]):
     r = [x for x in f['R'] if x is not None]
