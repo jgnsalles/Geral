@@ -3,7 +3,7 @@
 import zipfile, sys, pandas as pd, numpy as np
 Z, OUT, CUS = sys.argv[1:4]
 LAT = set(open(CUS).read().split())
-WATCH = r'MONEDA|FOURTH SAIL|INCA INVEST|LATAM|LATIN AMERICA|COMPASS GROUP|LARRAIN|ANDINA|CREDICORP|GQG'
+WATCH = r'MONEDA|FOURTH SAIL|INCA INVEST|LATAM|LATIN AMERICA|COMPASS GROUP|LARRAIN|ANDINA|CREDICORP|GQG|DISCOVERY CAPITAL|NINETY ONE|GEMSSTOCK|ABS DIRECT EQUITY|BTG PACTUAL|RWC |REDWHEEL|ONYX|CONTRARIAN CAPITAL'
 z = zipfile.ZipFile(Z)
 rd = lambda n, cols=None, ch=False: pd.read_csv(z.open([x for x in z.namelist() if x.upper().endswith(n)][0]), sep='\t', dtype=str, quoting=3, on_bad_lines='skip', usecols=cols, chunksize=1000000 if ch else None, encoding='latin1')
 C = rd('COVERPAGE.TSV', ['ACCESSION_NUMBER', 'REPORTCALENDARORQUARTER', 'ISAMENDMENT', 'AMENDMENTTYPE', 'FILINGMANAGER_NAME', 'FILINGMANAGER_STATEORCOUNTRY', 'REPORTTYPE'])
@@ -24,7 +24,7 @@ H = pd.concat(H)
 H['lat'] = H.CUSIP.str.upper().isin(LAT)
 tot = H.groupby('ACCESSION_NUMBER').v.sum(); latv = H[H.lat].groupby('ACCESSION_NUMBER').v.sum().reindex(tot.index).fillna(0)
 C = C.set_index('ACCESSION_NUMBER'); C['tot'] = tot; C['latv'] = latv; C = C[C.tot.notna()]
-keep = C[((C.latv / C.tot >= 0.4) & (C.latv >= 20e6)) | (C.latv >= 150e6) | C.FILINGMANAGER_NAME.fillna('').str.upper().str.contains(WATCH, regex=True)].index
+keep = C[((C.latv / C.tot >= 0.15) & (C.latv >= 20e6)) | (C.latv >= 150e6) | C.FILINGMANAGER_NAME.fillna('').str.upper().str.contains(WATCH, regex=True)].index
 SUM = C[['CIK', 'FILINGMANAGER_NAME', 'FILINGMANAGER_STATEORCOUNTRY', 'PERIODOFREPORT', 'tot', 'latv']].copy()   # resumo de todas as gestoras
 K = H[H.ACCESSION_NUMBER.isin(set(keep))].merge(C[['CIK', 'FILINGMANAGER_NAME', 'PERIODOFREPORT', 'tot', 'latv', 'FILINGMANAGER_STATEORCOUNTRY']], left_on='ACCESSION_NUMBER', right_index=True)
 # preço por CUSIP no trimestre: mediana de valor ÷ quantidade entre todos os gestores

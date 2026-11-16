@@ -10,7 +10,7 @@ EXCL = (r'VANGUARD|BLACKROCK|ISHARES|STATE STREET|SSGA|DIMENSIONAL|GEODE|NORTHER
         r'MORGAN STANLEY|GOLDMAN|JPMORGAN|J\.P\. MORGAN|UBS |BANK OF AMERICA|BARCLAYS|CITIGROUP|WELLS FARGO|ROYAL BANK|BNP|SOCIETE GENERALE|CREDIT SUISSE|DEUTSCHE BANK|NOMURA|HSBC|SANTANDER|ITAU|BRADESCO|SCOTIA|BMO|TORONTO DOMINION|JEFFERIES|RAYMOND JAMES|LPL FINANCIAL|AMERIPRISE|'
         r'\bBANKS?\b|\bBANCO\b|TRUST CO|TRUIST|ENVESTNET|SYNOVUS|PINNACLE FINANCIAL|FINANCIAL CORP|EXANE|TIDAL INV|MIRAE ASSET|ALLEN HOLDING|RENAISSANCE TECH|'
         r'RETIREMENT|PENSION|TEACHERS|NORGES|SOVEREIGN|PUBLIC EMPLOYEES|STATE OF |TREASURER|COMMONWEALTH|CENTRAL BANK|BANCO CENTRAL|BNDES|MIZUHO|SUMITOMO|MITSUBISHI')
-PED = r'MONEDA|FOURTH SAIL|INCA INVEST|GQG'
+PED = r'MONEDA|FOURTH SAIL|INCA INVEST|GQG|DISCOVERY CAPITAL|NINETY ONE|GEMSSTOCK|ABS DIRECT EQUITY|BTG PACTUAL (GLOBAL|ASSET)|RWC |REDWHEEL'   # pedidas ou achadas na pesquisa
 # 1ª passada: escolhe as gestoras pelo resumo (todas as entregas 13F), sem carregar as carteiras
 S = pd.concat([pd.read_pickle(f)['sum'] for f in sorted(glob.glob(W + '/f13/*.pkl'))])
 S['per'] = pd.to_datetime(S.PERIODOFREPORT, format='%d-%b-%Y', errors='coerce')
@@ -20,7 +20,7 @@ for cik, s in S.groupby('CIK'):
     nm = str(s.FILINGMANAGER_NAME.iloc[-1]).upper()
     if re.search(EXCL, nm): continue
     sh = s.latv / s.tot
-    if re.search(PED, nm) or sh.max() >= 0.5 or (s.latv.tail(8).median() >= 300e6 and sh.tail(8).median() >= 0.02): SEL.add(cik)
+    if re.search(PED, nm) or sh.max() >= 0.5 or (s.latv.tail(8).median() >= 30e6 and sh.tail(8).median() >= 0.2) or (s.latv.tail(8).median() >= 300e6 and sh.tail(8).median() >= 0.02): SEL.add(cik)
 print('pré-seleção', len(SEL))
 H, PX, QS = [], [], []
 for f in sorted(glob.glob(W + '/f13/*.pkl')):
@@ -68,22 +68,25 @@ for cik, h in H.groupby('CIK'):
     lv = h.groupby('per').latv.first().sort_index().tail(8)
     foco = sh.max() >= 0.5
     forte = lv.median() >= 300e6 and float(sh.tail(8).median()) >= 0.02    # gestora ativa global/emergentes com posição relevante em LatAm
-    if not (foco or forte or pedida): continue
+    medio = lv.median() >= 30e6 and float(sh.tail(8).median()) >= 0.2           # parte LatAm relevante (≥ 20% da carteira)
+    if not (foco or forte or medio or pedida): continue
     name = h.sort_values('per').FILINGMANAGER_NAME.iloc[-1]
     # divisão por país da parte latino-americana; fora: gestoras sediadas no Brasil e carteiras ≥ 70% Brasil
     hl = h[h.CUSIP.str.upper().isin(LAT)].assign(pais=lambda d: d.CUSIP.str.upper().map(CPAIS))
     mixp = hl.groupby(['per', 'pais']).v.sum().unstack().fillna(0)
     mixp = mixp.div(mixp.sum(axis=1), axis=0)
     br = float(mixp.get('BR', pd.Series(0, index=mixp.index)).median()) if len(mixp) else 0
-    if h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1] == 'D5' or (foco and not pedida and br >= 0.7): continue
+    if h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1] == 'D5' or (not pedida and (foco or medio) and br >= 0.7): continue   # gestoras do Brasil e carteiras ≥ 70% Brasil ficam de fora
     nlat = hl.groupby('per').emp.nunique().median() if len(hl) else 0
     shm = float((h.groupby('per').latv.first() / h.groupby('per').tot.first()).median())
-    if foco and not pedida and not forte and (nlat < 5 or shm < 0.5): continue
+    if foco and not pedida and not forte and not medio and (nlat < 5 or shm < 0.5): continue
+    if not pedida and nlat < 5: continue                        # participações pontuais (VC, PE, sócio estratégico) ficam de fora
     if not foco and not pedida and nlat < 5: continue           # foco em LatAm: ≥ 5 empresas da região e metade da carteira, na mediana
-    tipo = 'latam' if (foco and float(sh.median()) >= 0.4) else 'global'
+    tipo = 'latam' if float(sh.median()) >= 0.4 else 'global'
     latv0 = h.groupby('per').latv.first().reindex(pers); tot0 = h.groupby('per').tot.first().reindex(pers)
     if tipo == 'global':   # gestora global/emergentes: só a parcela LatAm (pesos e retorno sobre ela)
         h = h[h.CUSIP.str.upper().isin(LAT)].copy(); h['tot'] = h.latv
+        if h.per.nunique() < 3 or h.groupby('per').emp.nunique().median() < 3: continue
     tot = h.groupby('per').tot.first().reindex(pers); latv = latv0
     hv = h.groupby(['emp', 'per']).v.sum().unstack().reindex(columns=pers)
     w = hv.div(tot, axis=1)
