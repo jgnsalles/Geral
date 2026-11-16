@@ -59,6 +59,7 @@ def attr(Vf, Qf):
 emis = last.emissor.to_dict()
 def by_emissor(df): return df.groupby(df.index.map(emis)).sum(min_count=1)
 out = {'meses': M, 'fundos': {}, 'emissores': {e: last[last.emissor == e].setor.iloc[-1] for e in last.emissor.unique()}}
+out['ids'] = {e: sorted(set(last[last.emissor == e].index)) for e in last.emissor.unique()}
 # referência: todas as AFPs somadas
 Vall = V.groupby(level='isin').sum(min_count=1); Qall = Q.groupby(level='isin').sum(min_count=1)
 Sb, wb, cb, Rb, _ = attr(Vall, Qall)

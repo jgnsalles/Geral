@@ -39,3 +39,10 @@ Moneda, Fourth Sail e INCA sempre entram. País de cada CUSIP em `cusip_pais.pkl
 classificação setorial da B3 (Brasil, a mesma do Navegando Brasil); código SIC da SEC (empresas listadas nos EUA); regras pelo nome.
 Cobertura ~99% do peso das carteiras dos fundos dos EUA e do 13F. A página mostra setor por ação, quadro de setores (peso e attribution)
 no detalhe de cada fundo e os setores principais no ranking.
+
+## Versão atual (redesenho): `src/app.html`
+Telas: Empresas (início) → Empresa; Gestores (ranking) → Gestor; Sobre. Busca única no topo; rotas por hash (#e-<empresa>, #g-<base>-<id>).
+- `scripts/build_combined.py` → `comb.json`: liga a mesma empresa entre Peru, N-PORT, 13F, Chile e o total dos fundos dos EUA (ISIN, CUSIP,
+  nome); detentores atuais e de 12 meses antes (Peru por AFP, Chile por administradora), histórico trimestral de nº de gestores,
+  índice de preço em US$ (N-PORT; Peru convertido de soles). Presença = média entre as bases da fração dos gestores que têm a ação.
+- `scripts/build_app.py` monta a página com os dados embutidos. A página anterior (`src/page.html`, `scripts/build_page.py`) fica como referência.

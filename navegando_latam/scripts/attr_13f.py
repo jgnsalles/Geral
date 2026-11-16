@@ -37,6 +37,7 @@ H['emp'] = H.CUSIP.str[:6]
 nm = H.sort_values('per').groupby('emp').NAMEOFISSUER.last()
 lat_emp = set(H[H.CUSIP.str.upper().isin(LAT)].emp)
 out = {'fundos': {}, 'emp': {e: [n.title(), e in lat_emp] for e, n in nm.items()}}
+out['ids'] = {e: sorted(set(d.CUSIP.str.upper())) for e, d in H.groupby('emp')}
 for cik, h in H.groupby('CIK'):
     pers = sorted(h.per.unique())
     if len(pers) < 3: continue

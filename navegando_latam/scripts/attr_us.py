@@ -59,6 +59,8 @@ for r in I.itertuples():
         v = getattr(r, col)
         if pd.notna(v): rets[(r.SERIES_ID, (r.rd - pd.offsets.MonthEnd(2 - k)).strftime('%Y-%m'))] = v / 100
 out = {'fundos': {}, 'emp': {e: [x.n, x.pais] for e, x in nome.iterrows()}}
+_ids = H[EQ].groupby('emp').apply(lambda d: sorted(set(d['isin'].dropna().str.upper()) | set(d.ISSUER_CUSIP.dropna().str.upper()) - {'000000000', '999999999', 'N/A'}))
+out['ids'] = {e: v for e, v in _ids.items()}
 for sid, inf in I.groupby('SERIES_ID'):
     inf = inf.sort_values('rd'); dates = list(inf.ym)
     if len(dates) < 3: continue

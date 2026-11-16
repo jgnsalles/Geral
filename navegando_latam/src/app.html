@@ -1,0 +1,450 @@
+<meta charset="utf-8">
+<title>Navegando LatAm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@500;600&display=swap">
+<style>
+/* Layout: barra fixa (marca, abas, busca) + uma tela por vez: Empresas → Empresa; Gestores → Gestor; Sobre. Listas viram cartões no celular. */
+:root{
+  --bg:#f4f6f7; --panel:#ffffff; --fg:#14202b; --muted:#5d6975; --line:#e0e5e9; --soft:#eef2f4; --accent:#1f6f8b; --accent-2:#c26a2b;
+  --ok:#1b8a4b; --bad:#c23a30; --grid:#edf1f3;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --serif:"Source Serif 4",Georgia,serif; --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0e141a; --panel:#151d25; --fg:#e6ecf1; --muted:#98a5b1; --line:#26313c; --soft:#1b2530; --accent:#62b4d1; --accent-2:#e39a5c; --ok:#4cc27e; --bad:#f0736a; --grid:#1e2833; color-scheme:dark; } }
+:root[data-theme="dark"]{ --bg:#0e141a; --panel:#151d25; --fg:#e6ecf1; --muted:#98a5b1; --line:#26313c; --soft:#1b2530; --accent:#62b4d1; --accent-2:#e39a5c; --ok:#4cc27e; --bad:#f0736a; --grid:#1e2833; color-scheme:dark; }
+[hidden]{display:none!important}
+html,body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
+.top .in{max-width:1180px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.brand{font-family:var(--serif);font-weight:600;font-size:1.25rem;white-space:nowrap;cursor:pointer}
+nav.tabs{display:flex;gap:2px}
+.tab{font:inherit;font-weight:500;background:none;border:0;color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer}
+.tab[aria-current="page"]{background:var(--soft);color:var(--fg)}
+.search{flex:1;min-width:min(100%,14rem);display:flex}
+.search input{flex:1;font:inherit;color:var(--fg);background:var(--soft);border:1px solid transparent;border-radius:999px;padding:7px 14px;min-width:0}
+.search input:focus{outline:none;border-color:var(--accent);background:var(--panel)}
+main{max-width:1180px;margin:0 auto;padding-block:18px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px}
+h1{font-family:var(--serif);font-weight:600;font-size:1.7rem;margin:0;text-wrap:balance;line-height:1.15}
+h2{font-size:1rem;margin:0;font-weight:600}
+.sub{color:var(--muted);font-size:.85rem}
+.back{font:inherit;font-size:.85rem;background:none;border:0;color:var(--accent);padding:0;cursor:pointer;justify-self:start}
+.bar-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:.82rem;background:none;border:0;color:var(--muted);padding:5px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.08);font-weight:600}
+select{font:inherit;font-size:.85rem;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 10px;max-width:100%}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr));gap:10px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:2px}
+.tile .l{font-size:.75rem;color:var(--muted)} .tile .v{font-family:var(--serif);font-size:1.5rem;line-height:1.15;font-variant-numeric:tabular-nums} .tile .n{font-size:.75rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,30rem),1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:8px;min-width:0;align-content:start}
+.head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.list{display:grid}
+.li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 2px;border-top:1px solid var(--line);cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;font:inherit;color:inherit;text-align:left;width:100%}
+.li:first-child{border-top:0} .li:hover{background:var(--soft)}
+.logo{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;font-size:.62rem;font-weight:600;color:#fff;letter-spacing:-.02em}
+.nm{min-width:0} .nm b{display:block;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .nm span{font-size:.72rem;color:var(--muted)}
+.val{font-variant-numeric:tabular-nums;text-align:right;font-weight:600;white-space:nowrap}
+.val small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+.pos{color:var(--ok)} .neg{color:var(--bad)} .mut{color:var(--muted)}
+.box{overflow:auto;max-height:36rem}
+table{width:100%;border-collapse:collapse;font-size:.83rem;font-variant-numeric:tabular-nums}
+th{position:sticky;top:0;background:var(--panel);text-align:right;color:var(--muted);font-weight:500;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:.75rem}
+th button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th.l,td.l{text-align:left} td.w{white-space:normal}
+tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--soft)}
+.chip{display:inline-block;font-size:.7rem;padding:1px 7px;border-radius:999px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.chip.b-pe{background:color-mix(in srgb,#c26a2b 18%,transparent);color:var(--fg)} .chip.b-us{background:color-mix(in srgb,#1f6f8b 18%,transparent);color:var(--fg)}
+.chip.b-f13{background:color-mix(in srgb,#8b4f9e 18%,transparent);color:var(--fg)} .chip.b-cl{background:color-mix(in srgb,#5a8f3d 18%,transparent);color:var(--fg)}
+.chip.new{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)} .chip.out{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.sw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+.more{font:inherit;font-size:.85rem;background:var(--soft);border:0;border-radius:999px;padding:6px 14px;color:var(--fg);cursor:pointer;justify-self:center}
+.chart svg{display:block;width:100%;height:auto} .chart text{font-family:var(--sans);font-size:11px;fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.75rem;color:var(--muted)}
+.lead{margin:0;font-size:1rem;line-height:1.5;max-width:70ch}
+.dots{display:inline-flex;gap:3px;vertical-align:middle} .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.about p,.about li{color:var(--muted);font-size:.88rem;line-height:1.5;max-width:80ch} .about h2{margin-top:6px}
+#loading{color:var(--muted);padding:40px 0;text-align:center}
+@media (max-width:640px){
+  h1{font-size:1.4rem}
+  .cardify thead{display:none} .cardify,.cardify tbody{display:block}
+  .cardify tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 12px;padding:9px 2px;border-bottom:1px solid var(--line)}
+  .cardify td{display:flex;justify-content:space-between;gap:8px;border:0;padding:1px 0;white-space:normal;text-align:right!important}
+  .cardify td:first-child{grid-column:1/-1;text-align:left!important}
+  .cardify td::before{content:attr(data-l);color:var(--muted);font-size:.75rem}
+  .cardify td:first-child::before{content:none}
+  .box{max-height:none}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<header class="top"><div class="in">
+  <span class="brand" id="brand">Navegando LatAm</span>
+  <nav class="tabs" aria-label="Seções">
+    <button class="tab" data-go="empresas">Empresas</button>
+    <button class="tab" data-go="gestores">Gestores</button>
+    <button class="tab" data-go="sobre">Sobre</button>
+  </nav>
+  <label class="search"><input id="q" type="search" list="dl" placeholder="Buscar empresa ou gestor" autocomplete="off" aria-label="Buscar empresa ou gestor"><datalist id="dl"></datalist></label>
+</div></header>
+<main>
+  <p id="loading">Carregando…</p>
+
+  <!-- EMPRESAS -->
+  <section id="v-empresas" hidden>
+    <div style="display:grid;gap:12px">
+      <h1>Empresas</h1>
+      <div class="bar-f">
+        <div class="seg" id="e-base"></div>
+        <div class="seg" id="e-pais"></div>
+        <select id="e-setor" aria-label="Setor"></select>
+      </div>
+      <div class="grid" id="e-cards"></div>
+      <div class="card">
+        <div class="head"><h2>Todas</h2><span class="sub" id="e-cnt"></span></div>
+        <div class="box"><table class="cardify" id="e-tbl"></table></div>
+        <button class="more" id="e-more">Ver mais</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESA -->
+  <section id="v-empresa" hidden>
+    <div style="display:grid;gap:12px">
+      <button class="back" data-go="empresas">← Empresas</button>
+      <div><h1 id="c-n"></h1><div class="sub" id="c-s"></div></div>
+      <div class="tiles" id="c-tiles"></div>
+      <div class="card">
+        <div class="head"><h2>Preço e gestores</h2><div class="seg" id="c-rng"></div></div>
+        <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>Preço em US$ (base 100)</span><span><i class="sw" style="background:var(--accent-2);opacity:.55"></i>Gestores com a ação</span></div>
+        <div class="chart" id="c-ch"></div>
+      </div>
+      <div class="card">
+        <div class="head"><h2>Quem tem</h2><span class="sub" id="c-hn"></span></div>
+        <div class="box"><table class="cardify" id="c-h"></table></div>
+        <div id="c-out"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GESTORES -->
+  <section id="v-gestores" hidden>
+    <div style="display:grid;gap:12px">
+      <h1>Gestores</h1>
+      <div class="bar-f"><div class="seg" id="g-base"></div><div class="seg" id="g-per"></div></div>
+      <div class="card">
+        <div class="head"><h2>Ranking</h2><span class="sub" id="g-ref"></span></div>
+        <div class="box"><table class="cardify" id="g-rk"></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GESTOR -->
+  <section id="v-gestor" hidden>
+    <div style="display:grid;gap:12px">
+      <button class="back" data-go="gestores">← Gestores</button>
+      <div><h1 id="f-n"></h1><div class="sub" id="f-s"></div></div>
+      <div class="bar-f"><div class="seg" id="f-per"></div><span class="sub" id="f-dt"></span></div>
+      <div class="tiles" id="f-tiles"></div>
+      <div class="grid2">
+        <div class="card"><h2>Retorno acumulado</h2><div class="legend" id="f-lg"></div><div class="chart" id="f-perf"></div></div>
+        <div class="card"><h2>Quem fez o resultado</h2><div class="chart" id="f-attr"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="card"><h2>Setores</h2><div class="box"><table class="cardify" id="f-set"></table></div></div>
+        <div class="card"><h2>Ano a ano</h2><div class="box"><table class="cardify" id="f-yr"></table></div></div>
+      </div>
+      <div class="card"><div class="head"><h2>Carteira</h2><span class="sub">toque numa ação para abrir a empresa</span></div><div class="box"><table class="cardify" id="f-cart"></table></div></div>
+      <div class="card" id="f-flow-c"><h2>Patrimônio e captação</h2><div class="legend"><span><i class="sw" style="background:var(--accent)"></i>Patrimônio (US$ mi)</span><span><i class="sw" style="background:var(--ok)"></i>Captação</span><span><i class="sw" style="background:var(--bad)"></i>Resgate</span></div><div class="chart" id="f-flow"></div></div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="v-sobre" hidden>
+    <div class="about" style="display:grid;gap:10px">
+      <h1>Sobre os dados</h1>
+      <div class="card"><div class="box"><table class="cardify" id="s-map"></table></div></div>
+      <div class="card">
+        <h2>Como ler</h2>
+        <ul>
+          <li><b>Gestores com a ação:</b> carteira mais recente de cada gestor (até 9 meses de defasagem). Peru = cada AFP; EUA = cada fundo; 13F = cada gestora; Chile = cada administradora.</li>
+          <li><b>Presença:</b> média, entre as bases, da fração dos gestores de cada base que têm a ação. Evita que uma base com muitos gestores domine.</li>
+          <li><b>Compradas e vendidas:</b> gestores que entraram menos os que saíram em 12 meses.</li>
+          <li><b>Retorno da empresa:</b> preço em US$ (sem dividendos), a partir do valor ÷ quantidade informados pelos fundos.</li>
+          <li><b>Retorno do gestor:</b> Peru = carteira de ações locais (soles, sem dividendos), contra todas as AFPs; EUA = cota do fundo (com dividendos e taxas); 13F = carteira listada nos EUA (sem dividendos), contra o ETF iShares Latin America 40.</li>
+          <li><b>Attribution:</b> peso na carteira anterior × retorno da ação, somado no período.</li>
+          <li><b>Fora:</b> gestoras sediadas no Brasil e carteiras com 70% ou mais em Brasil. Colômbia, Argentina e México não publicam carteiras por empresa em arquivo.</li>
+        </ul>
+        <p id="s-gen"></p>
+      </div>
+    </div>
+  </section>
+</main>
+<script id="nbd" type="text/plain">{{DATA}}</script>
+<script>
+(() => {
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const ymL = (s) => MES[+s.slice(5, 7) - 1] + '/' + s.slice(2, 4);
+const nf = (x, d = 0) => x == null || !isFinite(x) ? '–' : x.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (x, d = 0) => x == null || !isFinite(x) ? '–' : nf(x * 100, d) + '%';
+const spct = (x, d = 0) => x == null || !isFinite(x) ? '<span class="mut">–</span>' : `<span class="${x > 0 ? 'pos' : x < 0 ? 'neg' : 'mut'}">${x > 0 ? '+' : x < 0 ? '−' : ''}${nf(Math.abs(x * 100), d)}%</span>`;
+const sgn = (x, d = 0, suf = '') => x == null || !isFinite(x) ? '<span class="mut">–</span>' : `<span class="${x > 0 ? 'pos' : x < 0 ? 'neg' : 'mut'}">${x > 0 ? '+' : x < 0 ? '−' : ''}${nf(Math.abs(x), d)}${suf}</span>`;
+const usd = (x) => x == null ? '–' : x >= 1000 ? 'US$ ' + nf(x / 1000, 1) + ' bi' : 'US$ ' + nf(x, x < 10 ? 1 : 0) + ' mi';
+const mdiff = (a, b) => (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7));
+const addM = (m, k) => { const t = +m.slice(0, 4) * 12 + (+m.slice(5, 7) - 1) + k; return Math.floor(t / 12) + '-' + String(t % 12 + 1).padStart(2, '0'); };
+let D, C;
+const BASE = { pe: ['AFPs do Peru', 'Peru'], us: ['Fundos dos EUA', 'EUA'], f13: ['Gestoras (13F)', '13F'], cl: ['Fundos mútuos do Chile', 'Chile'] };
+const PAIS = { AR: 'Argentina', BR: 'Brasil', CL: 'Chile', CO: 'Colômbia', MX: 'México', PE: 'Peru', PA: 'Panamá', UY: 'Uruguai' };
+const SCOL = { 'Financeiro': '#1f6f8b', 'Mineração e metais': '#8a6d3b', 'Petróleo e gás': '#4a4f55', 'Utilidades': '#5a8f3d', 'Consumo básico': '#c26a2b', 'Consumo discricionário': '#b03a5b',
+  'Industrial e transporte': '#6b7f99', 'Materiais': '#9c7c38', 'Comunicações': '#8b4f9e', 'Tecnologia': '#3b7dd8', 'Saúde': '#2a9d8f', 'Imobiliário': '#a3685a', 'Fundos e ETFs': '#7a8a8f', 'Outros': '#a9b2bf' };
+const COL = ['#1f6f8b', '#c26a2b', '#5a8f3d', '#8b4f9e', '#b03a5b', '#3b7dd8', '#8a6d3b', '#2a9d8f'];
+const logo = (n, s) => `<span class="logo" style="background:${SCOL[s] || SCOL.Outros}">${esc(String(n).replace(/[^A-Za-z0-9 ]/g, '').split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?')}</span>`;
+const bchip = (b) => `<span class="chip b-${b}">${BASE[b][1]}</span>`;
+
+// ---------- gráficos ----------
+function lineChart(el, xs, series, fmt, bars) {
+  const W = Math.max(300, el.clientWidth || 640), H = bars ? 280 : 230, ml = 44, mr = bars ? 34 : 12, mt = 10, mb = 24, hb = bars ? 70 : 0;
+  const all = series.flatMap((s) => s.v.filter((v) => v != null));
+  if (!all.length) { el.innerHTML = '<p class="sub">Sem dados.</p>'; return; }
+  let lo = Math.min(...all), hi = Math.max(...all); if (hi === lo) hi = lo + 1; const pad = (hi - lo) * 0.06; lo -= pad; hi += pad;
+  const x = (i) => ml + (W - ml - mr) * (xs.length < 2 ? 0.5 : i / (xs.length - 1)), y = (v) => mt + (H - mt - mb - hb) * (1 - (v - lo) / (hi - lo));
+  let g = '';
+  for (let k = 0; k <= 3; k++) { const v = lo + (hi - lo) * k / 3; g += `<line x1="${ml}" x2="${W - mr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/><text x="${ml - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+  const every = Math.max(1, Math.ceil(xs.length / Math.max(2, Math.floor((W - ml) / 64))));
+  xs.forEach((t, i) => { if (i % every === 0) g += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${t}</text>`; });
+  if (bars) { const bm = Math.max(1, ...bars.map((v) => v || 0)), bw = (W - ml - mr) / Math.max(1, xs.length);
+    bars.forEach((v, i) => { const h = (v || 0) / bm * (hb - 8); g += `<rect x="${x(i) - bw * 0.35}" y="${H - mb - h}" width="${Math.max(1, bw * 0.7)}" height="${h}" fill="var(--accent-2)" opacity=".5"/>`; });
+    g += `<text x="${W - mr + 4}" y="${H - mb - hb + 14}">${bm}</text>`; }
+  series.forEach((s) => { let d = '', pen = false; s.v.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1); pen = true; });
+    g += `<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2"/>`; const li = s.v.map((v, i) => v == null ? -1 : i).filter((i) => i >= 0).pop(); if (li != null && li >= 0) g += `<circle cx="${x(li)}" cy="${y(s.v[li])}" r="3.5" fill="${s.c}"/>`; });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico">${g}</svg>`;
+}
+function hbars(el, rows, fmt) {
+  const W = Math.max(300, el.clientWidth || 600), rh = 22, H = rows.length * rh + 6, lab = Math.min(170, W * 0.4), mx = Math.max(1e-9, ...rows.map((r) => Math.abs(r.v)));
+  const x0 = lab + (W - lab - 54) / 2, sc = (W - lab - 54) / 2 / mx;
+  el.innerHTML = rows.length ? `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Contribuições">${rows.map((r, k) => { const yy = k * rh + 3, w = Math.abs(r.v) * sc;
+    return `<text x="${lab - 6}" y="${yy + 14}" text-anchor="end">${esc(r.l.slice(0, 24))}</text><rect x="${r.v >= 0 ? x0 : x0 - w}" y="${yy + 4}" width="${Math.max(1, w)}" height="${rh - 8}" rx="2" fill="${r.v >= 0 ? 'var(--ok)' : 'var(--bad)'}"/><text x="${r.v >= 0 ? x0 + w + 4 : x0 - w - 4}" y="${yy + 14}" text-anchor="${r.v >= 0 ? 'start' : 'end'}">${fmt(r.v)}</text>`; }).join('')}<line x1="${x0}" x2="${x0}" y1="0" y2="${H}" stroke="var(--line)"/></svg>` : '<p class="sub">Sem dados.</p>';
+}
+function flowChart(el, xs, fl, na) {
+  const W = Math.max(300, el.clientWidth || 640), H = 190, ml = 48, mr = 48, mt = 10, mb = 24, n = xs.length, bw = (W - ml - mr) / Math.max(1, n);
+  const fm = Math.max(1e-9, ...fl.map((v) => Math.abs(v || 0))), nm_ = Math.max(1e-9, ...na.map((v) => v || 0));
+  const y0 = mt + (H - mt - mb) / 2, yf = (v) => y0 - (v / fm) * (H - mt - mb) / 2, yn = (v) => mt + (H - mt - mb) * (1 - v / nm_);
+  let g = `<line x1="${ml}" x2="${W - mr}" y1="${y0}" y2="${y0}" stroke="var(--line)"/><text x="${ml - 6}" y="${mt + 8}" text-anchor="end">+${nf(fm)}</text><text x="${ml - 6}" y="${H - mb}" text-anchor="end">−${nf(fm)}</text><text x="${W - mr + 6}" y="${mt + 8}">${nf(nm_)}</text>`;
+  fl.forEach((v, i) => { v = v || 0; g += `<rect x="${ml + i * bw + bw * 0.2}" y="${Math.min(y0, yf(v))}" width="${bw * 0.6}" height="${Math.abs(yf(v) - y0)}" fill="${v >= 0 ? 'var(--ok)' : 'var(--bad)'}" opacity=".7"/>`; });
+  const every = Math.max(1, Math.ceil(n / 8)); xs.forEach((t, i) => { if (i % every === 0) g += `<text x="${ml + i * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${t}</text>`; });
+  g += `<path d="${na.map((v, i) => (i ? 'L' : 'M') + (ml + i * bw + bw / 2).toFixed(1) + ',' + yn(v || 0).toFixed(1)).join('')}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Patrimônio e captação">${g}</svg>`;
+}
+const seg = (el, opts, cur, on) => { el.innerHTML = opts.map(([v, l]) => `<button data-v="${esc(v)}" aria-pressed="${String(v) === String(cur)}">${l}</button>`).join(''); el.onclick = (e) => { const b = e.target.closest('[data-v]'); if (b) on(b.dataset.v); }; };
+
+// ---------- empresas: métricas ----------
+const ST = { base: 'all', pais: 'all', setor: 'all', sort: 'pres', dir: -1, n: 50 };
+let GBASE = {};       // nº de gestores atuais por base
+function cm(c, e) {
+  const hs = e.h.filter((h) => ST.base === 'all' || C.g[h[0]].b === ST.base);
+  const now = hs.filter((h) => h[1] > 0);
+  const pres = (() => { const bs = ST.base === 'all' ? Object.keys(GBASE) : [ST.base]; let s = 0; bs.forEach((b) => { s += now.filter((h) => C.g[h[0]].b === b).length / (GBASE[b] || 1); }); return s / bs.length; })();
+  const comp = hs.filter((h) => h[2] != null);
+  const ent = comp.filter((h) => h[1] > 0 && h[2] === 0).length, sai = comp.filter((h) => h[1] === 0 && h[2] > 0).length;
+  const dw = comp.reduce((s, h) => s + (h[1] - h[2]), 0);
+  const px = e.px, M = C.mes; let li = -1; if (px) for (let i = px.length - 1; i >= 0; i--) if (px[i] != null) { li = i; break; }
+  const rr = (k) => li >= k && px[li - k] ? px[li] / px[li - k] - 1 : null;
+  return { c, e, n: now.length, pres, ent, sai, net: ent - sai, dw, wmed: now.length ? now.reduce((s, h) => s + h[1], 0) / now.length : 0, v: now.reduce((s, h) => s + h[3], 0), r12: rr(12), r36: rr(36), ag: e.ag };
+}
+function filtered() {
+  return Object.entries(C.e).filter(([c, e]) => (ST.pais === 'all' || e.p === ST.pais || (ST.pais === 'out' && !['AR', 'BR', 'CL', 'CO', 'MX', 'PE'].includes(e.p))) && (ST.setor === 'all' || e.s === ST.setor)).map(([c, e]) => cm(c, e)).filter((x) => x.n > 0 || (x.ag && x.ag[0] > 0 && ST.base === 'all'));
+}
+function rowLi(x, val, sub) {
+  return `<button class="li" data-e="${esc(x.c)}">${logo(x.e.n, x.e.s)}<span class="nm"><b>${esc(x.e.n)}</b><span>${esc(PAIS[x.e.p] || x.e.p || '–')} · ${esc(x.e.s)}</span></span><span class="val">${val}${sub ? `<small>${sub}</small>` : ''}</span></button>`;
+}
+function renderEmpresas() {
+  seg($('e-base'), [['all', 'Todos'], ...Object.entries(BASE).map(([b, v]) => [b, v[1]])], ST.base, (v) => { ST.base = v; renderEmpresas(); });
+  seg($('e-pais'), [['all', 'Todos os países'], ['AR', 'AR'], ['BR', 'BR'], ['CL', 'CL'], ['CO', 'CO'], ['MX', 'MX'], ['PE', 'PE'], ['out', 'Outros']], ST.pais, (v) => { ST.pais = v; renderEmpresas(); });
+  const sets = [...new Set(Object.values(C.e).map((e) => e.s))].sort();
+  $('e-setor').innerHTML = '<option value="all">Todos os setores</option>' + sets.map((s) => `<option${s === ST.setor ? ' selected' : ''}>${esc(s)}</option>`).join('');
+  $('e-setor').onchange = () => { ST.setor = $('e-setor').value; renderEmpresas(); };
+  const L = filtered(), held = L.filter((x) => x.n > 0);
+  const top = (arr, k, n = 6) => arr.slice().sort(k).slice(0, n);
+  const cards = [
+    ['Mais detidas', top(held, (a, b) => b.pres - a.pres || b.n - a.n), (x) => [x.n + ' gestores', pct(x.pres) + ' de presença']],
+    ['Mais compradas · 12m', top(held.filter((x) => x.net > 0 || (x.net === 0 && x.dw > 0)), (a, b) => b.net - a.net || b.dw - a.dw), (x) => [sgn(x.net, 0, ''), 'gestores']],
+    ['Mais vendidas · 12m', top(L.filter((x) => x.net < 0 || (x.net === 0 && x.dw < 0)), (a, b) => a.net - b.net || a.dw - b.dw), (x) => [sgn(x.net, 0, ''), 'gestores']],
+    [`Retorno 12m <span class="seg" id="e-perf" style="margin-left:6px"></span>`, top(held.filter((x) => x.r12 != null && x.n >= 2), ST.perf === 'pior' ? (a, b) => a.r12 - b.r12 : (a, b) => b.r12 - a.r12), (x) => [spct(x.r12), 'em US$']],
+  ];
+  $('e-cards').innerHTML = cards.map(([t, rows, f]) => `<div class="card"><h2 style="display:flex;align-items:center;flex-wrap:wrap;gap:4px">${t}</h2><div class="list">${rows.map((x) => { const [v, s] = f(x); return rowLi(x, v, s); }).join('') || '<p class="sub">Nada aqui.</p>'}</div></div>`).join('');
+  seg($('e-perf'), [['melhor', 'Melhores'], ['pior', 'Piores']], ST.perf || 'melhor', (v) => { ST.perf = v; renderEmpresas(); });
+  // tabela
+  const cols = [['n', 'Empresa', (x) => `<span style="display:inline-flex;gap:8px;align-items:center">${logo(x.e.n, x.e.s)}<span><b style="font-weight:500">${esc(x.e.n)}</b><br><span class="sub">${esc(PAIS[x.e.p] || x.e.p || '–')} · ${esc(x.e.s)}</span></span></span>`, 'l w'],
+    ['pres', 'Presença', (x) => pct(x.pres)], ['n_', 'Gestores', (x) => String(x.n)], ['net', '12m', (x) => sgn(x.net)], ['wmed', 'Peso médio', (x) => pct(x.wmed, 1)],
+    ['r12', 'Retorno 12m', (x) => spct(x.r12)], ['r36', '3 anos', (x) => spct(x.r36)], ['v', 'Valor', (x) => usd(x.v)]];
+  const key = ST.sort, R = L.slice().sort((a, b) => key === 'n' ? ST.dir * a.e.n.localeCompare(b.e.n) : ST.dir * (((key === 'n_' ? a.n : a[key]) ?? -1e9) - ((key === 'n_' ? b.n : b[key]) ?? -1e9)));
+  $('e-tbl').innerHTML = '<thead><tr>' + cols.map(([k, l, , cls]) => `<th class="${cls ? 'l' : ''}"><button data-k="${k}">${l}${ST.sort === k ? (ST.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`).join('') + '</tr></thead><tbody>' +
+    R.slice(0, ST.n).map((x) => `<tr class="ck" data-e="${esc(x.c)}">${cols.map(([k, l, f, cls]) => `<td class="${cls || ''}" data-l="${l}">${f(x)}</td>`).join('')}</tr>`).join('') + '</tbody>';
+  $('e-cnt').textContent = R.length + ' empresas';
+  $('e-more').hidden = R.length <= ST.n; $('e-more').onclick = () => { ST.n += 100; renderEmpresas(); };
+  $('e-tbl').querySelectorAll('th button').forEach((b) => b.onclick = () => { const k = b.dataset.k; ST.dir = ST.sort === k ? -ST.dir : (k === 'n' ? 1 : -1); ST.sort = k; renderEmpresas(); });
+  document.querySelectorAll('#v-empresas [data-e]').forEach((el) => el.onclick = () => go('e-' + el.dataset.e));
+}
+
+// ---------- empresa ----------
+const CE = { rng: 36 };
+function renderEmpresa(c) {
+  const e = C.e[c]; if (!e) return go('empresas');
+  const x = cm(c, e);
+  $('c-n').textContent = e.n; $('c-s').innerHTML = `${esc(PAIS[e.p] || e.p || '–')} · <span class="sw" style="background:${SCOL[e.s] || SCOL.Outros}"></span>${esc(e.s)}`;
+  const t = [['Gestores com a ação', String(x.n), x.net ? sgn(x.net) + ' em 12m' : 'sem mudança em 12m'], ['Retorno 12m', spct(x.r12), 'em US$'], ['Retorno 3 anos', spct(x.r36), 'em US$'],
+    ['Valor nesses gestores', usd(x.v), 'soma das posições']];
+  if (e.ag) t.push(['Todos os fundos dos EUA', usd(e.ag[0]), (e.ag[1] >= 0 ? 'compraram ' : 'venderam ') + usd(Math.abs(e.ag[1])) + ' no trimestre']);
+  $('c-tiles').innerHTML = t.map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
+  // gráfico: preço + nº de gestores
+  seg($('c-rng'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos'], [0, 'Tudo']], CE.rng, (v) => { CE.rng = +v; renderEmpresa(c); });
+  const M = C.mes, end = M.length - 1, a = CE.rng ? Math.max(0, end - CE.rng) : 0;
+  const px = e.px ? e.px.slice(a, end + 1) : []; const b0 = px.find((v) => v != null);
+  const ser = b0 ? [{ c: 'var(--accent)', v: px.map((v) => v == null ? null : v / b0 * 100) }] : [];
+  const qn = M.slice(a, end + 1).map((m) => { const qi = C.q.findIndex((q) => q >= m); return m.slice(5) % 3 === 0 && qi >= 0 && C.q[qi] === m ? e.qn[qi] : null; });
+  lineChart($('c-ch'), M.slice(a, end + 1).map(ymL), ser.length ? ser : [{ c: 'transparent', v: qn.map(() => 100) }], (v) => nf(v), qn.map((v) => v || 0));
+  // quem tem
+  const hs = e.h.slice().sort((p, q) => q[1] - p[1]);
+  const now = hs.filter((h) => h[1] > 0), out = hs.filter((h) => h[1] === 0 && h[2] > 0);
+  $('c-hn').textContent = now.length + ' gestores';
+  $('c-h').innerHTML = '<thead><tr><th class="l">Gestor</th><th>Peso</th><th>12m</th><th>Valor</th></tr></thead><tbody>' + now.map((h) => { const g = C.g[h[0]];
+    const d = h[2] == null ? '<span class="mut">–</span>' : h[2] === 0 ? '<span class="chip new">entrou</span>' : sgn((h[1] - h[2]) * 100, 1, ' p.p.');
+    return `<tr class="ck" data-g="${esc(h[0])}"><td class="l w" data-l="">${esc(g.n)} ${bchip(g.b)}</td><td data-l="Peso">${pct(h[1], 1)}</td><td data-l="12m">${d}</td><td data-l="Valor">${usd(h[3])}</td></tr>`; }).join('') + '</tbody>';
+  $('c-out').innerHTML = out.length ? `<div class="sub" style="margin-top:6px">Saíram em 12m: ${out.map((h) => `<span class="chip out">${esc(C.g[h[0]].n)}</span>`).join(' ')}</div>` : '';
+  document.querySelectorAll('#c-h [data-g]').forEach((tr) => tr.onclick = () => openGestor(tr.dataset.g));
+}
+
+// ---------- gestores ----------
+const SG = { base: 'us', per: 36 };
+function gModel(b, id) {
+  if (b === 'pe') { const P = D.fpe, f = P.fundos[id]; return { b, id, f, nome: f.nome, sub: 'Peru · carteira de ações locais', L: P.meses, ret: f.R, ref: P.ref.R, refName: 'Todas as AFPs', emps: Object.keys(f.p), map: (e) => C.map['pe:' + e], nm: (e) => e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.S[j], sizeName: 'Ações locais', soles: true }; }
+  if (b === 'f13') { const G = D.f13, f = G.fundos[id]; return { b, id, f, nome: f.nome, sub: '13F · carteira listada nos EUA', L: f.datas, ret: f.R, ref: f.REF, refName: 'ETF LatAm 40', emps: Object.keys(f.p), map: (e) => C.map['f13:' + e], nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.TOT[j], sizeName: 'Carteira 13F' }; }
+  const U = D.fus, f = U.fundos[id]; return { b, id, f, nome: f.nome, sub: f.reg, L: f.datas, ret: f.RF, ref: f.EX, refName: 'Explicado pelas ações', emps: Object.keys(f.p).filter((e) => !e.startsWith('Outros')), map: (e) => C.map['us:' + e], nm: (e) => U.emp[e] ? U.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.NA[j], sizeName: 'Patrimônio' };
+}
+const setorOf = (m, e) => { const c = m.map(e); return c && C.e[c] ? C.e[c].s : 'Outros'; };
+function window_(L, per, tol) {
+  const Z = L[L.length - 1]; const A = per ? addM(Z, -per) : L[0]; let a = -1, z = L.length - 1;
+  L.forEach((l, j) => { if (l <= A) a = j; });
+  const start = a < 0 ? 0 : a; const cover = a >= 0 && mdiff(L[a], A) <= tol;
+  return { a: start, z, cover };
+}
+function stats(m, a, z) {
+  const steps = []; for (let j = a + 1; j <= z; j++) steps.push(j);
+  const ch = (arr, js) => js.reduce((g, j) => g * (1 + (arr[j] ?? 0)), 1) - 1;
+  const R = ch(m.ret, steps), RR = ch(m.ref, steps);
+  const S = m.emps.map((e) => { let c = 0, any = false; steps.forEach((j) => { const v = m.c(e, j); if (v != null) { c += v; any = true; } }); return { e, c, w0: m.w(e, a) || 0, w1: m.w(e, z) || 0, any }; }).filter((x) => x.any || x.w1 > 0 || x.w0 > 0);
+  S.forEach((x) => { x.s = setorOf(m, x.e); x.cid = m.map(x.e); x.n = x.cid && C.e[x.cid] ? C.e[x.cid].n : m.nm(x.e); });
+  return { steps, ch, R, RR, S };
+}
+const GLIST = (b) => b === 'pe' ? Object.keys(D.fpe.fundos) : b === 'f13' ? Object.keys(D.f13.fundos) : Object.keys(D.fus.fundos);
+function renderGestores() {
+  seg($('g-base'), [['us', 'Fundos dos EUA'], ['f13', 'Gestoras (13F)'], ['pe', 'AFPs do Peru']], SG.base, (v) => { SG.base = v; renderGestores(); });
+  seg($('g-per'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos']], SG.per, (v) => { SG.per = +v; renderGestores(); });
+  const b = SG.base, tol = b === 'pe' ? 0 : 3;
+  const rows = GLIST(b).map((id) => { const m = gModel(b, id), L = m.L; if (L.length < 2) return null;
+    const w = window_(L, SG.per, tol); const fresh = mdiff(L[L.length - 1], C.now) <= 9; const s = stats(m, w.a, w.z);
+    const lev = /ULTRA|\b[23]X\b|LEVERAG/i.test(m.nome);
+    const sw = {}; s.S.forEach((x) => { if (x.w1 > 0) sw[x.s] = (sw[x.s] || 0) + x.w1; }); const swt = Object.values(sw).reduce((p, q) => p + q, 0) || 1;
+    const top = Object.entries(sw).sort((p, q) => q[1] - p[1]).slice(0, 2);
+    const mix = (m.f.mix || []).slice(0, 3).map(([c, v]) => c + ' ' + pct(v)).join(' · ');
+    return { id, m, R: s.R, RR: s.RR, d: s.R - s.RR, ok: w.cover && fresh && !lev, lev, top: top.map(([k, v]) => [k, v / swt]), mix, size: m.size(w.z) };
+  }).filter(Boolean).sort((p, q) => (q.ok - p.ok) || (q.R - p.R));
+  let r = 0;
+  $('g-ref').textContent = b === 'pe' ? 'vs. todas as AFPs' : b === 'f13' ? 'vs. ETF iShares Latin America 40' : 'cota em US$, com dividendos';
+  $('g-rk').innerHTML = `<thead><tr><th>#</th><th class="l">Gestor</th><th>Retorno</th><th>${b === 'us' ? 'Resto' : 'vs. ref.'}</th><th class="l">Setores</th><th class="l">Países</th><th>Tamanho</th></tr></thead><tbody>` + rows.map((x) =>
+    `<tr class="ck" data-g="${b}-${esc(x.id)}"><td data-l="#">${x.ok ? '<b>' + (++r) + '</b>' : '<span class="mut">–</span>'}</td><td class="l w" data-l="">${esc(x.m.nome)}${x.lev ? ' <span class="chip">alavancado</span>' : ''}${!x.ok && !x.lev ? ' <span class="chip">histórico curto</span>' : ''}<div class="sub">${esc(x.m.b === 'pe' ? 'Peru' : x.m.sub)}</div></td>` +
+    `<td data-l="Retorno"><b>${spct(x.R)}</b></td><td data-l="${b === 'us' ? 'Resto' : 'vs. ref.'}">${sgn(x.d * 100, 0, ' p.p.')}</td><td class="l w" data-l="Setores">${x.top.map(([s, v]) => `<span class="sw" style="background:${SCOL[s] || SCOL.Outros}"></span>${esc(s)} ${pct(v)}`).join('<br>')}</td><td class="l w" data-l="Países">${esc(x.mix) || '<span class="mut">Peru</span>'}</td><td data-l="Tamanho">${x.m.soles ? 'S/ ' + nf(x.size) + ' mi' : usd(x.size)}</td></tr>`).join('') + '</tbody>';
+  document.querySelectorAll('#g-rk [data-g]').forEach((tr) => tr.onclick = () => go('g-' + tr.dataset.g));
+}
+function openGestor(gid) {           // gid da visão de empresas (pe-HA, us-S..., f13-CIK, cl-...)
+  const [b, ...rest] = gid.split('-'); const id = rest.join('-');
+  if (b === 'pe') return go('g-pe-' + id + '02');
+  if (b === 'cl') return go('sobre');
+  go('g-' + b + '-' + id);
+}
+const SF = { per: 36 };
+function renderGestor(b, id) {
+  const ok = b === 'pe' ? D.fpe.fundos[id] : b === 'f13' ? D.f13.fundos[id] : D.fus.fundos[id]; if (!ok) return go('gestores');
+  const m = gModel(b, id), L = m.L, tol = b === 'pe' ? 0 : 3;
+  $('f-n').textContent = m.nome; $('f-s').textContent = m.sub;
+  seg($('f-per'), [[12, '1 ano'], [36, '3 anos'], [60, '5 anos'], [0, 'Tudo']], SF.per, (v) => { SF.per = +v; renderGestor(b, id); });
+  const w = window_(L, SF.per, tol), a = w.a, z = w.z, s = stats(m, a, z);
+  $('f-dt').textContent = ymL(L[a]) + ' – ' + ymL(L[z]);
+  const t = [['Retorno', spct(s.R, 1), b === 'us' ? 'cota em US$' : b === 'pe' ? 'ações locais, em soles' : 'carteira 13F'], [m.refName, spct(s.RR, 1), b === 'us' ? 'peso × retorno' : 'mesmo período'],
+    [b === 'us' ? 'Resto' : 'Diferença', sgn((s.R - s.RR) * 100, 1, ' p.p.'), b === 'us' ? 'dividendos, caixa, taxas' : 'pontos percentuais'], [m.sizeName, m.soles ? 'S/ ' + nf(m.size(z)) + ' mi' : usd(m.size(z)), 'no fim']];
+  $('f-tiles').innerHTML = t.map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
+  const cum = (arr) => { let g = 1; return L.slice(a, z + 1).map((_, k) => { if (k) g *= 1 + (arr[a + k] ?? 0); return (g - 1) * 100; }); };
+  $('f-lg').innerHTML = `<span><i class="sw" style="background:${COL[0]}"></i>${b === 'us' ? 'Cota' : 'Carteira'}</span><span><i class="sw" style="background:${COL[1]}"></i>${esc(m.refName)}</span>`;
+  lineChart($('f-perf'), L.slice(a, z + 1).map(ymL), [{ c: COL[0], v: cum(m.ret) }, { c: COL[1], v: cum(m.ref) }], (v) => nf(v) + '%');
+  const pos = s.S.filter((x) => x.c > 0).sort((p, q) => q.c - p.c).slice(0, 8), neg = s.S.filter((x) => x.c < 0).sort((p, q) => p.c - q.c).slice(0, 6).reverse();
+  hbars($('f-attr'), [...pos, ...neg.reverse()].map((x) => ({ l: x.n, v: x.c * 100 })), (v) => (v >= 0 ? '+' : '−') + nf(Math.abs(v), 1));
+  // setores
+  const G = {}; s.S.forEach((x) => { const g = G[x.s] || (G[x.s] = { s: x.s, c: 0, w0: 0, w1: 0 }); g.c += x.c; g.w0 += x.w0; g.w1 += x.w1; });
+  const gl = Object.values(G).sort((p, q) => q.w1 - p.w1);
+  $('f-set').innerHTML = '<thead><tr><th class="l">Setor</th><th>Peso</th><th>Antes</th><th>Somou</th></tr></thead><tbody>' + gl.map((g) => `<tr><td class="l" data-l=""><span class="sw" style="background:${SCOL[g.s] || SCOL.Outros}"></span>${esc(g.s)}</td><td data-l="Peso"><b>${pct(g.w1)}</b></td><td data-l="Antes">${pct(g.w0)}</td><td data-l="Somou">${sgn(g.c * 100, 1, ' p.p.')}</td></tr>`).join('') + '</tbody>';
+  // ano a ano
+  const years = [...new Set(s.steps.map((j) => L[j].slice(0, 4)))];
+  $('f-yr').innerHTML = `<thead><tr><th class="l">Ano</th><th>${b === 'us' ? 'Cota' : 'Carteira'}</th><th>${b === 'us' ? 'Explicado' : 'Ref.'}</th><th class="l">Melhor</th><th class="l">Pior</th></tr></thead><tbody>` + years.reverse().map((y) => {
+    const js = s.steps.filter((j) => L[j].startsWith(y)); const cs = m.emps.map((e) => ({ e, c: js.reduce((p, j) => p + (m.c(e, j) || 0), 0) }));
+    const bst = cs.sort((p, q) => q.c - p.c)[0], wst = cs[cs.length - 1]; const nm2 = (e) => { const c = m.map(e); return c && C.e[c] ? C.e[c].n : m.nm(e); };
+    return `<tr><td class="l" data-l="">${y}</td><td data-l="${b === 'us' ? 'Cota' : 'Carteira'}">${spct(s.ch(m.ret, js))}</td><td data-l="Ref.">${spct(s.ch(m.ref, js))}</td><td class="l" data-l="Melhor">${bst && bst.c > 0 ? esc(nm2(bst.e).slice(0, 20)) + ' ' + sgn(bst.c * 100, 1) : '–'}</td><td class="l" data-l="Pior">${wst && wst.c < 0 ? esc(nm2(wst.e).slice(0, 20)) + ' ' + sgn(wst.c * 100, 1) : '–'}</td></tr>`; }).join('') + '</tbody>';
+  // carteira
+  const cart = s.S.filter((x) => x.w1 > 0 || x.w0 > 0).sort((p, q) => q.w1 - p.w1 || q.w0 - p.w0);
+  $('f-cart').innerHTML = '<thead><tr><th class="l">Empresa</th><th>Peso</th><th>Antes</th><th>Somou</th></tr></thead><tbody>' + cart.map((x) =>
+    `<tr class="${x.cid ? 'ck' : ''}" ${x.cid ? `data-e="${esc(x.cid)}"` : ''}><td class="l w" data-l=""><span class="sw" style="background:${SCOL[x.s] || SCOL.Outros}"></span>${esc(x.n)}${x.w0 === 0 && x.w1 > 0 ? ' <span class="chip new">nova</span>' : x.w1 === 0 ? ' <span class="chip out">saiu</span>' : ''}</td><td data-l="Peso"><b>${pct(x.w1, 1)}</b></td><td data-l="Antes">${pct(x.w0, 1)}</td><td data-l="Somou">${sgn(x.c * 100, 1, ' p.p.')}</td></tr>`).join('') + '</tbody>';
+  document.querySelectorAll('#f-cart [data-e]').forEach((tr) => tr.onclick = () => go('e-' + tr.dataset.e));
+  $('f-flow-c').hidden = b !== 'us';
+  if (b === 'us') flowChart($('f-flow'), L.slice(a, z + 1).map(ymL), m.f.FL.slice(a, z + 1), m.f.NA.slice(a, z + 1));
+}
+
+// ---------- sobre ----------
+function renderSobre() {
+  const MAP = [['Peru', 'SBS', 'As 4 AFPs', 'Mensal, desde 2014'], ['EUA', 'SEC · N-PORT', 'Fundos americanos focados em LatAm', 'Trimestral, desde 2019'], ['EUA', 'SEC · 13F', 'Gestoras com ações listadas nos EUA (Moneda, Fourth Sail, INCA…)', 'Trimestral, desde 2016'],
+    ['Chile', 'CMF', 'Fundos mútuos por administradora', 'Só o último trimestre'], ['Colômbia', 'Superfinanciera', 'Fundos de pensão', 'Fora: ações locais sem empresa'], ['Argentina', 'CNV / CAFCI', '—', 'Fora: sem arquivo por empresa'], ['México', 'CNBV / CONSAR', '—', 'Fora: só PDFs por operadora']];
+  $('s-map').innerHTML = '<thead><tr><th class="l">País</th><th class="l">Fonte</th><th class="l">O que mostra</th><th class="l">Cobertura</th></tr></thead><tbody>' + MAP.map((r) => `<tr><td class="l" data-l="">${r[0]}</td><td class="l" data-l="Fonte">${r[1]}</td><td class="l w" data-l="Mostra">${r[2]}</td><td class="l w" data-l="Cobertura">${r[3]}</td></tr>`).join('') + '</tbody>';
+  $('s-gen').textContent = 'Carteiras até ' + ymL(C.now) + '. Dados montados em ' + D.gerado_em + '.';
+}
+
+// ---------- rotas ----------
+const VIEWS = ['empresas', 'empresa', 'gestores', 'gestor', 'sobre'];
+function show(v) { VIEWS.forEach((x) => { $('v-' + x).hidden = x !== v; }); document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-current', t.dataset.go === v || t.dataset.go + 's' === v || (v === 'empresa' && t.dataset.go === 'empresas') || (v === 'gestor' && t.dataset.go === 'gestores') ? 'page' : 'false')); }
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1)) || 'empresas';
+  if (h.startsWith('e-')) { show('empresa'); renderEmpresa(h.slice(2)); }
+  else if (h.startsWith('g-')) { const [b, ...r] = h.slice(2).split('-'); show('gestor'); renderGestor(b, r.join('-')); }
+  else if (h === 'gestores') { show('gestores'); renderGestores(); }
+  else if (h === 'sobre') { show('sobre'); renderSobre(); }
+  else { show('empresas'); renderEmpresas(); }
+}
+function go(h) { if (location.hash.slice(1) !== h) { location.hash = h; } else route(); window.scrollTo({ top: 0 }); }
+document.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => go(b.dataset.go)));
+$('brand').onclick = () => go('empresas');
+window.addEventListener('hashchange', () => { route(); window.scrollTo({ top: 0 }); });
+let lw = window.innerWidth; window.addEventListener('resize', () => { if (window.innerWidth !== lw) { lw = window.innerWidth; route(); } });
+// busca
+function initSearch() {
+  const opts = [];
+  Object.entries(C.e).forEach(([c, e]) => { if (e.h.length || e.ag) opts.push([e.n, 'e-' + c, 'Empresa · ' + (PAIS[e.p] || e.p || '')]); });
+  ['us', 'f13', 'pe'].forEach((b) => GLIST(b).forEach((id) => { const m = gModel(b, id); opts.push([m.nome, 'g-' + b + '-' + id, 'Gestor · ' + BASE[b][1]]); }));
+  const seen = new Set(); const O = opts.filter((o) => { const k = o[0].toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
+  $('dl').innerHTML = O.map((o) => `<option value="${esc(o[0])}">${esc(o[2])}</option>`).join('');
+  const idx = new Map(O.map((o) => [o[0].toLowerCase(), o[1]]));
+  const pick = () => { const v = $('q').value.trim().toLowerCase(); if (!v) return; const hit = idx.get(v) || [...idx.entries()].find(([k]) => k.includes(v))?.[1]; if (hit) { $('q').value = ''; $('q').blur(); go(hit); } };
+  $('q').addEventListener('change', pick); $('q').addEventListener('keydown', (e) => { if (e.key === 'Enter') pick(); });
+}
+(async () => {
+  try {
+    if (typeof DecompressionStream !== 'function') throw new Error('atualize o navegador para abrir esta página');
+    const s = atob($('nbd').textContent.trim()); const u = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    D = JSON.parse(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('gzip'))).text()); C = D.comb;
+    Object.values(C.g).forEach((g) => { if (g.cur) GBASE[g.b] = (GBASE[g.b] || 0) + 1; });
+    $('loading').remove(); initSearch(); route();
+  } catch (e) { console.error(e); $('loading').textContent = 'Não foi possível abrir: ' + e.message; }
+})();
+})();
+</script>

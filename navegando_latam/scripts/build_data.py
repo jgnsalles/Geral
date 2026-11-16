@@ -81,6 +81,7 @@ print('desdobramentos tratados (fundo × título × trimestre):', nsplit)
 FL = pd.DataFrame(fl, columns=['REGISTRANT_NAME', 'emp', 'tri', 'flow']).groupby(['tri', 'REGISTRANT_NAME', 'emp']).flow.sum()
 G = K.groupby(['tri', 'REGISTRANT_NAME', 'emp']).usd.sum().to_frame().join(FL, how='outer').reset_index()
 us = {'tris': tris, 'emp': {}, 'g': {}}
+us['ids'] = {e: sorted(set(d['isin'].dropna().str.upper()) | set(d.ISSUER_CUSIP.dropna().str.upper()) - {'000000000', '999999999', 'N/A'}) for e, d in N.groupby('emp')}
 for e, r_ in best.iterrows(): us['emp'][e] = {'pais': r_.pais, 'nome': r_.n2, 'tk': r_.tk if isinstance(r_.tk, str) else ''}
 tot_reg = G.groupby('REGISTRANT_NAME').usd.sum()
 keep = set(tot_reg[tot_reg >= 5e6].index)                                # gestoras com ≥ US$ 5 mi somados
