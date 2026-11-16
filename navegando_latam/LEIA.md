@@ -33,3 +33,9 @@ Montagem: `python scripts/build_data.py` → `latam.json`; `python scripts/build
 Ranking e attribution dos EUA (N-PORT) e do 13F excluem quem é Brasil: gestoras sediadas no Brasil e carteiras com 70% ou mais da parte
 latino-americana em Brasil (mediana no tempo). No 13F, foco em LatAm = ≥ 5 empresas da região e ≥ 50% da carteira nelas (mediana);
 Moneda, Fourth Sail e INCA sempre entram. País de cada CUSIP em `cusip_pais.pkl` (do N-PORT). Fundos de um país só aparecem marcados.
+
+## Setores
+`scripts/setores.py` → `setores.json` (14 setores). Fontes, nesta ordem: lista manual das maiores posições; setor da SBS (Peru);
+classificação setorial da B3 (Brasil, a mesma do Navegando Brasil); código SIC da SEC (empresas listadas nos EUA); regras pelo nome.
+Cobertura ~99% do peso das carteiras dos fundos dos EUA e do 13F. A página mostra setor por ação, quadro de setores (peso e attribution)
+no detalhe de cada fundo e os setores principais no ranking.

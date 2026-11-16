@@ -109,5 +109,6 @@ out['cl'] = cl
 out['fpe'] = json.load(open(W + '/pe_attr.json'))
 out['fus'] = json.load(open(W + '/us_attr.json'))
 out['f13'] = json.load(open(W + '/f13_attr.json')) if os.path.exists(W + '/f13_attr.json') else {'fundos': {}, 'emp': {}}
+out['setores'] = json.load(open(W + '/setores.json')) if os.path.exists(W + '/setores.json') else {}
 json.dump(out, open(W + '/latam.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 print('ok', os.path.getsize(W + '/latam.json') // 1024, 'KB')

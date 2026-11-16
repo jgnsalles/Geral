@@ -47,7 +47,7 @@ def sret(key, m0, m1):
     return min(max(ratio - 1, -0.8), 3)
 # ---- empresas: LEI ou nome normalizado
 norm = lambda s: re.sub(r'\s+', ' ', re.sub(r'\b(S\.?A\.?B?\.?( DE C\.?V\.?)?|SA|SAB|DE CV|INC|LTD|ADR|SPONSORED|CORP|PN|ON|PREF|PFD|CLASS [A-Z]|CL [A-Z])\b|[-,./]', ' ', str(s).upper())).strip()[:40]
-H['n2'] = H.ISSUER_NAME.map(norm)
+H['n2'] = H.ISSUER_NAME.where(~H.ISSUER_NAME.fillna('').str.upper().isin(['DEFAULT', 'N/A', 'NA', '']), H.ISSUER_TITLE).map(norm)
 lei = H[H.ISSUER_LEI.fillna('').str.len().eq(20)].groupby('key').ISSUER_LEI.agg(lambda x: x.mode().iloc[0])
 H['emp'] = H.key.map(lei).fillna(H.n2)
 H.loc[~EQ, 'emp'] = 'Outros ativos (caixa, títulos, derivativos)'

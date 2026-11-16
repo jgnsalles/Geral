@@ -96,6 +96,7 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td
       <article class="card"><h2>Performance acumulada</h2><p class="note" id="fu-pn"></p><div class="legend" id="fu-plg"></div><div class="chart" id="fu-perf"></div></article>
       <article class="card"><h2>Attribution: quem fez o resultado</h2><p class="note">Soma das contribuições no período (peso na carteira anterior × retorno da ação), em pontos percentuais. Verde soma, vermelho tira.</p><div class="chart" id="fu-attr"></div></article>
     </div>
+    <article class="card"><div class="head"><h2>Setores</h2><span class="note" id="fu-sn"></span></div><p class="note">Peso de cada setor na carteira e quanto ele somou ou tirou no período (soma das contribuições das empresas do setor).</p><div class="box" style="max-height:none"><table id="fu-s"></table></div></article>
     <article class="card"><h2>Como a carteira evoluiu</h2><p class="note" id="fu-wn"></p><div class="legend" id="fu-wlg"></div><div class="chart" id="fu-w"></div></article>
     <div class="grid">
       <article class="card"><h2>Todas as ações do período</h2><p class="note">Toque no título de uma coluna para ordenar.</p><div class="box"><table id="fu-t"></table></div></article>
@@ -258,7 +259,7 @@ function peRender() {
   $('pe-h1').textContent = (a ? P.afps[a] : 'as 4 AFPs') + ' · ' + ymL(M[i]);
   const wmax = held[0]?.v || 1;
   $('pe-top').innerHTML = '<thead><tr><th>Empresa</th><th>S/ mi</th><th>% ações locais</th><th>AFPs</th><th>Δ valor</th></tr></thead><tbody>' + held.map((x) =>
-    `<tr class="ck${x.e === PE.e ? ' sel' : ''}" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}<div class="mut" style="font-size:.72rem">${esc(D.pe.emissores[x.e].setor)}</div></td><td>${nf(x.v)}</td><td>${pct(x.v / T)}<span class="bar" style="width:${Math.round(x.v / wmax * 50)}px"></span></td><td>${x.n}</td><td>${x.v0 == null ? '–' : x.v0 ? sgn((x.v / x.v0 - 1) * 100) + '%' : '<span class="pill on">nova</span>'}</td></tr>`).join('') + '</tbody>';
+    `<tr class="ck${x.e === PE.e ? ' sel' : ''}" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}<div>${stag((D.setores?.pe || {})[x.e] || D.pe.emissores[x.e].setor)}</div></td><td>${nf(x.v)}</td><td>${pct(x.v / T)}<span class="bar" style="width:${Math.round(x.v / wmax * 50)}px"></span></td><td>${x.n}</td><td>${x.v0 == null ? '–' : x.v0 ? sgn((x.v / x.v0 - 1) * 100) + '%' : '<span class="pill on">nova</span>'}</td></tr>`).join('') + '</tbody>';
   $('pe-mov').innerHTML = mv.length ? '<thead><tr><th>Empresa</th><th>Valor (S/ mi)</th><th>AFPs comprando</th><th>AFPs vendendo</th></tr></thead><tbody>' + mv.map((x) =>
     `<tr class="ck" data-e="${esc(x.e)}"><td class="l">${esc(x.e)}</td><td>${sgn(x.flow, 1)}</td><td>${x.nb || '<span class="mut">0</span>'}</td><td>${x.ns || '<span class="mut">0</span>'}</td></tr>`).join('') + '</tbody>' : '<tbody><tr><td class="l mut">Sem mudanças de 10% ou mais no período.</td></tr></tbody>';
   if (!PE.e || !held.some((x) => x.e === PE.e)) PE.e = held[0]?.e;
@@ -312,7 +313,7 @@ function usRender() {
     ['Famílias de fundos', String(Object.keys(gtot).length), act ? 'só gestão ativa' : 'incluindo fundos de índice'],
     ['Empresas', String(top.length), 'com posição no trimestre'],
   ].map(([l, v, n]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="n">${n}</span></div>`).join('');
-  const nm = (e) => esc(U.emp[e].nome) + `<span class="mut" style="margin-left:6px;font-size:.72rem">${esc(U.emp[e].pais)}</span>`;
+  const nm = (e) => esc(U.emp[e].nome) + `<span class="mut" style="margin-left:6px;font-size:.72rem">${esc(U.emp[e].pais)}</span><div>${stag((D.setores?.agg || {})[e] || 'Outros')}</div>`;
   const wmax = top[0]?.v || 1;
   $('us-top').innerHTML = '<thead><tr><th>Empresa</th><th>US$ mi</th><th>Famílias</th><th>Fluxo</th></tr></thead><tbody>' + top.slice(0, 150).map((a) =>
     `<tr class="ck${a.e === US.e ? ' sel' : ''}" data-e="${esc(a.e)}"><td class="l">${nm(a.e)}</td><td>${nf(a.v)}<span class="bar" style="width:${Math.round(a.v / wmax * 50)}px"></span></td><td>${a.n}</td><td>${i ? sgn(a.f) : '–'}</td></tr>`).join('') + '</tbody>';
@@ -364,6 +365,11 @@ function clInit() {
   $('cl-a').addEventListener('change', clRender);
 }
 
+// ---------- SETORES ----------
+const SCOL = { 'Financeiro': '#1f6f8b', 'Mineração e metais': '#8a6d3b', 'Petróleo e gás': '#3d3d3d', 'Utilidades': '#5a8f3d', 'Consumo básico': '#c26a2b', 'Consumo discricionário': '#b03a5b',
+  'Industrial e transporte': '#6b7f99', 'Materiais': '#9c7c38', 'Comunicações': '#8b4f9e', 'Tecnologia': '#3b7dd8', 'Saúde': '#2a9d8f', 'Imobiliário': '#a3685a', 'Fundos e ETFs': '#7a8a8f', 'Outros': '#a9b2bf' };
+const setorOf = (b, e) => (D.setores && D.setores[b === 'us' ? 'us' : b] && D.setores[b === 'us' ? 'us' : b][e]) || 'Outros';
+const stag = (s) => `<span class="mut" style="font-size:.72rem;white-space:nowrap"><i style="display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:${SCOL[s] || SCOL.Outros}"></i>${esc(s)}</span>`;
 // ---------- POR FUNDO ----------
 const FU = { sort: 'c', dir: -1 };
 function fuModel() {
@@ -451,11 +457,18 @@ function fuRender() {
   $('fu-wlg').innerHTML = topW.map((x, k) => `<span><i style="background:${COL[k % COL.length]}${k >= COL.length ? ';opacity:.5' : ''}"></i>${esc(m.nm(x.e).slice(0, 28))}</span>`).join('');
   lines($('fu-w'), L.slice(a, z + 1).map(ymL), topW.map((x, k) => ({ c: COL[k % COL.length], v: L.slice(a, z + 1).map((_, i) => (m.w(x.e, a + i) || 0) * 100) })), (v) => nf(v, 0) + '%');
   // tabela
-  const cols = [['e', 'Ação'], ['c', 'Contribuição'], ['wmed', 'Peso médio'], ['w0', 'Peso início'], ['w1', 'Peso fim'], ['wmax', 'Peso máx.']];
-  const rows = S.slice().sort((x, y) => FU.sort === 'e' ? FU.dir * m.nm(x.e).localeCompare(m.nm(y.e)) : FU.dir * (x[FU.sort] - y[FU.sort]));
-  $('fu-t').innerHTML = '<thead><tr>' + cols.map(([k, l]) => `<th${k === 'e' ? ' class="l"' : ''}><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${FU.sort === k ? (FU.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`).join('') + '</tr></thead><tbody>' +
-    rows.map((x) => `<tr><td class="l">${esc(m.nm(x.e))}${m.b === 'us' && D.fus.emp[x.e] ? ` <span class="mut" style="font-size:.72rem">${esc(D.fus.emp[x.e][1])}</span>` : ''}</td><td>${sgn(x.c * 100, 2)}</td><td>${pct(x.wmed)}</td><td>${pct(x.w0)}</td><td>${pct(x.w1)}</td><td>${pct(x.wmax)}</td></tr>`).join('') +
-    `</tbody><tfoot><tr><td class="l"><b>Soma das ações</b></td><td><b>${sgn(expl * 100, 1)}</b></td><td colspan="4"></td></tr></tfoot>`;
+  const cols = [['e', 'Ação'], ['s', 'Setor'], ['c', 'Contribuição'], ['wmed', 'Peso médio'], ['w0', 'Peso início'], ['w1', 'Peso fim'], ['wmax', 'Peso máx.']];
+  S.forEach((x) => { x.s = setorOf(m.b, x.e); });
+  const rows = S.slice().sort((x, y) => FU.sort === 'e' ? FU.dir * m.nm(x.e).localeCompare(m.nm(y.e)) : FU.sort === 's' ? FU.dir * x.s.localeCompare(y.s) : FU.dir * (x[FU.sort] - y[FU.sort]));
+  $('fu-t').innerHTML = '<thead><tr>' + cols.map(([k, l]) => `<th${k === 'e' || k === 's' ? ' class="l"' : ''}><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${FU.sort === k ? (FU.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`).join('') + '</tr></thead><tbody>' +
+    rows.map((x) => `<tr><td class="l">${esc(m.nm(x.e))}${m.b === 'us' && D.fus.emp[x.e] ? ` <span class="mut" style="font-size:.72rem">${esc(D.fus.emp[x.e][1])}</span>` : ''}</td><td class="l">${stag(x.s)}</td><td>${sgn(x.c * 100, 2)}</td><td>${pct(x.wmed)}</td><td>${pct(x.w0)}</td><td>${pct(x.w1)}</td><td>${pct(x.wmax)}</td></tr>`).join('') +
+    `</tbody><tfoot><tr><td class="l"><b>Soma das ações</b></td><td></td><td><b>${sgn(expl * 100, 1)}</b></td><td colspan="4"></td></tr></tfoot>`;
+  { const G = {}; S.forEach((x) => { const g = G[x.s] || (G[x.s] = { s: x.s, c: 0, w0: 0, w1: 0, wmed: 0, n: 0, top: [] }); g.c += x.c; g.w0 += x.w0; g.w1 += x.w1; g.wmed += x.wmed; if (x.w1 > 0.001) g.n++; g.top.push(x); });
+    const L_ = Object.values(G).sort((p, q) => q.w1 - p.w1 || q.wmed - p.wmed), cm = Math.max(1e-9, ...L_.map((g) => Math.abs(g.c))), wm = Math.max(1e-9, ...L_.map((g) => g.w1));
+    $('fu-sn').textContent = m.b === 'pe' ? '% da carteira de ações locais' : m.b === 'f13' ? '% da carteira 13F' : '% do patrimônio';
+    $('fu-s').innerHTML = '<thead><tr><th class="l">Setor</th><th>Peso início</th><th>Peso fim</th><th class="l"></th><th>Contribuição</th><th class="l"></th><th class="l">Maiores empresas no fim</th></tr></thead><tbody>' + L_.map((g) =>
+      `<tr><td class="l">${stag(g.s)}</td><td>${pct(g.w0)}</td><td><b>${pct(g.w1)}</b></td><td class="l"><span class="bar" style="margin:0;width:${Math.round(g.w1 / wm * 80)}px;background:${SCOL[g.s] || SCOL.Outros}"></span></td><td>${sgn(g.c * 100, 1)}</td>` +
+      `<td class="l"><span class="bar" style="margin:0;width:${Math.round(Math.abs(g.c) / cm * 60)}px;background:${g.c >= 0 ? 'var(--ok)' : 'var(--bad)'}"></span></td><td class="l mut">${g.top.filter((x) => x.w1 > 0).sort((p, q) => q.w1 - p.w1).slice(0, 3).map((x) => esc(m.nm(x.e).slice(0, 22)) + ' ' + pct(x.w1, 0)).join(' · ')}</td></tr>`).join('') + '</tbody>'; }
   $('fu-t').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; FU.dir = FU.sort === k ? -FU.dir : (k === 'e' ? 1 : -1); FU.sort = k; fuRender(); });
   // ano a ano
   const years = [...new Set(steps.map((j) => L[j].slice(0, 4)))];
@@ -515,8 +528,11 @@ function rkRender() {
     const size = b === 'pe' ? x.f.S[z] : b === 'f13' ? x.f.TOT[z] : x.f.NA[z];
     const flow = b === 'us' ? steps.reduce((s, j) => s + (x.f.FL[j] || 0), 0) : null;
     const lev = /ULTRA|\b[23]X\b|LEVERAG|BULL|BEAR|INVERSE/i.test(x.nome);
+    const sw = {}; Object.entries(x.f.p).forEach(([e, v]) => { if (e.startsWith('Outros')) return; const w = v[0][z] || 0; if (w > 0) { const s_ = setorOf(b, e); sw[s_] = (sw[s_] || 0) + w; } });
+    const swt = Object.values(sw).reduce((s_, v) => s_ + v, 0) || 1, sTop = Object.entries(sw).sort((p, q) => q[1] - p[1]).slice(0, 2);
+    const setores = sTop.map(([s_, v]) => [s_, v / swt]);
     const mix = (x.f.mix || []).map(([c, v]) => c + ' ' + pct(v, 0)).join(' · '), unico = (x.f.mix || [])[0]?.[1] >= 0.9;
-    return { k: x.k, lev, mix, unico, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
+    return { k: x.k, lev, mix, unico, setores, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
       extra: b === 'pe' ? (x.f.tot[z] ? x.f.S[z] / x.f.tot[z] : null) : b === 'f13' ? x.f.LAT[z] : x.f.lat[z] / 100 };
   }).filter(Boolean);
   const key = RK.sort;
@@ -525,10 +541,10 @@ function rkRender() {
   const heat = (v) => { if (v == null) return ''; const a_ = Math.min(1, Math.abs(v) / 0.25); return `background:color-mix(in srgb, ${v >= 0 ? 'var(--ok)' : 'var(--bad)'} ${Math.round(a_ * 35)}%, transparent)`; };
   const th = (k, l) => `<th><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${RK.sort === k ? (RK.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`;
   const refL = b === 'pe' ? 'Todas as AFPs' : b === 'f13' ? 'ILF' : 'Explicado', dL = b === 'pe' ? 'vs. AFPs' : b === 'f13' ? 'vs. ILF' : 'Resto';
-  $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : b === 'f13' ? '13F US$ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
+  $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : b === 'f13' ? '13F US$ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Setores principais (no fim)</th><th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
     rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.unico ? ' <span class="pill off">país único</span>' : ''}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.mix ? `<div class="mut" style="font-size:.72rem">${esc(x.mix)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">sem carteira no início ou no fim do período: fora do ranking</div>`}</td>` +
       `<td style="${heat(x.R)}"><b>${pct(x.R)}</b></td><td>${x.ann == null ? '–' : pct(x.ann)}</td><td>${pct(x.RR)}</td><td>${sgn(x.D * 100, 1)}</td><td>${nf(x.size)}</td>${b === 'us' ? `<td>${sgn(x.flow)}</td>` : ''}<td>${x.extra == null ? '–' : pct(x.extra, 0)}</td>` +
-      `<td class="l">${x.best && x.best[1] > 0 ? esc(x.nm(x.best[0]).slice(0, 22)) + ' ' + sgn(x.best[1] * 100, 1) : '–'}</td><td class="l">${x.worst && x.worst[1] < 0 ? esc(x.nm(x.worst[0]).slice(0, 22)) + ' ' + sgn(x.worst[1] * 100, 1) : '–'}</td>` +
+      `<td class="l">${x.setores.map(([s_, v]) => stag(s_) + ' ' + pct(v, 0)).join('<br>')}</td><td class="l">${x.best && x.best[1] > 0 ? esc(x.nm(x.best[0]).slice(0, 22)) + ' ' + sgn(x.best[1] * 100, 1) : '–'}</td><td class="l">${x.worst && x.worst[1] < 0 ? esc(x.nm(x.worst[0]).slice(0, 22)) + ' ' + sgn(x.worst[1] * 100, 1) : '–'}</td>` +
       years.map((y) => { const v = x.yr[y]; return `<td style="${heat(v ? (b === 'us' ? v.r : v.d) : null)}">${v ? pct(v.r, 0) : '<span class="mut">–</span>'}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
   $('rk').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; RK.dir = RK.sort === k ? -RK.dir : -1; RK.sort = k; rkRender(); });
   $('rk').querySelectorAll('tr[data-k]').forEach((tr) => tr.onclick = () => { $('fu-f').value = tr.dataset.k; fuPer(); rkRender(); $('fu-lead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
