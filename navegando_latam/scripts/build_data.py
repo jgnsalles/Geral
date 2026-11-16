@@ -6,6 +6,17 @@ out = {'gerado_em': pd.Timestamp.now().strftime('%d/%m/%Y')}
 # ---------- Peru: AFPs (SBS), mensal ----------
 A = pd.read_pickle(W + '/pe_acoes.pkl')
 A = A[A.v > 0]
+import unicodedata, re as _re
+def _canon(n):
+    n = unicodedata.normalize('NFKD', str(n)).encode('ascii', 'ignore').decode().upper()
+    n = _re.sub(r'\(.*?\)|\(.*$', '', n)
+    n = _re.sub(r'\b(S\.?\s?A\.?\s?A\.?|S\.?\s?A\.?|INC\.?|PLC|CORP\.?|LTD\.?)\b', ' ', n)
+    return _re.sub(r'[^A-Z0-9 ]', ' ', _re.sub(r'\s+', ' ', n)).split().__str__()
+A['_k'] = A.emissor.map(_canon)
+_nm = A.sort_values('ym').groupby('_k').emissor.last()
+A['emissor'] = A._k.map(_nm)
+_ALIAS = {'HOCHSCHILD': 'HOCHSCHILD MINING PLC', 'Intercorp FS': 'Intercorp Financial Services Inc.', 'PACASMAYO S.A.A': 'CEMENTOS PACASMAYO S.A.A.', 'G & M S.A': 'AENZA S.A.A. (antes GRANA & MONTERO S.A.A.)'}
+A['emissor'] = A.emissor.replace(_ALIAS)
 last = A.sort_values('ym').groupby('isin').agg(emissor=('emissor', 'last'), setor=('setor', 'last'))
 A = A.drop(columns=['emissor', 'setor']).join(last, on='isin')
 AFP = {'HA': 'Habitat', 'IN': 'Integra', 'PR': 'Prima', 'RI': 'Profuturo'}
@@ -22,7 +33,7 @@ out['pe'] = pe
 
 # ---------- EUA: N-PORT, fundos americanos em ações da LatAm, por trimestre de entrega ----------
 rows = []
-for f in sorted(glob.glob(W + '/np/*.pkl')):
+for f in sorted(glob.glob(W + '/np2/*.pkl')):
     q = os.path.basename(f)[:-4]; H = pd.read_pickle(f)
     H['rd'] = pd.to_datetime(H.REPORT_DATE, format='%d-%b-%Y', errors='coerce')
     H = H.sort_values(['SERIES_ID', 'rd', 'FILING_DATE'])
@@ -95,5 +106,7 @@ for (agf, fr, fn, fam), d in E.groupby(['nombre_agf', 'fo_run', 'nombre_fondo', 
 emis = E.groupby('nemotecnico').nombre_emisor.last().to_dict()
 cl['emissores'] = emis
 out['cl'] = cl
+out['fpe'] = json.load(open(W + '/pe_attr.json'))
+out['fus'] = json.load(open(W + '/us_attr.json'))
 json.dump(out, open(W + '/latam.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 print('ok', os.path.getsize(W + '/latam.json') // 1024, 'KB')

@@ -8,7 +8,7 @@ def rd(n, cols=None, chunks=False):
     return pd.read_csv(z.open(n), sep='\t', dtype=str, quoting=3, on_bad_lines='skip', usecols=cols, chunksize=500000 if chunks else None)
 H = []
 for c in rd('FUND_REPORTED_HOLDING.tsv', ['ACCESSION_NUMBER', 'HOLDING_ID', 'ISSUER_NAME', 'ISSUER_LEI', 'ISSUER_TITLE', 'ISSUER_CUSIP', 'BALANCE', 'UNIT', 'CURRENCY_VALUE', 'EXCHANGE_RATE', 'PERCENTAGE', 'PAYOFF_PROFILE', 'ASSET_CAT', 'INVESTMENT_COUNTRY'], True):
-    c = c[c.INVESTMENT_COUNTRY.isin(LAT) & (c.ASSET_CAT == 'EC') & (c.PAYOFF_PROFILE != 'Short')]
+    c = c[c.INVESTMENT_COUNTRY.isin(LAT) & c.ASSET_CAT.isin(['EC', 'EP']) & (c.PAYOFF_PROFILE != 'Short')]
     H.append(c)
 H = pd.concat(H)
 ids = set(H.HOLDING_ID)

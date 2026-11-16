@@ -14,3 +14,10 @@ Fontes, do mais fácil ao mais difícil (testadas em 16/11/2026):
 7. México · CNBV/CONSAR — carteira por fundo só em PDF de cada operadora; Afores agregadas.
 
 Montagem: `python scripts/build_data.py` → `latam.json`; `python scripts/build_page.py` → index.html com os dados embutidos (gzip+base64).
+
+## Attribution por fundo (aba "Por fundo")
+- Peru: `scripts/attr_pe.py` → `pe_attr.json`. 16 fundos (4 AFPs × tipos 0–3), mensal desde 2014. Carteira = ações locais do fundo;
+  preço = valor ÷ quantidade (soles, sem dividendos); contribuição = peso no fim do mês anterior × retorno; referência = ações locais de todas as AFPs.
+- EUA: `scripts/nport_fundos.py` (carteira completa dos fundos com ≥ 50% em ações da LatAm, retorno mensal da cota e fluxos) e
+  `scripts/attr_us.py` → `us_attr.json`. Preço em US$ = valor ÷ quantidade, mediana entre todos os fundos na mesma data; resto = cota − explicado.
+- `scripts/nport_loop2.sh` baixa o histórico do N-PORT (2019T4 em diante) e roda os dois extratores (agora com ações preferenciais, categoria EP).
