@@ -15,6 +15,8 @@ I = I.sort_values(['SERIES_ID', 'rd', 'FILING_DATE']).drop_duplicates(['SERIES_I
 H = H[H.ACCESSION_NUMBER.isin(set(I.ACCESSION_NUMBER))]
 H = H.merge(I[['ACCESSION_NUMBER', 'SERIES_ID', 'NET_ASSETS']], on='ACCESSION_NUMBER')
 H['ym'] = H.rd.dt.strftime('%Y-%m'); I['ym'] = I.rd.dt.strftime('%Y-%m')
+I = I.sort_values(['SERIES_ID', 'rd', 'FILING_DATE']).drop_duplicates(['SERIES_ID', 'ym'], keep='last')   # 1 carteira por mês
+H = H[H.ACCESSION_NUMBER.isin(set(I.ACCESSION_NUMBER))]
 H['usd'] = H.PERCENTAGE / 100 * H.NET_ASSETS
 H['key'] = H['isin'].fillna('').where(H['isin'].fillna('') != '', H.ISSUER_CUSIP.fillna('') + '|' + H.ISSUER_NAME.fillna('').str.upper().str[:30])
 EQ = H.ASSET_CAT.isin(['EC', 'EP']) & (H.PAYOFF_PROFILE != 'Short')

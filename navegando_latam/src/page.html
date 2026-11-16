@@ -533,7 +533,7 @@ function rkRender() {
   $('rk').querySelectorAll('tr[data-k]').forEach((tr) => tr.onclick = () => { $('fu-f').value = tr.dataset.k; fuPer(); rkRender(); $('fu-lead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
   $('rk-n').textContent = (b === 'f13' ? `Carteira 13F de cada gestora (só ações e ADRs listados nos EUA), ${ymL(A)} a ${ymL(Z)}, preço sem dividendos. Cor do ano: diferença para o ETF iShares Latin America 40.` : b === 'pe'
     ? `Carteira de ações locais de cada fundo de AFP, ${ymL(A)} a ${ymL(Z)}, em soles e sem dividendos. Cor do ano: diferença para todas as AFPs (verde acima, vermelho abaixo).`
-    : `Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
+    : `Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Resto = cota − explicado pelas ações a preço; a maior parte deve ser dividendos (no Brasil, 6 a 8% ao ano). Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
 }
 
 function fuInit() {
