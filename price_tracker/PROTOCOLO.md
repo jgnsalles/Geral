@@ -394,3 +394,10 @@ Carteiras: (i) ROIC alto descontado: ROIC ≥ 12%, ordenado pelo desconto; (ii) 
 crescimento ≥ 15%), as 20 de menor P/L ÷ (crescimento × 100).
 Comparação: Top 20, JG+G e os 9 comparativos obrigatórios, janelas de 3/5/10 anos, pior janela, pior queda, volatilidade; decomposição do retorno
 (EPS, re-rating, dividendos) e cenário sem NVIDIA para a melhor. Status: exploratória (proposta depois de ver a atribuição).
+**Resultado (2026-11-16).** S&P 500 15,6% a.a.; Top 20 20,5%; JG+G 20,7%. (i) ROIC alto descontado 20,4% (peso igual 19,9%; janelas 3a/5a/10a 99/100/100%;
+pior queda −37%); (ii) só setores estáveis 16,8% (69/84/100%); (iii) só empresas estáveis 13,4% (48/53/66%; ~9 ações); robustez (setores previsíveis) 16,2%;
+(iv) Top 20 só setores estáveis 18,8%; (v) PEG entre as de qualidade 21,4% (96/96/100%; sem NVIDIA 20,6%). Decomposição em 3 anos: a (i) teve EPS −3,9% a.a.
+e re-rating +18,1% a.a. (desconto médio na compra 1,01 em log); as empresas estáveis tinham desconto de 0,14 e re-rating ~0 (previsibilidade já no preço).
+Previsão do crescimento (3 anos): a mediana da própria empresa tem correlação de ordem −0,09 com o realizado; uma constante de 8% erra menos (10% contra 16%).
+A régua de setor estável (|zGrowth|) não separou previsibilidade e a previsibilidade por grupo quase não persiste (correlação 0,13 entre 2012–18 e 2019–26).
+Conclusão: confirmada a tese "ROIC alto descontado" (igual à Top 20, mais simples); rejeitada a de setores/empresas estáveis. Exploratória.
