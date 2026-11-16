@@ -70,7 +70,7 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td
       <button class="tab" role="tab" data-pg="peru">Peru · AFPs</button>
       <button class="tab" role="tab" data-pg="eua">Fundos dos EUA</button>
       <button class="tab" role="tab" data-pg="chile">Chile · fundos mútuos</button>
-      <button class="tab" role="tab" data-pg="fundo">Por fundo: attribution</button>
+      <button class="tab" role="tab" data-pg="fundo">Por fundo: ranking e attribution</button>
     </nav>
   </header>
   <p id="loading">Carregando dados…</p>
@@ -79,6 +79,13 @@ tbody tr.ck{cursor:pointer} tbody tr.ck:hover td{background:var(--bg)} tr.sel td
   <section class="page" id="pg-fundo" hidden>
     <div class="controls">
       <label>Base <select id="fu-b"><option value="pe">Peru · fundos das AFPs (mensal)</option><option value="us">EUA · fundos focados em LatAm (trimestral)</option></select></label>
+    </div>
+    <article class="card" id="rk-card">
+      <div class="head"><h2>Ranking dos fundos</h2><div class="chips" id="rk-p" role="group" aria-label="Período do ranking"></div></div>
+      <p class="note" id="rk-n"></p>
+      <div class="box" style="max-height:34rem"><table id="rk"></table></div>
+    </article>
+    <div class="controls">
       <label>Fundo <select id="fu-f" style="max-width:22rem"></select></label>
       <label>Início <select id="fu-a"></select></label>
       <label>Fim <select id="fu-z"></select></label>
@@ -371,10 +378,10 @@ function fuModel() {
     emps: Object.keys(f.p).filter((e) => !e.startsWith('Outros')), nm: (e) => U.emp[e] ? U.emp[e][0] : e, w: (e, j) => { const v = f.p[e][0][j]; return v == null ? null : v / 1e4; }, c: (e, j) => { const v = f.p[e][1][j]; return v == null ? null : v / 1e6; }, tr: () => null };
 }
 function fuFill() {
-  const b = $('fu-b').value;
+  const b = $('fu-b').value; RK.p = b === 'pe' ? 60 : 12;
   const L = b === 'pe' ? Object.entries(D.fpe.fundos).map(([k, f]) => [k, f.nome]) : Object.entries(D.fus.fundos).sort((x, y) => y[1].NA[y[1].NA.length - 1] - x[1].NA[x[1].NA.length - 1]).map(([k, f]) => [k, f.nome + ' · US$ ' + nf(f.NA[f.NA.length - 1]) + ' mi']);
   $('fu-f').innerHTML = L.map(([k, n]) => `<option value="${esc(k)}">${esc(n)}</option>`).join('');
-  if (b === 'pe') $('fu-f').value = 'PR03'; fuPer();
+  if (b === 'pe') $('fu-f').value = 'PR03'; fuPer(); rkRender();
 }
 function fuPer() {
   const m = fuModel(), L = m.labels;
@@ -464,15 +471,66 @@ function bars2(el, xs, fl, na) {
   g += `<path d="${na.map((v, i) => (i ? 'L' : 'M') + (ml + i * bw + bw / 2).toFixed(1) + ',' + yn(v || 0).toFixed(1)).join('')}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
   el.innerHTML = `<svg viewBox="0 0 ${W_} ${H}" role="img" aria-label="Patrimônio e captação">${g}</svg>`;
 }
+// ---------- RANKING ----------
+const RK = { p: 36, sort: 'R', dir: -1 };
+const mdiff = (a, b) => (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7));
+function rkRender() {
+  const b = $('fu-b').value;
+  const list = b === 'pe' ? Object.entries(D.fpe.fundos).map(([k, f]) => ({ k, nome: f.nome, sub: '', L: D.fpe.meses, ret: f.R, ref: D.fpe.ref.R, f }))
+    : Object.entries(D.fus.fundos).map(([k, f]) => ({ k, nome: f.nome, sub: f.reg, L: f.datas, ret: f.RF, ref: f.EX, f }));
+  const allL = [...new Set(list.flatMap((x) => x.L))].sort(); const Z = allL[allL.length - 1];
+  const A = RK.p ? (() => { const y = +Z.slice(0, 4), m = +Z.slice(5, 7) - RK.p; const yy = y + Math.floor((m - 1) / 12), mm = ((m - 1) % 12 + 12) % 12 + 1; return yy + '-' + String(mm).padStart(2, '0'); })() : allL[0];
+  const P = [[12, '12 meses'], [36, '3 anos'], [60, '5 anos'], [0, 'Tudo']];
+  $('rk-p').innerHTML = P.map(([v, n]) => `<button class="chip" data-p="${v}" aria-pressed="${RK.p === v}">${n}</button>`).join('');
+  $('rk-p').onclick = (e) => { const bt = e.target.closest('[data-p]'); if (bt) { RK.p = +bt.dataset.p; rkRender(); } };
+  const years = [...new Set(allL.filter((l) => l > A && l <= Z).map((l) => l.slice(0, 4)))];
+  const tol = b === 'pe' ? 0 : 3;
+  const rows = list.map((x) => {
+    const L = x.L; let a = -1, z = -1;
+    L.forEach((l, j) => { if (l <= A) a = j; if (l <= Z) z = j; });
+    const start = a < 0 ? 0 : a; if (z <= start) return null;
+    const cover = a >= 0 && mdiff(L[a], A) <= tol && mdiff(L[z], Z) <= tol;
+    const steps = []; for (let j = start + 1; j <= z; j++) steps.push(j);
+    const ch = (arr, js) => js.reduce((g, j) => g * (1 + (arr[j] ?? 0)), 1) - 1;
+    const R = ch(x.ret, steps), RR = ch(x.ref, steps), months = mdiff(L[start], L[z]);
+    const ann = months >= 12 ? Math.pow(1 + R, 12 / months) - 1 : null;
+    const cs = Object.entries(x.f.p).filter(([e]) => !e.startsWith('Outros')).map(([e, v]) => [e, steps.reduce((s, j) => s + (v[1][j] || 0), 0) / 1e6]);
+    cs.sort((p, q) => q[1] - p[1]);
+    const nm = (e) => b === 'pe' ? e : (D.fus.emp[e]?.[0] || e);
+    const yr = {}; years.forEach((y) => { const js = steps.filter((j) => L[j].startsWith(y)); if (js.length) yr[y] = { r: ch(x.ret, js), d: ch(x.ret, js) - ch(x.ref, js) }; });
+    const size = b === 'pe' ? x.f.S[z] : x.f.NA[z];
+    const flow = b === 'us' ? steps.reduce((s, j) => s + (x.f.FL[j] || 0), 0) : null;
+    const lev = /ULTRA|\b[23]X\b|LEVERAG|BULL|BEAR|INVERSE/i.test(x.nome);
+    return { k: x.k, lev, nome: x.nome, sub: x.sub, cover: cover && !lev, desde: L[start], R, RR, D: R - RR, ann, best: cs[0], worst: cs[cs.length - 1], size, flow, yr, nm,
+      extra: b === 'pe' ? (x.f.tot[z] ? x.f.S[z] / x.f.tot[z] : null) : x.f.lat[z] / 100 };
+  }).filter(Boolean);
+  const key = RK.sort;
+  rows.sort((p, q) => (q.cover - p.cover) || RK.dir * ((p[key] ?? -1e9) - (q[key] ?? -1e9)));
+  let rank = 0;
+  const heat = (v) => { if (v == null) return ''; const a_ = Math.min(1, Math.abs(v) / 0.25); return `background:color-mix(in srgb, ${v >= 0 ? 'var(--ok)' : 'var(--bad)'} ${Math.round(a_ * 35)}%, transparent)`; };
+  const th = (k, l) => `<th><button data-k="${k}" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">${l}${RK.sort === k ? (RK.dir < 0 ? ' ↓' : ' ↑') : ''}</button></th>`;
+  const refL = b === 'pe' ? 'Todas as AFPs' : 'Explicado', dL = b === 'pe' ? 'vs. AFPs' : 'Resto';
+  $('rk').innerHTML = `<thead><tr><th>#</th><th class="l">Fundo</th>${th('R', 'Retorno')}${th('ann', 'Ao ano')}${th('RR', refL)}${th('D', dL)}${th('size', b === 'pe' ? 'Ações S/ mi' : 'PL US$ mi')}${b === 'us' ? th('flow', 'Captação') : ''}${th('extra', b === 'pe' ? '% em ações' : '% LatAm')}<th class="l">Maior acerto</th><th class="l">Maior erro</th>${years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>` +
+    rows.map((x) => `<tr class="ck${x.k === $('fu-f').value ? ' sel' : ''}" data-k="${esc(x.k)}"><td>${x.cover ? '<span class="rank" style="font-size:1rem">' + (++rank) + '</span>' : '<span class="mut">–</span>'}</td><td class="l">${esc(x.nome)}${x.sub ? `<div class="mut" style="font-size:.72rem">${esc(x.sub)}</div>` : ''}${x.lev ? ' <span class="pill part">alavancado</span><div class="mut" style="font-size:.72rem">exposição via derivativos: fora do ranking</div>' : x.cover ? '' : `<div class="mut" style="font-size:.72rem">carteiras de ${ymL(x.desde)} em diante: fora do ranking</div>`}</td>` +
+      `<td style="${heat(x.R)}"><b>${pct(x.R)}</b></td><td>${x.ann == null ? '–' : pct(x.ann)}</td><td>${pct(x.RR)}</td><td>${sgn(x.D * 100, 1)}</td><td>${nf(x.size)}</td>${b === 'us' ? `<td>${sgn(x.flow)}</td>` : ''}<td>${x.extra == null ? '–' : pct(x.extra, 0)}</td>` +
+      `<td class="l">${x.best && x.best[1] > 0 ? esc(x.nm(x.best[0]).slice(0, 22)) + ' ' + sgn(x.best[1] * 100, 1) : '–'}</td><td class="l">${x.worst && x.worst[1] < 0 ? esc(x.nm(x.worst[0]).slice(0, 22)) + ' ' + sgn(x.worst[1] * 100, 1) : '–'}</td>` +
+      years.map((y) => { const v = x.yr[y]; return `<td style="${heat(v ? (b === 'pe' ? v.d : v.r) : null)}">${v ? pct(v.r, 0) : '<span class="mut">–</span>'}</td>`; }).join('') + '</tr>').join('') + '</tbody>';
+  $('rk').querySelectorAll('th button').forEach((bt) => bt.onclick = () => { const k = bt.dataset.k; RK.dir = RK.sort === k ? -RK.dir : -1; RK.sort = k; rkRender(); });
+  $('rk').querySelectorAll('tr[data-k]').forEach((tr) => tr.onclick = () => { $('fu-f').value = tr.dataset.k; fuPer(); rkRender(); $('fu-lead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
+  $('rk-n').textContent = (b === 'pe'
+    ? `Carteira de ações locais de cada fundo de AFP, ${ymL(A)} a ${ymL(Z)}, em soles e sem dividendos. Cor do ano: diferença para todas as AFPs (verde acima, vermelho abaixo).`
+    : `Retorno da cota (US$, com dividendos e depois de taxas), ${ymL(A)} a ${ymL(Z)}. Cor do ano: retorno. Fundos sem carteira no início ou no fim do período ficam sem posição. Captação em US$ milhões.`) + ' Toque num fundo para abrir o detalhe; toque no título de uma coluna para reordenar.';
+}
+
 function fuInit() {
-  $('fu-b').addEventListener('change', fuFill); $('fu-f').addEventListener('change', fuPer);
+  $('fu-b').addEventListener('change', fuFill); $('fu-f').addEventListener('change', () => { fuPer(); rkRender(); });
   ['fu-a', 'fu-z'].forEach((id) => $(id).addEventListener('change', fuRender));
   fuFill();
 }
 
 // ---------- rotas ----------
 const PAGES = ['mapa', 'peru', 'eua', 'chile', 'fundo'];
-const R = { peru: peRender, eua: usRender, chile: clRender, mapa: renderMap, fundo: fuRender };
+const R = { peru: peRender, eua: usRender, chile: clRender, mapa: renderMap, fundo: () => { rkRender(); fuRender(); } };
 function go(pg) {
   if (!PAGES.includes(pg)) pg = 'mapa';
   document.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.pg === pg)));
