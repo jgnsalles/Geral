@@ -184,7 +184,7 @@ th[aria-sort="ascending"],th[aria-sort="descending"]{color:var(--fg)}
         <h2>Como ler</h2>
         <ul>
           <li><b>Gestores com a ação:</b> carteira mais recente de cada gestor (até 9 meses de defasagem). Peru = cada AFP; EUA = cada fundo; 13F = cada gestora; Chile = cada administradora.</li>
-          <li><b>Presença:</b> média, entre as bases, da fração dos gestores de cada base que têm a ação. Evita que uma base com muitos gestores domine.</li>
+          <li><b>Presença:</b> gestores com a ação ÷ todos os gestores atuais (das bases escolhidas).</li>
           <li><b>Compradas e vendidas:</b> gestores que entraram menos os que saíram em 12 meses.</li>
           <li><b>Retorno da empresa:</b> preço em US$ (sem dividendos), a partir do valor ÷ quantidade informados pelos fundos.</li>
           <li><b>Retorno do gestor:</b> Peru = carteira de ações locais (soles, sem dividendos), contra todas as AFPs; EUA = cota do fundo (com dividendos e taxas); 13F = só as posições LatAm ex-Brasil listadas nos EUA (sem dividendos), contra o ETF iShares Latin America 40 (que inclui Brasil).</li>
@@ -263,7 +263,7 @@ let GBASE = {};       // nº de gestores atuais por base
 function cm(c, e) {
   const hs = e.h.filter((h) => ST.base === 'all' || C.g[h[0]].b === ST.base);
   const now = hs.filter((h) => h[1] > 0);
-  const pres = (() => { const bs = ST.base === 'all' ? Object.keys(GBASE) : [ST.base]; let s = 0; bs.forEach((b) => { s += now.filter((h) => C.g[h[0]].b === b).length / (GBASE[b] || 1); }); return s / bs.length; })();
+  const pres = now.length / ((ST.base === 'all' ? Object.values(GBASE).reduce((a, b) => a + b, 0) : GBASE[ST.base]) || 1);   // fração de todos os gestores atuais
   const comp = hs.filter((h) => h[2] != null);
   const ent = comp.filter((h) => h[1] > 0 && h[2] === 0).length, sai = comp.filter((h) => h[1] === 0 && h[2] > 0).length;
   const dw = comp.reduce((s, h) => s + (h[1] - h[2]), 0);
