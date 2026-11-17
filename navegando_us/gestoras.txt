@@ -1,0 +1,152 @@
+0000315066|Fidelity (FMR)|longo
+0001422849|Capital World Investors|longo
+0001422848|Capital Research Global Investors|longo
+0001562230|Capital International Investors|longo
+0000902219|Wellington Management|longo
+0000080255|T. Rowe Price|longo
+0001897612|T. Rowe Price|longo
+0000912938|MFS|longo
+0000200217|Dodge & Cox|longo
+0000763212|Primecap|longo
+0001088875|Baillie Gifford|longo
+0000813917|Harris Associates (Oakmark)|longo
+0001345929|Brown Advisory|longo
+0001466153|Artisan Partners|longo
+0001061186|WCM|longo
+0001697233|GQG Partners|longo
+0001663865|Orbis|longo
+0001020066|Sands Capital|longo
+0001086619|Schroders|longo
+0001465109|Neuberger Berman|longo
+0001274173|Janus Henderson|longo
+0000312348|Loomis Sayles|longo
+0001352662|GMO|longo
+0001109448|AllianceBernstein|longo
+0001325447|First Eagle|longo
+0001036325|Davis Advisors|longo
+0001164833|Hotchkis & Wiley|longo
+0001644956|William Blair|longo
+0001021223|Kayne Anderson Rudnick|longo
+0001177719|Westfield Capital|longo
+0001592643|Select Equity|longo
+0001259887|London Company|longo
+0000938206|Driehaus|longo
+0000814133|Wasatch|longo
+0001538449|Mawer|longo
+0001217541|Diamond Hill|longo
+0001034524|Polen Capital|longo
+0001070134|Mairs & Power|longo
+0000928196|Harding Loevner|longo
+0001315868|Burgundy|longo
+0001145020|Thornburg|longo
+0001375534|Generation IM|longo
+0001290668|Sustainable Growth Advisers|longo
+0000936753|Ariel Investments|longo
+0000860561|Edgewood|longo
+0001165797|Causeway|longo
+0000860643|Gardner Russo & Quinn|longo
+0000024386|Cooke & Bieler|longo
+0000905567|Yacktman|longo
+0001377581|FPA|longo
+0001569758|Carmignac|longo
+0000764532|Fiduciary Management|longo
+0001720792|Ruane, Cunniff (Sequoia)|longo
+0001427008|Smead|longo
+0001163744|Conestoga|longo
+0001574947|Comgest|longo
+0001569205|Fundsmith|longo
+0001106129|Jensen|longo
+0001556915|ARGA|longo
+0001556785|Vulcan Value|longo
+0000820124|Sound Shore|longo
+0001484150|Lindsell Train|longo
+0001861026|Marathon Asset Management|longo
+0001528593|Black Creek|longo
+0001123778|Jarislowsky Fraser|longo
+0001063497|Pembroke|longo
+0000807985|Southeastern (Longleaf)|longo
+0000732905|Tweedy, Browne|longo
+0001056831|Fairholme|longo
+0001099281|Third Avenue|longo
+0001081407|Gabelli|longo
+0001027796|Pzena|longo
+0001112520|Akre Capital|longo
+0001096343|Markel|longo
+0001641864|Giverny Capital|longo
+0001581811|Egerton Capital|hedge
+0001647251|TCI (Chris Hohn)|hedge
+0001671657|Dorsey Asset|longo
+0001697868|Valley Forge|longo
+0001709323|Himalaya (Li Lu)|longo
+0000783412|Daily Journal (Munger)|longo
+0001549575|Pabrai (Dalal Street)|longo
+0001454502|Triple Frond|longo
+0001766504|Greenlea Lane|longo
+0001657335|Oakcliff|longo
+0001697591|CAS Investment Partners|longo
+0001766596|RV Capital|longo
+0001115373|Semper Augustus|longo
+0001317588|Abrams Bison|longo
+0001631664|Punch Card|longo
+0001279936|Cantillon|longo
+0001553733|Brave Warrior|longo
+0001389403|Chou Associates|longo
+0001039565|Kahn Brothers|longo
+0001218254|Boyar|longo
+0001177244|Shapiro Capital|longo
+0001067983|Berkshire Hathaway|longo
+0001336528|Pershing Square (Ackman)|hedge
+0002026053|Pershing Square (Ackman)|hedge
+0001536411|Duquesne (Druckenmiller)|hedge
+0001350694|Bridgewater (Dalio)|hedge
+0000949509|Oaktree (Howard Marks)|hedge
+0001061768|Baupost (Klarman)|hedge
+0001656456|Appaloosa (Tepper)|hedge
+0001040273|Third Point (Loeb)|hedge
+0001061165|Lone Pine|hedge
+0001103804|Viking Global|hedge
+0001135730|Coatue|hedge
+0001167483|Tiger Global|hedge
+0000934639|Maverick Capital|hedge
+0001079114|Greenlight (Einhorn)|hedge
+0001747057|D1 Capital|hedge
+0001387322|Whale Rock|hedge
+0001569049|Light Street|hedge
+0001798849|Durable Capital|hedge
+0001541617|Altimeter|hedge
+0001602189|Dragoneer|hedge
+0001029160|Soros Fund Management|hedge
+0001791786|Elliott|hedge
+0001048445|Elliott|hedge
+0001517137|Starboard Value|hedge
+0000921669|Icahn|hedge
+0001345471|Trian (Peltz)|hedge
+0001998597|Jana Partners|hedge
+0001138995|Glenview|hedge
+0001107310|Eminence|hedge
+0001582090|Sachem Head|hedge
+0001535472|Corvex|hedge
+0000909661|Farallon|hedge
+0001517857|Soroban|hedge
+0001609098|Darsana|hedge
+0001503174|SRS Investment|hedge
+0001421097|Samlyn|hedge
+0001319998|Southpoint|hedge
+0001543170|Spruce House|hedge
+0001332632|Chilton|hedge
+0001568788|Palestra|hedge
+0001424381|Lakewood|hedge
+0001214822|Steadfast|hedge
+0001505183|Stockbridge Partners|hedge
+0001353316|Hound Partners|hedge
+0001166309|Bridger|hedge
+0001263508|Baker Bros|hedge
+0001346824|RA Capital|hedge
+0001224962|Perceptive|hedge
+0001009258|Deerfield|hedge
+0001762304|Hillhouse (HHLR)|hedge
+0001510589|Hillhouse (HHLR)|hedge
+0001608485|Lansdowne|hedge
+0001389507|Discovery Capital|hedge
+0001649339|Scion (Burry)|hedge
+0000898202|Omega (Cooperman)|hedge
