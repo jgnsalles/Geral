@@ -34,6 +34,12 @@ H = H.sort_values('per').drop_duplicates(['CIK', 'per', 'CUSIP', 'TITLEOFCLASS',
 best = H.groupby(['CIK', 'per', 'ACCESSION_NUMBER']).tot.first().reset_index().sort_values('tot').drop_duplicates(['CIK', 'per'], keep='last')
 H = H[H.ACCESSION_NUMBER.isin(set(best.ACCESSION_NUMBER))]
 PX = PX.groupby(['CUSIP', 'per']).px.median()
+# entregas com unidade trocada (valor em US$ em vez de US$ mil, ou o contrário): preço implícito ~1000× fora da mediana do mercado
+_r = (H.v / H.q) / pd.Series(list(zip(H.CUSIP, H.per)), index=H.index).map(PX)
+_m = pd.Series(np.where(_r > 300, 1 / 1000, np.where(_r < 1 / 300, 1000, 1.0)), index=H.index)   # linha a linha
+print('linhas com unidade corrigida:', int((_m != 1).sum()))
+H['v'] = H.v * _m
+H['tot'] = H.tot + H.ACCESSION_NUMBER.map(H.assign(d=H.v - H.v / _m).groupby('ACCESSION_NUMBER').d.sum()).fillna(0)
 QS = QS.groupby(['CUSIP', 'per', 'CIK']).q.sum()
 NAO_LATAM = ['143658', '191216', '54150E', '70450Y', '816851', '962879', 'G1466R', 'G2004J']   # empresas fora da região marcadas por engano (ex.: BDRs) e títulos de dívida
 LAT = {c for c in open(W + '/latam_cusips.txt').read().split() if c[:6] not in NAO_LATAM}
