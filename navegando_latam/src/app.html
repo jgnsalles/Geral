@@ -40,6 +40,8 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 .tile .l{font-size:.75rem;color:var(--muted)} .tile .v{font-family:var(--serif);font-size:1.5rem;line-height:1.15;font-variant-numeric:tabular-nums} .tile .n{font-size:.75rem;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:12px}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,30rem),1fr));gap:12px}
+.szbar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)} .szbar i{display:block;height:100%} .szlg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.85rem;color:var(--muted)} .szlg b{color:var(--fg);font-weight:600}
+tr.kid td{font-size:.85rem;color:var(--muted);padding-left:28px} tr.grp td:first-child b::before{content:'▸ ';color:var(--muted)} tr.grp.open td:first-child b::before{content:'▾ '}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:8px;min-width:0;align-content:start}
 .head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 .list{display:grid}
@@ -170,7 +172,8 @@ th[aria-sort="ascending"],th[aria-sort="descending"]{color:var(--fg)}
         <div class="card"><h2>Setores</h2><div class="box"><table class="cardify" id="f-set"></table></div></div>
         <div class="card"><h2>Ano a ano</h2><div class="box"><table class="cardify" id="f-yr"></table></div></div>
       </div>
-      <div class="card"><div class="head"><h2>Carteira</h2><span class="sub">toque numa ação para abrir a empresa</span></div><div class="box"><table class="cardify" id="f-cart"></table></div></div>
+      <div class="card" id="f-size-c" hidden><div class="head"><h2>Carteira 13F inteira</h2><span class="sub" id="f-size-d"></span></div><div class="szbar" id="f-size-bar"></div><div class="box"><table class="cardify" id="f-size" data-own="1"></table></div></div>
+      <div class="card"><div class="head"><h2 id="f-cart-h">Carteira</h2><span class="sub">toque numa ação para abrir a empresa</span></div><div class="box"><table class="cardify" id="f-cart"></table></div></div>
       <div class="card" id="f-flow-c"><h2>Patrimônio e captação</h2><div class="legend"><span><i class="sw" style="background:var(--accent)"></i>Patrimônio (US$ mi)</span><span><i class="sw" style="background:var(--ok)"></i>Captação</span><span><i class="sw" style="background:var(--bad)"></i>Resgate</span></div><div class="chart" id="f-flow"></div></div>
     </div>
   </section>
@@ -212,7 +215,7 @@ const mdiff = (a, b) => (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7)
 const addM = (m, k) => { const t = +m.slice(0, 4) * 12 + (+m.slice(5, 7) - 1) + k; return Math.floor(t / 12) + '-' + String(t % 12 + 1).padStart(2, '0'); };
 let D, C;
 const BASE = { pe: ['AFPs do Peru', 'Peru'], us: ['Fundos dos EUA', 'EUA'], f13: ['Gestoras (13F)', '13F'], cl: ['Fundos mútuos do Chile', 'Chile'] };
-const PAIS = { AR: 'Argentina', BR: 'Brasil', CL: 'Chile', CO: 'Colômbia', MX: 'México', PE: 'Peru', PA: 'Panamá', UY: 'Uruguai' };
+const PAIS = { LA: 'Pan-LatAm', AR: 'Argentina', BR: 'Brasil', CL: 'Chile', CO: 'Colômbia', MX: 'México', PE: 'Peru', PA: 'Panamá', UY: 'Uruguai' };
 const SCOL = { 'Financeiro': '#1f6f8b', 'Mineração e metais': '#8a6d3b', 'Petróleo e gás': '#4a4f55', 'Utilidades': '#5a8f3d', 'Consumo básico': '#c26a2b', 'Consumo discricionário': '#b03a5b',
   'Industrial e transporte': '#6b7f99', 'Materiais': '#9c7c38', 'Comunicações': '#8b4f9e', 'Tecnologia': '#3b7dd8', 'Saúde': '#2a9d8f', 'Imobiliário': '#a3685a', 'Fundos e ETFs': '#7a8a8f', 'Outros': '#a9b2bf' };
 const COL = ['#1f6f8b', '#c26a2b', '#5a8f3d', '#8b4f9e', '#b03a5b', '#3b7dd8', '#8a6d3b', '#2a9d8f'];
@@ -339,7 +342,7 @@ function renderEmpresa(c) {
 const SG = { base: 'us', per: 36, tipo: 'latam' };
 function gModel(b, id) {
   if (b === 'pe') { const P = D.fpe, f = P.fundos[id]; return { b, id, f, nome: f.nome, sub: 'Peru · carteira de ações locais', L: P.meses, ret: f.R, ref: P.ref.R, refName: 'Todas as AFPs', emps: Object.keys(f.p), map: (e) => C.map['pe:' + e], nm: (e) => e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.S[j], sizeName: 'Ações locais', soles: true }; }
-  if (b === 'f13') { const G = D.f13, f = G.fundos[id]; return { b, id, f, nome: f.nome, sub: '13F · só posições LatAm ex-Brasil', L: f.datas, ret: f.R, ref: f.REF, refName: 'ETF LatAm 40', emps: Object.keys(f.p), map: (e) => C.map['f13:' + e], nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.TOT[j], sizeName: 'Carteira 13F' }; }
+  if (b === 'f13') { const G = D.f13, f = G.fundos[id]; return { b, id, f, nome: f.nome, sub: '13F · análise das posições LatAm ex-Brasil', L: f.datas, ret: f.R, ref: f.REF, refName: 'ETF LatAm 40', emps: Object.keys(f.p), map: (e) => C.map['f13:' + e], nm: (e) => G.emp[e] ? G.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4 * (f.K ? (f.K[j] ?? 0) : 1), c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.TOT[j], sizeName: 'Carteira 13F' }; }
   const U = D.fus, f = U.fundos[id]; return { b, id, f, nome: f.nome, sub: f.reg, L: f.datas, ret: f.RF, ref: f.EX, refName: 'Explicado pelas ações', emps: Object.keys(f.p).filter((e) => !e.startsWith('Outros')), map: (e) => C.map['us:' + e], nm: (e) => U.emp[e] ? U.emp[e][0] : e, w: (e, j) => f.p[e][0][j] == null ? null : f.p[e][0][j] / 1e4, c: (e, j) => f.p[e][1][j] == null ? null : f.p[e][1][j] / 1e6, size: (j) => f.NA[j], sizeName: 'Patrimônio' };
 }
 const setorOf = (m, e) => { const c = m.map(e); return c && C.e[c] ? C.e[c].s : 'Outros'; };
@@ -417,8 +420,38 @@ function renderGestor(b, id) {
   $('f-cart').innerHTML = '<thead><tr><th class="l">Empresa</th><th>Peso</th><th>Antes</th><th>Somou</th></tr></thead><tbody>' + cart.map((x) =>
     `<tr class="${x.cid ? 'ck' : ''}" ${x.cid ? `data-e="${esc(x.cid)}"` : ''}><td class="l w" data-l=""><span><span class="sw" style="background:${SCOL[x.s] || SCOL.Outros}"></span>${esc(x.n)}${x.w0 === 0 && x.w1 > 0 ? ' <span class="chip new">nova</span>' : x.w1 === 0 ? ' <span class="chip out">saiu</span>' : ''}</span></td><td data-l="Peso"><b>${pct(x.w1, 1)}</b></td><td data-l="Antes">${pct(x.w0, 1)}</td><td data-l="Somou">${sgn(x.c * 100, 1, ' p.p.')}</td></tr>`).join('') + '</tbody>';
   document.querySelectorAll('#f-cart [data-e]').forEach((tr) => tr.onclick = () => go('e-' + tr.dataset.e));
+  $('f-cart-h').textContent = b === 'f13' ? 'LatAm ex-Brasil · % da carteira 13F' : 'Carteira';
+  renderSizing(m);
   $('f-flow-c').hidden = b !== 'us';
   if (b === 'us') flowChart($('f-flow'), L.slice(a, z + 1).map(ymL), m.f.FL.slice(a, z + 1), m.f.NA.slice(a, z + 1));
+}
+
+// ---------- carteira 13F inteira: LatAm ex-Brasil + o resto agrupado por país e setor (último trimestre) ----------
+const SZ = { k: 'w', dir: -1, open: new Set() };
+function renderSizing(m) {
+  const card = $('f-size-c'); card.hidden = m.b !== 'f13' || !m.f.fora; if (card.hidden) return;
+  const f = m.f, FC = D.f13.fc || {}, K = f.K[f.K.length - 1] || 0, G = {};
+  f.fora.forEach(([e, n, w, br]) => {
+    const [p, st] = e === '_resto' ? ['Outras', 'posições < 0,05%'] : (FC[e] || [br ? 'Brasil' : 'Outros', 'Outros']);
+    const key = p === 'ETFs' ? 'ETFs' : p + ' · ' + st, g = G[key] || (G[key] = { key, p, w: 0, it: [] }); g.w += w; if (e !== '_resto') g.it.push([n, w]);
+  });
+  const gs = Object.values(G).filter((g) => g.w > 0), br = gs.filter((g) => g.p === 'Brasil').reduce((a, g) => a + g.w, 0), rest = Math.max(0, 1 - K - br);
+  $('f-size-d').textContent = ymL(f.datas[f.datas.length - 1]) + ' · toque num grupo para ver as empresas';
+  const segs = [['LatAm ex-Brasil', K, COL[0]], ['Brasil', br, COL[1]], ['Resto do mundo', rest, 'var(--muted)']];
+  $('f-size-bar').innerHTML = segs.map(([l, v, c]) => `<i style="width:${(v * 100).toFixed(2)}%;background:${c}" title="${l} ${pct(v)}"></i>`).join('');
+  let lg = card.querySelector('.szlg'); if (!lg) { lg = document.createElement('div'); lg.className = 'szlg'; $('f-size-bar').after(lg); }
+  lg.innerHTML = segs.map(([l, v, c]) => `<span><i class="sw" style="background:${c}"></i>${l} <b>${pct(v)}</b></span>`).join('');
+  const rows = [{ key: 'LatAm ex-Brasil (analisada)', w: K, it: null, n: Object.values(f.p).filter((v) => (v[0][v[0].length - 1] || 0) > 0).length }, ...gs.map((g) => ({ ...g, n: g.it.length }))];
+  const kf = { g: (r) => r.key, w: (r) => r.w, n: (r) => r.n }[SZ.k];
+  const lat0 = rows.shift(); rows.sort((a, b) => { const x = kf(a), y = kf(b); return (typeof x === 'string' ? x.localeCompare(y, 'pt') : x - y) * SZ.dir; }); rows.unshift(lat0);   // LatAm ex-Brasil sempre no topo
+  const th = (k, l, cl) => `<th class="${cl || ''}"><button class="srt${SZ.k === k ? ' on' : ''}" type="button" data-k="${k}">${l}${SZ.k === k ? (SZ.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`;
+  $('f-size').innerHTML = `<thead><tr>${th('g', 'Grupo', 'l')}${th('w', 'Peso')}${th('n', 'Empresas')}</tr></thead><tbody>` + rows.map((r) => {
+    const op = SZ.open.has(r.key), lat = !r.it;
+    return `<tr class="${lat ? '' : 'grp ck' + (op ? ' open' : '')}" data-g="${esc(r.key)}"><td class="l" data-l=""><b style="font-weight:${lat ? 600 : 500}">${esc(r.key)}</b></td><td data-l="Peso"><b>${pct(r.w, 1)}</b></td><td data-l="Empresas">${r.n}</td></tr>` +
+      (op && r.it ? r.it.sort((a, b) => b[1] - a[1]).map(([n, w]) => `<tr class="kid"><td class="l" data-l="">${esc(n)}</td><td data-l="Peso">${pct(w, 1)}</td><td data-l=""></td></tr>`).join('') : '');
+  }).join('') + '</tbody>';
+  $('f-size').querySelectorAll('th button').forEach((b) => b.onclick = () => { const k = b.dataset.k; SZ.dir = b.dataset.want ? +b.dataset.want : SZ.k === k ? -SZ.dir : (k === 'g' ? 1 : -1); SZ.k = k; renderSizing(m); });
+  $('f-size').querySelectorAll('tr.grp').forEach((tr) => tr.onclick = () => { const g = tr.dataset.g; SZ.open.has(g) ? SZ.open.delete(g) : SZ.open.add(g); renderSizing(m); });
 }
 
 // ---------- composição da carteira ao longo do tempo ----------
@@ -539,7 +572,7 @@ function enhance(tbl) {
   wrap.innerHTML = '<span>Ordenar por</span><select aria-label="Ordenar por">' + ths.flatMap((th, i) => { const l = th.innerText.replace(/[↑↓]/g, '').trim() || (i === 0 ? '#' : 'Coluna ' + (i + 1));
     return [`<option value="${i}:-1">${esc(l)} ↓</option>`, `<option value="${i}:1">${esc(l)} ↑</option>`]; }).join('') + '</select>';
   wrap.querySelector('select').onchange = (e) => { const [i, dir] = e.target.value.split(':').map(Number);
-    if (own) { const bt = ths[i].querySelector('button'); if (bt) { bt.click(); return; } }
+    if (own) { const bt = ths[i].querySelector('button'); if (bt) { bt.dataset.want = dir; bt.click(); return; } }
     SORTS[tbl.id] = { i, dir }; sortRows(tbl, i, dir); mark(tbl, i, dir); };
   const st = SORTS[tbl.id];
   if (!own && st && st.i < ths.length) { sortRows(tbl, st.i, st.dir); mark(tbl, st.i, st.dir); }

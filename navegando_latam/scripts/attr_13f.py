@@ -37,8 +37,13 @@ PX = PX.groupby(['CUSIP', 'per']).px.median()
 QS = QS.groupby(['CUSIP', 'per', 'CIK']).q.sum()
 NAO_LATAM = ['143658', '191216', '54150E', '70450Y', '816851', '962879', 'G1466R', 'G2004J']   # empresas fora da região marcadas por engano (ex.: BDRs) e títulos de dívida
 LAT = {c for c in open(W + '/latam_cusips.txt').read().split() if c[:6] not in NAO_LATAM}
+EXTRA = {'P5880C': 'AR', '463588': 'AR'}   # empresas da região que faltavam na lista (IRSA)
+LAT |= {c for c in H.CUSIP.str.upper().unique() if c[:6] in EXTRA}
 H['latv'] = H.ACCESSION_NUMBER.map(H[H.CUSIP.str.upper().isin(LAT)].groupby('ACCESSION_NUMBER').v.sum()).fillna(0)
 CPAIS = pd.read_pickle(W + '/cusip_pais.pkl')
+CPAIS = pd.concat([CPAIS, pd.Series({c: EXTRA[c[:6]] for c in LAT if c[:6] in EXTRA and c not in CPAIS.index}, dtype=object)])
+PAN6 = {'G6683N', '58733R'}   # Nu e MercadoLibre: pan-LatAm, não contam como Brasil
+pais_ = lambda cs: cs.str.upper().map(CPAIS).where(~cs.str[:6].str.upper().isin(PAN6), 'LA')
 SIMPLE = sorted({Fraction(a, b) for a in range(1, 11) for b in range(1, 11)} | {Fraction(x) for x in (15, 20, 25, 50, 100)} | {Fraction(1, x) for x in (15, 20, 25, 50, 100)})
 def sret(c, a, b):
     pa, pb = PX.get((c, a)), PX.get((c, b))
@@ -67,7 +72,7 @@ for cik, h in H.groupby('CIK'):
     pedida = bool(re.search(PED, NM))
     if h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1] == 'D5': continue          # gestoras sediadas no Brasil ficam de fora
     name = h.sort_values('per').FILINGMANAGER_NAME.iloc[-1]
-    hl = h[h.CUSIP.str.upper().isin(LAT)].assign(pais=lambda d: d.CUSIP.str.upper().map(CPAIS))
+    hl = h[h.CUSIP.str.upper().isin(LAT)].assign(pais=lambda d: pais_(d.CUSIP))
     mixp = hl.groupby(['per', 'pais']).v.sum().unstack().fillna(0)
     mixp = mixp.div(mixp.sum(axis=1), axis=0)
     # regra: LatAm ex-Brasil ≥ 20% da carteira 13F (mediana dos últimos 8 trimestres), com ≥ 5 empresas da região
@@ -77,7 +82,8 @@ for cik, h in H.groupby('CIK'):
     tipo = 'latam' if float(sh.median()) >= 0.4 else 'global'
     latv0 = h.groupby('per').latv.first().reindex(pers); tot0 = h.groupby('per').tot.first().reindex(pers)
     # análise só das posições LatAm ex-Brasil: pesos, retorno e attribution sobre essa parcela
-    h = h[h.CUSIP.str.upper().isin(LAT) & (h.CUSIP.str.upper().map(CPAIS) != 'BR')].copy()
+    hfull = h; zper = pers[-1]
+    h = h[h.CUSIP.str.upper().isin(LAT) & (pais_(h.CUSIP) != 'BR')].copy()
     h['tot'] = h.ACCESSION_NUMBER.map(h.groupby('ACCESSION_NUMBER').v.sum())
     if True:
         if h.per.nunique() < 3 or h.groupby('per').emp.nunique().median() < (1 if pedida else 3): continue
@@ -103,11 +109,17 @@ for cik, h in H.groupby('CIK'):
         cv_ = [None if x is None else int(round(x * 1e6)) for x in C[e]]
         if max(abs(v or 0) for v in wv) < 10 and max(abs(v or 0) for v in cv_) < 100: continue
         p[e] = [wv, cv_]
+    hz = hfull[hfull.per == zper]
+    sl = hz.CUSIP.str.upper().isin(LAT) & (pais_(hz.CUSIP) != 'BR')
+    fz = hz[~sl].groupby('emp').agg(n=('NAMEOFISSUER', 'last'), v=('v', 'sum'), br=('CUSIP', lambda c: bool(c.str.upper().isin(LAT).any())))
+    fz['w'] = fz.v / hz.tot.iloc[0]
+    fora = [[e, str(r.n).title(), round(float(r.w), 5), int(r.br)] for e, r in fz.sort_values('w', ascending=False).iterrows() if r.w >= 0.0005]
+    fora.append(['_resto', 'Outras (< 0,05%)', round(float(fz.w[fz.w < 0.0005].sum()), 5), 0])
     mixp = mixp.drop(columns=['BR'], errors='ignore'); mixp = mixp.div(mixp.sum(axis=1), axis=0)
     mix = mixp.iloc[-1].sort_values(ascending=False) if len(mixp) else pd.Series(dtype=float)
     out['fundos'][cik] = {'nome': name, 'pais': h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1], 'datas': pers, 'R': [None if x is None else round(x, 5) for x in R],
                           'REF': [None if x is None else round(x, 5) for x in REF], 'COV': COV, 'TOT': [round(x / 1e6, 1) for x in tot0],
-                          'LAT': [round(float(a / b), 3) for a, b in zip(latv0, tot0)], 'XB': [None if pd.isna(x) else round(float(x), 3) for x in xb], 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'tipo': tipo, 'p': p}
+                          'LAT': [round(float(a / b), 3) for a, b in zip(latv0, tot0)], 'XB': [None if pd.isna(x) else round(float(x), 3) for x in xb], 'K': [None if pd.isna(x) else round(float(x), 4) for x in (tot / tot0)], 'fora': fora, 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'tipo': tipo, 'p': p}
 usadas = {e for f in out['fundos'].values() for e in f['p']}
 out['emp'] = {e: v for e, v in out['emp'].items() if e in usadas}; out['ids'] = {e: v for e, v in out['ids'].items() if e in usadas}
 json.dump(out, open(W + '/f13_attr.json', 'w'), ensure_ascii=False, separators=(',', ':'))
