@@ -41,3 +41,15 @@ como SBSP 5:1, HAPV 1:15, MGLU 1:10, BBAS 2:1, ITUB/ITSA/LREN bonificações, AX
 não comparar quantidades através de dez/2023 → jan/2024.
 A CVM republicou em 07/11/2026 os meses que estavam em sigilo: mar e abr/2026 ficaram 100% revelados; mai–jul/2026 ~44%, ago–set/2026 ~17%.
 Out/2026 ficou de fora (3,5% revelado, entrega ainda em curso). A série de performance dos 30 fundos continua em abr/2026 pelo mesmo motivo.
+
+## Funções trazidas do Navegando LatAm (17/11/2026)
+
+- Setores: `dados_2024/setores.py <carteiras.json> data/acoes.csv[,outro acoes.csv] <lista B3> data/setores.json` dá o setor de cada emissor
+  (classificação da B3 do acoes.csv; lista de empresas listadas da B3 `GetInitialCompanies`, segmento → setor; BDRs e ativos no exterior à parte).
+  Usado no filtro de setor do Hoje, na cor de cada ação, no cartão "Carteira por setor" da gestora, na visão "Setores" do histórico e na página da empresa.
+- Hoje: "Melhores/Piores ações em 12 meses" (retorno total do precos.csv, até o último preço da série) e a tabela "Gestoras"
+  (carteira, revelado, 3 maiores posições, o que comprou e vendeu no período escolhido, retorno em 12 meses do fundo acompanhado).
+- Gestora · Hoje: "O que mudou em 3/6/12 meses" (resumo, maior compra e venda, colunas Novas/Aumentos/Reduções/Zeradas; a lista completa fica recolhida)
+  e "Carteira por setor" (barra Brasil × BDRs/exterior × confidencial; setores abrem ao tocar).
+- Gestora · Histórico: "Ano a ano" do fundo acompanhado (cota × Ibovespa, melhor e pior ação pela contribuição).
+- Toda tabela é ordenável por qualquer coluna (glue.js); no celular, onde as linhas viram cartões, há um seletor "Ordenar por".

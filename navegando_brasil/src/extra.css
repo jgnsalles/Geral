@@ -45,3 +45,34 @@
 .nb-attr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 36rem), 1fr)); gap: var(--cds-gap-lg); }
 .nb-attr .rx-table td:first-child, .nb-attr .rx-table td:nth-child(2) { white-space: normal; }
 .nb-ord { display: inline-flex; flex-wrap: wrap; gap: var(--cds-gap-xs); align-items: center; }
+
+/* ---- Navegando Brasil: o que mudou, carteira por setor, gestoras, ordenação ---- */
+.nb-mvk { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)); gap: 10px; }
+.nb-mvk > div { border-top: 3px solid var(--color-border-line); padding-top: 6px; }
+.nb-mvk .l { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--color-fg-muted); }
+.nb-mvk .v { font-size: 1.35rem; font-variant-numeric: tabular-nums; font-weight: 500; }
+.nb-hl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 10px; }
+.nb-hlb { display: flex; gap: 14px; align-items: center; padding: 12px 14px; border-radius: var(--cds-radius); background: var(--color-bg); cursor: pointer; }
+.nb-hlb .big { font-size: 1.8rem; font-variant-numeric: tabular-nums; min-width: 5rem; font-weight: 500; }
+.nb-hlb .t { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--color-fg-muted); }
+.nb-hlb b { display: block; font-weight: 600; }
+.nb-mv4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 12px; }
+.nb-mv4 h3 { display: flex; justify-content: space-between; margin: 0 0 4px; padding: 5px 8px; border-radius: 4px; color: #fff; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+.nb-mvi { display: grid; grid-template-columns: 1fr auto; gap: 0 8px; padding: 6px 2px; border-bottom: 1px solid var(--color-border-line); font-size: .88rem; cursor: pointer; }
+.nb-mvi .p { align-self: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.nb-det summary { cursor: pointer; color: #2f6fd0; font-size: .9rem; padding: 4px 0; }
+.nb-mc { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; padding: 1px 7px; border: 1px solid var(--color-border-line); border-radius: 999px; margin: 1px 2px; white-space: nowrap; }
+.nb-mc.pos { color: var(--color-good, #2e8b57); } .nb-mc.neg { color: var(--color-bad); }
+.nb-szbar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--color-border-line); }
+.nb-szbar i { display: block; height: 100%; }
+.nb-szlg { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .85rem; color: var(--color-fg-muted); align-items: center; }
+.nb-szlg i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.nb-szlg b { color: var(--color-fg); }
+#g-set tr.nb-grp { cursor: pointer; } #g-set tr.nb-grp td:first-child b::before { content: '▸ '; color: var(--color-fg-muted); } #g-set tr.nb-grp.open td:first-child b::before { content: '▾ '; }
+#g-set tr.nb-kid td { font-size: .86rem; color: var(--color-fg-muted); } #g-set tr.nb-kid td:first-child { padding-left: 30px; } #g-set tr.nb-kid { cursor: pointer; }
+#r6 td { white-space: normal; }
+th.nb-srt { cursor: pointer; user-select: none; } th.nb-srt::after { content: attr(data-arrow); }
+#nb-yr-card[hidden] { display: none !important; }
+.nb-sortsel { display: none; align-items: center; gap: 8px; font-size: .8rem; color: var(--color-fg-muted); }
+.nb-sortsel select { font: inherit; color: var(--color-fg); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: 2px 4px; }
+@media (max-width: 640px) { .nb-sortsel { display: flex; } }

@@ -53,6 +53,7 @@ out = H / 'dist'; (out / 'data').mkdir(parents=True, exist_ok=True)
 for n in ['fundos', 'serie_mensal', 'posicoes_1', 'posicoes_2', 'precos', 'acoes', 'ibov', 'encerrados']:
     shutil.copy(CSV / (n + '.csv'), out / 'data' / (n + '.csv'))
 shutil.copy(H / 'data/carteiras.json', out / 'data/carteiras.json')
+shutil.copy(H / 'data/setores.json', out / 'data/setores.json')
 # dados embutidos na página (gzip+base64): o app do iPhone não entrega os arquivos de data/ de forma confiável
 import gzip, base64
 emb = []

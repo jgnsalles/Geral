@@ -34,6 +34,7 @@
       <label>Carteira revelada mínima
         <select id="covmin"><option value="0.5">≥ 50%</option><option value="0.7" selected>≥ 70%</option><option value="0.9">≥ 90%</option></select>
       </label>
+      <label>Setor <select id="r-set"><option value="">todos</option></select></label>
     </div>
     <div class="rx-head"><h2 class="rx-sec" id="r-h" style="margin:0"></h2><p class="rx-note" id="r-sub"></p></div>
     <div class="rx-grid nb-hoje">
@@ -42,6 +43,10 @@
       <article class="rx-card"><div class="rx-cardhead"><h2>Maiores investimentos</h2><span class="rx-note">valor somado nas gestoras</span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r3"></table></div><button class="rx-btn" type="button" data-more="r3">Ver mais</button></article>
       <article class="rx-card"><div class="rx-cardhead"><h2>Novas posições</h2><span class="rx-note" id="r4s"></span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r4"></table></div><button class="rx-btn" type="button" data-more="r4">Ver mais</button></article>
     </div>
+    <div class="rx-grid nb-hoje">
+      <article class="rx-card"><div class="rx-cardhead"><h2><select id="r5t" aria-label="Melhores ou piores" class="nb-inline"><option value="b">Melhores</option><option value="p">Piores</option></select> ações em 12 meses</h2><span class="rx-note" id="r5s"></span></div><div class="rx-tablebox rx-sumbox"><table class="rx-table" id="r5"></table></div><button class="rx-btn" type="button" data-more="r5">Ver mais</button></article>
+    </div>
+    <article class="rx-card"><div class="rx-cardhead"><h2>Gestoras</h2><span class="rx-note" id="r6s"></span></div><div class="rx-tablebox"><table class="rx-table" id="r6"></table></div><button class="rx-btn" type="button" data-more="r6">Ver mais</button></article>
     <p class="rx-note">Toque numa ação para abrir a página da empresa, ou numa gestora para abrir a página dela.</p>
   </section>
 
@@ -66,15 +71,23 @@
       <div class="rx-controls"><label>Mês da carteira <select id="g-m"></select></label><span class="rx-note" id="g-rs"></span></div>
       <div class="rx-chips-b" id="g-chips"></div>
       <section class="rx-tiles" id="g-kpis"></section>
+      <article class="rx-card" id="g-chg-card">
+        <div class="rx-cardhead"><h2>O que mudou em <select id="g-k" aria-label="Período" class="nb-inline"><option value="3" selected>3 meses</option><option value="6">6 meses</option><option value="12">12 meses</option></select></h2><span class="rx-note" id="g-chg-s"></span></div>
+        <div class="nb-mvk" id="g-chg-k"></div><div class="nb-hl" id="g-chg-hl"></div><div class="nb-mv4" id="g-chg-4"></div>
+        <details class="nb-det"><summary>Todas as compras e vendas</summary>
+          <div class="rx-controls" style="margin:6px 0"><label>Ordem <select id="g-ord" aria-label="Ordenar" class="nb-inline"><option value="v" selected>maior valor</option><option value="r">mais recente</option><option value="b">compras primeiro</option></select></label></div>
+          <div class="rx-tablebox"><table class="rx-table" id="g-mov"></table></div></details>
+      </article>
       <article class="rx-card">
         <div class="rx-cardhead"><h2 id="g-tt">Posições</h2></div>
         <p class="rx-note">Peso = posição ÷ carteira de ações divulgada da casa (todos os fundos somados). Δ ações = variação na quantidade de ações, corrigida por desdobramentos. Toque numa linha para abrir a empresa.</p>
         <div class="rx-tablebox"><table class="rx-table" id="g-tbl"></table></div>
         <div id="g-outs"></div>
       </article>
-      <article class="rx-card">
-        <div class="rx-cardhead"><h2>Compras e vendas da casa</h2><span class="nb-ord"><select id="g-k" aria-label="Período" class="nb-inline"><option value="3">3 meses</option><option value="6" selected>6 meses</option><option value="12">12 meses</option></select> <select id="g-ord" aria-label="Ordenar" class="nb-inline"><option value="v" selected>maior valor</option><option value="r">mais recente</option><option value="b">compras primeiro</option></select></span></div>
-        <div class="rx-tablebox"><table class="rx-table" id="g-mov"></table></div>
+      <article class="rx-card" id="g-set-card">
+        <div class="rx-cardhead"><h2>Carteira por setor</h2><span class="rx-note" id="g-set-s"></span></div>
+        <div class="nb-szbar" id="g-set-bar"></div><div class="nb-szlg" id="g-set-lg"></div>
+        <div class="rx-tablebox"><table class="rx-table" id="g-set" data-own="1"></table></div>
       </article>
     </div>
 
@@ -92,6 +105,7 @@
     <p class="rx-note" id="g-fundos-none" hidden>Performance e attribution existem só para os 30 fundos acompanhados (lista na aba Comparar). Esta gestora não tem fundo entre eles.</p>
     <div id="g-fundos-body" class="rx-page">
 {{NAV:356-464}}
+<article class="rx-card" id="nb-yr-card"><div class="rx-cardhead"><h2>Ano a ano</h2><span class="rx-note" id="nb-yr-s"></span></div><div class="rx-tablebox"><table class="rx-table" id="nb-yr"></table></div></article>
     </div>
     </div>
     </div>
