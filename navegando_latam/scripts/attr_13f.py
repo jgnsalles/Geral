@@ -76,9 +76,11 @@ for cik, h in H.groupby('CIK'):
     if not pedida and (float(xb.tail(8).median()) < 0.2 or nlat < 5): continue
     tipo = 'latam' if float(sh.median()) >= 0.4 else 'global'
     latv0 = h.groupby('per').latv.first().reindex(pers); tot0 = h.groupby('per').tot.first().reindex(pers)
-    if tipo == 'global':   # gestora global/emergentes: só a parcela LatAm (pesos e retorno sobre ela)
-        h = h[h.CUSIP.str.upper().isin(LAT)].copy(); h['tot'] = h.latv
-        if h.per.nunique() < 3 or h.groupby('per').emp.nunique().median() < 3: continue
+    # análise só das posições LatAm ex-Brasil: pesos, retorno e attribution sobre essa parcela
+    h = h[h.CUSIP.str.upper().isin(LAT) & (h.CUSIP.str.upper().map(CPAIS) != 'BR')].copy()
+    h['tot'] = h.ACCESSION_NUMBER.map(h.groupby('ACCESSION_NUMBER').v.sum())
+    if True:
+        if h.per.nunique() < 3 or h.groupby('per').emp.nunique().median() < (1 if pedida else 3): continue
     tot = h.groupby('per').tot.first().reindex(pers); latv = latv0
     hv = h.groupby(['emp', 'per']).v.sum().unstack().reindex(columns=pers)
     w = hv.div(tot, axis=1)
@@ -101,10 +103,11 @@ for cik, h in H.groupby('CIK'):
         cv_ = [None if x is None else int(round(x * 1e6)) for x in C[e]]
         if max(abs(v or 0) for v in wv) < 10 and max(abs(v or 0) for v in cv_) < 100: continue
         p[e] = [wv, cv_]
+    mixp = mixp.drop(columns=['BR'], errors='ignore'); mixp = mixp.div(mixp.sum(axis=1), axis=0)
     mix = mixp.iloc[-1].sort_values(ascending=False) if len(mixp) else pd.Series(dtype=float)
     out['fundos'][cik] = {'nome': name, 'pais': h.FILINGMANAGER_STATEORCOUNTRY.iloc[-1], 'datas': pers, 'R': [None if x is None else round(x, 5) for x in R],
                           'REF': [None if x is None else round(x, 5) for x in REF], 'COV': COV, 'TOT': [round(x / 1e6, 1) for x in tot0],
-                          'LAT': [round(float(a / b), 3) for a, b in zip(latv0, tot0)], 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'tipo': tipo, 'p': p}
+                          'LAT': [round(float(a / b), 3) for a, b in zip(latv0, tot0)], 'XB': [None if pd.isna(x) else round(float(x), 3) for x in xb], 'mix': [[k, round(float(v), 3)] for k, v in mix.items() if v >= 0.03], 'tipo': tipo, 'p': p}
 usadas = {e for f in out['fundos'].values() for e in f['p']}
 out['emp'] = {e: v for e, v in out['emp'].items() if e in usadas}; out['ids'] = {e: v for e, v in out['ids'].items() if e in usadas}
 json.dump(out, open(W + '/f13_attr.json', 'w'), ensure_ascii=False, separators=(',', ':'))
