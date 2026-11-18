@@ -438,3 +438,9 @@ receita → EPS: ordem +0,08, R² 1,3%; alavancagem no mesmo período: EPS = 7,2
 Carteiras (S&P 15,6%): Top 20 registrada 20,5%, V1a 22,5% (janelas 3a 99%; sem NVIDIA 21.6%), V2 21,1%, V1b 18,6%;
 ROIC alto descontado registrada 20,4%, V1a 16,7%, V2 17,1%, V1b 19,1%.
 Conclusão: a receita no valuation ajudou a Top 20 e piorou a descontada; ganho não robusto (6 variantes). O filtro de crescimento do EPS ≥ 15% ajuda a carteira mesmo sem prever o lucro. Nada muda na regra. Exploratória.
+**Resultado (2026-11-18).** Período 2016-06 a 2026-09 (S&P 500 15,3% a.a.). Premissa: o número de gestores tem correlação de ordem 0,05 com o crescimento do EPS em 1 ano
+(t 4,0) e 0,08 em 3 anos (t 6,7; positiva em 100% dos trimestres); com o re-rating, −0,01 (zero). Decomposição em 3 anos: ≥ 5 gestores EPS 10,1% a.a., re-rating −1,0%;
+< 3 gestores EPS 5,6%, re-rating +0,3%. Carteiras (raiz com teto; peso igual): ROIC alto descontado original 22,4% (21,1%); com ≥ 3 gestores 23,7% (22,5%); ≥ 5 gestores
+23,2% (22,7%); Top 20 original 21,9% (21,2%); Top 20 ≥ 3 gestores 22,2%; ≥ 5 gestores 23,2% (22,3%); as 20 mais detidas 20,4% (EPS +19,7% a.a., re-rating −5,2%).
+Diferença trimestral contra a original: +1,2 p.p. a.a. (t 1,4) para ≥ 3; +0,8 (t 0,5) para ≥ 5; Top 20 ≥ 5 +1,1 (t 1,3). Sobreposição com a original 88% (≥ 3) e 78% (≥ 5).
+Sem NVIDIA: ≥ 3 gestores 23,6% contra 22,2% da original. Conclusão: os gestores preveem o lucro, não o re-rating; como filtro, ganho pequeno e não significativo. Exploratória.
