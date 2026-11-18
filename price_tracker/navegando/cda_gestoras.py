@@ -41,7 +41,7 @@ def gestor_map():
     reg.columns = ['CNPJ_FUNDO', 'CPF_CNPJ_GESTOR', 'GESTOR']
     names = pd.concat([h[['CPF_CNPJ_GESTOR', 'GESTOR']], cad[['CPF_CNPJ_GESTOR', 'GESTOR']], reg[['CPF_CNPJ_GESTOR', 'GESTOR']]]).dropna().drop_duplicates('CPF_CNPJ_GESTOR', keep='last')
     names.to_pickle(os.path.join(OUT, 'gestor_nomes.pkl'))
-    return h, cad.set_index('CNPJ_FUNDO').CPF_CNPJ_GESTOR, reg.set_index('CNPJ_FUNDO').CPF_CNPJ_GESTOR
+    return h, cad.drop_duplicates('CNPJ_FUNDO', keep='last').set_index('CNPJ_FUNDO').CPF_CNPJ_GESTOR, reg.drop_duplicates('CNPJ_FUNDO').set_index('CNPJ_FUNDO').CPF_CNPJ_GESTOR
 
 
 H, CAD, REG = gestor_map()
