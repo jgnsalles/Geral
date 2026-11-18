@@ -37,6 +37,8 @@ el['rk'] = el.groupby('ym').tc.rank(ascending=False, method='first')
 top = el[el.rk <= N_TOP]
 inside = top.groupby('k').ym.apply(lambda s: sorted(mi[m] for m in s)).to_dict()
 ids = {g['id'] for g in G}
+act = T[(T.t + T.c) > 0].groupby('k').ym.max()
+CUT = '2026-01'   # sem carteira de ações desde antes disto = encerrada (os últimos meses têm sigilo, por isso a folga)
 n_orig_top, stats = 0, []
 for g in G:
     ms = inside.get(g['id'], [])
@@ -48,6 +50,11 @@ for g in G:
         if s0 is None: s0 = a
         if b != a + 1: rng.append([s0, a]); s0 = None
     g['tp'] = rng
+    lm = act.get(g['id'])
+    if g.get('rb') is None and lm is None:
+        lm = max([act.get(root8(x[1])) for x in g['mb'] if act.get(root8(x[1]))] or [None])
+    g['dead'] = int(lm[:4]) if lm and lm < CUT else None
+    g['fora'] = int(M[min(rng[-1][1] + 1, len(M) - 1)][:4]) if (rng and not g['dead'] and rng[-1][1] < len(M) - 1) else (None if rng else -1)
     if not g.get('rb') and ms: n_orig_top += 1
 per = []
 for m in M:
@@ -60,5 +67,6 @@ d['sem_vies'] = dict(regra=f'{N_TOP} maiores gestoras ativas de ações de cada 
                      gestoras_da_regra_sem_pagina=len(missing))
 json.dump(d, open(OUT, 'w'), ensure_ascii=False, separators=(',', ':'))
 p = pd.DataFrame(per); p.to_csv(os.path.join(os.path.dirname(__file__), 'universo_regra_br.csv'), index=False)
+print('encerradas (dead):', sum(1 for g in G if g['dead']), '| vivas fora do top 100 hoje:', sum(1 for g in G if g['fora'] and g['fora'] > 0))
 print('originais que alguma vez entram na regra:', n_orig_top, 'de', sum(1 for g in G if not g.get('rb')), '| gestoras da regra sem página:', len(missing))
 print(p.iloc[::24].to_string()); print(p.tail(2).to_string())

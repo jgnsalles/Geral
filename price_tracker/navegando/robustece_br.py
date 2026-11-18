@@ -39,7 +39,8 @@ hx = hold.groupby(['r8', 'ym', 'key']).v.sum().groupby(['r8', 'ym']).max().renam
 T = T.merge(hx, left_on=['r8', 'ym'], right_index=True, how='left')
 T['conc'] = (T.vmax / T.t) > 0.5
 T['orig'] = T.r8.isin(exist)
-el = T[(~T.bank & ~T.bad & ~T.conc) | T.orig].copy(); el['tc'] = el.t + el.c
+PURA = os.environ.get('REGRA_PURA') == '1'   # sem_vies_br: a régua vale também para as originais
+el = T[(~T.bank & ~T.bad & ~T.conc) | (T.orig & ~PURA)].copy(); el['tc'] = el.t + el.c
 el['rk'] = el.groupby('ym').tc.rank(ascending=False, method='first')
 top = el[el.rk <= N_TOP]
 add_months = top[~top.orig].groupby('r8').ym.apply(set).to_dict()
