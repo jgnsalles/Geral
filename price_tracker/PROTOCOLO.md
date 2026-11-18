@@ -401,3 +401,20 @@ e re-rating +18,1% a.a. (desconto médio na compra 1,01 em log); as empresas est
 Previsão do crescimento (3 anos): a mediana da própria empresa tem correlação de ordem −0,09 com o realizado; uma constante de 8% erra menos (10% contra 16%).
 A régua de setor estável (|zGrowth|) não separou previsibilidade e a previsibilidade por grupo quase não persiste (correlação 0,13 entre 2012–18 e 2019–26).
 Conclusão: confirmada a tese "ROIC alto descontado" (igual à Top 20, mais simples); rejeitada a de setores/empresas estáveis. Exploratória.
+
+
+## 2026-11-18 — Pré-registro: universo dos gestores (13F do "Navegando US"), antes de rodar qualquer carteira
+Hipótese do usuário: quem põe dinheiro de verdade sabe algo sobre o crescimento do lucro. As ações detidas por vários gestores ativos formariam um universo com
+mais crescimento do EPS. Dentro dele, o re-rating via ROIC pegaria as que crescem e reprecificam.
+**Dados**: 13F dos 148 gestores do artefato "Navegando US" (94 long-only, 54 hedge funds e ativistas; trimestres de 2016-03 a 2026-09; posições ≥ 0,2% da carteira).
+**Contagem**: n_gest(ação, trimestre) = número de gestores com posição > 0. Para não olhar o futuro, a carteira montada no fim do trimestre t usa os 13F do
+trimestre t−1 (arquivados até ~45 dias depois). Ligação com o nosso universo pelo ticker do cadastro do artefato; duplas classes somadas pela empresa.
+**Período**: rebalanceamentos de 2016-06-30 a 2026-09-30; todas as carteiras e os comparativos são medidos nesse mesmo período (rebaseados).
+**Premissa (teste 1)**: no S&P 500 point-in-time, comparar as ações com n_gest ≥ 3 e ≥ 5 com as demais: correlação de ordem por trimestre de n_gest
+com o crescimento do EPS 1 e 3 anos à frente, com o re-rating e com o excesso sobre o S&P; diferença de medianas; decomposição EPS / re-rating / dividendos.
+**Carteiras (teste 2)**, trimestrais, raiz do valor de mercado com teto de 10% (peso igual como controle), sem cíclicos e vestuário:
+(i) ROIC alto descontado (ROIC ≥ 12%, top 20 pelo desconto ao P/E justo) só entre n_gest ≥ 3 e só entre n_gest ≥ 5;
+(ii) Top 20 (regra congelada) só entre n_gest ≥ 3 e ≥ 5; (iii) controle: as 20 mais detidas (n_gest; desempate pelo valor de mercado), sem filtro de qualidade.
+Comparação: Top 20 e ROIC alto descontado originais e os 9 comparativos, no mesmo período; janelas de 3/5/10 anos, pior janela, pior queda, volatilidade,
+decomposição e cenário sem NVIDIA para a melhor. Ressalva registrada antes: a lista de gestores é a de hoje (viés de sobrevivência dos gestores).
+Status: exploratória.
