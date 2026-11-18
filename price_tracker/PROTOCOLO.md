@@ -459,3 +459,11 @@ uma linha por empresa (classes duplas). Comparação: as mesmas regras só no S&
 janelas de 3/5/10 anos, pior janela, pior queda, volatilidade, decomposição EPS/re-rating/dividendos, % de ações fora do S&P, giro e cenário sem NVIDIA para a melhor.
 Ressalvas registradas antes: lista de gestores de hoje (viés de sobrevivência dos gestores); o painel de médias e pequenas cobre empresas ≥ US$ 1 bi com dados da SEC.
 Status: exploratória.
+
+**Resultado (2026-11-18, ramo C).** Período 2016-06 a 2026-09 (S&P 500 15,3% a.a.; IWM 10,4%). Universo por trimestre (≥ US$ 2 bi, com dado): ≥ 1 gestor 942 ações (57% fora do
+S&P), ≥ 3: 716 (47%), ≥ 5: 522 (36%). Cobertura: 63% do valor das posições dos gestores cai nos painéis; 10% sem ticker; 27% com ticker fora dos painéis (ADRs/estrangeiras,
+ETFs; BRK-B e V não estão no painel do S&P — lacuna de dados que afeta todas as carteiras). Carteiras (raiz com teto; peso igual): Top 20 amplo ≥ 1: 21,8% (20,3%); ≥ 3: 24,6% (22,7%);
+≥ 5: 25,2% (24,7%; janelas 3a 100%; pior queda −31%; 38% das ações fora do S&P; sem NVIDIA 24,5%); Top 20 S&P original 21,9%. Diferença trimestral da Top 20 amplo ≥ 5
+contra a original: +3,1 p.p. a.a., t 2,56, melhor em 71% dos trimestres (com 6 variantes, o limite corrigido é t ≈ 2,6: no limite). ROIC alto descontado amplo ≥ 1/3/5:
+24,0%/23,0%/24,5% contra 22,4% no S&P (t 0,6/0,2/0,9; sem padrão). Conclusão: o universo dos gestores ajuda a Top 20 (que filtra crescimento) e não o desconto puro.
+Exploratória; a Top 20 ampla com ≥ 5 gestores é candidata a acompanhamento ao lado da regra antes de qualquer troca.
