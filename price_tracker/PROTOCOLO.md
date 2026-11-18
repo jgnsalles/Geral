@@ -444,3 +444,18 @@ Conclusão: a receita no valuation ajudou a Top 20 e piorou a descontada; ganho 
 23,2% (22,7%); Top 20 original 21,9% (21,2%); Top 20 ≥ 3 gestores 22,2%; ≥ 5 gestores 23,2% (22,3%); as 20 mais detidas 20,4% (EPS +19,7% a.a., re-rating −5,2%).
 Diferença trimestral contra a original: +1,2 p.p. a.a. (t 1,4) para ≥ 3; +0,8 (t 0,5) para ≥ 5; Top 20 ≥ 5 +1,1 (t 1,3). Sobreposição com a original 88% (≥ 3) e 78% (≥ 5).
 Sem NVIDIA: ≥ 3 gestores 23,6% contra 22,2% da original. Conclusão: os gestores preveem o lucro, não o re-rating; como filtro, ganho pequeno e não significativo. Exploratória.
+
+
+## 2026-11-18 — Pré-registro: gestores como universo amplo (ramo C do pedido do usuário; antes de rodar)
+Pedido: usar os gestores do "Navegando US" como o filtro ANTERIOR, num universo maior que o S&P 500, e por cima os nossos filtros e a seleção pelo desconto ao P/E justo.
+Universo em cada data trimestral (2016-06 a 2026-09): ações detidas por ≥ N gestores no 13F do trimestre anterior (N = 1, 3, 5; posições ≥ 0,2% da carteira, como no
+artefato), entre as que têm dado fundamentalista point-in-time: painel do S&P 500 (calc2.sp_data) + painel de médias e pequenas (calc2.ms_data; ROIC triangulado; em datas em
+que a ação está nos dois, vale a linha do S&P). Piso de liquidez: valor de mercado ≥ US$ 2 bi na data. O g do P/E justo (7%→3,5%; financeiras 6,5%→3%), o P/E justo e o
+retorno esperado são recalculados no universo combinado em cada data (mesma fórmula registrada; ROIC limitado a 100% no P/E justo).
+Filtros iguais aos registrados: ROIC ≥ 12% (financeiras e seguradoras de saúde com ROE), sem cíclicos e vestuário, P/L > 0.
+Carteiras: (i) "ROIC alto descontado": as 20 de maior log(P/E justo ÷ P/L) (desempate pelo ROIC); (ii) Top 20: além disso crescimento ≥ 15%, P/L ≥ 4, todas as métricas
+da classe presentes, ordem pelo retorno esperado. Cada uma para N = 1, 3 e 5. Peso pela raiz do valor de mercado com teto de 10% (peso igual como controle); trimestral;
+uma linha por empresa (classes duplas). Comparação: as mesmas regras só no S&P 500 (com e sem gestores, como no ramo B), os 9 comparativos e o IWM, no mesmo período;
+janelas de 3/5/10 anos, pior janela, pior queda, volatilidade, decomposição EPS/re-rating/dividendos, % de ações fora do S&P, giro e cenário sem NVIDIA para a melhor.
+Ressalvas registradas antes: lista de gestores de hoje (viés de sobrevivência dos gestores); o painel de médias e pequenas cobre empresas ≥ US$ 1 bi com dados da SEC.
+Status: exploratória.
