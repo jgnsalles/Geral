@@ -1,0 +1,130 @@
+<title>Gestores sem viés</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: reportagem de página dupla do caderno de mercados — manchete, tese, um gráfico por argumento com título-conclusão, nota de fonte e o "e daí" logo abaixo */
+:root{
+  --paper:#fff1e5; --paper2:#f2dfce; --ink:#33302e; --ink2:#66605c; --rule:#ccc1b7; --claret:#990f3d; --oxford:#0f5499; --teal:#0d7680; --mandarin:#e06b1f; --velvet:#593380; --slate:#807973; --black:#262a33; --jade:#00994d; --wheat:#a87b00;
+  --pos:#0d7680; --neg:#990f3d;
+  --f-head:"Source Serif 4",Georgia,serif; --f-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif; --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#262a33; --paper2:#30343e; --ink:#f2dfce; --ink2:#c2b5a8; --rule:#4a4e58; --claret:#ff6b8f; --oxford:#6aa7e8; --teal:#3cc4c9; --mandarin:#ff9a55; --velvet:#b48ae6; --slate:#a59c94; --black:#fff1e5; --jade:#4fd18a; --wheat:#e0b84a;
+  --pos:#3cc4c9; --neg:#ff6b8f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#262a33; --paper2:#30343e; --ink:#f2dfce; --ink2:#c2b5a8; --rule:#4a4e58; --claret:#ff6b8f; --oxford:#6aa7e8; --teal:#3cc4c9; --mandarin:#ff9a55; --velvet:#b48ae6; --slate:#a59c94; --black:#fff1e5; --jade:#4fd18a; --wheat:#e0b84a;
+  --pos:#3cc4c9; --neg:#ff6b8f; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.page{max-width:1080px;margin:0 auto;padding-block:20px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mast{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--ink);padding-bottom:6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;gap:12px;flex-wrap:wrap}
+.mast span:last-child{color:var(--ink2);font-weight:600}
+.kicker{color:var(--claret);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-top:26px}
+h1{font-family:var(--f-head);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.05;margin:6px 0 10px;letter-spacing:-.01em;text-wrap:balance;max-width:20ch}
+.deck{font-family:var(--f-head);font-size:clamp(19px,2.2vw,23px);line-height:1.35;color:var(--ink2);max-width:46ch;margin:0}
+.byline{font-size:13px;color:var(--ink2);margin-top:14px;border-top:1px solid var(--rule);padding-top:8px}
+.warn{margin:22px 0 0;font-size:14.5px;border-left:3px solid var(--claret);padding:6px 12px;background:var(--paper2)}
+.warn b{color:var(--claret)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;margin-top:28px}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+.prose p{max-width:66ch;margin:0 0 14px}
+.prose p:first-child::first-letter{font-family:var(--f-head);font-size:3.4em;float:left;line-height:.85;padding:4px 8px 0 0;font-weight:700;color:var(--claret)}
+aside.box{border-top:4px solid var(--ink);padding-top:10px;font-size:15px;align-self:start}
+aside.box h3{font-family:var(--f-head);font-size:19px;margin:0 0 8px}
+aside.box ol{margin:0;padding-left:20px}
+aside.box li{margin:0 0 9px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:26px 0 6px}
+.big div{padding:12px 14px 12px 0;border-right:1px solid var(--rule)}
+.big div:last-child{border-right:0}
+.big b{display:block;font-family:var(--f-head);font-size:34px;line-height:1;font-weight:700;color:var(--oxford)}
+.big span{font-size:13.5px;color:var(--ink2)}
+figure{margin:44px 0 0;border-top:1px solid var(--ink);padding-top:10px}
+figcaption.t{font-family:var(--f-head);font-weight:700;font-size:24px;line-height:1.2;max-width:34ch;text-wrap:balance}
+figcaption.s{font-size:15px;color:var(--ink2);margin:4px 0 8px;max-width:70ch}
+.src{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.sowhat{margin-top:12px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;font-size:16px;max-width:820px}
+.sowhat b{font-family:var(--f-head);color:var(--claret);font-size:15px;text-transform:uppercase;letter-spacing:.05em}
+@media (max-width:560px){.sowhat{grid-template-columns:1fr;gap:2px}}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--ink);font-family:var(--f-body)}
+svg .ax text{fill:var(--ink2);font-size:12px}
+svg .ax line,svg .grid line{stroke:var(--rule)}
+svg .ax path{display:none}
+svg .num{font-family:var(--f-num);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;margin:4px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:3px;background:var(--c);display:inline-block}
+.quote{font-family:var(--f-head);font-size:22px;line-height:1.35;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 0;margin:40px 0 0;max-width:40ch}
+.quote cite{display:block;font-family:var(--f-body);font-style:normal;font-size:14px;color:var(--ink2);margin-top:6px}
+.verdict{margin-top:44px;border-top:4px solid var(--claret);padding-top:12px}
+.verdict h2{font-family:var(--f-head);font-size:30px;margin:0 0 10px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.vgrid div{border-top:1px solid var(--rule);padding-top:8px}
+.vgrid h4{font-family:var(--f-head);font-size:18px;margin:0 0 4px}
+.vgrid p{margin:0;font-size:15.5px}
+.tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--c)}
+.tablebox{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th{font-weight:600;color:var(--ink2);font-size:12.5px;white-space:normal;vertical-align:bottom}
+th.l,td.l{text-align:left}
+td.n{font-family:var(--f-num);font-size:13px}
+.method{font-size:14px;color:var(--ink2);max-width:80ch}
+
+.heats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:18px}
+.heats h4,.attr h4{font-family:var(--f-head);font-size:16px;margin:4px 0 6px}
+.heat td{text-align:center}
+td.best{color:var(--pos);font-weight:700}
+td.worst{color:var(--neg)}
+.score td.mark{font-size:15px;letter-spacing:1px}
+.scoreh{font-family:var(--f-head);font-size:20px;margin:26px 0 2px}
+.note{font-size:14px;color:var(--ink2);margin:0}
+.attr{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.attr>div{border-top:2px solid var(--c);padding-top:6px;min-width:0}
+.attr table td{font-size:13.5px}
+.today{display:grid;gap:10px}
+details{border-top:1px solid var(--rule);padding:8px 0}
+summary{cursor:pointer;font-family:var(--f-head);font-weight:700;font-size:17px}
+summary:focus-visible{outline:2px solid var(--oxford);outline-offset:2px}
+.hold{columns:3;column-gap:24px;font-size:14px;margin-top:6px}
+@media (max-width:800px){.hold{columns:1}}
+.hold div{break-inside:avoid;display:flex;justify-content:space-between;gap:10px;border-bottom:1px dotted var(--rule);padding:2px 0}
+.hold b{font-family:var(--f-num);font-weight:500}
+
+h2.chap{font-family:var(--f-head);font-size:clamp(26px,3.6vw,38px);line-height:1.1;margin:8px 0 10px;text-wrap:balance;max-width:26ch}
+.upd{margin-top:18px;border-left:3px solid var(--oxford);padding:6px 12px;background:var(--paper2);font-size:15.5px;max-width:80ch}
+</style><style>td.l{white-space:normal}@media print{table{font-size:9.5px}th,td{white-space:normal;padding:3px 4px}.page{max-width:none}}</style>
+<div class="page">
+<div class="mast"><span>Price Tracker · Mercados</span><span>2016-06 a 2026-09</span></div>
+<div class="kicker">Teste de robustez</div>
+<h1>Sem o viés da lista de hoje, o filtro dos gestores não soma nada</h1>
+<p class="deck">Com os 250 maiores gestores ativos de cada trimestre, inclusive os que fecharam, a Top 20 no universo dos gestores rende o mesmo que a Top 20 original. O ganho do teste anterior vinha de olhar só quem sobreviveu.</p>
+<div class="byline">Todos os 13F da SEC (Form 13F Data Sets), 2016–2026 · S&amp;P 500 + médias e pequenas acima de US$ 2 bi · em dólares</div>
+<p class="warn"><b>⚠️ O ROIC pode estar errado.</b> Ele define o filtro (ROIC ≥ 12%) e o P/E justo. Backtest, sem custos; não é recomendação.</p>
+<div class="big">
+ <div><b>21,8%</b><span>Top 20 nos 250 gestores (≥ 5), sem viés</span></div>
+ <div><b>22,0%</b><span>Top 20 original (só S&amp;P), mesmo período</span></div>
+ <div><b>23,1%</b><span>Top 20 com a lista do Navegando (com viés)</span></div>
+ <div><b>1,2 p.p.</b><span>do ganho da lista de hoje era viés de sobrevivência</span></div>
+</div>
+<h2 class="chap" style="margin-top:40px">A regra dos gestores</h2>
+<p class="method">Em cada trimestre, todos os declarantes de 13F (formulário original, o último por gestor e período). Gestor ativo: 20 a 400 posições em ações, as 10 maiores somando ≥ 25%, fora indexadores, bancos, corretoras, seguradoras, fundos de pensão, soberanos, fundações e empresas que declaram a própria tesouraria (lista por nome, ajustada antes de olhar retornos). Ficam os 250 maiores pelo valor da carteira. Número de gestores por ação = quantos deles a detêm com peso ≥ 0,2%, contado por emissor (CUSIP de 6 dígitos). Cada carteira usa o 13F do trimestre anterior. Em média, 74 dos 250 de cada trimestre estão na lista do Navegando US; os outros 176 são os que a lista de hoje não vê, incluindo os que fecharam.</p>
+<figure><figcaption class="t">Cobertura: 73% do dinheiro dos gestores tem dado; o que falta é quase todo estrangeiro ou fundo</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Universo ≥ 5 gestores (média por trimestre)</th><th>Valor</th></tr></thead><tbody>
+<tr><td class="l">Ações por trimestre (com ≥ US$ 2 bi e dado)</td><td class="n">472 (28% fora do S&amp;P)</td></tr>
+<tr><td class="l">Com dado no modelo (S&amp;P, médias e pequenas, Visa e Berkshire)</td><td class="n">72%</td></tr>
+<tr><td class="l">ADRs</td><td class="n">5%</td></tr>
+<tr><td class="l">Estrangeiras sem ADR, ETFs e empresas fechadas (ex.: SPCX (2,5%), BAM (1,7%), INIO (0,4%), SPY (0,4%), ASML (0,4%), SPOT (0,4%), AZN (0,4%), SHOP (0,3%), NU (0,2%), ASND (0,2%))</td><td class="n">14%</td></tr>
+<tr><td class="l">Deslistadas depois (sem preço hoje)</td><td class="n">4%</td></tr>
+<tr><td class="l">Sem ticker</td><td class="n">5%</td></tr></tbody></table></div>
+<div class="sowhat"><b>Limites</b><span>Se as ações americanas do universo sem dado tivessem entrado na carteira na proporção delas, o retorno da Top 20 ≥ 5 ficaria entre 17,7% (as que somem valendo zero) e 20,1% (rendendo como o S&amp;P); no cenário neutro, 19,4%.</span></div></figure>
+<figure><figcaption class="t">As carteiras: o ganho some quando a lista de gestores deixa de ser a de hoje</figcaption>
+<figcaption class="s">Raiz do valor de mercado com teto de 10% (OoL com peso igual), trimestral. Janelas = % das janelas móveis em que a carteira bate o S&amp;P 500; pior janela de 3 anos em p.p. ao ano.</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Carteira</th><th>Retorno anual</th><th>Peso igual</th><th>Janelas 3a</th><th>5a</th><th>10a</th><th>Pior janela 3a</th><th>Pior queda</th><th>Volatilidade</th><th>Fora do S&amp;P</th><th>Giro trim.</th></tr></thead><tbody><tr><td class="l">Top 20 · S&P (original)</td><td class="n">22,0%</td><td class="n">21,3%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">2,4%</td><td class="n">-34%</td><td class="n">22%</td><td class="n">0%</td><td class="n">20%</td></tr><tr><td class="l">Top 20 · lista do Navegando, ≥ 5 (ramo C, com viés)</td><td class="n">23,1%</td><td class="n">23,8%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">1,3%</td><td class="n">-31%</td><td class="n">22%</td><td class="n">37%</td><td class="n">26%</td></tr><tr><td class="l">Top 20 · 250 gestores, ≥ 3</td><td class="n">22,8%</td><td class="n">21,4%</td><td class="n">99%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-0,0%</td><td class="n">-31%</td><td class="n">22%</td><td class="n">46%</td><td class="n">28%</td></tr><tr><td class="l">Top 20 · 250 gestores, ≥ 5</td><td class="n">21,8%</td><td class="n">20,9%</td><td class="n">99%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-0,3%</td><td class="n">-34%</td><td class="n">22%</td><td class="n">28%</td><td class="n">29%</td></tr><tr><td class="l">Top 20 · 250 gestores, ≥ 10</td><td class="n">22,2%</td><td class="n">20,5%</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">0,3%</td><td class="n">-35%</td><td class="n">21%</td><td class="n">6%</td><td class="n">24%</td></tr><tr><td class="l">ROIC alto descontado · S&P (original)</td><td class="n">22,4%</td><td class="n">21,1%</td><td class="n">99%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-0,3%</td><td class="n">-37%</td><td class="n">22%</td><td class="n">0%</td><td class="n">25%</td></tr><tr><td class="l">ROIC alto descontado · 250 gestores, ≥ 3</td><td class="n">22,6%</td><td class="n">21,1%</td><td class="n">98%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-0,1%</td><td class="n">-35%</td><td class="n">23%</td><td class="n">41%</td><td class="n">32%</td></tr><tr><td class="l">ROIC alto descontado · 250 gestores, ≥ 5</td><td class="n">21,4%</td><td class="n">19,7%</td><td class="n">93%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-1,2%</td><td class="n">-37%</td><td class="n">22%</td><td class="n">23%</td><td class="n">35%</td></tr><tr><td class="l">ROIC alto descontado · 250 gestores, ≥ 10</td><td class="n">20,9%</td><td class="n">20,6%</td><td class="n">91%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-1,5%</td><td class="n">-34%</td><td class="n">21%</td><td class="n">4%</td><td class="n">30%</td></tr><tr><td class="l">OoL · S&P (original, peso igual)</td><td class="n">17,8%</td><td class="n">—</td><td class="n">89%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-2,3%</td><td class="n">-37%</td><td class="n">21%</td><td class="n">0%</td><td class="n">13%</td></tr><tr><td class="l">OoL · lista do Navegando, ≥ 5 (ramo C, com viés; peso igual)</td><td class="n">21,5%</td><td class="n">—</td><td class="n">100%</td><td class="n">100%</td><td class="n">100%</td><td class="n">0,9%</td><td class="n">-37%</td><td class="n">21%</td><td class="n">34%</td><td class="n">17%</td></tr><tr><td class="l">OoL · 250 gestores, ≥ 5 (peso igual)</td><td class="n">18,6%</td><td class="n">—</td><td class="n">90%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-2,0%</td><td class="n">-36%</td><td class="n">21%</td><td class="n">25%</td><td class="n">20%</td></tr><tr><td colspan="11" class="l" style="color:var(--ink2);font-size:12px">Comparativos obrigatórios (mesmo período)</td></tr><tr><td class="l">S&P 500</td><td class="n">15,3%</td><td class="n">—</td><td class="n">0%</td><td class="n">0%</td><td class="n">0%</td><td class="n">0,0%</td><td class="n">-34%</td><td class="n">18%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">S&P 500 equal weight</td><td class="n">11,6%</td><td class="n">—</td><td class="n">14%</td><td class="n">3%</td><td class="n">0%</td><td class="n">-10,3%</td><td class="n">-39%</td><td class="n">18%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">OoL antigo</td><td class="n">18,1%</td><td class="n">—</td><td class="n">86%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-3,3%</td><td class="n">-34%</td><td class="n">22%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">GCGR antigo</td><td class="n">13,3%</td><td class="n">—</td><td class="n">32%</td><td class="n">16%</td><td class="n">0%</td><td class="n">-8,1%</td><td class="n">-41%</td><td class="n">19%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">OoL novo</td><td class="n">18,0%</td><td class="n">—</td><td class="n">90%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-1,6%</td><td class="n">-37%</td><td class="n">21%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">GCGR novo</td><td class="n">17,0%</td><td class="n">—</td><td class="n">83%</td><td class="n">91%</td><td class="n">100%</td><td class="n">-6,0%</td><td class="n">-30%</td><td class="n">19%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">OoL High ROIC (novo)</td><td class="n">22,3%</td><td class="n">—</td><td class="n">93%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-1,3%</td><td class="n">-36%</td><td class="n">23%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">OoL High Growth (novo)</td><td class="n">21,6%</td><td class="n">—</td><td class="n">88%</td><td class="n">100%</td><td class="n">100%</td><td class="n">-3,9%</td><td class="n">-34%</td><td class="n">24%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">Cyclicals</td><td class="n">11,0%</td><td class="n">—</td><td class="n">7%</td><td class="n">0%</td><td class="n">0%</td><td class="n">-18,5%</td><td class="n">-48%</td><td class="n">24%</td><td class="n">—</td><td class="n">—</td></tr><tr><td class="l">IWM (Russell 2000)</td><td class="n">10,4%</td><td class="n">—</td><td class="n">1%</td><td class="n">0%</td><td class="n">0%</td><td class="n">-12,8%</td><td class="n">-41%</td><td class="n">23%</td><td class="n">—</td><td class="n">—</td></tr></tbody></table></div>
+<div class="sowhat"><b>E daí</b><span>Refeito com a mesma contagem por emissor, o teste com a lista de hoje dá 23,1% na Top 20 e 21,5% na OoL. Trocando a lista pelos 250 maiores de cada trimestre, os números voltam ao nível das carteiras originais: 21,8% contra 22,0% na Top 20 (diferença de -0,0% ao ano, t = -0.01), 18,6% contra 17,8% na OoL. Depois de 15% de imposto sobre o ganho realizado: 18,9% contra 19,1%. Sem NVIDIA: 21,3%.</span></div></figure>
+<figure><figcaption class="t">De onde veio o retorno (3 anos, anualizado)</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Carteira</th><th>Lucro (EPS)</th><th>Re-rating</th><th>Dividendos</th><th>Total</th></tr></thead><tbody><tr><td class="l">Top 20 · S&P (original)</td><td class="n">6,6%</td><td class="n">8,8%</td><td class="n">1,4%</td><td class="n">17,5%</td></tr><tr><td class="l">Top 20 · lista do Navegando, ≥ 5 (ramo C, com viés)</td><td class="n">4,3%</td><td class="n">11,4%</td><td class="n">1,3%</td><td class="n">17,7%</td></tr><tr><td class="l">Top 20 · 250 gestores, ≥ 5</td><td class="n">4,7%</td><td class="n">10,0%</td><td class="n">1,4%</td><td class="n">16,8%</td></tr><tr><td class="l">ROIC alto descontado · 250 gestores, ≥ 5</td><td class="n">-4,3%</td><td class="n">17,6%</td><td class="n">1,9%</td><td class="n">14,6%</td></tr><tr><td class="l">OoL · 250 gestores, ≥ 5 (peso igual)</td><td class="n">6,1%</td><td class="n">5,3%</td><td class="n">1,3%</td><td class="n">13,2%</td></tr></tbody></table></div></figure>
+<section class="verdict"><h2>O veredito</h2><p>A regra "Top 20 no universo dos gestores" não passou no critério registrado: sem o viés, ela não ficou acima da Top 20 original. A lista de hoje do Navegando US escolhe, sem querer, gestores que deram certo, e as ações deles também deram. Fica a Top 20 original como regra; o universo dos gestores pode servir como informação na hora de olhar uma ação, não como filtro.</p></section>
+<figure><figcaption class="t">Hoje: a Top 20 nos 250 gestores (≥ 5)</figcaption><figcaption class="s">Composição em 2026-09-30; gestores = quantos dos 250 detinham no 13F de junho de 2026. Lista completa do universo em universo_gestores_atual.csv.</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Ação</th><th class="l">Empresa</th><th>Peso</th><th>Gestores</th><th>No S&amp;P?</th></tr></thead><tbody><tr><td class="l">JNJ</td><td class="l">Johnson & Johnson</td><td class="n">10,0%</td><td class="n">55</td><td class="n">sim</td></tr><tr><td class="l">NVDA</td><td class="l">NVIDIA Corporation</td><td class="n">10,0%</td><td class="n">115</td><td class="n">sim</td></tr><tr><td class="l">STX</td><td class="l">Seagate Technology</td><td class="n">7,9%</td><td class="n">26</td><td class="n">sim</td></tr><tr><td class="l">BKNG</td><td class="l">Booking Holdings Inc.</td><td class="n">7,9%</td><td class="n">30</td><td class="n">sim</td></tr><tr><td class="l">WDC</td><td class="l">Western Digital Corporation</td><td class="n">7,2%</td><td class="n">20</td><td class="n">sim</td></tr><tr><td class="l">PGR</td><td class="l">Progressive Corporation</td><td class="n">6,0%</td><td class="n">24</td><td class="n">sim</td></tr><tr><td class="l">MO</td><td class="l">Altria</td><td class="n">5,8%</td><td class="n">5</td><td class="n">sim</td></tr><tr><td class="l">APP</td><td class="l">AppLovin Corporation</td><td class="n">5,4%</td><td class="n">23</td><td class="n">sim</td></tr><tr><td class="l">MELI</td><td class="l">Mercadolibre Inc</td><td class="n">5,1%</td><td class="n">33</td><td class="n">não</td></tr><tr><td class="l">TRV</td><td class="l">Travelers Companies (The)</td><td class="n">4,9%</td><td class="n">10</td><td class="n">sim</td></tr><tr><td class="l">LNG</td><td class="l">Cheniere Energy, Inc.</td><td class="n">4,2%</td><td class="n">18</td><td class="n">não</td></tr><tr><td class="l">FIX</td><td class="l">Comfort Systems USA</td><td class="n">4,2%</td><td class="n">13</td><td class="n">sim</td></tr><tr><td class="l">COIN</td><td class="l">Coinbase</td><td class="n">4,0%</td><td class="n">7</td><td class="n">sim</td></tr><tr><td class="l">EXPE</td><td class="l">Expedia Group</td><td class="n">3,2%</td><td class="n">6</td><td class="n">sim</td></tr><tr><td class="l">EME</td><td class="l">Emcor</td><td class="n">3,2%</td><td class="n">7</td><td class="n">sim</td></tr><tr><td class="l">SMCI</td><td class="l">Supermicro</td><td class="n">2,9%</td><td class="n">5</td><td class="n">sim</td></tr><tr><td class="l">SBAC</td><td class="l">SBA Communications</td><td class="n">2,3%</td><td class="n">6</td><td class="n">sim</td></tr><tr><td class="l">CSL</td><td class="l">Carlisle Companies Inc</td><td class="n">2,0%</td><td class="n">8</td><td class="n">não</td></tr><tr><td class="l">TOL</td><td class="l">Toll Brothers, Inc.</td><td class="n">2,0%</td><td class="n">5</td><td class="n">não</td></tr><tr><td class="l">PODD</td><td class="l">Insulet Corporation</td><td class="n">1,7%</td><td class="n">6</td><td class="n">sim</td></tr></tbody></table></div></figure>
+<p class="method" style="margin-top:30px"><b>Ressalvas.</b> Estrangeiras sem ADR e ADRs ficaram fora (o modelo usa balanços americanos). Visa e Berkshire entraram com LPA aproximado (lucro ÷ ações equivalentes constantes). O painel de médias e pequenas parte das empresas listadas hoje; o efeito das deslistadas está cercado pelo teste de limites acima. Código: relatorio/f13_sec.py, gestores_sv_universo.py, ramo_gestores_sv.py.</p>
+</div>

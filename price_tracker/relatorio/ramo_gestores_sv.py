@@ -110,6 +110,7 @@ OUT['sem_cusip_no_painel'] = float(U[U.mcap >= 2e9].cusip6.isna().mean())
 # cobertura do universo (≥ N): do valor das posições dos 250, quanto tem dado no painel
 p2d = {pd.Timestamp(d) - pd.offsets.QuarterEnd(1): d for d in DS}
 MPi = MP.set_index('cusip6')
+LASTP = CNT[CNT.n250 > 0].groupby('cusip6').per.max().to_dict()   # último 13F em que aparece (some depois = deslistada/vendida por todos)
 cov = {}
 for N in (3, 5, 10):
     rows = []
@@ -126,10 +127,13 @@ for N in (3, 5, 10):
                 else: st = 'sem dado (outro)'
             cat.append((st, v, cc))
         cdf = pd.DataFrame(cat, columns=['st', 'v', 'cc'])
+        van = sum(1 for cc in cdf[cdf.st.isin(['deslistada depois', 'sem dado (outro)'])].cc if LASTP.get(cc) == p)
         rows.append(dict(per=p, n=len(g), **{k: float(cdf[cdf.st == k].v.sum() / t) for k in ('com dado', 'sem ticker', 'ADR/estrangeira', 'deslistada depois', 'sem dado (outro)')},
-                         n_falta=int((cdf.st != 'com dado').sum()), n_desl=int((cdf.st == 'deslistada depois').sum())))
+                         n_falta=int((cdf.st != 'com dado').sum()), n_desl=int((cdf.st == 'deslistada depois').sum()),
+                         n_com=int((cdf.st == 'com dado').sum()), n_out=int(cdf.st.isin(['deslistada depois', 'sem dado (outro)']).sum()), n_van=int(van)))
+        if p == CNT[CNT.n250 > 0].per.max() and N == 5: OUT['outro_exemplos'] = [[str(MPi.ticker.get(cc)), str(MPi.nome.get(cc)), float(v / t)] for st, v, cc in sorted(cat, key=lambda z: -z[1]) if st == 'sem dado (outro)'][:15]
     cv = pd.DataFrame(rows); cov[str(N)] = {k: float(cv[k].mean()) for k in cv.columns if k != 'per'}
-    cov[str(N)]['_serie'] = cv[['per', 'n', 'n_falta', 'n_desl']].assign(per=cv.per.astype(str)).values.tolist()
+    cov[str(N)]['_serie'] = cv[['per', 'n_com', 'n_out', 'n_van']].assign(per=cv.per.astype(str)).values.tolist()
 OUT['cobertura'] = cov
 OUT['universo'] = {str(N): float(U[(U.n250 >= N) & (U.mcap >= 2e9)].groupby('date').size().mean()) for N in (3, 5, 10)}
 OUT['universo_fora_sp'] = {str(N): float((~U[(U.n250 >= N) & (U.mcap >= 2e9)].in_sp).mean()) for N in (3, 5, 10)}
@@ -259,13 +263,14 @@ for cen in ('pessimista', 'neutro', 'otimista'):
     out_ = []
     for i in range(1, len(qd_)):
         d0 = qd_[i - 1]; p = d0 - pd.offsets.QuarterEnd(1)
-        n, nf, nd = ser.get(p, (1, 0, 0)); w = nf / max(n, 1)
-        r_s = {'pessimista': (nd / max(nf, 1)) * (-1.0) + (1 - nd / max(nf, 1)) * univ_ret.iloc[i], 'neutro': univ_ret.iloc[i], 'otimista': spr.iloc[i]}[cen]
+        nc, no, nv = ser.get(p, (1, 0, 0)); w = no / max(nc + no, 1)          # peso esperado das ações americanas do universo sem dado
+        pv = nv / max(no, 1)                                                     # das sem dado, as que somem neste trimestre: -100% no pessimista
+        r_s = {'pessimista': pv * (-1.0) + (1 - pv) * univ_ret.iloc[i], 'neutro': univ_ret.iloc[i], 'otimista': spr.iloc[i]}[cen]
         out_.append((1 - w) * rb.iloc[i] + w * r_s)
     r_ = np.array(out_, dtype=float); lim[cen] = float(np.prod(1 + r_) ** (4 / len(r_)) - 1)
 OUT['limites'] = lim
 # lista atual (13F de jun/2026 -> carteira de set/2026)
-lastp = CNT.per.max()
+lastp = CNT[CNT.n250 > 0].per.max()
 cur = CNT[(CNT.per == lastp) & (CNT.n250 >= 3)].merge(MP[['cusip6', 'ticker', 'nome', 'sectype', 'listada_hoje']], on='cusip6', how='left')
 ul = U[U.date == max(DS)].drop_duplicates('cusip6').set_index('cusip6')
 for c_ in ('mcap', 'roic', 'growth', 'pe', 'ret2', 'gap2', 'excluded', 'in_sp'):
@@ -278,4 +283,4 @@ OUT['lista_atual'] = dict(periodo_13f=str(lastp.date()), n_ge5=int((cur.n250 >= 
 for k in ['S&P 500', 'IWM (Russell 2000)'] + list(SEL):
     t = tab[k]; e = ext.get(k, {})
     print(f"{k:45s} {t['cagr']:.1%} EW {tab.get(k + ' (peso igual)', {}).get('cagr', np.nan):.1%} vol {t['vol']:.1%} dd {t['dd']:.1%} w3 {t['w3']:.0%} w5 {t['w5']:.0%} w10 {t['w10']:.0%} p3 {t['p3']:+.1%} fora {e.get('fora_sp', np.nan):.0%} giro {e.get('giro_trim', np.nan):.0%}")
-print(json.dumps({k: OUT[k] for k in ('diferenca', 'sem_nvda', 'universo', 'universo_fora_sp', 'limites', 'imposto', 'lista_atual')}, ensure_ascii=False, default=str))
+print(json.dumps({k: OUT.get(k) for k in ('sem_nvda', 'limites', 'imposto', 'lista_atual', 'outro_exemplos')}, ensure_ascii=False, default=str))
