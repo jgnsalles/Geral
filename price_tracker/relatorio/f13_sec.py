@@ -33,7 +33,8 @@ for u in sorted(links, key=key):
     tag = u.split('/')[-1].replace('_form13f.zip', '')
     if tag in seen: continue
     z = zipfile.ZipFile(io.BytesIO(get(BASE + u)))
-    rd = lambda n, cols: pd.read_csv(z.open(n), sep='\t', usecols=cols, dtype=str, quoting=3, on_bad_lines='skip')
+    nmap = {x.split('/')[-1].upper(): x for x in z.namelist()}
+    rd = lambda n, cols: pd.read_csv(z.open(nmap[n.upper()]), sep='\t', usecols=cols, dtype=str, quoting=3, on_bad_lines='skip')
     sub = rd('SUBMISSION.tsv', ['ACCESSION_NUMBER', 'FILING_DATE', 'SUBMISSIONTYPE', 'CIK', 'PERIODOFREPORT'])
     sub = sub[sub.SUBMISSIONTYPE == '13F-HR']
     cov = rd('COVERPAGE.tsv', ['ACCESSION_NUMBER', 'FILINGMANAGER_NAME', 'REPORTTYPE', 'ISAMENDMENT'])

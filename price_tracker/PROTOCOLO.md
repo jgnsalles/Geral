@@ -495,3 +495,4 @@ Navegando US (suas posições ≥ 0,2%, como no artefato) MAIS os 100 maiores ge
 estão na lista (comparação por CIK). Contagem por emissor (CUSIP de 6 dígitos). Top 20 com ≥ 5 gestores (principal da variante) e ≥ 3 (sensibilidade), mesmas regras.
 A lista dos 100 maiores ativos por trimestre vai para relatorio/top100_ativos_por_trimestre.csv. Contagem por emissor também no universo dos 250 (CUSIP de 6 dígitos).
 Variante "Navegando US robustecido" CANCELADA pelo usuário antes de rodar (2026-11-18): fica só a regra dos 250 ativos. A lista top 100 por trimestre continua sendo salva.
+Adendo (2026-11-18, antes de rodar): a variante "Navegando US robustecido" foi cancelada pelo usuário; fica só a regra principal (250 maiores ativos, ≥ 5; ≥ 3 e ≥ 10 como sensibilidade). Mantém-se só a lista dos 100 maiores ativos por trimestre (para atualizar o Navegando US).
