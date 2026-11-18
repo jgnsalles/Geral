@@ -432,3 +432,9 @@ crescimento realizado do EPS em 3 anos, limitado a −50%..100%, sem cíclicos e
 Carteiras: Top 20 (qualidade, P/L ≥ 4, ordem pelo retorno esperado) e "ROIC alto descontado" (ROIC ≥ 12%, ordem pelo desconto ao P/E justo; na V1b com receita ≥ 10%),
 cada uma na versão registrada e nas variantes V1a, V1b e V2; raiz do valor de mercado com teto de 10%; trimestrais. Comparação com os 9 comparativos, janelas de
 3/5/10 anos, decomposição do retorno e cenário sem NVIDIA para a melhor. Status: exploratória (proposta depois de ver a previsibilidade).
+**Resultado (2026-11-18).** Previsibilidade (sem cíclicos e vestuário, 3 anos): mediana do EPS → EPS: ordem −0,08, R² 1,5%; g normalizado: mesma ordem (−0,07),
+erro mediano 10,7% (mediana 15,2%; constante de 8% 10,3%), viés +3,9 p.p.; receita → receita: ordem +0,31, R² 7,8% (receita futura = 3,6% + 0,35·passada);
+receita → EPS: ordem +0,08, R² 1,3%; alavancagem no mesmo período: EPS = 7,2% + 0,70·receita (R² 8,6%, ordem 0,35). Tirar cíclicos e financeiras quase não muda a mediana do EPS.
+Carteiras (S&P 15,6%): Top 20 registrada 20,5%, V1a 22,5% (janelas 3a 99%; sem NVIDIA 21.6%), V2 21,1%, V1b 18,6%;
+ROIC alto descontado registrada 20,4%, V1a 16,7%, V2 17,1%, V1b 19,1%.
+Conclusão: a receita no valuation ajudou a Top 20 e piorou a descontada; ganho não robusto (6 variantes). O filtro de crescimento do EPS ≥ 15% ajuda a carteira mesmo sem prever o lucro. Nada muda na regra. Exploratória.

@@ -118,3 +118,106 @@ if MODE == 'analise':
                 print(f"  REC h={h:>2} {lab:38s} r2={r.get('r2', np.nan):.3f} a={r.get('a', np.nan):+.3f} b={r.get('b', np.nan):+.3f} ic={r.get('ic', np.nan):+.3f} mae={r['mae']:.3f} vies={r['vies']:+.3f}")
             r = OUT['alavancagem'][am][h]; print(f"  ALAV h={h:>2} EPS = {r['a']:+.3f} + {r['b']:.2f}·receita  r2={r['r2']:.3f} ic={r['ic']:+.3f}")
     print(OUT['quintis'], OUT['dispersao'])
+
+if MODE == 'carteiras':
+    import combos as cb
+    from pesos import run_weighted
+    from backtest import stats
+    OUT = json.loads((ROOT / 'dados_crescimento.json').read_text())
+    adjp = adj
+    A = adjp.reindex(D, method='ffill')
+    # coeficientes da V1 estimados só em 2011-2018 (sem cíclicos e vestuário), aplicados a todas as datas
+    tr_ = p[~p.excluded & (p.date <= pd.Timestamp('2018-12-31'))].dropna(subset=['R12', 'rev_med'])
+    sl = st.linregress(tr_.rev_med.clip(*CL), tr_.R12.clip(*CL))
+    A1, B1 = float(sl.intercept), float(sl.slope)
+    OUT['v1_coef'] = dict(a=A1, b=B1, r2=float(sl.rvalue ** 2), n=int(len(tr_)))
+    print(f'V1: EPS previsto = {A1:+.3f} + {B1:.3f}·receita (2011-2018, R² {sl.rvalue ** 2:.3f})')
+    # valor de mercado para todas as candidatas (como em ramo_rerating)
+    need = p[~p.excluded & (p.roic >= .12) & p.pe.gt(0)].copy()
+    need['mcap2'] = top_n.mcap_us(need, need)
+    p = p.merge(need[['date', 'ticker', 'mcap2']], on=['date', 'ticker'], how='left'); p['mcap'] = p.mcap.fillna(p.mcap2)
+
+    def valuation(x, G, gfix=None):
+        """P/E justo e retorno esperado como em validation_portfolios.classify, com o crescimento G no lugar da mediana do EPS"""
+        out = []
+        for d, y in x.assign(_G=G).groupby('date'):
+            y = y.copy()
+            if gfix is None:
+                g = cb.g_rank(y.assign(growth=y._G), 0.07)
+            else:
+                g = pd.Series(np.where(y.fin, gfix - .005, gfix), index=y.index)
+            r = y.roic.clip(upper=1.0)
+            fpe = np.where(r > 0, (1 - g / r) / (0.085 - g), np.nan)
+            base = fpe * y.eps * (1 + y._G) ** 2 / y.price
+            rf = np.where(base > 0, np.sqrt(np.clip(base, 0, None)) - 1, np.nan) + y.dy
+            rc = y._G + y.dy
+            both = np.isfinite(rf) & rc.notna()
+            y['v_fpe'] = fpe; y['v_ret'] = np.where(both, (rf + rc) / 2, y._G)
+            y['v_gap'] = np.where((fpe > 0) & (y.pe > 0), np.log(np.where(fpe > 0, fpe, np.nan) / y.pe), np.nan)
+            out.append(y)
+        return pd.concat(out)
+
+    G1 = (A1 + B1 * p.rev_med.clip(*CL))
+    VAR = {'Registrada': valuation(p, p.growth), 'V1a receita no valuation': valuation(p, G1), 'V2 sem previsão de crescimento': valuation(p, pd.Series(.08, index=p.index), gfix=.0525)}
+    VAR['V1b receita também no filtro'] = VAR['V1a receita no valuation']
+
+    def pick(df, sort, n=20):
+        df = calc2.dd_firm(df)
+        return {d: g.sort_values(sort, ascending=False).head(n) for d, g in df.groupby('date')}
+
+    SEL = {}
+    for vk, x in VAR.items():
+        x = x[~x.excluded & x.mcap.notna()]
+        gfilt = (x.rev_med >= .10) if vk.startswith('V1b') else (x.growth >= .15)
+        q = x[x['cat'].notna() & (x.roic >= .12) & gfilt & (x.pe >= 4) & x.v_ret.notna()]
+        SEL[f'Top 20 · {vk}'] = pick(q, ['v_ret', 'roic'])
+        b_ = x[(x.roic >= .12) & x.v_gap.notna() & ((x.rev_med >= .10) if vk.startswith('V1b') else True)]
+        SEL[f'ROIC alto descontado · {vk}'] = pick(b_, ['v_gap', 'roic'])
+    Wn = {k: {d: calc2.cap_w(g) for d, g in v.items()} for k, v in SEL.items()}
+    navs9, n9, _, _ = bm.load_benchmarks()
+    navs = dict(navs9); nn = dict(n9)
+    for k in SEL:
+        navs[k] = run_weighted(Wn[k], adjp, dates); nn[k] = float(np.mean([len(g) for g in SEL[k].values()]))
+    R = navs['S&P 500']; tab = {}
+    for k, s in navs.items():
+        s = s.dropna(); stt = stats(s); w = {y: bm.windows(s, R, y) for y in (3, 5, 10)}
+        tab[k] = dict(cagr=stt['CAGR'], vol=stt['Vol'], dd=stt['MaxDD'], n=nn.get(k), w3=w[3][0], w5=w[5][0], w10=w[10][0], p3=w[3][1], p5=w[5][1])
+    OUT['carteiras'] = tab
+    (ROOT / 'crescimento_tabela.md').write_text('\n'.join(bm.bench_table(navs, nn)))
+    M = pd.DataFrame({k: v.resample('ME').last() for k, v in navs.items()})
+    show = ['S&P 500'] + list(SEL)
+    OUT['nav'] = {'dates': [str(d.date()) for d in M.index], 'series': {k: [None if pd.isna(v) else round(float(v), 4) for v in M[k] / M[k].dropna().iloc[0]] for k in show}}
+    # decomposição em 3 anos (EPS, re-rating, dividendos)
+    for h in (4, 12):
+        f = key[['pe']].copy(); f.index = pd.MultiIndex.from_arrays([f.index.get_level_values(0) - h, f.index.get_level_values(1)]); f.columns = [f'pe_{h}']
+        p = p.join(f, on=['qi', 'ticker'])
+        trr = [A.at[D[iq[d] + h], t] / A.at[d, t] if iq[d] + h < len(D) and t in A and A.at[d, t] > 0 else np.nan for d, t in zip(p.date, p.ticker)]
+        p[f'lt_{h}'] = np.log(np.array(trr, dtype=float))
+        ok = (p.eps > 0) & (p[f'eps_{h}'] > 0)
+        p[f'le_{h}'] = np.where(ok, np.log(p[f'eps_{h}'] / p.eps), np.nan); p[f'lp_{h}'] = np.where(ok, np.log(p[f'pe_{h}'] / p.pe), np.nan)
+        p[f'ld_{h}'] = p[f'lt_{h}'] - p[f'le_{h}'] - p[f'lp_{h}']
+    ann = lambda x, h: np.expm1(x * 4 / h)
+    dec = {}
+    for k in SEL:
+        rows = [(d, t, w) for d, ws in Wn[k].items() for t, w in ws.items()]
+        hh = pd.DataFrame(rows, columns=['date', 'ticker', 'w']).merge(p[['date', 'ticker', 'le_12', 'lp_12', 'ld_12', 'lt_12', 'rev_med', 'R12', 'V12']], on=['date', 'ticker'], how='left')
+        y = hh.dropna(subset=['le_12', 'lp_12', 'lt_12'])
+        g = y.groupby('date').apply(lambda z_: pd.Series({c_: np.average(z_[c_], weights=z_.w) for c_ in ('le_12', 'lp_12', 'ld_12', 'lt_12')}), include_groups=False).mean()
+        dec[k] = dict(eps=ann(g.le_12, 12), rr=ann(g.lp_12, 12), div=ann(g.ld_12, 12), tot=ann(g.lt_12, 12),
+                      rev_prev=float(hh.rev_med.median()), rev_real=float(hh.V12.median()), eps_real=float(hh.R12.median()))
+    OUT['decomp'] = dec
+    best = max(SEL, key=lambda k: tab[k]['cagr'])
+    vk = best.split(' · ')[1]; x = VAR[vk]; x = x[~x.excluded & x.mcap.notna() & (x.ticker != 'NVDA')]
+    gfilt = (x.rev_med >= .10) if vk.startswith('V1b') else (x.growth >= .15)
+    if best.startswith('Top 20'):
+        snv = pick(x[x['cat'].notna() & (x.roic >= .12) & gfilt & (x.pe >= 4) & x.v_ret.notna()], ['v_ret', 'roic'])
+    else:
+        snv = pick(x[(x.roic >= .12) & x.v_gap.notna() & ((x.rev_med >= .10) if vk.startswith('V1b') else True)], ['v_gap', 'roic'])
+    nv = run_weighted({d: calc2.cap_w(g) for d, g in snv.items()}, adjp, dates)
+    OUT['sem_nvda'] = dict(carteira=best, com=tab[best]['cagr'], sem=stats(nv.dropna())['CAGR'], w3_sem=bm.windows(nv, R, 3)[0])
+    last = max(SEL[best]); OUT['hoje'] = {k: [[t, nm(t), float(w)] for t, w in Wn[k][last].sort_values(ascending=False).items()] for k in (best,)}
+    OUT['hoje_data'] = str(pd.Timestamp(last).date())
+    (ROOT / 'dados_crescimento.json').write_text(json.dumps(OUT, ensure_ascii=False, default=lambda v: None if (isinstance(v, float) and not np.isfinite(v)) else (float(v) if isinstance(v, (np.floating, np.integer)) else str(v))))
+    for k in ['S&P 500'] + list(SEL):
+        t = tab[k]; print(f"{k:55s} {t['cagr']:.1%} vol {t['vol']:.1%} dd {t['dd']:.1%} w3 {t['w3']:.0%} w5 {t['w5']:.0%} w10 {t['w10']:.0%} n {t['n'] or 0:.1f}")
+    print(json.dumps(OUT['decomp'], ensure_ascii=False)[:2500]); print(OUT['sem_nvda'])
