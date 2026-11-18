@@ -496,3 +496,12 @@ estão na lista (comparação por CIK). Contagem por emissor (CUSIP de 6 dígito
 A lista dos 100 maiores ativos por trimestre vai para relatorio/top100_ativos_por_trimestre.csv. Contagem por emissor também no universo dos 250 (CUSIP de 6 dígitos).
 Variante "Navegando US robustecido" CANCELADA pelo usuário antes de rodar (2026-11-18): fica só a regra dos 250 ativos. A lista top 100 por trimestre continua sendo salva.
 Adendo (2026-11-18, antes de rodar): a variante "Navegando US robustecido" foi cancelada pelo usuário; fica só a regra principal (250 maiores ativos, ≥ 5; ≥ 3 e ≥ 10 como sensibilidade). Mantém-se só a lista dos 100 maiores ativos por trimestre (para atualizar o Navegando US).
+
+**Resultado (2026-11-18, ramo D: gestores sem viés).** 2016-06 a 2026-09 (S&P 500 15,3% a.a.). 250 maiores gestores ativos de cada trimestre, de todos os 13F da SEC (em média 74 deles
+estão na lista do Navegando US). Universo ≥ 5 gestores: 472 ações por trimestre com dado (28% fora do S&P); 72% do valor das posições tem dado; o resto é ADR (5%),
+estrangeiras sem ADR/ETFs/fechadas (14%), deslistadas (4%) e sem ticker (5%). Visa e BRK-B incluídas com LPA aproximado. Carteiras (raiz com teto): Top 20 original 22,0%;
+lista do Navegando ≥ 5 (com viés, refeita com contagem por emissor) 23,1%; 250 gestores ≥ 3 / ≥ 5 / ≥ 10: 22,8% / 21,8% / 22,2%
+(diferença da ≥ 5 contra a original: -0.0 p.p. a.a., t -0.01); ROIC alto descontado ≥ 5 21,4% (original 22,4%);
+OoL ≥ 5 (peso igual) 18,6% (original 17,8%; com a lista do Navegando 21,5%).
+Limites (ações sem dado): 17.7% a 20.1%. Com imposto: 18.9% contra 19.1%.
+Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. A regra NÃO passou no critério de adoção; fica a Top 20 original. Exploratória.
