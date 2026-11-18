@@ -116,16 +116,16 @@ for N in (3, 5, 10):
     for p, g in CNT[CNT.per.isin(p2d) & (CNT.n250 >= N)].groupby('per'):
         d = p2d[p]; u = U[(U.date == d)]; have = set(u.cusip6.dropna()); have2 = set(u[u.mcap >= 2e9].cusip6.dropna())
         t = g.v250.sum(); cat = []
-        for c, v in zip(g.cusip6, g.v250):
-            st = 'com dado' if c in have else None
+        for cc, v in zip(g.cusip6, g.v250):
+            st = 'com dado' if cc in have else None
             if st is None:
-                m = MPi.loc[c] if c in MPi.index else None
+                m = MPi.loc[cc] if cc in MPi.index else None
                 if m is None or pd.isna(m.ticker): st = 'sem ticker'
                 elif isinstance(m.sectype, str) and ('Depositary' in m.sectype or 'ADR' in m.sectype or 'Foreign' in m.sectype): st = 'ADR/estrangeira'
                 elif not m.listada_hoje: st = 'deslistada depois'
                 else: st = 'sem dado (outro)'
-            cat.append((st, v))
-        cdf = pd.DataFrame(cat, columns=['st', 'v'])
+            cat.append((st, v, cc))
+        cdf = pd.DataFrame(cat, columns=['st', 'v', 'cc'])
         rows.append(dict(per=p, n=len(g), **{k: float(cdf[cdf.st == k].v.sum() / t) for k in ('com dado', 'sem ticker', 'ADR/estrangeira', 'deslistada depois', 'sem dado (outro)')},
                          n_falta=int((cdf.st != 'com dado').sum()), n_desl=int((cdf.st == 'deslistada depois').sum())))
     cv = pd.DataFrame(rows); cov[str(N)] = {k: float(cv[k].mean()) for k in cv.columns if k != 'per'}
@@ -164,14 +164,27 @@ SPb = U[U.in_sp & okq & U.gap.notna() & U.mcap.notna()]                  # só S
 SPt = U[U.in_sp & okq & complete & U.ret.notna() & (U.growth >= .15) & (U.pe >= 4) & U.mcap.notna()]
 SEL = {
     'Top 20 · S&P (original)': pick(SPt, ['ret', 'roic']),
+    'ROIC alto descontado · S&P (original)': pick(SPb, ['gap', 'roic']),
     'Top 20 · lista do Navegando, ≥ 5 (ramo C, com viés)': pick(T2[T2.nnav >= 5], ['ret2', 'roic']),
 }
 for N in (3, 5, 10):
     SEL[f'Top 20 · 250 gestores, ≥ {N}'] = pick(T2[T2.n250 >= N], ['ret2', 'roic'])
 for N in (3, 5, 10):
     SEL[f'ROIC alto descontado · 250 gestores, ≥ {N}'] = pick(B2[B2.n250 >= N], ['gap2', 'roic'])
+import engine  # noqa: E402
+_sv = dict(engine.TH); engine.TH.update({'zGrowth': 2.93, 'Roic_Hi': .12, 'Roic_Lo': .10})
+try:
+    _c2 = engine.classify(U[['growth', 'zgrowth', 'roic', 'ret2']].rename(columns={'ret2': 'ret'}).assign(zroic=0.0))
+    _c1 = engine.classify(U[['growth', 'zgrowth', 'roic', 'ret']].assign(zroic=0.0))
+finally:
+    engine.TH.clear(); engine.TH.update(_sv)
+U['ool2'] = _c2.code.notna() & (_c2.category == 'Opportunity of Lifetime'); U['ool1'] = _c1.code.notna() & (_c1.category == 'Opportunity of Lifetime')
+OO1 = U[U.in_sp & U.ool1 & ~U.excluded]; OO2 = U[liq & U.ool2 & ~U.excluded]
+SEL['OoL · S&P (original, peso igual)'] = {d: calc2.dd_firm(g) for d, g in OO1.groupby('date')}
+SEL['OoL · 250 gestores, ≥ 5 (peso igual)'] = {d: calc2.dd_firm(g) for d, g in OO2[OO2.n250 >= 5].groupby('date')}
+SEL['OoL · lista do Navegando, ≥ 5 (ramo C, com viés; peso igual)'] = {d: calc2.dd_firm(g) for d, g in OO2[OO2.nnav >= 5].groupby('date')}
 NEW = [k for k in SEL if '250 gestores' in k]
-Wn = {k: {d: calc2.cap_w(g) for d, g in v.items()} for k, v in SEL.items()}
+Wn = {k: ({d: pd.Series(1 / len(g), index=g.ticker) for d, g in v.items()} if 'OoL' in k else {d: calc2.cap_w(g) for d, g in v.items()}) for k, v in SEL.items()}
 We = {k: {d: pd.Series(1 / len(g), index=g.ticker) for d, g in v.items()} for k, v in SEL.items()}
 navs9, n9, _, _ = bm.load_benchmarks()
 rebase = lambda s: (s.loc[D0:] / s.loc[D0:].iloc[0])
@@ -215,7 +228,7 @@ qd = pd.DatetimeIndex(DS)
 qr = {k: navs[k].reindex(qd, method='ffill').pct_change().dropna() for k in SEL}
 dif = {}
 for k in NEW:
-    b_ = 'Top 20 · S&P (original)'
+    b_ = 'OoL · S&P (original, peso igual)' if k.startswith('OoL') else 'ROIC alto descontado · S&P (original)' if k.startswith('ROIC') else 'Top 20 · S&P (original)'
     dd_ = (qr[k] - qr[b_]).dropna()
     dif[k] = dict(contra=b_, media_aa=float(dd_.mean() * 4), t=float(dd_.mean() / (dd_.std() / np.sqrt(len(dd_)))), melhor=float((dd_ > 0).mean()))
 OUT['diferenca'] = dif
@@ -226,7 +239,7 @@ src = (B2[(B2.n250 >= N_b) & (B2.ticker != 'NVDA')], ['gap2', 'roic']) if best.s
 nav_nv = run_weighted({d: calc2.cap_w(g) for d, g in pick(*src).items()}, adj, DS)
 OUT['sem_nvda'] = dict(carteira=best, com=tab[best]['cagr'], sem=stats(nav_nv.dropna())['CAGR'])
 M = pd.DataFrame({k: v.resample('ME').last() for k, v in navs.items()})
-show = ['S&P 500', 'IWM (Russell 2000)', 'Top 20 · S&P (original)', 'Top 20 · lista do Navegando, ≥ 5 (ramo C, com viés)'] + NEW
+show = ['S&P 500', 'IWM (Russell 2000)', 'Top 20 · S&P (original)', 'Top 20 · lista do Navegando, ≥ 5 (ramo C, com viés)', 'Top 20 · 250 gestores, ≥ 5', 'OoL · 250 gestores, ≥ 5 (peso igual)', 'ROIC alto descontado · 250 gestores, ≥ 5']
 OUT['nav'] = {'dates': [str(d.date()) for d in M.index], 'series': {k: [None if pd.isna(v) else round(float(v), 4) for v in M[k] / M[k].dropna().iloc[0]] for k in show}}
 last = max(SEL[best])
 OUT['hoje'] = {k: [[t, nm(t), float(w), int(SEL[k][last].set_index('ticker').n250.get(t, 0)), bool(SEL[k][last].set_index('ticker').in_sp.get(t, True))]

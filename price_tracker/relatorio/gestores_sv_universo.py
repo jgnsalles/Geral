@@ -13,7 +13,7 @@ EXCL = re.compile(r'VANGUARD|BLACKROCK|STATE STREET|GEODE|NORTHERN TRUST|FMR\b|F
                   r'PENSION|\bBANK\b|BANCORP|BANCO|TRUST CO|TRUST COMPANY|INSURANCE|ASSURANCE|LIFE |MUTUAL OF|SOVEREIGN|INVESTMENT CORP OF|GIC |TEMASEK|'
                   r'ABU DHABI|KUWAIT|SAUDI|QATAR|CHARLES SCHWAB|EDWARD JONES|RAYMOND JAMES|LPL FINANCIAL|AMERIPRISE|STIFEL|JANNEY|BAIRD|'
                   r'DIMENSIONAL|INVESCO|NUVEEN|TIAA|PRINCIPAL FINANCIAL|PRUDENTIAL|METLIFE|ALLIANZ|AXA |AMUNDI|LEGAL & GENERAL|SCHRODER|ABERDEEN|'
-                  r'FRANKLIN RESOURCES|T\. ROWE|CAPITAL RESEARCH|CAPITAL WORLD|CAPITAL INTERNATIONAL|WELLINGTON MANAGEMENT|MANULIFE|SUN LIFE|'
+                  r'FRANKLIN RESOURCES|T\. ROWE|CAPITAL RESEARCH (&|AND|GLOBAL)|CAPITAL WORLD|GENERAL ELECTRIC|ALPHABET INC|XXEC|MUBADALA|FOUNDATION|JONES FINANCIAL|FLAGSHIP PRIVATE WEALTH|FINANCIAL ENGINES|CAPITAL INTERNATIONAL|WELLINGTON MANAGEMENT|MANULIFE|SUN LIFE|'
                   r'RENAISSANCE TECH|TWO SIGMA|CITADEL|SUSQUEHANNA|JANE STREET|D\. E\. SHAW|DE SHAW|AQR|MILLENNIUM|HUDSON RIVER|VIRTU|TOWER RESEARCH|'
                   r'MARSHALL WACE|BALYASNY|POINT72|QUBE|WOLVERINE|OPTIVER|IMC |FLOW TRADERS|XTX|ARROWSTREET|ACADIAN|MAN GROUP|WORLD QUANT|WORLDQUANT', re.I)
 F = pd.concat([pd.read_csv(f, dtype={'CIK': int}) for f in sorted(S.glob('filers_*.csv.gz'))], ignore_index=True)
@@ -66,7 +66,13 @@ mp = c9.set_index('cusip6')[['CUSIP']].join(nm)
 navtk = nav.dropna(subset=['ticker']).groupby('cusip6').ticker.agg(lambda s: s.mode().iat[0])
 mp['ticker'] = mp.index.map(navtk); mp['fonte'] = np.where(mp.ticker.notna(), 'navegando', None)
 mp['sectype'] = None; mp['exch'] = None
-todo = [c for c in mp.index if pd.isna(mp.at[c, 'ticker'])] + list(mp.index[mp.ticker.notna()])   # OpenFIGI também para os do Navegando (tipo de papel)
+old = pd.read_csv(O / 'cusip_map.csv', dtype={'cusip6': str}).set_index('cusip6') if (O / 'cusip_map.csv').exists() else None
+if old is not None:
+    for c in mp.index.intersection(old.index):
+        for k in ('ticker', 'fonte', 'sectype', 'exch'):
+            if pd.isna(mp.at[c, k]) and pd.notna(old.at[c, k]): mp.at[c, k] = old.at[c, k]
+mp['tk_figi'] = old.tk_figi.reindex(mp.index) if (old is not None and 'tk_figi' in old) else None
+todo = [c for c in mp.index if pd.isna(mp.at[c, 'tk_figi'])] if 'tk_figi' in mp else list(mp.index)   # OpenFIGI também para os do Navegando (tipo de papel)
 hdr = {'Content-Type': 'application/json'}
 for i in range(0, len(todo), 10):
     chunk = todo[i:i + 10]
@@ -80,9 +86,12 @@ for i in range(0, len(todo), 10):
         d = (res.get('data') or [None])[0]
         if not d: continue
         mp.at[c, 'sectype'] = d.get('securityType2') or d.get('securityType'); mp.at[c, 'exch'] = d.get('exchCode')
-        if pd.isna(mp.at[c, 'ticker']) and d.get('ticker'):
-            mp.at[c, 'ticker'] = d['ticker'].replace('/', '-').replace('.', '-'); mp.at[c, 'fonte'] = 'openfigi'
+        if d.get('ticker'):
+            mp.at[c, 'tk_figi'] = d['ticker'].replace('/', '-').replace('.', '-').replace(' ', '-')
     time.sleep(2.6)    # sem chave: 25 requisições por minuto
+# o OpenFIGI manda (a tabela do Navegando tem colisões, ex.: S&P Global como GFS)
+fig = mp.tk_figi.notna() & (mp.tk_figi != mp.ticker)
+mp.loc[fig, 'ticker'] = mp.loc[fig, 'tk_figi']; mp.loc[fig, 'fonte'] = 'openfigi'
 # reserva por nome (SEC company_tickers.json)
 ct = requests.get('https://www.sec.gov/files/company_tickers.json', headers={'User-Agent': 'PriceTracker-Research research@pricetracker-research.org'}, timeout=60).json()
 norm = lambda s: re.sub(r'[^A-Z0-9 ]', '', str(s).upper()).replace(' INC', '').replace(' CORP', '').replace(' CO', '').replace(' LTD', '').replace(' PLC', '').strip()
