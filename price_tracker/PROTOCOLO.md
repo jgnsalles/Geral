@@ -418,3 +418,17 @@ com o crescimento do EPS 1 e 3 anos à frente, com o re-rating e com o excesso s
 Comparação: Top 20 e ROIC alto descontado originais e os 9 comparativos, no mesmo período; janelas de 3/5/10 anos, pior janela, pior queda, volatilidade,
 decomposição e cenário sem NVIDIA para a melhor. Ressalva registrada antes: a lista de gestores é a de hoje (viés de sobrevivência dos gestores).
 Status: exploratória.
+
+## 2026-11-18 — Pré-registro: crescimento pela receita e sem previsão de crescimento (ramo A do pedido do usuário; antes de rodar as carteiras)
+Achados que motivam (relatorio/ramo_crescimento.py, S&P 500 PIT, sem cíclicos e vestuário, 3 anos): a mediana de 5 anos do EPS tem correlação de ordem −0,08 com
+o crescimento futuro do EPS (R² 1,5%); o g normalizado do P/E justo, sendo transformação monotônica dela, tem a mesma ordem (−0,07; erro mediano 10,7% contra 15,2% da
+mediana e 10,3% da constante de 8%); a mediana de 5 anos da RECEITA prevê a receita (ordem +0,31, R² 7,8%) e prevê o EPS com o sinal certo (+0,08; R² 1,3%).
+Variantes (só o crescimento usado no P/E justo e no retorno esperado muda; ROIC, cortes, exclusões, pesos e datas iguais às registradas):
+**V1a — receita no valuation:** crescimento previsto do EPS = a + b·(mediana de 5 anos do crescimento da receita), com a e b estimados só em 2011–2018 (regressão do
+crescimento realizado do EPS em 3 anos, limitado a −50%..100%, sem cíclicos e vestuário) e aplicados a todas as datas; esse crescimento entra no ranking do g
+(7%→3,5%; financeiras 6,5%→3%) e nos dois cenários do retorno esperado. O filtro de qualidade continua sendo o crescimento do EPS ≥ 15%.
+**V1b — receita também no filtro:** como a V1a, e o filtro de crescimento passa a ser mediana de 5 anos da receita ≥ 10%.
+**V2 — sem previsão de crescimento:** g igual para todas (5,25%; financeiras 4,75%) e crescimento de 8% para todas no retorno esperado; o P/E justo passa a depender só do ROIC.
+Carteiras: Top 20 (qualidade, P/L ≥ 4, ordem pelo retorno esperado) e "ROIC alto descontado" (ROIC ≥ 12%, ordem pelo desconto ao P/E justo; na V1b com receita ≥ 10%),
+cada uma na versão registrada e nas variantes V1a, V1b e V2; raiz do valor de mercado com teto de 10%; trimestrais. Comparação com os 9 comparativos, janelas de
+3/5/10 anos, decomposição do retorno e cenário sem NVIDIA para a melhor. Status: exploratória (proposta depois de ver a previsibilidade).
