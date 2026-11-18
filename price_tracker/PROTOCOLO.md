@@ -467,3 +467,25 @@ ETFs; BRK-B e V não estão no painel do S&P — lacuna de dados que afeta todas
 contra a original: +3,1 p.p. a.a., t 2,56, melhor em 71% dos trimestres (com 6 variantes, o limite corrigido é t ≈ 2,6: no limite). ROIC alto descontado amplo ≥ 1/3/5:
 24,0%/23,0%/24,5% contra 22,4% no S&P (t 0,6/0,2/0,9; sem padrão). Conclusão: o universo dos gestores ajuda a Top 20 (que filtra crescimento) e não o desconto puro.
 Exploratória; a Top 20 ampla com ≥ 5 gestores é candidata a acompanhamento ao lado da regra antes de qualquer troca.
+
+
+## 2026-11-18 — Pré-registro: Top 20 no universo dos gestores SEM viés de seleção (ramo D; antes de rodar)
+Pedido do usuário: adotar a regra "Top 20 no universo dos gestores (≥ 5 gestores, ≥ US$ 2 bi)", mas antes refazer o teste sem o viés da lista de gestores de hoje
+(o Navegando US só tem quem sobreviveu) e com dados de todas as empresas possíveis.
+Gestores (point-in-time, todos os declarantes de 13F, inclusive os que fecharam): fonte SEC Form 13F Data Sets (formulários 13F-HR originais; o último por CIK e
+período). Gestor ativo = 20 a 400 posições em ações (sem opções, sem dívida), as 10 maiores somando ≥ 25% da carteira 13F, e nome fora da lista de exclusão
+(indexadores, bancos, corretoras, seguradoras, fundos de pensão e soberanos: Vanguard, BlackRock, State Street, Geode, Northern Trust, Fidelity Management Trust/FMR
+como conglomerado, JPMorgan, Goldman, Morgan Stanley, Bank of America/Merrill, Wells Fargo, UBS, Credit Suisse, Deutsche Bank, Barclays, BNP, Citi, RBC, TD, BMO,
+Nomura, Mizuho, MUFG, Norges, CPP, CalPERS e similares). A lista de exclusão pode ser ajustada olhando SÓ os nomes dos maiores declarantes, antes de qualquer retorno.
+Em cada trimestre: as 250 maiores pelo valor da carteira 13F. Número de gestores por ação = quantos desses 250 a detêm com peso ≥ 0,2% (como no Navegando US).
+Defasagem: carteira da data d usa o 13F do período anterior (arquivado até 45 dias depois; só arquivamentos com data ≤ d).
+Mapeamento CUSIP → ticker: OpenFIGI (CUSIP de 9 dígitos) com reserva por nome (SEC company_tickers.json); cobertura reportada em valor.
+Universo: ≥ 5 gestores (principal), ≥ 3 e ≥ 10 (sensibilidade); valor de mercado ≥ US$ 2 bi; ações com dado fundamentalista point-in-time (painéis do S&P 500 e de médias e
+pequenas, mais as ações do universo que faltarem e tiverem companyfacts e preço, com o mesmo código: backtest.features, roic3.one, vp.classify).
+Viés de sobrevivência do lado das ações: as ações do universo sem dado (deslistadas, sem preço) são contadas e o resultado é cercado pelo teste de limites já registrado
+(pessimista: −100% no trimestre em que somem; neutro: retorno do universo; otimista: S&P 500), com peso esperado igual à taxa de seleção das elegíveis com dado.
+Carteiras: Top 20 (regras registradas: ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicos e vestuário, todas as métricas da classe, ordem pelo retorno esperado recalculado
+no universo; raiz do valor de mercado com teto de 10%; peso igual como controle) e "ROIC alto descontado" (top 20 pelo log(P/E justo ÷ P/L)), para N = 3, 5 e 10.
+Comparação: a versão do ramo C (lista de hoje), a Top 20 original, os 9 comparativos + IWM, janelas 3/5/10, pior queda, volatilidade, decomposição, sem NVIDIA, giro e
+imposto de 15% sobre o ganho realizado. Critério para adotar: Top 20 ≥ 5 gestores sem viés acima da Top 20 original no mesmo período, em retorno e nas janelas de 3 anos.
+Status: exploratória (proposta depois dos resultados do ramo C).
