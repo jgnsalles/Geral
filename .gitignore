@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# cache dos 13F da SEC (reprodutível, ~200 MB)
+price_tracker/relatorio/data_13f_sec/
