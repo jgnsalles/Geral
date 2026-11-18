@@ -489,3 +489,9 @@ no universo; raiz do valor de mercado com teto de 10%; peso igual como controle)
 Comparação: a versão do ramo C (lista de hoje), a Top 20 original, os 9 comparativos + IWM, janelas 3/5/10, pior queda, volatilidade, decomposição, sem NVIDIA, giro e
 imposto de 15% sobre o ganho realizado. Critério para adotar: Top 20 ≥ 5 gestores sem viés acima da Top 20 original no mesmo período, em retorno e nas janelas de 3 anos.
 Status: exploratória (proposta depois dos resultados do ramo C).
+
+Adendo ao pré-registro do ramo D (2026-11-18, antes de rodar; pedido extra do usuário): variante de universo "Navegando US robustecido" = gestores da lista do
+Navegando US (suas posições ≥ 0,2%, como no artefato) MAIS os 100 maiores gestores ativos de cada trimestre (mesma regra de gestor ativo, pelo valor 13F) que não
+estão na lista (comparação por CIK). Contagem por emissor (CUSIP de 6 dígitos). Top 20 com ≥ 5 gestores (principal da variante) e ≥ 3 (sensibilidade), mesmas regras.
+A lista dos 100 maiores ativos por trimestre vai para relatorio/top100_ativos_por_trimestre.csv. Contagem por emissor também no universo dos 250 (CUSIP de 6 dígitos).
+Variante "Navegando US robustecido" CANCELADA pelo usuário antes de rodar (2026-11-18): fica só a regra dos 250 ativos. A lista top 100 por trimestre continua sendo salva.
