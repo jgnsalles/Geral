@@ -92,7 +92,7 @@ D['A2'] = 'Não editar. Cada bloco é uma única chamada para todas as ações.'
 head(D, 4, 1, 'Ticker', w=10)
 for r in range(R0, R1 + 1): D.cell(r, 1, f'=IF({QA}A{r}="","",{QA}A{r})').font = F_B
 TK = f"{QA}$A${R0}:$A${R1}"
-CH = 200   # o add-in não aguenta uma chamada com ~600 linhas: blocos de até 200 ações (a V2 usava blocos de 201)
+CH = 10000   # uma chamada por bloco: no teste do usuário (v4) as 593 linhas carregaram numa chamada só
 CHUNKS = [(a, min(a + CH - 1, R1)) for a in range(R0, R1 + 1, CH)]
 tk = lambda a, b: f"{QA}$A${a}:$A${b}"
 col = [2]; DC = {}
@@ -125,7 +125,7 @@ for a, b in CHUNKS:
     D[f'{L(c0)}{a}'] = ArrayFormula(f'{L(c0)}{a}:{L(c0 + 4)}{b}', f'=IFERROR(_xldudf_WISEPRICE({tk(a, b)},${L(c0)}$4:${L(c0 + 4)}$4),"")')
 DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
 block('DY', 'Dividend Yield', [-1])
-block('EST', 'Estimated EPS AVG', [0, 1, 2], per_year=True)             # consenso do sell-side: ano+1 = ano corrente
+block('EST', 'Estimated EPS AVG', [0, 1, 2])             # consenso do sell-side: ano+1 = ano corrente
 block('EPS', 'EPS Diluted', [-4, -3, -2, -1])              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
 Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
