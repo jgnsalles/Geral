@@ -176,7 +176,7 @@ def main():
     print('venda', {k: round(v['cagr'], 4) for k, v in res.items()}, flush=True)
     # robustez da regra de venda e da atual: sem as 3 maiores (pelo ranking da atual) e sem NVIDIA
     rob = {}
-    for vn, maker in (('Atual (sem filtro)', lambda cx: build_W(cx)), ('Regra de venda (EPS < 80% da trajetória)', lambda cx: {k: sell_rule(v, cx, D) for k, v in build_W(cx).items()})):
+    for vn, maker in (('Atual (sem filtro)', lambda cx: build_W(cx)), ('Regra de venda (EPS < 80% da trajetória)', lambda cx: {k: sell_rule(v, cx, D) for k, v in build_W(cx).items() if k in KEYS})):
         rob[vn] = {}
         for lab, ts in (('sem NVIDIA', ['NVDA']), ('sem NVDA, AVGO, META', ['NVDA', 'AVGO', 'META'])):
             cx = c_now[~c_now.ticker.isin(ts)].copy(); Wx = maker(cx)
