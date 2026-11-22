@@ -125,7 +125,7 @@ for a, b in CHUNKS:
     D[f'{L(c0)}{a}'] = ArrayFormula(f'{L(c0)}{a}:{L(c0 + 4)}{b}', f'=IFERROR(_xldudf_WISEPRICE({tk(a, b)},${L(c0)}$4:${L(c0 + 4)}$4),"")')
 DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
 block('DY', 'Dividend Yield', [-1])
-block('EST', 'Estimated EPS AVG', [0, 1, 2])             # consenso do sell-side: ano+1 = ano corrente
+block('EST', 'Estimated EPS AVG', [-1, 0, 1, 2])   # o ano passado entra como base no mesmo critério (ajustado) das estimativas             # consenso do sell-side: ano+1 = ano corrente
 block('EPS', 'EPS Diluted', [-4, -3, -2, -1])              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
 Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
@@ -213,10 +213,11 @@ for r in range(R0, R1 + 1):
     put(C, r, C[f'{CC["SHE"]}{r}'].column, '=0')
     put(C, r, C[f'{CC["SHR"]}{r}'].column, '=0')
     SH = cr('SHE', r)
-    BASE_EPS = X('EPS', 3, r)                                   # último EPS publicado
+    eb = f'{QD}{DC["EST"][0]}{r}'
+    BASE_EPS = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb},{X("EPS", 3, r)})'   # base: EPS do ano passado no critério do consenso (ajustado); se faltar, o contábil
     # consenso com haircut: ano+1 é o primeiro exercício ainda não publicado
     for j, hc in enumerate(('HAIRCUT_1', 'HAIRCUT_2', 'HAIRCUT_3')):
-        e0 = f'{QD}{DC["EST"][j]}{r}'
+        e0 = f'{QD}{DC["EST"][j + 1]}{r}'
         w('E', f'=IFERROR({e0}*{hc},"")', '0.00', j)
         if False: pass
     E1, E2, E3 = (crr('E', j, r) for j in range(3))
@@ -280,7 +281,7 @@ for r in range(R0, R1 + 1):
     FIN = cr('FIN', r)
     w('ROIC', f'=IF({FIN}=1,{cr("ROEM", r)},{cr("TRI", r)})', PCT)
     RO, PL = cr('ROIC', r), cr('PL', r)
-    e1raw = f'IF({SH}=1,{QD}{DC["EST"][1]}{r},{QD}{DC["EST"][0]}{r})'
+    e1raw = f'{QD}{DC["EST"][1]}{r}'
     w('PLL', f'=IFERROR(IF({b0}<>0,{PRICE}{r}/{b0},""),"")', NUM1)
     w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/{e1raw},""),"")', NUM1)
     w('PL', f'=IF(COUNT({cr("PLL", r)},{cr("PLF", r)})=0,"",AVERAGE({cr("PLL", r)},{cr("PLF", r)}))', NUM1)
