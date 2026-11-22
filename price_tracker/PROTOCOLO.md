@@ -565,3 +565,10 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
       períodos (2012–18 e 2019–26) e com ≥ 30 posições; mostrar o custo de excluir.
   Critério de adoção para R1/R2: retorno ≥ versão atual − 0,5 p.p. ao ano E (pior queda menor OU quedas fortes menores) E janelas de 3 anos ≥ atuais − 5 p.p.
   R3/R4 são carteiras novas: reportar com os 9 comparativos e janelas; adoção só como lista de acompanhamento.
+- 2026-11-22 — **PRÉ-REGISTRO ramo M, parte 2 (antes de rodar; pedido do usuário: escadinha, pequenas que compõem, ótima em pânico).**
+  Nota de escadinha (backtest, 5 crescimentos anuais do EPS): 40 × % de anos com alta + 20 × maior sequência ÷ 5 + 20 × (nenhum ano abaixo de −10%)
+  + 20 × max(0, 1 − min(1, desvio/mediana ÷ 1,5)); zero se a mediana ≤ 0.
+  E1. Top 20 e Especiais só com escadinha ≥ 60 (filtro). E2. "Pequenas que compõem": valor de mercado US$ 2–30 bi, ROIC ≥ 20%, escadinha ≥ 70,
+  crescimento ≥ 12%, P/L ≤ 1,3 × P/E justo; até 20 pelo retorno esperado; tetos 10%/40%. E3. "Ótima em pânico": ROIC ≥ 15%, escadinha ≥ 60, sem
+  cíclicas/vestuário, ação caiu ≥ 25% em 12 meses, EPS do último ano subiu; peso igual, máx. 20 (as que mais caíram); trimestral.
+  Critérios: E1 como R1/R2; E2 e E3 como carteiras novas (reportar com comparativos e janelas; adoção só como lista de acompanhamento).
