@@ -21,7 +21,7 @@ SPEC = {
               'base': 'Classe (régua)', 'cyc': 'Cíclica', 'app': 'Vestuário', 'dup': 'Repetida', 'qual': 'Qualidade', 'hr': 'High ROIC',
               'hg': 'High Growth', 'exc': 'Excepcional', 'rks': 'Posição no setor', 'rkt': 'Posição Top 20', 'wt': 'Peso Top 20',
               'secw': 'peso do setor', 'rke': 'Posição Especiais', 'we': 'Peso Especiais', 'rkj': 'Posição JG+G', 'wj': 'Peso JG+G',
-              'wx': 'Peso Excepcionais'},
+              'wx': 'Peso Excepcionais', 'p70': 'Cresc. p70 da indústria', 'gb': 'Crescimento bear', 'mb': 'Múltiplo bear', 'rb': 'Retorno bear', 'bok': 'Passa no bear?'},
     'calcn': {'eh': ['EPS estimado c/ haircut', 3], 'ga': ['Cresc. anual estimado c/ haircut', 3], 'gr0': ['Cresc. anual do consenso', 3], 'ghs': ['Cresc. histórico', 5], 'nop': ['NOPAT', 4],
               'ca': ['Capital ativo', 4], 'cp': ['Capital passivo', 4], 'ra': ['ROIC ativo', 4], 'rp': ['ROIC passivo', 4],
               'xa': ['sem outlier A', 4], 'xp': ['sem outlier P', 4], 'roe': ['ROE', 4]},
