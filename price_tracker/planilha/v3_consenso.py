@@ -173,7 +173,7 @@ for k, lab in (('T', 'Top 20'), ('E', 'Especiais'), ('J', 'JG+G')):
     cols(f'NOTA{k}', 1, f'Nota {lab}', lab); cols(f'RK{k}', 1, f'Posição {lab}'); cols(f'S{k}', 1, '√ valor'); cols(f'F{k}', 1, 'no teto?'); cols(f'W0{k}', 1, 'peso bruto'); cols(f'W{k}', 1, f'Peso {lab}'); cols(f'WU{k}', 1, 'peso (ordem)')
 cols('JR', 1, 'JG: ROIC'); cols('JGr', 1, 'JG: cresc.'); cols('JP', 1, 'JG: P/L')
 cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais'); cols('WXU', 1, 'peso (ordem)')
-OPEN = [('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
+OPEN = [('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_EBF', 'Excellent but Fair'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
 for k, lab in OPEN: cols(k, 1, f'Ordem {lab}', 'Ordem nas listas' if k == 'O_OOL' else None)
 C.freeze_panes = 'B5'
 
@@ -334,7 +334,7 @@ for r in range(R0, R1 + 1):
     w('WX', f'=IF(ISNUMBER({cr("SX", r)}),{cr("SX", r)}/SUM({col_rg("SX")}),"")', PCT)
     w('WXU', f'=IF(ISNUMBER({cr("WX", r)}),{cr("WX", r)}+ROW()*1E-12,"")', PCT)
     rr_ = col_rg('RET')
-    for k, cond in (('O_OOL', f'{CL}="{OOL}"'), ('O_GCGR', f'{CL}="{GCGR}"'), ('O_CYC', f'{CL}="Cyclicals"'), ('O_HR', f'{cr("HR", r)}=1'),
+    for k, cond in (('O_OOL', f'{CL}="{OOL}"'), ('O_GCGR', f'{CL}="{GCGR}"'), ('O_EBF', f'{CL}="Excellent but Fair"'), ('O_CYC', f'{CL}="Cyclicals"'), ('O_HR', f'{cr("HR", r)}=1'),
                     ('O_HG', f'{cr("HG", r)}=1'), ('O_EXC', f'{cr("EXC", r)}=1')):
         crg = col_rg(k)
         # posição pelo retorno esperado entre as da mesma lista (o filtro da lista vem da própria coluna: só quem tem número)
@@ -452,21 +452,23 @@ DESC = {
     'hg': 'Opportunity of Lifetime com crescimento acima de 30%. Ordem: retorno esperado.',
     'exc': 'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado. Ordem: peso.',
     'gcgr': 'Good Companies, Great Returns: boas empresas com retorno esperado alto, um degrau abaixo da OoL. Ordem: retorno esperado.',
+    'ebf': 'Excellent but Fair: empresas ótimas (crescimento e ROIC altos, crescimento estável), mas o retorno esperado ficou entre 8% e 20%. Ordem: retorno esperado.',
     'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
 B0 = (2, 14, 26)
 ranked(8, B0[0], 'Top 20 · a carteira (máx. 8 por setor)', ACC['top'], 'WT', DESC['top'])
 ranked(8, B0[1], 'Especiais · as 20 mais excepcionais', ACC['esp'], 'WE', DESC['esp'])
 ranked(8, B0[2], 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'WJ', DESC['jg'])
-R2, R3 = 8 + 26, 8 + 26 + 44
-for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2])],
-        [('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_HR', 'High ROIC', ACC['hr'], 'hr', None, None),
-         ('O_HG', 'High Growth', ACC['hg'], 'hg', None, None), ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX'),
-         ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None), ('O_CYC', 'Cyclicals', ACC['cyc'], 'cyc', None, None)]):
+R2, R3, R4 = 8 + 26, 8 + 26 + 44, 8 + 26 + 88
+for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2]), (R4, B0[0])],
+        [('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None),
+         ('O_EBF', 'Excellent but Fair', '1F6E8C', 'ebf', None, None),
+         ('O_HR', 'High ROIC', ACC['hr'], 'hr', None, None), ('O_HG', 'High Growth', ACC['hg'], 'hg', None, None),
+         ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX'), ('O_CYC', 'Cyclicals', ACC['cyc'], 'cyc', None, None)]):
     opened(r0, c0, title, colr, k, DESC[dk], wsort=ws, wcol=wc)
 for c0 in B0:
     for j, wd in enumerate(WID): P.column_dimensions[L(c0 + j)].width = wd
     P.column_dimensions[L(c0 + NW)].width = 3
-for r0 in (7, R2 - 1, R3 - 1): P.row_dimensions[r0].height = 36
+for r0 in (7, R2 - 1, R3 - 1, R4 - 1): P.row_dimensions[r0].height = 36
 P.sheet_view.showGridLines = False
 
 # ---------------- Carteira ----------------
