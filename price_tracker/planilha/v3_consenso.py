@@ -178,7 +178,7 @@ def cols(key, n, label, group=None, w=9):
 
 
 cols('SHE', 1, 'Último EPS já saiu?', 'Ano mais recente'); cols('SHR', 1, 'Último balanço já saiu?')
-cols('E', 3, 'EPS estimado c/ haircut', 'Crescimento (consenso)', w=10); cols('GA', 3, 'Cresc. anual estimado'); cols('GRAW', 1, 'Crescimento sem teto')
+cols('E', 3, 'EPS estimado c/ haircut', 'Crescimento (consenso)', w=10); cols('GA', 3, 'Cresc. anual estimado c/ haircut'); cols('GR0', 3, 'Cresc. anual do consenso'); cols('GRAW', 1, 'Crescimento sem teto')
 cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 3, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
 cols('FLAG', 1, 'Atenção', w=16)
 cols('NOP', 4, 'NOPAT', 'ROIC triangulado (4 anos)', w=11); cols('CA', 4, 'Capital ativo', w=11); cols('CP', 4, 'Capital passivo', w=11)
@@ -250,18 +250,22 @@ for r in range(R0, R1 + 1):
     for j, (a_, b_) in enumerate(((BASE_EPS, E1), (E1, E2), (E2, E3))):
         w('GA', f'=IFERROR(IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),""),"")', PCT0, j)
     b0 = BASE_EPS
-    # crescimento de 2026 a 2028 (pula o 1º ano, que costuma ser rebote de uma base deprimida; decisão do usuário, caso UBS)
-    w('GRAW', (f'=IFERROR(IF(AND(N({E1})>0,N({E3})>0),({E3}/{E1})^(1/2)-1,IF(AND(N({E1})>0,N({E2})>0),{E2}/{E1}-1,'
-               f'IF(AND(N({b0})>0,N({E3})>0),({E3}/{b0})^(1/3)-1,""))),"")'), PCT)
-    w('G', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
+    # crescimento = MEDIANA dos 3 crescimentos anuais do consenso (2025→26, 26→27, 27→28): um ano atípico, para cima ou para baixo,
+    # não contamina (decisão do usuário, 2026-11-22; mesma lógica da mediana histórica do modelo testado)
     R1_, R2_, R3_ = (f'{QD}{DC["EST"][j + 1]}{r}' for j in range(3))
-    w('GC', (f'=IFERROR(MIN(G_MAX,IF(AND(N({R1_})>0,N({R3_})>0),({R3_}/{R1_})^(1/2)-1,IF(AND(N({R1_})>0,N({R2_})>0),{R2_}/{R1_}-1,'
-             f'IF(AND(N({b0})>0,N({R3_})>0),({R3_}/{b0})^(1/3)-1,"")))),"")'), PCT)
+    for j, (a_, b_) in enumerate(((b0, R1_), (R1_, R2_), (R2_, R3_))):
+        w('GR0', f'=IFERROR(IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),""),"")', PCT0, j)
+    gr0, gah = rngr('GR0', r), rngr('GA', r)
+    w('GRAW', f'=IF(COUNT({gah})>=2,MEDIAN({gah}),"")', PCT)
+    w('G', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
+    w('GC', f'=IF(COUNT({gr0})>=2,MIN(G_MAX,MEDIAN({gr0})),"")', PCT)
     Gv = cr('G', r)          # com haircut: P/E justo e retorno esperado
     Gc = cr('GC', r)         # consenso puro: classe, filtros e listas
     ga = rngr('GA', r)
-    ga = f'{CC["GA"][1]}{r}:{CC["GA"][2]}{r}'   # zGrowth também sem o 1º ano
-    w('ZG', f'=IF(AND(COUNT({ga})>=2,N({Gc})<>0),_xlfn.STDEV.P({ga})/ABS({Gc}),"")', NUM2)
+    # zGrowth: dispersão dos 2 crescimentos mais próximos da mediana (o ano atípico não conta, como na mediana)
+    md = f'MEDIAN({gr0})'
+    w('ZG', (f'=IFERROR(IF(N({Gc})=0,"",IF(COUNT({gr0})=3,MIN({md}-MIN({gr0}),MAX({gr0})-{md})/2/ABS({Gc}),'
+             f'IF(COUNT({gr0})=2,_xlfn.STDEV.P({gr0})/ABS({Gc}),""))),"")'), NUM2)
     for i in range(3):
         a_, b_ = X('EPS', i, r), X('EPS', i + 1, r)
         w('GH', f'=IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),"")', PCT0, i)
@@ -270,7 +274,7 @@ for r in range(R0, R1 + 1):
     GH = cr('GHM', r)
     w('FLAG', (f'=IF({QA}A{r}="","",IF(NOT(ISNUMBER({Gc})),"Sem estimativa",_xlfn.TEXTJOIN(" · ",TRUE,'
                f'IF(ISNUMBER({GH}),IF(AND({Gc}-{GH}>0.15,{Gc}>2*{GH}),"Consenso ≫ histórico",""),""),'
-               f'IF(N({cr("GRAW", r)})>G_MAX,"Crescimento limitado ao teto",""),IF(N({b0})<=0,"Lucro negativo no último ano",""))))'))
+               f'IF(N({cr("GRAW", r)})>G_MAX,"Crescimento limitado ao teto",""),IF(N({b0})<=0,"Lucro negativo no último ano",""),IFERROR(IF(MAX(MAX({gr0})-{md},{md}-MIN({gr0}))>0.3,"Consenso com ano atípico",""),""))))'))
     # ROIC triangulado leve (4 anos)
     for j in range(4):
         pt, tx = X('PT', j, r), X('TX', j, r)
