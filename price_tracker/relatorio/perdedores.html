@@ -1,0 +1,148 @@
+<title>Quando perdemos dinheiro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: reportagem de página dupla do caderno de mercados — manchete, tese, um gráfico por argumento com título-conclusão, nota de fonte e o "e daí" logo abaixo */
+:root{
+  --paper:#fff1e5; --paper2:#f2dfce; --ink:#33302e; --ink2:#66605c; --rule:#ccc1b7; --claret:#990f3d; --oxford:#0f5499; --teal:#0d7680; --mandarin:#e06b1f; --velvet:#593380; --slate:#807973; --black:#262a33; --jade:#00994d; --wheat:#a87b00;
+  --pos:#0d7680; --neg:#990f3d;
+  --f-head:"Source Serif 4",Georgia,serif; --f-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif; --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#262a33; --paper2:#30343e; --ink:#f2dfce; --ink2:#c2b5a8; --rule:#4a4e58; --claret:#ff6b8f; --oxford:#6aa7e8; --teal:#3cc4c9; --mandarin:#ff9a55; --velvet:#b48ae6; --slate:#a59c94; --black:#fff1e5; --jade:#4fd18a; --wheat:#e0b84a;
+  --pos:#3cc4c9; --neg:#ff6b8f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#262a33; --paper2:#30343e; --ink:#f2dfce; --ink2:#c2b5a8; --rule:#4a4e58; --claret:#ff6b8f; --oxford:#6aa7e8; --teal:#3cc4c9; --mandarin:#ff9a55; --velvet:#b48ae6; --slate:#a59c94; --black:#fff1e5; --jade:#4fd18a; --wheat:#e0b84a;
+  --pos:#3cc4c9; --neg:#ff6b8f; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55}
+.page{max-width:1080px;margin:0 auto;padding-block:20px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mast{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--ink);padding-bottom:6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;gap:12px;flex-wrap:wrap}
+.mast span:last-child{color:var(--ink2);font-weight:600}
+.kicker{color:var(--claret);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-top:26px}
+h1{font-family:var(--f-head);font-weight:700;font-size:clamp(32px,5vw,52px);line-height:1.05;margin:6px 0 10px;letter-spacing:-.01em;text-wrap:balance;max-width:20ch}
+.deck{font-family:var(--f-head);font-size:clamp(19px,2.2vw,23px);line-height:1.35;color:var(--ink2);max-width:46ch;margin:0}
+.byline{font-size:13px;color:var(--ink2);margin-top:14px;border-top:1px solid var(--rule);padding-top:8px}
+.warn{margin:22px 0 0;font-size:14.5px;border-left:3px solid var(--claret);padding:6px 12px;background:var(--paper2)}
+.warn b{color:var(--claret)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;margin-top:28px}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+.prose p{max-width:66ch;margin:0 0 14px}
+.prose p:first-child::first-letter{font-family:var(--f-head);font-size:3.4em;float:left;line-height:.85;padding:4px 8px 0 0;font-weight:700;color:var(--claret)}
+aside.box{border-top:4px solid var(--ink);padding-top:10px;font-size:15px;align-self:start}
+aside.box h3{font-family:var(--f-head);font-size:19px;margin:0 0 8px}
+aside.box ol{margin:0;padding-left:20px}
+aside.box li{margin:0 0 9px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:26px 0 6px}
+.big div{padding:12px 14px 12px 0;border-right:1px solid var(--rule)}
+.big div:last-child{border-right:0}
+.big b{display:block;font-family:var(--f-head);font-size:34px;line-height:1;font-weight:700;color:var(--oxford)}
+.big span{font-size:13.5px;color:var(--ink2)}
+figure{margin:44px 0 0;border-top:1px solid var(--ink);padding-top:10px}
+figcaption.t{font-family:var(--f-head);font-weight:700;font-size:24px;line-height:1.2;max-width:34ch;text-wrap:balance}
+figcaption.s{font-size:15px;color:var(--ink2);margin:4px 0 8px;max-width:70ch}
+.src{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.sowhat{margin-top:12px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;font-size:16px;max-width:820px}
+.sowhat b{font-family:var(--f-head);color:var(--claret);font-size:15px;text-transform:uppercase;letter-spacing:.05em}
+@media (max-width:560px){.sowhat{grid-template-columns:1fr;gap:2px}}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--ink);font-family:var(--f-body)}
+svg .ax text{fill:var(--ink2);font-size:12px}
+svg .ax line,svg .grid line{stroke:var(--rule)}
+svg .ax path{display:none}
+svg .num{font-family:var(--f-num);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;margin:4px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:3px;background:var(--c);display:inline-block}
+.quote{font-family:var(--f-head);font-size:22px;line-height:1.35;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 0;margin:40px 0 0;max-width:40ch}
+.quote cite{display:block;font-family:var(--f-body);font-style:normal;font-size:14px;color:var(--ink2);margin-top:6px}
+.verdict{margin-top:44px;border-top:4px solid var(--claret);padding-top:12px}
+.verdict h2{font-family:var(--f-head);font-size:30px;margin:0 0 10px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.vgrid div{border-top:1px solid var(--rule);padding-top:8px}
+.vgrid h4{font-family:var(--f-head);font-size:18px;margin:0 0 4px}
+.vgrid p{margin:0;font-size:15.5px}
+.tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--c)}
+.tablebox{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th{font-weight:600;color:var(--ink2);font-size:12.5px;white-space:normal;vertical-align:bottom}
+th.l,td.l{text-align:left}
+td.n{font-family:var(--f-num);font-size:13px}
+.method{font-size:14px;color:var(--ink2);max-width:80ch}
+
+.heats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:18px}
+.heats h4,.attr h4{font-family:var(--f-head);font-size:16px;margin:4px 0 6px}
+.heat td{text-align:center}
+td.best{color:var(--pos);font-weight:700}
+td.worst{color:var(--neg)}
+.score td.mark{font-size:15px;letter-spacing:1px}
+.scoreh{font-family:var(--f-head);font-size:20px;margin:26px 0 2px}
+.note{font-size:14px;color:var(--ink2);margin:0}
+.attr{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.attr>div{border-top:2px solid var(--c);padding-top:6px;min-width:0}
+.attr table td{font-size:13.5px}
+.today{display:grid;gap:10px}
+details{border-top:1px solid var(--rule);padding:8px 0}
+summary{cursor:pointer;font-family:var(--f-head);font-weight:700;font-size:17px}
+summary:focus-visible{outline:2px solid var(--oxford);outline-offset:2px}
+.hold{columns:3;column-gap:24px;font-size:14px;margin-top:6px}
+@media (max-width:800px){.hold{columns:1}}
+.hold div{break-inside:avoid;display:flex;justify-content:space-between;gap:10px;border-bottom:1px dotted var(--rule);padding:2px 0}
+.hold b{font-family:var(--f-num);font-weight:500}
+
+h2.chap{font-family:var(--f-head);font-size:clamp(26px,3.6vw,38px);line-height:1.1;margin:8px 0 10px;text-wrap:balance;max-width:26ch}
+.upd{margin-top:18px;border-left:3px solid var(--oxford);padding:6px 12px;background:var(--paper2);font-size:15.5px;max-width:80ch}
+</style><div class="page">
+<div class="mast"><span>Price Tracker · Mercados</span><span>Diagnóstico das perdas · 2011-09 a 2026-09</span></div>
+<div class="kicker">Quando perdemos dinheiro</div>
+<h1>Os perdedores pareciam iguais aos vencedores no dia da compra</h1>
+<p class="deck">Em 1.389 posições das sete carteiras, 15% renderam menos de −10% ao ano. Na entrada, tinham o mesmo P/L, o mesmo crescimento e quase o mesmo ROIC das vencedoras. O que as separou veio depois: o lucro não veio e o múltiplo encolheu. Nenhum dos nove sinais testados as identifica com antecedência.</p>
+<div class="byline">S&amp;P 500 point-in-time · Top 20, Especiais, OoL, High ROIC, High Growth, Excepcionais e JG+G · crescimento histórico (regra testada)</div>
+<p class="warn"><b>⚠️ O ROIC pode estar errado.</b> Ele define a qualidade, o P/E justo e o cenário bear. Episódio = permanência contínua da ação na carteira; perdedor = TIR do episódio abaixo de −10% ao ano. Critérios registrados no PROTOCOLO antes de rodar.</p>
+<div class="big">
+ <div><b>134</b><span>episódios perdedores únicos (ação × data), 15% do total</span></div>
+ <div><b>19,9 × 20,0</b><span>P/L de entrada: perdedores × grandes vencedores</span></div>
+ <div><b>52%</b><span>dos perdedores tinham lucro 10%+ menor dois anos depois (vencedores: 24%)</span></div>
+ <div><b>0 de 9</b><span>sinais conhecidos na entrada passaram no teste</span></div>
+</div>
+
+<h2 class="chap" style="margin-top:40px">1. No dia da compra, nada os diferenciava</h2>
+<figure><figcaption class="t">Perdedores, medianos e grandes vencedores tinham perfis quase idênticos na entrada</figcaption>
+<figcaption class="s">Medianas por grupo. Perdedores: TIR do episódio abaixo de −10% ao ano; grandes vencedores: acima de 30%.</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Na entrada e depois (medianas)</th><th>Perdedores</th><th>Demais</th><th>Grandes vencedores</th></tr></thead><tbody><tr><td class="l">P/L na entrada</td><td class="n">19,9</td><td class="n">20,4</td><td class="n">20,0</td></tr><tr><td class="l">P/L na saída</td><td class="n">19,5</td><td class="n">24,4</td><td class="n">28,8</td></tr><tr><td class="l">P/E justo na entrada</td><td class="n">34,6</td><td class="n">35,7</td><td class="n">37,3</td></tr><tr><td class="l">ROIC na entrada</td><td class="n">24%</td><td class="n">27%</td><td class="n">28%</td></tr><tr><td class="l">ROIC na saída</td><td class="n">24%</td><td class="n">29%</td><td class="n">30%</td></tr><tr><td class="l">ROIC 2 anos depois</td><td class="n">23%</td><td class="n">29%</td><td class="n">26%</td></tr><tr><td class="l">Crescimento previsto (mediana)</td><td class="n">32%</td><td class="n">31%</td><td class="n">31%</td></tr><tr><td class="l">EPS: crescimento anual nos 2 anos seguintes</td><td class="n">-5%</td><td class="n">7%</td><td class="n">9%</td></tr><tr><td class="l">% com EPS 10%+ menor 2 anos depois</td><td class="n">52%</td><td class="n">27%</td><td class="n">24%</td></tr><tr><td class="l">Retorno esperado na entrada</td><td class="n">46%</td><td class="n">51%</td><td class="n">55%</td></tr><tr><td class="l">Bear (regra atual) na entrada</td><td class="n">20%</td><td class="n">24%</td><td class="n">25%</td></tr><tr><td class="l">Alta dos 12 meses anteriores</td><td class="n">13%</td><td class="n">15%</td><td class="n">9%</td></tr><tr><td class="l">zGrowth</td><td class="n">1,19</td><td class="n">1,13</td><td class="n">1,17</td></tr><tr><td class="l">Permanência (trimestres, mediana)</td><td class="n">4</td><td class="n">6</td><td class="n">2</td></tr><tr><td class="l">TIR do episódio (mediana)</td><td class="n">-23%</td><td class="n">13%</td><td class="n">60%</td></tr></tbody></table></div>
+<div class="sowhat"><b>E daí</b><span>O P/L de entrada era o mesmo (~20) e o crescimento previsto também (~31%). Os perdedores tinham ROIC um pouco menor (24% contra 28%) e retorno esperado menor (46% contra 55%), mas a diferença é pequena demais para separar um grupo do outro. A diferença está no que aconteceu depois: o P/L dos perdedores caiu, o dos vencedores subiu de 20,0 para 28,8, e o lucro dos perdedores encolheu em metade dos casos.</span></div>
+</figure>
+
+<h2 class="chap" style="margin-top:40px">2. Que tipo de perda foi</h2>
+<figure><figcaption class="t">Um terço foi múltiplo comprimindo em ação cara; outro terço, o lucro que não veio</figcaption>
+<figcaption class="s">Classificação de cada episódio perdedor pelo que mudou entre a entrada e a saída (EPS anual, P/L e ROIC).</figcaption>
+<svg viewBox="0 0 640 164" role="img"><text x="0" y="20" style="font-size:13px">Múltiplo comprimiu (lucro ok)</text><rect x="300" y="9" width="310.0" height="14" fill="var(--claret)"/><text class="num" x="616.0" y="21">66 (32%)</text><text x="0" y="46" style="font-size:13px">Lucro caiu (crescimento não veio)</text><rect x="300" y="35" width="272.4" height="14" fill="var(--claret)"/><text class="num" x="578.4" y="47">58 (28%)</text><text x="0" y="72" style="font-size:13px">Queda curta (≤ 1 trimestre)</text><rect x="300" y="61" width="197.3" height="14" fill="var(--claret)"/><text class="num" x="503.3" y="73">42 (21%)</text><text x="0" y="98" style="font-size:13px">Múltiplo caiu antes, lucro caiu depois (mercado antecipou)</text><rect x="300" y="87" width="70.5" height="14" fill="var(--claret)"/><text class="num" x="376.5" y="99">15 (7%)</text><text x="0" y="124" style="font-size:13px">Lucro virou prejuízo / sem dado</text><rect x="300" y="113" width="56.4" height="14" fill="var(--claret)"/><text class="num" x="362.4" y="125">12 (6%)</text><text x="0" y="150" style="font-size:13px">ROIC caiu (vantagem enfraqueceu)</text><rect x="300" y="139" width="51.7" height="14" fill="var(--claret)"/><text class="num" x="357.7" y="151">11 (5%)</text></svg>
+<div class="tablebox" style="margin-top:10px"><table><thead><tr><th class="l">Tipo de perda</th><th>Episódios</th><th>Perda mediana</th><th>P/L entrada → saída</th><th>ROIC entrada → saída</th><th>Exemplos</th></tr></thead><tbody><tr><td class="l">Múltiplo comprimiu (lucro ok)</td><td class="n">66 (32%)</td><td class="n">-27%</td><td class="n">28,4 → 18,9</td><td class="n">24% → 27%</td><td class="l">SMCI 2024, TTD 2025</td></tr><tr><td class="l">Lucro caiu (crescimento não veio)</td><td class="n">58 (28%)</td><td class="n">-21%</td><td class="n">15,6 → 23,9</td><td class="n">24% → 19%</td><td class="l">BA 2018, BA 2019, BLDR 2023, GNRC 2022</td></tr><tr><td class="l">Queda curta (≤ 1 trimestre)</td><td class="n">42 (21%)</td><td class="n">-14%</td><td class="n">20,8 → 19,6</td><td class="n">23% → 24%</td><td class="l">ALB 2017, ALGN 2021, BA 2019, NFLX 2022, TTD 2026</td></tr><tr><td class="l">Múltiplo caiu antes, lucro caiu depois (mercado antecipou)</td><td class="n">15 (7%)</td><td class="n">-16%</td><td class="n">14,6 → 12,9</td><td class="n">26% → 24%</td><td class="l">BWA 2015, IPGP 2018, RHI 2019, WDC 2014</td></tr><tr><td class="l">Lucro virou prejuízo / sem dado</td><td class="n">12 (6%)</td><td class="n">-47%</td><td class="n">27,7 → —</td><td class="n">34% → —</td><td class="l">AYI 2016, GT 2017, PAYC 2023</td></tr><tr><td class="l">ROIC caiu (vantagem enfraqueceu)</td><td class="n">11 (5%)</td><td class="n">-55%</td><td class="n">8,2 → —</td><td class="n">37% → 21%</td><td class="l">FSLR 2011, TDC 2013</td></tr></tbody></table></div>
+<div class="sowhat"><b>E daí</b><span><b>Múltiplo comprimiu:</b> eram as ações caras do grupo (P/L mediano de 28,4 na entrada), que perderam o prêmio mesmo com o lucro crescendo (SMCI, TTD). <b>Lucro caiu:</b> curiosamente eram as baratas (P/L de 15,6): o mercado já desconfiava, e o lucro de fato caiu (BA, GNRC, BLDR). <b>Quedas curtas:</b> um trimestre de choque, como a Boeing no começo de 2020 e a Netflix em 2022, não dá para antecipar com números de balanço.</span></div>
+</figure>
+
+<h2 class="chap" style="margin-top:40px">3. Onde aparecem</h2>
+<figure><figcaption class="t">A High ROIC é a que menos tem perdedores; Top 20 e High Growth, as que mais</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Carteira</th><th>Episódios</th><th>% perdedores</th><th>TIR mediana</th></tr></thead><tbody><tr><td class="l">High ROIC</td><td class="n">112</td><td class="n">9%</td><td class="n">19%</td></tr><tr><td class="l">OoL</td><td class="n">340</td><td class="n">14%</td><td class="n">15%</td></tr><tr><td class="l">Especiais</td><td class="n">202</td><td class="n">14%</td><td class="n">19%</td></tr><tr><td class="l">Excepcionais</td><td class="n">52</td><td class="n">15%</td><td class="n">17%</td></tr><tr><td class="l">JG+G</td><td class="n">295</td><td class="n">16%</td><td class="n">22%</td></tr><tr><td class="l">Top 20</td><td class="n">255</td><td class="n">16%</td><td class="n">19%</td></tr><tr><td class="l">High Growth</td><td class="n">133</td><td class="n">17%</td><td class="n">16%</td></tr></tbody></table></div>
+<div class="sowhat"><b>E daí</b><span>Exigir ROIC acima de 30% reduz a frequência de perdas quase pela metade. Os setores dos perdedores são os mesmos do conjunto: não há um setor-vilão para excluir.</span></div>
+</figure>
+
+<h2 class="chap" style="margin-top:40px">4. Dá para evitar com o que se sabe na compra?</h2>
+<figure><figcaption class="t">Nenhum dos nove sinais funcionou nos dois períodos</figcaption>
+<figcaption class="s">Lift = taxa de perdedores entre as marcadas ÷ taxa geral. Para passar, lift ≥ 1,5 nos dois períodos, TIR dos marcados 10 p.p. abaixo e pegar 1,5× mais perdedores que grandes vencedores.</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Sinal na entrada</th><th>Marcados 12–18</th><th>Lift 12–18</th><th>Lift 19–26</th><th>Perdedores pegos 19–26</th><th>Vencedores perdidos 19–26</th><th>Passou?</th></tr></thead><tbody><tr><td class="l">Bear atual ≤ −10%</td><td class="n">1,4%</td><td class="n">1,34</td><td class="n">1,96</td><td class="n">5%</td><td class="n">3%</td><td class="n">não</td></tr><tr><td class="l">Bear com piso de 50% ≤ −10%</td><td class="n">2,0%</td><td class="n">0,95</td><td class="n">2,26</td><td class="n">7%</td><td class="n">3%</td><td class="n">não</td></tr><tr><td class="l">P/L &gt; 1,5× o P/E justo</td><td class="n">3,4%</td><td class="n">1,11</td><td class="n">1,72</td><td class="n">9%</td><td class="n">4%</td><td class="n">não</td></tr><tr><td class="l">P/L acima do p80 da indústria</td><td class="n">18,1%</td><td class="n">0,94</td><td class="n">1,12</td><td class="n">16%</td><td class="n">15%</td><td class="n">não</td></tr><tr><td class="l">Crescimento &gt; 2× a mediana do setor</td><td class="n">47,5%</td><td class="n">1,03</td><td class="n">0,92</td><td class="n">63%</td><td class="n">66%</td><td class="n">não</td></tr><tr><td class="l">ROIC do último ano caiu &gt; 20%</td><td class="n">11,6%</td><td class="n">0,98</td><td class="n">1,23</td><td class="n">12%</td><td class="n">10%</td><td class="n">não</td></tr><tr><td class="l">EPS do último ano caiu</td><td class="n">9,6%</td><td class="n">1,18</td><td class="n">0,91</td><td class="n">10%</td><td class="n">13%</td><td class="n">não</td></tr><tr><td class="l">Alta de 12 meses &gt; 80%</td><td class="n">2,3%</td><td class="n">0,83</td><td class="n">1,18</td><td class="n">7%</td><td class="n">4%</td><td class="n">não</td></tr><tr><td class="l">zGrowth &gt; 1,5</td><td class="n">35,9%</td><td class="n">1,21</td><td class="n">0,99</td><td class="n">40%</td><td class="n">40%</td><td class="n">não</td></tr></tbody></table></div>
+<div class="sowhat"><b>E daí</b><span>O bear atual e a versão mais dura (piso de 50%) só funcionaram de 2019 em diante; em 2012–2018 barravam mais vencedores que perdedores. "P/L acima de 1,5× o justo" vai na direção certa, mas fraco e sem passar no primeiro período. Como nada passou, nenhuma regra nova foi testada nas carteiras, como manda o pré-registro.</span></div>
+</figure>
+
+<h2 class="chap" style="margin-top:40px">As 15 piores</h2>
+<div class="tablebox"><table><thead><tr><th class="l">Ação</th><th class="l">Carteira</th><th>Entrada → saída</th><th>Retorno</th><th>P/L entrada → saída</th><th>ROIC entrada → saída</th><th>Cresc. previsto</th><th class="l">Tipo</th></tr></thead><tbody><tr><td class="l">SMCI</td><td class="l">Especiais</td><td class="n">2024-06 → 2024-12</td><td class="n">-63%</td><td class="n">71,7 → 26,7</td><td class="n">19% → 19%</td><td class="n">56%</td><td class="l">Múltiplo comprimiu (lucro ok)</td></tr><tr><td class="l">FSLR</td><td class="l">Top 20</td><td class="n">2011-09 → 2012-03</td><td class="n">-60%</td><td class="n">8,2 → —</td><td class="n">37% → 26%</td><td class="n">78%</td><td class="l">ROIC caiu (vantagem enfraqueceu)</td></tr><tr><td class="l">BA</td><td class="l">High ROIC</td><td class="n">2019-03 → 2020-03</td><td class="n">-60%</td><td class="n">21,4 → —</td><td class="n">31% → 24%</td><td class="n">24%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">SMCI</td><td class="l">OoL</td><td class="n">2024-03 → 2026-09</td><td class="n">-59%</td><td class="n">88,4 → 12,6</td><td class="n">19% → 28%</td><td class="n">56%</td><td class="l">Múltiplo comprimiu (lucro ok)</td></tr><tr><td class="l">GNRC</td><td class="l">High Growth</td><td class="n">2022-03 → 2024-03</td><td class="n">-58%</td><td class="n">35,8 → 38,6</td><td class="n">19% → 16%</td><td class="n">40%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">TDC</td><td class="l">OoL</td><td class="n">2013-03 → 2016-03</td><td class="n">-55%</td><td class="n">24,0 → —</td><td class="n">80% → 21%</td><td class="n">17%</td><td class="l">ROIC caiu (vantagem enfraqueceu)</td></tr><tr><td class="l">BA</td><td class="l">Top 20</td><td class="n">2019-12 → 2020-03</td><td class="n">-54%</td><td class="n">18,2 → —</td><td class="n">31% → 24%</td><td class="n">24%</td><td class="l">Queda curta (≤ 1 trimestre)</td></tr><tr><td class="l">TTD</td><td class="l">Especiais</td><td class="n">2025-09 → 2026-03</td><td class="n">-54%</td><td class="n">62,8 → 25,2</td><td class="n">20% → 24%</td><td class="n">113%</td><td class="l">Múltiplo comprimiu (lucro ok)</td></tr><tr><td class="l">NFLX</td><td class="l">Especiais</td><td class="n">2022-03 → 2022-06</td><td class="n">-53%</td><td class="n">33,3 → 15,6</td><td class="n">14% → 14%</td><td class="n">85%</td><td class="l">Queda curta (≤ 1 trimestre)</td></tr><tr><td class="l">BA</td><td class="l">OoL</td><td class="n">2018-03 → 2020-03</td><td class="n">-53%</td><td class="n">24,4 → —</td><td class="n">25% → 24%</td><td class="n">17%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">PAYC</td><td class="l">High ROIC</td><td class="n">2023-09 → 2026-03</td><td class="n">-52%</td><td class="n">53,6 → —</td><td class="n">44% → —</td><td class="n">32%</td><td class="l">Lucro virou prejuízo / sem dado</td></tr><tr><td class="l">BLDR</td><td class="l">High Growth</td><td class="n">2023-12 → 2026-03</td><td class="n">-51%</td><td class="n">9,9 → 21,2</td><td class="n">24% → 18%</td><td class="n">98%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">PODD</td><td class="l">Especiais</td><td class="n">2025-03 → 2026-09</td><td class="n">-50%</td><td class="n">45,4 → 37,5</td><td class="n">12% → 17%</td><td class="n">97%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">IPGP</td><td class="l">High ROIC</td><td class="n">2018-06 → 2020-03</td><td class="n">-50%</td><td class="n">34,7 → 32,9</td><td class="n">40% → 32%</td><td class="n">20%</td><td class="l">Lucro caiu (crescimento não veio)</td></tr><tr><td class="l">AYI</td><td class="l">OoL</td><td class="n">2016-12 → 2018-06</td><td class="n">-50%</td><td class="n">34,8 → —</td><td class="n">19% → —</td><td class="n">26%</td><td class="l">Lucro virou prejuízo / sem dado</td></tr></tbody></table></div>
+
+<section class="verdict"><h2>O veredito: perder dinheiro aqui é risco de execução do lucro, não de entrada</h2>
+<div class="vgrid">
+ <div><span class="tag" style="--c:var(--claret)">Não adotar</span><h4>Bear como corte automático</h4><p>Nem o atual nem o mais duro separam perdedores na entrada. Barram vencedores na mesma proporção.</p></div>
+ <div><span class="tag" style="--c:var(--oxford)">Usar</span><h4>Bear como informação</h4><p>Coluna na ficha para o julgamento, junto com o alerta de P/L acima de 1,5× o justo.</p></div>
+ <div><span class="tag" style="--c:var(--teal)">O que protege</span><h4>Vender quando o lucro decepciona</h4><p>Metade dos perdedores teve lucro menor dois anos depois. A regra trimestral já tira a ação quando o crescimento cai; a perda acontece no intervalo. Monitorar revisões do consenso é o próximo teste natural.</p></div>
+ <div><span class="tag" style="--c:var(--wheat)">Concentração</span><h4>ROIC alto reduz perdas</h4><p>A High ROIC tem a menor taxa de perdedores (9%). Peso maior em ROIC acima de 30% é a defesa mais simples que os dados mostram.</p></div>
+</div></section>
+<p class="method" style="margin-top:30px"><b>Método.</b> Episódios por carteira (a mesma ação em várias carteiras conta em cada uma; nos sinais, episódios únicos). Retorno total ajustado do 1º trimestre em carteira ao 1º trimestre fora; TIR anualizada (episódios de 1 trimestre têm TIR exagerada; o retorno simples aparece nas tabelas). EPS anual mais recente conhecido em cada data (defasagem de até 15 meses). Código: <code>relatorio/perdedores.py</code>.</p>
+</div>
