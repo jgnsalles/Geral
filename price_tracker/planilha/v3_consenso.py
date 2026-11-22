@@ -60,8 +60,8 @@ RULES = [('G_ALTO', 'Crescimento alto', .15, PCT0), ('G_BAIXO', 'Crescimento bai
          ('RET_BAIXO', 'Retorno esperado baixo', .08, PCT0), ('WACC', 'WACC do P/E justo', .085, PCT), ('G_TOPO', 'g do P/E justo: maior', .07, PCT),
          ('G_PISO', 'g do P/E justo: menor', .035, PCT), ('G_FIN', 'Financeiras: g 0,5 p.p. menor', .005, PCT), ('HR_CORTE', 'High ROIC: ROIC acima de', .30, PCT0),
          ('HG_CORTE', 'High Growth: crescimento acima de', .30, PCT0), ('PL_MIN', 'Top 20: P/L mínimo', 4, '0'), ('N_LISTA', 'Tamanho das listas', 20, '0'),
-         ('TETO', 'Peso máximo por ação', .10, PCT0), ('HAIRCUT_1', 'Haircut EPS ano+1 (multiplica)', .95, NUM2), ('HAIRCUT_2', 'Haircut EPS ano+2', .90, NUM2),
-         ('HAIRCUT_3', 'Haircut EPS ano+3', .85, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor (8 = 40%)', 8, '0')]
+         ('TETO', 'Peso máximo por ação', .10, PCT0), ('HAIRCUT_1', 'Haircut EPS ano+1 (só no retorno)', .97, NUM2), ('HAIRCUT_2', 'Haircut EPS ano+2', .94, NUM2),
+         ('HAIRCUT_3', 'Haircut EPS ano+3', .91, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor (8 = 40%)', 8, '0')]
 head(G, 4, 1, 'Regra', w=34); head(G, 4, 2, 'Valor', w=12)
 for i, (nmr, lab, v, f) in enumerate(RULES):
     r = 5 + i; put(G, r, 1, lab); x = put(G, r, 2, v, f); x.fill = fill('FFF4C2')
@@ -155,7 +155,7 @@ def cols(key, n, label, group=None, w=9):
 
 cols('SHE', 1, 'Último EPS já saiu?', 'Ano mais recente'); cols('SHR', 1, 'Último balanço já saiu?')
 cols('E', 3, 'EPS estimado c/ haircut', 'Crescimento (consenso)', w=10); cols('GA', 3, 'Cresc. anual estimado'); cols('GRAW', 1, 'Crescimento sem teto')
-cols('G', 1, 'Crescimento (com teto)'); cols('ZG', 1, 'zGrowth'); cols('GH', 3, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
+cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 3, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
 cols('FLAG', 1, 'Atenção', w=16)
 cols('NOP', 4, 'NOPAT', 'ROIC triangulado (4 anos)', w=11); cols('CA', 4, 'Capital ativo', w=11); cols('CP', 4, 'Capital passivo', w=11)
 cols('RA', 4, 'ROIC ativo'); cols('RP', 4, 'ROIC passivo')
@@ -227,7 +227,12 @@ for r in range(R0, R1 + 1):
     w('GRAW', (f'=IFERROR(IF(N({b0})>0,IF(N({E3})>0,({E3}/{b0})^(1/3)-1,IF(N({E2})>0,({E2}/{b0})^(1/2)-1,"")),'
                f'IF(AND(N({E1})>0,N({E3})>0),({E3}/{E1})^(1/2)-1,IF(AND(N({E1})>0,N({E2})>0),{E2}/{E1}-1,""))),"")'), PCT)
     w('G', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
-    Gc = cr('G', r); ga = rngr('GA', r)
+    R1_, R2_, R3_ = (f'{QD}{DC["EST"][j + 1]}{r}' for j in range(3))
+    w('GC', (f'=IFERROR(MIN(G_MAX,IF(N({b0})>0,IF(N({R3_})>0,({R3_}/{b0})^(1/3)-1,IF(N({R2_})>0,({R2_}/{b0})^(1/2)-1,"")),'
+             f'IF(AND(N({R1_})>0,N({R3_})>0),({R3_}/{R1_})^(1/2)-1,IF(AND(N({R1_})>0,N({R2_})>0),{R2_}/{R1_}-1,"")))),"")'), PCT)
+    Gv = cr('G', r)          # com haircut: P/E justo e retorno esperado
+    Gc = cr('GC', r)         # consenso puro: classe, filtros e listas
+    ga = rngr('GA', r)
     w('ZG', f'=IF(AND(COUNT({ga})>=2,N({Gc})<>0),_xlfn.STDEV.P({ga})/ABS({Gc}),"")', NUM2)
     for i in range(3):
         a_, b_ = X('EPS', i, r), X('EPS', i + 1, r)
@@ -286,6 +291,7 @@ for r in range(R0, R1 + 1):
     w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/{e1raw},""),"")', NUM1)
     w('PL', f'=IF(COUNT({cr("PLL", r)},{cr("PLF", r)})=0,"",AVERAGE({cr("PLL", r)},{cr("PLF", r)}))', NUM1)
     grg, frg = col_rg('G'), col_rg('FIN')
+    Gc_class = Gc; Gc = Gv
     w('g', (f'=IF(ISNUMBER({Gc}),(G_TOPO-{FIN}*G_FIN)-SUMPRODUCT(ISNUMBER({grg})*({grg}>{Gc})*({frg}={FIN}))*(G_TOPO-G_PISO)'
             f'/MAX(1,SUMPRODUCT(ISNUMBER({grg})*({frg}={FIN}))-1),"")'), PCT)
     gg = cr('g', r)
@@ -295,6 +301,7 @@ for r in range(R0, R1 + 1):
     w('RF', f'=IFERROR(IF({PE}*{E2}/{PRICE}{r}>0,SQRT({PE}*{E2}/{PRICE}{r})-1+{DY},""),"")', PCT)
     w('RC', f'=IF(ISNUMBER({Gc}),{Gc}+{DY},"")', PCT)
     w('RET', f'=IF(AND(ISNUMBER({cr("RF", r)}),ISNUMBER({cr("RC", r)})),({cr("RF", r)}+{cr("RC", r)})/2,IF(ISNUMBER({Gc}),{Gc},""))', PCT)
+    Gc = Gc_class
     RT, ZG = cr('RET', r), cr('ZG', r)
     w('COD', (f'=IF(AND(ISNUMBER({Gc}),ISNUMBER({ZG}),ISNUMBER({RO}),ISNUMBER({RT})),IF({Gc}>G_ALTO,"H",IF({Gc}>=G_BAIXO,"O","L"))&IF({ZG}<ZG,"O","P")'
               f'&IF({RO}>ROIC_ALTO,"G",IF({RO}>=ROIC_BAIXO,"O","L"))&"N"&IF({RT}>RET_ALTO,"G",IF({RT}>=RET_BAIXO,"O","B")),"")'))
@@ -355,7 +362,7 @@ for r in range(R0, R1 + 1):
     x = A.cell(r, 1, t); x.font = F_BB; x.fill = fill('FFF4C2')
     blank = f'{QA}A{r}=""'.replace(QA, '')
     vals = [f'=IF({NAME}{r}="","",{NAME}{r})', f'=IF({SECT}{r}="","",{SECT}{r})', f'=IF({IND}{r}="","",{IND}{r})', f'=IF({PRICE}{r}="","",{PRICE}{r})',
-            f'=IFERROR(IF({MCAP}{r}="","",{MCAP}{r}/1E9),"")', f'={QC}{cr("PL", r)}', f'={QC}{cr("G", r)}', f'={QC}{cr("ROIC", r)}', f'={QC}{cr("PEJ", r)}',
+            f'=IFERROR(IF({MCAP}{r}="","",{MCAP}{r}/1E9),"")', f'={QC}{cr("PL", r)}', f'={QC}{cr("GC", r)}', f'={QC}{cr("ROIC", r)}', f'={QC}{cr("PEJ", r)}',
             f'={QC}{cr("RET", r)}', f'={QC}{cr("CLS", r)}',
             (f'=_xlfn.TEXTJOIN(" · ",TRUE,IF(ISNUMBER({QC}{cr("RKT", r)}),"Top 20 #"&{QC}{cr("RKT", r)},""),IF(ISNUMBER({QC}{cr("RKE", r)}),"Especiais",""),'
              f'IF({QC}{cr("EXC", r)}=1,"Excepcional",""),IF({QC}{cr("HR", r)}=1,"High ROIC",""),IF({QC}{cr("HG", r)}=1,"High Growth",""),'
@@ -410,7 +417,7 @@ def header(r0, c0, title, colr, desc, show_peso):
 def row_vals(m, wcol):
     """mesmas colunas em todas as listas: ação, empresa, peso, ROIC, crescimento, P/L atual, P/E justo, retorno, bagger, alerta"""
     g = lambda key: f'=IFERROR(INDEX({QC}{col_rg(key)},{m}),"")'
-    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', g(wcol) if wcol else None, g('ROIC'), g('G'), g('PL'), g('PEJ'),
+    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', g(wcol) if wcol else None, g('ROIC'), g('GC'), g('PL'), g('PEJ'),
             f'=IFERROR(INDEX({RT_RG},{m}),"")', f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
             f'=IFERROR(IF(INDEX({QC}{col_rg("FLAG")},{m})<>"","⚠",""),"")']
 
