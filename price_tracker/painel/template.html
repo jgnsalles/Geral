@@ -1,0 +1,472 @@
+<title>Price Tracker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: terminal de duas camadas — barra de comando fixa (busca, arquivo, filtro), abas de função, tabela densa; a ficha da empresa abre num painel lateral */
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --panel2:#efede8; --ink:#16181d; --ink2:#5b6070; --rule:#dcd9d2;
+  --acc:#b45309; --acc2:#0b5cad; --pos:#0f7b53; --neg:#b42318; --warn:#b45309; --hl:#fff4d6;
+  --ool:#0b6e4f; --gcgr:#2e7d9a; --ebf:#1f6e8c; --cyc:#c2571a; --hr:#5b3a99; --hg:#b5338a; --exc:#9a1b3d; --top:#0f4c81; --esp:#7a5c00; --jg:#3c6e1f;
+  --f-ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --f-num:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d0f12; --panel:#15181d; --panel2:#1c2027; --ink:#e7e9ee; --ink2:#9aa1b0; --rule:#2a2f38;
+  --acc:#f5a623; --acc2:#5fa8f5; --pos:#39c38b; --neg:#ff6b6b; --warn:#f5a623; --hl:#2a2410;
+  --ool:#3cc49a; --gcgr:#5cb8d6; --ebf:#6ab7d6; --cyc:#f08a4b; --hr:#a98be6; --hg:#f07cc6; --exc:#ff6b8f; --top:#6aa7e8; --esp:#e0b84a; --jg:#8fd16a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0f12; --panel:#15181d; --panel2:#1c2027; --ink:#e7e9ee; --ink2:#9aa1b0; --rule:#2a2f38;
+  --acc:#f5a623; --acc2:#5fa8f5; --pos:#39c38b; --neg:#ff6b6b; --warn:#f5a623; --hl:#2a2410;
+  --ool:#3cc49a; --gcgr:#5cb8d6; --ebf:#6ab7d6; --cyc:#f08a4b; --hr:#a98be6; --hg:#f07cc6; --exc:#ff6b8f; --top:#6aa7e8; --esp:#e0b84a; --jg:#8fd16a; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:13px;line-height:1.4}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px;max-width:1500px;margin:0 auto}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:1px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+/* barra de comando */
+.cmd{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--panel);border-bottom:2px solid var(--acc);display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:8px 0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--panel)}
+.brand{font-family:var(--f-num);font-weight:600;letter-spacing:.08em;color:var(--acc);font-size:14px}
+.src{color:var(--ink2);font-size:12px;max-width:42ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sp{flex:1}
+.btn{border:1px solid var(--rule);background:var(--panel2);padding:5px 10px;border-radius:3px;font-size:12px}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--acc);color:#111;border-color:var(--acc);font-weight:600}
+.search{position:relative}
+.search input{width:220px;max-width:58vw;border:1px solid var(--rule);background:var(--bg);padding:5px 8px;border-radius:3px;font-family:var(--f-num)}
+.sres{position:absolute;top:100%;right:0;left:0;min-width:300px;background:var(--panel);border:1px solid var(--rule);max-height:320px;overflow:auto;z-index:30}
+.sres div{padding:5px 8px;cursor:pointer;display:flex;gap:8px}
+.sres div:hover,.sres div.on{background:var(--hl)}
+.sres b{font-family:var(--f-num);min-width:56px}
+label.chk{display:flex;gap:5px;align-items:center;font-size:12px;color:var(--ink2);cursor:pointer}
+/* abas */
+.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--rule);margin-top:10px}
+.tabs button{border:0;background:none;padding:7px 12px;color:var(--ink2);border-bottom:2px solid transparent;white-space:nowrap;font-weight:500}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+.sub{display:flex;gap:4px;overflow-x:auto;margin:10px 0 6px;padding-bottom:2px}
+.sub button{border:1px solid var(--rule);background:var(--panel);padding:4px 9px;border-radius:2px;white-space:nowrap;font-size:12px}
+.sub button.on{border-color:var(--c,var(--acc));box-shadow:inset 0 -2px 0 var(--c,var(--acc));font-weight:600}
+.sub button i{font-style:normal;color:var(--ink2);font-family:var(--f-num);margin-left:4px}
+/* faixa de números */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border:1px solid var(--rule);background:var(--panel);margin-top:10px}
+.kpis div{padding:8px 10px;border-right:1px solid var(--rule)}
+.kpis div:last-child{border-right:0}
+.kpis b{display:block;font-family:var(--f-num);font-size:20px;color:var(--c,var(--ink))}
+.kpis span{font-size:11px;color:var(--ink2)}
+.desc{color:var(--ink2);font-size:12px;margin:2px 0 8px;max-width:110ch}
+/* tabela */
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:4px 8px;border-bottom:1px solid var(--rule);white-space:nowrap;text-align:right}
+th{position:sticky;top:0;background:var(--panel2);font-weight:600;font-size:11px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;cursor:pointer;user-select:none}
+th.l,td.l{text-align:left}
+th.sorted::after{content:" ▾";color:var(--acc)}
+th.sorted.asc::after{content:" ▴"}
+tbody tr:hover{background:var(--hl)}
+td.tk{font-family:var(--f-num);font-weight:600;color:var(--acc2);cursor:pointer}
+td.click{cursor:pointer;text-decoration:underline dotted var(--ink2);text-underline-offset:3px}
+td.nm{max-width:220px;overflow:hidden;text-overflow:ellipsis}
+td.ind{max-width:200px;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}
+td.w{color:var(--neg);font-weight:700;cursor:help}
+td.n{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.neg{color:var(--neg)} .pos{color:var(--pos)}
+.empty{padding:24px;color:var(--ink2);text-align:center}
+/* ficha */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(860px,100%);background:var(--panel);z-index:41;display:flex;flex-direction:column;border-left:2px solid var(--acc);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.dh{padding:12px 16px;border-bottom:1px solid var(--rule);display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.dh h2{margin:0;font-size:18px;font-family:var(--f-num)}
+.dh .meta{color:var(--ink2);font-size:12px}
+.dbody{overflow:auto;padding:12px 16px;flex:1;min-width:0}
+.dtabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--rule);padding:0 16px}
+.dtabs button{border:0;background:none;padding:7px 10px;color:var(--ink2);border-bottom:2px solid transparent;white-space:nowrap}
+.dtabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+.pill{display:inline-block;padding:2px 8px;border-radius:2px;font-size:11px;font-weight:600;color:#fff;background:var(--c,var(--ink2))}
+.tag{display:inline-block;border:1px solid var(--rule);padding:1px 6px;border-radius:2px;font-size:11px;margin:2px 4px 2px 0}
+.tag.w{border-color:var(--neg);color:var(--neg)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}
+.card{border:1px solid var(--rule);padding:10px 12px;background:var(--panel);min-width:0}
+.card h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:12.5px}
+.kv span:nth-child(odd){color:var(--ink2)}
+.kv span:nth-child(even){font-family:var(--f-num);text-align:right}
+.code{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.code div{border:1px solid var(--rule);padding:4px 8px;text-align:center;min-width:86px}
+.code b{display:block;font-family:var(--f-num);font-size:16px;color:var(--acc)}
+.code span{font-size:10.5px;color:var(--ink2)}
+.formula{font-family:var(--f-num);background:var(--panel2);padding:8px 10px;border-left:3px solid var(--acc);margin:8px 0;overflow-x:auto;white-space:nowrap}
+.note{font-size:11.5px;color:var(--ink2);margin:6px 0 0;max-width:90ch}
+.caveat{border-left:3px solid var(--warn);background:var(--hl);padding:6px 10px;font-size:12px;margin:10px 0}
+.sl{display:grid;grid-template-columns:150px 1fr 70px;gap:8px;align-items:center;font-size:12px;margin:4px 0}
+.sl input{width:100%}
+svg{display:block;width:100%;height:auto;max-width:100%}
+svg text{fill:var(--ink2);font-family:var(--f-num);font-size:10px}
+.bar-row{display:grid;grid-template-columns:minmax(90px,200px) 1fr 56px;gap:8px;align-items:center;font-size:12px;margin:3px 0}
+.bar-row .b{height:12px;background:var(--panel2);position:relative}
+.bar-row .b i{position:absolute;left:0;top:0;bottom:0;background:var(--c,var(--acc2))}
+.bar-row .b i.over{background:var(--neg)}
+.bar-row span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--rule);padding:3px 8px;font-family:var(--f-num);display:inline-flex;gap:6px;align-items:center}
+.chip button{border:0;background:none;color:var(--ink2);padding:0}
+textarea{width:100%;min-height:70px;background:var(--bg);border:1px solid var(--rule);padding:6px;font-family:var(--f-num);font-size:12px}
+.drop{position:fixed;inset:0;background:rgba(180,83,9,.15);border:3px dashed var(--acc);z-index:60;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:var(--acc)}
+.foot{margin-top:18px;color:var(--ink2);font-size:11.5px;border-top:1px solid var(--rule);padding-top:8px}
+@media (max-width:640px){.src{display:none}.search input{width:150px}.sl{grid-template-columns:110px 1fr 56px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+  <div class="cmd">
+    <span class="brand">PRICE TRACKER</span>
+    <span class="src" id="src"></span>
+    <span class="sp"></span>
+    <div class="search"><input id="q" placeholder="/ buscar ticker ou empresa" autocomplete="off" aria-label="Buscar ação"><div class="sres" id="sres" hidden></div></div>
+    <label class="chk"><input type="checkbox" id="hidew"> esconder ⚠</label>
+    <button class="btn pri" id="load">Carregar planilha</button>
+    <input type="file" id="file" accept=".xlsx,.xlsm" hidden>
+    <button class="btn" id="reset" hidden>Dados embutidos</button>
+    <button class="btn" id="theme" title="Tema claro/escuro">◐</button>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+  <main id="main"></main>
+  <div class="foot" id="foot"></div>
+</div>
+<div class="drop" id="drop" hidden>Solte a planilha (.xlsx) aqui</div>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden role="dialog" aria-label="Ficha da empresa"></aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const SPEC=/*__SPEC__*/null;
+const EMBED=/*__DATA__*/null;
+const FX_RESERVA={EUR:1.08,GBP:1.27,DKK:1/6.9,TWD:1/32,CHF:1/0.88,CAD:1/1.38};
+const AI_DEFAULT='Semiconductors\nSemiconductor Equipment & Materials\nComputer Hardware\nHardware, Equipment & Parts\nElectrical Equipment & Parts\nCommunication Equipment\nVST\nCEG\nTLN\nNRG\nFIX\nCAT\nAAON\nORCL\nCRWV\nNBIS';
+const OOL='Opportunity of Lifetime',GCGR='Good Companies, Great Returns',EBF='Excellent but Fair';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const isN=v=>typeof v==='number'&&isFinite(v);
+const P=(v,d=1)=>isN(v)?(v*100).toFixed(d).replace('.',',')+'%':'—';
+const N=(v,d=1)=>isN(v)?v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
+const B=v=>isN(v)?(Math.abs(v)>=1e9?N(v/1e9,1)+' bi':Math.abs(v)>=1e6?N(v/1e6,0)+' mi':N(v,2)):'—';
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- parser da planilha (mesmos cabeçalhos do gerador em Python) ---------- */
+function parseWorkbook(wb){
+  const g=n=>{const ws=wb.Sheets[n];if(!ws)throw new Error('A planilha não tem a aba "'+n+'".');return XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:null,blankrows:true})};
+  const A=g('Ações'),C=g('Cálculo'),D=g('Dados'),G=g('Regras');
+  const num=v=>(typeof v==='number'&&isFinite(v))?Math.round(v*1e6)/1e6:(v===''||v==null?null:v);
+  const hA={};(A[3]||[]).forEach((v,i)=>{if(v&&!(v in hA))hA[v]=i});
+  const hC={};(C[3]||[]).forEach((v,i)=>{if(v&&!(v in hC))hC[v]=i});
+  const blocks={};let cur=null;const r2=D[2]||[],r3=D[3]||[],L=Math.max(r2.length,r3.length);
+  for(let i=0;i<L;i++){const b=r2[i],y=r3[i];if(b){cur=b;blocks[cur]={cols:[],years:[]}}
+    if(cur&&typeof y==='number'){blocks[cur].cols.push(i);blocks[cur].years.push(Math.round(y))}
+    if(y==null&&b==null)cur=null}
+  const tkD={};D.slice(4).forEach(row=>{if(row&&row[0])tkD[row[0]]=row});
+  const stocks=[];
+  for(let r=4;r<A.length;r++){const row=A[r]||[];const t=row[hA['Ticker']];if(!t)continue;
+    const s={};for(const[k,h]of Object.entries(SPEC.acoes))s[k]=h in hA?num(row[hA[h]]):null;
+    const cr=C[r]||[];
+    for(const[k,h]of Object.entries(SPEC.calc1))s[k]=h in hC?num(cr[hC[h]]):null;
+    for(const[k,[h,n]]of Object.entries(SPEC.calcn)){s[k]=[];for(let i=1;i<=n;i++)s[k].push((h+' '+i) in hC?num(cr[hC[h+' '+i]]):null)}
+    const dr=tkD[t];
+    for(const[k,h]of Object.entries(SPEC.dados)){const b=blocks[h];s[k]=(b&&dr)?b.cols.map(c=>num(dr[c])):null}
+    stocks.push(s)}
+  const years={};for(const[k,h]of Object.entries(SPEC.dados))if(blocks[h])years[k]=blocks[h].years;
+  const rules={};G.slice(4,40).forEach(row=>{if(!row||!row[0])return;for(const[k,h]of Object.entries(SPEC.rules))if(!(k in rules)&&String(row[0]).startsWith(h))rules[k]=num(row[1])});
+  const hdr=G[3]||[];const lists={};
+  for(const[k,h]of Object.entries(SPEC.lists)){const c=hdr.indexOf(h);if(c>=0)lists[k]=G.slice(4).map(r=>r&&r[c]).filter(Boolean)}
+  const adr={},fx={};let c=hdr.indexOf('Ticker (moeda ≠ USD)');
+  if(c>=0)G.slice(4).forEach(r=>{if(r&&r[c])adr[r[c]]={moeda:r[c+1],n:num(r[c+2]),est:r[c+3]}});
+  c=hdr.indexOf('US$ por unidade');if(c>=0)G.slice(4).forEach(r=>{if(r&&r[c-1])fx[r[c-1]]=num(r[c])});
+  return{stocks,years,rules,lists,adr,fx}}
+
+/* ---------- estado ---------- */
+let M=null,BY={},VIEW=ls.get('pt.view','listas'),LIST=ls.get('pt.list','top'),SORT={},COMPARE=JSON.parse(ls.get('pt.cmp','[]')||'[]'),DTAB='resumo',CUR=null;
+const LISTS=[
+ {k:'top',n:'Top 20',c:'--top',w:'wt',d:s=>isN(s.wt),desc:'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor.'},
+ {k:'esp',n:'Especiais',c:'--esp',w:'we',d:s=>isN(s.we),desc:'As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade.'},
+ {k:'jg',n:'JG+G',c:'--jg',w:'wj',d:s=>isN(s.wj),desc:'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L. Sem financeiras, utilities e cíclicas.'},
+ {k:'ool',n:'OoL',c:'--ool',d:s=>s.cls===OOL&&!s.dup,desc:'Opportunity of Lifetime: crescimento > 15%, ROIC > 12%, crescimento estável e retorno esperado > 20%.'},
+ {k:'gcgr',n:'GCGR',c:'--gcgr',d:s=>s.cls===GCGR&&!s.dup,desc:'Good Companies, Great Returns: boas empresas com retorno alto, um degrau abaixo da OoL.'},
+ {k:'ebf',n:'Excellent but Fair',c:'--ebf',d:s=>s.cls===EBF&&!s.dup,desc:'Empresas ótimas (crescimento e ROIC altos), mas com retorno esperado entre 8% e 20%.'},
+ {k:'hr',n:'High ROIC',c:'--hr',d:s=>s.hr===1,desc:'Opportunity of Lifetime com ROIC acima de 30%.'},
+ {k:'hg',n:'High Growth',c:'--hg',d:s=>s.hg===1,desc:'Opportunity of Lifetime com crescimento acima de 30%.'},
+ {k:'exc',n:'Excepcionais',c:'--exc',w:'wx',d:s=>s.exc===1,desc:'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado, sem teto.'},
+ {k:'cyc',n:'Cyclicals',c:'--cyc',d:s=>s.cls==='Cyclicals'&&!s.dup,desc:'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras do Excel). Ficam fora das carteiras.'}];
+const CLSCOL={[OOL]:'--ool',[GCGR]:'--gcgr',[EBF]:'--ebf','Cyclicals':'--cyc'};
+
+function setModel(m,label){M=m;BY={};m.stocks.forEach(s=>BY[s.t]=s);$('#src').textContent=label||m.fonte||'';$('#src').title=$('#src').textContent;render()}
+function hidew(){return $('#hidew').checked}
+function flags(s){return s.flag?String(s.flag).split(' · ').filter(Boolean):[]}
+
+/* ---------- conta do modelo (para a sensibilidade): mesma fórmula da planilha ---------- */
+function calc(s,o={}){const R=M.rules;const wacc=o.wacc??R.wacc;const h3=o.h3??R.h3;
+  const k=(1-h3)/(1-(R.h3||0.91));const h=[1-(1-(R.h1||.97))*k,1-(1-(R.h2||.94))*k,h3];
+  const est=s.est||[],eps=s.eps||[];const b0=(isN(est[0])&&est[0]>0)?est[0]:eps[3];
+  const E=[0,1,2].map(j=>isN(est[j+1])?est[j+1]*h[j]:null);let gv=null;
+  if(isN(b0)&&b0>0){if(E[2]>0)gv=Math.pow(E[2]/b0,1/3)-1;else if(E[1]>0)gv=Math.pow(E[1]/b0,1/2)-1}
+  else if(E[0]>0&&E[2]>0)gv=Math.pow(E[2]/E[0],1/2)-1;else if(E[0]>0&&E[1]>0)gv=E[1]/E[0]-1;
+  if(isN(gv))gv=Math.min(R.gmax??1,gv);
+  const g=isN(s.gg)?s.gg+(o.dg||0):null;const ro=s.ru;
+  let pej=null;if(isN(ro)&&ro>0&&isN(g))pej=(1-g/Math.min(1,ro))/(wacc-g);
+  const dy=s.dy||0;let rf=null;const fe=isN(s.fxe)?s.fxe:1;
+  if(isN(pej)&&isN(E[1])&&isN(s.px)&&s.px>0){const base=pej*E[1]*fe/s.px;if(base>0)rf=Math.sqrt(base)-1+dy}
+  const rc=isN(gv)?gv+dy:null;const ret=(isN(rf)&&isN(rc))?(rf+rc)/2:gv;
+  return{pej,rf,rc,ret,gv,g,E,b0,h}}
+
+/* ---------- abas principais ---------- */
+const VIEWS=[['listas','Listas'],['riscos','Riscos da carteira'],['alertas','Central de alertas'],['comparar','Comparar'],['regras','Regras e ressalvas']];
+function renderTabs(){$('#tabs').innerHTML=VIEWS.map(([k,n])=>`<button data-v="${k}" class="${VIEW===k?'on':''}">${n}${k==='comparar'&&COMPARE.length?` (${COMPARE.length})`:''}</button>`).join('');
+  $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{VIEW=b.dataset.v;ls.set('pt.view',VIEW);render()})}
+function render(){if(!M)return;renderTabs();({listas:vListas,riscos:vRiscos,alertas:vAlertas,comparar:vComparar,regras:vRegras})[VIEW]();renderFoot();if(CUR)openStock(CUR,DTAB,true)}
+
+function members(L){let a=M.stocks.filter(L.d);if(hidew())a=a.filter(s=>!s.flag);return a}
+function vListas(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];
+  const cnt=k=>M.stocks.filter(s=>s.cls===k&&!s.dup).length;
+  let h=`<div class="kpis">${[[OOL,'--ool'],[GCGR,'--gcgr'],[EBF,'--ebf'],['High ROIC','--hr',M.stocks.filter(s=>s.hr===1).length],['High Growth','--hg',M.stocks.filter(s=>s.hg===1).length],['Excepcionais','--exc',M.stocks.filter(s=>s.exc===1).length],['Cyclicals','--cyc']].map(([n,c,v])=>`<div style="--c:var(${c})"><b>${v??cnt(n)}</b><span>${n}</span></div>`).join('')}<div><b>${M.stocks.length}</b><span>ações no arquivo</span></div></div>`;
+  h+=`<div class="sub">${LISTS.map(x=>`<button data-l="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${members(x).length}</i></button>`).join('')}</div>`;
+  h+=`<p class="desc">${esc(L.desc)} ${L.w?'Ordem: peso.':'Ordem: retorno esperado.'} Clique na ação para a ficha; em ROIC, Cresc. ou P/E justo para a conta.</p>`;
+  h+=table(members(L),L);$('#main').innerHTML=h;
+  $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list',LIST);vListas()});
+  wireTable(L)}
+const COLS=[['#','i','n'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso','w','p1'],['ROIC','roic','p0c:roic'],['Cresc.','g','p0c:cresc'],['P/L','pl','n1'],['P/E justo','pej','n1c:pe'],['Retorno','ret','p0'],['Bagger','bag','i0'],['⚠','flag','w']];
+function table(rows,L){const key=L.k;const st=SORT[key]||{c:L.w?'w':'ret',asc:false};
+  const val=(s,c)=>c==='w'?(L.w?s[L.w]:null):c==='flag'?(s.flag?1:0):s[c];
+  rows=rows.slice().sort((a,b)=>{const x=val(a,st.c),y=val(b,st.c);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='string'?x.localeCompare(y):x-y)*(st.asc?1:-1)});
+  if(!rows.length)return'<div class="tw"><div class="empty">Nenhuma ação nesta lista'+(hidew()?' (o filtro "esconder ⚠" está ligado)':'')+'.</div></div>';
+  let h='<div class="tw"><table><thead><tr>'+COLS.filter(c=>c[1]!=='w'||L.w).map(([n,c])=>`<th data-c="${c}" class="${['t','nm','ind'].includes(c)?'l':''} ${st.c===c?'sorted'+(st.asc?' asc':''):''}">${n}</th>`).join('')+'</tr></thead><tbody>';
+  rows.forEach((s,i)=>{h+='<tr>'+COLS.filter(c=>c[1]!=='w'||L.w).map(([n,c,f])=>{
+    const[ff,act]=f.split(':');const v=c==='i'?i+1:c==='w'?s[L.w]:s[c];
+    if(ff==='tk')return`<td class="tk l" data-t="${esc(s.t)}">${esc(s.t)}</td>`;
+    if(ff==='nm')return`<td class="nm l" title="${esc(s.nm)}">${esc(s.nm)}</td>`;
+    if(ff==='ind')return`<td class="ind l" title="${esc(s.ind)}">${esc(s.ind)}</td>`;
+    if(ff==='w')return s.flag?`<td class="w" title="${esc(s.flag)}">⚠</td>`:'<td></td>';
+    const cls=act?` click" data-t="${esc(s.t)}" data-a="${act}`:'';
+    const txt=ff.startsWith('p')?P(v,ff==='p1'||ff==='p1c'?1:0):ff==='n0'?N(v,0):ff==='i0'||ff==='n'?(isN(v)?String(v):''):N(v,1);
+    return`<td class="n${cls}${isN(v)&&v<0?' neg':''}">${txt}</td>`}).join('')+'</tr>'});
+  return h+'</tbody></table></div>'}
+function wireTable(L){$('#main').querySelectorAll('th').forEach(th=>th.onclick=()=>{const c=th.dataset.c;const st=SORT[L.k]||{c:L.w?'w':'ret',asc:false};SORT[L.k]={c,asc:st.c===c?!st.asc:['t','nm','ind'].includes(c)};vListas()});
+  $('#main').querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t,'resumo'));
+  $('#main').querySelectorAll('td.click').forEach(td=>td.onclick=()=>openStock(td.dataset.t,{roic:'roic',cresc:'cresc',pe:'pe'}[td.dataset.a]))}
+
+/* ---------- ficha ---------- */
+function openStock(t,tab,keep){const s=BY[t];if(!s)return;CUR=t;DTAB=tab||DTAB||'resumo';
+  const d=$('#drawer');const cc=CLSCOL[s.cls];
+  d.innerHTML=`<div class="dh"><div style="flex:1;min-width:0"><h2>${esc(s.t)} <span class="pill" style="--c:var(${cc||'--ink2'})">${esc(s.cls||'—')}</span></h2>
+   <div class="meta">${esc(s.nm)} · ${esc(s.ind)} · ${esc(s.sec)} · US$ ${N(s.px,2)} · ${N(s.mc,0)} bi${M.adr[s.t]?` · reporta em ${esc(M.adr[s.t].moeda)}`:''}</div></div>
+   <button class="btn" id="dcmp">${COMPARE.includes(t)?'✓ na comparação':'+ Comparar'}</button><button class="btn" id="dclose" aria-label="Fechar">Esc ✕</button></div>
+   <div class="dtabs">${[['resumo','Resumo'],['roic',s.fin===1?'ROE':'ROIC'],['cresc','Crescimento'],['pe','P/E justo e sensibilidade']].map(([k,n])=>`<button data-k="${k}" class="${DTAB===k?'on':''}">${n}</button>`).join('')}</div>
+   <div class="dbody" id="dbody"></div>`;
+  d.hidden=false;$('#scrim').hidden=false;
+  d.querySelectorAll('.dtabs button').forEach(b=>b.onclick=()=>openStock(t,b.dataset.k));
+  $('#dclose').onclick=closeStock;$('#dcmp').onclick=()=>{toggleCmp(t);openStock(t,DTAB)};
+  ({resumo:fResumo,roic:fRoic,cresc:fCresc,pe:fPe})[DTAB](s);if(!keep)$('#dbody').scrollTop=0}
+function closeStock(){CUR=null;$('#drawer').hidden=true;$('#scrim').hidden=true}
+function toggleCmp(t){const i=COMPARE.indexOf(t);if(i>=0)COMPARE.splice(i,1);else{if(COMPARE.length>=4)COMPARE.shift();COMPARE.push(t)}ls.set('pt.cmp',JSON.stringify(COMPARE));renderTabs();if(VIEW==='comparar')vComparar()}
+
+function letters(s){const R=M.rules;const g=s.g,zg=s.zg,ro=s.roic,rt=s.ret;
+  return[['Crescimento',isN(g)?(g>R.ghi?'H':g>=R.glo?'O':'L'):'?',P(g),`> ${P(R.ghi,0)} H · ≥ ${P(R.glo,0)} O`],
+   ['Estabilidade',isN(zg)?(zg<R.zgmax?'O':'P'):'?',N(zg,2),`zGrowth < ${N(R.zgmax,2)}`],
+   [s.fin===1?'ROE':'ROIC',isN(ro)?(ro>R.rhi?'G':ro>=R.rlo?'O':'L'):'?',P(ro),`> ${P(R.rhi,0)} G · ≥ ${P(R.rlo,0)} O`],
+   ['zROIC','N','—','desligado'],
+   ['Retorno',isN(rt)?(rt>R.rethi?'G':rt>=R.retlo?'O':'B'):'?',P(rt),`> ${P(R.rethi,0)} G · ≥ ${P(R.retlo,0)} O`]]}
+function fResumo(s){const Y=M.years;const lst=s.lists?String(s.lists).split(' · '):[];
+  const yi=(Y.oi||[]).length-1;const v=(k)=>s[k]?s[k][yi]:null;
+  let h=`<div class="code">${letters(s).map(([n,l,val,r])=>`<div title="${esc(r)}"><b>${l}</b><span>${n}<br>${val}</span></div>`).join('')}</div>
+   <p class="note">Código <b class="num">${esc(s.cod||'—')}</b> → classe da régua <b>${esc(s.base||'—')}</b>${s.cls!==s.base?` → <b>${esc(s.cls)}</b>`:''}. Passe o mouse em cada letra para ver o corte.</p>
+   <div style="margin:8px 0">${lst.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}${flags(s).map(x=>`<span class="tag w">⚠ ${esc(x)}</span>`).join('')}${isN(s.bag)?`<span class="tag">Bagger #${s.bag}</span>`:''}</div>
+   <div class="grid2">
+   <div class="card"><h4>Números-chave</h4><div class="kv">
+    <span>${s.fin===1?'ROE':'ROIC'} usado</span><span>${P(s.ru)}</span><span>Crescimento (consenso)</span><span>${P(s.gc)}</span>
+    <span>Crescimento p/ valuation (haircut)</span><span>${P(s.gv)}</span><span>Crescimento histórico (mediana)</span><span>${P(s.ghm)}</span>
+    <span>P/L (média LTM e 1 ano)</span><span>${N(s.pl,1)}</span><span>P/E justo</span><span>${N(s.pej,1)}</span>
+    <span>Retorno esperado</span><span>${P(s.ret)}</span><span>Dividend yield</span><span>${P(s.dy)}</span></div></div>
+   <div class="card"><h4>Balanço ${Y.eq?Y.eq[yi]:''} (US$ ou moeda de reporte)</h4><div class="kv">
+    <span>Imobilizado</span><span>${B(v('ppe'))}</span><span>Direito de uso (leasing)</span><span>${B(v('rou'))}</span>
+    <span>Ágio + intangíveis</span><span>${B((v('gw')||0)+(v('int')||0))}</span><span>Ativo circulante</span><span>${B(v('tca'))}</span>
+    <span>Caixa</span><span>${B(v('cash'))}</span><span>Passivo circulante</span><span>${B(v('tcl'))}</span>
+    <span>Dívida</span><span>${B(v('debt'))}</span><span>Leasing (passivo)</span><span>${B(v('lease'))}</span><span>Patrimônio</span><span>${B(v('eq'))}</span></div></div></div>
+   <div class="grid2" style="margin-top:14px">
+    <div class="card"><h4>Lucro operacional e lucro líquido</h4>${bars([['Lucro operacional',s.oi,'--acc2'],['Lucro líquido',s.ni,'--acc']],Y.oi,B)}</div>
+    <div class="card"><h4>EPS realizado e consenso</h4>${epsChart(s)}</div></div>
+   <p class="note">A planilha não puxa a receita (para caber no limite do Wisesheets); por isso a ficha mostra lucro operacional, lucro líquido e EPS.</p>`;
+  $('#dbody').innerHTML=h}
+function fRoic(s){const Y=(M.years.oi||[]);
+  if(s.fin===1){$('#dbody').innerHTML=`<div class="caveat">Financeira ou seguradora de saúde: usa <b>ROE</b> (lucro líquido ÷ patrimônio), como no backtest. O ROE usado é a média entre os 3 últimos anos e todos os anos.</div>
+   ${yearTable([['Lucro líquido',s.ni,B],['Patrimônio',s.eq,B],['ROE',s.roe,P]],Y)}<div class="kv" style="max-width:360px;margin-top:10px"><span>ROE usado</span><span>${P(s.roem)}</span></div>`;return}
+  const R=rule(s);
+  $('#dbody').innerHTML=`<div class="caveat">⚠ O ROIC pode estar errado. Ele é triangulado: visão do ativo (imobilizado + leasing + ágio + intangíveis + capital de giro), do passivo (patrimônio + dívida + leasing − caixa) e marginal (Δ lucro operacional ÷ Δ capital).</div>
+   ${yearTable([['NOPAT',s.nop,B],['Capital (ativo)',s.ca,B],['Capital (passivo)',s.cp,B],['ROIC ativo',s.ra,P],['ROIC passivo',s.rp,P],['Ativo sem outlier',s.xa,P],['Passivo sem outlier',s.xp,P]],Y)}
+   <div class="grid2" style="margin-top:12px"><div class="card"><h4>As três visões</h4><div class="kv">
+    <span>ROIC ativo (média 3 últimos + todos)</span><span>${P(s.va)}</span><span>ROIC passivo</span><span>${P(s.vp)}</span><span>ROIC marginal</span><span>${P(s.vm)}</span>
+    <span><b>ROIC triangulado (usado)</b></span><span><b>${P(s.tri)}</b></span></div></div>
+    <div class="card"><h4>Regra de "arte" aplicada</h4><p style="margin:0">${R}</p><p class="note">Visão abaixo de 0 ou acima de 200% é descartada; 150–200% conta 150%. Ativo e passivo próximos (≤ 2×) → média; divergentes → a mais próxima do marginal, senão a menor. Se as duas são negativas, vale a maior (negativa). Outliers: até 2 anos mais antigos saem se estiverem a mais de 3σ da mediana.</p></div></div>`}
+function rule(s){const ok=x=>isN(x)&&x>=0&&x<=2,cl=x=>Math.min(x,1.5),a=s.va,p=s.vp,m=s.vm;
+  if(ok(a)&&ok(p)){const lo=Math.min(cl(a),cl(p)),hi=Math.max(cl(a),cl(p));if(lo>0&&hi<=2*lo)return`Ativo (${P(a)}) e passivo (${P(p)}) próximos: média = <b>${P((cl(a)+cl(p))/2)}</b>.`;
+    if(ok(m))return`Ativo e passivo divergem (mais de 2×): vale o mais próximo do marginal (${P(m)}) = <b>${P(Math.abs(cl(a)-m)<=Math.abs(cl(p)-m)?cl(a):cl(p))}</b>.`;return`Ativo e passivo divergem e o marginal não é válido: vale o menor = <b>${P(lo)}</b>.`}
+  if(ok(a))return`Só o ativo é válido: <b>${P(cl(a))}</b>.`;if(ok(p))return`Só o passivo é válido: <b>${P(cl(p))}</b>.`;
+  if((isN(a)&&a>2)||(isN(p)&&p>2))return'Acima de 200%: conta <b>150%</b>.';
+  if(isN(a)||isN(p))return`Ativo e/ou passivo negativos: vale o maior (negativo) = <b>${P(Math.max(isN(a)?a:-9,isN(p)?p:-9))}</b>. Não passa no filtro de qualidade.`;
+  if(ok(m))return`Sem ativo e passivo: só o marginal = <b>${P(cl(m))}</b>.`;return'Sem dados para o ROIC.'}
+function fCresc(s){const c=calc(s);
+  $('#dbody').innerHTML=`<div class="card"><h4>EPS realizado (contábil), consenso e consenso com haircut</h4>${epsChart(s,true)}</div>
+   <div class="grid2" style="margin-top:12px"><div class="card"><h4>Crescimento</h4><div class="kv">
+    <span>Consenso puro (decide a classe)</span><span>${P(s.gc)}</span><span>Com haircut (P/E justo e retorno)</span><span>${P(s.gv)}</span>
+    <span>Sem teto</span><span>${P(s.graw)}</span><span>Histórico (mediana dos anos)</span><span>${P(s.ghm)}</span><span>zGrowth (estabilidade)</span><span>${N(s.zg,2)}</span></div></div>
+    <div class="card"><h4>Ano a ano (consenso com haircut)</h4>${yearTable([['Crescimento',s.ga,P]],(M.years.est||[]).slice(1))}
+     <p class="note">Base: ${isN(s.est&&s.est[0])&&s.est[0]>0?'EPS de '+(M.years.est||[])[0]+' do próprio consenso (ajustado)':'EPS contábil de '+(M.years.eps||[]).slice(-1)[0]}. Haircut: ×${N(c.h[0],2)}, ×${N(c.h[1],2)}, ×${N(c.h[2],2)} nos anos +1, +2, +3. Histórico: ${yearTable([['Crescimento',s.ghs,P]],(M.years.eps||[]).slice(1))}</p></div></div>
+   <div class="caveat">O consenso do sell-side não tem como ser testado no backtest (não há histórico). No backtest, o crescimento passado não previu o futuro; o haircut tenta compensar o otimismo dos analistas.</div>`}
+function fPe(s){const R=M.rules;const peers=M.stocks.filter(x=>x.fin===s.fin&&isN(x.gv));const rank=isN(s.gv)?1+peers.filter(x=>x.gv>s.gv).length:null;
+  const ro=Math.min(1,s.ru||0);const a=M.adr[s.t];
+  const o={wacc:R.wacc,dg:0,h3:R.h3};
+  const draw=()=>{const c=calc(s,o);
+    $('#pe-out').innerHTML=`<div class="kv"><span>P/E justo</span><span>${N(c.pej,1)} <span class="${isN(s.pej)&&isN(c.pej)?(c.pej>=s.pej?'pos':'neg'):''}">(${isN(c.pej)&&isN(s.pej)?(c.pej>=s.pej?'+':'')+N(c.pej-s.pej,1):'—'})</span></span>
+     <span>Crescimento p/ valuation</span><span>${P(c.gv)}</span><span>Retorno pelo P/E justo</span><span>${P(c.rf)}</span><span>Retorno pelo múltiplo constante</span><span>${P(c.rc)}</span>
+     <span><b>Retorno esperado</b></span><span><b>${P(c.ret)}</b> <span class="${isN(c.ret)&&isN(s.ret)?(c.ret>=s.ret?'pos':'neg'):''}">(${isN(c.ret)&&isN(s.ret)?(c.ret>=s.ret?'+':'')+P(c.ret-s.ret):'—'})</span></span></div>`;
+    $('#v-wacc').textContent=P(o.wacc);$('#v-dg').textContent=P(s.gg+o.dg);$('#v-h3').textContent='×'+N(o.h3,2)};
+  $('#dbody').innerHTML=`<div class="formula">P/E justo = (1 − g ÷ ${s.fin===1?'ROE':'ROIC'}) ÷ (WACC − g) = (1 − ${P(s.gg,2)} ÷ ${P(ro)}) ÷ (${P(R.wacc,1)} − ${P(s.gg,2)}) = <b>${N(s.pej,1)}</b></div>
+   <div class="grid2"><div class="card"><h4>De onde vem cada número</h4><div class="kv">
+    <span>g (pela posição no ranking do crescimento)</span><span>${P(s.gg,2)}</span><span>Posição entre ${s.fin===1?'as financeiras':'as não financeiras'}</span><span>${rank??'—'} de ${peers.length}</span>
+    <span>Faixa do g</span><span>${P((R.gtop||.07)-(s.fin===1?(R.gfin||0):0),1)} → ${P((R.gfloor||.035)-(s.fin===1?(R.gfin||0):0),1)}</span>
+    <span>${s.fin===1?'ROE':'ROIC'} (limitado a 100%)</span><span>${P(ro)}</span><span>WACC</span><span>${P(R.wacc,1)}</span></div></div>
+    <div class="card"><h4>Contra o preço de hoje</h4><div class="kv">
+    <span>P/L últimos 12 meses</span><span>${N(s.pll,1)}</span><span>P/L 1 ano à frente</span><span>${N(s.plf,1)}</span><span>P/L usado (média)</span><span>${N(s.pl,1)}</span>
+    <span>P/E justo ÷ P/L − 1</span><span class="${isN(s.pej)&&isN(s.pl)&&s.pej>s.pl?'pos':'neg'}">${isN(s.pej)&&isN(s.pl)&&s.pl>0?P(s.pej/s.pl-1,0):'—'}</span>
+    ${a?`<span>Moeda / ações por ADR</span><span>${esc(a.moeda)} / ${a.n}</span><span>Câmbio (US$ por unidade)</span><span>${N(M.fx[a.moeda],4)}${fxRes(a.moeda)?' (reserva)':''}</span><span>Fator balanço / estimativas</span><span>${N(s.fxh,3)} / ${N(s.fxe,3)}</span>`:''}</div></div></div>
+   <div class="card" style="margin-top:12px"><h4>Sensibilidade</h4>
+    <div class="sl"><span>WACC</span><input type="range" id="s-wacc" min="0.05" max="0.13" step="0.0025" value="${R.wacc}"><span class="num" id="v-wacc"></span></div>
+    <div class="sl"><span>g do P/E justo</span><input type="range" id="s-dg" min="-0.03" max="0.03" step="0.0025" value="0"><span class="num" id="v-dg"></span></div>
+    <div class="sl"><span>Haircut do ano+3</span><input type="range" id="s-h3" min="0.7" max="1" step="0.01" value="${R.h3}"><span class="num" id="v-h3"></span></div>
+    <div id="pe-out" style="margin-top:8px"></div>
+    <p class="note">Mesma fórmula da planilha. O g não pode passar do WACC: quando os dois se aproximam, o P/E justo explode (é o caso de alguns bancos). O haircut dos anos +1 e +2 anda junto, na mesma proporção.</p></div>`;
+  [['s-wacc','wacc'],['s-dg','dg'],['s-h3','h3']].forEach(([id,k])=>{$('#'+id).oninput=e=>{o[k]=+e.target.value;draw()}});draw()}
+function fxRes(m){return isN(M.fx[m])&&isN(FX_RESERVA[m])&&Math.abs(M.fx[m]-FX_RESERVA[m])<1e-6}
+
+/* ---------- gráficos simples (SVG) ---------- */
+function yearTable(rows,years){years=years||[];return`<div class="tw" style="margin:4px 0"><table><thead><tr><th class="l"></th>${years.map(y=>`<th>${y}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,a,f])=>`<tr><td class="l">${n}</td>${years.map((y,i)=>`<td class="n${a&&isN(a[i])&&a[i]<0?' neg':''}">${a?f(a[i]):'—'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function bars(series,years,fmt){years=years||[];const W=420,H=170,m={l:8,r:8,t:16,b:22};const all=series.flatMap(s=>(s[1]||[]).filter(isN));if(!all.length)return'<p class="note">Sem dados.</p>';
+  const mx=Math.max(0,...all),mn=Math.min(0,...all),sc=v=>m.t+(mx-v)/(mx-mn||1)*(H-m.t-m.b);const gw=(W-m.l-m.r)/years.length,bw=gw/(series.length+1);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img"><line x1="${m.l}" x2="${W-m.r}" y1="${sc(0)}" y2="${sc(0)}" stroke="var(--rule)"/>`;
+  years.forEach((y,i)=>{series.forEach(([n,a,c],j)=>{const v=a?a[i]:null;if(!isN(v))return;const x=m.l+i*gw+bw*(j+.5),y0=sc(Math.max(0,v)),hh=Math.abs(sc(v)-sc(0));
+    s+=`<rect x="${x}" y="${y0}" width="${bw*.9}" height="${Math.max(hh,1)}" fill="var(${c})"><title>${n} ${y}: ${fmt(v)}</title></rect>`});
+    s+=`<text x="${m.l+i*gw+gw/2}" y="${H-6}" text-anchor="middle">${y}</text>`});
+  return s+'</svg><div class="chips" style="font-size:11px">'+series.map(([n,,c])=>`<span><span style="display:inline-block;width:10px;height:10px;background:var(${c})"></span> ${n}</span>`).join('')+'</div>'}
+function epsChart(s,full){const ye=M.years.eps||[],yt=M.years.est||[];const years=[...new Set([...ye,...yt])].sort();
+  const real=years.map(y=>{const i=ye.indexOf(y);return i>=0&&s.eps?s.eps[i]:null}),cons=years.map(y=>{const i=yt.indexOf(y);return i>=0&&s.est?s.est[i]:null});
+  const hc=years.map(y=>{const i=yt.indexOf(y);return i>=1&&s.eh?s.eh[i-1]:null});
+  const ser=[['EPS realizado (contábil)',real,'--acc2'],['Consenso',cons,'--acc']];if(full)ser.push(['Consenso c/ haircut',hc,'--ink2']);
+  return bars(ser,years,v=>N(v,2))+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
+
+/* ---------- riscos ---------- */
+function vRiscos(){const opts=LISTS.filter(l=>l.w);const k=ls.get('pt.rk','top');const L=opts.find(x=>x.k===k)||opts[0];
+  const rows=M.stocks.filter(L.d).map(s=>({s,w:s[L.w]||0}));const tot=rows.reduce((a,r)=>a+r.w,0)||1;
+  const grp=f=>{const g={};rows.forEach(r=>{const key=f(r.s)||'—';g[key]=(g[key]||0)+r.w/tot});return Object.entries(g).sort((a,b)=>b[1]-a[1])};
+  const ai=(ls.get('pt.ai',AI_DEFAULT)).split('\n').map(x=>x.trim()).filter(Boolean);const isAI=s=>ai.includes(s.ind)||ai.includes(s.t);
+  const cap=M.rules.capw||.4;
+  const barsH=(arr,lim)=>arr.map(([n,v])=>`<div class="bar-row"><span title="${esc(n)}">${esc(n)}</span><span class="b"><i class="${lim&&v>lim+1e-9?'over':''}" style="width:${Math.min(100,v*100)}%"></i></span><span class="num">${P(v)}</span></div>`).join('');
+  const aiw=rows.filter(r=>isAI(r.s)).reduce((a,r)=>a+r.w/tot,0);
+  let dec={g:0,r:0,d:0,t:0};rows.forEach(({s,w})=>{if(!isN(s.ret))return;const gv=isN(s.gv)?s.gv:0,dy=s.dy||0;dec.g+=w/tot*gv;dec.d+=w/tot*dy;dec.r+=w/tot*(s.ret-gv-dy);dec.t+=w/tot*s.ret});
+  const o={wacc:M.rules.wacc,dg:0,h3:M.rules.h3};
+  $('#main').innerHTML=`<div class="sub">${opts.map(x=>`<button data-k="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${M.stocks.filter(x.d).length}</i></button>`).join('')}</div>
+   <div class="grid2">
+    <div class="card"><h4>Peso por setor (teto ${P(cap,0)} na Top 20)</h4>${barsH(grp(s=>s.sec),L.k==='top'?cap:0)}</div>
+    <div class="card"><h4>Peso por indústria</h4>${barsH(grp(s=>s.ind).slice(0,12))}</div>
+    <div class="card"><h4>Tema IA: ${P(aiw,0)} da carteira</h4>${barsH([['IA (lista abaixo)',aiw],['Fora do tema',1-aiw]])}
+     <p class="note">Indústrias ou tickers, um por linha (fica salvo neste navegador):</p><textarea id="ai">${esc(ai.join('\n'))}</textarea>
+     <p class="note">${rows.filter(r=>isAI(r.s)).map(r=>esc(r.s.t)).join(', ')||'nenhuma'}</p></div>
+    <div class="card"><h4>Moeda de reporte</h4>${barsH(grp(s=>M.adr[s.t]?M.adr[s.t].moeda:'USD'))}</div>
+    <div class="card"><h4>De onde vem o retorno esperado (${P(dec.t)} ao ano)</h4>${barsH([['Crescimento do lucro (c/ haircut)',dec.g],['Re-rating até o P/E justo',dec.r],['Dividendos',dec.d]])}
+     <p class="note">Média ponderada pelo peso. Re-rating = retorno esperado − crescimento − dividendos. No backtest, o ganho das carteiras veio sobretudo do re-rating.</p></div>
+    <div class="card"><h4>Sensibilidade da carteira</h4>
+     <div class="sl"><span>WACC</span><input type="range" id="r-wacc" min="0.05" max="0.13" step="0.0025" value="${o.wacc}"><span class="num" id="rv-wacc"></span></div>
+     <div class="sl"><span>Δ g do P/E justo</span><input type="range" id="r-dg" min="-0.03" max="0.03" step="0.0025" value="0"><span class="num" id="rv-dg"></span></div>
+     <div class="sl"><span>Haircut do ano+3</span><input type="range" id="r-h3" min="0.7" max="1" step="0.01" value="${o.h3}"><span class="num" id="rv-h3"></span></div>
+     <div id="r-out"></div><p class="note">Recalcula o retorno de cada ação com os mesmos pesos (não refaz a seleção).</p></div>
+   </div>`;
+  $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{ls.set('pt.rk',b.dataset.k);vRiscos()});
+  $('#ai').onchange=e=>{ls.set('pt.ai',e.target.value);vRiscos()};
+  const draw=()=>{let base=0,nw=0;rows.forEach(({s,w})=>{const c=calc(s,o);if(isN(s.ret))base+=w/tot*s.ret;if(isN(c.ret))nw+=w/tot*c.ret});
+    $('#rv-wacc').textContent=P(o.wacc);$('#rv-dg').textContent=(o.dg>=0?'+':'')+P(o.dg);$('#rv-h3').textContent='×'+N(o.h3,2);
+    $('#r-out').innerHTML=`<div class="kv" style="margin-top:6px"><span>Retorno esperado da carteira (planilha)</span><span>${P(base)}</span><span>Com os ajustes</span><span><b>${P(nw)}</b> (${nw>=base?'+':''}${P(nw-base)})</span></div>`};
+  [['r-wacc','wacc'],['r-dg','dg'],['r-h3','h3']].forEach(([id,k])=>{$('#'+id).oninput=e=>{o[k]=+e.target.value;draw()}});draw()}
+
+/* ---------- alertas ---------- */
+function vAlertas(){const G={};const add=(k,s)=>{(G[k]=G[k]||[]).push(s)};
+  M.stocks.forEach(s=>{flags(s).forEach(f=>add(f,s));if(['Moeda diferente (fora)','Excluída (manual)','Excluída (vestuário)','Sem dados'].includes(s.cls))add(s.cls,s);
+    if(!isN(s.ru))add('Sem ROIC/ROE (dado de balanço faltando)',s);if(!(s.est||[]).some(isN))add('Sem estimativa do consenso',s)});
+  Object.keys(M.adr).forEach(t=>{const a=M.adr[t];if(fxRes(a.moeda)&&BY[t])add('Câmbio de reserva (o Wisesheets não devolveu)',BY[t])});
+  const inList=s=>[s.wt,s.we,s.wj,s.wx].some(isN)?' ●':'';
+  $('#main').innerHTML=`<p class="desc">Tudo que merece conferência antes de comprar. ● = está numa carteira (Top 20, Especiais, JG+G ou Excepcionais).</p><div class="grid2">${Object.entries(G).sort((a,b)=>b[1].length-a[1].length).map(([k,a])=>`<div class="card"><h4>${esc(k)} · ${a.length}</h4><div class="chips">${a.map(s=>`<span class="chip"><a href="#" data-t="${esc(s.t)}" style="color:var(--acc2)">${esc(s.t)}${inList(s)}</a></span>`).join('')}</div></div>`).join('')}</div>`;
+  $('#main').querySelectorAll('a[data-t]').forEach(a=>a.onclick=e=>{e.preventDefault();openStock(a.dataset.t,'resumo')})}
+
+/* ---------- comparar ---------- */
+function vComparar(){const ss=COMPARE.map(t=>BY[t]).filter(Boolean);
+  const rows=[['Classe',s=>esc(s.cls)],['Indústria',s=>esc(s.ind)],['Valor (US$ bi)',s=>N(s.mc,0)],['ROIC/ROE usado',s=>P(s.ru)],['Crescimento (consenso)',s=>P(s.gc)],['Crescimento (haircut)',s=>P(s.gv)],['Crescimento histórico',s=>P(s.ghm)],['zGrowth',s=>N(s.zg,2)],['P/L',s=>N(s.pl,1)],['P/E justo',s=>N(s.pej,1)],['Retorno esperado',s=>P(s.ret)],['Dividend yield',s=>P(s.dy)],['Bagger',s=>isN(s.bag)?s.bag:'—'],['Listas',s=>esc(s.lists||'—')],['Alertas',s=>s.flag?'<span class="neg">'+esc(s.flag)+'</span>':'—']];
+  $('#main').innerHTML=`<p class="desc">Até 4 ações. Adicione pela ficha ("+ Comparar") ou aqui:</p>
+   <div class="chips" style="margin-bottom:10px">${ss.map(s=>`<span class="chip">${esc(s.t)}<button data-x="${esc(s.t)}" aria-label="Tirar">✕</button></span>`).join('')}<input id="cadd" placeholder="ticker + Enter" style="width:120px;border:1px solid var(--rule);background:var(--bg);padding:3px 6px;font-family:var(--f-num)"></div>
+   ${ss.length?`<div class="tw"><table><thead><tr><th class="l"></th>${ss.map(s=>`<th>${esc(s.t)}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,f])=>`<tr><td class="l">${n}</td>${ss.map(s=>`<td class="n">${f(s)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+   <div class="grid2" style="margin-top:12px">${ss.map(s=>`<div class="card"><h4>${esc(s.t)} · EPS</h4>${epsChart(s,true)}</div>`).join('')}</div>`:'<div class="empty">Nenhuma ação na comparação.</div>'}`;
+  $('#main').querySelectorAll('button[data-x]').forEach(b=>b.onclick=()=>toggleCmp(b.dataset.x));
+  $('#cadd').onkeydown=e=>{if(e.key==='Enter'){const t=e.target.value.trim().toUpperCase();if(BY[t]&&!COMPARE.includes(t))toggleCmp(t);else e.target.value=''}}}
+
+/* ---------- regras e ressalvas ---------- */
+function vRegras(){const R=M.rules;const lab={ghi:'Crescimento alto',glo:'Crescimento baixo',zgmax:'zGrowth máximo',rhi:'ROIC alto',rlo:'ROIC baixo',rethi:'Retorno alto',retlo:'Retorno baixo',wacc:'WACC',gtop:'g máximo',gfloor:'g mínimo',gfin:'Financeiras: g menor em',hrc:'High ROIC acima de',hgc:'High Growth acima de',plmin:'P/L mínimo (Top 20)',nlista:'Tamanho das listas',teto:'Peso máximo por ação',h1:'Haircut ano+1',h2:'Haircut ano+2',h3:'Haircut ano+3',gmax:'Teto do crescimento',capn:'Máx. ações por setor',capw:'Peso máximo por setor'};
+  const pct=['ghi','glo','rhi','rlo','rethi','retlo','wacc','gtop','gfloor','gfin','hrc','hgc','teto','gmax','capw'];
+  $('#main').innerHTML=`<div class="caveat"><b>Ressalvas de quem vai investir</b><br>⚠ O ROIC pode estar errado (definição triangulada, dados do Wisesheets, empresas com leasing e patrimônio negativo são delicadas).<br>
+   ⚠ O crescimento usa o consenso do sell-side com haircut: <b>não é a regra do backtest</b> (não há histórico de consenso para testar). A regra testada usa o crescimento histórico.<br>
+   ⚠ O P/E justo explode quando o g se aproxima do WACC (bancos com crescimento alto, por exemplo); o g dos bancos ainda vai ser revisto.<br>
+   ⚠ Empresas que reportam em outra moeda são convertidas pelo câmbio do Wisesheets e pela proporção da ADR; confira as marcadas na Central de alertas.</div>
+   <div class="grid2"><div class="card"><h4>Regras (da aba Regras do Excel)</h4><div class="kv">${Object.entries(lab).map(([k,n])=>`<span>${n}</span><span>${k in R?(pct.includes(k)?P(R[k],1):N(R[k],2)):'—'}</span>`).join('')}</div></div>
+   <div class="card"><h4>Câmbio (US$ por unidade)</h4><div class="kv">${Object.entries(M.fx).map(([m,v])=>`<span>${m}${fxRes(m)?' <span class="neg">(reserva)</span>':''}</span><span>${N(v,4)}</span>`).join('')}</div>
+    <h4 style="margin-top:12px">Moeda e ADR</h4><div class="kv">${Object.entries(M.adr).map(([t,a])=>`<span>${esc(t)}</span><span>${esc(a.moeda)} · ${a.n} ação(ões)/ADR · estimativa: ${esc(a.est)}</span>`).join('')}</div></div>
+   <div class="card"><h4>Cíclicas (indústria)</h4><p class="note">${(M.lists.cycl||[]).map(esc).join(' · ')}</p><h4 style="margin-top:10px">Vestuário</h4><p class="note">${(M.lists.appl||[]).map(esc).join(' · ')}</p>
+    <h4 style="margin-top:10px">Usam ROE</h4><p class="note">${(M.lists.roet||[]).map(esc).join(' · ')} + setor Financial Services</p><h4 style="margin-top:10px">Excluídas à mão</h4><p class="note">${(M.lists.excl||[]).map(esc).join(' · ')||'—'}</p></div></div>
+   <p class="note">Para mudar uma regra, mude no Excel (aba Regras), atualize o Wisesheets, salve e solte o arquivo aqui.</p>`}
+function renderFoot(){const miss=M.stocks.filter(s=>s.cls==='Sem dados').length;
+  $('#foot').innerHTML=`${M.stocks.length} ações · ${miss} sem dados · atalhos: <b>/</b> busca, <b>Enter</b> abre, <b>Esc</b> fecha · ⚠ ROIC pode estar errado · consenso não testado em backtest · arraste a planilha salva para atualizar.`}
+
+/* ---------- busca e teclado ---------- */
+let SI=0;
+function search(q){q=q.trim().toUpperCase();const r=$('#sres');if(!q){r.hidden=true;return[]}
+  const a=M.stocks.filter(s=>s.t.toUpperCase().startsWith(q)).concat(M.stocks.filter(s=>!s.t.toUpperCase().startsWith(q)&&String(s.nm||'').toUpperCase().includes(q))).slice(0,12);
+  SI=0;r.innerHTML=a.map((s,i)=>`<div data-t="${esc(s.t)}" class="${i===0?'on':''}"><b>${esc(s.t)}</b><span>${esc(s.nm)}</span></div>`).join('')||'<div>Nada encontrado</div>';r.hidden=false;
+  r.querySelectorAll('div[data-t]').forEach(d=>d.onmousedown=e=>{e.preventDefault();pick(d.dataset.t)});return a}
+function pick(t){$('#q').value='';$('#sres').hidden=true;$('#q').blur();openStock(t,'resumo')}
+$('#q').oninput=e=>search(e.target.value);
+$('#q').onkeydown=e=>{const items=[...$('#sres').querySelectorAll('div[data-t]')];
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!items.length)return;SI=(SI+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items.forEach((d,i)=>d.classList.toggle('on',i===SI))}
+  if(e.key==='Enter'&&items[SI])pick(items[SI].dataset.t);if(e.key==='Escape'){$('#q').value='';$('#sres').hidden=true;$('#q').blur()}};
+$('#q').onblur=()=>setTimeout(()=>$('#sres').hidden=true,150);
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){e.preventDefault();$('#q').focus()}
+  if(e.key==='Escape'&&!$('#drawer').hidden)closeStock()});
+$('#scrim').onclick=closeStock;
+$('#hidew').checked=ls.get('pt.hidew','0')==='1';$('#hidew').onchange=e=>{ls.set('pt.hidew',e.target.checked?'1':'0');render()};
+$('#theme').onclick=()=>{const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const nx=cur==='dark'?'light':'dark';document.documentElement.dataset.theme=nx;ls.set('pt.theme',nx)};
+{const t=ls.get('pt.theme',null);if(t)document.documentElement.dataset.theme=t}
+
+/* ---------- carregar arquivo (botão, arrastar e IndexedDB) ---------- */
+const DB={open(){return new Promise((ok,no)=>{try{const r=indexedDB.open('price-tracker',1);r.onupgradeneeded=()=>r.result.createObjectStore('f');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}catch(e){no(e)}})},
+  async put(v){try{const d=await this.open();d.transaction('f','readwrite').objectStore('f').put(v,'last')}catch(e){}},
+  async get(){try{const d=await this.open();return await new Promise(ok=>{const q=d.transaction('f').objectStore('f').get('last');q.onsuccess=()=>ok(q.result);q.onerror=()=>ok(null)})}catch(e){return null}},
+  async del(){try{const d=await this.open();d.transaction('f','readwrite').objectStore('f').delete('last')}catch(e){}}};
+function loadBuffer(buf,name,save){if(typeof XLSX==='undefined'){alertMsg('Não consegui carregar o leitor de planilhas (sem internet?). Os dados embutidos continuam valendo.');return}
+  try{const wb=XLSX.read(buf,{type:'array'});const m=parseWorkbook(wb);if(!m.stocks.length)throw new Error('Nenhuma ação encontrada na aba Ações.');
+    const when=new Date().toLocaleDateString('pt-BR');setModel(m,`${name} · carregado em ${when}`);$('#reset').hidden=false;if(save)DB.put({name,buf,when})}
+  catch(e){alertMsg('Não consegui ler "'+name+'": '+e.message+' Confira se é a planilha do Price Tracker salva depois de atualizar o Wisesheets.')}}
+function alertMsg(t){const d=document.createElement('div');d.className='caveat';d.textContent=t;$('#main').prepend(d)}
+$('#load').onclick=()=>$('#file').click();
+$('#file').onchange=e=>{const f=e.target.files[0];if(!f)return;f.arrayBuffer().then(b=>loadBuffer(b,f.name,true));e.target.value=''};
+$('#reset').onclick=()=>{DB.del();$('#reset').hidden=true;setModel(EMBED)};
+let dragN=0;
+addEventListener('dragenter',e=>{if([...(e.dataTransfer?.types||[])].includes('Files')){dragN++;$('#drop').hidden=false}});
+addEventListener('dragleave',()=>{if(--dragN<=0){dragN=0;$('#drop').hidden=true}});
+addEventListener('dragover',e=>e.preventDefault());
+addEventListener('drop',e=>{e.preventDefault();dragN=0;$('#drop').hidden=true;const f=e.dataTransfer.files[0];if(f)f.arrayBuffer().then(b=>loadBuffer(b,f.name,true))});
+
+setModel(EMBED);
+DB.get().then(v=>{if(v&&v.buf){const go=()=>{loadBuffer(v.buf,v.name,false);$('#src').textContent=`${v.name} · carregado em ${v.when}`};if(typeof XLSX!=='undefined')go();else addEventListener('load',go)}});
+window.__pt={parseWorkbook,calc,get M(){return M}};
+</script>
