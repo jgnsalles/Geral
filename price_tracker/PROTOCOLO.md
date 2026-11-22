@@ -581,3 +581,35 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
   (C5 gestão por ação não tem histórico no painel do backtest: fica só na planilha.) Testes nas carteiras Top 20, Especiais e Excepcionais:
   N1 filtro nota ≥ 3,5; N2 ordem: retorno esperado + 5 p.p. × (nota − 3); N3 peso: raiz do valor de mercado × nota (com os mesmos tetos).
   Critério: escolher a forma que mantém o retorno (≥ atual − 0,5 p.p.) e as janelas de 3 anos (≥ atuais − 5 p.p.); reportar o trade-off de todas.
+- 2026-11-22 — **RESULTADO ramo M (robustez, nota, oportunidades) e decisão.** S&P 500 point-in-time, crescimento histórico, ROIC triangulado, trimestral.
+  ⚠ O ROIC pode estar errado (investigação pendente): ele entra no corte de qualidade, no P/E justo e em C1–C4 da nota.
+  **Restrição dura do usuário (recebida durante o ramo, prevalece sobre o critério da parte 1):** mudança nas carteiras só entra com retorno ≥ atual − 0,5 p.p./ano,
+  % de janelas de 3 anos acima do S&P ≥ atual e pior queda não pior. O que não passar fica só como coluna/lista informativa.
+  | Mudança | Retorno a.a. | Pior queda | Jan. 3a > S&P | Passou? | Onde fica |
+  |---|---|---|---|---|---|
+  | Top 20 atual | 20,6% | −34,4% | 100% | — | — |
+  | Top 20 · valor ≥ US$ 20 bi | 20,7% | −30,4% | 100% | **sim** | **aplicada na Top 20** (`PISO_TOP`) |
+  | Top 20 · valor ≥ US$ 50 bi | 22,6% | −34,1% | 97,2% | não (janelas) | só a lista Compounders usa US$ 50 bi |
+  | Top 20 · consistência | 21,3% | −36,8% | 92,4% | não | informativa |
+  | Top 20 · nota filtro (N1) | 19,5% | −32,6% | 79,3% | não | informativa |
+  | Top 20 · nota ordem (N2) | 19,9% | −34,4% | 98,6% | não | informativa |
+  | Top 20 · nota peso (N3) | 20,6% | −34,3% | 100% | sim (neutra) | não aplicada: com o piso de US$ 20 bi dá 20,5% e −31,0%, pior que só o piso |
+  | Especiais atual | 23,5% | −40,3% | 100% | — | — |
+  | Especiais · ≥ US$ 20 bi / 50 bi | 21,6% / 20,4% | −38,3% / −36,2% | 98,6% / 90,3% | não | informativa |
+  | Especiais · consistência | 21,5% | −36,9% | 87,6% | não | informativa |
+  | Especiais · nota N1 / N2 | 20,8% / 21,7% | −37,5% / −42,1% | 94,5% / 97,9% | não | informativa |
+  | Especiais · nota peso (N3) | 23,4% | −40,3% | 100% | **sim** | **aplicada nas Especiais** (`NOTA_PESO_ESP`, nota sem C5/C7) |
+  | Excepcionais atual | 24,6% | −45,2% | 85,5% | — | — |
+  | Excepcionais · nota N1 / N3 | 24,2% / 24,2% | −45,6% / −45,2% | 83,4% / 84,8% | não (janelas) | informativa |
+  | Escadinha ≥ 60 (Top 20 / Especiais) | 17,3% / 17,4% | −37,8% / −38,2% | 52% / 57% | não | informativa (coluna Escad.) |
+  | Excluir Application Software (única que passa sozinha; quedas ≥ 30% 2,9× e 2,5× a média nos dois períodos) | Top 20 20,7% · Especiais 23,8% | −34,4% · −38,5% | 100% · 100% | **sim, por pouco** | **não aplicada: decisão pendente do usuário** (ganho de 0,1–0,3 p.p.; proíbe um setor inteiro; hoje tiraria ADBE, NOW, INTU e ADSK, que estão em pânico) |
+  | Excluir as 3 perigosas (+ hardware, varejo especializado) | Top 20 20,3% · Especiais 23,6% | −31,9% · −38,2% | 99,3% · 100% | não (janelas da Top 20) | informativa |
+  | Biotecnologia | 112 posições, 4,5% de quedas ≥ 30% (média 3,5%/8,0%), mediana +19% em 1 ano | | | não é perigosa | nada excluído |
+  | Compounders redondos (carteira) | 12,0% | −38,7% | 24% | não | lista de observação |
+  | Quase lá → entra (ret ≥ 20%) | 14,2% | −35,5% | 26% | não | lista de observação |
+  | Pequenas que compõem / Ótima em pânico (carteiras) | 12,5% / 7,4% | −41,6% / −44,2% | 53% / 31% | não | listas de observação |
+  | Limpeza do consenso (teto MAX(hist. EPS, hist. lucro operacional) + 10 p.p.; atípico sem apoio operacional; step change) | sem backtest possível (não há consenso histórico) | | | não testável | **informativa**: alertas na planilha; chave `LIMPA_CART` = 0 (1 liga nas carteiras) |
+  Consequência: LLY continua na Top 20 e nas Especiais (alerta "Step change": retorno-base 33%, com fade −10%, com devolução −18%).
+  Planilha: Nota de boa empresa C1–C7 (C5 gestão por ação e C7 qualitativa só na planilha; C3 usa min(crescimento, 15%) como no backtest; g sustentável só informação),
+  listas Compounders redondos (≥ US$ 50 bi, nota ≥ 4), Quase lá (falta cair ≤ 30%), Ótima em pânico (nota ≥ 3,5, queda ≥ 25% em 12 meses, EPS do último ano subiu),
+  Pequenas que compõem (US$ 2–30 bi, nota ≥ 4, crescimento ≥ 12%, P/L ≤ 1,3× justo). Central de alertas do painel mostra só as ações que estão em alguma lista.

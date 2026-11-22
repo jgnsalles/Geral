@@ -175,7 +175,7 @@ function parseWorkbook(wb){
     for(const[k,h]of Object.entries(SPEC.dados)){const b=blocks[h];s[k]=(b&&dr)?b.cols.map(c=>num(dr[c])):null}
     stocks.push(s)}
   const years={};for(const[k,h]of Object.entries(SPEC.dados))if(blocks[h])years[k]=blocks[h].years;
-  const rules={};G.slice(4,40).forEach(row=>{if(!row||!row[0])return;for(const[k,h]of Object.entries(SPEC.rules))if(!(k in rules)&&String(row[0]).startsWith(h))rules[k]=num(row[1])});
+  const rules={};G.slice(4,80).forEach(row=>{if(!row||!row[0])return;for(const[k,h]of Object.entries(SPEC.rules))if(!(k in rules)&&String(row[0]).startsWith(h))rules[k]=num(row[1])});
   const hdr=G[3]||[];const lists={};
   for(const[k,h]of Object.entries(SPEC.lists)){const c=hdr.indexOf(h);if(c>=0)lists[k]=G.slice(4).map(r=>r&&r[c]).filter(Boolean)}
   const adr={},fx={};let c=hdr.indexOf('Ticker (moeda ≠ USD)');
@@ -184,10 +184,14 @@ function parseWorkbook(wb){
   return{stocks,years,rules,lists,adr,fx}}
 
 /* ---------- estado ---------- */
-let M=null,BY={},VIEW=ls.get('pt.view','listas'),LIST=ls.get('pt.list','top'),SORT={},COMPARE=JSON.parse(ls.get('pt.cmp','[]')||'[]'),DTAB='resumo',CUR=null;
+let M=null,BY={},VIEW=ls.get('pt.view','listas'),LIST=ls.get('pt.list','comp'),SORT={},COMPARE=JSON.parse(ls.get('pt.cmp','[]')||'[]'),DTAB='resumo',CUR=null;
 const LISTS=[
- {k:'top',n:'Top 20',c:'--top',w:'wt',d:s=>isN(s.wt),desc:'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor.'},
- {k:'esp',n:'Especiais',c:'--esp',w:'we',d:s=>isN(s.we),desc:'As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade.'},
+ {k:'comp',n:'Compounders redondos',c:'--top',d:s=>s.comp===1,desc:'Só observação (não é carteira; como carteira rendeu 12% a.a. no backtest, abaixo do S&P). Grandes (≥ US$ 50 bi) com Nota de boa empresa ≥ 4: ROIC acima dos pares, ROIC incremental, pista de crescimento acima do que o preço exige, moat, gestão por ação e chance de existir em 15 anos. Sem cíclicas, sem consenso atípico e sem step change reprovado. Falta cair = queda até o retorno esperado chegar a 20%.'},
+ {k:'ql',n:'Quase lá',c:'--esp',d:s=>s.ql===1,desc:'Compounders redondos com retorno esperado abaixo de 20%, a no máximo 30% de queda do preço de entrada. Ordem sugerida: clique em "Falta cair". Só observação.'},
+ {k:'pan',n:'Ótima em pânico',c:'--cyc',d:s=>s.pan===1,desc:'Nota ≥ 3,5, ação caiu 25% ou mais em 12 meses e o EPS do último ano subiu. Só observação (como carteira rendeu 12% a.a. no backtest): é um ponto de partida para estudar, não um sinal de compra.'},
+ {k:'peq',n:'Pequenas que compõem',c:'--gcgr',d:s=>s.peq===1,desc:'US$ 2–30 bi, Nota ≥ 4, crescimento ≥ 12% e P/L até 1,3× o P/E justo. Podem ficar muito grandes. Só observação (como carteira rendeu 7% a.a. no backtest).'},
+ {k:'top',n:'Top 20',c:'--top',w:'wt',d:s=>isN(s.wt),desc:'Carteira. As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, valor de mercado ≥ US$ 20 bi, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor.'},
+ {k:'esp',n:'Especiais',c:'--esp',w:'we',d:s=>isN(s.we),desc:'Carteira. As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade com retorno > 20%. Peso pela raiz do valor de mercado × Nota de boa empresa.'},
  {k:'jg',n:'JG+G',c:'--jg',w:'wj',d:s=>isN(s.wj),desc:'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L. Sem financeiras, utilities e cíclicas.'},
  {k:'ool',n:'OoL',c:'--ool',d:s=>s.cls===OOL&&!s.dup,desc:'Opportunity of Lifetime: crescimento > 15%, ROIC > 12%, crescimento estável e retorno esperado > 20%.'},
  {k:'gcgr',n:'GCGR',c:'--gcgr',d:s=>s.cls===GCGR&&!s.dup,desc:'Good Companies, Great Returns: boas empresas com retorno alto, um degrau abaixo da OoL.'},
@@ -198,7 +202,7 @@ const LISTS=[
  {k:'cyc',n:'Cyclicals',c:'--cyc',d:s=>s.cls==='Cyclicals'&&!s.dup,desc:'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras do Excel). Ficam fora das carteiras.'}];
 const CLSCOL={[OOL]:'--ool',[GCGR]:'--gcgr',[EBF]:'--ebf','Cyclicals':'--cyc'};
 
-function setModel(m,label){M=m;BY={};m.stocks.forEach(s=>BY[s.t]=s);$('#src').textContent=label||m.fonte||'';$('#src').title=$('#src').textContent;render()}
+function setModel(m,label){M=m;BY={};m.stocks.forEach(s=>{BY[s.t]=s;s.fneg=isN(s.falta)&&s.falta<0?s.falta:null});$('#src').textContent=label||m.fonte||'';$('#src').title=$('#src').textContent;render()}
 function hidew(){return $('#hidew').checked}
 function flags(s){return s.flag?String(s.flag).split(' · ').filter(Boolean):[]}
 
@@ -227,13 +231,14 @@ function render(){if(!M)return;renderTabs();({listas:vListas,riscos:vRiscos,aler
 function members(L){let a=M.stocks.filter(L.d);if(hidew())a=a.filter(s=>!s.flag);return a}
 function vListas(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];
   const cnt=k=>M.stocks.filter(s=>s.cls===k&&!s.dup).length;
-  let h=`<div class="kpis">${[[OOL,'--ool'],[GCGR,'--gcgr'],[EBF,'--ebf'],['High ROIC','--hr',M.stocks.filter(s=>s.hr===1).length],['High Growth','--hg',M.stocks.filter(s=>s.hg===1).length],['Excepcionais','--exc',M.stocks.filter(s=>s.exc===1).length],['Cyclicals','--cyc']].map(([n,c,v])=>`<div style="--c:var(${c})"><b>${v??cnt(n)}</b><span>${n}</span></div>`).join('')}<div><b>${M.stocks.length}</b><span>ações no arquivo</span></div></div>`;
+  const nn=f=>M.stocks.filter(f).length;
+  let h=`<div class="kpis">${[['Compounders redondos','--top',nn(s=>s.comp===1)],['Quase lá','--esp',nn(s=>s.ql===1)],['Ótima em pânico','--cyc',nn(s=>s.pan===1)],['Pequenas que compõem','--gcgr',nn(s=>s.peq===1)],[OOL,'--ool'],['Excepcionais','--exc',nn(s=>s.exc===1)]].map(([n,c,v])=>`<div style="--c:var(${c})"><b>${v??cnt(n)}</b><span>${n}</span></div>`).join('')}<div><b>${M.stocks.length}</b><span>ações no arquivo</span></div></div>`;
   h+=`<div class="sub">${LISTS.map(x=>`<button data-l="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${members(x).length}</i></button>`).join('')}</div>`;
   h+=`<p class="desc">${esc(L.desc)} ${L.w?'Ordem: peso.':'Ordem: retorno esperado.'} Clique na ação para a ficha; em ROIC, Cresc. ou P/E justo para a conta.</p>`;
   h+=table(members(L),L);$('#main').innerHTML=h;
   $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list',LIST);vListas()});
   wireTable(L)}
-const COLS=[['#','i','n'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso','w','p1'],['ROIC','roic','p0c:roic'],['Cresc.','g','p0c:cresc'],['Cresc. hist.','gh','p0'],['P/L','pl','n1'],['P/E justo','pej','n1c:pe'],['Retorno','ret','p0'],['Bear','rb','p0'],['Bagger','bag','i0'],['⚠','flag','w']];
+const COLS=[['#','i','n'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso','w','p1'],['Nota','nota','n1c:nota'],['ROIC','roic','p0c:roic'],['Cresc.','g','p0c:cresc'],['Cresc. hist.','gh','p0'],['Escad.','esc','n0'],['P/L','pl','n1'],['P/E justo','pej','n1c:pe'],['Retorno','ret','p0'],['Falta cair','fneg','p0'],['Bagger','bag','i0'],['⚠','flag','w']];
 function table(rows,L){const key=L.k;const st=SORT[key]||{c:L.w?'w':'ret',asc:false};
   const val=(s,c)=>c==='w'?(L.w?s[L.w]:null):c==='flag'?(s.flag?1:0):s[c];
   rows=rows.slice().sort((a,b)=>{const x=val(a,st.c),y=val(b,st.c);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='string'?x.localeCompare(y):x-y)*(st.asc?1:-1)});
@@ -251,7 +256,7 @@ function table(rows,L){const key=L.k;const st=SORT[key]||{c:L.w?'w':'ret',asc:fa
   return h+'</tbody></table></div>'}
 function wireTable(L){$('#main').querySelectorAll('th').forEach(th=>th.onclick=()=>{const c=th.dataset.c;const st=SORT[L.k]||{c:L.w?'w':'ret',asc:false};SORT[L.k]={c,asc:st.c===c?!st.asc:['t','nm','ind'].includes(c)};vListas()});
   $('#main').querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t,'resumo'));
-  $('#main').querySelectorAll('td.click').forEach(td=>td.onclick=()=>openStock(td.dataset.t,{roic:'roic',cresc:'cresc',pe:'pe'}[td.dataset.a]))}
+  $('#main').querySelectorAll('td.click').forEach(td=>td.onclick=()=>openStock(td.dataset.t,{roic:'roic',cresc:'cresc',pe:'pe',nota:'nota'}[td.dataset.a]))}
 
 /* ---------- ficha ---------- */
 function openStock(t,tab,keep){const s=BY[t];if(!s)return;CUR=t;DTAB=tab||DTAB||'resumo';
@@ -259,12 +264,12 @@ function openStock(t,tab,keep){const s=BY[t];if(!s)return;CUR=t;DTAB=tab||DTAB||
   d.innerHTML=`<div class="dh"><div style="flex:1;min-width:0"><h2>${esc(s.t)} <span class="pill" style="--c:var(${cc||'--ink2'})">${esc(s.cls||'—')}</span></h2>
    <div class="meta">${esc(s.nm)} · ${esc(s.ind)} · ${esc(s.sec)} · US$ ${N(s.px,2)} · ${N(s.mc,0)} bi${M.adr[s.t]?` · reporta em ${esc(M.adr[s.t].moeda)}`:''}</div></div>
    <button class="btn" id="dcmp">${COMPARE.includes(t)?'✓ na comparação':'+ Comparar'}</button><button class="btn" id="dclose" aria-label="Fechar">Esc ✕</button></div>
-   <div class="dtabs">${[['resumo','Resumo'],['roic',s.fin===1?'ROE':'ROIC'],['cresc','Crescimento'],['pe','P/E justo e sensibilidade']].map(([k,n])=>`<button data-k="${k}" class="${DTAB===k?'on':''}">${n}</button>`).join('')}</div>
+   <div class="dtabs">${[['resumo','Resumo'],['nota','Nota e listas'],['roic',s.fin===1?'ROE':'ROIC'],['cresc','Crescimento'],['pe','P/E justo e sensibilidade']].map(([k,n])=>`<button data-k="${k}" class="${DTAB===k?'on':''}">${n}</button>`).join('')}</div>
    <div class="dbody" id="dbody"></div>`;
   d.hidden=false;$('#scrim').hidden=false;
   d.querySelectorAll('.dtabs button').forEach(b=>b.onclick=()=>openStock(t,b.dataset.k));
   $('#dclose').onclick=closeStock;$('#dcmp').onclick=()=>{toggleCmp(t);openStock(t,DTAB)};
-  ({resumo:fResumo,roic:fRoic,cresc:fCresc,pe:fPe})[DTAB](s);if(!keep)$('#dbody').scrollTop=0}
+  ({resumo:fResumo,nota:fNota,roic:fRoic,cresc:fCresc,pe:fPe})[DTAB](s);if(!keep)$('#dbody').scrollTop=0}
 function closeStock(){CUR=null;$('#drawer').hidden=true;$('#scrim').hidden=true}
 function toggleCmp(t){const i=COMPARE.indexOf(t);if(i>=0)COMPARE.splice(i,1);else{if(COMPARE.length>=4)COMPARE.shift();COMPARE.push(t)}ls.set('pt.cmp',JSON.stringify(COMPARE));renderTabs();if(VIEW==='comparar')vComparar()}
 
@@ -294,6 +299,30 @@ function fResumo(s){const Y=M.years;const lst=s.lists?String(s.lists).split(' ·
     <div class="card"><h4>Lucro operacional e lucro líquido</h4>${bars([['Lucro operacional',s.oi,'--acc2'],['Lucro líquido',s.ni,'--acc']],Y.oi,B)}</div>
     <div class="card"><h4>EPS realizado e consenso</h4>${epsChart(s)}</div></div>
    <p class="note">A planilha não puxa a receita (para caber no limite do Wisesheets); por isso a ficha mostra lucro operacional, lucro líquido e EPS.</p>`;
+  $('#dbody').innerHTML=h}
+function fNota(s){const R=M.rules;const ok=b=>b?'<span class="pos">✓</span>':'<span class="neg">✗</span>';const mc=s.mc;
+  const sc=v=>isN(v)?`<b class="num">${N(v,1)}</b>`:'—';const ry=s.ry||[];
+  const crit=[['C1 ROIC vs pares',s.c1,`ROIC ${P(s.ru)} · mediana da indústria ${P(s.medr)} · spread ${P(s.spr)}. Nota = 1 + 4 × percentil do spread; limitada a 3 se ROIC < WACC + 10 p.p. ou < 1,5× a mediana.`],
+   ['C2 ROIC incremental',s.c2,`ROIC marginal ${P(s.vm)} (Δ NOPAT ÷ reinvestimento). 5 se ≥ 0,8× ROIC e ≥ WACC; 4 se ≥ 0,5× ROIC; 3 se ≥ WACC; 2 se ≥ 0; 1 se negativo; 3 sem dado.`],
+   ['C3 Pista marginal',s.c3,`g implícito no preço ${P(s.gimp)} = (WACC × P/L − 1) ÷ (P/L − 1/ROIC); g crível = mín(crescimento, 15%) = ${P(isN(s.gc)?Math.min(s.gc,.15):null)}; pista ${P(s.pista)}. 5 se ≥ 5 p.p. (ou P/L < 1/ROIC); 4 se ≥ 2; 3 se ≥ 0; 2 se ≥ −3; 1 abaixo. g sustentável (reinvestimento × ROIC incremental, só informação): ${P(s.gsus)}.`],
+   ['C4 Moat',s.c4,`ROIC dos últimos 4 anos: ${ry.map(v=>P(v)).join(' · ')}. 5 se todos ≥ 20% e o pior ≥ 70% da média; 4 se todos ≥ 15%; 3 se todos ≥ WACC; 2 se a maioria; 1 senão; +1 se o ROIC sem ágio e intangíveis ≥ 40% (${P(s.rtan)}).`],
+   ['C5 Gestão por ação',s.c5,`Nº de ações ${P(s.shg)} ao ano (+1 se cai ≥ 1%, −1 se sobe ≥ 2%); ágio cresce menos que o lucro operacional +1, mais de 1,2× −1. Base 3. Não entra no backtest (dado histórico de ações e ágio incompleto).`],
+   ['C6 Existir em 15 anos',s.c6,`1 se cíclica. Senão 1 + EPS positivo em todos os anos (≥ 6) + dívida ≤ 2× lucro operacional (${N(s.alav,1)}×) + escadinha ≥ ${R.escmin??70} (${N(s.esc,0)}) + valor ≥ US$ 10 bi.`],
+   ['C7 Qualitativa (sua)',s.c7,'Nota de 1 a 5 que você digita na aba Regras (produto crítico e barato para o cliente, penetração). Vazia = não entra na média.']];
+  const has=isN(s.mc);const inq=s.qual===1;
+  const L=[['Top 20 (carteira)',isN(s.wt),[['Qualidade (ROIC ≥ 12%, crescimento ≥ 15%, sem cíclica/vestuário)',inq],['P/L ≥ 4',s.pl>=4],['Valor ≥ US$ 20 bi (regra nova, passou no backtest)',has&&mc>=20],['Entre as 20 de maior retorno, máx. 8 por setor',isN(s.wt)]]],
+   ['Especiais (carteira)',isN(s.we),[['Qualidade',inq],['Retorno esperado > 20%',s.ret>.2],['Entre as 20 de maior 1,5 × ROIC + crescimento',isN(s.we)]]],
+   ['Compounder redondo',s.comp===1,[['Valor ≥ US$ 50 bi',has&&mc>=50],['Nota ≥ 4',s.nota>=4],['Não cíclica nem vestuário',s.cyc!==1&&s.app!==1],['Consenso sem atipicidade',s.atx!==1],['Passa no step change',s.sok!==0]]],
+   ['Quase lá',s.ql===1,[['É compounder redondo',s.comp===1],['Retorno esperado < 20%',s.ret<.2],[`Falta cair até 30% (${P(s.falta)})`,isN(s.falta)&&s.falta>=-.3]]],
+   ['Ótima em pânico',s.pan===1,[['Nota ≥ 3,5',s.nota>=3.5],[`Caiu ≥ 25% em 12 meses (${P(s.v12)})`,s.v12<=-.25],[`EPS do último ano subiu (${P((s.er||[])[7])})`,(s.er||[])[7]>0],['Crescimento previsto > 0',s.gc>0]]],
+   ['Pequena que compõe',s.peq===1,[['Valor entre US$ 2 e 30 bi',has&&mc>=2&&mc<=30],['Nota ≥ 4',s.nota>=4],['Crescimento ≥ 12%',s.gc>=.12],['P/L ≤ 1,3× o P/E justo',s.pl>0&&s.pl<=1.3*s.pej]]]];
+  let h=`<div class="grid2"><div class="card"><h4>Nota de boa empresa: ${sc(s.nota)} <span class="note">(média de C1–C7; a do backtest, sem C5 e C7: ${N(s.notab,1)})</span></h4>
+   <div class="tw"><table><tbody>${crit.map(([n,v,t])=>`<tr><td class="l" style="white-space:nowrap">${n}</td><td class="n">${sc(v)}</td><td class="l" style="white-space:normal;font-size:12px">${esc(t)}</td></tr>`).join('')}</tbody></table></div>
+   <p class="note">Teste de compounder (ROIC sem ágio ≥ 30% e lucro operacional crescendo ≥ 10% em 2 dos 3 anos): ${ok(s.tcomp===1)}. Base: valor = (ROIC − custo de capital) × crescimento. ⚠ O ROIC pode estar errado (investigação pendente).</p></div>
+   <div class="card"><h4>Escadinha do lucro: ${sc(s.esc)} de 100</h4>${bars([['EPS',s.eps,'--acc2']],M.years.eps,v=>N(v,2))}
+   <p class="note">40 × % de anos de alta + 20 × maior sequência ÷ anos + 20 se nenhum ano cair mais de 10% + 20 × regularidade (1 − desvio ÷ mediana ÷ 1,5). Zero se a mediana do crescimento ≤ 0.</p></div></div>`;
+  if(s.step===1)h+=`<div class="caveat" style="margin-top:12px"><b>Step change</b> (EPS 2028 ≥ 1,8× o de 2025): retorno-base ${P(s.ret)} · com fade do múltiplo para o P/E justo maduro (${N(s.pejlt,1)}) ${P(s.rfade)} · com devolução de 1/3 do salto ${P(s.rdev)}. ${s.sok===0?'<b>Reprovada</b> (devolução abaixo de '+P(R.stepmin??-.1,0)+')':'Aprovada'}${R.limpa===1?'':'; a reprovação só é informação: a limpeza nas carteiras está desligada porque não dá para testar no backtest'}.</div>`;
+  h+=`<h4 style="margin:16px 0 6px">Por que está (ou não) em cada lista</h4><div class="grid2">${L.map(([n,inl,rs])=>`<div class="card"><h4>${inl?'<span class="pos">●</span>':'<span class="note">○</span>'} ${esc(n)}</h4>${rs.map(([t,b])=>`<div style="font-size:13px">${ok(b)} ${esc(t)}</div>`).join('')}</div>`).join('')}</div>`;
   $('#dbody').innerHTML=h}
 function fRoic(s){const Y=(M.years.oi||[]);
   if(s.fin===1){$('#dbody').innerHTML=`<div class="caveat">Financeira ou seguradora de saúde: usa <b>ROE</b> (lucro líquido ÷ patrimônio), como no backtest. O ROE usado é a média entre os 3 últimos anos e todos os anos.</div>
@@ -406,13 +435,17 @@ function vRiscos(){const opts=LISTS.filter(l=>l.w);const k=ls.get('pt.rk','top')
   [['r-wacc','wacc'],['r-dg','dg'],['r-h3','h3']].forEach(([id,k])=>{$('#'+id).oninput=e=>{o[k]=+e.target.value;draw()}});draw()}
 
 /* ---------- alertas ---------- */
+let ALLALERT=false;
+function inAny(s){return[s.wt,s.we,s.wj,s.wx].some(isN)||s.comp===1||s.ql===1||s.pan===1||s.peq===1||s.hr===1||s.hg===1||((s.cls===OOL||s.cls===GCGR)&&!s.dup)}
 function vAlertas(){const G={};const add=(k,s)=>{(G[k]=G[k]||[]).push(s)};
-  M.stocks.forEach(s=>{flags(s).forEach(f=>add(f,s));if(['Moeda diferente (fora)','Excluída (manual)','Excluída (vestuário)','Sem dados'].includes(s.cls))add(s.cls,s);
+  M.stocks.filter(s=>ALLALERT||inAny(s)).forEach(s=>{flags(s).forEach(f=>add(f,s));if(['Moeda diferente (fora)','Excluída (manual)','Excluída (vestuário)','Sem dados'].includes(s.cls))add(s.cls,s);
     if(!isN(s.ru))add('Sem ROIC/ROE (dado de balanço faltando)',s);if(!(s.est||[]).some(isN))add('Sem estimativa do consenso',s)});
   Object.keys(M.adr).forEach(t=>{const a=M.adr[t];if(fxRes(a.moeda)&&BY[t])add('Câmbio de reserva (o Wisesheets não devolveu)',BY[t])});
   const inList=s=>[s.wt,s.we,s.wj,s.wx].some(isN)?' ●':'';
-  $('#main').innerHTML=`<p class="desc">Tudo que merece conferência antes de comprar. ● = está numa carteira (Top 20, Especiais, JG+G ou Excepcionais).</p><div class="grid2">${Object.entries(G).sort((a,b)=>b[1].length-a[1].length).map(([k,a])=>`<div class="card"><h4>${esc(k)} · ${a.length}</h4><div class="chips">${a.map(s=>`<span class="chip"><a href="#" data-t="${esc(s.t)}" style="color:var(--acc2)">${esc(s.t)}${inList(s)}</a></span>`).join('')}</div></div>`).join('')}</div>`;
-  $('#main').querySelectorAll('a[data-t]').forEach(a=>a.onclick=e=>{e.preventDefault();openStock(a.dataset.t,'resumo')})}
+  const tot=M.stocks.reduce((a,s)=>a+flags(s).length,0),act=M.stocks.filter(inAny).reduce((a,s)=>a+flags(s).length,0);
+  $('#main').innerHTML=`<p class="desc">${ALLALERT?'Todas as ações do arquivo.':'Só as ações que estão em alguma lista ou carteira (as que você pode comprar): '+act+' alertas de '+tot+' no arquivo.'} ● = está numa carteira (Top 20, Especiais, JG+G ou Excepcionais). <a href="#" id="allal" style="color:var(--acc2)">${ALLALERT?'Mostrar só as acionáveis':'Mostrar todas'}</a></p><div class="grid2">${Object.entries(G).sort((a,b)=>b[1].length-a[1].length).map(([k,a])=>`<div class="card"><h4>${esc(k)} · ${a.length}</h4><div class="chips">${a.map(s=>`<span class="chip"><a href="#" data-t="${esc(s.t)}" style="color:var(--acc2)">${esc(s.t)}${inList(s)}</a></span>`).join('')}</div></div>`).join('')}</div>`;
+  $('#main').querySelectorAll('a[data-t]').forEach(a=>a.onclick=e=>{e.preventDefault();openStock(a.dataset.t,'resumo')});
+  $('#allal').onclick=e=>{e.preventDefault();ALLALERT=!ALLALERT;vAlertas()}}
 
 /* ---------- comparar ---------- */
 function vComparar(){const ss=COMPARE.map(t=>BY[t]).filter(Boolean);

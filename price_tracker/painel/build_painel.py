@@ -21,10 +21,21 @@ SPEC = {
               'base': 'Classe (régua)', 'cyc': 'Cíclica', 'app': 'Vestuário', 'dup': 'Repetida', 'qual': 'Qualidade', 'hr': 'High ROIC',
               'hg': 'High Growth', 'exc': 'Excepcional', 'rks': 'Posição no setor', 'rkt': 'Posição Top 20', 'wt': 'Peso Top 20',
               'secw': 'peso do setor', 'rke': 'Posição Especiais', 'we': 'Peso Especiais', 'rkj': 'Posição JG+G', 'wj': 'Peso JG+G',
-              'wx': 'Peso Excepcionais', 'p70': 'Cresc. p70 da indústria', 'gb': 'Crescimento bear', 'mb': 'Múltiplo bear', 'rb': 'Retorno bear', 'bok': 'Passa no bear?'},
+              'wx': 'Peso Excepcionais', 'p70': 'Cresc. p70 da indústria', 'gb': 'Crescimento bear', 'mb': 'Múltiplo bear', 'rb': 'Retorno bear', 'bok': 'Passa no bear?',
+              'gcr': 'Crescimento do consenso (bruto)', 'gom': 'Cresc. operacional (mediana)', 'gcap': 'Teto de credibilidade', 'esc': 'Nota escadinha',
+              'aty': 'Consenso atípico?', 'atx': 'Atípico sem apoio operacional?', 'step': 'Step change?', 'pejlt': 'P/E justo maduro', 'rfade': 'Retorno com fade',
+              'edev': 'EPS 2027 com devolução', 'rdev': 'Retorno com devolução', 'sok': 'Passa no step change?', 'gpi': 'Mediana cresc. indústria',
+              'gapg': 'Gap de crescimento vs indústria', 'pli': 'P/L ÷ indústria', 'medr': 'ROIC mediano da indústria', 'spr': 'Spread vs pares',
+              'gimp': 'g implícito no preço', 'gsus': 'g sustentável', 'pista': 'Pista (g crível − implícito)', 'rtan': 'ROIC sem goodwill',
+              'shg': 'Variação anual do nº de ações', 'alav': 'Dívida ÷ lucro operacional', 'c1': 'C1 ROIC vs pares', 'c2': 'C2 ROIC incremental',
+              'c3': 'C3 Pista marginal', 'c4': 'C4 Moat', 'c5': 'C5 Gestão por ação', 'c6': 'C6 Existir em 15 anos', 'c7': 'C7 Qualitativa',
+              'nota': 'Nota de boa empresa', 'notab': 'Nota do backtest (C1–C4, C6)', 'tcomp': 'Teste de compounder', 'pent': 'Preço de entrada (20%)',
+              'falta': 'Falta cair', 'capg': 'Cresc. capital investido', 'v12': 'Variação 12 meses', 'comp': 'Compounder redondo', 'ql': 'Quase lá',
+              'peq': 'Pequena que compõe', 'pan': 'Ótima em pânico', 'cyc_': 'Cíclica', 'roic_': 'ROIC'},
     'calcn': {'eh': ['EPS estimado c/ haircut', 3], 'ga': ['Cresc. anual estimado c/ haircut', 3], 'gr0': ['Cresc. anual do consenso', 3], 'ghs': ['Cresc. histórico', 5], 'nop': ['NOPAT', 4],
               'ca': ['Capital ativo', 4], 'cp': ['Capital passivo', 4], 'ra': ['ROIC ativo', 4], 'rp': ['ROIC passivo', 4],
-              'xa': ['sem outlier A', 4], 'xp': ['sem outlier P', 4], 'roe': ['ROE', 4]},
+              'xa': ['sem outlier A', 4], 'xp': ['sem outlier P', 4], 'roe': ['ROE', 4],
+              'er': ['Cresc. EPS ano a ano', 8], 'ry': ['ROIC do ano', 4], 'goh': ['Cresc. lucro operacional', 3]},
     'dados': {'est': 'Estimated EPS AVG', 'eps': 'EPS Diluted', 'ni': 'Net Income', 'oi': 'Operating Income', 'pt': 'Income Before Tax',
               'tx': 'Income Tax Expense', 'ppe': 'Property Plant Equipment Net', 'rou': 'Operating Lease Right Of Use Assets', 'gw': 'Goodwill',
               'int': 'Intangible Assets', 'tca': 'Total Current Assets', 'cash': 'Cash And Cash Equivalents', 'tcl': 'Total Current Liabilities',
@@ -34,7 +45,10 @@ SPEC = {
               'gfloor': 'g do P/E justo: menor', 'gfin': 'Financeiras', 'hrc': 'High ROIC', 'hgc': 'High Growth', 'plmin': 'Top 20: P/L mínimo',
               'nlista': 'Tamanho das listas', 'teto': 'Peso máximo por ação', 'h1': 'Haircut EPS ano+1', 'h2': 'Haircut EPS ano+2',
               'h3': 'Haircut EPS ano+3', 'gmax': 'Teto do crescimento', 'capn': 'Top 20: máximo de ações por setor',
-              'capw': 'Top 20: peso máximo por setor'},
+              'capw': 'Top 20: peso máximo por setor', 'cred': 'Credibilidade', 'stepmin': 'Step change: retorno com devolução',
+              'compmc': 'Compounders: valor de mercado mínimo', 'peqmin': 'Pequenas: valor de mercado mínimo', 'peqmax': 'Pequenas: valor de mercado máximo',
+              'escmin': 'Escadinha mínima', 'panico': 'Ótima em pânico', 'qlf': 'Quase lá', 'limpa': 'Limpeza do consenso nas carteiras',
+              'pisotop': 'Top 20: valor de mercado mínimo', 'notapeso': 'Especiais: peso × Nota'},
     'lists': {'cycl': 'Cíclicas (indústria)', 'notcyc': 'Exceções: não cíclica (ticker)', 'appl': 'Vestuário (indústria)',
               'roet': 'Usam ROE (ticker)', 'excl': 'Excluídas à mão (ticker)'},
 }
@@ -75,7 +89,7 @@ def parse(path):
         stocks.append(s)
     years = {k: blocks[h]['years'] for k, h in SPEC['dados'].items() if h in blocks}
     rules = {}
-    for row in G[4:40]:
+    for row in G[4:80]:
         lab, val = (row[0] if row else None), (row[1] if row and len(row) > 1 else None)
         if not lab: continue
         for k, h in SPEC['rules'].items():
