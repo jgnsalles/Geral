@@ -63,7 +63,12 @@ RULES = [('G_ALTO', 'Crescimento alto', .15, PCT0), ('G_BAIXO', 'Crescimento bai
          ('TETO', 'Peso máximo por ação', .10, PCT0), ('HAIRCUT_1', 'Haircut EPS ano+1 (só no retorno)', .97, NUM2), ('HAIRCUT_2', 'Haircut EPS ano+2', .94, NUM2),
          ('HAIRCUT_3', 'Haircut EPS ano+3', .91, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor', 8, '0'), ('CAP_PESO_SETOR', 'Carteiras de 20: peso máximo por setor', .40, PCT0),
          ('BEAR_MIN', 'Bear: retorno mínimo para OoL, Top 20 e Especiais', -.10, PCT0), ('BEAR_PCTL', 'Bear: percentil da indústria', .70, NUM2),
-         ('BEAR_CORTE', 'Bear: fração do próprio crescimento', .70, NUM2), ('BEAR_GMIN', 'Bear: crescimento mínimo', .06, PCT0), ('BEAR_MULT', 'Bear: fração do P/E justo', .80, NUM2)]
+         ('BEAR_CORTE', 'Bear: fração do próprio crescimento', .70, NUM2), ('BEAR_GMIN', 'Bear: crescimento mínimo', .06, PCT0), ('BEAR_MULT', 'Bear: fração do P/E justo', .80, NUM2),
+         ('CRED_MARGEM', 'Credibilidade: consenso até histórico + ', .10, PCT0), ('STEP_X', 'Step change: EPS 2028 ÷ EPS 2025 a partir de', 1.8, NUM2),
+         ('STEP_G', 'Step change: g maduro do múltiplo de saída', .045, PCT), ('STEP_MIN', 'Step change: retorno com devolução mínimo', -.10, PCT0),
+         ('COMP_MC', 'Compounders: valor de mercado mínimo (US$)', 50e9, '#,##0,,,'), ('PEQ_MIN', 'Pequenas: valor de mercado mínimo (US$)', 2e9, '#,##0,,,'),
+         ('PEQ_MAX', 'Pequenas: valor de mercado máximo (US$)', 30e9, '#,##0,,,'), ('ESC_MIN', 'Escadinha mínima (Compounders e Pequenas)', 70, '0'),
+         ('PANICO', 'Ótima em pânico: queda em 12 meses de pelo menos', -.25, PCT0), ('QL_FALTA', 'Quase lá: falta cair no máximo', -.30, PCT0)]
 head(G, 4, 1, 'Regra', w=34); head(G, 4, 2, 'Valor', w=12)
 for i, (nmr, lab, v, f) in enumerate(RULES):
     r = 5 + i; put(G, r, 1, lab); x = put(G, r, 2, v, f); x.fill = fill('FFF4C2')
@@ -110,6 +115,13 @@ for i, (m, par, inv, fb) in enumerate(FX):
     G.cell(5 + i, 19, par).font = F_S
 wb.defined_names['FX_M'] = DefinedName('FX_M', attr_text="Regras!$Q$5:$Q$14")
 wb.defined_names['FX_V'] = DefinedName('FX_V', attr_text="Regras!$R$5:$R$14")
+# nota qualitativa do usuário (produto crítico e barato, penetração): ticker e nota de 1 a 5; entra na média da Nota de boa empresa
+for j, (h, wd) in enumerate([('Nota qualitativa: ticker', 14), ('Nota (1 a 5)', 10)]): head(G, 4, 21 + j, h, w=wd)
+for i in range(40):
+    for j in range(2):
+        x = G.cell(5 + i, 21 + j); x.fill = fill('FFF4C2'); x.font = F_B
+wb.defined_names['NQ_T'] = DefinedName('NQ_T', attr_text="Regras!$U$5:$U$44")
+wb.defined_names['NQ_N'] = DefinedName('NQ_N', attr_text="Regras!$V$5:$V$44")
 G.freeze_panes = 'A5'
 
 # ---------------- Dados (Wisesheets) ----------------
@@ -143,13 +155,13 @@ def block(key, field, years, label=None, per_year=False):
 
 
 # nome, setor, indústria, preço e valor de mercado: uma chamada
-c0 = col[0]; BASEF = ['Name', 'Sector', 'Industry', 'Price', 'Market Cap']
-head(D, 3, c0, 'Cadastro e preço', color='4B5563'); D.merge_cells(start_row=3, start_column=c0, end_row=3, end_column=c0 + 4)
+c0 = col[0]; BASEF = ['Name', 'Sector', 'Industry', 'Price', 'Market Cap', '1y']
+head(D, 3, c0, 'Cadastro e preço', color='4B5563'); D.merge_cells(start_row=3, start_column=c0, end_row=3, end_column=c0 + len(BASEF) - 1)
 for i, f in enumerate(BASEF):
     x = D.cell(4, c0 + i, f); x.font = F_H; x.fill = fill('6B7280'); D.column_dimensions[L(c0 + i)].width = 16 if i < 3 else 12
 for a, b in CHUNKS:
-    D[f'{L(c0)}{a}'] = ArrayFormula(f'{L(c0)}{a}:{L(c0 + 4)}{b}', f'=IFERROR(_xldudf_WISEPRICE({tk(a, b)},${L(c0)}$4:${L(c0 + 4)}$4),"")')
-DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
+    D[f'{L(c0)}{a}'] = ArrayFormula(f'{L(c0)}{a}:{L(c0 + len(BASEF) - 1)}{b}', f'=IFERROR(_xldudf_WISEPRICE({tk(a, b)},${L(c0)}$4:${L(c0 + len(BASEF) - 1)}$4),"")')
+DC['base'] = [L(c0 + i) for i in range(len(BASEF))]; col[0] += len(BASEF) + 1
 block('DY', 'Dividend Yield', [-1])
 block('EST', 'Estimated EPS AVG', [-1, 0, 1, 2])   # o ano passado entra como base no mesmo critério (ajustado) das estimativas             # consenso do sell-side: ano+1 = ano corrente
 block('EPS', 'EPS Diluted', [-9, -8, -7, -6, -5, -4, -3, -2, -1])   # 2017–2025 (histórico longo para o gráfico e a mediana de 5 anos)              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
@@ -160,7 +172,7 @@ for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Be
              ('DEBT', 'Total Debt'), ('LEASE', 'Capital Lease Obligations'), ('EQ', 'Total Stockholders Equity')):
     block(k, f, Y5)
 D.freeze_panes = 'B5'
-NAME, SECT, IND, PRICE, MCAP = (f'{QD}{c}' for c in DC['base'])
+NAME, SECT, IND, PRICE, MCAP, CH1Y = (f'{QD}{c}' for c in DC['base'])
 
 # ---------------- Cálculo ----------------
 C['A1'] = 'Cálculo'; C['A1'].font = F_T
@@ -181,7 +193,13 @@ def cols(key, n, label, group=None, w=9):
 
 cols('SHE', 1, 'Último EPS já saiu?', 'Ano mais recente'); cols('SHR', 1, 'Último balanço já saiu?')
 cols('E', 3, 'EPS estimado c/ haircut', 'Crescimento (consenso)', w=10); cols('GA', 3, 'Cresc. anual estimado c/ haircut'); cols('GR0', 3, 'Cresc. anual do consenso'); cols('GRAW', 1, 'Crescimento sem teto')
-cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 5, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
+cols('GVR', 1, 'Crescimento valuation (bruto)'); cols('GCR', 1, 'Crescimento do consenso (bruto)'); cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 5, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)'); cols('GOH', 3, 'Cresc. lucro operacional'); cols('GOM', 1, 'Cresc. operacional (mediana)'); cols('GCAP', 1, 'Teto de credibilidade')
+cols('ER', 8, 'Cresc. EPS ano a ano', 'Escadinha'); cols('RUN', 8, 'Sequência de altas'); cols('ESC', 1, 'Nota escadinha'); cols('ATY', 1, 'Consenso atípico?'); cols('ATX', 1, 'Atípico sem apoio operacional?')
+cols('STEP', 1, 'Step change?', 'Step change (caso LLY)'); cols('PEJLT', 1, 'P/E justo maduro'); cols('RFADE', 1, 'Retorno com fade'); cols('EDEV', 1, 'EPS 2027 com devolução'); cols('RDEV', 1, 'Retorno com devolução'); cols('SOK', 1, 'Passa no step change?')
+cols('GPI', 1, 'Mediana cresc. indústria', 'Indústria'); cols('GAPG', 1, 'Gap de crescimento vs indústria'); cols('PLI', 1, 'P/L ÷ indústria')
+cols('RY', 4, 'ROIC do ano', 'Nota de boa empresa'); cols('MEDR', 1, 'ROIC mediano da indústria'); cols('SPR', 1, 'Spread vs pares'); cols('GIMP', 1, 'g implícito no preço'); cols('GSUS', 1, 'g sustentável'); cols('PISTA', 1, 'Pista (g crível − implícito)'); cols('RTAN', 1, 'ROIC sem goodwill'); cols('SHG', 1, 'Variação anual do nº de ações'); cols('ALAV', 1, 'Dívida ÷ lucro operacional')
+cols('C1', 1, 'C1 ROIC vs pares'); cols('C2', 1, 'C2 ROIC incremental'); cols('C3', 1, 'C3 Pista marginal'); cols('C4', 1, 'C4 Moat'); cols('C5', 1, 'C5 Gestão por ação'); cols('C6', 1, 'C6 Existir em 15 anos'); cols('C7', 1, 'C7 Qualitativa'); cols('NOTA', 1, 'Nota de boa empresa'); cols('TCOMP', 1, 'Teste de compounder')
+cols('PENT', 1, 'Preço de entrada (20%)', 'Oportunidades'); cols('FALTA', 1, 'Falta cair'); cols('CAPG', 1, 'Cresc. capital investido'); cols('COMP', 1, 'Compounder redondo'); cols('QL', 1, 'Quase lá'); cols('PEQ', 1, 'Pequena que compõe'); cols('PAN', 1, 'Ótima em pânico')
 cols('FLAG', 1, 'Atenção', w=16)
 cols('NOP', 4, 'NOPAT', 'ROIC triangulado (4 anos)', w=11); cols('CA', 4, 'Capital ativo', w=11); cols('CP', 4, 'Capital passivo', w=11)
 cols('RA', 4, 'ROIC ativo'); cols('RP', 4, 'ROIC passivo')
@@ -202,7 +220,7 @@ for k, lab in (('T', 'Top 20'), ('E', 'Especiais'), ('J', 'JG+G')):
     cols(f'WA{k}', 1, 'peso antes do teto de setor'); cols(f'SW{k}', 1, 'peso do setor'); cols(f'WB{k}', 1, 'peso c/ teto de setor'); cols(f'WC{k}', 1, 'peso redistribuído')
 cols('JR', 1, 'JG: ROIC'); cols('JGr', 1, 'JG: cresc.'); cols('JP', 1, 'JG: P/L')
 cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais'); cols('WXU', 1, 'peso (ordem)')
-OPEN = [('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_EBF', 'Excellent but Fair'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
+OPEN = [('O_COMP', 'Compounders'), ('O_QL', 'Quase lá'), ('O_PAN', 'Pânico'), ('O_PEQ', 'Pequenas'), ('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_EBF', 'Excellent but Fair'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
 for k, lab in OPEN: cols(k, 1, f'Ordem {lab}', 'Ordem nas listas' if k == 'O_OOL' else None)
 C.freeze_panes = 'B5'
 
@@ -260,8 +278,18 @@ for r in range(R0, R1 + 1):
         w('GR0', f'=IFERROR(IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),""),"")', PCT0, j)
     gr0, gah = rngr('GR0', r), rngr('GA', r)
     w('GRAW', f'=IF(COUNT({gah})>=2,MEDIAN({gah}),"")', PCT)
-    w('G', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
-    w('GC', f'=IF(COUNT({gr0})>=2,MIN(G_MAX,MEDIAN({gr0})),"")', PCT)
+    w('GVR', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
+    w('GCR', f'=IF(COUNT({gr0})>=2,MIN(G_MAX,MEDIAN({gr0})),"")', PCT)
+    # credibilidade: o crescimento usado não passa do maior histórico (EPS 5 anos ou lucro operacional) + margem (regra de acompanhamento, 22/11)
+    for j in range(3):
+        a_, b_ = X('OI', j, r), X('OI', j + 1, r)
+        w('GOH', f'=IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),"")', PCT0, j)
+    goh = rngr('GOH', r)
+    w('GOM', f'=IF(COUNT({goh})>=2,MEDIAN({goh}),"")', PCT)
+    gcap = cr('GCAP', r)
+    w('GCAP', f'=IF(OR(ISNUMBER({cr("GHM", r)}),ISNUMBER({cr("GOM", r)})),MAX(IF(ISNUMBER({cr("GHM", r)}),{cr("GHM", r)},-9),IF(ISNUMBER({cr("GOM", r)}),{cr("GOM", r)},-9))+CRED_MARGEM,"")', PCT)
+    w('G', f'=IF(ISNUMBER({cr("GVR", r)}),IF(ISNUMBER({gcap}),MIN({cr("GVR", r)},{gcap}),{cr("GVR", r)}),"")', PCT)
+    w('GC', f'=IF(ISNUMBER({cr("GCR", r)}),IF(ISNUMBER({gcap}),MIN({cr("GCR", r)},{gcap}),{cr("GCR", r)}),"")', PCT)
     Gv = cr('G', r)          # com haircut: P/E justo e retorno esperado
     Gc = cr('GC', r)         # consenso puro: classe, filtros e listas
     ga = rngr('GA', r)
@@ -275,9 +303,19 @@ for r in range(R0, R1 + 1):
     gh = rngr('GH', r)
     w('GHM', f'=IF(COUNT({gh})>=3,MEDIAN({gh}),"")', PCT)
     GH = cr('GHM', r)
+    for i in range(8):
+        a_, b_ = X('EPS', i, r), X('EPS', i + 1, r)
+        w('ER', f'=IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),"")', PCT0, i)
+        prev = crr('RUN', i - 1, r) if i else '0'
+        w('RUN', f'=IF(N({crr("ER", i, r)})>0,{prev}+1,0)', '0', i)
+    er = rngr('ER', r)
+    w('ESC', (f'=IFERROR(IF(COUNT({er})>=6,IF(MEDIAN({er})>0,40*COUNTIF({er},">0")/COUNT({er})+20*MAX({rngr("RUN", r)})/COUNT({er})'
+              f'+20*IF(MIN({er})>-0.1,1,0)+20*MAX(0,1-MIN(1,_xlfn.STDEV.P({er})/MEDIAN({er})/1.5)),0),""),"")'), '0')
+    w('ATY', f'=IFERROR(IF(MAX(MAX({gr0})-{md},{md}-MIN({gr0}))>MAX(0.3,ABS({md})),1,0),0)')
+    w('ATX', f'=IF(AND({cr("ATY", r)}=1,NOT(AND(ISNUMBER({cr("GOM", r)}),N({cr("GOM", r)})>=N({cr("GCR", r)})-CRED_MARGEM))),1,0)')
     w('FLAG', (f'=IF({QA}A{r}="","",IF(NOT(ISNUMBER({Gc})),"Sem estimativa",_xlfn.TEXTJOIN(" · ",TRUE,'
-               f'IF(ISNUMBER({GH}),IF(AND({Gc}-{GH}>0.15,{Gc}>2*{GH}),"Consenso ≫ histórico",""),""),'
-               f'IF(N({cr("GRAW", r)})>G_MAX,"Crescimento limitado ao teto",""),IF(N({b0})<=0,"Lucro negativo no último ano",""),IFERROR(IF(MAX(MAX({gr0})-{md},{md}-MIN({gr0}))>0.3,"Consenso com ano atípico",""),""))))'))
+               f'IF(N({cr("GCR", r)})>N({cr("GC", r)})+0.0001,"Consenso cortado pela história",""),'
+               f'IF(N({cr("GRAW", r)})>G_MAX,"Crescimento limitado ao teto",""),IF(N({b0})<=0,"Lucro negativo no último ano",""),IF({cr("ATX", r)}=1,"Consenso atípico sem apoio operacional",""),IF({cr("SOK", r)}=0,"Step change: devolução abaixo de "&TEXT(-STEP_MIN,"0%"),""),IF(AND(N({cr("GAPG", r)})>0.3,N({cr("PLI", r)})>3),"Preço e crescimento muito acima da indústria",""))))'))
     # ROIC triangulado leve (4 anos)
     for j in range(4):
         pt, tx = X('PT', j, r), X('TX', j, r)
@@ -350,7 +388,57 @@ for r in range(R0, R1 + 1):
     w('GB', f'=IF(ISNUMBER({Gv}),MIN({Gv},MAX(N({cr("P70", r)}),BEAR_CORTE*{Gv},BEAR_GMIN)),"")', PCT)
     w('MB', f'=IF(AND(ISNUMBER({cr("PEJ", r)}),N({PL})>0),MIN(BEAR_MULT*{cr("PEJ", r)},{PL}),"")', NUM1)
     w('RB', f'=IFERROR(IF(ISNUMBER({cr("MB", r)}),IF({cr("MB", r)}*({bus})*(1+{cr("GB", r)})^2/{PRICE}{r}>0,SQRT({cr("MB", r)}*({bus})*(1+{cr("GB", r)})^2/{PRICE}{r})-1+{DY},-1),""),"")', PCT)
-    w('BOK', f'=IF(ISNUMBER({cr("RB", r)}),IF({cr("RB", r)}>BEAR_MIN,1,0),1)')
+    w('BOK', f'=IF(ISNUMBER({cr("RB", r)}),IF({cr("RB", r)}>BEAR_MIN,1,0),1)')   # só informativo (o filtro bear não passou no backtest, 22/11)
+    # step change (caso LLY): EPS 2028 ≥ 1,8 × 2025 → múltiplo de saída com g maduro e cenário de devolução de 1/3 do ganho até 2027
+    w('STEP', f'=IF(AND(N({b0})>0,N({R3_})>0),IF({R3_}/{b0}>=STEP_X,1,0),0)')
+    w('PEJLT', f'=IFERROR(IF(N({RO})>0,(1-STEP_G/MIN(1,{RO}))/(WACC-STEP_G),""),"")', NUM1)
+    mlt = f'MIN({cr("PEJ", r)},{cr("PEJLT", r)})'
+    w('RFADE', f'=IF({cr("STEP", r)}=1,IFERROR(IF({mlt}*{E2}*{FE}/{PRICE}{r}>0,SQRT({mlt}*{E2}*{FE}/{PRICE}{r})-1+{DY},-1),""),"")', PCT)
+    w('EDEV', f'=IF({cr("STEP", r)}=1,IFERROR(IF({E2}>{b0},{E2}-({E2}-{b0})/3,{E2}),""),"")', '0.00')
+    w('RDEV', f'=IF({cr("STEP", r)}=1,IFERROR(IF({mlt}*{cr("EDEV", r)}*{FE}/{PRICE}{r}>0,SQRT({mlt}*{cr("EDEV", r)}*{FE}/{PRICE}{r})-1+{DY},-1),""),"")', PCT)
+    w('SOK', f'=IF({cr("STEP", r)}=1,IF(N({cr("RDEV", r)})>STEP_MIN,1,0),1)')
+    gcr_ = col_rg('GC'); plr_ = col_rg('PL')
+    w('GPI', f'=IFERROR(_xlfn.AGGREGATE(16,6,{gcr_}/({indr}={IND}{r}),0.5),"")', PCT)
+    w('GAPG', f'=IF(AND(ISNUMBER({Gc}),ISNUMBER({cr("GPI", r)})),{Gc}-{cr("GPI", r)},"")', PCT)
+    w('PLI', f'=IFERROR(IF(N({PL})>0,{PL}/_xlfn.AGGREGATE(16,6,{plr_}/(({indr}={IND}{r})*({plr_}>0)),0.5),""),"")', NUM2)
+    # preço de entrada: o preço em que o retorno esperado chega ao corte (20%)
+    kk = f'{cr("PEJ", r)}*{E2}*{FE}'; den = f'(1+2*RET_ALTO-N({cr("RC", r)})-{DY})'
+    w('PENT', f'=IFERROR(IF(AND(N({cr("PEJ", r)})>0,{den}>0,{kk}>0,ISNUMBER({cr("RC", r)})),{kk}/{den}^2,""),"")', '#,##0.00')
+    w('FALTA', f'=IFERROR(IF(ISNUMBER({cr("PENT", r)}),{cr("PENT", r)}/{PRICE}{r}-1,""),"")', PCT0)
+    w('CAPG', f'=IFERROR(IF(AND(N({crr("CA", 0, r)})>0,N({crr("CA", 3, r)})>0),({crr("CA", 3, r)}/{crr("CA", 0, r)})^(1/3)-1,""),"")', PCT)
+    # ---- Nota de boa empresa (framework v4.2 do usuário; base McKinsey: valor = (ROIC − custo de capital) × crescimento) ----
+    for j in range(4):
+        w('RY', f'=IF({FIN}=1,IF(ISNUMBER({crr("ROE", j, r)}),{crr("ROE", j, r)},""),IF(ISNUMBER({crr("RA", j, r)}),{crr("RA", j, r)},IF(ISNUMBER({crr("RP", j, r)}),{crr("RP", j, r)},"")))', PCT0, j)
+    ry = rngr('RY', r); rur = col_rg('ROIC')
+    w('MEDR', f'=IFERROR(_xlfn.AGGREGATE(16,6,{rur}/({indr}={IND}{r}),0.5),"")', PCT)
+    w('SPR', f'=IF(AND(ISNUMBER({RO}),ISNUMBER({cr("MEDR", r)})),{RO}-{cr("MEDR", r)},"")', PCT)
+    w('C1', (f'=IF(ISNUMBER({cr("SPR", r)}),IF(OR({RO}<WACC+0.1,{RO}<1.5*{cr("MEDR", r)}),MIN(3,1+4*_xlfn.PERCENTRANK.INC({col_rg("SPR")},{cr("SPR", r)})),'
+             f'1+4*_xlfn.PERCENTRANK.INC({col_rg("SPR")},{cr("SPR", r)})),"")'), NUM1)
+    vm = cr('VM', r)
+    w('C2', f'=IF(NOT(ISNUMBER({vm})),3,IF(AND({vm}>=0.8*N({RO}),{vm}>=WACC),5,IF({vm}>=0.5*N({RO}),4,IF({vm}>=WACC,3,IF({vm}>=0,2,1)))))', '0')
+    r1_ = f'MIN(1,MAX(0.000001,N({RO})))'
+    w('GIMP', f'=IFERROR(IF(N({PL})>0,(WACC*{PL}-1)/({PL}-1/{r1_}),""),"")', PCT)
+    w('GSUS', (f'=IFERROR(IF(AND(N({crr("CA", 0, r)})>0,ISNUMBER({crr("CA", 3, r)}),SUM({crr("NOP", 1, r)}:{crr("NOP", 3, r)})>0),'
+               f'MAX(0,MIN(0.3,({crr("CA", 3, r)}-{crr("CA", 0, r)})/SUM({crr("NOP", 1, r)}:{crr("NOP", 3, r)})*MIN(N({RO}),IF(ISNUMBER({vm}),MAX(0,{vm}),N({RO}))))),""),"")'), PCT)
+    gcred = f'MIN(N({Gc}),IF(ISNUMBER({cr("GSUS", r)}),{cr("GSUS", r)},N({Gc})),0.15)'
+    w('PISTA', f'=IF(AND(ISNUMBER({Gc}),ISNUMBER({cr("GIMP", r)})),{gcred}-{cr("GIMP", r)},"")', PCT)
+    pi = cr('PISTA', r)
+    w('C3', f'=IF(N({PL})<=0,1,IF(AND(N({PL})>0,{PL}<1/{r1_}),5,IF(NOT(ISNUMBER({pi})),3,IF({pi}>=0.05,5,IF({pi}>=0.02,4,IF({pi}>=0,3,IF({pi}>=-0.03,2,1)))))))', '0')
+    w('RTAN', f'=IFERROR(IF(({crr("CA", 3, r)}-N({X("GW", 3, r)})-N({X("INT", 3, r)}))>0,{crr("NOP", 3, r)}/({crr("CA", 3, r)}-N({X("GW", 3, r)})-N({X("INT", 3, r)})),""),"")', PCT0)
+    allr = lambda th: f'COUNTIF({ry},">="&{th})=COUNT({ry})'
+    w('C4', (f'=IF(COUNT({ry})<2,3,MIN(5,IF(AND({allr("0.2")},MIN({ry})>=0.7*AVERAGE({ry})),5,IF({allr("0.15")},4,IF({allr("WACC")},3,IF(COUNTIF({ry},">="&WACC)>COUNT({ry})/2,2,1))))'
+             f'+IF(N({cr("RTAN", r)})>=0.4,1,0)))'), '0')
+    sh0 = f'{X("NI", 0, r)}/{X("EPS", 5, r)}'; sh3 = f'{X("NI", 3, r)}/{X("EPS", 8, r)}'
+    w('SHG', f'=IFERROR(IF(AND(({sh0})>0,({sh3})>0),(({sh3})/({sh0}))^(1/3)-1,""),"")', PCT)
+    gwr = f'IFERROR((N({X("GW", 3, r)})+1)/(N({X("GW", 0, r)})+1),1)'; oir = f'IFERROR(IF(AND(N({X("OI", 0, r)})>0,N({X("OI", 3, r)})>0),{X("OI", 3, r)}/{X("OI", 0, r)},""),"")'
+    w('C5', (f'=MAX(1,MIN(5,3+IF(N({cr("SHG", r)})<=-0.01,1,0)-IF(N({cr("SHG", r)})>=0.02,1,0)+IF(ISNUMBER({oir}),IF({gwr}<={oir},1,IF({gwr}>1.2*{oir},-1,0)),0)))'), '0')
+    w('ALAV', f'=IFERROR(IF(N({X("OI", 3, r)})>0,N({X("DEBT", 3, r)})/{X("OI", 3, r)},""),"")', NUM1)
+    epsr = f'{QD}{DC["EPS"][0]}{r}:{QD}{DC["EPS"][-1]}{r}'
+    w('C6', (f'=IF({CY}=1,1,1+IF(AND(COUNT({epsr})>=6,MIN({epsr})>0),1,0)+IF(OR({FIN}=1,AND(ISNUMBER({cr("ALAV", r)}),N({cr("ALAV", r)})<=2)),1,0)'
+             f'+IF(N({cr("ESC", r)})>=ESC_MIN,1,0)+IF(N({MCAP}{r})>=10E9,1,0))'), '0')
+    w('C7', f'=IFERROR(INDEX(NQ_N,MATCH({QA}A{r},NQ_T,0))*1,"")', '0')
+    w('NOTA', f'=IF({QA}A{r}="","",AVERAGE({cr("C1", r)},{cr("C2", r)},{cr("C3", r)},{cr("C4", r)},{cr("C5", r)},{cr("C6", r)},{cr("C7", r)}))', NUM1)
+    w('TCOMP', f'=IF(AND(N({cr("RTAN", r)})>=0.3,COUNTIF({goh},">=0.1")>=2),1,0)')
     Gc = Gc_class
     RT, ZG = cr('RET', r), cr('ZG', r)
     w('COD', (f'=IF(AND(ISNUMBER({Gc}),ISNUMBER({ZG}),ISNUMBER({RO}),ISNUMBER({RT})),IF({Gc}>G_ALTO,"H",IF({Gc}>=G_BAIXO,"O","L"))&IF({ZG}<ZG,"O","P")'
@@ -362,9 +450,9 @@ for r in range(R0, R1 + 1):
     xm = f'COUNTIF(EXCLUIR,{QA}A{r})>0'
     w('DUP', (f'=IF(OR(AND({QA}A{r}<>"",COUNTIF({QA}$A${R0}:A{r},{QA}A{r})>1),{mo},{xm}),1,0)' if r > R0 else f'=IF(OR({mo},{xm}),1,0)'))
     B_, CY, AP, DU = cr('BASE', r), cr('CYC', r), cr('APP', r), cr('DUP', r)
-    w('CLS', f'=IF({xm},"Excluída (manual)",IF({mo},"Moeda diferente (fora)",IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",IF(AND({B_}="{OOL}",{cr("BOK", r)}=0),"OoL reprovada no bear",{B_}))),{B_})))')
+    w('CLS', f'=IF({xm},"Excluída (manual)",IF({mo},"Moeda diferente (fora)",IF({cr("ATX", r)}=1,"Consenso atípico (fora)",IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",IF(AND({B_}="{OOL}",{cr("SOK", r)}=0),"OoL reprovada no step change",{B_}))),{B_}))))')
     CL = cr('CLS', r)
-    w('QUAL', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("COD", r)}<>"",N({RO})>=ROIC_ALTO,N({Gc})>=G_ALTO,{cr("BOK", r)}=1),1,0)')
+    w('QUAL', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("COD", r)}<>"",N({RO})>=ROIC_ALTO,N({Gc})>=G_ALTO,{cr("ATX", r)}=0,{cr("SOK", r)}=1),1,0)')
     Q = cr('QUAL', r)
     w('HR', f'=IF(AND({DU}=0,{CL}="{OOL}",N({RO})>HR_CORTE),1,0)')
     w('HG', f'=IF(AND({DU}=0,{CL}="{OOL}",N({Gc})>HG_CORTE),1,0)')
@@ -376,7 +464,7 @@ for r in range(R0, R1 + 1):
     w('NOTAT', f'=IF(AND(ISNUMBER({n0c}),N({cr("RKS", r)})<=CAP_SETOR),{n0c},"")', PCT)
     # Especiais: retorno > 20%; primeiro as que têm ROIC > 30% e crescimento > 30%; depois as demais pela nota 1,5 × ROIC + g (decisão do usuário, 2026-11-22)
     w('NOTA0E', f'=IF(AND({Q}=1,N({RT})>RET_ALTO),IF(AND({RO}>HR_CORTE,{Gc}>HG_CORTE),10,0)+1.5*MIN({RO},1.5)+{Gc},"")', NUM2)
-    el = f'AND({FIN}=0,{SECT}{r}<>"Utilities",{CY}=0,{AP}=0,{DU}=0,N({PL})>0,ISNUMBER({RO}),ISNUMBER({Gc}),N({X("OI", 3, r)})>0)'
+    el = f'AND({FIN}=0,{SECT}{r}<>"Utilities",{CY}=0,{AP}=0,{DU}=0,{cr("ATX", r)}=0,{cr("SOK", r)}=1,N({PL})>0,ISNUMBER({RO}),ISNUMBER({Gc}),N({X("OI", 3, r)})>0)'
     w('JR', f'=IF({el},{RO},"")'); w('JGr', f'=IF({el},{Gc},"")'); w('JP', f'=IF({el},{PL},"")')
     w('NOTA0J', (f'=IF(ISNUMBER({cr("JR", r)}),-(_xlfn.RANK.AVG({cr("JR", r)},{col_rg("JR")},0)+_xlfn.RANK.AVG({cr("JGr", r)},{col_rg("JGr")},0)'
                 f'+_xlfn.RANK.AVG({cr("JP", r)},{col_rg("JP")},1)),"")'))
@@ -410,6 +498,14 @@ for r in range(R0, R1 + 1):
     w('WX', f'=IF(ISNUMBER({cr("SX", r)}),{cr("SX", r)}/SUM({col_rg("SX")}),"")', PCT)
     w('WXU', f'=IF(ISNUMBER({cr("WX", r)}),{cr("WX", r)}+ROW()*1E-12,"")', PCT)
     rr_ = col_rg('RET')
+    ok_ = f'AND({DU}=0,{CY}=0,{AP}=0,{cr("ATX", r)}=0,{cr("SOK", r)}=1)'; NT = cr('NOTA', r)
+    w('COMP', f'=IF(AND({ok_},N({MCAP}{r})>=COMP_MC,N({NT})>=4,ISNUMBER({RT})),1,0)')
+    w('QL', f'=IF(AND({cr("COMP", r)}=1,N({RT})<RET_ALTO,ISNUMBER({cr("FALTA", r)}),N({cr("FALTA", r)})>=QL_FALTA),1,0)')
+    w('PEQ', f'=IF(AND({ok_},N({MCAP}{r})>=PEQ_MIN,N({MCAP}{r})<=PEQ_MAX,N({NT})>=4,N({Gc})>=0.12,N({PL})>0,N({PL})<=1.3*N({cr("PEJ", r)}),ISNUMBER({RT})),1,0)')
+    w('PAN', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("ATX", r)}=0,N({NT})>=3.5,ISNUMBER({CH1Y}{r}),N({CH1Y}{r})<=PANICO,N({crr("ER", 7, r)})>0,N({Gc})>0),1,0)')
+    for k, v in (('O_COMP', f'IF({cr("COMP", r)}=1,{RT},"")'), ('O_QL', f'IF({cr("QL", r)}=1,{cr("FALTA", r)},"")'),
+                 ('O_PEQ', f'IF({cr("PEQ", r)}=1,{RT},"")'), ('O_PAN', f'IF({cr("PAN", r)}=1,-{CH1Y}{r},"")')):
+        w(k, f'=IFERROR({v}+ROW()*1E-12,"")', PCT)
     for k, cond in (('O_OOL', f'{CL}="{OOL}"'), ('O_GCGR', f'{CL}="{GCGR}"'), ('O_EBF', f'{CL}="Excellent but Fair"'), ('O_CYC', f'{CL}="Cyclicals"'), ('O_HR', f'{cr("HR", r)}=1'),
                     ('O_HG', f'{cr("HG", r)}=1'), ('O_EXC', f'{cr("EXC", r)}=1')):
         crg = col_rg(k)
@@ -452,12 +548,11 @@ P['A1'] = 'Price Tracker'; P['A1'].font = Font(name='Aptos Display', bold=True, 
 P['A2'] = '=" Atualizado em "&TEXT(TODAY(),"dd/mm/")&YEAR(TODAY())&" · "&COUNTA(' + f"{QA}A{R0}:A{R1}" + ')&" ações · regras na aba Regras"'; P['A2'].font = F_S
 P.column_dimensions['A'].width = 4
 CL_RG, RT_RG, TK_RG = f"{QC}{col_rg('CLS')}", f"{QC}{col_rg('RET')}", f"{QA}$A${R0}:$A${R1}"
-kpis = [('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP")},0)', ACC['ool']),
-        ('Good Companies, Great Returns', f'=COUNTIFS({CL_RG},"{GCGR}",{QC}{col_rg("DUP")},0)', ACC['gcgr']),
-        ('High ROIC', f'=SUM({QC}{col_rg("HR")})', ACC['hr']), ('High Growth', f'=SUM({QC}{col_rg("HG")})', ACC['hg']),
-        ('Excepcionais', f'=SUM({QC}{col_rg("EXC")})', ACC['exc']), ('Cyclicals', f'=COUNTIFS({CL_RG},"Cyclicals",{QC}{col_rg("DUP")},0)', ACC['cyc'])]
+kpis = [('Compounders redondos', f'=SUM({QC}{col_rg("COMP")})', '0B6E4F'), ('Quase lá', f'=SUM({QC}{col_rg("QL")})', '1F6E8C'),
+        ('Ótima em pânico', f'=SUM({QC}{col_rg("PAN")})', 'B42318'), ('Pequenas que compõem', f'=SUM({QC}{col_rg("PEQ")})', '7A5C00'),
+        ('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP")},0)', ACC['ool']), ('Excepcionais', f'=SUM({QC}{col_rg("EXC")})', ACC['exc'])]
 for i, (lab, f, colr) in enumerate(kpis):
-    c = [3, 10, 19, 26, 35, 42][i]   # colunas de cada bloco
+    c = [3, 12, 21, 30, 39, 48][i]   # colunas de cada bloco
     x = P.cell(4, c, f); x.font = Font(name='Aptos Display', bold=True, size=22, color=colr)
     y = P.cell(5, c, lab); y.font = Font(name='Aptos', size=9, color=MUTED, bold=True)
 TKc = lambda m: f'IFERROR(INDEX({TK_RG},{m}),"")'
@@ -467,9 +562,9 @@ NAMES = f"'Ações'!$B${R0}:$B${R1}"
 DESC_FONT = Font(name='Aptos', size=9, italic=True, color=MUTED)
 
 
-COLS = ['#', 'Ação', 'Empresa', 'Indústria', 'Valor (US$ bi)', 'Peso', 'ROIC', 'Cresc.', 'Cresc. hist.', 'P/L', 'P/E justo', 'Retorno', 'Bear', 'Bagger', '⚠']
-FMT = [None, None, None, None, '#,##0', PCT, PCT0, PCT0, PCT0, NUM1, NUM1, PCT0, PCT0, '0', None]
-WID = [4, 9, 24, 22, 8, 7, 7, 7, 8, 8, 8, 8, 7, 7, 3]
+COLS = ['#', 'Ação', 'Empresa', 'Indústria', 'Valor (US$ bi)', 'Peso', 'Nota', 'ROIC', 'Cresc.', 'Cresc. hist.', 'Escad.', 'P/L', 'P/E justo', 'Retorno', 'Falta cair', 'Bagger', '⚠']
+FMT = [None, None, None, None, '#,##0', PCT, NUM1, PCT0, PCT0, PCT0, '0', NUM1, NUM1, PCT0, PCT0, '0', None]
+WID = [4, 9, 24, 22, 8, 7, 6, 7, 7, 8, 6, 7, 8, 8, 8, 7, 3]
 NW = len(COLS)
 
 
@@ -486,8 +581,8 @@ def header(r0, c0, title, colr, desc, show_peso):
 def row_vals(m, wcol):
     """mesmas colunas em todas as listas: ação, empresa, peso, ROIC, crescimento, P/L atual, P/E justo, retorno, bagger, alerta"""
     g = lambda key: f'=IFERROR(INDEX({QC}{col_rg(key)},{m}),"")'
-    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f"=IFERROR(INDEX('Ações'!$D${R0}:$D${R1},{m}),\"\")", f"=IFERROR(INDEX('Ações'!$F${R0}:$F${R1},{m}),\"\")", g(wcol) if wcol else None, g('ROIC'), g('GC'), g('GHM'), g('PL'), g('PEJ'),
-            f'=IFERROR(INDEX({RT_RG},{m}),"")', g('RB'), f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
+    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f"=IFERROR(INDEX('Ações'!$D${R0}:$D${R1},{m}),\"\")", f"=IFERROR(INDEX('Ações'!$F${R0}:$F${R1},{m}),\"\")", g(wcol) if wcol else None, g('NOTA'), g('ROIC'), g('GC'), g('GHM'), g('ESC'), g('PL'), g('PEJ'),
+            f'=IFERROR(INDEX({RT_RG},{m}),"")', f'=IFERROR(IF(INDEX({QC}{col_rg("FALTA")},{m})<0,INDEX({QC}{col_rg("FALTA")},{m}),""),"")', f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
             f'=IFERROR(IF(INDEX({QC}{col_rg("FLAG")},{m})<>"","⚠",""),"")']
 
 
@@ -507,7 +602,7 @@ def ranked(r0, c0, title, colr, wk, desc, n=20):
     wur = f"{QC}{col_rg('WU' + wk[1:])}"
     for k in range(1, n + 1):
         write_row(r0 + 1 + k, c0, k, row_vals(f'MATCH(LARGE({wur},{k}),{wur},0)', wk))
-    P.cell(r0 + n + 2, c0 + 4, 'Soma').font = F_S
+    P.cell(r0 + n + 2, c0 + 4, 'Soma').font = F_S  # noqa
     P.cell(r0 + n + 2, c0 + 5, f'=SUM({L(c0 + 5)}{r0 + 2}:{L(c0 + 5)}{r0 + n + 1})').number_format = PCT0
 
 
@@ -529,22 +624,33 @@ DESC = {
     'exc': 'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado. Ordem: peso.',
     'gcgr': 'Good Companies, Great Returns: boas empresas com retorno esperado alto, um degrau abaixo da OoL. Ordem: retorno esperado.',
     'ebf': 'Excellent but Fair: empresas ótimas (crescimento e ROIC altos, crescimento estável), mas o retorno esperado ficou entre 8% e 20%. Ordem: retorno esperado.',
+    'comp': 'Grandes (≥ US$ 50 bi) com Nota de boa empresa ≥ 4 (ROIC vs pares, ROIC incremental, pista, moat, gestão por ação, existir em 15 anos). Ordem: retorno esperado. Falta cair = queda até o retorno chegar a 20%.',
+    'ql': 'Compounders redondos com retorno esperado abaixo de 20%, a no máximo 30% de queda do preço de entrada. Ordem: os mais perto de entrar.',
+    'pan': 'Nota ≥ 3,5, ação caiu 25% ou mais em 12 meses e o lucro do último ano subiu: o mercado em pânico com uma empresa que segue entregando. Ordem: maior queda.',
+    'peq': 'US$ 2–30 bi, Nota ≥ 4, crescimento ≥ 12% e P/L até 1,3× o justo: as que podem ficar muito grandes. Ordem: retorno esperado.',
     'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
-B0 = (2, 18, 34)
-ranked(8, B0[0], 'Top 20 · a carteira (máx. 40% por setor)', ACC['top'], 'WT', DESC['top'])
-ranked(8, B0[1], 'Especiais · as 20 mais excepcionais (máx. 40% por setor)', ACC['esp'], 'WE', DESC['esp'])
-ranked(8, B0[2], 'JG+G · Fórmula Mágica com crescimento (máx. 40% por setor)', ACC['jg'], 'WJ', DESC['jg'])
-R2, R3, R4 = 8 + 26, 8 + 26 + 44, 8 + 26 + 88
-for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2]), (R4, B0[0])],
-        [('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None),
+B0 = (2, 20, 38)
+RA_, RB_ = 8, 8 + 44
+for (k, title, colr, dk), c0 in zip([('O_COMP', 'Compounders redondos', '0B6E4F', 'comp'), ('O_QL', 'Quase lá', '1F6E8C', 'ql'),
+                                     ('O_PAN', 'Ótima em pânico', 'B42318', 'pan')], B0):
+    opened(RA_, c0, title, colr, k, DESC[dk], n=40)
+ranked(RB_, B0[0], 'Top 20 · a carteira (máx. 40% por setor)', ACC['top'], 'WT', DESC['top'])
+ranked(RB_, B0[1], 'Especiais · as 20 mais excepcionais (máx. 40% por setor)', ACC['esp'], 'WE', DESC['esp'])
+ranked(RB_, B0[2], 'JG+G · Fórmula Mágica com crescimento (máx. 40% por setor)', ACC['jg'], 'WJ', DESC['jg'])
+R2, R3, R4 = RB_ + 26, RB_ + 26 + 44, RB_ + 26 + 88
+R5 = RB_ + 26 + 132
+for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2]), (R4, B0[0]), (R4, B0[1])],
+        [('O_PEQ', 'Pequenas que compõem', '7A5C00', 'peq', None, None),
+         ('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None),
          ('O_EBF', 'Excellent but Fair', '1F6E8C', 'ebf', None, None),
          ('O_HR', 'High ROIC', ACC['hr'], 'hr', None, None), ('O_HG', 'High Growth', ACC['hg'], 'hg', None, None),
-         ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX'), ('O_CYC', 'Cyclicals', ACC['cyc'], 'cyc', None, None)]):
+         ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX')]):
     opened(r0, c0, title, colr, k, DESC[dk], wsort=ws, wcol=wc)
+opened(R4, B0[2], 'Cyclicals', ACC['cyc'], 'O_CYC', DESC['cyc'])
 for c0 in B0:
     for j, wd in enumerate(WID): P.column_dimensions[L(c0 + j)].width = wd
     P.column_dimensions[L(c0 + NW)].width = 3
-for r0 in (7, R2 - 1, R3 - 1, R4 - 1): P.row_dimensions[r0].height = 36
+for r0 in (RA_ - 1, RB_ - 1, R2 - 1, R3 - 1, R4 - 1): P.row_dimensions[r0].height = 36
 P.sheet_view.showGridLines = False
 
 # ---------------- Carteira ----------------

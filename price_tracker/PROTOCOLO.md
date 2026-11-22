@@ -572,3 +572,12 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
   crescimento ≥ 12%, P/L ≤ 1,3 × P/E justo; até 20 pelo retorno esperado; tetos 10%/40%. E3. "Ótima em pânico": ROIC ≥ 15%, escadinha ≥ 60, sem
   cíclicas/vestuário, ação caiu ≥ 25% em 12 meses, EPS do último ano subiu; peso igual, máx. 20 (as que mais caíram); trimestral.
   Critérios: E1 como R1/R2; E2 e E3 como carteiras novas (reportar com comparativos e janelas; adoção só como lista de acompanhamento).
+- 2026-11-22 — **PRÉ-REGISTRO ramo M, parte 3: "Nota de boa empresa" (framework v4.2 do usuário; antes de rodar).** Nota = média de critérios de 1 a 5.
+  No backtest (só com o que existe no painel histórico): C1 ROIC vs pares = 1 + 4 × percentil do spread (ROIC − mediana da indústria) no universo da data,
+  limitado a 3 se ROIC < custo de capital + 10 p.p. (18,5%) ou < 1,5 × a mediana da indústria; C2 ROIC incremental (marginal): 5 se ≥ 0,8 × ROIC e ≥ 8,5%,
+  4 se ≥ 0,5 × ROIC, 3 se ≥ 8,5% ou sem dado, 2 se ≥ 0, 1 se < 0; C3 pista = min(crescimento, 15%) − g implícito, g implícito = (8,5% × P/L − 1) ÷ (P/L − 1/min(ROIC,1)):
+  5 se ≥ +5 p.p., 4 se ≥ +2, 3 se ≥ 0, 2 se ≥ −3, senão 1 (5 se o P/L < 1/ROIC); C4 moat (ROIC anual ry1–ry6): 5 se todos ≥ 20% e mínimo ≥ 0,7 × média,
+  4 se todos ≥ 15%, 3 se todos ≥ 8,5%, 2 se a maioria ≥ 8,5%, senão 1; C6 existir em 15 anos = 1 + (escadinha ≥ 70) + (valor ≥ US$ 10 bi) + (não cíclica) + (5 anos sem queda do EPS abaixo de −25%).
+  (C5 gestão por ação não tem histórico no painel do backtest: fica só na planilha.) Testes nas carteiras Top 20, Especiais e Excepcionais:
+  N1 filtro nota ≥ 3,5; N2 ordem: retorno esperado + 5 p.p. × (nota − 3); N3 peso: raiz do valor de mercado × nota (com os mesmos tetos).
+  Critério: escolher a forma que mantém o retorno (≥ atual − 0,5 p.p.) e as janelas de 3 anos (≥ atuais − 5 p.p.); reportar o trade-off de todas.
