@@ -22,7 +22,7 @@ SPEC = {
               'hg': 'High Growth', 'exc': 'Excepcional', 'rks': 'Posição no setor', 'rkt': 'Posição Top 20', 'wt': 'Peso Top 20',
               'secw': 'peso do setor', 'rke': 'Posição Especiais', 'we': 'Peso Especiais', 'rkj': 'Posição JG+G', 'wj': 'Peso JG+G',
               'wx': 'Peso Excepcionais'},
-    'calcn': {'eh': ['EPS estimado c/ haircut', 3], 'ga': ['Cresc. anual estimado', 3], 'ghs': ['Cresc. histórico', 3], 'nop': ['NOPAT', 4],
+    'calcn': {'eh': ['EPS estimado c/ haircut', 3], 'ga': ['Cresc. anual estimado c/ haircut', 3], 'gr0': ['Cresc. anual do consenso', 3], 'ghs': ['Cresc. histórico', 3], 'nop': ['NOPAT', 4],
               'ca': ['Capital ativo', 4], 'cp': ['Capital passivo', 4], 'ra': ['ROIC ativo', 4], 'rp': ['ROIC passivo', 4],
               'xa': ['sem outlier A', 4], 'xp': ['sem outlier P', 4], 'roe': ['ROE', 4]},
     'dados': {'est': 'Estimated EPS AVG', 'eps': 'EPS Diluted', 'ni': 'Net Income', 'oi': 'Operating Income', 'pt': 'Income Before Tax',

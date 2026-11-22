@@ -233,7 +233,7 @@ function vListas(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];
   h+=table(members(L),L);$('#main').innerHTML=h;
   $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list',LIST);vListas()});
   wireTable(L)}
-const COLS=[['#','i','n'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso','w','p1'],['ROIC','roic','p0c:roic'],['Cresc.','g','p0c:cresc'],['P/L','pl','n1'],['P/E justo','pej','n1c:pe'],['Retorno','ret','p0'],['Bagger','bag','i0'],['⚠','flag','w']];
+const COLS=[['#','i','n'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso','w','p1'],['ROIC','roic','p0c:roic'],['Cresc.','g','p0c:cresc'],['Cresc. hist.','gh','p0'],['P/L','pl','n1'],['P/E justo','pej','n1c:pe'],['Retorno','ret','p0'],['Bagger','bag','i0'],['⚠','flag','w']];
 function table(rows,L){const key=L.k;const st=SORT[key]||{c:L.w?'w':'ret',asc:false};
   const val=(s,c)=>c==='w'?(L.w?s[L.w]:null):c==='flag'?(s.flag?1:0):s[c];
   rows=rows.slice().sort((a,b)=>{const x=val(a,st.c),y=val(b,st.c);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='string'?x.localeCompare(y):x-y)*(st.asc?1:-1)});
