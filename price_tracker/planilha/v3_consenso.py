@@ -92,10 +92,13 @@ D['A2'] = 'Não editar. Cada bloco é uma única chamada para todas as ações.'
 head(D, 4, 1, 'Ticker', w=10)
 for r in range(R0, R1 + 1): D.cell(r, 1, f'=IF({QA}A{r}="","",{QA}A{r})').font = F_B
 TK = f"{QA}$A${R0}:$A${R1}"
+CH = 200   # o add-in não aguenta uma chamada com ~600 linhas: blocos de até 200 ações (a V2 usava blocos de 201)
+CHUNKS = [(a, min(a + CH - 1, R1)) for a in range(R0, R1 + 1, CH)]
+tk = lambda a, b: f"{QA}$A${a}:$A${b}"
 col = [2]; DC = {}
 
 
-def block(key, field, years, label=None):
+def block(key, field, years, label=None, per_year=False):
     """years: lista de deslocamentos (ex. [-5..-1]); um campo, vários anos, uma chamada."""
     c0 = col[0]; cols = [L(c0 + i) for i in range(len(years))]
     head(D, 3, c0, label or field, color='4B5563')
@@ -104,8 +107,12 @@ def block(key, field, years, label=None):
         x = D.cell(4, c0 + i, f'=YEAR(TODAY()){y:+d}'); x.font = F_H; x.fill = fill('6B7280'); x.alignment = Alignment(horizontal='center')
         D.column_dimensions[cols[i]].width = 11
     D.cell(2, c0, field).font = Font(name='Aptos', size=8, color='9CA3AF')   # nome do campo usado na chamada
-    ref = f'{cols[0]}{R0}:{cols[-1]}{R1}'
-    D[f'{cols[0]}{R0}'] = ArrayFormula(ref, f'=IFERROR(_xldudf_WISE({TK},${cols[0]}$2,${cols[0]}$4:${cols[-1]}$4),"")')
+    for a, b in CHUNKS:
+        if per_year:   # uma chamada por ano, como a V2 fazia com as estimativas
+            for c in cols:
+                D[f'{c}{a}'] = ArrayFormula(f'{c}{a}:{c}{b}', f'=IFERROR(_xldudf_WISE({tk(a, b)},${cols[0]}$2,{c}$4),"")')
+        else:
+            D[f'{cols[0]}{a}'] = ArrayFormula(f'{cols[0]}{a}:{cols[-1]}{b}', f'=IFERROR(_xldudf_WISE({tk(a, b)},${cols[0]}$2,${cols[0]}$4:${cols[-1]}$4),"")')
     DC[key] = cols; col[0] += len(years) + 1
 
 
@@ -114,10 +121,11 @@ c0 = col[0]; BASEF = ['Name', 'Sector', 'Industry', 'Price', 'Market Cap']
 head(D, 3, c0, 'Cadastro e preço', color='4B5563'); D.merge_cells(start_row=3, start_column=c0, end_row=3, end_column=c0 + 4)
 for i, f in enumerate(BASEF):
     x = D.cell(4, c0 + i, f); x.font = F_H; x.fill = fill('6B7280'); D.column_dimensions[L(c0 + i)].width = 16 if i < 3 else 12
-D[f'{L(c0)}{R0}'] = ArrayFormula(f'{L(c0)}{R0}:{L(c0 + 4)}{R1}', f'=IFERROR(_xldudf_WISEPRICE({TK},${L(c0)}$4:${L(c0 + 4)}$4),"")')
+for a, b in CHUNKS:
+    D[f'{L(c0)}{a}'] = ArrayFormula(f'{L(c0)}{a}:{L(c0 + 4)}{b}', f'=IFERROR(_xldudf_WISEPRICE({tk(a, b)},${L(c0)}$4:${L(c0 + 4)}$4),"")')
 DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
 block('DY', 'Dividend Yield', [-1])
-block('EST', 'Estimated EPS AVG', [0, 1, 2])             # consenso do sell-side: ano+1 = ano corrente
+block('EST', 'Estimated EPS AVG', [0, 1, 2], per_year=True)             # consenso do sell-side: ano+1 = ano corrente
 block('EPS', 'EPS Diluted', [-4, -3, -2, -1])              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
 Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
@@ -362,7 +370,7 @@ for nm_, colr in CLS_COLORS:
 
 # ---------------- Painel ----------------
 P['A1'] = 'Price Tracker'; P['A1'].font = Font(name='Aptos Display', bold=True, size=24, color=INK)
-P['A2'] = '=" Atualizado em "&TEXT(TODAY(),"dd/mm/yyyy")&" · "&COUNTA(' + f"{QA}A{R0}:A{R1}" + ')&" ações · regras na aba Regras"'; P['A2'].font = F_S
+P['A2'] = '=" Atualizado em "&TEXT(TODAY(),"dd/mm/")&YEAR(TODAY())&" · "&COUNTA(' + f"{QA}A{R0}:A{R1}" + ')&" ações · regras na aba Regras"'; P['A2'].font = F_S
 P.column_dimensions['A'].width = 4
 CL_RG, RT_RG, TK_RG = f"{QC}{col_rg('CLS')}", f"{QC}{col_rg('RET')}", f"{QA}$A${R0}:$A${R1}"
 kpis = [('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP")},0)', ACC['ool']),
@@ -415,7 +423,7 @@ def opened(r0, c0, title, colr, ok, n=40, wcol=None):
             if j: x.number_format = PCT0
 
 
-ranked(7, 2, 'Top 20 · a carteira (máx. 6 por setor)', ACC['top'], 'RKT', 'WT')
+ranked(7, 2, 'Top 20 · a carteira (máx. 8 por setor)', ACC['top'], 'RKT', 'WT')
 ranked(7, 11, 'Especiais · as 20 mais excepcionais', ACC['esp'], 'RKE', 'WE')
 ranked(7, 20, 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'RKJ', 'WJ')
 R2 = 7 + 24
@@ -508,4 +516,4 @@ with zipfile.ZipFile(tmp) as zi, zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED)
 tmp.unlink()
 json.dump({'DC': DC, 'CC': CC, 'R0': R0, 'R1': R1}, open(str(OUT) + '.cols.json', 'w'))
 n_pts = sum(len(v) for v in DC.values()) * (R1 - R0 + 1) + 1
-print('ok', OUT, 'linhas', R0, R1, 'números pedidos ~', n_pts, 'chamadas', len(DC) + 1)
+print('ok', OUT, 'linhas', R0, R1, 'números pedidos ~', n_pts, 'chamadas', sum(len(v) if k == 'EST' else 1 for k, v in DC.items()) * len(CHUNKS) + 1)
