@@ -205,7 +205,7 @@ function flags(s){return s.flag?String(s.flag).split(' · ').filter(Boolean):[]}
 /* ---------- conta do modelo (para a sensibilidade): mesma fórmula da planilha ---------- */
 function calc(s,o={}){const R=M.rules;const wacc=o.wacc??R.wacc;const h3=o.h3??R.h3;
   const k=(1-h3)/(1-(R.h3||0.91));const h=[1-(1-(R.h1||.97))*k,1-(1-(R.h2||.94))*k,h3];
-  const est=s.est||[],eps=s.eps||[];const b0=(isN(est[0])&&est[0]>0)?est[0]:eps[3];
+  const est=s.est||[],eps=s.eps||[];const b0=(isN(est[0])&&est[0]>0)?est[0]:eps[eps.length-1];
   const E=[0,1,2].map(j=>isN(est[j+1])?est[j+1]*h[j]:null);let gv=null;
   /* crescimento = mediana dos 3 crescimentos anuais do consenso (com haircut no valuation), decisão de 22/11 */
   const pts=[b0,E[0],E[1],E[2]],rt=[];for(let j=0;j<3;j++){const a=pts[j],c=pts[j+1];if(isN(a)&&isN(c)&&a>0)rt.push(c/a-1)}
@@ -318,7 +318,7 @@ function fCresc(s){const c=calc(s);
     <span>Consenso puro (decide a classe)</span><span>${P(s.gc)}</span><span>Com haircut (P/E justo e retorno)</span><span>${P(s.gv)}</span>
     <span>Sem teto</span><span>${P(s.graw)}</span><span>Histórico (mediana dos anos)</span><span>${P(s.ghm)}</span><span>zGrowth (estabilidade)</span><span>${N(s.zg,2)}</span></div></div>
     <div class="card"><h4>Ano a ano (consenso com haircut)</h4>${yearTable([['Crescimento',s.ga,P]],(M.years.est||[]).slice(1))}
-     <p class="note">Base: ${isN(s.est&&s.est[0])&&s.est[0]>0?'EPS de '+(M.years.est||[])[0]+' do próprio consenso (ajustado)':'EPS contábil de '+(M.years.eps||[]).slice(-1)[0]}. Haircut: ×${N(c.h[0],2)}, ×${N(c.h[1],2)}, ×${N(c.h[2],2)} nos anos +1, +2, +3. Histórico: ${yearTable([['Crescimento',s.ghs,P]],(M.years.eps||[]).slice(1))}</p></div></div>
+     <p class="note">Base: ${isN(s.est&&s.est[0])&&s.est[0]>0?'EPS de '+(M.years.est||[])[0]+' do próprio consenso (ajustado)':'EPS contábil de '+(M.years.eps||[]).slice(-1)[0]}. Haircut: ×${N(c.h[0],2)}, ×${N(c.h[1],2)}, ×${N(c.h[2],2)} nos anos +1, +2, +3. Histórico: ${yearTable([['Crescimento',s.ghs,P]],(M.years.eps||[]).slice(-5))}</p></div></div>
    <div class="caveat">O consenso do sell-side não tem como ser testado no backtest (não há histórico). No backtest, o crescimento passado não previu o futuro; o haircut tenta compensar o otimismo dos analistas.</div>`}
 function fPe(s){const R=M.rules;const peers=M.stocks.filter(x=>x.fin===s.fin&&isN(x.gv));const rank=isN(s.gv)?1+peers.filter(x=>x.gv>s.gv).length:null;
   const ro=Math.min(1,s.ru||0);const a=M.adr[s.t];
@@ -360,7 +360,17 @@ function epsChart(s,full){const ye=M.years.eps||[],yt=M.years.est||[];const year
   const hc=years.map(y=>{const i=yt.indexOf(y);return i>=1&&s.eh?s.eh[i-1]:null});
   const ser=[['EPS realizado (contábil)',real,'--acc2'],['Consenso',cons,'--acc']];if(full)ser.push(['Consenso c/ haircut',hc,'--ink2']);
   const adrn=M.adr[s.t]?`<p class="note">⚠ EPS na moeda de reporte (${esc(M.adr[s.t].moeda)}); o contábil é por ação ordinária e a estimativa pode vir por ADR — compare a forma da curva, não o nível.</p>`:'';
-  return bars(ser,years,v=>N(v,2))+adrn+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
+  /* crescimento ano a ano: realizado (contábil) até o último ano publicado; consenso daí em diante (sobre a base do próprio consenso) */
+  const yoy=years.map((y,i)=>{if(i===0)return null;const a=cons[i-1]!=null&&cons[i]!=null&&yt.indexOf(y)>0?cons[i-1]:real[i-1],b=yt.indexOf(y)>0?cons[i]:real[i];return isN(a)&&isN(b)&&a>0?b/a-1:null});
+  const yreal=yoy.map((v,i)=>yt.indexOf(years[i])>0?null:v),ycons=yoy.map((v,i)=>yt.indexOf(years[i])>0?v:null);
+  return bars(ser,years,v=>N(v,2))+lineYoY(years,yreal,ycons)+adrn+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
+function lineYoY(years,a,b){const W=420,H=110,m={l:8,r:8,t:14,b:20};const vals=[...a,...b].filter(isN).map(v=>Math.max(-1,Math.min(2,v)));if(!vals.length)return'';
+  const mx=Math.max(0.05,...vals),mn=Math.min(0,...vals),gw=(W-m.l-m.r)/years.length,xs=i=>m.l+i*gw+gw/2,sc=v=>m.t+(mx-Math.max(-1,Math.min(2,v)))/(mx-mn||1)*(H-m.t-m.b);
+  const path=(arr)=>{let d='',on=false;arr.forEach((v,i)=>{if(!isN(v)){on=false;return}d+=(on?'L':'M')+xs(i)+','+sc(v);on=true});return d};
+  const dots=(arr,c)=>arr.map((v,i)=>isN(v)?`<circle cx="${xs(i)}" cy="${sc(v)}" r="2.6" fill="var(${c})"/><text x="${xs(i)}" y="${sc(v)-5}" text-anchor="middle" style="font-size:9px">${P(v)}</text>`:'').join('');
+  return `<div class="note" style="margin-top:6px">Crescimento do EPS ano a ano</div><svg viewBox="0 0 ${W} ${H}" role="img"><line x1="${m.l}" x2="${W-m.r}" y1="${sc(0)}" y2="${sc(0)}" stroke="var(--rule)"/>`+
+   `<path d="${path(a)}" fill="none" stroke="var(--acc2)" stroke-width="1.6"/><path d="${path(b)}" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-dasharray="4 3"/>`+dots(a,'--acc2')+dots(b,'--acc')+
+   years.map((y,i)=>`<text x="${xs(i)}" y="${H-5}" text-anchor="middle" style="font-size:9px">${y}</text>`).join('')+'</svg>'}
 
 /* ---------- riscos ---------- */
 function vRiscos(){const opts=LISTS.filter(l=>l.w);const k=ls.get('pt.rk','top');const L=opts.find(x=>x.k===k)||opts[0];

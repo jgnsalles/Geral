@@ -150,7 +150,7 @@ for a, b in CHUNKS:
 DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
 block('DY', 'Dividend Yield', [-1])
 block('EST', 'Estimated EPS AVG', [-1, 0, 1, 2])   # o ano passado entra como base no mesmo critério (ajustado) das estimativas             # consenso do sell-side: ano+1 = ano corrente
-block('EPS', 'EPS Diluted', [-4, -3, -2, -1])              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
+block('EPS', 'EPS Diluted', [-9, -8, -7, -6, -5, -4, -3, -2, -1])   # 2017–2025 (histórico longo para o gráfico e a mediana de 5 anos)              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
 Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
              ('ROU', 'Operating Lease Right Of Use Assets'), ('GW', 'Goodwill'), ('INT', 'Intangible Assets'),
@@ -179,7 +179,7 @@ def cols(key, n, label, group=None, w=9):
 
 cols('SHE', 1, 'Último EPS já saiu?', 'Ano mais recente'); cols('SHR', 1, 'Último balanço já saiu?')
 cols('E', 3, 'EPS estimado c/ haircut', 'Crescimento (consenso)', w=10); cols('GA', 3, 'Cresc. anual estimado c/ haircut'); cols('GR0', 3, 'Cresc. anual do consenso'); cols('GRAW', 1, 'Crescimento sem teto')
-cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 3, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
+cols('G', 1, 'Crescimento p/ valuation (c/ haircut)'); cols('GC', 1, 'Crescimento do consenso (classe)'); cols('ZG', 1, 'zGrowth'); cols('GH', 5, 'Cresc. histórico', 'Histórico (só conferência)'); cols('GHM', 1, 'Cresc. histórico (mediana)')
 cols('FLAG', 1, 'Atenção', w=16)
 cols('NOP', 4, 'NOPAT', 'ROIC triangulado (4 anos)', w=11); cols('CA', 4, 'Capital ativo', w=11); cols('CP', 4, 'Capital passivo', w=11)
 cols('RA', 4, 'ROIC ativo'); cols('RP', 4, 'ROIC passivo')
@@ -240,7 +240,7 @@ for r in range(R0, R1 + 1):
     put(C, r, C[f'{CC["SHR"]}{r}'].column, '=0')
     SH = cr('SHE', r)
     eb = f'{QD}{DC["EST"][0]}{r}'
-    BASE_EPS = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb},{X("EPS", 3, r)})'   # base: EPS do ano passado no critério do consenso (ajustado); se faltar, o contábil
+    BASE_EPS = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb},{X("EPS", 8, r)})'   # base: EPS do ano passado no critério do consenso (ajustado); se faltar, o contábil
     # consenso com haircut: ano+1 é o primeiro exercício ainda não publicado
     for j, hc in enumerate(('HAIRCUT_1', 'HAIRCUT_2', 'HAIRCUT_3')):
         e0 = f'{QD}{DC["EST"][j + 1]}{r}'
@@ -266,11 +266,11 @@ for r in range(R0, R1 + 1):
     md = f'MEDIAN({gr0})'
     w('ZG', (f'=IFERROR(IF(N({Gc})=0,"",IF(COUNT({gr0})=3,MIN({md}-MIN({gr0}),MAX({gr0})-{md})/2/ABS({Gc}),'
              f'IF(COUNT({gr0})=2,_xlfn.STDEV.P({gr0})/ABS({Gc}),""))),"")'), NUM2)
-    for i in range(3):
-        a_, b_ = X('EPS', i, r), X('EPS', i + 1, r)
+    for i in range(5):   # os 5 últimos crescimentos (2021–2025), como a mediana do modelo testado
+        a_, b_ = X('EPS', i + 3, r), X('EPS', i + 4, r)
         w('GH', f'=IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),"")', PCT0, i)
     gh = rngr('GH', r)
-    w('GHM', f'=IF(COUNT({gh})>=2,MEDIAN({gh}),"")', PCT)
+    w('GHM', f'=IF(COUNT({gh})>=3,MEDIAN({gh}),"")', PCT)
     GH = cr('GHM', r)
     w('FLAG', (f'=IF({QA}A{r}="","",IF(NOT(ISNUMBER({Gc})),"Sem estimativa",_xlfn.TEXTJOIN(" · ",TRUE,'
                f'IF(ISNUMBER({GH}),IF(AND({Gc}-{GH}>0.15,{Gc}>2*{GH}),"Consenso ≫ histórico",""),""),'
@@ -325,7 +325,7 @@ for r in range(R0, R1 + 1):
     fxo = f'IFERROR(INDEX(FX_V,MATCH(INDEX(ADR_M,MATCH({tk_},ADR_T,0)),FX_M,0)),1)'   # só o câmbio (estimativa já vem por ADR)
     w('FXE', f'=IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Não",1,IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Só câmbio",{fxo},{cr("FXH", r)}))', '0.000')
     FH, FE = cr('FXH', r), cr('FXE', r)
-    bus = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb}*{FE},{X("EPS", 3, r)}*{FH})'   # EPS-base em dólar por ADR
+    bus = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb}*{FE},{X("EPS", 8, r)}*{FH})'   # EPS-base em dólar por ADR
     w('PLL', f'=IFERROR(IF({bus}<>0,{PRICE}{r}/({bus}),""),"")', NUM1)
     w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/({e1raw}*{FE}),""),"")', NUM1)
     l_, f_ = cr('PLL', r), cr('PLF', r)   # média só quando os dois são positivos; com prejuízo num deles, usa o outro (média de P/L negativo com positivo não faz sentido)
