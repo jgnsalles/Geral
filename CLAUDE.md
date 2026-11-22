@@ -56,3 +56,11 @@ Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table(
 ## Price Tracker: estratégia candidata (congelada em 2026-11-10, ver `price_tracker/PROTOCOLO.md`)
 Top 20 por retorno esperado entre as de qualidade: ROIC ≥ 12%, crescimento do EPS ≥ 15%, sem cíclicos e vestuário, P/L ≥ 4; as 20 de maior retorno
 esperado; peso pela raiz do valor de mercado com teto de 10%; trimestral. No Brasil, o crescimento de 2021 (volta da COVID) fica fora da mediana (decisão do usuário, 2026-11-11). Próximo teste: Japão (EDINET), sem ajustes. Não mudar a regra sem registro.
+**Mudanças de 2026-11-22 (ramo M, passaram no backtest):** Top 20 com valor de mercado ≥ US$ 20 bi (`PISO_TOP`); Especiais com peso raiz(valor) × Nota de boa empresa
+(C1–C4, C6). Limpeza do consenso (teto histórico + 10 p.p., atípico, step change/LLY) é só alerta (`LIMPA_CART` = 0) porque não há consenso histórico para testar.
+Compounders redondos, Quase lá, Ótima em pânico e Pequenas que compõem são listas de observação (como carteiras perdem do S&P).
+
+## Price Tracker: restrição dura do usuário (2026-11-22)
+Não perder o alpha. Mudança nas carteiras (Top 20, Especiais, Excepcionais) só entra se o backtest mostrar retorno ≥ atual − 0,5 p.p./ano, % de janelas de 3 anos
+acima do S&P ≥ atual e pior queda não pior. O que não passar (ou não puder ser testado) vira só coluna/lista informativa. Toda entrega mostra a tabela
+mudança → passou/não passou → aplicada ou informativa.
