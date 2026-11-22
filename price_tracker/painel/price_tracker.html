@@ -358,7 +358,8 @@ function epsChart(s,full){const ye=M.years.eps||[],yt=M.years.est||[];const year
   const real=years.map(y=>{const i=ye.indexOf(y);return i>=0&&s.eps?s.eps[i]:null}),cons=years.map(y=>{const i=yt.indexOf(y);return i>=0&&s.est?s.est[i]:null});
   const hc=years.map(y=>{const i=yt.indexOf(y);return i>=1&&s.eh?s.eh[i-1]:null});
   const ser=[['EPS realizado (contábil)',real,'--acc2'],['Consenso',cons,'--acc']];if(full)ser.push(['Consenso c/ haircut',hc,'--ink2']);
-  return bars(ser,years,v=>N(v,2))+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
+  const adrn=M.adr[s.t]?`<p class="note">⚠ EPS na moeda de reporte (${esc(M.adr[s.t].moeda)}); o contábil é por ação ordinária e a estimativa pode vir por ADR — compare a forma da curva, não o nível.</p>`:'';
+  return bars(ser,years,v=>N(v,2))+adrn+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
 
 /* ---------- riscos ---------- */
 function vRiscos(){const opts=LISTS.filter(l=>l.w);const k=ls.get('pt.rk','top');const L=opts.find(x=>x.k===k)||opts[0];
