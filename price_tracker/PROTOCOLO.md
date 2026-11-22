@@ -613,3 +613,21 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
   Planilha: Nota de boa empresa C1–C7 (C5 gestão por ação e C7 qualitativa só na planilha; C3 usa min(crescimento, 15%) como no backtest; g sustentável só informação),
   listas Compounders redondos (≥ US$ 50 bi, nota ≥ 4), Quase lá (falta cair ≤ 30%), Ótima em pânico (nota ≥ 3,5, queda ≥ 25% em 12 meses, EPS do último ano subiu),
   Pequenas que compõem (US$ 2–30 bi, nota ≥ 4, crescimento ≥ 12%, P/L ≤ 1,3× justo). Central de alertas do painel mostra só as ações que estão em alguma lista.
+
+- 2026-11-22 — **Ramo N — PRÉ-REGISTRO (antes de rodar): combinações, anti-pânico e o "filho" (Buffett + Simons + Greenblatt).** S&P 500 point-in-time, crescimento
+  histórico, ROIC triangulado, regras do ramo M. Linhas de base (o que está aplicado): Top 20 com piso de US$ 20 bi; Especiais nova com peso raiz(valor) × nota; Excepcionais.
+  Critério de adoção = restrição dura (retorno ≥ base − 0,5 p.p./ano no período todo, % de janelas de 3 anos ≥ base, pior queda não pior) **e** não pode perder
+  mais de 1 p.p./ano para a base em nenhum dos dois subperíodos (descoberta 2012–2018, confirmação 2019–2026).
+  1. **Nota composta (Simons)**: média dos percentis, por data e no universo, de: ROIC, spread do ROIC sobre a mediana da indústria, escadinha do EPS, crescimento
+     crível (min(crescimento, 35%)), retorno esperado (desconto ao justo), tamanho (log do valor), estabilidade (−zGrowth) e nota de boa empresa. Versões:
+     S0 pesos iguais; S+ e S− com o momento de 12 meses (sinal + e −) como nono sinal; SW pesos ∝ max(IC, 0) medidos SÓ em 2012–2018 (IC = Spearman com o retorno
+     dos 4 trimestres seguintes, entre as elegíveis da Top 20). Usos: (a) ORDEM das elegíveis (Top 20 e Especiais, no lugar do retorno esperado / da nota
+     1,5×ROIC+g; a prioridade 30/30 das Especiais fica); (b) MISTURA 50/50 entre o percentil do retorno esperado e a nota composta; (c) PESO raiz(valor) × (0,5 + S).
+  2. **Grupos explícitos** (filtro nas elegíveis da Top 20 e das Especiais): G1 escadinha ≥ 60 e retorno esperado acima da mediana das elegíveis; G2 escadinha ≥ 60,
+     ROIC acima da mediana da indústria e valor ≥ US$ 20 bi; G3 ordem pela soma dos percentis de retorno esperado e da nota de boa empresa.
+  3. **Anti-pânico** (excluir das 3 carteiras): P1 queda de 12 meses < −30%; P2 queda < −25% com o EPS do último ano em alta; P3 P/L abaixo da média dos próprios
+     P/L anteriores com momento de 12 meses negativo.
+  4. **"Filho"**: elegíveis da Top 20 (qualidade + piso de US$ 20 bi); ordem pela média dos percentis de retorno esperado, spread do ROIC, escadinha e nota de boa
+     empresa (Greenblatt = preço + ROIC; Buffett = qualidade persistente; Simons = ranking composto); 20 ações, 8 por setor, peso raiz(valor) × nota com teto de
+     10% por ação e 40% por setor; sem as ações em pânico SE algum P passar. Comparado com a melhor carteira atual (pela restrição dura) e com os 9 comparativos.
+  Escadinha do lucro operacional não entra no backtest (o painel point-in-time só tem EPS); fica só na planilha.
