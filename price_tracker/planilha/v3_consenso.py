@@ -292,7 +292,8 @@ for r in range(R0, R1 + 1):
     e1raw = f'{QD}{DC["EST"][1]}{r}'
     w('PLL', f'=IFERROR(IF({b0}<>0,{PRICE}{r}/{b0},""),"")', NUM1)
     w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/{e1raw},""),"")', NUM1)
-    w('PL', f'=IF(COUNT({cr("PLL", r)},{cr("PLF", r)})=0,"",AVERAGE({cr("PLL", r)},{cr("PLF", r)}))', NUM1)
+    l_, f_ = cr('PLL', r), cr('PLF', r)   # média só quando os dois são positivos; com prejuízo num deles, usa o outro (média de P/L negativo com positivo não faz sentido)
+    w('PL', f'=IF(AND(N({l_})>0,N({f_})>0),({l_}+{f_})/2,IF(N({f_})>0,{f_},IF(N({l_})>0,{l_},IF(COUNT({l_},{f_})=0,"",N({l_})))))', NUM1)
     grg, frg = col_rg('G'), col_rg('FIN')
     Gc_class = Gc; Gc = Gv
     w('g', (f'=IF(ISNUMBER({Gc}),(G_TOPO-{FIN}*G_FIN)-SUMPRODUCT(ISNUMBER({grg})*({grg}>{Gc})*({frg}={FIN}))*(G_TOPO-G_PISO)'
