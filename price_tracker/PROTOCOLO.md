@@ -511,3 +511,10 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
 - 2026-11-22 — **Decisões do usuário (mudança de regra, registrada antes de qualquer novo teste):**
   1. Seguros multilinha e distribuidoras de saúde deixam de ser cíclicos (passam a NOT_CYCLICAL em backtest/ciclicos.py; na planilha, saem da lista de cíclicas). Ficam 13 subsetores cíclicos. Os backtests anteriores NÃO foram refeitos com a mudança.
   2. ROIC triangulado: a visão marginal deixa de ser usada sozinha quando as visões do ativo e do passivo existem mas são negativas (caso Bloom Energy: ativo e passivo negativos na média, marginal de 92% vindo de uma virada de prejuízo para lucro). Nesse caso o ROIC é a maior das duas visões (negativa), e a ação não passa no filtro de qualidade. O marginal só é usado sozinho quando não há dado de ativo nem de passivo. Aplicado na planilha V3; no Python (roic3.combine) fica pendente de aplicar e reprocessar.
+
+- 2026-11-22 — **Resultado: backtest das 8 seleções com as regras de 22/11** (relatorio/backtest_8.py, oito_selecoes.html). roic3.combine aplicado e roic3.csv reprocessado
+  (S&P; 2,4% das observações caem na regra nova; médias e pequenas NÃO reprocessadas). Crescimento histórico (a regra testável; a planilha usa consenso com haircut, não testável).
+  Retorno anual 2011-09 a 2026-09 (S&P 15,6%): Excepcionais 24,6% (sem NVDA 21,0%; sem as 3 maiores 19,7%), Especiais 22,9% (19,4%), High ROIC 21,4% (18,9%),
+  High Growth 20,7% (18,5%), Top 20 20,7% / com máx. 8 por setor 20,6% (18,6%), JG+G 20,4% (19,3%), OoL 18,0% (16,8%), GCGR 16,8% (16,0%).
+  Janelas de 3 anos acima do S&P: Top 20 100% (pior janela +0,7 p.p.), Especiais 99%, High ROIC 95%, Excepcionais 86% (pior −9,4 p.p.; pior queda −45%; maior peso 43%).
+  Efeito das duas mudanças: entre −0,3 e +0,1 p.p. por seleção (desprezível). O limite de 8 por setor quase não atua (−0,1 p.p.).
