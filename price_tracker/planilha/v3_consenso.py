@@ -170,9 +170,9 @@ cols('COD', 1, 'Código', 'Classe'); cols('BASE', 1, 'Classe (régua)', w=22); c
 cols('CLS', 1, 'Classe', w=22); cols('QUAL', 1, 'Qualidade'); cols('HR', 1, 'High ROIC'); cols('HG', 1, 'High Growth'); cols('EXC', 1, 'Excepcional')
 cols('SEC', 1, 'Setor', 'Top 20 com limite por setor', w=16); cols('NOTA0', 1, 'Nota (antes do limite)'); cols('RKS', 1, 'Posição no setor')
 for k, lab in (('T', 'Top 20'), ('E', 'Especiais'), ('J', 'JG+G')):
-    cols(f'NOTA{k}', 1, f'Nota {lab}', lab); cols(f'RK{k}', 1, f'Posição {lab}'); cols(f'S{k}', 1, '√ valor'); cols(f'F{k}', 1, 'no teto?'); cols(f'W0{k}', 1, 'peso bruto'); cols(f'W{k}', 1, f'Peso {lab}')
+    cols(f'NOTA{k}', 1, f'Nota {lab}', lab); cols(f'RK{k}', 1, f'Posição {lab}'); cols(f'S{k}', 1, '√ valor'); cols(f'F{k}', 1, 'no teto?'); cols(f'W0{k}', 1, 'peso bruto'); cols(f'W{k}', 1, f'Peso {lab}'); cols(f'WU{k}', 1, 'peso (ordem)')
 cols('JR', 1, 'JG: ROIC'); cols('JGr', 1, 'JG: cresc.'); cols('JP', 1, 'JG: P/L')
-cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais')
+cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais'); cols('WXU', 1, 'peso (ordem)')
 OPEN = [('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
 for k, lab in OPEN: cols(k, 1, f'Ordem {lab}', 'Ordem nas listas' if k == 'O_OOL' else None)
 C.freeze_panes = 'B5'
@@ -328,8 +328,10 @@ for r in range(R0, R1 + 1):
         w(f'F{k}', f'=IF(ISNUMBER({s_}),IF({tot}-{big}>0,(1-{kk}*TETO)*{s_}/({tot}-{big})>TETO+1E-12,TRUE),"")')
         w(f'W0{k}', f'=IF(ISNUMBER({s_}),IF({f_},TETO,(1-COUNTIF({fr},TRUE)*TETO)*{s_}/({tot}-SUMIF({fr},TRUE,{sr}))),"")', PCT)
         w(f'W{k}', f'=IF(ISNUMBER({w0}),{w0}/SUM({w0r}),"")', PCT)
+        w(f'WU{k}', f'=IF(ISNUMBER({cr(f"W{k}", r)}),{cr(f"W{k}", r)}+ROW()*1E-12,"")', PCT)
     w('SX', f'=IF({cr("EXC", r)}=1,SQRT(MAX(N({MCAP}{r}),1)),"")', '#,##0')
     w('WX', f'=IF(ISNUMBER({cr("SX", r)}),{cr("SX", r)}/SUM({col_rg("SX")}),"")', PCT)
+    w('WXU', f'=IF(ISNUMBER({cr("WX", r)}),{cr("WX", r)}+ROW()*1E-12,"")', PCT)
     rr_ = col_rg('RET')
     for k, cond in (('O_OOL', f'{CL}="{OOL}"'), ('O_GCGR', f'{CL}="{GCGR}"'), ('O_CYC', f'{CL}="Cyclicals"'), ('O_HR', f'{cr("HR", r)}=1'),
                     ('O_HG', f'{cr("HG", r)}=1'), ('O_EXC', f'{cr("EXC", r)}=1')):
@@ -378,63 +380,83 @@ kpis = [('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP
         ('High ROIC', f'=SUM({QC}{col_rg("HR")})', ACC['hr']), ('High Growth', f'=SUM({QC}{col_rg("HG")})', ACC['hg']),
         ('Excepcionais', f'=SUM({QC}{col_rg("EXC")})', ACC['exc']), ('Cyclicals', f'=COUNTIFS({CL_RG},"Cyclicals",{QC}{col_rg("DUP")},0)', ACC['cyc'])]
 for i, (lab, f, colr) in enumerate(kpis):
-    c = 2 + i * 4
+    c = [3, 7, 13, 17, 23, 27][i]   # colunas largas (Ação e Retorno) de cada bloco
     x = P.cell(4, c, f); x.font = Font(name='Aptos Display', bold=True, size=22, color=colr)
     y = P.cell(5, c, lab); y.font = Font(name='Aptos', size=9, color=MUTED, bold=True)
 TKc = lambda m: f'IFERROR(INDEX({TK_RG},{m}),"")'
 
 
-def ranked(r0, c0, title, colr, rk, wk, n=20):
-    """lista com posição fixa (Top 20, Especiais, JG+G): #, ticker, empresa, peso, retorno, ROIC, crescimento"""
-    P.merge_cells(start_row=r0, start_column=c0, end_row=r0, end_column=c0 + 7)
+NAMES = f"'Ações'!$B${R0}:$B${R1}"
+DESC_FONT = Font(name='Aptos', size=9, italic=True, color=MUTED)
+
+
+def header(r0, c0, title, colr, desc, hdr):
+    P.merge_cells(start_row=r0 - 1, start_column=c0, end_row=r0 - 1, end_column=c0 + 8)
+    d = P.cell(r0 - 1, c0, desc); d.font = DESC_FONT; d.alignment = Alignment(wrap_text=True, vertical='bottom')
+    P.merge_cells(start_row=r0, start_column=c0, end_row=r0, end_column=c0 + 8)
     x = P.cell(r0, c0, title); x.font = Font(name='Aptos', bold=True, size=12, color='FFFFFF'); x.fill = fill(colr)
-    for j, h in enumerate(['#', 'Ação', 'Peso', 'Retorno', 'ROIC', 'Cresc.', 'Bagger', '⚠']):
-        y = P.cell(r0 + 1, c0 + j, h); y.font = Font(name='Aptos', size=9, bold=True, color=MUTED); y.border = thin
-    rkr = f"{QC}{col_rg(rk)}"
+    for j, h in enumerate(hdr):
+        if h: y = P.cell(r0 + 1, c0 + j, h); y.font = Font(name='Aptos', size=9, bold=True, color=MUTED); y.border = thin
+
+
+def ranked(r0, c0, title, colr, wk, desc, n=20):
+    """lista com peso (Top 20, Especiais, JG+G), ORDENADA PELO PESO: #, ação, empresa, peso, retorno, ROIC, crescimento, bagger, ⚠"""
+    header(r0, c0, title, colr, desc, ['#', 'Ação', 'Empresa', 'Peso', 'Retorno', 'ROIC', 'Cresc.', 'Bagger', '⚠'])
+    wur = f"{QC}{col_rg('WU' + wk[1:])}"
     for k in range(1, n + 1):
-        r = r0 + 1 + k; m = f'MATCH({k},{rkr},0)'
-        vals = [k, f'={TKc(m)}', f'=IFERROR(INDEX({QC}{col_rg(wk)},{m}),"")', f'=IFERROR(INDEX({RT_RG},{m}),"")',
+        r = r0 + 1 + k; m = f'MATCH(LARGE({wur},{k}),{wur},0)'
+        vals = [k, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f'=IFERROR(INDEX({QC}{col_rg(wk)},{m}),"")', f'=IFERROR(INDEX({RT_RG},{m}),"")',
                 f'=IFERROR(INDEX({QC}{col_rg("ROIC")},{m}),"")', f'=IFERROR(INDEX({QC}{col_rg("G")},{m}),"")',
                 f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
                 f'=IFERROR(IF(INDEX({QC}{col_rg("FLAG")},{m})<>"","⚠",""),"")']
         for j, v in enumerate(vals):
             x = P.cell(r, c0 + j, v); x.font = F_BB if j == 1 else F_B; x.border = thin
-            x.number_format = [None, None, PCT, PCT0, PCT0, PCT0, '0', None][j] or 'General'
-            if j == 7: x.font = Font(name='Aptos', size=10, bold=True, color='B42318')
+            x.number_format = [None, None, None, PCT, PCT0, PCT0, PCT0, '0', None][j] or 'General'
+            if j == 8: x.font = Font(name='Aptos', size=10, bold=True, color='B42318')
             if j == 0: x.alignment = Alignment(horizontal='center'); x.font = F_S
-    P.cell(r0 + n + 2, c0 + 1, 'Soma').font = F_S
-    P.cell(r0 + n + 2, c0 + 2, f'=SUM({L(c0 + 2)}{r0 + 2}:{L(c0 + 2)}{r0 + n + 1})').number_format = PCT0
+    P.cell(r0 + n + 2, c0 + 2, 'Soma').font = F_S
+    P.cell(r0 + n + 2, c0 + 3, f'=SUM({L(c0 + 3)}{r0 + 2}:{L(c0 + 3)}{r0 + n + 1})').number_format = PCT0
 
 
-def opened(r0, c0, title, colr, ok, n=40, wcol=None):
-    """lista aberta, ordenada pelo retorno esperado: ação, retorno, ROIC (e peso, nas Excepcionais)"""
-    P.merge_cells(start_row=r0, start_column=c0, end_row=r0, end_column=c0 + 2)
-    x = P.cell(r0, c0, title); x.font = Font(name='Aptos', bold=True, size=11, color='FFFFFF'); x.fill = fill(colr)
-    hdr = ['Ação', 'Retorno', 'Peso' if wcol else 'ROIC']
-    for j, h in enumerate(hdr):
-        y = P.cell(r0 + 1, c0 + j, h); y.font = Font(name='Aptos', size=9, bold=True, color=MUTED); y.border = thin
-    okr = f"{QC}{col_rg(ok)}"
+def opened(r0, c0, title, colr, ok, desc, n=40, wsort=None, wcol=None):
+    """lista aberta: ordenada pelo peso quando tem peso (Excepcionais), senão pelo retorno esperado"""
+    header(r0, c0, title, colr, desc, ['#', 'Ação', 'Empresa', 'Peso' if wcol else None, 'Retorno', 'ROIC'])
+    key = f"{QC}{col_rg(wsort or ok)}"
     for k in range(1, n + 1):
-        r = r0 + 1 + k
-        m = f'MATCH(LARGE({okr},{k}),{okr},0)'
-        third = f'=IFERROR(INDEX({QC}{col_rg(wcol)},{m}),"")' if wcol else f'=IFERROR(INDEX({QC}{col_rg("ROIC")},{m}),"")'
-        for j, val in enumerate([f'={TKc(m)}', f'=IFERROR(LARGE({okr},{k}),"")', third]):
-            x = P.cell(r, c0 + j, val); x.font = F_BB if j == 0 else F_B; x.border = thin
-            if j: x.number_format = PCT0
+        r = r0 + 1 + k; m = f'MATCH(LARGE({key},{k}),{key},0)'
+        vals = {0: f'=IF(ISNUMBER(LARGE({key},{k})),{k},"")'.replace('ISNUMBER(LARGE', 'ISNUMBER(LARGE'), 1: f'={TKc(m)}', 2: f'=IFERROR(INDEX({NAMES},{m}),"")',
+                4: f'=IFERROR(INDEX({RT_RG},{m}),"")', 5: f'=IFERROR(INDEX({QC}{col_rg("ROIC")},{m}),"")'}
+        if wcol: vals[3] = f'=IFERROR(INDEX({QC}{col_rg(wcol)},{m}),"")'
+        for j, v in vals.items():
+            x = P.cell(r, c0 + j, f'=IFERROR({v[1:]},"")' if j == 0 else v); x.font = F_BB if j == 1 else F_B; x.border = thin
+            x.number_format = {0: 'General', 1: 'General', 2: 'General', 3: PCT, 4: PCT0, 5: PCT0}[j]
+            if j == 0: x.alignment = Alignment(horizontal='center'); x.font = F_S
 
 
-ranked(7, 2, 'Top 20 · a carteira (máx. 8 por setor)', ACC['top'], 'RKT', 'WT')
-ranked(7, 11, 'Especiais · as 20 mais excepcionais', ACC['esp'], 'RKE', 'WE')
-ranked(7, 20, 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'RKJ', 'WJ')
-R2 = 7 + 24
-for i, (k, title, colr, wcol) in enumerate([('O_OOL', 'Opportunity of Lifetime', ACC['ool'], None), ('O_HR', 'High ROIC', ACC['hr'], None),
-                                            ('O_HG', 'High Growth', ACC['hg'], None), ('O_EXC', 'Excepcionais', ACC['exc'], 'WX'),
-                                            ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], None), ('O_CYC', 'Cyclicals', ACC['cyc'], None)]):
-    opened(R2, 2 + i * 4, title, colr, k, wcol=wcol)
-for c in range(2, 29):
-    P.column_dimensions[L(c)].width = {0: 9, 1: 9, 2: 8, 3: 3}.get((c - 2) % 4, 9)
-for c0 in (2, 11, 20):
-    for j, wd in enumerate([4, 10, 7, 8, 7, 7, 7, 3]): P.column_dimensions[L(c0 + j)].width = max(P.column_dimensions[L(c0 + j)].width or 0, wd)
+DESC = {
+    'top': 'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10%, no máximo 8 por setor.',
+    'esp': 'As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade. Mesmo peso e teto da Top 20.',
+    'jg': 'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L (menor é melhor). Sem financeiras, utilities e cíclicas.',
+    'ool': 'Classe Opportunity of Lifetime: crescimento > 15%, ROIC > 12% e retorno esperado > 20%. Ordem: retorno esperado.',
+    'hr': 'Opportunity of Lifetime com ROIC acima de 30%. Ordem: retorno esperado.',
+    'hg': 'Opportunity of Lifetime com crescimento acima de 30%. Ordem: retorno esperado.',
+    'exc': 'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado. Ordem: peso.',
+    'gcgr': 'Good Companies, Great Returns: boas empresas com retorno esperado alto, um degrau abaixo da OoL. Ordem: retorno esperado.',
+    'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
+B0 = (2, 12, 22)
+ranked(8, B0[0], 'Top 20 · a carteira (máx. 8 por setor)', ACC['top'], 'WT', DESC['top'])
+ranked(8, B0[1], 'Especiais · as 20 mais excepcionais', ACC['esp'], 'WE', DESC['esp'])
+ranked(8, B0[2], 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'WJ', DESC['jg'])
+R2, R3 = 8 + 26, 8 + 26 + 44
+for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2])],
+        [('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_HR', 'High ROIC', ACC['hr'], 'hr', None, None),
+         ('O_HG', 'High Growth', ACC['hg'], 'hg', None, None), ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX'),
+         ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None), ('O_CYC', 'Cyclicals', ACC['cyc'], 'cyc', None, None)]):
+    opened(r0, c0, title, colr, k, DESC[dk], wsort=ws, wcol=wc)
+for c0 in B0:
+    for j, wd in enumerate([4, 9, 24, 7, 8, 7, 7, 7, 3]): P.column_dimensions[L(c0 + j)].width = wd
+    P.column_dimensions[L(c0 + 9)].width = 3
+for r0 in (7, R2 - 1, R3 - 1): P.row_dimensions[r0].height = 36
 P.sheet_view.showGridLines = False
 
 # ---------------- Carteira ----------------
