@@ -117,9 +117,9 @@ for i, f in enumerate(BASEF):
 D[f'{L(c0)}{R0}'] = ArrayFormula(f'{L(c0)}{R0}:{L(c0 + 4)}{R1}', f'=IFERROR(_xldudf_WISEPRICE({TK},${L(c0)}$4:${L(c0 + 4)}$4),"")')
 DC['base'] = [L(c0 + i) for i in range(5)]; col[0] += 6
 block('DY', 'Dividend Yield', [-1])
-block('EST', 'Estimated EPS AVG', [0, 1, 2, 3])          # consenso do sell-side
-block('EPS', 'EPS Diluted', [-4, -3, -2, -1, 0])           # 1 coluna a mais: usa o último exercício já publicado
-Y5 = [-4, -3, -2, -1, 0]
+block('EST', 'Estimated EPS AVG', [0, 1, 2])             # consenso do sell-side: ano+1 = ano corrente
+block('EPS', 'EPS Diluted', [-4, -3, -2, -1])              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
+Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
              ('ROU', 'Operating Lease Right Of Use Assets'), ('GW', 'Goodwill'), ('INT', 'Intangible Assets'),
              ('TCA', 'Total Current Assets'), ('CASH', 'Cash And Cash Equivalents'), ('TCL', 'Total Current Liabilities'),
@@ -172,8 +172,7 @@ C.freeze_panes = 'B5'
 def X(key, i, r):
     """i = ano lógico (0 = o mais antigo); se o exercício do ano corrente já saiu, anda uma coluna (como o Python, que usa o último publicado)"""
     if key in ('DY', 'EST') or key == 'base': return f'{QD}{DC[key][i]}{r}'
-    sh = f'{CC["SHE"]}{r}' if key in ('EPS', 'NI') else f'{CC["SHR"]}{r}'
-    return f'IF({sh}=1,{QD}{DC[key][i + 1]}{r},{QD}{DC[key][i]}{r})'
+    return f'{QD}{DC[key][i]}{r}'
 cr = lambda key, r: f'{CC[key]}{r}'
 crr = lambda key, i, r: f'{CC[key][i]}{r}'
 rngr = lambda key, r: f'{CC[key][0]}{r}:{CC[key][-1]}{r}'
@@ -203,14 +202,14 @@ def rank_desc(key, r, tie=None):
 
 for r in range(R0, R1 + 1):
     w = lambda key, f, fmt=None, i=None: put(C, r, C[f'{(CC[key][i] if i is not None else CC[key])}{r}'].column, f, fmt)
-    put(C, r, C[f'{CC["SHE"]}{r}'].column, f'=IF(ISNUMBER({QD}{DC["EPS"][-1]}{r}),1,0)')
-    put(C, r, C[f'{CC["SHR"]}{r}'].column, f'=IF(ISNUMBER({QD}{DC["OI"][-1]}{r}),1,0)')
+    put(C, r, C[f'{CC["SHE"]}{r}'].column, '=0')
+    put(C, r, C[f'{CC["SHR"]}{r}'].column, '=0')
     SH = cr('SHE', r)
     BASE_EPS = X('EPS', 3, r)                                   # último EPS publicado
     # consenso com haircut: ano+1 é o primeiro exercício ainda não publicado
     for j, hc in enumerate(('HC1', 'HC2', 'HC3')):
-        e0, e1 = f'{QD}{DC["EST"][j]}{r}', f'{QD}{DC["EST"][j + 1]}{r}'
-        w('E', f'=IFERROR(IF({SH}=1,{e1},{e0})*{hc},"")', '0.00', j)
+        e0 = f'{QD}{DC["EST"][j]}{r}'
+        w('E', f'=IFERROR({e0}*{hc},"")', '0.00', j)
         if False: pass
     E1, E2, E3 = (crr('E', j, r) for j in range(3))
     for j, (a_, b_) in enumerate(((BASE_EPS, E1), (E1, E2), (E2, E3))):

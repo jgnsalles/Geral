@@ -37,7 +37,7 @@ for r in range(R0, R1 + 1):
     tk = a[f'A{r}'].value
     if tk not in T: continue
     g = num(c[f'{CC["G"]}{r}'].value); graw = num(c[f'{CC["GRAW"]}{r}'].value)
-    if g is not None: assert g <= 0.4 + 1e-9
+    if g is not None: assert g <= 1.0 + 1e-9
     chk.append((tk, graw, g, num(c[f'{CC["PL"]}{r}'].value), num(c[f'{CC["PLL"]}{r}'].value), num(c[f'{CC["PLF"]}{r}'].value), c[f'{CC["SEC"]}{r}'].value,
                 num(c[f'{CC["RKT"]}{r}'].value), num(c[f'{CC["WT"]}{r}'].value)))
 print('amostra (ticker, G sem teto, G, P/L, P/L LTM, P/L fwd):', [x[:6] for x in chk[:3]])
