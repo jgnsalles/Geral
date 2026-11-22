@@ -87,11 +87,11 @@ for i, row in enumerate(CODES):
 wb.defined_names['COD'] = DefinedName('COD', attr_text=f"Regras!$I$5:$I${4 + len(CODES)}")
 wb.defined_names['COD_CLASSE'] = DefinedName('COD_CLASSE', attr_text=f"Regras!$J$5:$J${4 + len(CODES)}")
 # moeda de reporte e proporção da ADR: o EPS vem na moeda local e por ação ordinária; o preço vem em dólar e por ADR
-ADRS = [('TSM', 'TWD', 5, 'Sim'), ('ASML', 'EUR', 1, 'Sim'), ('NVO', 'DKK', 1, 'Sim'), ('SAP', 'EUR', 1, 'Sim'), ('RELX', 'GBP', 1, 'Sim'),
+ADRS = [('TSM', 'TWD', 5, 'Só câmbio'), ('ASML', 'EUR', 1, 'Sim'), ('NVO', 'DKK', 1, 'Sim'), ('SAP', 'EUR', 1, 'Sim'), ('RELX', 'GBP', 1, 'Sim'),
         ('UL', 'EUR', 1, 'Sim'), ('SPOT', 'EUR', 1, 'Sim'), ('RACE', 'EUR', 1, 'Sim'), ('RYAAY', 'EUR', 2.5, 'Sim'), ('ONON', 'CHF', 1, 'Sim'),
         ('IFNNY', 'EUR', 1, 'Sim'), ('BTI', 'GBP', 1, 'Sim'), ('CNI', 'CAD', 1, 'Sim'), ('CP', 'CAD', 1, 'Sim'), ('CNQ', 'CAD', 1, 'Sim'),
         ('SU', 'CAD', 1, 'Sim'), ('ENB', 'CAD', 1, 'Sim'), ('TRP', 'CAD', 1, 'Sim')]
-for j, (h, wd) in enumerate([('Ticker (moeda ≠ USD)', 14), ('Moeda', 8), ('Ações por ADR', 9), ('Converte estimativas?', 11)]): head(G, 4, 12 + j, h, w=wd)
+for j, (h, wd) in enumerate([('Ticker (moeda ≠ USD)', 14), ('Moeda', 8), ('Ações por ADR', 9), ('Estimativa: Sim / Só câmbio / Não', 14)]): head(G, 4, 12 + j, h, w=wd)
 for i in range(30):
     row = ADRS[i] if i < len(ADRS) else (None, None, None, None)
     for j, v in enumerate(row):
@@ -315,7 +315,8 @@ for r in range(R0, R1 + 1):
     tk_ = f'{QA}A{r}'
     fxu = f'IFERROR(INDEX(FX_V,MATCH(INDEX(ADR_M,MATCH({tk_},ADR_T,0)),FX_M,0))*INDEX(ADR_N,MATCH({tk_},ADR_T,0)),1)'
     w('FXH', f'={fxu}', '0.000')
-    w('FXE', f'=IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Não",1,{cr("FXH", r)})', '0.000')
+    fxo = f'IFERROR(INDEX(FX_V,MATCH(INDEX(ADR_M,MATCH({tk_},ADR_T,0)),FX_M,0)),1)'   # só o câmbio (estimativa já vem por ADR)
+    w('FXE', f'=IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Não",1,IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Só câmbio",{fxo},{cr("FXH", r)}))', '0.000')
     FH, FE = cr('FXH', r), cr('FXE', r)
     bus = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb}*{FE},{X("EPS", 3, r)}*{FH})'   # EPS-base em dólar por ADR
     w('PLL', f'=IFERROR(IF({bus}<>0,{PRICE}{r}/({bus}),""),"")', NUM1)
