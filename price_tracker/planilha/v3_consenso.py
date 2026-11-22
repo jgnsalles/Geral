@@ -86,6 +86,28 @@ for i, row in enumerate(CODES):
     put(G, 5 + i, 9, ''.join(row[:5])); put(G, 5 + i, 10, row[5])
 wb.defined_names['COD'] = DefinedName('COD', attr_text=f"Regras!$I$5:$I${4 + len(CODES)}")
 wb.defined_names['COD_CLASSE'] = DefinedName('COD_CLASSE', attr_text=f"Regras!$J$5:$J${4 + len(CODES)}")
+# moeda de reporte e proporção da ADR: o EPS vem na moeda local e por ação ordinária; o preço vem em dólar e por ADR
+ADRS = [('TSM', 'TWD', 5, 'Sim'), ('ASML', 'EUR', 1, 'Sim'), ('NVO', 'DKK', 1, 'Sim'), ('SAP', 'EUR', 1, 'Sim'), ('RELX', 'GBP', 1, 'Sim'),
+        ('UL', 'EUR', 1, 'Sim'), ('SPOT', 'EUR', 1, 'Sim'), ('RACE', 'EUR', 1, 'Sim'), ('RYAAY', 'EUR', 2.5, 'Sim'), ('ONON', 'CHF', 1, 'Sim'),
+        ('IFNNY', 'EUR', 1, 'Sim'), ('BTI', 'GBP', 1, 'Sim'), ('CNI', 'CAD', 1, 'Sim'), ('CP', 'CAD', 1, 'Sim'), ('CNQ', 'CAD', 1, 'Sim'),
+        ('SU', 'CAD', 1, 'Sim'), ('ENB', 'CAD', 1, 'Sim'), ('TRP', 'CAD', 1, 'Sim')]
+for j, (h, wd) in enumerate([('Ticker (moeda ≠ USD)', 14), ('Moeda', 8), ('Ações por ADR', 9), ('Converte estimativas?', 11)]): head(G, 4, 12 + j, h, w=wd)
+for i in range(30):
+    row = ADRS[i] if i < len(ADRS) else (None, None, None, None)
+    for j, v in enumerate(row):
+        x = G.cell(5 + i, 12 + j, v); x.font = F_B; x.fill = fill('FFF4C2')
+for nmr, c in (('ADR_T', 'L'), ('ADR_M', 'M'), ('ADR_N', 'N'), ('ADR_E', 'O')):
+    wb.defined_names[nmr] = DefinedName(nmr, attr_text=f"Regras!${c}$5:${c}$34")
+FX = [('EUR', 'EURUSD', False, 1.08), ('GBP', 'GBPUSD', False, 1.27), ('DKK', 'USDDKK', True, 6.9), ('TWD', 'USDTWD', True, 32.0),
+      ('CHF', 'USDCHF', True, 0.88), ('CAD', 'USDCAD', True, 1.38)]
+for j, (h, wd) in enumerate([('Moeda', 8), ('US$ por unidade', 11), ('Par no Wisesheets', 12)]): head(G, 4, 17 + j, h, w=wd)
+for i, (m, par, inv, fb) in enumerate(FX):
+    G.cell(5 + i, 17, m).font = F_B
+    f = f'=IFERROR(1/_xldudf_WISEPRICE("{par}","Price"),{1 / fb:.6f})' if inv else f'=IFERROR(_xldudf_WISEPRICE("{par}","Price"),{fb})'
+    x = G.cell(5 + i, 18, f); x.number_format = '0.0000'; x.font = F_B
+    G.cell(5 + i, 19, par).font = F_S
+wb.defined_names['FX_M'] = DefinedName('FX_M', attr_text="Regras!$Q$5:$Q$14")
+wb.defined_names['FX_V'] = DefinedName('FX_V', attr_text="Regras!$R$5:$R$14")
 G.freeze_panes = 'A5'
 
 # ---------------- Dados (Wisesheets) ----------------
@@ -165,7 +187,7 @@ for v in 'AP':
     cols(f'N{v}', 1, f'n {v}'); cols(f'MED{v}', 1, f'mediana {v}'); cols(f'SIG{v}', 1, f'σ {v}'); cols(f'DEV{v}', 2, f'desvio {v}'); cols(f'X{v}', 4, f'sem outlier {v}')
 cols('VA', 1, 'ROIC ativo'); cols('VP', 1, 'ROIC passivo'); cols('VM', 1, 'ROIC marginal'); cols('TRI', 1, 'ROIC triangulado')
 cols('ROE', 4, 'ROE', 'Financeiras'); cols('ROEM', 1, 'ROE (média)'); cols('FIN', 1, 'Usa ROE?')
-cols('ROIC', 1, 'ROIC usado', 'Valuation'); cols('PLL', 1, 'P/L LTM'); cols('PLF', 1, 'P/L 1 ano à frente'); cols('PL', 1, 'P/L (média)')
+cols('ROIC', 1, 'ROIC usado', 'Valuation'); cols('FXH', 1, 'Fator US$/ADR (balanço)'); cols('FXE', 1, 'Fator US$/ADR (estimativas)'); cols('PLL', 1, 'P/L LTM'); cols('PLF', 1, 'P/L 1 ano à frente'); cols('PL', 1, 'P/L (média)')
 cols('g', 1, 'g do P/E justo'); cols('PEJ', 1, 'P/E justo'); cols('DYv', 1, 'Dividend yield')
 cols('RF', 1, 'Ret. P/E justo'); cols('RC', 1, 'Ret. múltiplo constante'); cols('RET', 1, 'Retorno esperado')
 cols('COD', 1, 'Código', 'Classe'); cols('BASE', 1, 'Classe (régua)', w=22); cols('CYC', 1, 'Cíclica'); cols('APP', 1, 'Vestuário'); cols('DUP', 1, 'Repetida')
@@ -290,8 +312,14 @@ for r in range(R0, R1 + 1):
     w('ROIC', f'=IF({FIN}=1,{cr("ROEM", r)},{cr("TRI", r)})', PCT)
     RO, PL = cr('ROIC', r), cr('PL', r)
     e1raw = f'{QD}{DC["EST"][1]}{r}'
-    w('PLL', f'=IFERROR(IF({b0}<>0,{PRICE}{r}/{b0},""),"")', NUM1)
-    w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/{e1raw},""),"")', NUM1)
+    tk_ = f'{QA}A{r}'
+    fxu = f'IFERROR(INDEX(FX_V,MATCH(INDEX(ADR_M,MATCH({tk_},ADR_T,0)),FX_M,0))*INDEX(ADR_N,MATCH({tk_},ADR_T,0)),1)'
+    w('FXH', f'={fxu}', '0.000')
+    w('FXE', f'=IF(IFERROR(INDEX(ADR_E,MATCH({tk_},ADR_T,0)),"Sim")="Não",1,{cr("FXH", r)})', '0.000')
+    FH, FE = cr('FXH', r), cr('FXE', r)
+    bus = f'IF(AND(ISNUMBER({eb}),N({eb})>0),{eb}*{FE},{X("EPS", 3, r)}*{FH})'   # EPS-base em dólar por ADR
+    w('PLL', f'=IFERROR(IF({bus}<>0,{PRICE}{r}/({bus}),""),"")', NUM1)
+    w('PLF', f'=IFERROR(IF({e1raw}<>0,{PRICE}{r}/({e1raw}*{FE}),""),"")', NUM1)
     l_, f_ = cr('PLL', r), cr('PLF', r)   # média só quando os dois são positivos; com prejuízo num deles, usa o outro (média de P/L negativo com positivo não faz sentido)
     w('PL', f'=IF(AND(N({l_})>0,N({f_})>0),({l_}+{f_})/2,IF(N({f_})>0,{f_},IF(N({l_})>0,{l_},IF(COUNT({l_},{f_})=0,"",N({l_})))))', NUM1)
     grg, frg = col_rg('G'), col_rg('FIN')
@@ -302,7 +330,7 @@ for r in range(R0, R1 + 1):
     w('PEJ', f'=IFERROR(IF(N({RO})>0,(1-{gg}/MIN(1,{RO}))/(WACC-{gg}),""),"")', NUM1)
     w('DYv', f'=N({X("DY", 0, r)})', PCT)
     PE, DY = cr('PEJ', r), cr('DYv', r)
-    w('RF', f'=IFERROR(IF({PE}*{E2}/{PRICE}{r}>0,SQRT({PE}*{E2}/{PRICE}{r})-1+{DY},""),"")', PCT)
+    w('RF', f'=IFERROR(IF({PE}*{E2}*{FE}/{PRICE}{r}>0,SQRT({PE}*{E2}*{FE}/{PRICE}{r})-1+{DY},""),"")', PCT)
     w('RC', f'=IF(ISNUMBER({Gc}),{Gc}+{DY},"")', PCT)
     w('RET', f'=IF(AND(ISNUMBER({cr("RF", r)}),ISNUMBER({cr("RC", r)})),({cr("RF", r)}+{cr("RC", r)})/2,IF(ISNUMBER({Gc}),{Gc},""))', PCT)
     Gc = Gc_class
