@@ -407,7 +407,7 @@ kpis = [('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP
         ('High ROIC', f'=SUM({QC}{col_rg("HR")})', ACC['hr']), ('High Growth', f'=SUM({QC}{col_rg("HG")})', ACC['hg']),
         ('Excepcionais', f'=SUM({QC}{col_rg("EXC")})', ACC['exc']), ('Cyclicals', f'=COUNTIFS({CL_RG},"Cyclicals",{QC}{col_rg("DUP")},0)', ACC['cyc'])]
 for i, (lab, f, colr) in enumerate(kpis):
-    c = [3, 10, 16, 23, 29, 36][i]   # colunas de cada bloco
+    c = [3, 10, 17, 24, 31, 38][i]   # colunas de cada bloco
     x = P.cell(4, c, f); x.font = Font(name='Aptos Display', bold=True, size=22, color=colr)
     y = P.cell(5, c, lab); y.font = Font(name='Aptos', size=9, color=MUTED, bold=True)
 TKc = lambda m: f'IFERROR(INDEX({TK_RG},{m}),"")'
@@ -417,9 +417,9 @@ NAMES = f"'Ações'!$B${R0}:$B${R1}"
 DESC_FONT = Font(name='Aptos', size=9, italic=True, color=MUTED)
 
 
-COLS = ['#', 'Ação', 'Empresa', 'Indústria', 'Peso', 'ROIC', 'Cresc.', 'P/L', 'P/E justo', 'Retorno', 'Bagger', '⚠']
-FMT = [None, None, None, None, PCT, PCT0, PCT0, NUM1, NUM1, PCT0, '0', None]
-WID = [4, 9, 24, 22, 7, 7, 7, 8, 8, 8, 7, 3]
+COLS = ['#', 'Ação', 'Empresa', 'Indústria', 'Valor (US$ bi)', 'Peso', 'ROIC', 'Cresc.', 'P/L', 'P/E justo', 'Retorno', 'Bagger', '⚠']
+FMT = [None, None, None, None, '#,##0', PCT, PCT0, PCT0, NUM1, NUM1, PCT0, '0', None]
+WID = [4, 9, 24, 22, 8, 7, 7, 7, 8, 8, 8, 7, 3]
 NW = len(COLS)
 
 
@@ -436,7 +436,7 @@ def header(r0, c0, title, colr, desc, show_peso):
 def row_vals(m, wcol):
     """mesmas colunas em todas as listas: ação, empresa, peso, ROIC, crescimento, P/L atual, P/E justo, retorno, bagger, alerta"""
     g = lambda key: f'=IFERROR(INDEX({QC}{col_rg(key)},{m}),"")'
-    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f"=IFERROR(INDEX('Ações'!$D${R0}:$D${R1},{m}),\"\")", g(wcol) if wcol else None, g('ROIC'), g('GC'), g('PL'), g('PEJ'),
+    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f"=IFERROR(INDEX('Ações'!$D${R0}:$D${R1},{m}),\"\")", f"=IFERROR(INDEX('Ações'!$F${R0}:$F${R1},{m}),\"\")", g(wcol) if wcol else None, g('ROIC'), g('GC'), g('PL'), g('PEJ'),
             f'=IFERROR(INDEX({RT_RG},{m}),"")', f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
             f'=IFERROR(IF(INDEX({QC}{col_rg("FLAG")},{m})<>"","⚠",""),"")']
 
@@ -457,8 +457,8 @@ def ranked(r0, c0, title, colr, wk, desc, n=20):
     wur = f"{QC}{col_rg('WU' + wk[1:])}"
     for k in range(1, n + 1):
         write_row(r0 + 1 + k, c0, k, row_vals(f'MATCH(LARGE({wur},{k}),{wur},0)', wk))
-    P.cell(r0 + n + 2, c0 + 3, 'Soma').font = F_S
-    P.cell(r0 + n + 2, c0 + 4, f'=SUM({L(c0 + 4)}{r0 + 2}:{L(c0 + 4)}{r0 + n + 1})').number_format = PCT0
+    P.cell(r0 + n + 2, c0 + 4, 'Soma').font = F_S
+    P.cell(r0 + n + 2, c0 + 5, f'=SUM({L(c0 + 5)}{r0 + 2}:{L(c0 + 5)}{r0 + n + 1})').number_format = PCT0
 
 
 def opened(r0, c0, title, colr, ok, desc, n=40, wsort=None, wcol=None):
@@ -480,7 +480,7 @@ DESC = {
     'gcgr': 'Good Companies, Great Returns: boas empresas com retorno esperado alto, um degrau abaixo da OoL. Ordem: retorno esperado.',
     'ebf': 'Excellent but Fair: empresas ótimas (crescimento e ROIC altos, crescimento estável), mas o retorno esperado ficou entre 8% e 20%. Ordem: retorno esperado.',
     'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
-B0 = (2, 15, 28)
+B0 = (2, 16, 30)
 ranked(8, B0[0], 'Top 20 · a carteira (máx. 40% por setor)', ACC['top'], 'WT', DESC['top'])
 ranked(8, B0[1], 'Especiais · as 20 mais excepcionais', ACC['esp'], 'WE', DESC['esp'])
 ranked(8, B0[2], 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'WJ', DESC['jg'])
