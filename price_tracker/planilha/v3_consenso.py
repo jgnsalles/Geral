@@ -61,7 +61,7 @@ RULES = [('G_ALTO', 'Crescimento alto', .15, PCT0), ('G_BAIXO', 'Crescimento bai
          ('G_PISO', 'g do P/E justo: menor', .035, PCT), ('G_FIN', 'Financeiras: g 0,5 p.p. menor', .005, PCT), ('HR_CORTE', 'High ROIC: ROIC acima de', .30, PCT0),
          ('HG_CORTE', 'High Growth: crescimento acima de', .30, PCT0), ('PL_MIN', 'Top 20: P/L mínimo', 4, '0'), ('N_LISTA', 'Tamanho das listas', 20, '0'),
          ('TETO', 'Peso máximo por ação', .10, PCT0), ('HC1', 'Haircut EPS ano+1 (multiplica)', .95, NUM2), ('HC2', 'Haircut EPS ano+2', .90, NUM2),
-         ('HC3', 'Haircut EPS ano+3', .85, NUM2), ('G_MAX', 'Teto do crescimento', .40, PCT0), ('CAP_SETOR', 'Top 20: máximo por setor', 6, '0')]
+         ('HC3', 'Haircut EPS ano+3', .85, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor (8 = 40%)', 8, '0')]
 head(G, 4, 1, 'Regra', w=34); head(G, 4, 2, 'Valor', w=12)
 for i, (nmr, lab, v, f) in enumerate(RULES):
     r = 5 + i; put(G, r, 1, lab); x = put(G, r, 2, v, f); x.fill = fill('FFF4C2')
