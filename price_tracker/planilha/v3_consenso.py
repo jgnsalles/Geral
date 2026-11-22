@@ -308,9 +308,10 @@ for r in range(R0, R1 + 1):
     w('BASE', f'=IF({QA}A{r}="","",IF({cr("COD", r)}="","Sem dados",IFERROR(INDEX(COD_CLASSE,MATCH({cr("COD", r)},COD,0)),"Do not Waste Time")))')
     w('CYC', f'=IF(AND(COUNTIF(CICLICAS,{IND}{r})>0,COUNTIF(NAO_CICLICAS,{QA}A{r})=0),1,0)')
     w('APP', f'=IF(COUNTIF(VESTUARIO,{IND}{r})>0,1,0)')
-    w('DUP', f'=IF(AND({QA}A{r}<>"",COUNTIF({QA}$A${R0}:A{r},{QA}A{r})>1),1,0)' if r > R0 else '=0')
+    mo = f'OR(AND(N({cr("PLL", r)})>0,N({cr("PLL", r)})<2),AND(N({cr("PLF", r)})>0,N({cr("PLF", r)})<2))'   # EPS em outra moeda (ADR): fora das listas
+    w('DUP', (f'=IF(OR(AND({QA}A{r}<>"",COUNTIF({QA}$A${R0}:A{r},{QA}A{r})>1),{mo}),1,0)' if r > R0 else f'=IF({mo},1,0)'))
     B_, CY, AP, DU = cr('BASE', r), cr('CYC', r), cr('APP', r), cr('DUP', r)
-    w('CLS', f'=IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",{B_})),{B_})')
+    w('CLS', f'=IF({mo},"Moeda diferente (fora)",IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",{B_})),{B_}))')
     CL = cr('CLS', r)
     w('QUAL', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("COD", r)}<>"",N({RO})>=ROIC_ALTO,N({Gc})>=G_ALTO),1,0)')
     Q = cr('QUAL', r)
