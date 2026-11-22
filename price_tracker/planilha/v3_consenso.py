@@ -249,15 +249,17 @@ for r in range(R0, R1 + 1):
     for j, (a_, b_) in enumerate(((BASE_EPS, E1), (E1, E2), (E2, E3))):
         w('GA', f'=IFERROR(IF(AND(ISNUMBER({a_}),ISNUMBER({b_})),IF({a_}>0,{b_}/{a_}-1,""),""),"")', PCT0, j)
     b0 = BASE_EPS
-    w('GRAW', (f'=IFERROR(IF(N({b0})>0,IF(N({E3})>0,({E3}/{b0})^(1/3)-1,IF(N({E2})>0,({E2}/{b0})^(1/2)-1,"")),'
-               f'IF(AND(N({E1})>0,N({E3})>0),({E3}/{E1})^(1/2)-1,IF(AND(N({E1})>0,N({E2})>0),{E2}/{E1}-1,""))),"")'), PCT)
+    # crescimento de 2026 a 2028 (pula o 1º ano, que costuma ser rebote de uma base deprimida; decisão do usuário, caso UBS)
+    w('GRAW', (f'=IFERROR(IF(AND(N({E1})>0,N({E3})>0),({E3}/{E1})^(1/2)-1,IF(AND(N({E1})>0,N({E2})>0),{E2}/{E1}-1,'
+               f'IF(AND(N({b0})>0,N({E3})>0),({E3}/{b0})^(1/3)-1,""))),"")'), PCT)
     w('G', f'=IF(ISNUMBER({cr("GRAW", r)}),MIN(G_MAX,{cr("GRAW", r)}),"")', PCT)
     R1_, R2_, R3_ = (f'{QD}{DC["EST"][j + 1]}{r}' for j in range(3))
-    w('GC', (f'=IFERROR(MIN(G_MAX,IF(N({b0})>0,IF(N({R3_})>0,({R3_}/{b0})^(1/3)-1,IF(N({R2_})>0,({R2_}/{b0})^(1/2)-1,"")),'
-             f'IF(AND(N({R1_})>0,N({R3_})>0),({R3_}/{R1_})^(1/2)-1,IF(AND(N({R1_})>0,N({R2_})>0),{R2_}/{R1_}-1,"")))),"")'), PCT)
+    w('GC', (f'=IFERROR(MIN(G_MAX,IF(AND(N({R1_})>0,N({R3_})>0),({R3_}/{R1_})^(1/2)-1,IF(AND(N({R1_})>0,N({R2_})>0),{R2_}/{R1_}-1,'
+             f'IF(AND(N({b0})>0,N({R3_})>0),({R3_}/{b0})^(1/3)-1,"")))),"")'), PCT)
     Gv = cr('G', r)          # com haircut: P/E justo e retorno esperado
     Gc = cr('GC', r)         # consenso puro: classe, filtros e listas
     ga = rngr('GA', r)
+    ga = f'{CC["GA"][1]}{r}:{CC["GA"][2]}{r}'   # zGrowth também sem o 1º ano
     w('ZG', f'=IF(AND(COUNT({ga})>=2,N({Gc})<>0),_xlfn.STDEV.P({ga})/ABS({Gc}),"")', NUM2)
     for i in range(3):
         a_, b_ = X('EPS', i, r), X('EPS', i + 1, r)
