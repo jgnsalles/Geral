@@ -87,6 +87,8 @@ def combine(a, p, m):
     if va: return cl(a), 'só o ativo válido'
     if vp_: return cl(p), 'só o passivo válido'
     if any(x is not None and np.isfinite(x) and x > 2.0 for x in (a, p)): return 1.5, 'acima de 200%: 150%'
+    neg = [x for x in (a, p) if x is not None and np.isfinite(x)]
+    if neg: return max(neg), 'ativo/passivo negativos: a maior'   # 2026-11-22: marginal sozinho só sem dado de ativo e passivo
     if ok(m): return cl(m), 'só o marginal'
     return np.nan, 'sem ROIC'
 
