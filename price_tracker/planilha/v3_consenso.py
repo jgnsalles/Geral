@@ -68,8 +68,8 @@ for i, (nmr, lab, v, f) in enumerate(RULES):
     wb.defined_names[nmr] = DefinedName(nmr, attr_text=f"Regras!$B${r}")
 CYC = ['Oil & Gas Exploration & Production', 'Oil & Gas Equipment & Services', 'Oil & Gas Drilling', 'Oil & Gas Refining & Marketing', 'Copper', 'Steel',
        'Agricultural Inputs', 'Department Stores', 'Airlines, Airports & Air Services', 'Recreational Vehicles', 'Gambling, Resorts & Casinos',
-       'Electronic Gaming & Multimedia', 'Insurance - Diversified', 'Medical - Distribution']
-CYC_EX = ['ACGL']   # a indústria do Wisesheets não bate com a do Python (ACGL é seguro patrimonial, não multilinha)
+       'Electronic Gaming & Multimedia']   # seguros multilinha e distribuidoras de saúde saíram (decisão do usuário, 2026-11-22)
+CYC_EX = []   # tickers que não são cíclicos apesar da indústria
 APP = ['Apparel - Manufacturers', 'Apparel - Footwear & Accessories', 'Luxury Goods']
 HEALTH = ['UNH', 'ELV', 'CNC', 'HUM', 'MOH', 'CI']
 lists = [('Cíclicas (indústria)', CYC, 'CICLICAS'), ('Exceções: não cíclica (ticker)', CYC_EX, 'NAO_CICLICAS'), ('Vestuário (indústria)', APP, 'VESTUARIO'),
@@ -272,7 +272,7 @@ for r in range(R0, R1 + 1):
     ca, cp = f'MIN(N({A_}),1.5)', f'MIN(N({P_}),1.5)'
     w('TRI', (f'=IF(AND({va},{vp}),IF(AND(MIN({ca},{cp})>0,MAX({ca},{cp})<=2*MIN({ca},{cp})),({ca}+{cp})/2,'
               f'IF({vm},IF(ABS({ca}-{M_})<=ABS({cp}-{M_}),{ca},{cp}),MIN({ca},{cp}))),'
-              f'IF({va},{ca},IF({vp},{cp},IF(OR(N({A_})>2,N({P_})>2),1.5,IF({vm},MIN(N({M_}),1.5),"")))))'), PCT)
+              f'IF({va},{ca},IF({vp},{cp},IF(OR(N({A_})>2,N({P_})>2),1.5,IF(OR(ISNUMBER({A_}),ISNUMBER({P_})),MAX(IF(ISNUMBER({A_}),{A_},-9),IF(ISNUMBER({P_}),{P_},-9)),IF({vm},MIN(N({M_}),1.5),""))))))'), PCT)
     for j in range(4):
         w('ROE', f'=IF(AND(ISNUMBER({X("NI", j, r)}),N({X("EQ", j, r)})>0),{X("NI", j, r)}/{X("EQ", j, r)},"")', PCT0, j)
     w('ROEM', metric('ROE', r), PCT)
