@@ -61,19 +61,21 @@ RULES = [('G_ALTO', 'Crescimento alto', .15, PCT0), ('G_BAIXO', 'Crescimento bai
          ('G_PISO', 'g do P/E justo: menor', .035, PCT), ('G_FIN', 'Financeiras: g 0,5 p.p. menor', .005, PCT), ('HR_CORTE', 'High ROIC: ROIC acima de', .30, PCT0),
          ('HG_CORTE', 'High Growth: crescimento acima de', .30, PCT0), ('PL_MIN', 'Top 20: P/L mínimo', 4, '0'), ('N_LISTA', 'Tamanho das listas', 20, '0'),
          ('TETO', 'Peso máximo por ação', .10, PCT0), ('HAIRCUT_1', 'Haircut EPS ano+1 (só no retorno)', .97, NUM2), ('HAIRCUT_2', 'Haircut EPS ano+2', .94, NUM2),
-         ('HAIRCUT_3', 'Haircut EPS ano+3', .91, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor (8 = 40%)', 8, '0')]
+         ('HAIRCUT_3', 'Haircut EPS ano+3', .91, NUM2), ('G_MAX', 'Teto do crescimento', 1.00, PCT0), ('CAP_SETOR', 'Top 20: máximo de ações por setor', 8, '0'), ('CAP_PESO_SETOR', 'Top 20: peso máximo por setor', .40, PCT0)]
 head(G, 4, 1, 'Regra', w=34); head(G, 4, 2, 'Valor', w=12)
 for i, (nmr, lab, v, f) in enumerate(RULES):
     r = 5 + i; put(G, r, 1, lab); x = put(G, r, 2, v, f); x.fill = fill('FFF4C2')
     wb.defined_names[nmr] = DefinedName(nmr, attr_text=f"Regras!$B${r}")
 CYC = ['Oil & Gas Exploration & Production', 'Oil & Gas Equipment & Services', 'Oil & Gas Drilling', 'Oil & Gas Refining & Marketing', 'Copper', 'Steel',
        'Agricultural Inputs', 'Department Stores', 'Airlines, Airports & Air Services', 'Recreational Vehicles', 'Gambling, Resorts & Casinos',
-       'Electronic Gaming & Multimedia']   # seguros multilinha e distribuidoras de saúde saíram (decisão do usuário, 2026-11-22)
+       'Electronic Gaming & Multimedia', 'Oil & Gas Integrated', 'Oil & Gas Midstream', 'Gold', 'Silver', 'Other Precious Metals']
+# seguros multilinha e distribuidoras de saúde saíram; petróleo integrado/midstream e ouro/prata entraram (decisões do usuário, 2026-11-22)
+EXCL = ['FSLR']   # excluídas à mão (FSLR: depende de subsídio)
 CYC_EX = []   # tickers que não são cíclicos apesar da indústria
 APP = ['Apparel - Manufacturers', 'Apparel - Footwear & Accessories', 'Luxury Goods']
 HEALTH = ['UNH', 'ELV', 'CNC', 'HUM', 'MOH', 'CI']
 lists = [('Cíclicas (indústria)', CYC, 'CICLICAS'), ('Exceções: não cíclica (ticker)', CYC_EX, 'NAO_CICLICAS'), ('Vestuário (indústria)', APP, 'VESTUARIO'),
-         ('Usam ROE (ticker)', HEALTH, 'ROE_TICKERS')]
+         ('Usam ROE (ticker)', HEALTH, 'ROE_TICKERS'), ('Excluídas à mão (ticker)', EXCL, 'EXCLUIR')]
 for j, (lab, vals, nmr) in enumerate(lists):
     c = 4 + j; head(G, 4, c, lab, w=32)
     for i in range(25):
@@ -171,6 +173,7 @@ cols('CLS', 1, 'Classe', w=22); cols('QUAL', 1, 'Qualidade'); cols('HR', 1, 'Hig
 cols('SEC', 1, 'Setor', 'Top 20 com limite por setor', w=16); cols('NOTA0', 1, 'Nota (antes do limite)'); cols('RKS', 1, 'Posição no setor')
 for k, lab in (('T', 'Top 20'), ('E', 'Especiais'), ('J', 'JG+G')):
     cols(f'NOTA{k}', 1, f'Nota {lab}', lab); cols(f'RK{k}', 1, f'Posição {lab}'); cols(f'S{k}', 1, '√ valor'); cols(f'F{k}', 1, 'no teto?'); cols(f'W0{k}', 1, 'peso bruto'); cols(f'W{k}', 1, f'Peso {lab}'); cols(f'WU{k}', 1, 'peso (ordem)')
+    if k == 'T': cols('WTA', 1, 'peso antes do teto de setor'); cols('SECW', 1, 'peso do setor'); cols('WTB', 1, 'peso c/ teto de setor'); cols('WTC', 1, 'peso redistribuído')
 cols('JR', 1, 'JG: ROIC'); cols('JGr', 1, 'JG: cresc.'); cols('JP', 1, 'JG: P/L')
 cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais'); cols('WXU', 1, 'peso (ordem)')
 OPEN = [('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_EBF', 'Excellent but Fair'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
@@ -309,9 +312,10 @@ for r in range(R0, R1 + 1):
     w('CYC', f'=IF(AND(COUNTIF(CICLICAS,{IND}{r})>0,COUNTIF(NAO_CICLICAS,{QA}A{r})=0),1,0)')
     w('APP', f'=IF(COUNTIF(VESTUARIO,{IND}{r})>0,1,0)')
     mo = f'OR(AND(N({cr("PLL", r)})>0,N({cr("PLL", r)})<2),AND(N({cr("PLF", r)})>0,N({cr("PLF", r)})<2))'   # EPS em outra moeda (ADR): fora das listas
-    w('DUP', (f'=IF(OR(AND({QA}A{r}<>"",COUNTIF({QA}$A${R0}:A{r},{QA}A{r})>1),{mo}),1,0)' if r > R0 else f'=IF({mo},1,0)'))
+    xm = f'COUNTIF(EXCLUIR,{QA}A{r})>0'
+    w('DUP', (f'=IF(OR(AND({QA}A{r}<>"",COUNTIF({QA}$A${R0}:A{r},{QA}A{r})>1),{mo},{xm}),1,0)' if r > R0 else f'=IF(OR({mo},{xm}),1,0)'))
     B_, CY, AP, DU = cr('BASE', r), cr('CYC', r), cr('APP', r), cr('DUP', r)
-    w('CLS', f'=IF({mo},"Moeda diferente (fora)",IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",{B_})),{B_}))')
+    w('CLS', f'=IF({xm},"Excluída (manual)",IF({mo},"Moeda diferente (fora)",IF(OR({B_}="{OOL}",{B_}="{GCGR}"),IF({CY}=1,"Cyclicals",IF({AP}=1,"Excluída (vestuário)",{B_})),{B_})))')
     CL = cr('CLS', r)
     w('QUAL', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("COD", r)}<>"",N({RO})>=ROIC_ALTO,N({Gc})>=G_ALTO),1,0)')
     Q = cr('QUAL', r)
@@ -336,7 +340,21 @@ for r in range(R0, R1 + 1):
         tot = f'SUM({sr})'; big = f'SUMPRODUCT(ISNUMBER({sr})*({sr}>{s_}),{sr})'; kk = f'SUMPRODUCT(ISNUMBER({sr})*({sr}>{s_}))'
         w(f'F{k}', f'=IF(ISNUMBER({s_}),IF({tot}-{big}>0,(1-{kk}*TETO)*{s_}/({tot}-{big})>TETO+1E-12,TRUE),"")')
         w(f'W0{k}', f'=IF(ISNUMBER({s_}),IF({f_},TETO,(1-COUNTIF({fr},TRUE)*TETO)*{s_}/({tot}-SUMIF({fr},TRUE,{sr}))),"")', PCT)
-        w(f'W{k}', f'=IF(ISNUMBER({w0}),{w0}/SUM({w0r}),"")', PCT)
+        if k != 'T':
+            w(f'W{k}', f'=IF(ISNUMBER({w0}),{w0}/SUM({w0r}),"")', PCT)
+        else:   # teto de peso por setor: as melhores do setor ficam, com o peso reduzido; o excesso vai para os outros setores
+            wa, sw, wb_ = cr('WTA', r), cr('SECW', r), cr('WTB', r)
+            war, swr, wbr, scr = col_rg('WTA'), col_rg('SECW'), col_rg('WTB'), col_rg('SEC')
+            w('WTA', f'=IF(ISNUMBER({w0}),{w0}/SUM({w0r}),"")', PCT)
+            w('SECW', f'=IF(ISNUMBER({wa}),SUMIF({scr},{cr("SEC", r)},{war}),"")', PCT)
+            w('WTB', f'=IF(ISNUMBER({wa}),IF({sw}>CAP_PESO_SETOR,{wa}*CAP_PESO_SETOR/{sw},{wa}),"")', PCT)
+            capd = f'SUMPRODUCT(ISNUMBER({wbr})*({swr}>CAP_PESO_SETOR),{wbr})'; free = f'SUMPRODUCT(ISNUMBER({wbr})*({swr}<=CAP_PESO_SETOR),{wbr})'
+            w('WTC', f'=IFERROR(IF(ISNUMBER({wb_}),IF({sw}>CAP_PESO_SETOR,{wb_},{wb_}*(1-{capd})/{free}),""),"")', PCT)
+            # a redistribuição pode passar do teto de 10% por ação: corta e devolve o excesso a quem está abaixo dos dois tetos
+            wc, wcr = cr('WTC', r), col_rg('WTC')
+            over = f'(SUMIF({wcr},">"&TETO)-TETO*COUNTIF({wcr},">"&TETO))'
+            room = f'SUMPRODUCT(ISNUMBER({wcr})*({wcr}<TETO)*({swr}<=CAP_PESO_SETOR),{wcr})'
+            w('WT', f'=IFERROR(IF(ISNUMBER({wc}),IF({wc}>TETO,TETO,IF({sw}<=CAP_PESO_SETOR,{wc}*(1+{over}/{room}),{wc})),""),"")', PCT)
         w(f'WU{k}', f'=IF(ISNUMBER({cr(f"W{k}", r)}),{cr(f"W{k}", r)}+ROW()*1E-12,"")', PCT)
     w('SX', f'=IF({cr("EXC", r)}=1,SQRT(MAX(N({MCAP}{r}),1)),"")', '#,##0')
     w('WX', f'=IF(ISNUMBER({cr("SX", r)}),{cr("SX", r)}/SUM({col_rg("SX")}),"")', PCT)
@@ -452,7 +470,7 @@ def opened(r0, c0, title, colr, ok, desc, n=40, wsort=None, wcol=None):
 
 
 DESC = {
-    'top': 'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10%, no máximo 8 por setor.',
+    'top': 'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor (as melhores do setor ficam, com peso menor).',
     'esp': 'As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade. Mesmo peso e teto da Top 20.',
     'jg': 'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L (menor é melhor). Sem financeiras, utilities e cíclicas.',
     'ool': 'Classe Opportunity of Lifetime: crescimento > 15%, ROIC > 12% e retorno esperado > 20%. Ordem: retorno esperado.',
@@ -463,7 +481,7 @@ DESC = {
     'ebf': 'Excellent but Fair: empresas ótimas (crescimento e ROIC altos, crescimento estável), mas o retorno esperado ficou entre 8% e 20%. Ordem: retorno esperado.',
     'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
 B0 = (2, 14, 26)
-ranked(8, B0[0], 'Top 20 · a carteira (máx. 8 por setor)', ACC['top'], 'WT', DESC['top'])
+ranked(8, B0[0], 'Top 20 · a carteira (máx. 40% por setor)', ACC['top'], 'WT', DESC['top'])
 ranked(8, B0[1], 'Especiais · as 20 mais excepcionais', ACC['esp'], 'WE', DESC['esp'])
 ranked(8, B0[2], 'JG+G · Fórmula Mágica com crescimento', ACC['jg'], 'WJ', DESC['jg'])
 R2, R3, R4 = 8 + 26, 8 + 26 + 44, 8 + 26 + 88

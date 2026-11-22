@@ -49,7 +49,7 @@ Subsetor cíclico (`backtest/ciclicos.py`): mediana das empresas, histórico com
 ≥ 2× a dos setores defensivos (consumo básico + utilidades) **e** ≥ 2 colapsos (ROIC ≤ metade do pico dos 3 anos anteriores); subsetor com 1 empresa
 é decidido na indústria GICS acima. **Exceções (decisão do usuário, opção B, 2026-11-10):** hotéis/cruzeiros, entretenimento, biotecnologia, montadoras e
 químicos básicos passam na régua mas NÃO são tratados como cíclicos (`NOT_CYCLICAL`). Ficam cíclicos (13): petróleo (E&P, serviços, perfuração, refino),
-cobre, aço, fertilizantes, lojas de departamento, aéreas, motos, cassinos, jogos, brinquedos. Seguros multilinha e distribuidoras de saúde saíram em 2026-11-22 (decisão do usuário).
+cobre, aço, fertilizantes, lojas de departamento, aéreas, motos, cassinos, jogos, brinquedos. Seguros multilinha e distribuidoras de saúde saíram em 2026-11-22 (decisão do usuário). Petróleo integrado e midstream, ouro, prata e metais preciosos entraram como cíclicos no mesmo dia (decisão do usuário, `FORCE_CYCLICAL`). First Solar (FSLR) fica fora por depender de subsídio (exclusão manual na planilha).
 Vestuário e calçados também saem (decisão do usuário).
 Usar `price_tracker/backtest/benchmarks.py` (`load_benchmarks()` e `bench_table()`). Se a definição de "novo" mudar, atualizar aqui e no módulo.
 

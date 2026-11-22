@@ -47,6 +47,7 @@ DEFENSIVE_SECTORS = {'Consumer Staples', 'Utilities'}
 # (pandemia, saida de prejuizo, vencimento de patente); voltam para a OoL/GCGR. Escolha feita olhando o retorno de 2012-2026.
 NOT_CYCLICAL = {'Hotels, Resorts & Cruise Lines', 'Movies & Entertainment', 'Biotechnology', 'Automobile Manufacturers', 'Diversified Chemicals',
                 'Multi-line Insurance', 'Health Care Distributors'}  # as duas últimas: decisão do usuário em 2026-11-22
+FORCE_CYCLICAL = {'Integrated Oil & Gas', 'Oil & Gas Storage & Transportation', 'Gold', 'Silver', 'Precious Metals & Minerals'}  # decisão do usuário, 2026-11-22
 MULT, MIN_COLLAPSES = 2.0, 2
 
 
@@ -105,7 +106,7 @@ def cyclical_industries():
     p = D / 'ciclicos.csv'
     if not p.exists(): build()
     S = pd.read_csv(p)
-    return set(S[S.ciclico].industry) - NOT_CYCLICAL
+    return (set(S[S.ciclico].industry) - NOT_CYCLICAL) | FORCE_CYCLICAL
 
 
 if __name__ == '__main__':

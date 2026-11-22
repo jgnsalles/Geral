@@ -518,3 +518,5 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
   High Growth 20,7% (18,5%), Top 20 20,7% / com máx. 8 por setor 20,6% (18,6%), JG+G 20,4% (19,3%), OoL 18,0% (16,8%), GCGR 16,8% (16,0%).
   Janelas de 3 anos acima do S&P: Top 20 100% (pior janela +0,7 p.p.), Especiais 99%, High ROIC 95%, Excepcionais 86% (pior −9,4 p.p.; pior queda −45%; maior peso 43%).
   Efeito das duas mudanças: entre −0,3 e +0,1 p.p. por seleção (desprezível). O limite de 8 por setor quase não atua (−0,1 p.p.).
+
+- 2026-11-22 — **Mais decisões do usuário (regra):** (3) petróleo integrado e midstream, ouro, prata e metais preciosos passam a ser cíclicos (`FORCE_CYCLICAL` em ciclicos.py; na planilha, indústrias do Wisesheets equivalentes); (4) FSLR excluída à mão (depende de subsídio; lista "Excluídas à mão" na aba Regras); (5) Top 20 da planilha: teto de PESO de 40% por setor (além do máximo de 8 ações por setor e do teto de 10% por ação): as melhores do setor ficam, com o peso reduzido proporcionalmente; o excesso vai para os outros setores. Backtests não refeitos com (3)–(5).
