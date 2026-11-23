@@ -631,3 +631,10 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
      empresa (Greenblatt = preço + ROIC; Buffett = qualidade persistente; Simons = ranking composto); 20 ações, 8 por setor, peso raiz(valor) × nota com teto de
      10% por ação e 40% por setor; sem as ações em pânico SE algum P passar. Comparado com a melhor carteira atual (pela restrição dura) e com os 9 comparativos.
   Escadinha do lucro operacional não entra no backtest (o painel point-in-time só tem EPS); fica só na planilha.
+
+- 2026-11-23 — **Ramo N — PRÉ-REGISTRO adicional (antes de rodar): CARTEIRA DE CONSENSO** (pedido do usuário). Em cada data, contar em quantas das 7 estratégias
+  principais cada ação aparece: Top 20 (aplicada, ≥ US$ 20 bi), Especiais (aplicada, peso × nota), JG+G, Excepcionais, High ROIC, High Growth e OoL (novo).
+  Carteira = as 20 com maior contagem (desempate: retorno esperado, depois ROIC); trimestral. Pesos: raiz do valor de mercado com teto de 10% (principal) e peso
+  igual (controle). Comparada com Top 20, Especiais e Excepcionais pela restrição dura (+ subperíodos 2012–18 / 2019–26), com os 9 comparativos, janelas de
+  3/5/10 anos, pior queda, sem as 3 maiores contribuições, sem NVIDIA e giro. Também: retorno de 4 trimestres por faixa de sobreposição (1, 2, 3, 4+ estratégias).
+  Só análise: não muda carteira sem decisão do usuário.
