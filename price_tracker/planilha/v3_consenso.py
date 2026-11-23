@@ -65,9 +65,7 @@ RULES = [('G_ALTO', 'Crescimento alto', .15, PCT0), ('G_BAIXO', 'Crescimento bai
          ('BEAR_CORTE', 'Bear: fração do próprio crescimento', .70, NUM2), ('BEAR_GMIN', 'Bear: crescimento mínimo', .06, PCT0), ('BEAR_MULT', 'Bear: fração do P/E justo', .80, NUM2),
          ('CRED_MARGEM', 'Credibilidade: consenso até histórico + ', .10, PCT0), ('STEP_X', 'Step change: EPS 2028 ÷ EPS 2025 a partir de', 1.8, NUM2),
          ('STEP_G', 'Step change: g maduro do múltiplo de saída', .045, PCT), ('STEP_MIN', 'Step change: retorno com devolução mínimo', -.10, PCT0),
-         ('COMP_MC', 'Compounders: valor de mercado mínimo (US$)', 50e9, '#,##0,,,'), ('PEQ_MIN', 'Pequenas: valor de mercado mínimo (US$)', 2e9, '#,##0,,,'),
-         ('PEQ_MAX', 'Pequenas: valor de mercado máximo (US$)', 30e9, '#,##0,,,'), ('ESC_MIN', 'Escadinha mínima (Compounders e Pequenas)', 70, '0'),
-         ('PANICO', 'Ótima em pânico: queda em 12 meses de pelo menos', -.25, PCT0), ('QL_FALTA', 'Quase lá: falta cair no máximo', -.30, PCT0),
+         ('ESC_MIN', 'Escadinha mínima (C da nota)', 70, '0'),
          ('LIMPA_CART', 'Limpeza do consenso nas carteiras (1 = liga; sem backtest possível, fica 0)', 0, '0'),
          ('PISO_TOP', 'Top 20: valor de mercado mínimo (US$; passou no backtest 22/11)', 20e9, '#,##0,,,'),
          ('NOTA_PESO_ESP', 'Especiais: peso × Nota (1 = liga; passou no backtest 22/11)', 1, '0')]
@@ -201,8 +199,7 @@ cols('ER', 8, 'Cresc. EPS ano a ano', 'Escadinha'); cols('RUN', 8, 'Sequência d
 cols('STEP', 1, 'Step change?', 'Step change (caso LLY)'); cols('PEJLT', 1, 'P/E justo maduro'); cols('RFADE', 1, 'Retorno com fade'); cols('EDEV', 1, 'EPS 2027 com devolução'); cols('RDEV', 1, 'Retorno com devolução'); cols('SOK', 1, 'Passa no step change?')
 cols('GPI', 1, 'Mediana cresc. indústria', 'Indústria'); cols('GAPG', 1, 'Gap de crescimento vs indústria'); cols('PLI', 1, 'P/L ÷ indústria')
 cols('RY', 4, 'ROIC do ano', 'Nota de boa empresa'); cols('MEDR', 1, 'ROIC mediano da indústria'); cols('SPR', 1, 'Spread vs pares'); cols('GIMP', 1, 'g implícito no preço'); cols('GSUS', 1, 'g sustentável'); cols('PISTA', 1, 'Pista (g crível − implícito)'); cols('RTAN', 1, 'ROIC sem goodwill'); cols('SHG', 1, 'Variação anual do nº de ações'); cols('ALAV', 1, 'Dívida ÷ lucro operacional')
-cols('C1', 1, 'C1 ROIC vs pares'); cols('C2', 1, 'C2 ROIC incremental'); cols('C3', 1, 'C3 Pista marginal'); cols('C4', 1, 'C4 Moat'); cols('C5', 1, 'C5 Gestão por ação'); cols('C6', 1, 'C6 Existir em 15 anos'); cols('C7', 1, 'C7 Qualitativa'); cols('NOTA', 1, 'Nota de boa empresa'); cols('NOTAB', 1, 'Nota do backtest (C1–C4, C6)'); cols('TCOMP', 1, 'Teste de compounder')
-cols('PENT', 1, 'Preço de entrada (20%)', 'Oportunidades'); cols('FALTA', 1, 'Falta cair'); cols('CAPG', 1, 'Cresc. capital investido'); cols('V12', 1, 'Variação 12 meses'); cols('COMP', 1, 'Compounder redondo'); cols('QL', 1, 'Quase lá'); cols('PEQ', 1, 'Pequena que compõe'); cols('PAN', 1, 'Ótima em pânico')
+cols('C1', 1, 'C1 ROIC vs pares'); cols('C2', 1, 'C2 ROIC incremental'); cols('C3', 1, 'C3 Pista marginal'); cols('C4', 1, 'C4 Moat'); cols('C5', 1, 'C5 Gestão por ação'); cols('C6', 1, 'C6 Existir em 15 anos'); cols('C7', 1, 'C7 Qualitativa'); cols('NOTA', 1, 'Nota de boa empresa'); cols('NOTAB', 1, 'Nota do backtest (C1–C4, C6)')
 cols('FLAG', 1, 'Atenção', w=16)
 cols('NOP', 4, 'NOPAT', 'ROIC triangulado (4 anos)', w=11); cols('CA', 4, 'Capital ativo', w=11); cols('CP', 4, 'Capital passivo', w=11)
 cols('RA', 4, 'ROIC ativo'); cols('RP', 4, 'ROIC passivo')
@@ -223,8 +220,6 @@ for k, lab in (('T', 'Top 20'), ('E', 'Especiais'), ('J', 'JG+G')):
     cols(f'WA{k}', 1, 'peso antes do teto de setor'); cols(f'SW{k}', 1, 'peso do setor'); cols(f'WB{k}', 1, 'peso c/ teto de setor'); cols(f'WC{k}', 1, 'peso redistribuído')
 cols('JR', 1, 'JG: ROIC'); cols('JGr', 1, 'JG: cresc.'); cols('JP', 1, 'JG: P/L')
 cols('SX', 1, '√ valor (Exc.)', 'Excepcionais'); cols('WX', 1, 'Peso Excepcionais'); cols('WXU', 1, 'peso (ordem)')
-OPEN = [('O_COMP', 'Compounders'), ('O_QL', 'Quase lá'), ('O_PAN', 'Pânico'), ('O_PEQ', 'Pequenas'), ('O_OOL', 'OoL'), ('O_GCGR', 'GCGR'), ('O_EBF', 'Excellent but Fair'), ('O_CYC', 'Cyclicals'), ('O_HR', 'High ROIC'), ('O_HG', 'High Growth'), ('O_EXC', 'Excepcionais')]
-for k, lab in OPEN: cols(k, 1, f'Ordem {lab}', 'Ordem nas listas' if k == 'O_OOL' else None)
 C.freeze_panes = 'B5'
 
 def X(key, i, r):
@@ -406,9 +401,6 @@ for r in range(R0, R1 + 1):
     w('PLI', f'=IFERROR(IF(N({PL})>0,{PL}/_xlfn.AGGREGATE(16,6,{plr_}/(({indr}={IND}{r})*({plr_}>0)),0.5),""),"")', NUM2)
     # preço de entrada: o preço em que o retorno esperado chega ao corte (20%)
     kk = f'{cr("PEJ", r)}*{E2}*{FE}'; den = f'(1+2*RET_ALTO-N({cr("RC", r)})-{DY})'
-    w('PENT', f'=IFERROR(IF(AND(N({cr("PEJ", r)})>0,{den}>0,{kk}>0,ISNUMBER({cr("RC", r)})),{kk}/{den}^2,""),"")', '#,##0.00')
-    w('FALTA', f'=IFERROR(IF(ISNUMBER({cr("PENT", r)}),{cr("PENT", r)}/{PRICE}{r}-1,""),"")', PCT0)
-    w('CAPG', f'=IFERROR(IF(AND(N({crr("CA", 0, r)})>0,N({crr("CA", 3, r)})>0),({crr("CA", 3, r)}/{crr("CA", 0, r)})^(1/3)-1,""),"")', PCT)
     # ---- Nota de boa empresa (framework v4.2 do usuário; base McKinsey: valor = (ROIC − custo de capital) × crescimento) ----
     for j in range(4):
         w('RY', f'=IF({FIN}=1,IF(ISNUMBER({crr("ROE", j, r)}),{crr("ROE", j, r)},""),IF(ISNUMBER({crr("RA", j, r)}),{crr("RA", j, r)},IF(ISNUMBER({crr("RP", j, r)}),{crr("RP", j, r)},"")))', PCT0, j)
@@ -442,7 +434,6 @@ for r in range(R0, R1 + 1):
     w('C7', f'=IFERROR(INDEX(NQ_N,MATCH({QA}A{r},NQ_T,0))*1,"")', '0')
     w('NOTA', f'=IF({QA}A{r}="","",AVERAGE({cr("C1", r)},{cr("C2", r)},{cr("C3", r)},{cr("C4", r)},{cr("C5", r)},{cr("C6", r)},{cr("C7", r)}))', NUM1)
     w('NOTAB', f'=IF({QA}A{r}="","",AVERAGE({cr("C1", r)},{cr("C2", r)},{cr("C3", r)},{cr("C4", r)},{cr("C6", r)}))', NUM1)
-    w('TCOMP', f'=IF(AND(N({cr("RTAN", r)})>=0.3,COUNTIF({goh},">=0.1")>=2),1,0)')
     Gc = Gc_class
     RT, ZG = cr('RET', r), cr('ZG', r)
     w('COD', (f'=IF(AND(ISNUMBER({Gc}),ISNUMBER({ZG}),ISNUMBER({RO}),ISNUMBER({RT})),IF({Gc}>G_ALTO,"H",IF({Gc}>=G_BAIXO,"O","L"))&IF({ZG}<ZG,"O","P")'
@@ -502,22 +493,6 @@ for r in range(R0, R1 + 1):
     w('SX', f'=IF({cr("EXC", r)}=1,SQRT(MAX(N({MCAP}{r}),1)),"")', '#,##0')
     w('WX', f'=IF(ISNUMBER({cr("SX", r)}),{cr("SX", r)}/SUM({col_rg("SX")}),"")', PCT)
     w('WXU', f'=IF(ISNUMBER({cr("WX", r)}),{cr("WX", r)}+ROW()*1E-12,"")', PCT)
-    rr_ = col_rg('RET')
-    ok_ = f'AND({DU}=0,{CY}=0,{AP}=0,{cr("ATX", r)}=0,{cr("SOK", r)}=1)'; NT = cr('NOTA', r)
-    w('COMP', f'=IF(AND({ok_},N({MCAP}{r})>=COMP_MC,N({NT})>=4,ISNUMBER({RT})),1,0)')
-    w('QL', f'=IF(AND({cr("COMP", r)}=1,N({RT})<RET_ALTO,ISNUMBER({cr("FALTA", r)}),N({cr("FALTA", r)})>=QL_FALTA),1,0)')
-    w('PEQ', f'=IF(AND({ok_},N({MCAP}{r})>=PEQ_MIN,N({MCAP}{r})<=PEQ_MAX,N({NT})>=4,N({Gc})>=0.12,N({PL})>0,N({PL})<=1.3*N({cr("PEJ", r)}),ISNUMBER({RT})),1,0)')
-    ch = f'IFERROR(IF(OR({CH1Y}{r}<-1,{CH1Y}{r}>5),{CH1Y}{r}/100,{CH1Y}{r})*1,0)'   # o Wisesheets pode mandar a variação em % (−25) ou em fração (−0,25)
-    w('V12', f'=IF(ISNUMBER({CH1Y}{r}),{ch},"")', PCT)
-    w('PAN', f'=IF(AND({DU}=0,{CY}=0,{AP}=0,{cr("ATX", r)}=0,N({NT})>=3.5,ISNUMBER({cr("V12", r)}),N({cr("V12", r)})<=PANICO,N({crr("ER", 7, r)})>0,N({Gc})>0),1,0)')
-    for k, v in (('O_COMP', f'IF({cr("COMP", r)}=1,{RT},"")'), ('O_QL', f'IF({cr("QL", r)}=1,{cr("FALTA", r)},"")'),
-                 ('O_PEQ', f'IF({cr("PEQ", r)}=1,{RT},"")'), ('O_PAN', f'IF({cr("PAN", r)}=1,-({ch}),"")')):
-        w(k, f'=IFERROR({v}+ROW()*1E-12,"")', PCT)
-    for k, cond in (('O_OOL', f'{CL}="{OOL}"'), ('O_GCGR', f'{CL}="{GCGR}"'), ('O_EBF', f'{CL}="Excellent but Fair"'), ('O_CYC', f'{CL}="Cyclicals"'), ('O_HR', f'{cr("HR", r)}=1'),
-                    ('O_HG', f'{cr("HG", r)}=1'), ('O_EXC', f'{cr("EXC", r)}=1')):
-        crg = col_rg(k)
-        # posição pelo retorno esperado entre as da mesma lista (o filtro da lista vem da própria coluna: só quem tem número)
-        w(k, f'=IF(AND({DU}=0,{cond},ISNUMBER({RT})),{RT}+ROW()*1E-12,"")', PCT)
 
 # as colunas de ordem guardam o retorno; a posição é calculada no Painel com LARGE (sem duplicar conta)
 

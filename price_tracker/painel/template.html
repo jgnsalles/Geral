@@ -141,7 +141,6 @@ svg.spk{display:inline-block;width:auto;vertical-align:middle}
 const SPEC=/*__SPEC__*/null;
 const EMBED=/*__DATA__*/null;
 const FX_RESERVA={EUR:1.08,GBP:1.27,DKK:1/6.9,TWD:1/32,CHF:1/0.88,CAD:1/1.38};
-const AI_DEFAULT='Semiconductors\nSemiconductor Equipment & Materials\nComputer Hardware\nHardware, Equipment & Parts\nElectrical Equipment & Parts\nCommunication Equipment\nVST\nCEG\nTLN\nNRG\nFIX\nCAT\nAAON\nORCL\nCRWV\nNBIS';
 const OOL='Opportunity of Lifetime',GCGR='Good Companies, Great Returns',EBF='Excellent but Fair';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -189,9 +188,12 @@ const LISTS=[
  {k:'esp',n:'Especiais',c:'--esp',w:'we',wb:'weB',d:s=>isN(s.we),b:s=>isN(s.weB),desc:'Carteira: as 20 mais perto de ROIC 30% e crescimento 30%, com retorno > 20%. Raiz do valor × Nota.'},
  {k:'jg',n:'JG+G',c:'--jg',w:'wj',wb:'wjB',d:s=>isN(s.wj),b:s=>isN(s.wjB),desc:'Carteira: soma das posições em ROIC, crescimento e P/L. Sem financeiras, utilities e cíclicas.'},
  {k:'ool',n:'OoL',c:'--ool',d:s=>s.cls===OOL&&!s.dup,b:s=>s.clsB===OOL&&!exB(s),desc:'Opportunity of Lifetime: crescimento > 15%, ROIC > 12%, crescimento estável, retorno > 20%.'},
- {k:'hr',n:'High ROIC',c:'--hr',d:s=>s.hr===1,b:s=>s.clsB===OOL&&!exB(s)&&s.ru>(M.rules.hrc??.3),desc:'OoL com ROIC > 30%.'},
- {k:'hg',n:'High Growth',c:'--hg',d:s=>s.hg===1,b:s=>s.clsB===OOL&&!exB(s)&&s.gB>(M.rules.hgc??.3),desc:'OoL com crescimento > 30%.'},
  {k:'exc',n:'Excepcionais',c:'--exc',w:'wx',wb:'wxB',d:s=>s.exc===1,b:s=>isN(s.wxB),desc:'Qualidade com ROIC > 30% e crescimento > 30%. Raiz do valor, sem teto.'}];
+/* High ROIC e High Growth viram filtros dentro da OoL (mesmas regras de antes) */
+const OFIL={hr:{n:'ROIC > 30%',d:s=>s.hr===1,b:s=>s.clsB===OOL&&!exB(s)&&s.ru>(M.rules.hrc??.3)},hg:{n:'Cresc. > 30%',d:s=>s.hg===1,b:s=>s.clsB===OOL&&!exB(s)&&s.gB>(M.rules.hgc??.3)}};
+let OF={hr:false,hg:false};try{Object.assign(OF,JSON.parse(ls.get('pt.of','{}'))||{})}catch(e){}
+function oolView(L){const on=Object.keys(OFIL).filter(k=>OF[k]);if(!on.length)return L;
+  return Object.assign({},L,{d:s=>on.every(k=>OFIL[k].d(s)),b:s=>on.every(k=>OFIL[k].b(s)),desc:L.desc+' Filtro: '+on.map(k=>OFIL[k].n).join(' e ')+'.'})}
 /* ---------- método B: modelo histórico determinístico (o testado no backtest), calculado aqui com os mesmos dados da planilha ---------- */
 /* Crescimento = mediana dos 5 últimos crescimentos anuais do EPS (≥ 3 válidos); zGrowth = desvio ÷ mediana; ROIC = o mesmo ROIC usado (triangulado / ROE);
    g pelo ranking do crescimento histórico; P/L = preço ÷ EPS do último exercício. Classe pela mesma tabela de códigos (zROIC desligado = 'N'). */
@@ -282,13 +284,12 @@ function recW(ts){/* regra da Top 20 entre as ações da carteira: raiz do valor
 function spark(a,w=90,h=22,c='--acc2'){a=(a||[]).map(v=>isN(v)?v:null);const v=a.filter(isN);if(v.length<2)return'';const mx=Math.max(...v),mn=Math.min(...v,0),sx=i=>2+i*(w-4)/(a.length-1),sy=x=>h-2-(x-mn)/(mx-mn||1)*(h-4);
   let d='',on=false;a.forEach((x,i)=>{if(!isN(x)){on=false;return}d+=(on?'L':'M')+sx(i).toFixed(1)+','+sy(x).toFixed(1);on=true});
   return`<svg class="spk" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"><line x1="0" x2="${w}" y1="${sy(0)}" y2="${sy(0)}" stroke="var(--rule)"/><path d="${d}" fill="none" stroke="var(${c})" stroke-width="1.5"/></svg>`}
-function aiList(){return(ls.get('pt.ai',AI_DEFAULT)).split('\n').map(x=>x.trim()).filter(Boolean)}
 function vCarteira(){const ts=Object.keys(PF.items).filter(t=>BY[t]);const gone=Object.keys(PF.items).filter(t=>!BY[t]);
   const port=ts.filter(t=>PF.items[t].w>0),bank=ts.filter(t=>!(PF.items[t].w>0));const rec=recW(port);
   const sum=port.reduce((a,t)=>a+PF.items[t].w,0);const W=t=>(PF.items[t].w||0)/(sum||1);
   const wavg=f=>{let a=0,b=0;port.forEach(t=>{const v=f(BY[t]);if(isN(v)){a+=W(t)*v;b+=W(t)}});return b>0?a/b:null};
   const grp=f=>{const g={};port.forEach(t=>{const k=f(BY[t])||'—';g[k]=(g[k]||0)+W(t)});return Object.entries(g).sort((a,b)=>b[1]-a[1])};
-  const ai=aiList(),isAI=s=>ai.includes(s.ind)||ai.includes(s.t);const aiw=port.filter(t=>isAI(BY[t])).reduce((a,t)=>a+W(t),0);
+
   const barsH=(arr,lim)=>arr.map(([n,v])=>`<div class="bar-row"><span title="${esc(n)}">${esc(n)}</span><span class="b"><i class="${lim&&v>lim+1e-9?'over':''}" style="width:${Math.min(100,v*100)}%"></i></span><span class="num">${P(v)}</span></div>`).join('')||'<p class="note">Sem ações com peso.</p>';
   const ov=(k,kb)=>[k,kb].map(x=>port.filter(t=>isN(BY[t][x])).reduce((a,t)=>a+W(t),0)).concat(port.filter(t=>isN(BY[t][k])&&isN(BY[t][kb])).reduce((a,t)=>a+W(t),0));
   /* alertas: só das ações que você tem (carteira e banco) */
@@ -323,7 +324,7 @@ function vCarteira(){const ts=Object.keys(PF.items).filter(t=>BY[t]);const gone=
    <div class="grid2" style="margin-top:12px">
     <div class="card"><h4>Setor</h4>${barsH(grp(s=>s.sec),M.rules.capw??.4)}</div>
     <div class="card"><h4>Indústria</h4>${barsH(grp(s=>s.ind).slice(0,12))}</div>
-    <div class="card"><h4>Tema IA: ${P(aiw,0)}</h4>${barsH([['IA',aiw],['Fora do tema',port.length?1-aiw:0]])}</div>
+
     <div class="card"><h4>Sobreposição com as carteiras do modelo</h4><div class="kv">
      <span>Top 20 · A / B / A+B</span><span>${P(tA,0)} / ${P(tB,0)} / ${P(tAB,0)}</span><span>Especiais · A / B / A+B</span><span>${P(eA,0)} / ${P(eB,0)} / ${P(eAB,0)}</span>
      <span>JG+G · A / B / A+B</span><span>${P(jA,0)} / ${P(jB,0)} / ${P(jAB,0)}</span></div></div>
@@ -358,13 +359,14 @@ const VAL={w:(L,s)=>inA(L,s)?(L.w?s[L.w]:null):(L.wb?s[L.wb]:null),g:(L,s)=>inA(
   ret:(L,s)=>inA(L,s)?s.ret:s.retB,m:(L,s)=>inA(L,s)&&inB(L,s)?3:inA(L,s)?2:1,sel:(L,s)=>inPF(s.t)?1:0,flag:(L,s)=>s.flag?1:0};
 const val=(L,s,c)=>VAL[c]?VAL[c](L,s):s[c];
 const COLS=[['','sel'],['#','i'],['Selo','m'],['Ação','t'],['Empresa','nm'],['Peso','w'],['ROIC','roic'],['Cresc.','g'],['P/L','pl'],['P/E justo','pej'],['Retorno','ret'],['⚠','flag']];
-function vIdeias(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];const st=SORT[L.k];
+function vIdeias(){const L0=LISTS.find(x=>x.k===LIST)||LISTS[0];const L=L0.k==='ool'?oolView(L0):L0;const st=SORT[L.k];
   const nul=(x,y)=>x==null&&y==null?0:x==null?1:y==null?-1:null;
   const by=(c,asc)=>(a,b)=>{const x=val(L,a,c),y=val(L,b,c),n=nul(x,y);return n!==null?n:(typeof x==='string'?x.localeCompare(y):x-y)*(asc?1:-1)};
   const sec=by(L.w?'w':'ret',false);
   const rows=members(L).sort(st?by(st.c,st.asc):(a,b)=>(val(L,b,'m')===3)-(val(L,a,'m')===3)||sec(a,b));
   const nAB=rows.filter(s=>val(L,s,'m')===3).length,cols=COLS.filter(c=>c[1]!=='w'||L.w);
   let h=`<div class="sub">${LISTS.map(x=>`<button data-l="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${members(x).length}</i></button>`).join('')}</div>
+   ${L.k==='ool'?`<div class="sub chips">${Object.entries(OFIL).map(([k,f])=>`<button data-f="${k}" class="${OF[k]?'on':''}">${f.n}</button>`).join('')}</div>`:''}
    <p class="desc">${esc(L.desc)} <span class="mb ab">A+B</span> ${nAB} no topo · A = consenso · B = histórico (o testado no backtest). Os números da linha são do método do selo.</p>`;
   if(!rows.length)h+='<div class="tw"><div class="empty">Nenhuma ação nesta lista.</div></div>';
   else{h+='<div class="tw"><table><thead><tr>'+cols.map(([n,c])=>`<th data-c="${c}" class="${['t','nm'].includes(c)?'l':''}${st&&st.c===c?' sorted'+(st.asc?' asc':''):''}">${n}</th>`).join('')+'</tr></thead><tbody>';
@@ -376,7 +378,8 @@ function vIdeias(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];const st=SORT[L.k
       return`<td class="n${isN(v)&&v<0?' neg':''}">${P(v,c==='w'?1:0)}</td>`}).join('')+'</tr>'});
     h+='</tbody></table></div>'}
   $('#main').innerHTML=h;const m=$('#main');
-  m.querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list3',LIST);vIdeias()});
+  m.querySelectorAll('.sub button[data-l]').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list3',LIST);vIdeias()});
+  m.querySelectorAll('.sub button[data-f]').forEach(b=>b.onclick=()=>{OF[b.dataset.f]=!OF[b.dataset.f];ls.set('pt.of',JSON.stringify(OF));vIdeias()});
   m.querySelectorAll('th').forEach(th=>th.onclick=()=>{const c=th.dataset.c;if(c==='i')return;SORT[L.k]={c,asc:st&&st.c===c?!st.asc:['t','nm'].includes(c)};vIdeias()});
   m.querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t));wireSel(m)}
 
