@@ -131,6 +131,14 @@ for c, y in EL.groupby('CNPJ_FUNDO'):
     gc = y.CPF_CNPJ_GESTOR.iloc[-1]; gi = y.gid.iloc[-1]
     out['la'].append({'c': c, 'n': str(F.nome.get(c, '') or ''), 'g': ('Gama (Fundamenta LatAm)' if 'FUNDAMENTA' in str(F.nome.get(c, '')) else None) or gid2n.get(gi) or str(gn.get(gc, gc)).title().replace(' Ltda','').replace('.','')[:40], 'gid': gi if isinstance(gi, str) else None,
                       'o': a, 'r': series(y.r, a, b), 'pl': round(float(y.pl.iloc[-1]) / 1e6, 1)})
+# fundos LatAm offshore informados à mão (factsheets): retornos mensais já em 1e-6, com benchmark próprio
+_man = os.path.join(os.path.dirname(os.path.abspath(OUT)), 'manual_latam.json')
+if os.path.exists(_man):
+    for m in json.load(open(_man)):
+        o = MI[m.pop('start')]
+        n = min(len(m['r']), len(M) - o)
+        m['r'], m['bm'] = m['r'][:n], m['bm'][:n]
+        out['la'].append({**m, 'o': o})
 print('fundos LatAm:', [(f['n'][:40], f['g'], M[f['o']], f['pl']) for f in out['la']])
 out['x'] = [{k: g[k] for k in ('id', 'n', 'rs', 'cnpj')} for g in G if g.get('extra') and g['id'] in out['g']]
 print('extras:', out['x'])
