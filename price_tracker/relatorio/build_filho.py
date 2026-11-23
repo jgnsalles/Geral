@@ -2,7 +2,7 @@
 import json, pathlib
 ROOT = pathlib.Path(__file__).parent
 R = json.loads((ROOT / 'dados_filho.json').read_text()); I = json.loads((ROOT / 'dados_filho_ind.json').read_text())
-PT = json.loads((ROOT / 'dados_filho_patamar.json').read_text())
+PT = json.loads((ROOT / 'dados_filho_patamar.json').read_text()); CS = json.loads((ROOT / 'dados_filho_consenso.json').read_text())
 css = (ROOT / 'qualidade_que_compoe.html').read_text(); css = css[css.index('<link'):css.index('</style>') + len('</style>')]
 pc = lambda x, n=1: '—' if x is None else f'{x * 100:.{n}f}%'.replace('.', ',')
 pp = lambda x, n=1: '—' if x is None else f'{x * 100:+.{n}f}'.replace('.', ',') + ' p.p.'
@@ -32,6 +32,10 @@ prow = ''.join(f'<tr><td class="l">{t}</td><td class="n">{pc(v["pat"],0)}</td><t
                f'<tr><td class="l">{t}</td><td class="n">{pc(v["pat"],0)}</td><td class="n">{str(round(v["mult"],1)).replace(".",",")}×</td><td class="n">{pc(v["hist"],0)}</td><td class="n">{pc(v["ind_med"],0)}</td><td class="l">{"⚠ salto acima do histórico" if v["alerta"] else ""}</td></tr>'
                for t, v in PT['sel'].items() if v['pat'] is not None)
 ic = R['ic']; sp = R['spy']
+crow = ''.join(f'<tr><td class="l">{k}</td><td class="n">{pc(m["cagr"])}</td><td class="n">{pc(m["c_a"])}</td><td class="n">{pc(m["c_b"])}</td><td class="n">{pc(m["maxdd"],0)}</td>'
+               f'<td class="n">{pc(m["w3"],0)}</td><td class="n">{pc(m["w5"],0)}</td><td class="n">{pc(m["w10"],0)}</td><td class="n">{pc(m["sem_nvda"])}</td><td class="n">{pc(m["sem_top3"])}</td><td class="n">{pc(m["giro"]["turnover"],0)}</td></tr>'
+               for k, m in CS['res'].items())
+frow = ''.join(f'<tr><td class="l">{"4 ou mais" if k == "4" else k}</td><td class="n">{v["obs"]}</td><td class="n">{pc(v["media"])}</td><td class="n">{pc(v["mediana"])}</td><td class="n">{pc(v["perde"],0)}</td><td class="n">{pc(v["queda30"])}</td></tr>' for k, v in CS['faixa'].items())
 html = f'''<title>O filho de Buffett, Simons e Greenblatt</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 {css}
@@ -39,13 +43,20 @@ html = f'''<title>O filho de Buffett, Simons e Greenblatt</title>
 <div class="mast"><span>Price Tracker · Mercados</span><span>Combinações, anti-pânico e patamar · 22/11/2026</span></div>
 <div class="kicker">Revisão de PM</div>
 <h1>Juntar bons sinais não bateu a regra simples</h1>
-<p class="deck">Testamos 30 combinações: nota composta ao estilo Simons, grupos com a escadinha, filtros anti-pânico e um "filho" de Buffett, Simons e Greenblatt. Nenhuma superou a Top 20 e a Especiais atuais pela restrição dura. A regra que já temos é, ela mesma, uma combinação enxuta que funciona.</p>
+<p class="deck">Testamos 32 combinações: nota composta ao estilo Simons, grupos com a escadinha, filtros anti-pânico e um "filho" de Buffett, Simons e Greenblatt. Nenhuma superou a Top 20 e a Especiais atuais pela restrição dura. A regra que já temos é, ela mesma, uma combinação enxuta que funciona.</p>
 <div class="byline">S&amp;P 500 point-in-time, 2011–2026, crescimento histórico, ROIC triangulado · descoberta 2012–2018, confirmação 2019–2026 · S&amp;P: {pc(sp["cagr"])} a.a. ({pc(sp["c_a"])} / {pc(sp["c_b"])})</div>
 <p class="warn"><b>⚠️ O ROIC pode estar errado.</b> Ele entra no corte de qualidade, no P/E justo, na nota de boa empresa e em três dos oito sinais da nota composta. Backtest sem custos de transação; não é recomendação. Nada foi alterado na planilha, no painel ou nas carteiras: tudo aqui são propostas.</p>
 <figure><figcaption class="t">Mudança → passou? (restrição dura + não perder mais de 1 p.p. em nenhum subperíodo)</figcaption>
 <figcaption class="s">Retorno anual no período todo e nos dois subperíodos, pior queda, % das janelas de 3 anos acima do S&amp;P e % de posições que caem 30% ou mais em 1 ano.</figcaption>
 <div class="tablebox"><table><thead><tr><th class="l">Variante</th><th>Retorno</th><th>2012–18</th><th>2019–26</th><th>Pior queda</th><th>Jan. 3a</th><th>Quedas ≥30%</th><th class="l">Passou?</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
 <div class="sowhat"><b>E daí</b><span>A nota composta com pesos iguais (S0) perde 1,8 p.p. na Top 20 e 3,3 p.p. na Especiais. A versão com pesos tirados de 2012–2018 (SW) chega a 21,1% na Top 20 (contra 20,7%), mas aumenta a pior queda de −30% para −36%, então não passa. Os grupos com escadinha (G1, G2) caem para 14–16% ao ano: a escadinha seleciona empresas "bonitas" que já estão caras. O anti-pânico corta 1 a 2 p.p. em todas as versões: o pânico, na média, NÃO estava certo nas carteiras (estava certo na lista "Ótima em pânico", que não tinha o filtro de preço). O filho rendeu 17,3%.</span></div>
+</figure>
+<figure><figcaption class="t">Carteira de consenso: as 20 que aparecem em mais estratégias</figcaption>
+<figcaption class="s">Contagem em 7 estratégias (Top 20, Especiais, JG+G, Excepcionais, High ROIC, High Growth, OoL); desempate por retorno esperado e ROIC; trimestral. Giro = fração da carteira trocada por ano.</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Carteira</th><th>Retorno</th><th>2012–18</th><th>2019–26</th><th>Pior queda</th><th>Jan. 3a</th><th>Jan. 5a</th><th>Jan. 10a</th><th>Sem NVDA</th><th>Sem 3 maiores</th><th>Giro</th></tr></thead><tbody>{crow}</tbody></table></div>
+<figcaption class="s" style="margin-top:14px">Retorno nos 4 trimestres seguintes por faixa de sobreposição (ações em pelo menos 1 estratégia).</figcaption>
+<div class="tablebox"><table><thead><tr><th class="l">Aparece em</th><th>Observações</th><th>Média</th><th>Mediana</th><th>Perdedoras</th><th>Quedas ≥30%</th></tr></thead><tbody>{frow}</tbody></table></div>
+<div class="sowhat"><b>E daí</b><span>O consenso funciona: quanto mais estratégias escolhem a ação, maior o retorno seguinte (17% → 19% → 20% → 23% na média). A carteira de consenso rende 21,6% ao ano, 0,9 p.p. acima da Top 20, com 100% das janelas de 3, 5 e 10 anos acima do S&amp;P. Mas a pior queda vai de −30% para −36% (as ações de 4+ estratégias também caem forte mais vezes: 7,7% contra 4–5%), e fica 1,8 p.p. abaixo da Especiais. Pela restrição dura, não substitui nenhuma das duas. Com peso igual: 21,1% e pior queda −33%, ainda pior que −30%. Proposta: mostrar a contagem como coluna "Consenso (n de 7)" na planilha.</span></div>
 </figure>
 <figure><figcaption class="t">Por que a nota composta não ajuda: dentro das já escolhidas, quase nada ordena o futuro</figcaption>
 <figcaption class="s">Correlação de ordem média (2012–2018) entre cada sinal e o retorno dos 4 trimestres seguintes, entre as elegíveis da Top 20.</figcaption>
@@ -65,6 +76,7 @@ html = f'''<title>O filho de Buffett, Simons e Greenblatt</title>
 <section class="verdict"><h2>Propostas (nada aplicado; decisão sua)</h2><div class="vgrid">
 <div><span class="tag" style="--c:var(--teal)">Proposta 1</span><h4>Coluna e alerta "salto de patamar"</h4><p>Informativa na planilha e no painel. Muda só o que aparece na Central de alertas; não mexe nas carteiras.</p></div>
 <div><span class="tag" style="--c:var(--oxford)">Proposta 2</span><h4>Manter as carteiras como estão</h4><p>Nenhuma combinação passou. A Top 20 (≥ US$ 20 bi) e a Especiais (peso × nota) seguem as melhores pela restrição dura.</p></div>
+<div><span class="tag" style="--c:var(--teal)">Proposta 4</span><h4>Coluna "Consenso (n de 7)"</h4><p>Quantas estratégias escolhem a ação. Informativa: 4+ rende mais, mas a carteira de consenso piora a pior queda.</p></div>
 <div><span class="tag" style="--c:var(--wheat)">Proposta 3</span><h4>Nota composta e escadinha como colunas de leitura</h4><p>Ajudam a julgar "orgulho de ter", mas não ordenam o retorno. Ficariam como informação na ficha.</p></div>
 <div><span class="tag" style="--c:var(--claret)">Não fazer</span><h4>Excluir pânico ou indústrias</h4><p>Custa 1 a 2 p.p. ao ano. A queda de 12 meses não separa perdedoras nas carteiras.</p></div>
 </div></section>

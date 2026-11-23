@@ -638,3 +638,28 @@ Conclusão: o ganho do ramo C era viés de sobrevivência da lista de gestores. 
   igual (controle). Comparada com Top 20, Especiais e Excepcionais pela restrição dura (+ subperíodos 2012–18 / 2019–26), com os 9 comparativos, janelas de
   3/5/10 anos, pior queda, sem as 3 maiores contribuições, sem NVIDIA e giro. Também: retorno de 4 trimestres por faixa de sobreposição (1, 2, 3, 4+ estratégias).
   Só análise: não muda carteira sem decisão do usuário.
+
+- 2026-11-23 — **Ramo N — RESULTADOS** (relatorio/filho.py, filho_consenso.py, filho_ind.py, filho_patamar.py; relatório relatorio/filho.html/pdf).
+  **Nada foi aplicado** (decisão do usuário: "são ideias, não mude nada estruturalmente sem conversarmos"). Bases: Top 20 20,7% (−30,4%, jan. 3a 100%; 16,0/25,3),
+  Especiais 23,4% (−40,3%, 100%; 18,2/28,4), Excepcionais 24,6% (−45,2%, 85,5%; 13,8/35,6).
+
+  | Mudança | Retorno | Pior queda | Jan. 3a | Passou? | Situação |
+  |---|---|---|---|---|---|
+  | Top 20 · ordem S0 / S+ / S− / SW | 18,9 / 19,7 / 18,3 / 21,1% | −38 / −36 / −41 / −36% | 90 / 97 / 93 / 100% | não (SW só pela pior queda) | proposta informativa |
+  | Especiais · ordem S0 / S+ / S− / SW | 20,1 / 20,4 / 20,2 / 19,9% | | | não | — |
+  | Mistura ret/S0 (Top 20 / Especiais) | 20,9 / 21,0% | −34,7% / | 99,3% / | não | — |
+  | Peso S0 (Top 20 / Especiais) | 20,7 / 23,4% | −30,6 / −40,3% | 100% | neutra (Top 20 falha por 0,2 p.p. na queda) | — |
+  | Grupos G1 / G2 / G3 (Top 20) | 13,8 / 16,2 / 20,3% | | 41 / 48 / 95% | não | — |
+  | Anti-pânico P1 / P2 / P3 (Top 20) | 19,4 / 19,7 / 18,9% | | | não (custa 1–2 p.p. nas 3 carteiras) | rejeitar |
+  | Filho (Buffett + Simons + Greenblatt) | 17,3% (15,4/19,0) | −37,6% | 85% | não | lista informativa |
+  | Consenso (20 mais frequentes em 7 estratégias, raiz do valor) | 21,6% (17,5/25,5) | −36,0% | 100% (5a/10a 100%) | não (queda pior que Top 20; −1,8 p.p. vs Especiais) | coluna informativa proposta |
+  | Consenso (peso igual) | 21,1% | −32,8% | 99,3% | não | — |
+
+  ICs (descoberta, elegíveis da Top 20): ROIC 0,060; spread 0,032; escadinha 0,008; crescimento crível 0,028; retorno esperado −0,097; tamanho 0,034;
+  estabilidade 0,025; nota −0,034; momento −0,010. Sobreposição: retorno 4 trimestres médio 17,2% (1 estratégia), 19,2% (2), 20,1% (3), 23,3% (4+); quedas ≥ 30% 4,4/4,6/4,7/7,7%.
+  Consenso sem NVDA 20,2%, sem as 3 maiores (NVDA, META, MSFT) 19,0%; giro 82%/ano (Top 20: 90%).
+  Indústrias: software aplicativo, hardware, autopeças e varejo amplo caem forte 2–3× a média, mas excluí-las muda −0,8 a +0,3 p.p.; biotecnologia e semicondutores são boas.
+  Patamar (arquivo v4, histórico de 3 crescimentos): LLY 76%/ano (5,5×), histórico 96%, indústria 15% → sem alerta com 3 anos; com histórico de 5 anos dispara. AVGO alerta (87% vs 25%).
+  Corte (salto > máx(histórico, indústria) + 15 p.p. e > 1,5×) marca 117 de 449 com 3 anos: precisa do histórico de 5 anos. Não testável (sem consenso histórico).
+  Propostas ao usuário: (1) coluna e alerta de patamar com histórico de 5 anos; (2) manter carteiras; (3) nota composta e escadinha como colunas de leitura;
+  (4) coluna "Consenso (n de 7)"; não fazer: anti-pânico e exclusão de indústrias.
