@@ -51,6 +51,20 @@ if '--sec-eps' in sys.argv:
         for y, c in ecols.items():
             if y not in have and y in sec: d.cell(r, c).value = round(sec[y] * fac, 4); nfill += 1
     print('EPS preenchidos pela SEC:', nfill)
+    # receita (Revenue) 2017–2025 pela SEC (pit2), só onde o Wisesheets veio vazio
+    PIT2 = pathlib.Path(__file__).parent.parent / 'backtest' / 'data' / 'pit2'
+    rcols = {v: c for (k, v), c in yn.items() if k == 'Revenue' and isinstance(v, int)}; nrev = 0
+    for r in range(5, d.max_row + 1):
+        t = a[f'A{r}'].value; f = PIT2 / f'{t}.json.gz'
+        if not t or not f.exists() or not rcols: continue
+        try:
+            rows = [x for cc in json.load(gzip.open(f)).get('revenue', []) for x in cc['rows']]
+        except Exception: continue
+        sec = {}
+        for end, v, filed in sorted(rows, key=lambda x: x[2]): sec[int(end[:4])] = v
+        for y, c in rcols.items():
+            if not isinstance(d.cell(r, c).value, (int, float)) and y in sec: d.cell(r, c).value = sec[y]; nrev += 1
+    print('Receitas preenchidas pela SEC:', nrev)
     # variação de 12 meses (coluna '1y' do Wisesheets), se vier vazia: preços ajustados do backtest
     import pandas as pd
     px = pd.read_csv(pathlib.Path(__file__).parent.parent / 'backtest' / 'data' / 'prices_adj_close.csv.gz', index_col=0, parse_dates=True)

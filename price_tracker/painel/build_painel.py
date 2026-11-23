@@ -39,7 +39,7 @@ SPEC = {
     'dados': {'est': 'Estimated EPS AVG', 'eps': 'EPS Diluted', 'ni': 'Net Income', 'oi': 'Operating Income', 'pt': 'Income Before Tax',
               'tx': 'Income Tax Expense', 'ppe': 'Property Plant Equipment Net', 'rou': 'Operating Lease Right Of Use Assets', 'gw': 'Goodwill',
               'int': 'Intangible Assets', 'tca': 'Total Current Assets', 'cash': 'Cash And Cash Equivalents', 'tcl': 'Total Current Liabilities',
-              'debt': 'Total Debt', 'lease': 'Capital Lease Obligations', 'eq': 'Total Stockholders Equity', 'dyr': 'Dividend Yield'},
+              'debt': 'Total Debt', 'lease': 'Capital Lease Obligations', 'eq': 'Total Stockholders Equity', 'dyr': 'Dividend Yield', 'rev': 'Revenue'},
     'rules': {'ghi': 'Crescimento alto', 'glo': 'Crescimento baixo', 'zgmax': 'zGrowth máximo', 'rhi': 'ROIC alto', 'rlo': 'ROIC baixo',
               'rethi': 'Retorno esperado alto', 'retlo': 'Retorno esperado baixo', 'wacc': 'WACC do P/E justo', 'gtop': 'g do P/E justo: maior',
               'gfloor': 'g do P/E justo: menor', 'gfin': 'Financeiras', 'hrc': 'High ROIC', 'hgc': 'High Growth', 'plmin': 'Top 20: P/L mínimo',
@@ -108,7 +108,12 @@ def parse(path):
         c = hdr.index('US$ por unidade')
         for row in G[4:]:
             if len(row) > c and row[c - 1]: fx[row[c - 1]] = num(row[c])
-    return {'stocks': stocks, 'years': years, 'rules': rules, 'lists': lists, 'adr': adr, 'fx': fx}
+    codes = {}   # tabela código → classe (Regras, colunas Código / Classe): o método B monta o código com o crescimento histórico
+    if 'Código' in hdr:
+        c = hdr.index('Código')
+        for row in G[4:]:
+            if len(row) > c + 1 and row[c] and row[c + 1]: codes[str(row[c])] = row[c + 1]
+    return {'stocks': stocks, 'years': years, 'rules': rules, 'lists': lists, 'adr': adr, 'fx': fx, 'codes': codes}
 
 
 model = parse(SRC)

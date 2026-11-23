@@ -168,6 +168,7 @@ DC['base'] = [L(c0 + i) for i in range(len(BASEF))]; col[0] += len(BASEF) + 1
 block('DY', 'Dividend Yield', [-1])
 block('EST', 'Estimated EPS AVG', [-1, 0, 1, 2])   # o ano passado entra como base no mesmo critério (ajustado) das estimativas             # consenso do sell-side: ano+1 = ano corrente
 block('EPS', 'EPS Diluted', [-9, -8, -7, -6, -5, -4, -3, -2, -1])   # 2017–2025 (histórico longo para o gráfico e a mediana de 5 anos)              # último exercício = ano passado (decisão do usuário: o ano corrente vem vazio em muitas)
+block('REV', 'Revenue', [-9, -8, -7, -6, -5, -4, -3, -2, -1])   # receita 2017–2025: margem × giro do ROIC no painel (só leitura; não entra em regra)
 Y5 = [-4, -3, -2, -1]
 for k, f in (('NI', 'Net Income'), ('OI', 'Operating Income'), ('PT', 'Income Before Tax'), ('TX', 'Income Tax Expense'), ('PPE', 'Property Plant Equipment Net'),
              ('ROU', 'Operating Lease Right Of Use Assets'), ('GW', 'Goodwill'), ('INT', 'Intangible Assets'),
