@@ -229,7 +229,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
  <h2 class="chap">6. O passivo e o seu fluxo</h2>
  <figure>
   <figcaption class="ft" id="ft-flow">Fluxo trimestral do tipo escolhido</figcaption>
-  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
+  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Em "Todos", a série vai de 2006 a 2026 (Informe Diário, mesma medida da parte 1); os tipos começam em 2019, quando a CVM passa a publicar o Perfil Mensal. A tabela abaixo é 2019–2026. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
   <div class="legend"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span></div>
   <div class="chart" id="p-flow"></div>
   <div class="tbox" id="p-comp"></div>
@@ -470,31 +470,34 @@ function segEst(){
  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{ST.est=b.dataset.k;drawP2();});
  document.getElementById('now').innerHTML=`Vendo <b>${NM(ST.tipo)}</b> · <b>${estLbl(ST.est)}</b>`;
 }
-function inState(q){const r=window.P2.trimestres.find(x=>x.q==q);if(!r)return false;const e=ST.est=='todos'?'alta':ST.est;return r['st_'+ST.rg]==e;}
+function inState(q){const X=window.P2,r=(ST.tipo=='total'?X.serie_longa:X.trimestres).find(x=>x.q==q);if(!r)return false;const e=ST.est=='todos'?'alta':ST.est;return r['st_'+ST.rg]==e;}
+// "Todos" usa a série longa do Informe Diário (2006T1–2026T3); os tipos começam em 2019 porque o Perfil Mensal começa em 2019
+function serieFlow(){const X=window.P2,k=ST.tipo;if(k=='total')return {S:X.serie_longa.map(r=>({q:r.q,v:{fr:r.fr,f:r.f,h:r.h,pos:r.pos}})),T:X.serie_longa};return {S:X.serie.map(r=>({q:r.q,v:r[k]})),T:X.trimestres};}
 
 function pflow(){
- const X=window.P2, S=X.serie, k=ST.tipo, W=1000,H=400,m={l:52,r:12,t:14,b:26},h1=250,gap=30,h2=H-m.t-m.b-h1-gap;
- document.getElementById('ft-flow').textContent='Fluxo trimestral: '+NM(k);
+ const X=window.P2, k=ST.tipo, {S,T}=serieFlow(), W=1000,H=400,m={l:52,r:12,t:14,b:26},h1=250,gap=30,h2=H-m.t-m.b-h1-gap;
+ document.getElementById('ft-flow').textContent='Fluxo trimestral: '+NM(k)+(k=='total'?' (2006–2026)':' (2019–2026)');
  const s=box('p-flow',W,H), t=tip('p-flow');
- const x=d3.scaleBand().domain(S.map(r=>r.q)).range([m.l,W-m.r]).padding(.18);
- const v=S.map(r=>r[k].fr).filter(z=>z!=null); const ext=Math.max(.05,d3.quantile(v.map(Math.abs).sort(d3.ascending),.95)*1.15);
+ const x=d3.scaleBand().domain(S.map(r=>r.q)).range([m.l,W-m.r]).padding(S.length>40?.12:.18);
+ const v=S.map(r=>r.v.fr).filter(z=>z!=null); const ext=Math.max(.05,d3.quantile(v.map(Math.abs).sort(d3.ascending),.95)*1.15);
  const y=d3.scaleLinear().domain([-ext,ext]).range([m.t+h1,m.t]).clamp(true);
  S.forEach(r=>{if(inState(r.q))s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill',css('--soft'));});
  const g=s.append('g').attr('class','grid');y.ticks(6).forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(tv)).attr('y2',y(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(tv)+4).attr('text-anchor','end').text(P(tv))});
- S.forEach(r=>{const fr=r[k].fr;if(fr==null)return;const top=Math.min(y(fr),y(0)),hh=Math.max(1,Math.abs(y(fr)-y(0)));
-  s.append('rect').attr('x',x(r.q)).attr('y',top).attr('width',x.bandwidth()).attr('height',hh).attr('rx',2).attr('fill',css(fr>=0?'--in':'--out'));
-  if(Math.abs(fr)>ext)s.append('text').attr('class','num').attr('x',x(r.q)+x.bandwidth()/2).attr('y',fr>0?m.t+10:m.t+h1-4).attr('text-anchor','middle').text('↕');
-  if(r.q.endsWith('Q1'))s.append('text').attr('x',x(r.q)+x.bandwidth()/2).attr('y',H-6).attr('text-anchor','middle').text(r.q.slice(0,4));});
+ const every=S.length>40?2:1;
+ S.forEach(r=>{const fr=r.v.fr;if(r.q.endsWith('Q1')&&(+r.q.slice(0,4))%every==0)s.append('text').attr('x',x(r.q)+x.bandwidth()/2).attr('y',H-6).attr('text-anchor','middle').text(r.q.slice(0,4));if(fr==null)return;const top=Math.min(y(fr),y(0)),hh=Math.max(1,Math.abs(y(fr)-y(0)));
+  s.append('rect').attr('x',x(r.q)).attr('y',top).attr('width',x.bandwidth()).attr('height',hh).attr('rx',x.bandwidth()>8?2:1).attr('fill',css(fr>=0?'--in':'--out'));
+  if(Math.abs(fr)>ext)s.append('text').attr('class','num').attr('x',x(r.q)+x.bandwidth()/2).attr('y',fr>0?m.t+10:m.t+h1-4).attr('text-anchor','middle').text('↕');});
  s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
- const T=X.trimestres, y0=m.t+h1+gap, y2=d3.scaleLinear().domain([0,.16]).range([y0+h2,y0]);
+ const y0=m.t+h1+gap, y2=d3.scaleLinear().domain([0,.16]).range([y0+h2,y0]);
  [0,.08,.16].forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y2(tv)).attr('y2',y2(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y2(tv)+4).attr('text-anchor','end').text(P(tv))});
- s.append('path').attr('d',d3.line().x(r=>x(r.q)+x.bandwidth()/2).y(r=>y2(r.cdi))(T.filter(r=>x(r.q)!=null))).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2);
+ s.append('path').attr('d',d3.line().defined(r=>r.cdi!=null).x(r=>x(r.q)+x.bandwidth()/2).y(r=>y2(r.cdi))(T.filter(r=>x(r.q)!=null))).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2);
  S.forEach(r=>{const tr=T.find(z=>z.q==r.q)||{};s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill','transparent')
-  .on('mousemove',ev=>show(t,ev,'p-flow',`<b>${r.q.replace('Q','T')}</b>${row('Fluxo',P(r[k].fr,1)+' da posição')}${row('Em reais','R$ '+F(r[k].f,2)+' bi')}${row('Posição no fim','R$ '+F(r[k].h,1)+' bi')}${row('Gestoras com entrada',P(r[k].pos))}${row('Ibovespa no trimestre',P(tr.ibov_q,1))}${row('CDI',P(tr.cdi,1))}${row('Treasury 10a',P(tr.ust,2))}`)).on('mouseleave',()=>t.style('display','none'));});
+  .on('mousemove',ev=>show(t,ev,'p-flow',`<b>${r.q.replace('Q','T')}</b>${row('Fluxo',P(r.v.fr,1)+' da posição')}${row('Em reais','R$ '+F(r.v.f,2)+' bi')}${row('Posição no fim','R$ '+F(r.v.h,1)+' bi')}${row('Gestoras com entrada',P(r.v.pos))}${row('Ibovespa no trimestre',P(tr.ibov_q,1))}${row('CDI',P(tr.cdi,1))}${row('Treasury 10a',tr.ust==null?'—':P(tr.ust,2))}`)).on('mouseleave',()=>t.style('display','none'));});
+ const SS=X.serie;
  // composição
- const f0=S[0],f1=S[S.length-1], tot0=f0.total.h, tot1=f1.total.h;
+ const f0=SS[0],f1=SS[SS.length-1], tot0=f0.total.h, tot1=f1.total.h;
  document.getElementById('p-comp').innerHTML='<table><thead><tr><th class="l">Tipo de passivo</th><th>% do passivo em '+f0.q.replace('Q','T')+'</th><th>% em '+f1.q.replace('Q','T')+'</th><th>Fluxo acumulado (R$ bi)</th><th>Fluxo / posição média</th></tr></thead><tbody>'+
-  X.tipos.filter(z=>z!='total').map(z=>{const acc=d3.sum(S,r=>r[z].f||0), mean=d3.mean(S,r=>r[z].h);return `<tr${z==k?' style="font-weight:600"':''}><td class="l">${NM(z)}</td><td class="n">${P(f0[z].h/tot0,1)}</td><td class="n">${P(f1[z].h/tot1,1)}</td><td class="n ${acc>=0?'pos':'neg'}">${F(acc,1)}</td><td class="n">${P(acc/mean,0)}</td></tr>`}).join('')+'</tbody></table>';
+  X.tipos.filter(z=>z!='total').map(z=>{const acc=d3.sum(SS,r=>r[z].f||0), mean=d3.mean(SS,r=>r[z].h);return `<tr${z==k?' style="font-weight:600"':''}><td class="l">${NM(z)}</td><td class="n">${P(f0[z].h/tot0,1)}</td><td class="n">${P(f1[z].h/tot1,1)}</td><td class="n ${acc>=0?'pos':'neg'}">${F(acc,1)}</td><td class="n">${P(acc/mean,0)}</td></tr>`}).join('')+'</tbody></table>';
 }
 
 function pbutter(){
