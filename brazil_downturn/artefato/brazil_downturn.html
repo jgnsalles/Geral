@@ -229,8 +229,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
  <h2 class="chap">6. O passivo e o seu fluxo</h2>
  <figure>
   <figcaption class="ft" id="ft-flow">Fluxo trimestral do tipo escolhido</figcaption>
-  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Em "Todos", a série vai de 2006 a 2026 (Informe Diário, mesma medida da parte 1); os tipos começam em 2019, quando a CVM passa a publicar o Perfil Mensal. A tabela abaixo é 2019–2026. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
-  <div class="legend"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span></div>
+  <figcaption class="fs">Fluxo líquido em % da posição do tipo no início da janela: no trimestre, ou acumulado nos 12 meses anteriores (os 4 últimos trimestres). Em "Todos", a série vai de 2006 a 2026 (Informe Diário, mesma medida da parte 1); os tipos começam em 2019, quando a CVM passa a publicar o Perfil Mensal. A tabela abaixo é 2019–2026. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
+  <div class="seg" role="group" aria-label="Janela" id="seg-jan"><button type="button" aria-pressed="false" data-k="q">Trimestre</button><button type="button" aria-pressed="true" data-k="12">12 meses para trás</button></div>
+  <div class="legend" style="margin-top:8px"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span><span>▲ ▼ passou da escala (valor ao lado)</span></div>
   <div class="chart" id="p-flow"></div>
   <div class="tbox" id="p-comp"></div>
  </figure>
@@ -452,7 +453,7 @@ function draw(){if(window.P2)drawP2();kpis();ciclo();scatter();decomp();quint();
  const q=['1','2','3','4','5'];pbars('c-psize',[0,1,2,3,4].map(i=>D.p_size[i]),[0,1,2,3,4].map(i=>D.p_size_cheia[i]),['menores','2','3','4','maiores']);
  pbars('c-palpha',[0,1,2,3,4].map(i=>D.p_alpha[i]),[0,1,2,3,4].map(i=>D.p_alpha_cheia[i]),['pior','2','3','4','melhor']);}
 // ================= Parte 2: por tipo de investidor =================
-const ST={tipo:'total',rg:'fluxo',est:'todos',hz:'ex12',drv:'cdi'};
+const ST={tipo:'total',rg:'fluxo',est:'todos',hz:'ex12',drv:'cdi',jan:'12'};
 const key=()=>ST.est=='todos'?'todos':`${ST.rg}:${ST.est}`;
 const NM=k=>window.P2.nomes[k];
 const estLbl=e=>e=='todos'?'Todos os trimestres':window.P2.estados[ST.rg][e=='alta'?0:1];
@@ -462,6 +463,7 @@ function ctl(){
  sr.innerHTML=Object.entries(X.regimes).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
  st.value=ST.tipo; sr.value=ST.rg;
  st.onchange=()=>{ST.tipo=st.value;drawP2();}; sr.onchange=()=>{ST.rg=sr.value;drawP2();};
+ document.querySelectorAll('#seg-jan button').forEach(b=>b.onclick=()=>{ST.jan=b.dataset.k;document.querySelectorAll('#seg-jan button').forEach(x=>x.setAttribute('aria-pressed',x===b));pflow();});
  document.querySelectorAll('#seg-hz button').forEach(b=>b.onclick=()=>{ST.hz=b.dataset.k;document.querySelectorAll('#seg-hz button').forEach(x=>x.setAttribute('aria-pressed',x===b));pquint();});
 }
 function segEst(){
@@ -473,26 +475,35 @@ function segEst(){
 function inState(q){const X=window.P2,r=(ST.tipo=='total'?X.serie_longa:X.trimestres).find(x=>x.q==q);if(!r)return false;const e=ST.est=='todos'?'alta':ST.est;return r['st_'+ST.rg]==e;}
 // "Todos" usa a série longa do Informe Diário (2006T1–2026T3); os tipos começam em 2019 porque o Perfil Mensal começa em 2019
 function serieFlow(){const X=window.P2,k=ST.tipo;if(k=='total')return {S:X.serie_longa.map(r=>({q:r.q,v:{fr:r.fr,f:r.f,h:r.h,pos:r.pos}})),T:X.serie_longa};return {S:X.serie.map(r=>({q:r.q,v:r[k]})),T:X.trimestres};}
+// janela de 12 meses: soma dos fluxos dos 4 últimos trimestres / posição no início do primeiro deles (posição = fluxo / taxa)
+function janela(S){if(ST.jan!='12')return S;return S.map((r,i)=>{if(i<3)return {q:r.q,v:{...r.v,fr:null}};const w=S.slice(i-3,i+1);const b=w[0].v.fr?w[0].v.f/w[0].v.fr:null;const f=d3.sum(w,z=>z.v.f||0);
+ return {q:r.q,v:{...r.v,f:f,fr:b&&w.every(z=>z.v.fr!=null)?f/b:null,pos:r.v.pos}};});}
 
 function pflow(){
- const X=window.P2, k=ST.tipo, {S,T}=serieFlow(), W=1000,H=400,m={l:52,r:12,t:14,b:26},h1=250,gap=30,h2=H-m.t-m.b-h1-gap;
- document.getElementById('ft-flow').textContent='Fluxo trimestral: '+NM(k)+(k=='total'?' (2006–2026)':' (2019–2026)');
+ const X=window.P2, k=ST.tipo, {S:S0,T}=serieFlow(), S=janela(S0), W=1000,H=426,m={l:52,r:12,t:40,b:26},h1=250,gap=30,h2=H-m.t-m.b-h1-gap;
+ document.getElementById('ft-flow').textContent=(ST.jan=='12'?'Fluxo em 12 meses: ':'Fluxo trimestral: ')+NM(k)+(k=='total'?' (2006–2026)':' (2019–2026)');
  const s=box('p-flow',W,H), t=tip('p-flow');
  const x=d3.scaleBand().domain(S.map(r=>r.q)).range([m.l,W-m.r]).padding(S.length>40?.12:.18);
- const v=S.map(r=>r.v.fr).filter(z=>z!=null); const ext=Math.max(.05,d3.quantile(v.map(Math.abs).sort(d3.ascending),.95)*1.15);
- const y=d3.scaleLinear().domain([-ext,ext]).range([m.t+h1,m.t]).clamp(true);
+ const v=S.map(r=>r.v.fr).filter(z=>z!=null), vp=v.filter(z=>z>0).sort(d3.ascending), vn=v.filter(z=>z<0).map(Math.abs).sort(d3.ascending);
+ const eU=Math.max(.04,(d3.quantile(vp,.92)||0)*1.15), eD=Math.max(.04,(d3.quantile(vn,.92)||0)*1.15);
+ const y=d3.scaleLinear().domain([-eD,eU]).range([m.t+h1,m.t]).clamp(true);
+ const over=fr=>fr!=null&&(fr>eU||fr<-eD);
+ // marca o valor só no pico de cada sequência de barras que passam da escala
+ const peak=new Set();{let run=[];const flush=()=>{if(run.length){peak.add(run.reduce((a,b)=>Math.abs(b.v.fr)>Math.abs(a.v.fr)?b:a).q);run=[];}};S.forEach(r=>{if(over(r.v.fr)&&(!run.length||Math.sign(run[0].v.fr)==Math.sign(r.v.fr)))run.push(r);else{flush();if(over(r.v.fr))run.push(r);}});flush();}
  S.forEach(r=>{if(inState(r.q))s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill',css('--soft'));});
  const g=s.append('g').attr('class','grid');y.ticks(6).forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(tv)).attr('y2',y(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(tv)+4).attr('text-anchor','end').text(P(tv))});
  const every=S.length>40?2:1;
  S.forEach(r=>{const fr=r.v.fr;if(r.q.endsWith('Q1')&&(+r.q.slice(0,4))%every==0)s.append('text').attr('x',x(r.q)+x.bandwidth()/2).attr('y',H-6).attr('text-anchor','middle').text(r.q.slice(0,4));if(fr==null)return;const top=Math.min(y(fr),y(0)),hh=Math.max(1,Math.abs(y(fr)-y(0)));
   s.append('rect').attr('x',x(r.q)).attr('y',top).attr('width',x.bandwidth()).attr('height',hh).attr('rx',x.bandwidth()>8?2:1).attr('fill',css(fr>=0?'--in':'--out'));
-  if(Math.abs(fr)>ext)s.append('text').attr('class','num').attr('x',x(r.q)+x.bandwidth()/2).attr('y',fr>0?m.t+10:m.t+h1-4).attr('text-anchor','middle').text('↕');});
+  if(over(fr)){const cx=x(r.q)+x.bandwidth()/2, up=fr>0, ye=up?m.t:m.t+h1, d=up?-1:1, sz=Math.max(3.5,Math.min(7,x.bandwidth()/2+.5));
+   s.append('path').attr('d',`M${cx-sz},${ye} L${cx+sz},${ye} L${cx},${ye+d*sz*1.4}Z`).attr('fill',css('--ink'));
+   if(peak.has(r.q))s.append('text').attr('class','num').attr('x',cx).attr('y',up?ye-sz*1.4-3:ye+sz*1.4+11).attr('text-anchor','middle').style('fill',css('--ink')).style('font-size','10.5px').style('font-weight',600).text(PP(fr,0)+'%');}});
  s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
  const y0=m.t+h1+gap, y2=d3.scaleLinear().domain([0,.16]).range([y0+h2,y0]);
  [0,.08,.16].forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y2(tv)).attr('y2',y2(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y2(tv)+4).attr('text-anchor','end').text(P(tv))});
  s.append('path').attr('d',d3.line().defined(r=>r.cdi!=null).x(r=>x(r.q)+x.bandwidth()/2).y(r=>y2(r.cdi))(T.filter(r=>x(r.q)!=null))).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2);
  S.forEach(r=>{const tr=T.find(z=>z.q==r.q)||{};s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill','transparent')
-  .on('mousemove',ev=>show(t,ev,'p-flow',`<b>${r.q.replace('Q','T')}</b>${row('Fluxo',P(r.v.fr,1)+' da posição')}${row('Em reais','R$ '+F(r.v.f,2)+' bi')}${row('Posição no fim','R$ '+F(r.v.h,1)+' bi')}${row('Gestoras com entrada',P(r.v.pos))}${row('Ibovespa no trimestre',P(tr.ibov_q,1))}${row('CDI',P(tr.cdi,1))}${row('Treasury 10a',tr.ust==null?'—':P(tr.ust,2))}`)).on('mouseleave',()=>t.style('display','none'));});
+  .on('mousemove',ev=>show(t,ev,'p-flow',`<b>${r.q.replace('Q','T')}</b>${row(ST.jan=='12'?'Fluxo em 12 meses':'Fluxo no trimestre',P(r.v.fr,1)+' da posição')}${row('Em reais','R$ '+F(r.v.f,2)+' bi')}${row('Posição no fim','R$ '+F(r.v.h,1)+' bi')}${row('Gestoras com entrada',P(r.v.pos))}${row('Ibovespa no trimestre',P(tr.ibov_q,1))}${row('CDI',P(tr.cdi,1))}${row('Treasury 10a',tr.ust==null?'—':P(tr.ust,2))}`)).on('mouseleave',()=>t.style('display','none'));});
  const SS=X.serie;
  // composição
  const f0=SS[0],f1=SS[SS.length-1], tot0=f0.total.h, tot1=f1.total.h;

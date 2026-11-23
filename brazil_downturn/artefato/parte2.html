@@ -12,8 +12,9 @@
  <h2 class="chap">6. O passivo e o seu fluxo</h2>
  <figure>
   <figcaption class="ft" id="ft-flow">Fluxo trimestral do tipo escolhido</figcaption>
-  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
-  <div class="legend"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span></div>
+  <figcaption class="fs">Fluxo líquido em % da posição do tipo no início da janela: no trimestre, ou acumulado nos 12 meses anteriores (os 4 últimos trimestres). Em "Todos", a série vai de 2006 a 2026 (Informe Diário, mesma medida da parte 1); os tipos começam em 2019, quando a CVM passa a publicar o Perfil Mensal. A tabela abaixo é 2019–2026. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
+  <div class="seg" role="group" aria-label="Janela" id="seg-jan"><button type="button" aria-pressed="false" data-k="q">Trimestre</button><button type="button" aria-pressed="true" data-k="12">12 meses para trás</button></div>
+  <div class="legend" style="margin-top:8px"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span><span>▲ ▼ passou da escala (valor ao lado)</span></div>
   <div class="chart" id="p-flow"></div>
   <div class="tbox" id="p-comp"></div>
  </figure>
