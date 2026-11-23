@@ -1,7 +1,7 @@
 """Price Tracker V3 com consenso (2026-11-22, decisão do usuário). Regra de ACOMPANHAMENTO, não testada (não há histórico do consenso).
 Crescimento = EPS estimado do sell-side com haircut (ano+1 ×0,95; ano+2 ×0,90; ano+3 ×0,85), CAGR de 3 anos sobre o último EPS publicado,
 teto de 40%. P/L = média do LTM e do 1 ano à frente. ROIC triangulado leve (4 anos). Top 20 com no máximo 6 ações por setor.
-Abas: Painel · Ações · Carteira · Histórico (carteira-sombra) · Bagger Rank · Regras · Cálculo · Dados.
+Abas: Ações · Regras · Cálculo · Dados (ramo P, 2026-11-23: o painel HTML é a única tela; Painel, Carteira, Histórico e Bagger Rank saíram, o Bagger virou lista na aba Regras).
 Uso: python3 planilha/v3_consenso.py planilha/Price_Tracker_v3.xlsx"""
 import sys, json, re, shutil, zipfile, pathlib
 import openpyxl
@@ -33,8 +33,7 @@ fill = lambda h: PatternFill('solid', start_color=h, end_color=h)
 PCT, PCT0, NUM1, NUM2 = '0.0%', '0%', '0.0', '0.00'
 
 wb = openpyxl.Workbook()
-P = wb.active; P.title = 'Painel'
-A = wb.create_sheet('Ações'); K = wb.create_sheet('Carteira'); H = wb.create_sheet('Histórico'); BG = wb.create_sheet('Bagger Rank')
+A = wb.active; A.title = 'Ações'
 G = wb.create_sheet('Regras'); C = wb.create_sheet('Cálculo'); D = wb.create_sheet('Dados')
 QA, QC, QD, QG = "'Ações'!", "'Cálculo'!", 'Dados!', 'Regras!'
 
@@ -539,10 +538,9 @@ for r in range(R0, R1 + 1):
             f'={QC}{cr("RET", r)}', f'={QC}{cr("CLS", r)}',
             (f'=_xlfn.TEXTJOIN(" · ",TRUE,IF(ISNUMBER({QC}{cr("RKT", r)}),"Top 20 #"&{QC}{cr("RKT", r)},""),IF(ISNUMBER({QC}{cr("RKE", r)}),"Especiais",""),'
              f'IF({QC}{cr("EXC", r)}=1,"Excepcional",""),IF({QC}{cr("HR", r)}=1,"High ROIC",""),IF({QC}{cr("HG", r)}=1,"High Growth",""),'
-             f'IF(ISNUMBER({QC}{cr("RKJ", r)}),"JG+G",""),IF({QC}{cr("COMP", r)}=1,"Compounder redondo",""),IF({QC}{cr("QL", r)}=1,"Quase lá",""),'
-             f'IF({QC}{cr("PAN", r)}=1,"Ótima em pânico",""),IF({QC}{cr("PEQ", r)}=1,"Pequena que compõe",""))'),
+             f'IF(ISNUMBER({QC}{cr("RKJ", r)}),"JG+G",""),IF(AND({QC}{cr("CLS", r)}="{OOL}",{QC}{cr("DUP", r)}=0),"OoL",""))'),
             f'={QC}{cr("FLAG", r)}', f'={QC}{cr("GHM", r)}', f'={QC}{cr("ZG", r)}',
-            f"=IFERROR(INDEX('Bagger Rank'!$B$5:$B$400,MATCH(A{r},'Bagger Rank'!$A$5:$A$400,0)),\"\")"]
+            f"=IFERROR(INDEX(Regras!$Y$5:$Y$400,MATCH(A{r},Regras!$X$5:$X$400,0)),\"\")"]
     for i, v in enumerate(vals):
         x = A.cell(r, i + 2, v); x.font = F_B; x.border = thin
         if AC[i + 1][2]: x.number_format = AC[i + 1][2]
@@ -552,175 +550,12 @@ CLS_COLORS = [(OOL, ACC['ool']), (GCGR, ACC['gcgr']), ('Cyclicals', ACC['cyc']),
 for nm_, colr in CLS_COLORS:
     A.conditional_formatting.add(f'L{R0}:L{R1}', FormulaRule(formula=[f'$L{R0}="{nm_}"'], fill=fill(colr), font=Font(color='FFFFFF' if nm_ not in ('Sem dados',) else INK, bold=True)))
 
-# ---------------- Painel ----------------
-P['A1'] = 'Price Tracker'; P['A1'].font = Font(name='Aptos Display', bold=True, size=24, color=INK)
-P['A2'] = '=" Atualizado em "&TEXT(TODAY(),"dd/mm/")&YEAR(TODAY())&" · "&COUNTA(' + f"{QA}A{R0}:A{R1}" + ')&" ações · regras na aba Regras"'; P['A2'].font = F_S
-P.column_dimensions['A'].width = 4
-CL_RG, RT_RG, TK_RG = f"{QC}{col_rg('CLS')}", f"{QC}{col_rg('RET')}", f"{QA}$A${R0}:$A${R1}"
-kpis = [('Compounders redondos', f'=SUM({QC}{col_rg("COMP")})', '0B6E4F'), ('Quase lá', f'=SUM({QC}{col_rg("QL")})', '1F6E8C'),
-        ('Ótima em pânico', f'=SUM({QC}{col_rg("PAN")})', 'B42318'), ('Pequenas que compõem', f'=SUM({QC}{col_rg("PEQ")})', '7A5C00'),
-        ('Opportunity of Lifetime', f'=COUNTIFS({CL_RG},"{OOL}",{QC}{col_rg("DUP")},0)', ACC['ool']), ('Excepcionais', f'=SUM({QC}{col_rg("EXC")})', ACC['exc'])]
-for i, (lab, f, colr) in enumerate(kpis):
-    c = [3, 12, 21, 30, 39, 48][i]   # colunas de cada bloco
-    x = P.cell(4, c, f); x.font = Font(name='Aptos Display', bold=True, size=22, color=colr)
-    y = P.cell(5, c, lab); y.font = Font(name='Aptos', size=9, color=MUTED, bold=True)
-TKc = lambda m: f'IFERROR(INDEX({TK_RG},{m}),"")'
-
-
-NAMES = f"'Ações'!$B${R0}:$B${R1}"
-DESC_FONT = Font(name='Aptos', size=9, italic=True, color=MUTED)
-
-
-COLS = ['#', 'Ação', 'Empresa', 'Indústria', 'Valor (US$ bi)', 'Peso', 'Nota', 'ROIC', 'Cresc.', 'Cresc. hist.', 'Escad.', 'P/L', 'P/E justo', 'Retorno', 'Falta cair', 'Bagger', '⚠']
-FMT = [None, None, None, None, '#,##0', PCT, NUM1, PCT0, PCT0, PCT0, '0', NUM1, NUM1, PCT0, PCT0, '0', None]
-WID = [4, 9, 24, 22, 8, 7, 6, 7, 7, 8, 6, 7, 8, 8, 8, 7, 3]
-NW = len(COLS)
-
-
-def header(r0, c0, title, colr, desc, show_peso):
-    P.merge_cells(start_row=r0 - 1, start_column=c0, end_row=r0 - 1, end_column=c0 + NW - 1)
-    d = P.cell(r0 - 1, c0, desc); d.font = DESC_FONT; d.alignment = Alignment(wrap_text=True, vertical='bottom')
-    P.merge_cells(start_row=r0, start_column=c0, end_row=r0, end_column=c0 + NW - 1)
-    x = P.cell(r0, c0, title); x.font = Font(name='Aptos', bold=True, size=12, color='FFFFFF'); x.fill = fill(colr)
-    for j, h in enumerate(COLS):
-        if h == 'Peso' and not show_peso: continue
-        y = P.cell(r0 + 1, c0 + j, h); y.font = Font(name='Aptos', size=9, bold=True, color=MUTED); y.border = thin
-
-
-def row_vals(m, wcol):
-    """mesmas colunas em todas as listas: ação, empresa, peso, ROIC, crescimento, P/L atual, P/E justo, retorno, bagger, alerta"""
-    g = lambda key: f'=IFERROR(INDEX({QC}{col_rg(key)},{m}),"")'
-    return [None, f'={TKc(m)}', f'=IFERROR(INDEX({NAMES},{m}),"")', f"=IFERROR(INDEX('Ações'!$D${R0}:$D${R1},{m}),\"\")", f"=IFERROR(INDEX('Ações'!$F${R0}:$F${R1},{m}),\"\")", g(wcol) if wcol else None, g('NOTA'), g('ROIC'), g('GC'), g('GHM'), g('ESC'), g('PL'), g('PEJ'),
-            f'=IFERROR(INDEX({RT_RG},{m}),"")', f'=IFERROR(IF(INDEX({QC}{col_rg("FALTA")},{m})<0,INDEX({QC}{col_rg("FALTA")},{m}),""),"")', f"=IFERROR(INDEX('Ações'!$Q${R0}:$Q${R1},{m}),\"\")",
-            f'=IFERROR(IF(INDEX({QC}{col_rg("FLAG")},{m})<>"","⚠",""),"")']
-
-
-def write_row(r, c0, k_formula, vals):
-    vals[0] = k_formula
-    for j, v in enumerate(vals):
-        if v is None: continue
-        x = P.cell(r, c0 + j, v); x.font = F_BB if j == 1 else F_B; x.border = thin
-        x.number_format = FMT[j] or 'General'
-        if j == NW - 1: x.font = Font(name='Aptos', size=10, bold=True, color='B42318')
-        if j == 0: x.alignment = Alignment(horizontal='center'); x.font = F_S
-
-
-def ranked(r0, c0, title, colr, wk, desc, n=20):
-    """lista com peso (Top 20, Especiais, JG+G), ORDENADA PELO PESO"""
-    header(r0, c0, title, colr, desc, True)
-    wur = f"{QC}{col_rg('WU' + wk[1:])}"
-    for k in range(1, n + 1):
-        write_row(r0 + 1 + k, c0, k, row_vals(f'MATCH(LARGE({wur},{k}),{wur},0)', wk))
-    P.cell(r0 + n + 2, c0 + 4, 'Soma').font = F_S  # noqa
-    P.cell(r0 + n + 2, c0 + 5, f'=SUM({L(c0 + 5)}{r0 + 2}:{L(c0 + 5)}{r0 + n + 1})').number_format = PCT0
-
-
-def opened(r0, c0, title, colr, ok, desc, n=40, wsort=None, wcol=None):
-    """lista aberta: pelo peso quando tem (Excepcionais), senão pelo retorno esperado"""
-    header(r0, c0, title, colr, desc, bool(wcol))
-    key = f"{QC}{col_rg(wsort or ok)}"
-    for k in range(1, n + 1):
-        write_row(r0 + 1 + k, c0, f'=IFERROR(IF(ISNUMBER(LARGE({key},{k})),{k},""),"")', row_vals(f'MATCH(LARGE({key},{k}),{key},0)', wcol))
-
-
-DESC = {
-    'top': 'As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor (as melhores do setor ficam, com peso menor).',
-    'esp': 'Retorno esperado > 20% e bear > −10%. Primeiro as com ROIC > 30% e crescimento > 30%; completa até 20 pela maior nota 1,5 × ROIC + crescimento. Mesmo peso e tetos da Top 20 (10% por ação, 40% por setor).',
-    'jg': 'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L (menor é melhor). Sem financeiras, utilities e cíclicas.',
-    'ool': 'Classe Opportunity of Lifetime: crescimento > 15%, ROIC > 12% e retorno esperado > 20%. Ordem: retorno esperado.',
-    'hr': 'Opportunity of Lifetime com ROIC acima de 30%. Ordem: retorno esperado.',
-    'hg': 'Opportunity of Lifetime com crescimento acima de 30%. Ordem: retorno esperado.',
-    'exc': 'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado. Ordem: peso.',
-    'gcgr': 'Good Companies, Great Returns: boas empresas com retorno esperado alto, um degrau abaixo da OoL. Ordem: retorno esperado.',
-    'ebf': 'Excellent but Fair: empresas ótimas (crescimento e ROIC altos, crescimento estável), mas o retorno esperado ficou entre 8% e 20%. Ordem: retorno esperado.',
-    'comp': 'Grandes (≥ US$ 50 bi) com Nota de boa empresa ≥ 4 (ROIC vs pares, ROIC incremental, pista, moat, gestão por ação, existir em 15 anos). Ordem: retorno esperado. Falta cair = queda até o retorno chegar a 20%.',
-    'ql': 'Compounders redondos com retorno esperado abaixo de 20%, a no máximo 30% de queda do preço de entrada. Ordem: os mais perto de entrar.',
-    'pan': 'Nota ≥ 3,5, ação caiu 25% ou mais em 12 meses e o lucro do último ano subiu: o mercado em pânico com uma empresa que segue entregando. Ordem: maior queda.',
-    'peq': 'US$ 2–30 bi, Nota ≥ 4, crescimento ≥ 12% e P/L até 1,3× o justo: as que podem ficar muito grandes. Ordem: retorno esperado.',
-    'cyc': 'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras). Ficam fora das carteiras. Ordem: retorno esperado.'}
-B0 = (2, 20, 38)
-RA_, RB_ = 8, 8 + 44
-for (k, title, colr, dk), c0 in zip([('O_COMP', 'Compounders redondos', '0B6E4F', 'comp'), ('O_QL', 'Quase lá', '1F6E8C', 'ql'),
-                                     ('O_PAN', 'Ótima em pânico', 'B42318', 'pan')], B0):
-    opened(RA_, c0, title, colr, k, DESC[dk], n=40)
-ranked(RB_, B0[0], 'Top 20 · a carteira (máx. 40% por setor)', ACC['top'], 'WT', DESC['top'])
-ranked(RB_, B0[1], 'Especiais · as 20 mais excepcionais (máx. 40% por setor)', ACC['esp'], 'WE', DESC['esp'])
-ranked(RB_, B0[2], 'JG+G · Fórmula Mágica com crescimento (máx. 40% por setor)', ACC['jg'], 'WJ', DESC['jg'])
-R2, R3, R4 = RB_ + 26, RB_ + 26 + 44, RB_ + 26 + 88
-R5 = RB_ + 26 + 132
-for (r0, c0), (k, title, colr, dk, ws, wc) in zip([(R2, B0[0]), (R2, B0[1]), (R2, B0[2]), (R3, B0[0]), (R3, B0[1]), (R3, B0[2]), (R4, B0[0]), (R4, B0[1])],
-        [('O_PEQ', 'Pequenas que compõem', '7A5C00', 'peq', None, None),
-         ('O_OOL', 'Opportunity of Lifetime', ACC['ool'], 'ool', None, None), ('O_GCGR', 'Good Companies, Great Returns', ACC['gcgr'], 'gcgr', None, None),
-         ('O_EBF', 'Excellent but Fair', '1F6E8C', 'ebf', None, None),
-         ('O_HR', 'High ROIC', ACC['hr'], 'hr', None, None), ('O_HG', 'High Growth', ACC['hg'], 'hg', None, None),
-         ('O_EXC', 'Excepcionais', ACC['exc'], 'exc', 'WXU', 'WX')]):
-    opened(r0, c0, title, colr, k, DESC[dk], wsort=ws, wcol=wc)
-opened(R4, B0[2], 'Cyclicals', ACC['cyc'], 'O_CYC', DESC['cyc'])
-for c0 in B0:
-    for j, wd in enumerate(WID): P.column_dimensions[L(c0 + j)].width = wd
-    P.column_dimensions[L(c0 + NW)].width = 3
-for r0 in (RA_ - 1, RB_ - 1, R2 - 1, R3 - 1, R4 - 1): P.row_dimensions[r0].height = 36
-P.sheet_view.showGridLines = False
-
-# ---------------- Carteira ----------------
-K['A1'] = 'Minha carteira'; K['A1'].font = F_T
-K['A2'] = 'Digite os tickers da carteira na coluna A. Eles precisam estar também na aba Ações.'; K['A2'].font = F_S
-KC = [('Ticker', 10), ('Empresa', 26), ('Classe', 26), ('Listas', 30), ('Retorno esperado', 10), ('ROIC', 9), ('Crescimento', 10), ('P/L', 7), ('Atenção', 16), ('Bagger #', 8)]
-for i, (h, wd) in enumerate(KC): head(K, 4, i + 1, h, w=wd)
-for i in range(30):
-    r = 5 + i; t = CART[i] if i < len(CART) else None
-    x = K.cell(r, 1, t); x.font = F_BB; x.fill = fill('FFF4C2')
-    m = f'MATCH(A{r},{TK_RG},0)'
-    src = {2: 'B', 3: 'L', 4: 'M', 5: 'K', 6: 'I', 7: 'H', 8: 'G', 9: 'N', 10: 'Q'}
-    for c, sc in src.items():
-        x = K.cell(r, c, f'=IF(A{r}="","",IFERROR(INDEX({QA}${sc}${R0}:${sc}${R1},{m}),"não está na aba Ações"))'); x.font = F_B; x.border = thin
-        x.number_format = {5: PCT, 6: PCT, 7: PCT, 8: NUM1}.get(c, 'General')
-K.freeze_panes = 'B5'
-for nm_, colr in CLS_COLORS:
-    K.conditional_formatting.add('C5:C34', FormulaRule(formula=[f'$C5="{nm_}"'], fill=fill(colr), font=Font(color='FFFFFF' if nm_ != 'Sem dados' else INK, bold=True)))
-
-# ---------------- Bagger Rank (da V2, editável) ----------------
-BG['A1'] = 'Bagger Rank'; BG['A1'].font = F_T
-BG['A2'] = 'Informação de qualidade (não entra na regra). Edite à vontade.'; BG['A2'].font = F_S
-head(BG, 4, 1, 'Ticker', w=12); head(BG, 4, 2, 'Posição', w=10)
+# ---------------- Bagger (lista simples na aba Regras, colunas X:Y; informativo, não entra na regra) ----------------
+head(G, 4, 24, 'Bagger: ticker', w=12); head(G, 4, 25, 'Bagger: posição', w=10)
 for i, (t, rk) in enumerate(BAGGER):
-    x = BG.cell(5 + i, 1, t); x.font = F_BB; x.fill = fill('FFF4C2'); y = BG.cell(5 + i, 2, rk); y.font = F_B; y.fill = fill('FFF4C2')
-BG.freeze_panes = 'A5'
+    x = G.cell(5 + i, 24, t); x.font = F_BB; x.fill = fill('FFF4C2'); y = G.cell(5 + i, 25, rk); y.font = F_B; y.fill = fill('FFF4C2')
 
-# ---------------- Histórico (carteira-sombra) ----------------
-H['A1'] = 'Histórico da Top 20'; H['A1'].font = F_T
-H['A2'] = 'A cada trimestre: copie o bloco "Hoje" e cole COMO VALORES na primeira linha vazia da tabela de baixo.'; H['A2'].font = F_S
-H['H4'] = 'S&P 500 (SPY) hoje'; H['H4'].font = F_BB
-H['I4'] = '=IFERROR(_xldudf_WISEPRICE("SPY","Price"),"")'; H['I4'].number_format = '#,##0.00'
-for j, (h, wd) in enumerate([('Data', 11), ('Ticker', 10), ('Peso', 8), ('Preço', 10), ('SPY', 10)]): head(H, 4, 1 + j, h, color=ACC['top'], w=wd)
-H.cell(3, 1, 'Hoje').font = F_BB
-for k in range(1, 21):
-    r = 4 + k; m = f"MATCH({k},{QC}{col_rg('RKT')},0)"
-    vals = ['=TODAY()', f'=IFERROR(INDEX({TK_RG},{m}),"")', f'=IFERROR(INDEX({QC}{col_rg("WT")},{m}),"")',
-            f"=IFERROR(INDEX('Ações'!$E${R0}:$E${R1},{m}),\"\")", '=$I$4']
-    for j, v in enumerate(vals):
-        x = H.cell(r, 1 + j, v); x.font = F_B; x.number_format = ['dd/mm/yyyy', 'General', PCT, '#,##0.00', '#,##0.00'][j]
-T0 = 28
-H.cell(T0 - 1, 1, 'Registro (cole aqui, como valores)').font = F_BB
-for j, (h, wd) in enumerate([('Data', 11), ('Ticker', 10), ('Peso', 8), ('Preço de entrada', 10), ('SPY na entrada', 10), ('Preço hoje', 10), ('Retorno', 9), ('Contribuição', 10)]):
-    head(H, T0, 1 + j, h, w=wd)
-for r in range(T0 + 1, T0 + 801):
-    H.cell(r, 6, f"=IF(B{r}=\"\",\"\",IFERROR(INDEX('Ações'!$E${R0}:$E${R1},MATCH(B{r},{TK_RG},0)),\"\"))").number_format = '#,##0.00'
-    H.cell(r, 7, f'=IF(OR(B{r}="",NOT(ISNUMBER(F{r}))),"",F{r}/D{r}-1)').number_format = PCT
-    H.cell(r, 8, f'=IF(ISNUMBER(G{r}),C{r}*G{r},"")').number_format = PCT
-    for c in (1, 3, 4, 5): H.cell(r, c).number_format = ['dd/mm/yyyy', None, PCT, '#,##0.00', '#,##0.00'][[1, 2, 3, 4, 5].index(c)] or 'General'
-RG_ = lambda c: f'${c}${T0 + 1}:${c}${T0 + 800}'
-for j, (h, wd) in enumerate([('Carteira de', 11), ('Retorno da carteira', 11), ('S&P 500 no período', 11), ('Diferença', 10)]): head(H, T0, 11 + j, h, color=ACC['top'], w=wd)
-for i in range(40):
-    r = T0 + 1 + i
-    H.cell(r, 11, f'=IFERROR(MIN({RG_("A")}),"")' if i == 0 else f'=IFERROR(IF(_xlfn.MINIFS({RG_("A")},{RG_("A")},">"&K{r - 1})=0,"",_xlfn.MINIFS({RG_("A")},{RG_("A")},">"&K{r - 1})),"")').number_format = 'dd/mm/yyyy'
-    if i == 0: H.cell(r, 11).value = f'=IF(COUNT({RG_("A")})=0,"",MIN({RG_("A")}))'
-    H.cell(r, 12, f'=IF(K{r}="","",IFERROR(SUMIFS({RG_("H")},{RG_("A")},K{r})/SUMIFS({RG_("C")},{RG_("A")},K{r}),""))').number_format = PCT
-    H.cell(r, 13, f'=IF(K{r}="","",IFERROR($I$4/AVERAGEIFS({RG_("E")},{RG_("A")},K{r})-1,""))').number_format = PCT
-    H.cell(r, 14, f'=IF(AND(ISNUMBER(L{r}),ISNUMBER(M{r})),L{r}-M{r},"")').number_format = PCT
-H.freeze_panes = 'A5'
-
-for ws, colr in ((P, '0F4C81'), (A, '0B6E4F'), (K, '0B6E4F'), (H, '0F4C81'), (BG, 'C9A227'), (G, 'C9A227'), (C, '9CA3AF'), (D, '9CA3AF')):
+for ws, colr in ((A, '0B6E4F'), (G, 'C9A227'), (C, '9CA3AF'), (D, '9CA3AF')):
     ws.sheet_properties.tabColor = colr
 wb.calculation.fullCalcOnLoad = True
 wb.save(OUT)

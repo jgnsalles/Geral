@@ -41,7 +41,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .sres div{padding:5px 8px;cursor:pointer;display:flex;gap:8px}
 .sres div:hover,.sres div.on{background:var(--hl)}
 .sres b{font-family:var(--f-num);min-width:56px}
-label.chk{display:flex;gap:5px;align-items:center;font-size:12px;color:var(--ink2);cursor:pointer}
 /* abas */
 .tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--rule);margin-top:10px}
 .tabs button{border:0;background:none;padding:7px 12px;color:var(--ink2);border-bottom:2px solid transparent;white-space:nowrap;font-weight:500}
@@ -81,9 +80,6 @@ td.n{font-family:var(--f-num);font-variant-numeric:tabular-nums}
 .dh h2{margin:0;font-size:18px;font-family:var(--f-num)}
 .dh .meta{color:var(--ink2);font-size:12px}
 .dbody{overflow:auto;padding:12px 16px;flex:1;min-width:0}
-.dtabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--rule);padding:0 16px}
-.dtabs button{border:0;background:none;padding:7px 10px;color:var(--ink2);border-bottom:2px solid transparent;white-space:nowrap}
-.dtabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
 .pill{display:inline-block;padding:2px 8px;border-radius:2px;font-size:11px;font-weight:600;color:#fff;background:var(--c,var(--ink2))}
 .tag{display:inline-block;border:1px solid var(--rule);padding:1px 6px;border-radius:2px;font-size:11px;margin:2px 4px 2px 0}
 .tag.w{border-color:var(--neg);color:var(--neg)}
@@ -93,15 +89,8 @@ td.n{font-family:var(--f-num);font-variant-numeric:tabular-nums}
 .kv{display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:12.5px}
 .kv span:nth-child(odd){color:var(--ink2)}
 .kv span:nth-child(even){font-family:var(--f-num);text-align:right}
-.code{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
-.code div{border:1px solid var(--rule);padding:4px 8px;text-align:center;min-width:86px}
-.code b{display:block;font-family:var(--f-num);font-size:16px;color:var(--acc)}
-.code span{font-size:10.5px;color:var(--ink2)}
-.formula{font-family:var(--f-num);background:var(--panel2);padding:8px 10px;border-left:3px solid var(--acc);margin:8px 0;overflow-x:auto;white-space:nowrap}
 .note{font-size:11.5px;color:var(--ink2);margin:6px 0 0;max-width:90ch}
 .caveat{border-left:3px solid var(--warn);background:var(--hl);padding:6px 10px;font-size:12px;margin:10px 0}
-.sl{display:grid;grid-template-columns:150px 1fr 70px;gap:8px;align-items:center;font-size:12px;margin:4px 0}
-.sl input{width:100%}
 svg{display:block;width:100%;height:auto;max-width:100%}
 svg text{fill:var(--ink2);font-family:var(--f-num);font-size:10px}
 .bar-row{display:grid;grid-template-columns:minmax(90px,200px) 1fr 56px;gap:8px;align-items:center;font-size:12px;margin:3px 0}
@@ -110,36 +99,22 @@ svg text{fill:var(--ink2);font-family:var(--f-num);font-size:10px}
 .bar-row .b i.over{background:var(--neg)}
 .bar-row span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.chip{border:1px solid var(--rule);padding:3px 8px;font-family:var(--f-num);display:inline-flex;gap:6px;align-items:center}
-.chip button{border:0;background:none;color:var(--ink2);padding:0}
-textarea{width:100%;min-height:70px;background:var(--bg);border:1px solid var(--rule);padding:6px;font-family:var(--f-num);font-size:12px}
 .drop{position:fixed;inset:0;background:rgba(180,83,9,.15);border:3px dashed var(--acc);z-index:60;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:var(--acc)}
 .foot{margin-top:18px;color:var(--ink2);font-size:11.5px;border-top:1px solid var(--rule);padding-top:8px}
 /* métodos A/B, seleção e Minha carteira */
 .mb{display:inline-block;font-family:var(--f-num);font-size:10px;font-weight:600;padding:0 5px;border-radius:2px;margin-right:3px;border:1px solid var(--rule);color:var(--ink2);line-height:16px}
-.mb.ab{background:var(--pos);border-color:var(--pos);color:#fff}
+.mb.ab,.kv .mb.ab{background:var(--pos);border-color:var(--pos);color:#fff}
 .mb.a{border-color:var(--acc);color:var(--acc)} .mb.b{border-color:var(--acc2);color:var(--acc2)}
 tr.ab td{background:color-mix(in srgb,var(--pos) 9%,transparent)}
 tr.ab td:first-child{box-shadow:inset 3px 0 0 var(--pos)}
 button.sel{border:0;background:none;color:var(--ink2);font-size:15px;padding:0 4px;line-height:1}
 button.sel.on{color:var(--acc)}
-.mode{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
-.mode button{border:0;background:var(--panel2);padding:4px 9px;font-size:12px;border-right:1px solid var(--rule)}
-.mode button:last-child{border-right:0}
-.mode button.on{background:var(--acc);color:#111;font-weight:600}
-.cnt{font-family:var(--f-num);font-size:11px;color:var(--ink2);margin-left:4px}
 input.wi{width:64px;text-align:right;border:1px solid var(--rule);background:var(--bg);padding:2px 4px;font-family:var(--f-num)}
 .btn.x{padding:1px 6px}
 .btn[disabled]{opacity:.5;cursor:default}
 .h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin:14px 0 4px}
-.hcard{border-top:3px solid var(--c,var(--acc))}
-.hcard h4 i{font-style:normal;color:var(--c,var(--ink2));margin-left:4px}
-.hl{display:grid;grid-template-columns:62px 1fr auto;gap:8px;align-items:center;padding:3px 0;border-bottom:1px solid var(--rule);font-size:12.5px}
-.hl:last-child{border-bottom:0}
-.hl .tk{font-family:var(--f-num);font-weight:600;color:var(--acc2);cursor:pointer}
-.hl .why{color:var(--ink2);min-width:0}
 svg.spk{display:inline-block;width:auto;vertical-align:middle}
-@media (max-width:640px){.src{display:none}.search input{width:150px}.sl{grid-template-columns:110px 1fr 56px}}
+@media (max-width:640px){.src{display:none}.search input{width:150px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <div class="wrap">
@@ -148,7 +123,6 @@ svg.spk{display:inline-block;width:auto;vertical-align:middle}
     <span class="src" id="src"></span>
     <span class="sp"></span>
     <div class="search"><input id="q" placeholder="/ buscar ticker ou empresa" autocomplete="off" aria-label="Buscar ação"><div class="sres" id="sres" hidden></div></div>
-    <label class="chk"><input type="checkbox" id="hidew"> esconder ⚠</label>
     <button class="btn pri" id="load">Carregar planilha</button>
     <input type="file" id="file" accept=".xlsx,.xlsm" hidden>
     <button class="btn" id="reset" hidden>Dados embutidos</button>
@@ -209,22 +183,15 @@ function parseWorkbook(wb){
   return{stocks,years,rules,lists,adr,fx,codes}}
 
 /* ---------- estado ---------- */
-let M=null,BY={},VIEW=ls.get('pt.view2','hoje'),LIST=ls.get('pt.list','comp'),SORT={},COMPARE=JSON.parse(ls.get('pt.cmp','[]')||'[]'),DTAB='resumo',CUR=null;
+let M=null,BY={},VIEW=ls.get('pt.view3','ideias'),LIST=ls.get('pt.list3','top'),SORT={},CUR=null;
 const LISTS=[
- {k:'comp',n:'Compounders redondos',c:'--top',d:s=>s.comp===1,desc:'Só observação (não é carteira; como carteira rendeu 12% a.a. no backtest, abaixo do S&P). Grandes (≥ US$ 50 bi) com Nota de boa empresa ≥ 4: ROIC acima dos pares, ROIC incremental, pista de crescimento acima do que o preço exige, moat, gestão por ação e chance de existir em 15 anos. Sem cíclicas, sem consenso atípico e sem step change reprovado. Falta cair = queda até o retorno esperado chegar a 20%.'},
- {k:'ql',n:'Quase lá',c:'--esp',d:s=>s.ql===1,desc:'Compounders redondos com retorno esperado abaixo de 20%, a no máximo 30% de queda do preço de entrada. Ordem sugerida: clique em "Falta cair". Só observação.'},
- {k:'pan',n:'Ótima em pânico',c:'--cyc',d:s=>s.pan===1,desc:'Nota ≥ 3,5, ação caiu 25% ou mais em 12 meses e o EPS do último ano subiu. Só observação (como carteira rendeu 12% a.a. no backtest): é um ponto de partida para estudar, não um sinal de compra.'},
- {k:'peq',n:'Pequenas que compõem',c:'--gcgr',d:s=>s.peq===1,desc:'US$ 2–30 bi, Nota ≥ 4, crescimento ≥ 12% e P/L até 1,3× o P/E justo. Podem ficar muito grandes. Só observação (como carteira rendeu 7% a.a. no backtest).'},
- {k:'top',n:'Top 20',c:'--top',w:'wt',b:s=>isN(s.wtB),wb:'wtB',d:s=>isN(s.wt),desc:'Carteira. As 20 de maior retorno esperado entre as de qualidade (ROIC ≥ 12%, crescimento ≥ 15%, P/L ≥ 4, valor de mercado ≥ US$ 20 bi, sem cíclicas). Peso pela raiz do valor de mercado, teto de 10% por ação e de 40% por setor.'},
- {k:'esp',n:'Especiais',c:'--esp',w:'we',b:s=>isN(s.weB),wb:'weB',d:s=>isN(s.we),desc:'Carteira. As 20 mais perto de ter ROIC de 30% e crescimento de 30% ao mesmo tempo, entre as de qualidade com retorno > 20%. Peso pela raiz do valor de mercado × Nota de boa empresa.'},
- {k:'jg',n:'JG+G',c:'--jg',w:'wj',b:s=>isN(s.wjB),wb:'wjB',d:s=>isN(s.wj),desc:'Fórmula Mágica com crescimento: soma das posições em ROIC, crescimento e P/L. Sem financeiras, utilities e cíclicas.'},
- {k:'ool',n:'OoL',c:'--ool',b:s=>s.clsB===OOL&&!exB(s),d:s=>s.cls===OOL&&!s.dup,desc:'Opportunity of Lifetime: crescimento > 15%, ROIC > 12%, crescimento estável e retorno esperado > 20%.'},
- {k:'gcgr',n:'GCGR',c:'--gcgr',b:s=>s.clsB===GCGR&&!exB(s),d:s=>s.cls===GCGR&&!s.dup,desc:'Good Companies, Great Returns: boas empresas com retorno alto, um degrau abaixo da OoL.'},
- {k:'ebf',n:'Excellent but Fair',c:'--ebf',b:s=>s.clsB===EBF&&!exB(s),d:s=>s.cls===EBF&&!s.dup,desc:'Empresas ótimas (crescimento e ROIC altos), mas com retorno esperado entre 8% e 20%.'},
- {k:'hr',n:'High ROIC',c:'--hr',b:s=>s.clsB===OOL&&!exB(s)&&s.ru>(M.rules.hrc??.3),d:s=>s.hr===1,desc:'Opportunity of Lifetime com ROIC acima de 30%.'},
- {k:'hg',n:'High Growth',c:'--hg',b:s=>s.clsB===OOL&&!exB(s)&&s.gB>(M.rules.hgc??.3),d:s=>s.hg===1,desc:'Opportunity of Lifetime com crescimento acima de 30%.'},
- {k:'exc',n:'Excepcionais',c:'--exc',w:'wx',b:s=>isN(s.wxB),wb:'wxB',d:s=>s.exc===1,desc:'Qualidade com ROIC > 30% e crescimento > 30% ao mesmo tempo. Peso pela raiz do valor de mercado, sem teto.'},
- {k:'cyc',n:'Cyclicals',c:'--cyc',b:s=>s.clsB==='Cyclicals'&&s.dup!==1,d:s=>s.cls==='Cyclicals'&&!s.dup,desc:'Seriam OoL ou GCGR, mas estão num subsetor cíclico (lista na aba Regras do Excel). Ficam fora das carteiras.'}];
+ {k:'top',n:'Top 20',c:'--top',w:'wt',wb:'wtB',d:s=>isN(s.wt),b:s=>isN(s.wtB),desc:'Carteira: as 20 de maior retorno esperado entre as de qualidade com valor ≥ US$ 20 bi. Raiz do valor, teto de 10% por ação e 40% por setor.'},
+ {k:'esp',n:'Especiais',c:'--esp',w:'we',wb:'weB',d:s=>isN(s.we),b:s=>isN(s.weB),desc:'Carteira: as 20 mais perto de ROIC 30% e crescimento 30%, com retorno > 20%. Raiz do valor × Nota.'},
+ {k:'jg',n:'JG+G',c:'--jg',w:'wj',wb:'wjB',d:s=>isN(s.wj),b:s=>isN(s.wjB),desc:'Carteira: soma das posições em ROIC, crescimento e P/L. Sem financeiras, utilities e cíclicas.'},
+ {k:'ool',n:'OoL',c:'--ool',d:s=>s.cls===OOL&&!s.dup,b:s=>s.clsB===OOL&&!exB(s),desc:'Opportunity of Lifetime: crescimento > 15%, ROIC > 12%, crescimento estável, retorno > 20%.'},
+ {k:'hr',n:'High ROIC',c:'--hr',d:s=>s.hr===1,b:s=>s.clsB===OOL&&!exB(s)&&s.ru>(M.rules.hrc??.3),desc:'OoL com ROIC > 30%.'},
+ {k:'hg',n:'High Growth',c:'--hg',d:s=>s.hg===1,b:s=>s.clsB===OOL&&!exB(s)&&s.gB>(M.rules.hgc??.3),desc:'OoL com crescimento > 30%.'},
+ {k:'exc',n:'Excepcionais',c:'--exc',w:'wx',wb:'wxB',d:s=>s.exc===1,b:s=>isN(s.wxB),desc:'Qualidade com ROIC > 30% e crescimento > 30%. Raiz do valor, sem teto.'}];
 /* ---------- método B: modelo histórico determinístico (o testado no backtest), calculado aqui com os mesmos dados da planilha ---------- */
 /* Crescimento = mediana dos 5 últimos crescimentos anuais do EPS (≥ 3 válidos); zGrowth = desvio ÷ mediana; ROIC = o mesmo ROIC usado (triangulado / ROE);
    g pelo ranking do crescimento histórico; P/L = preço ÷ EPS do último exercício. Classe pela mesma tabela de códigos (zROIC desligado = 'N'). */
@@ -279,9 +246,6 @@ function computeB(m){const R=m.rules,codes=m.codes||{};const S=m.stocks;
   Object.entries(capW(jg.map(s=>({t:s.t,v:Math.sqrt(s.mc)})),R.teto??.1)).forEach(([t,w])=>BY[t].wjB=w);
   S.forEach(s=>{s.cons=[s.wt,s.we,s.wj,s.wtB,s.weB,s.wjB].filter(isN).length})}
 
-/* modo de leitura: A = consenso (planilha), B = histórico (backtest), A+B = interseção */
-let MODE=ls.get('pt.mode','u');
-const MODES=[['u','A ∪ B'],['a','Só A'],['b','Só B'],['ab','A+B']];
 function inA(L,s){return!!L.d(s)}
 function inB(L,s){return L.b?!!L.b(s):false}
 function badge(L,s){const a=inA(L,s),b=inB(L,s);return a&&b?'<span class="mb ab" title="Nos dois métodos">A+B</span>':a?'<span class="mb a" title="Só no método A (consenso)">A</span>':b?'<span class="mb b" title="Só no método B (histórico)">B</span>':''}
@@ -301,7 +265,7 @@ async function pfInit(){if(!window.claude||typeof claude.use!=='function'){pfSta
     PFdoc=db.collection('data/users/'+id).doc('carteira');
     PFdoc.onSnapshot(snap=>{if(!snap.fromCache)clearTimeout(tm);
       const d=snap.exists?snap.data():null;
-      if(d&&d.items&&(d.upd||0)>(PF.upd||0)){PF={items:JSON.parse(JSON.stringify(d.items)),upd:d.upd};ls.set('pt.pf',JSON.stringify(PF));renderTabs();if(VIEW==='carteira'||VIEW==='hoje')render();else if(CUR)openStock(CUR,DTAB,true)}
+      if(d&&d.items&&(d.upd||0)>(PF.upd||0)){PF={items:JSON.parse(JSON.stringify(d.items)),upd:d.upd};ls.set('pt.pf',JSON.stringify(PF));renderTabs();render()}
       else if(!snap.fromCache&&!snap.hasPendingWrites&&(!d||(d.upd||0)<(PF.upd||0))&&Object.keys(PF.items).length)pfFlush();
       if(!snap.fromCache)pfStatus('salvo na sua conta (privado; vale em qualquer aparelho)')},
       e=>{clearTimeout(tm);PFdoc=null;pfStatus('conta indisponível ('+(e&&e.code||'erro')+'): salvo só neste navegador')})}
@@ -323,50 +287,48 @@ function vCarteira(){const ts=Object.keys(PF.items).filter(t=>BY[t]);const gone=
   const port=ts.filter(t=>PF.items[t].w>0),bank=ts.filter(t=>!(PF.items[t].w>0));const rec=recW(port);
   const sum=port.reduce((a,t)=>a+PF.items[t].w,0);const W=t=>(PF.items[t].w||0)/(sum||1);
   const wavg=f=>{let a=0,b=0;port.forEach(t=>{const v=f(BY[t]);if(isN(v)){a+=W(t)*v;b+=W(t)}});return b>0?a/b:null};
-  const cover=f=>port.filter(t=>isN(f(BY[t]))).reduce((a,t)=>a+W(t),0);
   const grp=f=>{const g={};port.forEach(t=>{const k=f(BY[t])||'—';g[k]=(g[k]||0)+W(t)});return Object.entries(g).sort((a,b)=>b[1]-a[1])};
   const ai=aiList(),isAI=s=>ai.includes(s.ind)||ai.includes(s.t);const aiw=port.filter(t=>isAI(BY[t])).reduce((a,t)=>a+W(t),0);
   const barsH=(arr,lim)=>arr.map(([n,v])=>`<div class="bar-row"><span title="${esc(n)}">${esc(n)}</span><span class="b"><i class="${lim&&v>lim+1e-9?'over':''}" style="width:${Math.min(100,v*100)}%"></i></span><span class="num">${P(v)}</span></div>`).join('')||'<p class="note">Sem ações com peso.</p>';
-  const ov=(k,kb)=>[port.filter(t=>isN(BY[t][k])).reduce((a,t)=>a+W(t),0),port.filter(t=>isN(BY[t][kb])).reduce((a,t)=>a+W(t),0),port.filter(t=>isN(BY[t][k])&&isN(BY[t][kb])).reduce((a,t)=>a+W(t),0)];
-  const al=[];if(port.length&&Math.abs(sum-100)>0.05)al.push(`A soma dos pesos é ${N(sum,1)}% (os números abaixo usam os pesos normalizados para 100%).`);
+  const ov=(k,kb)=>[k,kb].map(x=>port.filter(t=>isN(BY[t][x])).reduce((a,t)=>a+W(t),0)).concat(port.filter(t=>isN(BY[t][k])&&isN(BY[t][kb])).reduce((a,t)=>a+W(t),0));
+  /* alertas: só das ações que você tem (carteira e banco) */
+  const al=[];if(port.length&&Math.abs(sum-100)>0.05)al.push(`A soma dos pesos é ${N(sum,1)}% (os números usam os pesos normalizados para 100%).`);
   grp(s=>s.sec).forEach(([n,v])=>{if(v>(M.rules.capw??.4)+1e-9)al.push(`Setor ${esc(n)} com ${P(v)} (a Top 20 limita a ${P(M.rules.capw??.4,0)}).`)});
-  port.forEach(t=>{const s=BY[t];if(W(t)>(M.rules.teto??.1)+1e-9&&port.length>=10)al.push(`${esc(t)} com ${P(W(t))} (teto da Top 20: ${P(M.rules.teto??.1,0)}).`);
+  ts.forEach(t=>{const s=BY[t],w=PF.items[t].w||0;if(w>0&&W(t)>(M.rules.teto??.1)+1e-9&&port.length>=10)al.push(`${esc(t)} com ${P(W(t))} (teto da Top 20: ${P(M.rules.teto??.1,0)}).`);
     if(s.cyc===1)al.push(`${esc(t)} é cíclica (fica fora das carteiras do modelo).`);flags(s).forEach(f=>al.push(`${esc(t)}: ${esc(f)}`));
-    if(isN(s.rb)&&s.rb<0)al.push(`${esc(t)}: retorno no cenário bear ${P(s.rb)}.`)});
+    if(isN(s.rb)&&s.rb<0)al.push(`${esc(t)}: retorno no cenário bear ${P(s.rb)}.`);
+    if(['Moeda diferente (fora)','Excluída (manual)','Excluída (vestuário)','Sem dados'].includes(s.cls))al.push(`${esc(t)}: ${esc(s.cls)}.`);
+    if(!isN(s.ru))al.push(`${esc(t)}: sem ROIC/ROE (balanço faltando).`);if(!(s.est||[]).some(isN))al.push(`${esc(t)}: sem estimativa do consenso.`);
+    if(M.adr[t]&&fxRes(M.adr[t].moeda))al.push(`${esc(t)}: câmbio de reserva (o Wisesheets não devolveu).`);
+    if(w>0&&s.cons===0)al.push(`${esc(t)}: fora das 6 carteiras do modelo.`)});
   gone.forEach(t=>al.push(`${esc(t)} não está na planilha carregada (fica guardada, sem números).`));
   const rowsH=(list,isBank)=>list.map(t=>{const s=BY[t],w=PF.items[t].w||0,r=rec[t];
-    return`<tr class="${s.cons>=4?'ab':''}"><td class="tk l" data-t="${esc(t)}">${esc(t)}</td><td class="nm l" title="${esc(s.nm)}">${esc(s.nm)}</td><td class="ind l" title="${esc(s.ind)}">${esc(s.ind)}</td>
+    return`<tr class="${s.cons>=4?'ab':''}"><td class="tk l" data-t="${esc(t)}">${esc(t)}</td><td class="nm l" title="${esc(s.nm)}">${esc(s.nm)}</td>
      <td class="n"><input class="wi" type="number" min="0" max="100" step="0.5" value="${w}" data-w="${esc(t)}" aria-label="Peso de ${esc(t)} em %"></td><td class="n">${isBank?'—':P(r)}</td>
-     <td class="n">${N(s.mc,0)}</td><td class="n">${P(s.roic,0)}</td><td class="n">${P(s.gc,0)}</td><td class="n">${P(s.gB,0)}</td><td class="n">${P(s.ret,0)}</td><td class="n">${P(s.retB,0)}</td><td class="n${isN(s.rb)&&s.rb<0?' neg':''}">${P(s.rb,0)}</td>
-     <td class="n">${s.cons}/6</td><td>${spark(s.eps)}</td><td class="l">${listTags(s)}</td><td class="${s.flag?'w':''}" title="${esc(s.flag||'')}">${s.flag?'⚠':''}</td><td><button class="btn x" data-rm="${esc(t)}" aria-label="Tirar ${esc(t)}">✕</button></td></tr>`}).join('');
-  const head='<thead><tr><th class="l">Ação</th><th class="l">Empresa</th><th class="l">Indústria</th><th>Peso %</th><th>Recom.</th><th>Valor (US$ bi)</th><th>ROIC</th><th>Cresc. A</th><th>Cresc. B</th><th>Ret. A</th><th>Ret. B</th><th>Bear</th><th title="Em quantas das 6 carteiras (Top 20, Especiais, JG+G × métodos A e B)">Consenso</th><th>EPS</th><th class="l">Está em</th><th>⚠</th><th></th></tr></thead>';
+     <td class="n">${P(s.roic,0)}</td><td class="n">${P(s.gc,0)} · ${P(s.gB,0)}</td><td class="n">${P(s.ret,0)} · ${P(s.retB,0)}</td><td class="n${isN(s.rb)&&s.rb<0?' neg':''}">${P(s.rb,0)}</td>
+     <td class="l">${listTags(s)}</td><td class="${s.flag?'w':''}" title="${esc(s.flag||'')}">${s.flag?'⚠':''}</td><td><button class="btn x" data-rm="${esc(t)}" aria-label="Tirar ${esc(t)}">✕</button></td></tr>`}).join('');
+  const head='<thead><tr><th class="l">Ação</th><th class="l">Empresa</th><th>Peso %</th><th>Recom.</th><th>ROIC</th><th>Cresc. A · B</th><th>Ret. A · B</th><th>Bear</th><th class="l">Listas</th><th>⚠</th><th></th></tr></thead>';
   const [tA,tB,tAB]=ov('wt','wtB'),[eA,eB,eAB]=ov('we','weB'),[jA,jB,jAB]=ov('wj','wjB');
   $('#main').innerHTML=`<div class="kpis"><div><b>${port.length}</b><span>na carteira</span></div><div><b>${bank.length}</b><span>no banco (peso 0)</span></div>
     <div style="--c:var(${port.length&&Math.abs(sum-100)>0.05?'--neg':'--ink'})"><b>${N(sum,1)}%</b><span>soma dos pesos</span></div>
     <div><b>${P(wavg(s=>s.ru))}</b><span>ROIC ponderado ⚠</span></div><div><b>${P(wavg(s=>s.gc))} · ${P(wavg(s=>s.gB))}</b><span>crescimento A · B</span></div>
     <div style="--c:var(--pos)"><b>${P(wavg(s=>s.ret))} · ${P(wavg(s=>s.retB))}</b><span>retorno esperado A · B</span></div><div><b>${P(wavg(s=>s.rb))}</b><span>retorno no bear</span></div></div>
-   <p class="desc">Clique ☆ em qualquer tabela ou ficha para mandar a ação ao banco. Peso 0 = fica no banco; peso &gt; 0 = entra na carteira. <b>Recom.</b> = regra da Top 20 aplicada às ações com peso (raiz do valor de mercado, teto de 10% por ação e 40% por setor; com menos de 10 ações o teto sobe para 1/n). <span class="note" id="pfst">${esc(PFstat)}</span></p>
+   ${al.length?`<div class="caveat"><b>Alertas (${al.length})</b><br>${al.slice(0,40).join('<br>')}</div>`:'<p class="desc pos">Nenhum alerta nas suas ações.</p>'}
    <div class="chips" style="margin:6px 0 10px"><input id="padd" placeholder="ticker + Enter" style="width:130px;border:1px solid var(--rule);background:var(--bg);padding:4px 6px;font-family:var(--f-num)">
     <button class="btn pri" id="prec" ${port.length?'':'disabled'}>Usar recomendado</button><button class="btn" id="peq" ${port.length?'':'disabled'}>Pesos iguais</button>
-    <button class="btn" id="pcsv">Exportar CSV</button><button class="btn" id="pjson">Exportar JSON</button><button class="btn" id="pimp">Importar JSON</button><input type="file" id="pimpf" accept=".json" hidden></div>
+    <button class="btn" id="pcsv">Exportar CSV</button><span class="note" id="pfst">${esc(PFstat)}</span></div>
    <h3 class="h3">Carteira (${port.length})</h3>${port.length?`<div class="tw"><table>${head}<tbody>${rowsH(port.sort((a,b)=>PF.items[b].w-PF.items[a].w),false)}</tbody></table></div>`:'<div class="tw"><div class="empty">Nenhuma ação com peso. Dê um peso maior que 0 a uma ação do banco.</div></div>'}
-   <h3 class="h3">Banco (${bank.length})</h3>${bank.length?`<div class="tw"><table>${head}<tbody>${rowsH(bank,true)}</tbody></table></div>`:'<div class="tw"><div class="empty">Banco vazio. Use ☆ nas listas, na busca ou na ficha.</div></div>'}
-   ${al.length?`<div class="caveat" style="margin-top:12px"><b>Alertas da carteira</b><br>${al.slice(0,40).join('<br>')}</div>`:''}
+   <h3 class="h3">Banco (${bank.length})</h3>${bank.length?`<div class="tw"><table>${head}<tbody>${rowsH(bank,true)}</tbody></table></div>`:'<div class="tw"><div class="empty">Banco vazio. Use ☆ em Ideias, na busca ou na ficha.</div></div>'}
+   <p class="note">Peso 0 = banco; peso &gt; 0 = carteira. Recom. = regra da Top 20 aplicada às suas ações. Linha destacada: em 4+ das 6 carteiras do modelo.</p>
    <div class="grid2" style="margin-top:12px">
     <div class="card"><h4>Setor</h4>${barsH(grp(s=>s.sec),M.rules.capw??.4)}</div>
     <div class="card"><h4>Indústria</h4>${barsH(grp(s=>s.ind).slice(0,12))}</div>
-    <div class="card"><h4>Tema IA: ${P(aiw,0)}</h4>${barsH([['IA',aiw],['Fora do tema',port.length?1-aiw:0]])}<p class="note">Lista de IA editável na aba Riscos da carteira.</p></div>
-    <div class="card"><h4>Moeda de reporte</h4>${barsH(grp(s=>M.adr[s.t]?M.adr[s.t].moeda:'USD'))}</div>
-    <div class="card"><h4>Sobreposição com as carteiras do modelo (% do seu peso)</h4><div class="kv">
+    <div class="card"><h4>Tema IA: ${P(aiw,0)}</h4>${barsH([['IA',aiw],['Fora do tema',port.length?1-aiw:0]])}</div>
+    <div class="card"><h4>Sobreposição com as carteiras do modelo</h4><div class="kv">
      <span>Top 20 · A / B / A+B</span><span>${P(tA,0)} / ${P(tB,0)} / ${P(tAB,0)}</span><span>Especiais · A / B / A+B</span><span>${P(eA,0)} / ${P(eB,0)} / ${P(eAB,0)}</span>
-     <span>JG+G · A / B / A+B</span><span>${P(jA,0)} / ${P(jB,0)} / ${P(jAB,0)}</span><span>Consenso médio (0–6)</span><span>${N(wavg(s=>s.cons),1)}</span></div>
-     <p class="note">Consenso = em quantas das 6 carteiras (3 carteiras × 2 métodos) a ação está. Linhas destacadas: consenso ≥ 4.</p></div>
-    <div class="card"><h4>Médias ponderadas</h4><div class="kv"><span>ROIC/ROE usado ⚠ pode estar errado</span><span>${P(wavg(s=>s.ru))}</span>
-     <span>Crescimento A (consenso) · B (histórico)</span><span>${P(wavg(s=>s.gc))} · ${P(wavg(s=>s.gB))}</span><span>Retorno esperado A · B</span><span>${P(wavg(s=>s.ret))} · ${P(wavg(s=>s.retB))}</span>
-     <span>P/L A · B</span><span>${N(wavg(s=>s.pl),1)} · ${N(wavg(s=>s.plB),1)}</span><span>Retorno no bear</span><span>${P(wavg(s=>s.rb))}</span><span>Nota de boa empresa</span><span>${N(wavg(s=>s.nota),2)}</span>
-     <span>Peso com retorno B calculado</span><span>${P(cover(s=>s.retB),0)}</span></div></div>
+     <span>JG+G · A / B / A+B</span><span>${P(jA,0)} / ${P(jB,0)} / ${P(jAB,0)}</span></div></div>
    </div>`;
-  const m=$('#main');m.querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t,'resumo'));
+  const m=$('#main');m.querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t));
   m.querySelectorAll('input[data-w]').forEach(i=>i.onchange=()=>{setW(i.dataset.w,i.value);vCarteira()});
   m.querySelectorAll('button[data-rm]').forEach(b=>b.onclick=()=>{delete PF.items[b.dataset.rm];pfChanged();vCarteira()});
   $('#prec').onclick=()=>{Object.entries(rec).forEach(([t,w])=>PF.items[t].w=Math.round(w*1000)/10);pfChanged();vCarteira()};
@@ -375,358 +337,78 @@ function vCarteira(){const ts=Object.keys(PF.items).filter(t=>BY[t]);const gone=
   $('#pcsv').onclick=()=>{const hd=['ticker','empresa','peso_pct','peso_recomendado_pct','setor','industria','roic','cresc_A','cresc_B','ret_A','ret_B','bear','consenso','listas'];
     const q=v=>{v=v==null?'':String(v);return/[",;\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
     const lines=[hd.join(',')].concat(ts.map(t=>{const s=BY[t];return[t,s.nm,PF.items[t].w||0,isN(rec[t])?(rec[t]*100).toFixed(1):'',s.sec,s.ind,s.ru,s.gc,s.gB,s.ret,s.retB,s.rb,s.cons,listNames(s).join(' | ')].map(q).join(',')}));
-    saveFile('minha_carteira.csv',lines.join('\n'),'text/csv')};
-  $('#pjson').onclick=()=>saveFile('minha_carteira.json',JSON.stringify({exportado:new Date().toISOString(),itens:PF.items},null,1),'application/json');
-  $('#pimp').onclick=()=>$('#pimpf').click();
-  $('#pimpf').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(x=>{try{const j=JSON.parse(x);const it=j.itens||j.items;if(it&&typeof it==='object'){PF.items=it;pfChanged();vCarteira()}}catch(err){alertMsg('JSON inválido.')}})}}
+    saveFile('minha_carteira.csv',lines.join('\n'),'text/csv')}}
 async function saveFile(name,data,type){try{const d=window.claude&&claude.use?await claude.use('downloads'):null;if(d){await d.save({filename:name,data:new Blob([data],{type})});return}}catch(e){if(e&&e.code&&e.code!=='unavailable')return}
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 function listNames(s){const o=[];LISTS.forEach(L=>{const a=inA(L,s),b=inB(L,s);if(a||b)o.push(L.n+' '+(a&&b?'A+B':a?'A':'B'))});return o}
-function listTags(s){return LISTS.filter(L=>['top','esp','jg','ool','exc'].includes(L.k)).map(L=>{const a=inA(L,s),b=inB(L,s);return a||b?`<span class="mb ${a&&b?'ab':a?'a':'b'}" title="${esc(L.n)}">${esc(L.n.replace('Top 20','T20').replace('Especiais','Esp').replace('Excepcionais','Exc'))}</span>`:''}).join('')}
-
-/* ---------- Hoje: o que olhar ---------- */
-function vHoje(){const S=M.stocks.filter(s=>!(hidew()&&s.flag));const R=M.rules;
-  const line=(s,why)=>`<div class="hl"><span class="tk" data-t="${esc(s.t)}">${esc(s.t)}</span><span class="why">${why}</span>${selBtn(s.t)}</div>`;
-  const ab=[];[['top','Top 20','wt','wtB'],['esp','Especiais','we','weB'],['jg','JG+G','wj','wjB']].forEach(([k,n,a,b])=>S.filter(s=>isN(s[a])&&isN(s[b])).forEach(s=>ab.push([s,n,a,b])));
-  const byT={};ab.forEach(([s,n,a,b])=>{(byT[s.t]=byT[s.t]||{s,ls:[]}).ls.push(`${n} (${P(s[a],1)} · ${P(s[b],1)})`)});
-  const abL=Object.values(byT).sort((x,y)=>y.ls.length-x.ls.length||(y.s.retB||0)-(x.s.retB||0));
-  const comp=S.filter(s=>s.comp===1).sort((a,b)=>(b.ret||0)-(a.ret||0));
-  const ql=S.filter(s=>s.ql===1).sort((a,b)=>(b.falta||-9)-(a.falta||-9));
-  const peq=S.filter(s=>s.peq===1).sort((a,b)=>(b.ret||0)-(a.ret||0));
-  const cons=S.filter(s=>s.cons>=4).sort((a,b)=>b.cons-a.cons||(b.ret||0)-(a.ret||0));
-  const mine=Object.keys(PF.items).map(t=>BY[t]).filter(Boolean);
-  const imp=[];mine.forEach(s=>flags(s).forEach(f=>imp.push([s,'Minha carteira · '+esc(f)])));
-  abL.forEach(({s})=>flags(s).forEach(f=>imp.push([s,'A+B · '+esc(f)])));
-  mine.forEach(s=>{if(isN(s.rb)&&s.rb<-.05)imp.push([s,`Minha carteira · bear ${P(s.rb)}`]);if(s.cons===0&&(PF.items[s.t].w||0)>0)imp.push([s,'Minha carteira · fora das 6 carteiras do modelo'])});
-  const card=(t,c,desc,body,n)=>`<div class="card hcard" style="--c:var(${c})"><h4>${t} <i class="num">${n}</i></h4><p class="note" style="margin:0 0 6px">${desc}</p>${body||'<p class="note">Nada hoje.</p>'}</div>`;
-  const more=(arr,f,k=12)=>arr.slice(0,k).map(f).join('')+(arr.length>k?`<p class="note">+${arr.length-k} (veja em Listas)</p>`:'');
-  $('#main').innerHTML=`<div class="caveat">⚠ O ROIC pode estar errado (definição triangulada; ver Regras). A = consenso do sell-side com haircut (não testado em backtest). B = crescimento histórico (a regra testada no backtest). <b>A+B</b> = a ação passa nos dois.</div>
-   <div class="kpis">${[['Top 20','--top','wt','wtB'],['Especiais','--esp','we','weB'],['JG+G','--jg','wj','wjB']].map(([n,c,a,b])=>`<div style="--c:var(${c})"><b>${S.filter(s=>isN(s[a])&&isN(s[b])).length}</b><span>${n}: A+B (A ${S.filter(s=>isN(s[a])).length} · B ${S.filter(s=>isN(s[b])).length})</span></div>`).join('')}
-    <div><b>${mine.filter(s=>(PF.items[s.t].w||0)>0).length}</b><span>na Minha carteira</span></div></div>
-   <div class="grid2" style="margin-top:12px">
-    ${card('A+B nas 3 carteiras','--pos','Estão na mesma carteira pelos dois métodos (pesos A · B).',more(abL,({s,ls})=>line(s,`${ls.join(' · ')} · ret ${P(s.ret,0)} / ${P(s.retB,0)} · ROIC ${P(s.ru,0)}`)),abL.length)}
-    ${card('Compounders redondos','--top','Grandes, Nota ≥ 4. Observação, não carteira (método A).',more(comp,s=>line(s,`Nota ${N(s.nota,1)} · ret ${P(s.ret,0)} · ${isN(s.falta)&&s.falta<0?'falta cair '+P(-s.falta,0):'já com retorno ≥ 20%'}`)),comp.length)}
-    ${card('Quase lá','--esp','Compounders a até 30% do preço de entrada. Falta cair X%.',more(ql,s=>line(s,`falta cair <b>${P(isN(s.falta)?-s.falta:null,0)}</b> · entrada US$ ${N(s.pent,2)} · hoje ${N(s.px,2)}`)),ql.length)}
-    ${card('Pequenas que compõem','--gcgr','US$ 2–30 bi, Nota ≥ 4, crescimento ≥ 12%. Observação.',more(peq,s=>line(s,`US$ ${N(s.mc,0)} bi · cresc. ${P(s.gc,0)} · Nota ${N(s.nota,1)} · ret ${P(s.ret,0)}`)),peq.length)}
-    ${card('Consenso alto','--hr','Em 4 ou mais das 6 carteiras (Top 20, Especiais, JG+G × A e B).',more(cons,s=>line(s,`${s.cons}/6 · ${listNames(s).filter(x=>/Top 20|Especiais|JG/.test(x)).join(' · ')}`)),cons.length)}
-    ${card('Alertas importantes','--neg','Da Minha carteira e das ações A+B.',more(imp,([s,w])=>line(s,w),15),imp.length)}
-   </div>`;
-  $('#main').querySelectorAll('.hl .tk').forEach(e=>e.onclick=()=>openStock(e.dataset.t,'resumo'));wireSel($('#main'))}
-
-/* ---------- ficha: fundamentos (margem × giro, escadinha, ROIC por ano, crescimento, P/L × P/E justo nos dois métodos) ---------- */
-function fFund(s){const Y=M.years,yb=Y.oi||[],yr=Y.rev||[];const rv=y=>{const i=yr.indexOf(y);return i>=0&&s.rev?s.rev[i]:null};
-  const rev=yb.map(rv),nop=s.nop||[],ca=s.ca||[],cp=s.cp||[];
-  const mg=yb.map((y,i)=>isN(nop[i])&&isN(rev[i])&&rev[i]>0?nop[i]/rev[i]:null),ga=yb.map((y,i)=>isN(rev[i])&&isN(ca[i])&&ca[i]>0?rev[i]/ca[i]:null),gp=yb.map((y,i)=>isN(rev[i])&&isN(cp[i])&&cp[i]>0?rev[i]/cp[i]:null);
-  const ra=yb.map((y,i)=>isN(mg[i])&&isN(ga[i])?mg[i]*ga[i]:null);
-  const rg=(s.rev||[]).map((v,i,a)=>i&&isN(v)&&isN(a[i-1])&&a[i-1]>0?v/a[i-1]-1:null);
-  const oig=(s.oi||[]).map((v,i,a)=>i&&isN(v)&&isN(a[i-1])&&a[i-1]>0?v/a[i-1]-1:null);
-  const crit=[['C1','ROIC vs pares',s.c1],['C2','ROIC incremental',s.c2],['C3','Pista',s.c3],['C4','Moat',s.c4],['C5','Gestão',s.c5],['C6','15 anos',s.c6],['C7','Sua nota',s.c7]];
-  const pej=(p,pl)=>isN(p)&&isN(pl)&&pl>0?`<span class="${p>pl?'pos':'neg'}">${P(p/pl-1,0)}</span>`:'—';
-  $('#dbody').innerHTML=(s.fin===1?'<div class="caveat">Financeira: usa ROE; margem × giro não se aplica (mostrado só como referência).</div>':'<div class="caveat">⚠ O ROIC pode estar errado. A decomposição usa o NOPAT e o capital da visão do ativo e do passivo da planilha.</div>')+
-   `<div class="card"><h4>ROIC = margem NOPAT × giro do capital</h4>${yearTable([['Receita',rev,B],['NOPAT',nop,B],['Margem NOPAT',mg,P],['Giro (receita ÷ capital do ativo)',ga,v=>N(v,2)+'×'],['Giro (receita ÷ capital do passivo)',gp,v=>N(v,2)+'×'],['ROIC ativo = margem × giro',ra,P],['ROIC passivo',s.rp,P]],yb)}
-    <div class="chips" style="font-size:11px;margin-top:4px"><span>Margem ${spark(mg,80,20,'--acc')}</span><span>Giro ${spark(ga,80,20,'--acc2')}</span><span>ROIC ${spark(ra,80,20,'--pos')}</span></div>
-    <p class="note">Margem subindo com giro estável = poder de preço; giro caindo = capital crescendo mais que a receita (aquisições, capex). Receita: Wisesheets${''} (na versão embutida, anos vazios vieram do 10-K da SEC).</p></div>
-   <div class="grid2" style="margin-top:12px">
-    <div class="card"><h4>Escadinha: receita (${yr[0]||''}–${yr[yr.length-1]||''})</h4>${bars([['Receita',s.rev,'--acc2']],yr,B)}${yearTable([['Cresc. receita',rg,P]],yr)}</div>
-    <div class="card"><h4>Escadinha: lucro operacional e EPS</h4>${bars([['Lucro operacional',s.oi,'--acc']],yb,B)}${yearTable([['Cresc. lucro operacional',oig,P]],yb)}${bars([['EPS',s.eps,'--pos']],Y.eps,v=>N(v,2))}<p class="note">Nota escadinha: ${N(s.esc,0)} (0–100).</p></div>
-    <div class="card"><h4>ROIC por ano: ativo · passivo · marginal</h4>${yearTable([['ROIC ativo',s.ra,P],['ROIC passivo',s.rp,P],['ROIC do ano (usado)',s.ry,P]],yb)}<div class="kv"><span>Marginal (Δ NOPAT ÷ reinvestimento)</span><span>${P(s.vm)}</span><span><b>ROIC triangulado</b></span><span><b>${P(s.tri)}</b></span></div></div>
-    <div class="card"><h4>Crescimento: consenso × histórico × patamar</h4><div class="kv">
-     <span>A · consenso puro (classe)</span><span>${P(s.gc)}</span><span>A · consenso c/ haircut (valuation)</span><span>${P(s.gv)}</span>
-     <span>B · histórico (mediana 5 anos)</span><span>${P(s.gB)}</span><span>B · zGrowth</span><span>${N(s.zgB,2)}</span>
-     <span>Lucro operacional (mediana)</span><span>${P(s.gom)}</span><span>Patamar da indústria (p70)</span><span>${P(s.p70)}</span><span>Mediana da indústria</span><span>${P(s.gpi)}</span>
-     <span>Teto de credibilidade</span><span>${P(s.gcap)}</span></div>${yearTable([['Histórico (B)',s.ghs,P]],(Y.eps||[]).slice(-5))}</div>
-    <div class="card"><h4>P/L × P/E justo nos dois métodos</h4><div class="kv">
-     <span>A · P/L (LTM e 1 ano)</span><span>${N(s.pl,1)}</span><span>A · P/E justo</span><span>${N(s.pej,1)} (${pej(s.pej,s.pl)})</span><span>A · retorno esperado</span><span>${P(s.ret)}</span><span>A · classe</span><span>${esc(s.cls)}</span>
-     <span>B · P/L (último exercício)</span><span>${N(s.plB,1)}</span><span>B · P/E justo (g ${P(s.ggB,2)})</span><span>${N(s.pejB,1)} (${pej(s.pejB,s.plB)})</span><span>B · retorno esperado</span><span>${P(s.retB)}</span><span>B · código → classe</span><span>${esc(s.codB||'—')} → ${esc(s.clsB||'—')}</span></div></div>
-    <div class="card"><h4>Nota de boa empresa: ${N(s.nota,2)}</h4>${crit.map(([k,n,v])=>`<div class="bar-row"><span>${k} ${n}</span><span class="b"><i style="width:${isN(v)?v/5*100:0}%"></i></span><span class="num">${N(v,1)}</span></div>`).join('')}
-     ${flags(s).length?`<div style="margin-top:6px">${flags(s).map(x=>`<span class="tag w">⚠ ${esc(x)}</span>`).join('')}</div>`:''}</div>
-   </div>`}
-
+function listTags(s){return LISTS.filter(L=>['top','esp','jg','exc'].includes(L.k)).map(L=>{const a=inA(L,s),b=inB(L,s);return a||b?`<span class="mb ${a&&b?'ab':a?'a':'b'}" title="${esc(L.n)}">${esc(L.n.replace('Top 20','T20').replace('Especiais','Esp').replace('Excepcionais','Exc'))}</span>`:''}).join('')}
 const CLSCOL={[OOL]:'--ool',[GCGR]:'--gcgr',[EBF]:'--ebf','Cyclicals':'--cyc'};
-
-function setModel(m,label){M=m;BY={};m.stocks.forEach(s=>{BY[s.t]=s;s.fneg=isN(s.falta)&&s.falta<0?s.falta:null});try{computeB(m)}catch(e){console.error(e)}$('#src').textContent=label||m.fonte||'';$('#src').title=$('#src').textContent;render()}
-function hidew(){return $('#hidew').checked}
+function setModel(m,label){M=m;BY={};m.stocks.forEach(s=>{BY[s.t]=s});try{computeB(m)}catch(e){console.error(e)}$('#src').textContent=label||m.fonte||'';$('#src').title=$('#src').textContent;render()}
 function flags(s){return s.flag?String(s.flag).split(' · ').filter(Boolean):[]}
-
-/* ---------- conta do modelo (para a sensibilidade): mesma fórmula da planilha ---------- */
-function calc(s,o={}){const R=M.rules;const wacc=o.wacc??R.wacc;const h3=o.h3??R.h3;
-  const k=(1-h3)/(1-(R.h3||0.91));const h=[1-(1-(R.h1||.97))*k,1-(1-(R.h2||.94))*k,h3];
-  const est=s.est||[],eps=s.eps||[];const b0=(isN(est[0])&&est[0]>0)?est[0]:eps[eps.length-1];
-  const E=[0,1,2].map(j=>isN(est[j+1])?est[j+1]*h[j]:null);let gv=null;
-  /* crescimento = mediana dos 3 crescimentos anuais do consenso (com haircut no valuation), decisão de 22/11 */
-  const pts=[b0,E[0],E[1],E[2]],rt=[];for(let j=0;j<3;j++){const a=pts[j],c=pts[j+1];if(isN(a)&&isN(c)&&a>0)rt.push(c/a-1)}
-  if(rt.length>=2){rt.sort((x,y)=>x-y);gv=rt.length===3?rt[1]:(rt[0]+rt[1])/2}
-  if(isN(gv))gv=Math.min(R.gmax??1,gv);
-  const g=isN(s.gg)?s.gg+(o.dg||0):null;const ro=s.ru;
-  let pej=null;if(isN(ro)&&ro>0&&isN(g))pej=(1-g/Math.min(1,ro))/(wacc-g);
-  const dy=s.dy||0;let rf=null;const fe=isN(s.fxe)?s.fxe:1;
-  if(isN(pej)&&isN(E[1])&&isN(s.px)&&s.px>0){const base=pej*E[1]*fe/s.px;if(base>0)rf=Math.sqrt(base)-1+dy}
-  const rc=isN(gv)?gv+dy:null;const ret=(isN(rf)&&isN(rc))?(rf+rc)/2:gv;
-  return{pej,rf,rc,ret,gv,g,E,b0,h}}
-
-/* ---------- abas principais ---------- */
-const VIEWS=[['hoje','Hoje'],['listas','Listas'],['carteira','Minha carteira'],['riscos','Riscos da carteira'],['alertas','Central de alertas'],['comparar','Comparar'],['regras','Regras e ressalvas']];
-function renderTabs(){$('#tabs').innerHTML=VIEWS.map(([k,n])=>`<button data-v="${k}" class="${VIEW===k?'on':''}">${n}${k==='comparar'&&COMPARE.length?` (${COMPARE.length})`:''}${k==='carteira'&&Object.keys(PF.items).length?` (${Object.keys(PF.items).length})`:''}</button>`).join('');
-  $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{VIEW=b.dataset.v;ls.set('pt.view2',VIEW);render()})}
-function render(){if(!M)return;renderTabs();({hoje:vHoje,carteira:vCarteira,listas:vListas,riscos:vRiscos,alertas:vAlertas,comparar:vComparar,regras:vRegras})[VIEW]();renderFoot();if(CUR)openStock(CUR,DTAB,true)}
-
-function members(L,mode){mode=mode||MODE;let a=M.stocks.filter(s=>{const x=inA(L,s),y=inB(L,s);return mode==='a'?x:mode==='b'?y:mode==='ab'?x&&y:x||y});if(hidew())a=a.filter(s=>!s.flag);return a}
-function cntAB(L){const f=s=>!(hidew()&&s.flag);const a=M.stocks.filter(s=>f(s)&&inA(L,s)).length,b=L.b?M.stocks.filter(s=>f(s)&&inB(L,s)).length:null,ab=L.b?M.stocks.filter(s=>f(s)&&inA(L,s)&&inB(L,s)).length:null;return{a,b,ab}}
-function vListas(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];
-  const cnt=k=>M.stocks.filter(s=>s.cls===k&&!s.dup).length;
-  const nn=f=>M.stocks.filter(f).length;
-  let h=`<div class="kpis">${[['Compounders redondos','--top',nn(s=>s.comp===1)],['Quase lá','--esp',nn(s=>s.ql===1)],['Ótima em pânico','--cyc',nn(s=>s.pan===1)],['Pequenas que compõem','--gcgr',nn(s=>s.peq===1)],[OOL,'--ool'],['Excepcionais','--exc',nn(s=>s.exc===1)]].map(([n,c,v])=>`<div style="--c:var(${c})"><b>${v??cnt(n)}</b><span>${n}</span></div>`).join('')}<div><b>${M.stocks.length}</b><span>ações no arquivo</span></div></div>`;
-  h+=`<div class="sub">${LISTS.map(x=>`<button data-l="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${members(x).length}</i></button>`).join('')}</div>`;
-  const c=cntAB(L);
-  h+=`<div class="chips" style="margin:2px 0 6px"><span class="mode" role="group" aria-label="Método">${MODES.map(([k,n])=>`<button data-m="${k}" class="${MODE===k?'on':''}">${n}</button>`).join('')}</span>
-   <span class="cnt">${L.b?`A ${c.a} · B ${c.b} · <b class="pos">A+B ${c.ab}</b>`:`só método A (consenso): ${c.a}`}</span></div>`;
-  h+=`<p class="desc">${esc(L.desc)} ${L.b?'':'<b>Lista só do método A</b> (usa o consenso e a Nota; não há versão histórica). '}A = consenso (planilha) · B = histórico (backtest) · <span class="mb ab">A+B</span> = nos dois (linha destacada). ☆ manda a ação para a Minha carteira. Clique na ação para a ficha; em ROIC, Cresc. ou P/E justo para a conta.</p>`;
-  h+=table(members(L),L);$('#main').innerHTML=h;
-  $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list',LIST);vListas()});
-  $('#main').querySelectorAll('.mode button').forEach(b=>b.onclick=()=>{MODE=b.dataset.m;ls.set('pt.mode',MODE);vListas()});
-  wireTable(L)}
-const COLS=[['','sel','sel'],['#','i','n'],['Mét.','m','m'],['Ação','t','tk'],['Empresa','nm','nm'],['Indústria','ind','ind'],['Valor (US$ bi)','mc','n0'],['Peso A','w','p1'],['Peso B','wB','p1'],['Nota','nota','n1c:nota'],['ROIC','roic','p0c:roic'],['Cresc. A','g','p0c:cresc'],['Cresc. B','gB','p0c:fund'],['P/L A','pl','n1'],['P/L B','plB','n1'],['P/E j. A','pej','n1c:pe'],['P/E j. B','pejB','n1c:fund'],['Ret. A','ret','p0'],['Ret. B','retB','p0'],['Falta cair','fneg','p0'],['⚠','flag','w']];
-function defSort(L){return{c:L.w?(MODE==='b'?'wB':'w'):(MODE==='b'?'retB':'ret'),asc:false}}
-function table(rows,L){const key=L.k+MODE;const st=SORT[key]||defSort(L);
-  const val=(s,c)=>c==='w'?(L.w?s[L.w]:null):c==='wB'?(L.wb?s[L.wb]:null):c==='m'?(inA(L,s)&&inB(L,s)?3:inB(L,s)?2:1):c==='sel'?(inPF(s.t)?1:0):c==='flag'?(s.flag?1:0):s[c];
-  rows=rows.slice().sort((a,b)=>{const x=val(a,st.c),y=val(b,st.c);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='string'?x.localeCompare(y):x-y)*(st.asc?1:-1)});
-  if(!rows.length)return'<div class="tw"><div class="empty">Nenhuma ação nesta lista'+(hidew()?' (o filtro "esconder ⚠" está ligado)':'')+'.</div></div>';
-  const vis=c=>(c[1]!=='w'||L.w)&&(c[1]!=='wB'||L.wb)&&(c[1]!=='m'||L.b);
-  let h='<div class="tw"><table><thead><tr>'+COLS.filter(vis).map(([n,c])=>`<th data-c="${c}" class="${['t','nm','ind'].includes(c)?'l':''} ${st.c===c?'sorted'+(st.asc?' asc':''):''}">${n}</th>`).join('')+'</tr></thead><tbody>';
-  rows.forEach((s,i)=>{h+=`<tr class="${L.b&&inA(L,s)&&inB(L,s)?'ab':''}">`+COLS.filter(vis).map(([n,c,f])=>{
-    const[ff,act]=f.split(':');const v=c==='i'?i+1:c==='w'?s[L.w]:c==='wB'?s[L.wb]:s[c];
-    if(ff==='sel')return`<td>${selBtn(s.t)}</td>`;
-    if(ff==='m')return`<td class="l">${badge(L,s)}</td>`;
-    if(ff==='tk')return`<td class="tk l" data-t="${esc(s.t)}">${esc(s.t)}</td>`;
-    if(ff==='nm')return`<td class="nm l" title="${esc(s.nm)}">${esc(s.nm)}</td>`;
-    if(ff==='ind')return`<td class="ind l" title="${esc(s.ind)}">${esc(s.ind)}</td>`;
-    if(ff==='w')return s.flag?`<td class="w" title="${esc(s.flag)}">⚠</td>`:'<td></td>';
-    const cls=act?` click" data-t="${esc(s.t)}" data-a="${act}`:'';
-    const txt=ff.startsWith('p')?P(v,ff==='p1'||ff==='p1c'?1:0):ff==='n0'?N(v,0):ff==='i0'||ff==='n'?(isN(v)?String(v):''):N(v,1);
-    return`<td class="n${cls}${isN(v)&&v<0?' neg':''}">${txt}</td>`}).join('')+'</tr>'});
-  return h+'</tbody></table></div>'}
-function wireTable(L){$('#main').querySelectorAll('th').forEach(th=>th.onclick=()=>{const c=th.dataset.c;const st=SORT[L.k+MODE]||defSort(L);SORT[L.k+MODE]={c,asc:st.c===c?!st.asc:['t','nm','ind'].includes(c)};vListas()});
-  wireSel($('#main'));
-  $('#main').querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t,'resumo'));
-  $('#main').querySelectorAll('td.click').forEach(td=>td.onclick=()=>openStock(td.dataset.t,{roic:'roic',cresc:'cresc',pe:'pe',nota:'nota',fund:'fund'}[td.dataset.a]))}
-
-/* ---------- ficha ---------- */
-function openStock(t,tab,keep){const s=BY[t];if(!s)return;CUR=t;DTAB=tab||DTAB||'resumo';
-  const d=$('#drawer');const cc=CLSCOL[s.cls];
-  d.innerHTML=`<div class="dh"><div style="flex:1;min-width:0"><h2>${esc(s.t)} <span class="pill" style="--c:var(${cc||'--ink2'})" title="Método A (consenso)">A · ${esc(s.cls||'—')}</span> <span class="pill" style="--c:var(${CLSCOL[s.clsB]||'--ink2'})" title="Método B (histórico)">B · ${esc(s.clsB||'—')}</span></h2>
-   <div class="meta">${esc(s.nm)} · ${esc(s.ind)} · ${esc(s.sec)} · US$ ${N(s.px,2)} · ${N(s.mc,0)} bi${M.adr[s.t]?` · reporta em ${esc(M.adr[s.t].moeda)}`:''}</div></div>
-   <span style="align-self:center">${selBtn(t)}</span><button class="btn" id="dcmp">${COMPARE.includes(t)?'✓ na comparação':'+ Comparar'}</button><button class="btn" id="dclose" aria-label="Fechar">Esc ✕</button></div>
-   <div class="dtabs">${[['resumo','Resumo'],['fund','Fundamentos'],['nota','Nota e listas'],['roic',s.fin===1?'ROE':'ROIC'],['cresc','Crescimento'],['pe','P/E justo e sensibilidade']].map(([k,n])=>`<button data-k="${k}" class="${DTAB===k?'on':''}">${n}</button>`).join('')}</div>
-   <div class="dbody" id="dbody"></div>`;
-  d.hidden=false;$('#scrim').hidden=false;
-  d.querySelectorAll('.dtabs button').forEach(b=>b.onclick=()=>openStock(t,b.dataset.k));
-  $('#dclose').onclick=closeStock;$('#dcmp').onclick=()=>{toggleCmp(t);openStock(t,DTAB)};
-  wireSel(d);({resumo:fResumo,fund:fFund,nota:fNota,roic:fRoic,cresc:fCresc,pe:fPe})[DTAB](s);if(!keep)$('#dbody').scrollTop=0}
-function closeStock(){CUR=null;$('#drawer').hidden=true;$('#scrim').hidden=true}
-function toggleCmp(t){const i=COMPARE.indexOf(t);if(i>=0)COMPARE.splice(i,1);else{if(COMPARE.length>=4)COMPARE.shift();COMPARE.push(t)}ls.set('pt.cmp',JSON.stringify(COMPARE));renderTabs();if(VIEW==='comparar')vComparar()}
-
-function letters(s){const R=M.rules;const g=s.g,zg=s.zg,ro=s.roic,rt=s.ret;
-  return[['Crescimento',isN(g)?(g>R.ghi?'H':g>=R.glo?'O':'L'):'?',P(g),`> ${P(R.ghi,0)} H · ≥ ${P(R.glo,0)} O`],
-   ['Estabilidade',isN(zg)?(zg<R.zgmax?'O':'P'):'?',N(zg,2),`zGrowth < ${N(R.zgmax,2)}`],
-   [s.fin===1?'ROE':'ROIC',isN(ro)?(ro>R.rhi?'G':ro>=R.rlo?'O':'L'):'?',P(ro),`> ${P(R.rhi,0)} G · ≥ ${P(R.rlo,0)} O`],
-   ['zROIC','N','—','desligado'],
-   ['Retorno',isN(rt)?(rt>R.rethi?'G':rt>=R.retlo?'O':'B'):'?',P(rt),`> ${P(R.rethi,0)} G · ≥ ${P(R.retlo,0)} O`]]}
-function fResumo(s){const Y=M.years;const lst=s.lists?String(s.lists).split(' · '):[];
-  const yi=(Y.oi||[]).length-1;const v=(k)=>s[k]?s[k][yi]:null;
-  let h=`<div class="code">${letters(s).map(([n,l,val,r])=>`<div title="${esc(r)}"><b>${l}</b><span>${n}<br>${val}</span></div>`).join('')}</div>
-   <p class="note">Código <b class="num">${esc(s.cod||'—')}</b> → classe da régua <b>${esc(s.base||'—')}</b>${s.cls!==s.base?` → <b>${esc(s.cls)}</b>`:''}. Passe o mouse em cada letra para ver o corte.</p>
-   <div style="margin:8px 0">${lst.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}${flags(s).map(x=>`<span class="tag w">⚠ ${esc(x)}</span>`).join('')}${isN(s.bag)?`<span class="tag">Bagger #${s.bag}</span>`:''}</div>
-   <div class="grid2">
-   <div class="card"><h4>Números-chave</h4><div class="kv">
-    <span>${s.fin===1?'ROE':'ROIC'} usado</span><span>${P(s.ru)}</span><span>Crescimento (consenso)</span><span>${P(s.gc)}</span>
-    <span>Crescimento p/ valuation (haircut)</span><span>${P(s.gv)}</span><span>Crescimento histórico (mediana)</span><span>${P(s.ghm)}</span>
-    <span>P/L (média LTM e 1 ano)</span><span>${N(s.pl,1)}</span><span>P/E justo</span><span>${N(s.pej,1)}</span>
-    <span>Retorno esperado</span><span>${P(s.ret)}</span><span>Dividend yield</span><span>${P(s.dy)}</span></div></div>
-   <div class="card"><h4>Balanço ${Y.eq?Y.eq[yi]:''} (US$ ou moeda de reporte)</h4><div class="kv">
-    <span>Imobilizado</span><span>${B(v('ppe'))}</span><span>Direito de uso (leasing)</span><span>${B(v('rou'))}</span>
-    <span>Ágio + intangíveis</span><span>${B((v('gw')||0)+(v('int')||0))}</span><span>Ativo circulante</span><span>${B(v('tca'))}</span>
-    <span>Caixa</span><span>${B(v('cash'))}</span><span>Passivo circulante</span><span>${B(v('tcl'))}</span>
-    <span>Dívida</span><span>${B(v('debt'))}</span><span>Leasing (passivo)</span><span>${B(v('lease'))}</span><span>Patrimônio</span><span>${B(v('eq'))}</span></div></div></div>
-   <div class="grid2" style="margin-top:14px">
-    <div class="card"><h4>Lucro operacional e lucro líquido</h4>${bars([['Lucro operacional',s.oi,'--acc2'],['Lucro líquido',s.ni,'--acc']],Y.oi,B)}</div>
-    <div class="card"><h4>EPS realizado e consenso</h4>${epsChart(s)}</div></div>
-   <p class="note">Margem × giro, escadinha da receita e os dois métodos lado a lado estão na aba Fundamentos.</p>`;
-  $('#dbody').innerHTML=h}
-function fNota(s){const R=M.rules;const ok=b=>b?'<span class="pos">✓</span>':'<span class="neg">✗</span>';const mc=s.mc;
-  const sc=v=>isN(v)?`<b class="num">${N(v,1)}</b>`:'—';const ry=s.ry||[];
-  const crit=[['C1 ROIC vs pares',s.c1,`ROIC ${P(s.ru)} · mediana da indústria ${P(s.medr)} · spread ${P(s.spr)}. Nota = 1 + 4 × percentil do spread; limitada a 3 se ROIC < WACC + 10 p.p. ou < 1,5× a mediana.`],
-   ['C2 ROIC incremental',s.c2,`ROIC marginal ${P(s.vm)} (Δ NOPAT ÷ reinvestimento). 5 se ≥ 0,8× ROIC e ≥ WACC; 4 se ≥ 0,5× ROIC; 3 se ≥ WACC; 2 se ≥ 0; 1 se negativo; 3 sem dado.`],
-   ['C3 Pista marginal',s.c3,`g implícito no preço ${P(s.gimp)} = (WACC × P/L − 1) ÷ (P/L − 1/ROIC); g crível = mín(crescimento, 15%) = ${P(isN(s.gc)?Math.min(s.gc,.15):null)}; pista ${P(s.pista)}. 5 se ≥ 5 p.p. (ou P/L < 1/ROIC); 4 se ≥ 2; 3 se ≥ 0; 2 se ≥ −3; 1 abaixo. g sustentável (reinvestimento × ROIC incremental, só informação): ${P(s.gsus)}.`],
-   ['C4 Moat',s.c4,`ROIC dos últimos 4 anos: ${ry.map(v=>P(v)).join(' · ')}. 5 se todos ≥ 20% e o pior ≥ 70% da média; 4 se todos ≥ 15%; 3 se todos ≥ WACC; 2 se a maioria; 1 senão; +1 se o ROIC sem ágio e intangíveis ≥ 40% (${P(s.rtan)}).`],
-   ['C5 Gestão por ação',s.c5,`Nº de ações ${P(s.shg)} ao ano (+1 se cai ≥ 1%, −1 se sobe ≥ 2%); ágio cresce menos que o lucro operacional +1, mais de 1,2× −1. Base 3. Não entra no backtest (dado histórico de ações e ágio incompleto).`],
-   ['C6 Existir em 15 anos',s.c6,`1 se cíclica. Senão 1 + EPS positivo em todos os anos (≥ 6) + dívida ≤ 2× lucro operacional (${N(s.alav,1)}×) + escadinha ≥ ${R.escmin??70} (${N(s.esc,0)}) + valor ≥ US$ 10 bi.`],
-   ['C7 Qualitativa (sua)',s.c7,'Nota de 1 a 5 que você digita na aba Regras (produto crítico e barato para o cliente, penetração). Vazia = não entra na média.']];
-  const has=isN(s.mc);const inq=s.qual===1;
-  const L=[['Top 20 (carteira)',isN(s.wt),[['Qualidade (ROIC ≥ 12%, crescimento ≥ 15%, sem cíclica/vestuário)',inq],['P/L ≥ 4',s.pl>=4],['Valor ≥ US$ 20 bi (regra nova, passou no backtest)',has&&mc>=20],['Entre as 20 de maior retorno, máx. 8 por setor',isN(s.wt)]]],
-   ['Especiais (carteira)',isN(s.we),[['Qualidade',inq],['Retorno esperado > 20%',s.ret>.2],['Entre as 20 de maior 1,5 × ROIC + crescimento',isN(s.we)]]],
-   ['Compounder redondo',s.comp===1,[['Valor ≥ US$ 50 bi',has&&mc>=50],['Nota ≥ 4',s.nota>=4],['Não cíclica nem vestuário',s.cyc!==1&&s.app!==1],['Consenso sem atipicidade',s.atx!==1],['Passa no step change',s.sok!==0]]],
-   ['Quase lá',s.ql===1,[['É compounder redondo',s.comp===1],['Retorno esperado < 20%',s.ret<.2],[`Falta cair até 30% (${P(s.falta)})`,isN(s.falta)&&s.falta>=-.3]]],
-   ['Ótima em pânico',s.pan===1,[['Nota ≥ 3,5',s.nota>=3.5],[`Caiu ≥ 25% em 12 meses (${P(s.v12)})`,s.v12<=-.25],[`EPS do último ano subiu (${P((s.er||[])[7])})`,(s.er||[])[7]>0],['Crescimento previsto > 0',s.gc>0]]],
-   ['Pequena que compõe',s.peq===1,[['Valor entre US$ 2 e 30 bi',has&&mc>=2&&mc<=30],['Nota ≥ 4',s.nota>=4],['Crescimento ≥ 12%',s.gc>=.12],['P/L ≤ 1,3× o P/E justo',s.pl>0&&s.pl<=1.3*s.pej]]]];
-  let h=`<div class="grid2"><div class="card"><h4>Nota de boa empresa: ${sc(s.nota)} <span class="note">(média de C1–C7; a do backtest, sem C5 e C7: ${N(s.notab,1)})</span></h4>
-   <div class="tw"><table><tbody>${crit.map(([n,v,t])=>`<tr><td class="l" style="white-space:nowrap">${n}</td><td class="n">${sc(v)}</td><td class="l" style="white-space:normal;font-size:12px">${esc(t)}</td></tr>`).join('')}</tbody></table></div>
-   <p class="note">Teste de compounder (ROIC sem ágio ≥ 30% e lucro operacional crescendo ≥ 10% em 2 dos 3 anos): ${ok(s.tcomp===1)}. Base: valor = (ROIC − custo de capital) × crescimento. ⚠ O ROIC pode estar errado (investigação pendente).</p></div>
-   <div class="card"><h4>Escadinha do lucro: ${sc(s.esc)} de 100</h4>${bars([['EPS',s.eps,'--acc2']],M.years.eps,v=>N(v,2))}
-   <p class="note">40 × % de anos de alta + 20 × maior sequência ÷ anos + 20 se nenhum ano cair mais de 10% + 20 × regularidade (1 − desvio ÷ mediana ÷ 1,5). Zero se a mediana do crescimento ≤ 0.</p></div></div>`;
-  if(s.step===1)h+=`<div class="caveat" style="margin-top:12px"><b>Step change</b> (EPS 2028 ≥ 1,8× o de 2025): retorno-base ${P(s.ret)} · com fade do múltiplo para o P/E justo maduro (${N(s.pejlt,1)}) ${P(s.rfade)} · com devolução de 1/3 do salto ${P(s.rdev)}. ${s.sok===0?'<b>Reprovada</b> (devolução abaixo de '+P(R.stepmin??-.1,0)+')':'Aprovada'}${R.limpa===1?'':'; a reprovação só é informação: a limpeza nas carteiras está desligada porque não dá para testar no backtest'}.</div>`;
-  h+=`<h4 style="margin:16px 0 6px">Por que está (ou não) em cada lista</h4><div class="grid2">${L.map(([n,inl,rs])=>`<div class="card"><h4>${inl?'<span class="pos">●</span>':'<span class="note">○</span>'} ${esc(n)}</h4>${rs.map(([t,b])=>`<div style="font-size:13px">${ok(b)} ${esc(t)}</div>`).join('')}</div>`).join('')}</div>`;
-  $('#dbody').innerHTML=h}
-function fRoic(s){const Y=(M.years.oi||[]);
-  if(s.fin===1){$('#dbody').innerHTML=`<div class="caveat">Financeira ou seguradora de saúde: usa <b>ROE</b> (lucro líquido ÷ patrimônio), como no backtest. O ROE usado é a média entre os 3 últimos anos e todos os anos.</div>
-   ${yearTable([['Lucro líquido',s.ni,B],['Patrimônio',s.eq,B],['ROE',s.roe,P]],Y)}<div class="kv" style="max-width:360px;margin-top:10px"><span>ROE usado</span><span>${P(s.roem)}</span></div>`;return}
-  const R=rule(s);
-  $('#dbody').innerHTML=`<div class="caveat">⚠ O ROIC pode estar errado. Ele é triangulado: visão do ativo (imobilizado + leasing + ágio + intangíveis + capital de giro), do passivo (patrimônio + dívida + leasing − caixa) e marginal (Δ lucro operacional ÷ Δ capital).</div>
-   ${yearTable([['NOPAT',s.nop,B],['Capital (ativo)',s.ca,B],['Capital (passivo)',s.cp,B],['ROIC ativo',s.ra,P],['ROIC passivo',s.rp,P],['Ativo sem outlier',s.xa,P],['Passivo sem outlier',s.xp,P]],Y)}
-   <div class="grid2" style="margin-top:12px"><div class="card"><h4>As três visões</h4><div class="kv">
-    <span>ROIC ativo (média 3 últimos + todos)</span><span>${P(s.va)}</span><span>ROIC passivo</span><span>${P(s.vp)}</span><span>ROIC marginal</span><span>${P(s.vm)}</span>
-    <span><b>ROIC triangulado (usado)</b></span><span><b>${P(s.tri)}</b></span></div></div>
-    <div class="card"><h4>Regra de "arte" aplicada</h4><p style="margin:0">${R}</p><p class="note">Visão abaixo de 0 ou acima de 200% é descartada; 150–200% conta 150%. Ativo e passivo próximos (≤ 2×) → média; divergentes → a mais próxima do marginal, senão a menor. Se as duas são negativas, vale a maior (negativa). Outliers: até 2 anos mais antigos saem se estiverem a mais de 3σ da mediana.</p></div></div>`}
-function rule(s){const ok=x=>isN(x)&&x>=0&&x<=2,cl=x=>Math.min(x,1.5),a=s.va,p=s.vp,m=s.vm;
-  if(ok(a)&&ok(p)){const lo=Math.min(cl(a),cl(p)),hi=Math.max(cl(a),cl(p));if(lo>0&&hi<=2*lo)return`Ativo (${P(a)}) e passivo (${P(p)}) próximos: média = <b>${P((cl(a)+cl(p))/2)}</b>.`;
-    if(ok(m))return`Ativo e passivo divergem (mais de 2×): vale o mais próximo do marginal (${P(m)}) = <b>${P(Math.abs(cl(a)-m)<=Math.abs(cl(p)-m)?cl(a):cl(p))}</b>.`;return`Ativo e passivo divergem e o marginal não é válido: vale o menor = <b>${P(lo)}</b>.`}
-  if(ok(a))return`Só o ativo é válido: <b>${P(cl(a))}</b>.`;if(ok(p))return`Só o passivo é válido: <b>${P(cl(p))}</b>.`;
-  if((isN(a)&&a>2)||(isN(p)&&p>2))return'Acima de 200%: conta <b>150%</b>.';
-  if(isN(a)||isN(p))return`Ativo e/ou passivo negativos: vale o maior (negativo) = <b>${P(Math.max(isN(a)?a:-9,isN(p)?p:-9))}</b>. Não passa no filtro de qualidade.`;
-  if(ok(m))return`Sem ativo e passivo: só o marginal = <b>${P(cl(m))}</b>.`;return'Sem dados para o ROIC.'}
-function fCresc(s){const c=calc(s);
-  $('#dbody').innerHTML=`<div class="card"><h4>EPS realizado (contábil), consenso e consenso com haircut</h4>${epsChart(s,true)}</div>
-   <div class="grid2" style="margin-top:12px"><div class="card"><h4>Crescimento</h4><div class="kv">
-    <span>Consenso puro (decide a classe)</span><span>${P(s.gc)}</span><span>Com haircut (P/E justo e retorno)</span><span>${P(s.gv)}</span>
-    <span>Sem teto</span><span>${P(s.graw)}</span><span>Histórico (mediana dos anos)</span><span>${P(s.ghm)}</span><span>zGrowth (estabilidade)</span><span>${N(s.zg,2)}</span></div></div>
-    <div class="card"><h4>Ano a ano (consenso com haircut)</h4>${yearTable([['Crescimento',s.ga,P]],(M.years.est||[]).slice(1))}
-     <p class="note">Base: ${isN(s.est&&s.est[0])&&s.est[0]>0?'EPS de '+(M.years.est||[])[0]+' do próprio consenso (ajustado)':'EPS contábil de '+(M.years.eps||[]).slice(-1)[0]}. Haircut: ×${N(c.h[0],2)}, ×${N(c.h[1],2)}, ×${N(c.h[2],2)} nos anos +1, +2, +3. Histórico: ${yearTable([['Crescimento',s.ghs,P]],(M.years.eps||[]).slice(-5))}</p></div></div>
-   <div class="caveat">O consenso do sell-side não tem como ser testado no backtest (não há histórico). No backtest, o crescimento passado não previu o futuro; o haircut tenta compensar o otimismo dos analistas.</div>`}
-function fPe(s){const R=M.rules;const peers=M.stocks.filter(x=>x.fin===s.fin&&isN(x.gv));const rank=isN(s.gv)?1+peers.filter(x=>x.gv>s.gv).length:null;
-  const ro=Math.min(1,s.ru||0);const a=M.adr[s.t];
-  const o={wacc:R.wacc,dg:0,h3:R.h3};
-  const draw=()=>{const c=calc(s,o);
-    $('#pe-out').innerHTML=`<div class="kv"><span>P/E justo</span><span>${N(c.pej,1)} <span class="${isN(s.pej)&&isN(c.pej)?(c.pej>=s.pej?'pos':'neg'):''}">(${isN(c.pej)&&isN(s.pej)?(c.pej>=s.pej?'+':'')+N(c.pej-s.pej,1):'—'})</span></span>
-     <span>Crescimento p/ valuation</span><span>${P(c.gv)}</span><span>Retorno pelo P/E justo</span><span>${P(c.rf)}</span><span>Retorno pelo múltiplo constante</span><span>${P(c.rc)}</span>
-     <span><b>Retorno esperado</b></span><span><b>${P(c.ret)}</b> <span class="${isN(c.ret)&&isN(s.ret)?(c.ret>=s.ret?'pos':'neg'):''}">(${isN(c.ret)&&isN(s.ret)?(c.ret>=s.ret?'+':'')+P(c.ret-s.ret):'—'})</span></span></div>`;
-    $('#v-wacc').textContent=P(o.wacc);$('#v-dg').textContent=P(s.gg+o.dg);$('#v-h3').textContent='×'+N(o.h3,2)};
-  $('#dbody').innerHTML=`<div class="formula">P/E justo = (1 − g ÷ ${s.fin===1?'ROE':'ROIC'}) ÷ (WACC − g) = (1 − ${P(s.gg,2)} ÷ ${P(ro)}) ÷ (${P(R.wacc,1)} − ${P(s.gg,2)}) = <b>${N(s.pej,1)}</b></div>
-   <div class="grid2"><div class="card"><h4>De onde vem cada número</h4><div class="kv">
-    <span>g (pela posição no ranking do crescimento)</span><span>${P(s.gg,2)}</span><span>Posição entre ${s.fin===1?'as financeiras':'as não financeiras'}</span><span>${rank??'—'} de ${peers.length}</span>
-    <span>Faixa do g</span><span>${P((R.gtop||.07)-(s.fin===1?(R.gfin||0):0),1)} → ${P((R.gfloor||.035)-(s.fin===1?(R.gfin||0):0),1)}</span>
-    <span>${s.fin===1?'ROE':'ROIC'} (limitado a 100%)</span><span>${P(ro)}</span><span>WACC</span><span>${P(R.wacc,1)}</span></div></div>
-    <div class="card"><h4>Contra o preço de hoje</h4><div class="kv">
-    <span>P/L últimos 12 meses</span><span>${N(s.pll,1)}</span><span>P/L 1 ano à frente</span><span>${N(s.plf,1)}</span><span>P/L usado (média)</span><span>${N(s.pl,1)}</span>
-    <span>P/E justo ÷ P/L − 1</span><span class="${isN(s.pej)&&isN(s.pl)&&s.pej>s.pl?'pos':'neg'}">${isN(s.pej)&&isN(s.pl)&&s.pl>0?P(s.pej/s.pl-1,0):'—'}</span>
-    ${a?`<span>Moeda / ações por ADR</span><span>${esc(a.moeda)} / ${a.n}</span><span>Câmbio (US$ por unidade)</span><span>${N(M.fx[a.moeda],4)}${fxRes(a.moeda)?' (reserva)':''}</span><span>Fator balanço / estimativas</span><span>${N(s.fxh,3)} / ${N(s.fxe,3)}</span>`:''}</div></div></div>
-   <div class="card" style="margin-top:12px"><h4>Sensibilidade</h4>
-    <div class="sl"><span>WACC</span><input type="range" id="s-wacc" min="0.05" max="0.13" step="0.0025" value="${R.wacc}"><span class="num" id="v-wacc"></span></div>
-    <div class="sl"><span>g do P/E justo</span><input type="range" id="s-dg" min="-0.03" max="0.03" step="0.0025" value="0"><span class="num" id="v-dg"></span></div>
-    <div class="sl"><span>Haircut do ano+3</span><input type="range" id="s-h3" min="0.7" max="1" step="0.01" value="${R.h3}"><span class="num" id="v-h3"></span></div>
-    <div id="pe-out" style="margin-top:8px"></div>
-    <p class="note">Mesma fórmula da planilha. O g não pode passar do WACC: quando os dois se aproximam, o P/E justo explode (é o caso de alguns bancos). O haircut dos anos +1 e +2 anda junto, na mesma proporção.</p></div>`;
-  [['s-wacc','wacc'],['s-dg','dg'],['s-h3','h3']].forEach(([id,k])=>{$('#'+id).oninput=e=>{o[k]=+e.target.value;draw()}});draw()}
 function fxRes(m){return isN(M.fx[m])&&isN(FX_RESERVA[m])&&Math.abs(M.fx[m]-FX_RESERVA[m])<1e-6}
 
-/* ---------- gráficos simples (SVG) ---------- */
-function yearTable(rows,years){years=years||[];return`<div class="tw" style="margin:4px 0"><table><thead><tr><th class="l"></th>${years.map(y=>`<th>${y}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,a,f])=>`<tr><td class="l">${n}</td>${years.map((y,i)=>`<td class="n${a&&isN(a[i])&&a[i]<0?' neg':''}">${a?f(a[i]):'—'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
-function bars(series,years,fmt){years=years||[];const W=420,H=170,m={l:8,r:8,t:16,b:22};const all=series.flatMap(s=>(s[1]||[]).filter(isN));if(!all.length)return'<p class="note">Sem dados.</p>';
-  const mx=Math.max(0,...all),mn=Math.min(0,...all),sc=v=>m.t+(mx-v)/(mx-mn||1)*(H-m.t-m.b);const gw=(W-m.l-m.r)/years.length,bw=gw/(series.length+1);
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img"><line x1="${m.l}" x2="${W-m.r}" y1="${sc(0)}" y2="${sc(0)}" stroke="var(--rule)"/>`;
-  years.forEach((y,i)=>{series.forEach(([n,a,c],j)=>{const v=a?a[i]:null;if(!isN(v))return;const x=m.l+i*gw+bw*(j+.5),y0=sc(Math.max(0,v)),hh=Math.abs(sc(v)-sc(0));
-    s+=`<rect x="${x}" y="${y0}" width="${bw*.9}" height="${Math.max(hh,1)}" fill="var(${c})"><title>${n} ${y}: ${fmt(v)}</title></rect>`});
-    s+=`<text x="${m.l+i*gw+gw/2}" y="${H-6}" text-anchor="middle">${y}</text>`});
-  return s+'</svg><div class="chips" style="font-size:11px">'+series.map(([n,,c])=>`<span><span style="display:inline-block;width:10px;height:10px;background:var(${c})"></span> ${n}</span>`).join('')+'</div>'}
-function epsChart(s,full){const ye=M.years.eps||[],yt=M.years.est||[];const years=[...new Set([...ye,...yt])].sort();
-  const real=years.map(y=>{const i=ye.indexOf(y);return i>=0&&s.eps?s.eps[i]:null}),cons=years.map(y=>{const i=yt.indexOf(y);return i>=0&&s.est?s.est[i]:null});
-  const hc=years.map(y=>{const i=yt.indexOf(y);return i>=1&&s.eh?s.eh[i-1]:null});
-  const ser=[['EPS realizado (contábil)',real,'--acc2'],['Consenso',cons,'--acc']];if(full)ser.push(['Consenso c/ haircut',hc,'--ink2']);
-  const adrn=M.adr[s.t]?`<p class="note">⚠ EPS na moeda de reporte (${esc(M.adr[s.t].moeda)}); o contábil é por ação ordinária e a estimativa pode vir por ADR — compare a forma da curva, não o nível.</p>`:'';
-  /* crescimento ano a ano: realizado (contábil) até o último ano publicado; consenso daí em diante (sobre a base do próprio consenso) */
-  const yoy=years.map((y,i)=>{if(i===0)return null;const a=cons[i-1]!=null&&cons[i]!=null&&yt.indexOf(y)>0?cons[i-1]:real[i-1],b=yt.indexOf(y)>0?cons[i]:real[i];return isN(a)&&isN(b)&&a>0?b/a-1:null});
-  const yreal=yoy.map((v,i)=>yt.indexOf(years[i])>0?null:v),ycons=yoy.map((v,i)=>yt.indexOf(years[i])>0?v:null);
-  return bars(ser,years,v=>N(v,2))+lineYoY(years,yreal,ycons)+adrn+(full?'':'<p class="note">Clique em Cresc. na tabela para o detalhe.</p>')}
-function lineYoY(years,a,b){const W=420,H=110,m={l:8,r:8,t:14,b:20};const vals=[...a,...b].filter(isN).map(v=>Math.max(-1,Math.min(2,v)));if(!vals.length)return'';
-  const mx=Math.max(0.05,...vals),mn=Math.min(0,...vals),gw=(W-m.l-m.r)/years.length,xs=i=>m.l+i*gw+gw/2,sc=v=>m.t+(mx-Math.max(-1,Math.min(2,v)))/(mx-mn||1)*(H-m.t-m.b);
-  const path=(arr)=>{let d='',on=false;arr.forEach((v,i)=>{if(!isN(v)){on=false;return}d+=(on?'L':'M')+xs(i)+','+sc(v);on=true});return d};
-  const dots=(arr,c)=>arr.map((v,i)=>isN(v)?`<circle cx="${xs(i)}" cy="${sc(v)}" r="2.6" fill="var(${c})"/><text x="${xs(i)}" y="${sc(v)-5}" text-anchor="middle" style="font-size:9px">${P(v)}</text>`:'').join('');
-  return `<div class="note" style="margin-top:6px">Crescimento do EPS ano a ano</div><svg viewBox="0 0 ${W} ${H}" role="img"><line x1="${m.l}" x2="${W-m.r}" y1="${sc(0)}" y2="${sc(0)}" stroke="var(--rule)"/>`+
-   `<path d="${path(a)}" fill="none" stroke="var(--acc2)" stroke-width="1.6"/><path d="${path(b)}" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-dasharray="4 3"/>`+dots(a,'--acc2')+dots(b,'--acc')+
-   years.map((y,i)=>`<text x="${xs(i)}" y="${H-5}" text-anchor="middle" style="font-size:9px">${y}</text>`).join('')+'</svg>'}
+/* ---------- telas: Ideias e Minha carteira ---------- */
+const VIEWS=[['ideias','Ideias'],['carteira','Minha carteira']];
+function renderTabs(){const n=Object.keys(PF.items).length;$('#tabs').innerHTML=VIEWS.map(([k,v])=>`<button data-v="${k}" class="${VIEW===k?'on':''}">${v}${k==='carteira'&&n?` (${n})`:''}</button>`).join('');
+  $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{VIEW=b.dataset.v;ls.set('pt.view3',VIEW);render()})}
+function render(){if(!M)return;if(!VIEWS.some(v=>v[0]===VIEW))VIEW='ideias';renderTabs();(VIEW==='carteira'?vCarteira:vIdeias)();renderFoot();if(CUR)openStock(CUR,true)}
+function members(L){return M.stocks.filter(s=>inA(L,s)||inB(L,s))}
+/* uma lista por seleção: A ∪ B; os números da linha vêm do método A quando a ação está em A, senão do B */
+const VAL={w:(L,s)=>inA(L,s)?(L.w?s[L.w]:null):(L.wb?s[L.wb]:null),g:(L,s)=>inA(L,s)?s.g:s.gB,pl:(L,s)=>inA(L,s)?s.pl:s.plB,pej:(L,s)=>inA(L,s)?s.pej:s.pejB,
+  ret:(L,s)=>inA(L,s)?s.ret:s.retB,m:(L,s)=>inA(L,s)&&inB(L,s)?3:inA(L,s)?2:1,sel:(L,s)=>inPF(s.t)?1:0,flag:(L,s)=>s.flag?1:0};
+const val=(L,s,c)=>VAL[c]?VAL[c](L,s):s[c];
+const COLS=[['','sel'],['#','i'],['Selo','m'],['Ação','t'],['Empresa','nm'],['Peso','w'],['ROIC','roic'],['Cresc.','g'],['P/L','pl'],['P/E justo','pej'],['Retorno','ret'],['⚠','flag']];
+function vIdeias(){const L=LISTS.find(x=>x.k===LIST)||LISTS[0];const st=SORT[L.k];
+  const nul=(x,y)=>x==null&&y==null?0:x==null?1:y==null?-1:null;
+  const by=(c,asc)=>(a,b)=>{const x=val(L,a,c),y=val(L,b,c),n=nul(x,y);return n!==null?n:(typeof x==='string'?x.localeCompare(y):x-y)*(asc?1:-1)};
+  const sec=by(L.w?'w':'ret',false);
+  const rows=members(L).sort(st?by(st.c,st.asc):(a,b)=>(val(L,b,'m')===3)-(val(L,a,'m')===3)||sec(a,b));
+  const nAB=rows.filter(s=>val(L,s,'m')===3).length,cols=COLS.filter(c=>c[1]!=='w'||L.w);
+  let h=`<div class="sub">${LISTS.map(x=>`<button data-l="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${members(x).length}</i></button>`).join('')}</div>
+   <p class="desc">${esc(L.desc)} <span class="mb ab">A+B</span> ${nAB} no topo · A = consenso · B = histórico (o testado no backtest). Os números da linha são do método do selo.</p>`;
+  if(!rows.length)h+='<div class="tw"><div class="empty">Nenhuma ação nesta lista.</div></div>';
+  else{h+='<div class="tw"><table><thead><tr>'+cols.map(([n,c])=>`<th data-c="${c}" class="${['t','nm'].includes(c)?'l':''}${st&&st.c===c?' sorted'+(st.asc?' asc':''):''}">${n}</th>`).join('')+'</tr></thead><tbody>';
+    rows.forEach((s,i)=>{h+=`<tr class="${val(L,s,'m')===3?'ab':''}">`+cols.map(([n,c])=>{const v=val(L,s,c);
+      if(c==='sel')return`<td>${selBtn(s.t)}</td>`;if(c==='i')return`<td class="n">${i+1}</td>`;if(c==='m')return`<td class="l">${badge(L,s)}</td>`;
+      if(c==='t')return`<td class="tk l" data-t="${esc(s.t)}">${esc(s.t)}</td>`;if(c==='nm')return`<td class="nm l" title="${esc(s.nm)}">${esc(s.nm)}</td>`;
+      if(c==='flag')return s.flag?`<td class="w" title="${esc(s.flag)}">⚠</td>`:'<td></td>';
+      if(c==='pl'||c==='pej'){const pl=val(L,s,'pl');return`<td class="n${c==='pej'&&isN(v)&&isN(pl)?(v>pl?' pos':' neg'):''}">${N(v,1)}</td>`}
+      return`<td class="n${isN(v)&&v<0?' neg':''}">${P(v,c==='w'?1:0)}</td>`}).join('')+'</tr>'});
+    h+='</tbody></table></div>'}
+  $('#main').innerHTML=h;const m=$('#main');
+  m.querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{LIST=b.dataset.l;ls.set('pt.list3',LIST);vIdeias()});
+  m.querySelectorAll('th').forEach(th=>th.onclick=()=>{const c=th.dataset.c;if(c==='i')return;SORT[L.k]={c,asc:st&&st.c===c?!st.asc:['t','nm'].includes(c)};vIdeias()});
+  m.querySelectorAll('td.tk').forEach(td=>td.onclick=()=>openStock(td.dataset.t));wireSel(m)}
 
-/* ---------- riscos ---------- */
-function vRiscos(){const opts=LISTS.filter(l=>l.w);const k=ls.get('pt.rk','top');const L=opts.find(x=>x.k===k)||opts[0];
-  const rows=M.stocks.filter(L.d).map(s=>({s,w:s[L.w]||0}));const tot=rows.reduce((a,r)=>a+r.w,0)||1;
-  const grp=f=>{const g={};rows.forEach(r=>{const key=f(r.s)||'—';g[key]=(g[key]||0)+r.w/tot});return Object.entries(g).sort((a,b)=>b[1]-a[1])};
-  const ai=(ls.get('pt.ai',AI_DEFAULT)).split('\n').map(x=>x.trim()).filter(Boolean);const isAI=s=>ai.includes(s.ind)||ai.includes(s.t);
-  const cap=M.rules.capw||.4;
-  const barsH=(arr,lim)=>arr.map(([n,v])=>`<div class="bar-row"><span title="${esc(n)}">${esc(n)}</span><span class="b"><i class="${lim&&v>lim+1e-9?'over':''}" style="width:${Math.min(100,v*100)}%"></i></span><span class="num">${P(v)}</span></div>`).join('');
-  const aiw=rows.filter(r=>isAI(r.s)).reduce((a,r)=>a+r.w/tot,0);
-  let dec={g:0,r:0,d:0,t:0};rows.forEach(({s,w})=>{if(!isN(s.ret))return;const gv=isN(s.gv)?s.gv:0,dy=s.dy||0;dec.g+=w/tot*gv;dec.d+=w/tot*dy;dec.r+=w/tot*(s.ret-gv-dy);dec.t+=w/tot*s.ret});
-  const o={wacc:M.rules.wacc,dg:0,h3:M.rules.h3};
-  $('#main').innerHTML=`<div class="sub">${opts.map(x=>`<button data-k="${x.k}" class="${x.k===L.k?'on':''}" style="--c:var(${x.c})">${x.n}<i>${M.stocks.filter(x.d).length}</i></button>`).join('')}</div>
+/* ---------- ficha: um painel de validação, sem abas ---------- */
+function openStock(t,keep){const s=BY[t];if(!s)return;CUR=t;const d=$('#drawer');
+  d.innerHTML=`<div class="dh"><div style="flex:1;min-width:0"><h2>${esc(s.t)} <span class="pill" style="--c:var(${CLSCOL[s.cls]||'--ink2'})" title="Método A (consenso)">A · ${esc(s.cls||'—')}</span> <span class="pill" style="--c:var(${CLSCOL[s.clsB]||'--ink2'})" title="Método B (histórico)">B · ${esc(s.clsB||'—')}</span></h2>
+   <div class="meta">${esc(s.nm)} · ${esc(s.ind)} · US$ ${N(s.px,2)} · ${N(s.mc,0)} bi${M.adr[s.t]?` · reporta em ${esc(M.adr[s.t].moeda)}`:''}${isN(s.bag)?` · Bagger #${s.bag}`:''}</div></div>
+   <span style="align-self:center">${selBtn(t)}</span><button class="btn" id="dclose" aria-label="Fechar">Esc ✕</button></div><div class="dbody" id="dbody">${fValid(s)}</div>`;
+  d.hidden=false;$('#scrim').hidden=false;$('#dclose').onclick=closeStock;wireSel(d);if(!keep)$('#dbody').scrollTop=0}
+function closeStock(){CUR=null;$('#drawer').hidden=true;$('#scrim').hidden=true}
+function yearTable(rows,years){years=years||[];return`<div class="tw" style="margin:4px 0"><table><thead><tr><th class="l"></th>${years.map(y=>`<th>${y}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,a,f])=>`<tr><td class="l">${n}</td>${years.map((y,i)=>`<td class="n">${a&&isN(a[i])?f(a[i]):'—'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function fValid(s){const Y=M.years,yb=Y.oi||[],yr=Y.rev||[],fin=s.fin===1;const rev=yb.map(y=>{const i=yr.indexOf(y);return i>=0&&s.rev?s.rev[i]:null}),nop=s.nop||[],ca=s.ca||[];
+  const mg=yb.map((y,i)=>isN(nop[i])&&isN(rev[i])&&rev[i]>0?nop[i]/rev[i]:null),ga=yb.map((y,i)=>isN(rev[i])&&isN(ca[i])&&ca[i]>0?rev[i]/ca[i]:null),ra=mg.map((v,i)=>isN(v)&&isN(ga[i])?v*ga[i]:null);
+  const up=(p,pl)=>isN(p)&&isN(pl)&&pl>0?` <span class="${p>pl?'pos':'neg'}">(${P(p/pl-1,0)})</span>`:'';
+  const why=LISTS.map(L=>{const a=inA(L,s),b=inB(L,s);return`<span>${esc(L.n)}</span><span>${a||b?`<span class="mb ${a&&b?'ab':a?'a':'b'}">${a&&b?'A+B':a?'A':'B'}</span>`:'<span class="note">—</span>'}</span>`}).join('');
+  return`<div class="caveat">⚠ O ROIC pode estar errado (triangulado; financeiras e seguradoras de saúde usam ROE).</div>
+   ${flags(s).length?`<div style="margin-bottom:8px">${flags(s).map(x=>`<span class="tag w">⚠ ${esc(x)}</span>`).join('')}</div>`:''}
    <div class="grid2">
-    <div class="card"><h4>Peso por setor (teto ${P(cap,0)} na Top 20)</h4>${barsH(grp(s=>s.sec),L.k==='top'?cap:0)}</div>
-    <div class="card"><h4>Peso por indústria</h4>${barsH(grp(s=>s.ind).slice(0,12))}</div>
-    <div class="card"><h4>Tema IA: ${P(aiw,0)} da carteira</h4>${barsH([['IA (lista abaixo)',aiw],['Fora do tema',1-aiw]])}
-     <p class="note">Indústrias ou tickers, um por linha (fica salvo neste navegador):</p><textarea id="ai">${esc(ai.join('\n'))}</textarea>
-     <p class="note">${rows.filter(r=>isAI(r.s)).map(r=>esc(r.s.t)).join(', ')||'nenhuma'}</p></div>
-    <div class="card"><h4>Moeda de reporte</h4>${barsH(grp(s=>M.adr[s.t]?M.adr[s.t].moeda:'USD'))}</div>
-    <div class="card"><h4>De onde vem o retorno esperado (${P(dec.t)} ao ano)</h4>${barsH([['Crescimento do lucro (c/ haircut)',dec.g],['Re-rating até o P/E justo',dec.r],['Dividendos',dec.d]])}
-     <p class="note">Média ponderada pelo peso. Re-rating = retorno esperado − crescimento − dividendos. No backtest, o ganho das carteiras veio sobretudo do re-rating.</p></div>
-    <div class="card"><h4>Sensibilidade da carteira</h4>
-     <div class="sl"><span>WACC</span><input type="range" id="r-wacc" min="0.05" max="0.13" step="0.0025" value="${o.wacc}"><span class="num" id="rv-wacc"></span></div>
-     <div class="sl"><span>Δ g do P/E justo</span><input type="range" id="r-dg" min="-0.03" max="0.03" step="0.0025" value="0"><span class="num" id="rv-dg"></span></div>
-     <div class="sl"><span>Haircut do ano+3</span><input type="range" id="r-h3" min="0.7" max="1" step="0.01" value="${o.h3}"><span class="num" id="rv-h3"></span></div>
-     <div id="r-out"></div><p class="note">Recalcula o retorno de cada ação com os mesmos pesos (não refaz a seleção).</p></div>
-   </div>`;
-  $('#main').querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{ls.set('pt.rk',b.dataset.k);vRiscos()});
-  $('#ai').onchange=e=>{ls.set('pt.ai',e.target.value);vRiscos()};
-  const draw=()=>{let base=0,nw=0;rows.forEach(({s,w})=>{const c=calc(s,o);if(isN(s.ret))base+=w/tot*s.ret;if(isN(c.ret))nw+=w/tot*c.ret});
-    $('#rv-wacc').textContent=P(o.wacc);$('#rv-dg').textContent=(o.dg>=0?'+':'')+P(o.dg);$('#rv-h3').textContent='×'+N(o.h3,2);
-    $('#r-out').innerHTML=`<div class="kv" style="margin-top:6px"><span>Retorno esperado da carteira (planilha)</span><span>${P(base)}</span><span>Com os ajustes</span><span><b>${P(nw)}</b> (${nw>=base?'+':''}${P(nw-base)})</span></div>`};
-  [['r-wacc','wacc'],['r-dg','dg'],['r-h3','h3']].forEach(([id,k])=>{$('#'+id).oninput=e=>{o[k]=+e.target.value;draw()}});draw()}
-
-/* ---------- alertas ---------- */
-let ALLALERT=false;
-function inAny(s){return[s.wt,s.we,s.wj,s.wx].some(isN)||s.comp===1||s.ql===1||s.pan===1||s.peq===1||s.hr===1||s.hg===1||((s.cls===OOL||s.cls===GCGR)&&!s.dup)}
-function vAlertas(){const G={};const add=(k,s)=>{(G[k]=G[k]||[]).push(s)};
-  M.stocks.filter(s=>ALLALERT||inAny(s)).forEach(s=>{flags(s).forEach(f=>add(f,s));if(['Moeda diferente (fora)','Excluída (manual)','Excluída (vestuário)','Sem dados'].includes(s.cls))add(s.cls,s);
-    if(!isN(s.ru))add('Sem ROIC/ROE (dado de balanço faltando)',s);if(!(s.est||[]).some(isN))add('Sem estimativa do consenso',s)});
-  Object.keys(M.adr).forEach(t=>{const a=M.adr[t];if(fxRes(a.moeda)&&BY[t])add('Câmbio de reserva (o Wisesheets não devolveu)',BY[t])});
-  const inList=s=>[s.wt,s.we,s.wj,s.wx].some(isN)?' ●':'';
-  const tot=M.stocks.reduce((a,s)=>a+flags(s).length,0),act=M.stocks.filter(inAny).reduce((a,s)=>a+flags(s).length,0);
-  $('#main').innerHTML=`<p class="desc">${ALLALERT?'Todas as ações do arquivo.':'Só as ações que estão em alguma lista ou carteira (as que você pode comprar): '+act+' alertas de '+tot+' no arquivo.'} ● = está numa carteira (Top 20, Especiais, JG+G ou Excepcionais). <a href="#" id="allal" style="color:var(--acc2)">${ALLALERT?'Mostrar só as acionáveis':'Mostrar todas'}</a></p><div class="grid2">${Object.entries(G).sort((a,b)=>b[1].length-a[1].length).map(([k,a])=>`<div class="card"><h4>${esc(k)} · ${a.length}</h4><div class="chips">${a.map(s=>`<span class="chip"><a href="#" data-t="${esc(s.t)}" style="color:var(--acc2)">${esc(s.t)}${inList(s)}</a></span>`).join('')}</div></div>`).join('')}</div>`;
-  $('#main').querySelectorAll('a[data-t]').forEach(a=>a.onclick=e=>{e.preventDefault();openStock(a.dataset.t,'resumo')});
-  $('#allal').onclick=e=>{e.preventDefault();ALLALERT=!ALLALERT;vAlertas()}}
-
-/* ---------- comparar ---------- */
-function vComparar(){const ss=COMPARE.map(t=>BY[t]).filter(Boolean);
-  const rows=[['Classe',s=>esc(s.cls)],['Indústria',s=>esc(s.ind)],['Valor (US$ bi)',s=>N(s.mc,0)],['ROIC/ROE usado',s=>P(s.ru)],['Crescimento (consenso)',s=>P(s.gc)],['Crescimento (haircut)',s=>P(s.gv)],['Crescimento histórico (B)',s=>P(s.gB)],['zGrowth',s=>N(s.zg,2)],['P/L A · B',s=>N(s.pl,1)+' · '+N(s.plB,1)],['P/E justo A · B',s=>N(s.pej,1)+' · '+N(s.pejB,1)],['Retorno esperado A · B',s=>P(s.ret)+' · '+P(s.retB)],['Classe B',s=>esc(s.clsB)],
-  ['Margem NOPAT (último ano)',s=>{const yb=M.years.oi||[],yr=M.years.rev||[],y=yb[yb.length-1],r=s.rev?s.rev[yr.indexOf(y)]:null,n=(s.nop||[])[yb.length-1];return isN(r)&&isN(n)&&r>0?P(n/r):'—'}],
-  ['Giro do capital (último ano)',s=>{const yb=M.years.oi||[],yr=M.years.rev||[],y=yb[yb.length-1],r=s.rev?s.rev[yr.indexOf(y)]:null,c=(s.ca||[])[yb.length-1];return isN(r)&&isN(c)&&c>0?N(r/c,2)+'×':'—'}],
-  ['Receita',s=>spark(s.rev)],['EPS',s=>spark(s.eps)],['Consenso (0–6)',s=>s.cons],['Dividend yield',s=>P(s.dy)],['Bagger',s=>isN(s.bag)?s.bag:'—'],['Listas',s=>esc(s.lists||'—')],['Alertas',s=>s.flag?'<span class="neg">'+esc(s.flag)+'</span>':'—']];
-  $('#main').innerHTML=`<p class="desc">Até 4 ações. Adicione pela ficha ("+ Comparar") ou aqui:</p>
-   <div class="chips" style="margin-bottom:10px">${ss.map(s=>`<span class="chip">${esc(s.t)}<button data-x="${esc(s.t)}" aria-label="Tirar">✕</button></span>`).join('')}<input id="cadd" placeholder="ticker + Enter" style="width:120px;border:1px solid var(--rule);background:var(--bg);padding:3px 6px;font-family:var(--f-num)"></div>
-   ${ss.length?`<div class="tw"><table><thead><tr><th class="l"></th>${ss.map(s=>`<th>${esc(s.t)}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,f])=>`<tr><td class="l">${n}</td>${ss.map(s=>`<td class="n">${f(s)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-   <div class="grid2" style="margin-top:12px">${ss.map(s=>`<div class="card"><h4>${esc(s.t)} · EPS</h4>${epsChart(s,true)}</div>`).join('')}</div>`:'<div class="empty">Nenhuma ação na comparação.</div>'}`;
-  $('#main').querySelectorAll('button[data-x]').forEach(b=>b.onclick=()=>toggleCmp(b.dataset.x));
-  $('#cadd').onkeydown=e=>{if(e.key==='Enter'){const t=e.target.value.trim().toUpperCase();if(BY[t]&&!COMPARE.includes(t))toggleCmp(t);else e.target.value=''}}}
-
-/* ---------- regras e ressalvas ---------- */
-function vRegras(){const R=M.rules;const lab={ghi:'Crescimento alto',glo:'Crescimento baixo',zgmax:'zGrowth máximo',rhi:'ROIC alto',rlo:'ROIC baixo',rethi:'Retorno alto',retlo:'Retorno baixo',wacc:'WACC',gtop:'g máximo',gfloor:'g mínimo',gfin:'Financeiras: g menor em',hrc:'High ROIC acima de',hgc:'High Growth acima de',plmin:'P/L mínimo (Top 20)',nlista:'Tamanho das listas',teto:'Peso máximo por ação',h1:'Haircut ano+1',h2:'Haircut ano+2',h3:'Haircut ano+3',gmax:'Teto do crescimento',capn:'Máx. ações por setor',capw:'Peso máximo por setor'};
-  const pct=['ghi','glo','rhi','rlo','rethi','retlo','wacc','gtop','gfloor','gfin','hrc','hgc','teto','gmax','capw'];
-  $('#main').innerHTML=`<div class="caveat"><b>Ressalvas de quem vai investir</b><br>⚠ O ROIC pode estar errado (definição triangulada, dados do Wisesheets, empresas com leasing e patrimônio negativo são delicadas).<br>
-   ⚠ O crescimento usa o consenso do sell-side com haircut: <b>não é a regra do backtest</b> (não há histórico de consenso para testar). A regra testada usa o crescimento histórico.<br>
-   ⚠ O P/E justo explode quando o g se aproxima do WACC (bancos com crescimento alto, por exemplo); o g dos bancos ainda vai ser revisto.<br>
-   ⚠ Empresas que reportam em outra moeda são convertidas pelo câmbio do Wisesheets e pela proporção da ADR; confira as marcadas na Central de alertas.</div>
-   <div class="grid2"><div class="card"><h4>Regras (da aba Regras do Excel)</h4><div class="kv">${Object.entries(lab).map(([k,n])=>`<span>${n}</span><span>${k in R?(pct.includes(k)?P(R[k],1):N(R[k],2)):'—'}</span>`).join('')}</div></div>
-   <div class="card"><h4>Câmbio (US$ por unidade)</h4><div class="kv">${Object.entries(M.fx).map(([m,v])=>`<span>${m}${fxRes(m)?' <span class="neg">(reserva)</span>':''}</span><span>${N(v,4)}</span>`).join('')}</div>
-    <h4 style="margin-top:12px">Moeda e ADR</h4><div class="kv">${Object.entries(M.adr).map(([t,a])=>`<span>${esc(t)}</span><span>${esc(a.moeda)} · ${a.n} ação(ões)/ADR · estimativa: ${esc(a.est)}</span>`).join('')}</div></div>
-   <div class="card"><h4>Cíclicas (indústria)</h4><p class="note">${(M.lists.cycl||[]).map(esc).join(' · ')}</p><h4 style="margin-top:10px">Vestuário</h4><p class="note">${(M.lists.appl||[]).map(esc).join(' · ')}</p>
-    <h4 style="margin-top:10px">Usam ROE</h4><p class="note">${(M.lists.roet||[]).map(esc).join(' · ')} + setor Financial Services</p><h4 style="margin-top:10px">Excluídas à mão</h4><p class="note">${(M.lists.excl||[]).map(esc).join(' · ')||'—'}</p></div></div>
-   <p class="note">Para mudar uma regra, mude no Excel (aba Regras), atualize o Wisesheets, salve e solte o arquivo aqui.</p>`}
-function renderFoot(){const miss=M.stocks.filter(s=>s.cls==='Sem dados').length;
-  $('#foot').innerHTML=`${M.stocks.length} ações · ${miss} sem dados · atalhos: <b>/</b> busca, <b>Enter</b> abre, <b>Esc</b> fecha · ⚠ ROIC pode estar errado · consenso não testado em backtest · arraste a planilha salva para atualizar.`}
+    <div class="card"><h4>${fin?'ROE':'ROIC'} usado: ${P(s.ru)} ${spark(fin?s.roe:s.ry,90,20,'--pos')}</h4>${fin?yearTable([['ROE',s.roe,P]],yb):
+     `<div class="kv"><span>Visão do ativo</span><span>${P(s.va)}</span><span>Visão do passivo</span><span>${P(s.vp)}</span><span>Marginal (Δ NOPAT ÷ reinvestimento)</span><span>${P(s.vm)}</span></div>${yearTable([['ROIC do ano',s.ry,P]],yb)}`}</div>
+    <div class="card"><h4>Margem × giro</h4>${fin?'<p class="note">Não se aplica a financeiras.</p>':yearTable([['Margem NOPAT',mg,P],['Giro do capital',ga,v=>N(v,2)+'×'],['ROIC = margem × giro',ra,P]],yb)}</div>
+    <div class="card"><h4>Crescimento: A × B × patamar</h4><div class="kv"><span>A · consenso (classe)</span><span>${P(s.gc)}</span><span>A · com haircut (valuation)</span><span>${P(s.gv)}</span>
+     <span>B · histórico (mediana 5 anos)</span><span>${P(s.gB)}</span><span>Patamar da indústria (p70)</span><span>${P(s.p70)}</span><span>Mediana da indústria</span><span>${P(s.gpi)}</span></div></div>
+    <div class="card"><h4>P/L × P/E justo</h4><div class="tw"><table><thead><tr><th class="l"></th><th>A · consenso</th><th>B · histórico</th></tr></thead><tbody>
+     <tr><td class="l">P/L</td><td class="n">${N(s.pl,1)}</td><td class="n">${N(s.plB,1)}</td></tr>
+     <tr><td class="l">P/E justo</td><td class="n">${N(s.pej,1)}${up(s.pej,s.pl)}</td><td class="n">${N(s.pejB,1)}${up(s.pejB,s.plB)}</td></tr>
+     <tr><td class="l">Retorno esperado</td><td class="n">${P(s.ret)}</td><td class="n">${P(s.retB)}</td></tr></tbody></table></div>
+     <div class="kv" style="margin-top:6px"><span>Retorno no bear</span><span class="${isN(s.rb)&&s.rb<0?'neg':''}">${P(s.rb)}</span><span>Dividend yield</span><span>${P(s.dy)}</span></div></div>
+    <div class="card"><h4>Escadinha: ${N(s.esc,0)} de 100</h4><div class="kv"><span>Receita</span><span>${spark(s.rev,120,24,'--acc2')}</span><span>Lucro operacional</span><span>${spark(s.oi,120,24,'--acc')}</span><span>EPS</span><span>${spark(s.eps,120,24,'--pos')}</span></div></div>
+    <div class="card"><h4>Por que está em cada lista</h4><div class="kv">${why}</div><p class="note">Nota de boa empresa ${N(s.nota,1)} de 5.</p></div>
+   </div>`}
+function renderFoot(){$('#foot').innerHTML=`${M.stocks.length} ações · qualidade = ROIC ≥ 12% e crescimento ≥ 15%, sem cíclicas · A = consenso com haircut (não testado em backtest) · B = histórico (o testado) · ⚠ ROIC pode estar errado · arraste a planilha salva para atualizar`}
 
 /* ---------- busca e teclado ---------- */
 let SI=0;
@@ -734,7 +416,7 @@ function search(q){q=q.trim().toUpperCase();const r=$('#sres');if(!q){r.hidden=t
   const a=M.stocks.filter(s=>s.t.toUpperCase().startsWith(q)).concat(M.stocks.filter(s=>!s.t.toUpperCase().startsWith(q)&&String(s.nm||'').toUpperCase().includes(q))).slice(0,12);
   SI=0;r.innerHTML=a.map((s,i)=>`<div data-t="${esc(s.t)}" class="${i===0?'on':''}"><b>${esc(s.t)}</b><span>${esc(s.nm)}</span></div>`).join('')||'<div>Nada encontrado</div>';r.hidden=false;
   r.querySelectorAll('div[data-t]').forEach(d=>d.onmousedown=e=>{e.preventDefault();pick(d.dataset.t)});return a}
-function pick(t){$('#q').value='';$('#sres').hidden=true;$('#q').blur();openStock(t,'resumo')}
+function pick(t){$('#q').value='';$('#sres').hidden=true;$('#q').blur();openStock(t)}
 $('#q').oninput=e=>search(e.target.value);
 $('#q').onkeydown=e=>{const items=[...$('#sres').querySelectorAll('div[data-t]')];
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!items.length)return;SI=(SI+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items.forEach((d,i)=>d.classList.toggle('on',i===SI))}
@@ -743,7 +425,6 @@ $('#q').onblur=()=>setTimeout(()=>$('#sres').hidden=true,150);
 document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){e.preventDefault();$('#q').focus()}
   if(e.key==='Escape'&&!$('#drawer').hidden)closeStock()});
 $('#scrim').onclick=closeStock;
-$('#hidew').checked=ls.get('pt.hidew','0')==='1';$('#hidew').onchange=e=>{ls.set('pt.hidew',e.target.checked?'1':'0');render()};
 $('#theme').onclick=()=>{const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const nx=cur==='dark'?'light':'dark';document.documentElement.dataset.theme=nx;ls.set('pt.theme',nx)};
 {const t=ls.get('pt.theme',null);if(t)document.documentElement.dataset.theme=t}
 
@@ -769,5 +450,5 @@ addEventListener('drop',e=>{e.preventDefault();dragN=0;$('#drop').hidden=true;co
 setModel(EMBED);
 DB.get().then(v=>{if(v&&v.buf){const go=()=>{loadBuffer(v.buf,v.name,false);$('#src').textContent=`${v.name} · carregado em ${v.when}`};if(typeof XLSX!=='undefined')go();else addEventListener('load',go)}});
 pfInit();
-window.__pt={parseWorkbook,calc,computeB,get M(){return M},get PF(){return PF}};
+window.__pt={parseWorkbook,computeB,get M(){return M},get PF(){return PF}};
 </script>
