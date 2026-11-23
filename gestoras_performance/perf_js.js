@@ -81,7 +81,7 @@ function renderP(){
     .filter(o=>o.s && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
   const a=W_?b-W_+1:null; const ib=W_?pstats(IBV,a,b):null, cd=W_?pstats(CDI,a,b):null;
   $('p-h').textContent=W_?`Retorno de ${pmlong(a)} a ${pmlong(b)}`:`Retorno desde o início, até ${pmlong(b)}`;
-  $('p-sub').textContent=`${rows.length} gestoras com série completa na janela${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos de ações da gestora, cota líquida de taxas dos fundos não-FIC.`;
+  $('p-sub').textContent=`${rows.length} gestoras com série completa na janela${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos long only da gestora (sem long biased), cota dos fundos não-FIC.`;
   const beat=rows.filter(o=>o.s.ex!=null&&o.s.ex>0).length, med=q=>{const v=rows.map(q).filter(x=>x!=null).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null;};
   $('p-kpis').innerHTML=kpis([
     [W_>=12?'Ibovespa (a.a.)':'Ibovespa', W_?pc(W_>=12?ib.ann:ib.ret):'–', W_?`${pc(ib.ret,0)} no período · CDI ${pc(W_>=12?cd.ann:cd.ret)}${W_>=12?' a.a.':''}`:'janela varia por gestora'],
@@ -94,7 +94,7 @@ function renderP(){
   const cols=[
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
     {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l"><a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
-    {k:'pl',l:'PL ações',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
+    {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
     ...(W_?[]:[{k:'a',l:'Desde',cls:'l',v:o=>o.s.a,asc:true,f:o=>`<td class="l muted">${pml(o.s.a)}</td>`}]),
     {k:'ret',l:'Retorno',v:o=>o.s.ret,f:o=>`<td>${pc(o.s.ret)}</td>`},
     ...(ann?[{k:'ann',l:'Ao ano',v:o=>o.s.ann,f:o=>`<td style="font-weight:600">${pc(o.s.ann)}</td>`}]:[]),
@@ -119,7 +119,7 @@ function renderP(){
   cumChart($('p-chart'), [...S.psel.filter(id=>PR[id]).map((id,k)=>({name:GI[id].n, r:PR[id].r, ...serStyle(k)})), IBS, CDS], a0, b, {endLabels:true, noLegend:true, label:'Retorno acumulado das gestoras marcadas'});
   $('p-note').innerHTML=PNOTE;
 }
-const PNOTE=`<b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL de cada fundo, 2005 em diante). Para cada gestora, entram os fundos da classe Ações ou long biased que ela geria <i>naquela data</i> (histórico de gestores da CVM, somando os CNPJs da mesma casa), excluídos fundos de cotas (FIC), exclusivos, de previdência e indexados. `+
+const PNOTE=`<b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL de cada fundo, 2005 em diante). Para cada gestora, entram só os fundos <b>long only</b> da classe Ações que ela geria <i>naquela data</i> (histórico de gestores da CVM, somando os CNPJs da mesma casa), excluídos fundos de cotas (FIC), exclusivos, de previdência e indexados. Long biased fica de fora: fundos com long biased, long short ou L/S no nome (atual ou antigo), classificados pela Anbima como L/S ou multimercado, ou registrados na CVM como multimercado. Fundos de ações que podem vender a descoberto sem dizer isso no nome não são detectados. `+
   `O retorno do mês é a média dos retornos de cota desses fundos ponderada pelo PL do fim do mês anterior. Como só entram os masters e fundos não-FIC, a taxa de administração do master já está descontada, mas a de performance cobrada no feeder pode não estar: o retorno tende a ficar um pouco acima do que o cotista do FIC recebeu. `+
   `Ibovespa = mediana mensal dos fundos indexados ao índice com PL ≥ R$ 50 mi (correlação 0,9997 com o índice; fica abaixo dele pela taxa de administração, ~0,5% a.a.). CDI: Banco Central (SGS 4391). Pior queda = maior queda do pico ao vale com cotas mensais. Beta e meses acima do Ibovespa usam retornos mensais. Janelas exigem todos os meses com dado; gestoras que encerraram ou trocaram de CNPJ fora da lista aparecem só até o último mês disponível.`;
 
@@ -127,7 +127,7 @@ const PNOTE=`<b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL 
 S.gpw=60;
 function renderGP(g){
   const box=$('g-perf'), p=PR[g.id];
-  if(!p){ box.innerHTML=`<div class="hd"><h2>Desempenho</h2></div><div class="empty">Sem fundos de ações elegíveis no Informe Diário da CVM para esta gestora (só FICs, exclusivos ou fundos de outra classe).</div>`; return; }
+  if(!p){ box.innerHTML=`<div class="hd"><h2>Desempenho</h2></div><div class="empty">Sem fundos long only elegíveis no Informe Diário da CVM para esta gestora (só long biased, FICs, exclusivos ou fundos de outra classe).</div>`; return; }
   const b=Math.min(p.last, PLAST); let a1=b; while(a1>p.o && p.r[a1-1]!=null) a1--;
   const st=k=>{ const a=b-k+1; return a>=a1?pstats(p.r,a,b,IBV):null; }, s0=pstats(p.r,a1,b,IBV);
   const kp=(lbl,s,k)=>[lbl, s?pc(k>=12?s.ann:s.ret):'–', s?`${k>12?'a.a. · ':''}Ibov ${pc(k>=12?s.bann:s.bret)} · ${pcp(s.ex)}`:'sem série completa'];
@@ -136,7 +136,7 @@ function renderGP(g){
     if(i1<i0) continue; const s=pstats(p.r,i0,i1,IBV), c=pstats(CDI,i0,i1); if(s) yrs.push({y,s,c,part:i1-i0+1<12,i0,i1}); }
   const fn=p.f.map(f=>{ let fa=Math.min(b,f.o+f.r.length-1); const fb=fa; let fa0=fb; while(fa0>f.o && f.rr[fa0-1]!=null) fa0--;
     const z=k=>fb-k+1>=fa0?pstats(f.rr,fb-k+1,fb,IBV):null; return {f, end:fb, s12:z(12), s36:z(36), s60:z(60), s0:pstats(f.rr,fa0,fb,IBV), a:fa0}; });
-  box.innerHTML=`<div class="hd"><h2>Desempenho dos fundos de ações</h2><span class="hdctl"><span class="seg" id="g-pw">${PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${w===v}">${l}</button>`).join('')}</span></span></div>`+
+  box.innerHTML=`<div class="hd"><h2>Desempenho dos fundos long only</h2><span class="hdctl"><span class="seg" id="g-pw">${PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${w===v}">${l}</button>`).join('')}</span></span></div>`+
     `<p class="note" style="margin:0 0 10px">Até ${pmlong(b)} · ${p.nf[b]||0} fundo(s) no mês · PL ${plmi(lastPL(p,b))} · série desde ${pmlong(a1)}. <a href="#performance" id="g-p2">Ver ranking</a></p>`+
     `<div class="kpis">${kpis([kp('12 meses',st(12),12),kp('3 anos',st(36),36),kp('5 anos',st(60),60),kp(`Desde ${pml(a1)}`,s0,b-a1+1)])}</div>`+
     `<div class="chart" id="g-pchart"></div>`+

@@ -18,6 +18,13 @@ G = json.load(open(CJ))
 M = [str(p) for p in pd.period_range('2005-01', LAST, freq='M')]
 MI = {m: i for i, m in enumerate(M)}
 P = P[P.ym.isin(MI) & P.gid.notna()]
+# só long only: fora os long biased (nome, Anbima L/S Direcional ou classe Multimercado)
+LB2 = r'LONG[ -]?BIAS|\bL\.?B\.?\b|LONG[ -]?SHORT|\bL/S\b|\bLS\b|BIASED'
+lbx = F.nomes.fillna('').str.contains(LB2) | F.anbima.fillna('').str.contains('L/S|Multimercado') | F.classe.fillna('').eq('Multimercado')
+P = P[~(P.long_biased.astype(bool) | P.CNPJ_FUNDO.map(lbx).fillna(False).astype(bool))]
+print('fundos long biased excluídos:', int(lbx.sum()))
+prv = F.anbima.fillna('').str.contains('Previd')
+P = P[~P.CNPJ_FUNDO.map(prv).fillna(False).astype(bool)]
 E = P[P.eleg & P.r.notna() & P.pl_ant.gt(0)].copy()
 # erros de cota: fundo que se afasta mais de 40 p.p. do Ibovespa no mês fica fora daquele mês
 E = E[(E.r - E.ym.map(IX.ibov)).abs().le(0.40) | E.ym.map(IX.ibov).isna()]
