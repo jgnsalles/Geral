@@ -25,7 +25,19 @@ dea = lambda x: unicodedata.normalize('NFD', str(x or '')).encode('ascii', 'igno
 acoes_now = F.nome.map(dea).str.contains(r'\bACOES\b|\bACAO\b')  # nome atual diz "ações": classe multimercado antiga não conta
 lbx = F.nomes.fillna('').str.contains(LB2) | F.anbima.fillna('').str.contains('L/S|Multimercado') | (F.classe.fillna('').eq('Multimercado') & ~acoes_now)
 P = P[~P.CNPJ_FUNDO.map(lbx).fillna(False).astype(bool)]
-print('fundos long biased excluídos:', int(lbx.sum()))
+print('fundos long biased excluídos pelo nome/classe:', int(lbx.sum()))
+# long biased pela carteira (CDA): futuro de Ibovespa vendido + ações tomadas e vendidas >= 10% do PL,
+# mediana móvel de 12 meses do fundo; meses sem CDA usam a mediana do fundo inteiro
+SH = pd.read_pickle(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'shorts.pkl'))
+SH[['idx', 'stk']] = SH[['idx', 'stk']].fillna(0); SH = SH[SH.pl > 0].sort_values(['CNPJ_FUNDO', 'ym'])
+SH['sh'] = (SH.idx + SH.stk) / SH.pl
+SH['sh12'] = SH.groupby('CNPJ_FUNDO').sh.transform(lambda x: x.rolling(12, min_periods=3).median()).fillna(SH.sh)
+SHM = SH.groupby('CNPJ_FUNDO').sh.median()
+k = pd.MultiIndex.from_frame(P[['CNPJ_FUNDO', 'ym']])
+shv = pd.Series(SH.sh12.values, index=pd.MultiIndex.from_frame(SH[['CNPJ_FUNDO', 'ym']])).reindex(k).values
+shv = pd.Series(shv, index=P.index).fillna(P.CNPJ_FUNDO.map(SHM))
+P = P[~(shv >= 0.10)]
+print('fundos com algum mês long biased pela carteira:', int(SH[SH.sh12 >= 0.10].CNPJ_FUNDO.nunique()))
 prv = F.anbima.fillna('').str.contains('Previd')
 P = P[~P.CNPJ_FUNDO.map(prv).fillna(False).astype(bool)]
 # foco: Brasil (sem fundos de investimento no exterior) e LatAm (fundos com LatAm/América Latina no nome)
