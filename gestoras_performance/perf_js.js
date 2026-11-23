@@ -66,6 +66,8 @@ const PLAST=(()=>{ const ids=Object.keys(PR); for(let i=PN-1;i>=0;i--){ if(IBV[i
 const PWIN=[[12,'12m'],[36,'3a'],[60,'5a'],[120,'10a'],[0,'Desde o início']];
 
 // ----- aba Performance
+// seleção de gestoras do ranking (escolhida a dedo; as demais continuam com o bloco de desempenho na própria página)
+const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "11530232", "06015560", "09175140", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "04581293", "14359791", "11401701", "53980469", "18730786", "49640512", "05336089", "08251477", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "02228585"]);
 S.pend=PLAST; S.pwin=36; S.psel=null;
 ['p-min'].forEach(id=>$(id).addEventListener('change',renderP)); $('p-q').addEventListener('input',renderP);
 $('p-end').addEventListener('change',()=>{S.pend=+$('p-end').value; renderP();});
@@ -74,14 +76,14 @@ function renderP(){
   $('p-end').innerHTML=''; for(let i=PN-1;i>=12;i--) if(IBV[i]!=null) $('p-end').add(new Option(pmlong(i),i)); $('p-end').value=b;
   $('p-win').innerHTML=PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${W_===v}">${l}</button>`).join('');
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
-  const rows=G.filter(g=>PR[g.id]).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
+  const rows=G.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
       // "desde o início": primeira sequência contínua até b
       let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,IBV):null; if(st) st.a=a2; }
       return {g, p, s:st, pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
     .filter(o=>o.s && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
   const a=W_?b-W_+1:null; const ib=W_?pstats(IBV,a,b):null, cd=W_?pstats(CDI,a,b):null;
   $('p-h').textContent=W_?`Retorno de ${pmlong(a)} a ${pmlong(b)}`:`Retorno desde o início, até ${pmlong(b)}`;
-  $('p-sub').textContent=`${rows.length} gestoras com série completa na janela${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos long only da gestora (sem long biased), cota dos fundos não-FIC.`;
+  $('p-sub').textContent=`${rows.length} das ${PSEL.size} gestoras selecionadas com série completa na janela${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos long only da gestora (sem long biased), cota dos fundos não-FIC.`;
   const beat=rows.filter(o=>o.s.ex!=null&&o.s.ex>0).length, med=q=>{const v=rows.map(q).filter(x=>x!=null).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null;};
   $('p-kpis').innerHTML=kpis([
     [W_>=12?'Ibovespa (a.a.)':'Ibovespa', W_?pc(W_>=12?ib.ann:ib.ret):'–', W_?`${pc(ib.ret,0)} no período · CDI ${pc(W_>=12?cd.ann:cd.ret)}${W_>=12?' a.a.':''}`:'janela varia por gestora'],
