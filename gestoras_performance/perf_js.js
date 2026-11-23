@@ -70,9 +70,17 @@ const hcell=(s,n,bold)=>`<td${bold?' style="font-weight:600"':''} title="${s&&s.
 
 // ----- aba Performance
 // gestoras extras (só performance, fora das carteiras: SPX, Dynamo...)
-const PG=[...G, ...(PF.x||[]).filter(x=>!GI[x.id])]; const PGI={}; PG.forEach(g=>PGI[g.id]=g);
+const PNM={'08752088':'Brasil Capital','45999585':'TB','14229647':'Núcleo','18529041':'SFA','53980469':'JGP Equities','11888689':'STK','13143849':'Bahia AM','09175140':'Galt','13911006':'Parcitas','49640512':'Capsigma','02228585':'Tática','15555653':'Onyx','06182127':'Constellation'};
+const PG=[...G.map(g=>PNM[g.id]?{...g,n:PNM[g.id]}:g), ...(PF.x||[]).filter(x=>!GI[x.id])]; const PGI={}; PG.forEach(g=>PGI[g.id]=g);
 // seleção de gestoras do ranking (escolhida a dedo; as demais continuam com o bloco de desempenho na própria página)
 const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "11530232", "06015560", "09175140", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "04581293", "14359791", "11401701", "53980469", "18730786", "49640512", "05336089", "08251477", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "02228585", "12330774", "72116353", "23890968", "37947185"]);
+// fundos LatAm entram no mesmo ranking (benchmark próprio quando o factsheet traz, senão Ibovespa)
+(PF.la||[]).forEach((f,k)=>{ const id='la'+k, rr=new Array(PN).fill(null); f.r.forEach((v,j)=>rr[f.o+j]=dec(v)); const last=f.o+f.r.length-1;
+  let bm=null; if(f.bm){ bm=new Array(PN).fill(null); f.bm.forEach((v,j)=>bm[f.o+j]=dec(v)); }
+  const pl=new Array(PN).fill(null); if(f.pl!=null) pl[last]=f.pl;
+  PR[id]={o:f.o, last, r:rr, pl, nf:new Array(PN).fill(1), f:[], bm, bmn:f.bmn};
+  const nm=/FUNDAMENTA/.test(f.n)?'Fundamenta LatAm (Gama)':/EXPLORITAS/.test(f.n)?'Exploritas Marathon':`${f.g.replace(/ Equity$/,'')} LatAm`;
+  const g={id, n:nm, rs:f.n, cnpj:f.c, reg:f.cur?'LatAm · US$':'LatAm', gid:f.gid}; PG.push(g); PGI[id]=g; PSEL.add(id); });
 S.pend=PLAST; S.pwin=36; S.psel=null;
 ['p-min'].forEach(id=>$(id).addEventListener('change',renderP)); $('p-q').addEventListener('input',renderP);
 $('p-end').addEventListener('change',()=>{S.pend=+$('p-end').value; renderP();});
@@ -82,10 +90,10 @@ function renderP(){
   $('p-win').innerHTML=PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${W_===v}">${l}</button>`).join('');
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
   const hz=(r,bn)=>Object.fromEntries(PH.map(([n])=>[n, b-n+1>=0?pstats(r,b-n+1,b,bn):null]));
-  const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
+  const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const BN=p.bm||IBV; const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,BN):null;
       // "desde o início": primeira sequência contínua até b
-      let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,IBV):null; if(st) st.a=a2; }
-      return {g, p, s:st, h:hz(p.r,IBV), pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
+      let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,BN):null; if(st) st.a=a2; }
+      return {g, p, s:st, h:hz(p.r,BN), pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
     .filter(o=>o.p.r[b]!=null && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
   const rowsW=rows.filter(o=>o.s);
   const a=W_?b-W_+1:null; const ib=W_?pstats(IBV,a,b):null, cd=W_?pstats(CDI,a,b):null;
@@ -102,7 +110,7 @@ function renderP(){
   const ann=!W_||W_>=12; const WL=W_?PWIN.find(x=>x[0]===W_)[1]:'desde início';
   const cols=[
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
-    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:`${esc(o.g.n)} <span class="chip" title="fora do painel de carteiras">só performance</span>`}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
+    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:o.g.gid&&GI[o.g.gid]?`<a href="#g-${o.g.gid}" data-open="${o.g.gid}" title="${esc(o.g.rs)}">${esc(o.g.n)}</a>`:`<span title="${esc(o.g.rs)}">${esc(o.g.n)}</span>`}${o.g.reg?` <span class="chip new" title="${o.p.bmn?'comparado ao '+esc(o.p.bmn)+' do factsheet':'comparado ao Ibovespa'}">${o.g.reg}</span>`:GI[o.g.id]?'':' <span class="chip" title="fora do painel de carteiras">só performance</span>'}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
     ...PH.map(([n,l])=>({k:'h'+n,l:n>12?`${l}<br><small>a.a.</small>`:l,v:o=>hv(o.h[n],n),f:o=>hcell(o.h[n],n,n===36)})),
     {k:'ex',l:`vs Ibov<br><small>${WL} ${ann?'a.a.':''}</small>`,v:o=>o.s?o.s.ex:null,f:o=>`<td>${pcp(o.s?o.s.ex:null)}</td>`},
@@ -124,23 +132,12 @@ function renderP(){
   // gráfico comparativo
   const a0=W_?a:Math.max(0,Math.min(...S.psel.filter(id=>PR[id]).map(id=>PR[id].o)));
   $('p-ct').textContent=`Retorno acumulado de ${pmlong(a0)} a ${pmlong(b)}`;
-  $('p-cs').textContent=S.psel.length?'gestoras marcadas na tabela · Ibovespa e CDI tracejados':'marque gestoras na tabela';
+  $('p-cs').textContent='até 8 linhas · Ibovespa e CDI tracejados';
   cumChart($('p-chart'), [...S.psel.filter(id=>PR[id]).map((id,k)=>({name:PGI[id].n, r:PR[id].r, ...serStyle(k)})), IBS, CDS], a0, b, {endLabels:true, noLegend:true, label:'Retorno acumulado das gestoras marcadas'});
-  // LatAm
-  const la=PF.la.map(f=>{ const rr=new Array(PN).fill(null); f.r.forEach((v,k)=>rr[f.o+k]=dec(v)); const end=f.o+f.r.length-1;
-      let bn=IBV; if(f.bm){ bn=new Array(PN).fill(null); f.bm.forEach((v,k)=>bn[f.o+k]=dec(v)); }
-      let s=null, a2=null; if(b>=f.o && b<=end){ if(W_){ s=pstats(rr,b-W_+1,b,bn); } else { a2=b; while(a2>f.o&&rr[a2-1]!=null) a2--; s=rr[b]!=null?pstats(rr,a2,b,bn):null; } }
-      return {f,rr,s,a2,end}; });
-  la.forEach(o=>{ let bn=IBV; if(o.f.bm){ bn=new Array(PN).fill(null); o.f.bm.forEach((v,k)=>bn[o.f.o+k]=dec(v)); } o.h=o.rr[b]!=null?hz(o.rr,bn):null; });
-  $('p-la').innerHTML=`<thead><tr><th class="l">Fundo</th><th class="l">Gestora</th><th>PL</th><th class="l">Desde</th>${PH.map(([n,l])=>`<th>${l}${n>12?'<br><small>a.a.</small>':''}</th>`).join('')}<th class="l">Índice</th><th>Vol a.a.<br><small>${WL}</small></th><th>Pior queda<br><small>${WL}</small></th></tr></thead><tbody>`+
-    la.sort((x,y)=>((y.h&&hv(y.h[36],36))??(y.h&&hv(y.h[12],12))??-9)-((x.h&&hv(x.h[36],36))??(x.h&&hv(x.h[12],12))??-9)).map(o=>`<tr><td class="l em">${esc(o.f.n)}${o.f.cur?' <span class="chip">US$ · factsheet</span>':''}<small>${esc(o.f.c)}</small></td><td class="l">${o.f.gid&&GI[o.f.gid]?`<a href="#g-${o.f.gid}" data-open="${o.f.gid}">${esc(o.f.g)}</a>`:esc(o.f.g)}</td><td class="muted">${o.end>=b-2?plmi(o.f.pl):'–'}</td><td class="l muted">${pml(o.f.o)}</td>`+
-      (o.h?PH.map(([n])=>hcell(o.h[n],n,n===36)).join(''):`<td colspan="${PH.length}" class="muted">sem dado em ${pml(b)}</td>`)+
-      `<td class="l muted">${o.f.bmn?esc(o.f.bmn)+' (US$)':'Ibovespa'}</td><td class="muted">${o.s&&o.s.vol!=null?pct(o.s.vol,1):'–'}</td><td>${pc(o.s?o.s.mdd:null,0)}</td></tr>`).join('')+'</tbody>';
-  $('p-la').querySelectorAll('a[data-open]').forEach(x=>x.onclick=e=>{e.preventDefault(); openG(x.dataset.open);});
-  $('p-lan').textContent='A comparação com o Ibovespa é só referência: o índice certo seria o MSCI EM Latin America, que não está nos dados abertos. INCA e Fourth Sail (Tordesilhas) não têm fundos registrados na CVM — são veículos offshore — e por isso não aparecem; a série deles precisaria vir das cartas ou factsheets. Gama Fundamenta LatAm é o feeder em reais de um fundo offshore. Apo Capital Latam Fund (offshore, em US$): cotas líquidas da classe B transcritas do factsheet de out/2026, comparadas ao MSCI LatAm do próprio factsheet — não é comparável diretamente com os fundos em reais.';
+  chipSelector($('p-chips'), rows.slice().sort((x,y)=>x.g.n.localeCompare(y.g.n)).map(o=>({key:o.g.id,label:o.g.n})), S.psel, 8, renderP);
   $('p-note').innerHTML=PNOTE;
 }
-const PNOTE=`<b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL de cada fundo, 2005 em diante). Para cada gestora, entram só os fundos <b>long only</b> da classe Ações que ela geria <i>naquela data</i> (histórico de gestores da CVM, somando os CNPJs da mesma casa), excluídos fundos de cotas (FIC), exclusivos, de previdência e indexados, e os fundos de investimento no exterior ou LatAm (estes ficam na tabela LatAm). Long biased fica de fora: fundos com long biased, long short ou L/S no nome (atual ou antigo), classificados pela Anbima como L/S ou multimercado, ou registrados na CVM como multimercado (salvo se o nome atual diz ações). Além disso, pela carteira da CDA: o fundo sai nos meses em que a mediana de 12 meses da posição vendida (futuro de Ibovespa vendido + ações tomadas em aluguel e vendidas) passa de 10% do PL. Os long only ficam tipicamente entre 0% e 5%. `+
+const PNOTE=`<b>LatAm.</b> Fundos LatAm entram como linhas próprias (selo LatAm): Onyx, Fundamenta (feeder em reais da Gama), Exploritas e Fama, pelo Informe Diário, comparados ao Ibovespa; Apo Capital Latam Fund (offshore, US$, classe B líquida) transcrito do factsheet de out/2026 e comparado ao MSCI LatAm do próprio factsheet. INCA e Fourth Sail (Tordesilhas) não têm fundos na CVM. <br><b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL de cada fundo, 2005 em diante). Para cada gestora, entram só os fundos <b>long only</b> da classe Ações que ela geria <i>naquela data</i> (histórico de gestores da CVM, somando os CNPJs da mesma casa), excluídos fundos de cotas (FIC), exclusivos, de previdência e indexados, e os fundos de investimento no exterior ou LatAm (estes ficam na tabela LatAm). Long biased fica de fora: fundos com long biased, long short ou L/S no nome (atual ou antigo), classificados pela Anbima como L/S ou multimercado, ou registrados na CVM como multimercado (salvo se o nome atual diz ações). Além disso, pela carteira da CDA: o fundo sai nos meses em que a mediana de 12 meses da posição vendida (futuro de Ibovespa vendido + ações tomadas em aluguel e vendidas) passa de 10% do PL. Os long only ficam tipicamente entre 0% e 5%. `+
   `O retorno do mês é a média dos retornos de cota desses fundos ponderada pelo PL do fim do mês anterior. Como só entram os masters e fundos não-FIC, a taxa de administração do master já está descontada, mas a de performance cobrada no feeder pode não estar: o retorno tende a ficar um pouco acima do que o cotista do FIC recebeu. `+
   `Ibovespa = mediana mensal dos fundos indexados ao índice com PL ≥ R$ 50 mi (correlação 0,9997 com o índice; fica abaixo dele pela taxa de administração, ~0,5% a.a.). CDI: Banco Central (SGS 4391). Pior queda = maior queda do pico ao vale com cotas mensais. Beta e meses acima do Ibovespa usam retornos mensais. Janelas exigem todos os meses com dado; gestoras que encerraram ou trocaram de CNPJ fora da lista aparecem só até o último mês disponível.`;
 
