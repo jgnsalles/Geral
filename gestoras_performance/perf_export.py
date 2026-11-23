@@ -14,6 +14,12 @@ P = pd.read_pickle(os.path.join(OUT, 'fundo_mes.pkl'))
 F = pd.read_csv(os.path.join(OUT, 'fundos_meta.csv')).set_index('CNPJ_FUNDO')
 IX = pd.read_csv(os.path.join(OUT, 'indices.csv'), index_col=0)
 G = json.load(open(CJ))
+# gestora do fundo na data pela raiz do CNPJ do gestor (lista pode incluir gestoras extras, fora do artefato de carteiras)
+import re as _re
+_r2g = {}
+for g in G:
+    for r in {g['id']} | {_re.sub(r'\D', '', x[1])[:8] for x in g['mb']}: _r2g.setdefault(r, g['id'])
+P['gid'] = P.r8.map(_r2g)
 
 M = [str(p) for p in pd.period_range('2005-01', LAST, freq='M')]
 MI = {m: i for i, m in enumerate(M)}
@@ -23,8 +29,17 @@ LB2 = r'LONG[ -]?BIAS|\bL\.?B\.?\b|LONG[ -]?SHORT|\bL/S\b|\bLS\b|BIASED'
 import unicodedata
 dea = lambda x: unicodedata.normalize('NFD', str(x or '')).encode('ascii', 'ignore').decode().upper()
 acoes_now = F.nome.map(dea).str.contains(r'\bACOES\b|\bACAO\b')  # nome atual diz "ações": classe multimercado antiga não conta
-lbx = F.nomes.fillna('').str.contains(LB2) | F.anbima.fillna('').str.contains('L/S|Multimercado') | (F.classe.fillna('').eq('Multimercado') & ~acoes_now)
+# nome long biased: o ATUAL vale para o fundo todo; nomes antigos só valem nos meses em que estavam em vigor
+lbx = F.nome.map(dea).str.contains(LB2) | F.anbima.fillna('').str.contains('L/S|Multimercado|Fechados|FMP') | F.nomes.fillna('').str.contains('PRIVATIZ|\\bFMP\\b|FGTS') | (F.classe.fillna('').eq('Multimercado') & ~acoes_now)
 P = P[~P.CNPJ_FUNDO.map(lbx).fillna(False).astype(bool)]
+import zipfile as _z0
+_hl = pd.read_csv(_z0.ZipFile(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'raw', 'cad_fi_hist.zip')).open('cad_fi_hist_denom_social.csv'), sep=';', encoding='latin1', dtype=str)
+_hl = _hl[_hl.CNPJ_FUNDO.isin(set(P.CNPJ_FUNDO)) & _hl.DENOM_SOCIAL.map(dea).str.contains(LB2)]
+_hl['a'] = pd.to_datetime(_hl.DT_INI_DENOM_SOCIAL, errors='coerce').dt.strftime('%Y-%m'); _hl['b'] = pd.to_datetime(_hl.DT_FIM_DENOM_SOCIAL, errors='coerce').dt.strftime('%Y-%m').fillna('2100-01')
+_xl = P[['CNPJ_FUNDO', 'ym']].reset_index().merge(_hl[['CNPJ_FUNDO', 'a', 'b']], on='CNPJ_FUNDO')
+_xl = _xl[(_xl.ym >= _xl.a) & (_xl.ym < _xl.b)]
+P = P[~P.index.isin(_xl['index'])]
+print('fundo-mês long biased pelo nome na data:', len(set(_xl['index'])))
 print('fundos long biased excluídos pelo nome/classe:', int(lbx.sum()))
 # long biased pela carteira (CDA): futuro de Ibovespa vendido + ações tomadas e vendidas >= 10% do PL,
 # mediana móvel de 12 meses do fundo; meses sem CDA usam a mediana do fundo inteiro
@@ -117,6 +132,8 @@ for c, y in EL.groupby('CNPJ_FUNDO'):
     out['la'].append({'c': c, 'n': str(F.nome.get(c, '') or ''), 'g': ('Gama (Fundamenta LatAm)' if 'FUNDAMENTA' in str(F.nome.get(c, '')) else None) or gid2n.get(gi) or str(gn.get(gc, gc)).title().replace(' Ltda','').replace('.','')[:40], 'gid': gi if isinstance(gi, str) else None,
                       'o': a, 'r': series(y.r, a, b), 'pl': round(float(y.pl.iloc[-1]) / 1e6, 1)})
 print('fundos LatAm:', [(f['n'][:40], f['g'], M[f['o']], f['pl']) for f in out['la']])
+out['x'] = [{k: g[k] for k in ('id', 'n', 'rs', 'cnpj')} for g in G if g.get('extra') and g['id'] in out['g']]
+print('extras:', out['x'])
 print('gestoras com série:', len(out['g']), 'de', len(G))
 miss = [g['n'] for g in G if g['id'] not in out['g']]
 print('sem série:', len(miss), miss[:60])

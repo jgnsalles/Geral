@@ -66,8 +66,10 @@ const PLAST=(()=>{ const ids=Object.keys(PR); for(let i=PN-1;i>=0;i--){ if(IBV[i
 const PWIN=[[12,'12m'],[36,'3a'],[60,'5a'],[120,'10a'],[0,'Desde o início']];
 
 // ----- aba Performance
+// gestoras extras (só performance, fora das carteiras: SPX, Dynamo...)
+const PG=[...G, ...(PF.x||[]).filter(x=>!GI[x.id])]; const PGI={}; PG.forEach(g=>PGI[g.id]=g);
 // seleção de gestoras do ranking (escolhida a dedo; as demais continuam com o bloco de desempenho na própria página)
-const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "11530232", "06015560", "09175140", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "04581293", "14359791", "11401701", "53980469", "18730786", "49640512", "05336089", "08251477", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "02228585"]);
+const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "11530232", "06015560", "09175140", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "04581293", "14359791", "11401701", "53980469", "18730786", "49640512", "05336089", "08251477", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "02228585", "12330774", "72116353", "23890968", "37947185"]);
 S.pend=PLAST; S.pwin=36; S.psel=null;
 ['p-min'].forEach(id=>$(id).addEventListener('change',renderP)); $('p-q').addEventListener('input',renderP);
 $('p-end').addEventListener('change',()=>{S.pend=+$('p-end').value; renderP();});
@@ -76,7 +78,7 @@ function renderP(){
   $('p-end').innerHTML=''; for(let i=PN-1;i>=12;i--) if(IBV[i]!=null) $('p-end').add(new Option(pmlong(i),i)); $('p-end').value=b;
   $('p-win').innerHTML=PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${W_===v}">${l}</button>`).join('');
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
-  const rows=G.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
+  const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
       // "desde o início": primeira sequência contínua até b
       let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,IBV):null; if(st) st.a=a2; }
       return {g, p, s:st, pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
@@ -95,7 +97,7 @@ function renderP(){
   const ann=!W_||W_>=12;
   const cols=[
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
-    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l"><a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
+    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:`${esc(o.g.n)} <span class="chip" title="fora do painel de carteiras">só performance</span>`}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
     ...(W_?[]:[{k:'a',l:'Desde',cls:'l',v:o=>o.s.a,asc:true,f:o=>`<td class="l muted">${pml(o.s.a)}</td>`}]),
     {k:'ret',l:'Retorno',v:o=>o.s.ret,f:o=>`<td>${pc(o.s.ret)}</td>`},
@@ -118,7 +120,7 @@ function renderP(){
   const a0=W_?a:Math.max(0,Math.min(...S.psel.filter(id=>PR[id]).map(id=>PR[id].o)));
   $('p-ct').textContent=`Retorno acumulado de ${pmlong(a0)} a ${pmlong(b)}`;
   $('p-cs').textContent=S.psel.length?'gestoras marcadas na tabela · Ibovespa e CDI tracejados':'marque gestoras na tabela';
-  cumChart($('p-chart'), [...S.psel.filter(id=>PR[id]).map((id,k)=>({name:GI[id].n, r:PR[id].r, ...serStyle(k)})), IBS, CDS], a0, b, {endLabels:true, noLegend:true, label:'Retorno acumulado das gestoras marcadas'});
+  cumChart($('p-chart'), [...S.psel.filter(id=>PR[id]).map((id,k)=>({name:PGI[id].n, r:PR[id].r, ...serStyle(k)})), IBS, CDS], a0, b, {endLabels:true, noLegend:true, label:'Retorno acumulado das gestoras marcadas'});
   // LatAm
   const la=PF.la.map(f=>{ const rr=new Array(PN).fill(null); f.r.forEach((v,k)=>rr[f.o+k]=dec(v)); const end=f.o+f.r.length-1;
       let s=null, a2=null; if(b>=f.o && b<=end){ if(W_){ s=pstats(rr,b-W_+1,b,IBV); } else { a2=b; while(a2>f.o&&rr[a2-1]!=null) a2--; s=rr[b]!=null?pstats(rr,a2,b,IBV):null; } }
