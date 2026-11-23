@@ -1,0 +1,347 @@
+<title>Brazil Downturn</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Fluxos das gestoras de ações no Brasil, 2006–2026: o juro decide o volume, o alpha decide quem capta, e o perfil de quem capta na seca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: relatório de pesquisa de uma coluna, tese no topo, um gráfico por pergunta com título-conclusão e o "e daí" logo abaixo */
+:root{
+  --bg:#f4f5f2; --panel:#ffffff; --ink:#15191c; --ink2:#4c5459; --muted:#7c858a; --rule:#dde0dc; --grid:#e8eae6;
+  --in:#2a78d6; --out:#eb6834; --neu:#a3a9ab; --hl:#15191c; --soft:rgba(42,120,214,.10);
+  --f-head:"Newsreader",Georgia,serif; --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111416; --panel:#191d20; --ink:#eef0ee; --ink2:#b9c0c2; --muted:#879095; --rule:#2d3337; --grid:#252a2d;
+  --in:#3987e5; --out:#d95926; --neu:#6b7377; --hl:#eef0ee; --soft:rgba(57,135,229,.16); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111416; --panel:#191d20; --ink:#eef0ee; --ink2:#b9c0c2; --muted:#879095; --rule:#2d3337; --grid:#252a2d;
+  --in:#3987e5; --out:#d95926; --neu:#6b7377; --hl:#eef0ee; --soft:rgba(57,135,229,.16); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.page{max-width:1000px;margin:0 auto;padding-block:28px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:8px}
+h1{font-family:var(--f-head);font-weight:600;font-size:clamp(32px,5.4vw,54px);line-height:1.04;letter-spacing:-.015em;margin:22px 0 12px;max-width:19ch;text-wrap:balance}
+.deck{font-family:var(--f-head);font-weight:500;font-size:clamp(19px,2.3vw,23px);line-height:1.38;color:var(--ink2);max-width:52ch;margin:0}
+.by{font-size:13px;color:var(--muted);margin-top:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:0;border-block:1px solid var(--rule);margin:30px 0 8px}
+.kpis div{padding:14px 16px 14px 0;display:grid;gap:4px;align-content:start}
+.kpis div+div{padding-left:16px;border-left:1px solid var(--rule)}
+@media (max-width:480px){.kpis div+div{border-left:0;padding-left:0;border-top:1px solid var(--rule)}}
+.kpis b{font-family:var(--f-num);font-weight:500;font-size:30px;line-height:1.05;letter-spacing:-.02em}
+.kpis span{font-size:13.5px;color:var(--ink2)}
+.answer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:30px}
+@media (max-width:760px){.answer{grid-template-columns:1fr}}
+.answer section{min-width:0}
+.answer h2{font-family:var(--f-head);font-size:22px;margin:0 0 8px;font-weight:600}
+.answer p,.answer li{font-size:15.5px;max-width:62ch}
+.answer ul{margin:0;padding-left:18px;display:grid;gap:7px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid currentColor}
+.tag.in{color:var(--in)} .tag.out{color:var(--out)}
+h2.chap{font-family:var(--f-head);font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.12;margin:64px 0 6px;max-width:28ch;text-wrap:balance}
+.chapsub{color:var(--ink2);max-width:66ch;margin:0}
+figure{margin:34px 0 0;padding-top:12px;border-top:1px solid var(--rule)}
+.ft{font-family:var(--f-head);font-weight:600;font-size:21px;line-height:1.25;max-width:40ch;text-wrap:balance}
+.fs{font-size:14px;color:var(--ink2);margin:4px 0 10px;max-width:72ch}
+.legend{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:var(--ink2);margin:2px 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.legend i.ln{height:2px;width:16px;border-radius:0}
+.legend i.dot{border-radius:50%}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart svg text{fill:var(--ink2);font-family:var(--f-body);font-size:12px}
+.chart svg .num{font-family:var(--f-num);font-size:11.5px}
+.chart svg .lab{fill:var(--ink);font-size:13px}
+.chart .grid line{stroke:var(--grid)} .chart .zero{stroke:var(--ink2);stroke-width:1}
+.sowhat{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;margin-top:12px;font-size:15px;max-width:820px}
+.sowhat b{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);padding-top:2px}
+@media (max-width:560px){.sowhat{grid-template-columns:1fr;gap:2px}}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:7px 10px;font-size:12.5px;box-shadow:0 8px 24px -10px rgba(0,0,0,.35);z-index:5;white-space:nowrap}
+.tip b{display:block;margin-bottom:2px;font-weight:600}
+.tip .r{display:flex;justify-content:space-between;gap:16px}
+.tip .r span:last-child{font-family:var(--f-num)}
+.tbox{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:6px 9px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th{font-weight:500;color:var(--muted);font-size:12px;vertical-align:bottom;white-space:normal}
+th.l,td.l{text-align:left}
+td.n{font-family:var(--f-num);font-size:12.5px}
+td.wrap{white-space:normal;min-width:16rem}
+.pos{color:var(--in)} .neg{color:var(--out)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:24px}
+.two>div{min-width:0}
+.two h4{font-size:14px;font-weight:600;margin:6px 0 2px}
+details{margin-top:10px;font-size:14px}
+summary{cursor:pointer;color:var(--ink2)}
+summary:focus-visible,button:focus-visible{outline:2px solid var(--in);outline-offset:2px}
+.seg{display:inline-flex;gap:2px;background:var(--grid);padding:3px;border-radius:8px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--ink2);padding:5px 11px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--ink);font-weight:500}
+.yrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:14px;margin-top:12px}
+.yr{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:6px;align-content:start;min-width:0}
+.yr h4{margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-family:var(--f-head);font-size:19px;font-weight:600}
+.yr h4 span{font-family:var(--f-body);font-size:12px;color:var(--muted);font-weight:400}
+.yr ol{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:3px}
+.yr li span{font-family:var(--f-num);font-size:12px;color:var(--ink2)}
+.method{font-size:13.5px;color:var(--ink2);max-width:82ch;display:grid;gap:8px;margin-top:10px}
+.method p{margin:0}
+code{font-family:var(--f-num);font-size:12.5px}
+</style>
+
+<div class="page">
+<div class="eyebrow"><span>Brazil Downturn · fluxos das gestoras de ações</span><span>CVM, jan/2006 a out/2026</span></div>
+<h1>O juro decide quanto entra. O alpha decide em quem.</h1>
+<p class="deck">Em 21 anos de captação e resgate das ~100 maiores gestoras independentes de ações, o volume que chega à indústria segue a Selic, não o desempenho dos gestores. Dentro de cada ano, o dinheiro vai para quem bateu o Ibovespa. Na seca, quem ainda capta é quem vinha de alpha alto, é menor que a média, tem carteira mais concentrada e base de clientes pessoa física.</p>
+<p class="by">Informe Diário da CVM de 10.583 fundos de ações · gestor do fundo na data · universo point-in-time do Navegando Brasil (100 maiores gestoras ativas de ações do mês anterior) · 236 gestoras, 1.523 gestora-anos</p>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="answer">
+ <section>
+  <h2>Macro ou performance?</h2>
+  <ul>
+   <li><b>O volume é macro.</b> Nível e direção da Selic explicam 41% da variação do fluxo anual da indústria. O alpha mediano das gestoras explica 1%. A bolsa do próprio ano explica 22%, menos que o juro.</li>
+   <li><b>A divisão é performance.</b> Em todos os regimes o quintil de maior alpha em 12 meses capta mais que o de menor. A sensibilidade é cerca de duas vezes maior na cheia que na seca.</li>
+   <li><b>A maior parte é de cada casa.</b> Ano e alpha juntos explicam só 24% do fluxo de cada gestora no ano. O resto é distribuição, fundos novos, fechamento para captação, saída de sócio: coisas que o Informe Diário não mostra.</li>
+  </ul>
+ </section>
+ <section>
+  <h2>Quem capta na seca</h2>
+  <ul>
+   <li><b>Alpha antes:</b> o padrão mais forte. Positivo nos 11 anos de seca. No quintil de maior alpha, 48% das gestoras captam, contra 18% no de menor.</li>
+   <li><b>Menor que a média:</b> 35% das menores captam, contra 24% das maiores. Na cheia o tamanho não importa. Mas os maiores cheques da seca foram para casas grandes de alpha alto (Atmos, Dynamo, Absolute, Kapitalo).</li>
+   <li><b>Carteira concentrada</b> (menos ações, mais peso nas 10 maiores) e <b>clientes pessoa física</b>; menos institucional. Long biased, beta, idade e "consenso" da carteira não fazem diferença.</li>
+   <li><b>Depois:</b> quem captou na seca continua captando, mas não rende mais que os outros no ano seguinte.</li>
+  </ul>
+ </section>
+</div>
+
+<h2 class="chap">1. O ciclo: a captação segue a Selic</h2>
+<p class="chapsub">Fluxo líquido do ano em % do patrimônio em fundos de ações das gestoras no início do ano. Cheia = fluxo acima de 10%; seca = fluxo agregado negativo.</p>
+
+<figure>
+ <figcaption class="ft">Três cheias e três secas em 20 anos, quase todas viradas pelo juro</figcaption>
+ <figcaption class="fs">Em cima: fluxo líquido anual das gestoras do universo (% do PL de dezembro anterior). Embaixo: CDI anualizado no fim de cada ano. 2026 vai até outubro.</figcaption>
+ <div class="legend"><span><i style="background:var(--in)"></i>Entrada líquida</span><span><i style="background:var(--out)"></i>Saída líquida</span><span><i class="ln" style="background:var(--ink)"></i>CDI no fim do ano</span></div>
+ <div class="chart" id="c-ciclo"></div>
+ <div class="sowhat"><b>E daí</b><span>As entradas de 2017 a 2020 (R$ 88 bi) coincidem com a Selic indo de 14% para 2%. As três secas começam com o juro subindo: 2014–15, 2021–22 e 2024–26. A bolsa não reverte a seca: em 2016 o Ibovespa subiu 39% e em 2025 subiu 35%, e o fluxo foi negativo nos dois anos, com CDI acima de 14%.</span></div>
+</figure>
+
+<figure>
+ <figcaption class="ft">O nível do CDI separa os anos melhor que a bolsa ou o alpha</figcaption>
+ <figcaption class="fs">Cada ponto é um ano. Eixo horizontal: CDI no fim do ano. Eixo vertical: fluxo líquido do ano, % do PL. Passe o mouse para ver o ano.</figcaption>
+ <div class="legend"><span><i class="dot" style="background:var(--in)"></i>Cheia</span><span><i class="dot" style="background:var(--neu)"></i>Morno</span><span><i class="dot" style="background:var(--out)"></i>Seca</span></div>
+ <div class="chart" id="c-scatter"></div>
+ <div class="tbox" id="t-agg"></div>
+ <div class="sowhat"><b>E daí</b><span>Cada ponto a mais de CDI tira cerca de 2,8 p.p. do fluxo anual, e cada ponto de alta no ano tira mais 2,3 p.p. (t = −3,3 e −3,7). O alpha mediano da indústria não tem relação com o fluxo agregado (R² de 1%). O investidor decide <i>se</i> fica em bolsa olhando o juro, não o gestor.</span></div>
+</figure>
+
+<h2 class="chap">2. Dentro do ano, o dinheiro persegue o alpha</h2>
+<p class="chapsub">Tirada a maré, o que separa uma gestora da outra é o retorno contra o Ibovespa nos 12 meses anteriores e no próprio ano.</p>
+
+<figure>
+ <figcaption class="ft">O ano explica o dobro do alpha, e os dois juntos explicam um quarto</figcaption>
+ <figcaption class="fs">R² de regressões do fluxo anual de cada gestora (% do PL, winsorizado em 2%/98%). "Ano" = efeito fixo de ano, ou seja, a maré comum. "Alpha" = rank do excesso sobre o Ibovespa nos 12 meses anteriores (com termo quadrático) e no próprio ano.</figcaption>
+ <div class="chart" id="c-decomp"></div>
+ <div class="sowhat"><b>E daí</b><span>Os 76% sem explicação são de cada casa: plataforma que abre ou fecha, fundo novo, fechamento para captação, troca de sócio. Em reais, a maré responde por um terço da variância do fluxo das gestoras e o movimento relativo por dois terços. A maior parte do dinheiro que entra ou sai de uma gestora num ano é decisão sobre ela, não sobre a bolsa.</span></div>
+</figure>
+
+<figure>
+ <figcaption class="ft">Na cheia o alpha decide quanto cada um ganha. Na seca, só o quintil de cima escapa da saída</figcaption>
+ <figcaption class="fs">Gestoras agrupadas pelo alpha em 12 meses no início do ano (quintil 1 = pior). Mediana do fluxo do ano, % do PL.</figcaption>
+ <div class="seg" role="group" aria-label="Medida" id="q-seg"><button type="button" aria-pressed="true" data-k="fr_med">Fluxo mediano</button><button type="button" aria-pressed="false" data-k="pos">% que captou</button></div>
+ <div class="legend" style="margin-top:8px"><span><i style="background:var(--in)"></i>Anos de cheia</span><span><i style="background:var(--neu)"></i>Mornos</span><span><i style="background:var(--out)"></i>Anos de seca</span></div>
+ <div class="chart" id="c-quint"></div>
+ <div class="sowhat"><b>E daí</b><span>Na cheia o quintil de cima cresce 25% ao ano em captação e o de baixo fica parado. Na seca todos perdem, mas o quintil de cima fica em zero e metade dele capta, contra 18% do de baixo. Fama-MacBeth mensal: ir do pior para o melhor alpha soma 4,8 p.p. de fluxo ao mês na cheia e 2,8 p.p. na seca (t = 4,6 e 6,6).</span></div>
+</figure>
+
+<h2 class="chap">3. Quem capta quando todo mundo resgata</h2>
+<p class="chapsub">Onze anos de seca (fluxo agregado negativo): 893 gestora-anos, dos quais 31% captaram. Cada característica é o rank da gestora no início do ano (0 = menor do universo, 1 = maior), comparado entre quem captou e quem não captou.</p>
+
+<figure>
+ <figcaption class="ft">Na seca, o que vale é alpha, ser menor e ter carteira concentrada</figcaption>
+ <figcaption class="fs">Diferença de rank médio entre gestoras que captaram e as que tiveram saída (pontos de percentil). À direita: quem captou tinha mais da característica. Círculo cheio = t ≥ 2 com erro por ano. Seca em laranja, cheia em azul.</figcaption>
+ <div class="legend"><span><i class="dot" style="background:var(--out)"></i>Seca (11 anos)</span><span><i class="dot" style="background:var(--in)"></i>Cheia (8 anos)</span></div>
+ <div class="chart" id="c-perfil"></div>
+ <div class="sowhat"><b>E daí</b><span>Alpha em 12 meses é o único traço com o mesmo sinal em todos os anos e nos dois regimes. O que muda com o regime: na seca captam as menores, as de carteira concentrada e as de cliente pessoa física; na cheia captam as de tracking error alto e carteira mais diversificada, com tamanho indiferente (cliente alocador aparece, mas sem significância). Receita de performance ajuda nos dois, mais na cheia.</span></div>
+</figure>
+
+<figure>
+ <figcaption class="ft">A chance de captar na seca cai com o tamanho e sobe com o alpha</figcaption>
+ <figcaption class="fs">% das gestoras com fluxo líquido positivo no ano, por quintil de tamanho e de alpha 12m no início do ano.</figcaption>
+ <div class="legend"><span><i style="background:var(--out)"></i>Seca</span><span><i style="background:var(--in)"></i>Cheia</span></div>
+ <div class="two"><div><h4>Por tamanho (PL em ações)</h4><div class="chart" id="c-psize"></div></div><div><h4>Por alpha 12m</h4><div class="chart" id="c-palpha"></div></div></div>
+ <div class="tbox" id="t-logit"></div>
+ <div class="sowhat"><b>E daí</b><span>No logit com tudo junto, alpha 12m e tamanho continuam significativos na seca (t = 4,6 e −4,3), e concentração da carteira e clientela PF entram por cima deles. Volatilidade, idade e long biased não. Na cheia só o alpha conta, e a receita de performance aparece quando entra a clientela.</span></div>
+</figure>
+
+<h2 class="chap">4. Os nomes</h2>
+<p class="chapsub">Maiores captações líquidas (R$ milhões) em cada ano de seca, com o alpha dos 12 meses anteriores e o rank de tamanho no universo. Por número, as menores captam mais; por volume, o dinheiro foi para casas grandes que vinham bem.</p>
+<div class="yrs" id="yrs"></div>
+
+<h2 class="chap">5. E depois?</h2>
+<figure style="border-top:0;margin-top:14px">
+ <div class="kpis" id="kpis2" style="margin-top:0"></div>
+ <div class="sowhat"><b>E daí</b><span>Captar na seca não sinaliza retorno melhor à frente. No ano seguinte, a mediana dos que captaram bate o Ibovespa por 0,3 p.p. e a dos outros perde 1,6 p.p., mas ano a ano a diferença é negativa em 7 de 10 anos (t = −0,5). O que persiste é o fluxo: em 10 de 10 anos, quem captou na seca teve fluxo melhor no ano seguinte. O dinheiro segue o alpha passado e não antecipa o futuro.</span></div>
+</figure>
+
+<h2 class="chap" style="font-size:24px">Método, robustez e limites</h2>
+<div class="method">
+ <p><b>Fluxo.</b> Informe Diário da CVM (2005–out/2026), fundos da classe Ações ou long biased, sem FIC, exclusivos, previdência e indexados na data. Os masters recebem o fluxo líquido dos feeders, então a soma não conta duas vezes. Medida principal híbrida: captação − resgate dos fundos que continuam elegíveis. Fundo novo conta pelo PL, descontadas as saídas por mudança de status da mesma gestora em ±1 mês, para que migrações de master (Dynamo 2021, Mainá 2024) não virem captação falsa. Troca de gestor e virada FIC ↔ master não contam como fluxo.</p>
+ <p><b>Universo.</b> Gestora entra no mês t se estava entre as 100 maiores gestoras ativas de ações em t−1 (regra point-in-time do Navegando Brasil, sem bancos, seguradoras e previdência), com PL em fundos de ações ≥ R$ 30 mi. Para meses com CDA em sigilo usa-se a lista de abr/2026. Opportunity fica fora: a maior parte do PL é de veículos patrimoniais, e em 2023 dois fundos novos receberam R$ 21 bi de fora do perímetro.</p>
+ <p><b>Alpha</b> = retorno ponderado pelo PL dos fundos da gestora menos o Ibovespa (mediana dos fundos indexados ao Ibovespa, correlação 0,9997 com o índice). <b>Estilo</b>: beta, volatilidade e tracking error em 36 meses; concentração, nº de ações e peso nas 20 ações mais detidas vêm das carteiras CDA consolidadas do Navegando Brasil. <b>Clientela e receita de performance</b>: Formulário de Referência (Gestoras CVM), de 2016 em diante.</p>
+ <p><b>Robustez.</b> Com captação − resgate reportados em vez da medida híbrida, todos os sinais se mantêm: R² do juro no fluxo agregado 0,37; ano 18% contra alpha 8% na decomposição; logit da seca com tamanho t = −4,1, alpha 12m t = 3,1, alpha 36m t = 2,1; clientela PF t = 2,4.</p>
+ <p><b>Limites.</b> Vinte anos são poucas observações para a regressão agregada (n = 19). O fluxo de fundos de ações capta só parte da gestora (multimercados e carteiras administradas ficam fora). O Formulário de Referência cobre só 2016–2025. A classificação long biased é pelo nome e pela Anbima atual. Código: <code>brazil_downturn/</code> no repositório Geral, branch <code>claude/brazil-gestoras-inflows-analysis-8f1cg5</code>.</p>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+const D=__DATA__;
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const P=(x,n=0)=>x==null?'—':((x*100).toFixed(n).replace('.',','))+'%';
+const PP=(x,n=1)=>x==null?'—':((x>0?'+':'')+(x*100).toFixed(n).replace('.',','));
+const F=(x,n=2)=>x==null?'—':x.toFixed(n).replace('.',',');
+const COL={cheia:'--in',morno:'--neu',seca:'--out'};
+function box(id,w,h){const el=d3.select('#'+id);el.selectAll('*').remove();return el.append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('role','img');}
+function tip(id){const el=d3.select('#'+id);let t=el.select('.tip');if(t.empty())t=el.append('div').attr('class','tip').style('display','none');return t;}
+function show(t,ev,id,html){const r=document.getElementById(id).getBoundingClientRect();t.style('display','block').html(html);const tw=t.node().offsetWidth;let x=ev.clientX-r.left+12;if(x+tw>r.width)x=ev.clientX-r.left-tw-12;t.style('left',Math.max(0,x)+'px').style('top',(ev.clientY-r.top+12)+'px');}
+const row=(a,b)=>`<div class="r"><span>${a}</span><span>${b}</span></div>`;
+
+function kpis(){
+ const q=D.quintis.filter(x=>x.regime=='seca');
+ document.getElementById('kpis').innerHTML=[
+  [F(D.agg_anual.juros.r2,2),'R² do nível e da variação do CDI no fluxo anual da indústria. O alpha mediano: '+F(D.agg_anual.alpha_mediano.r2,2)],
+  [P(D.decomp['so_ano (maré)'])+' × '+P(D.decomp['so_alpha12_e_ano_corrente']),'do fluxo de cada gestora explicado pelo ano (maré) contra pelo alpha'],
+  [P(q[4].pos)+' × '+P(q[0].pos),'das gestoras captam na seca no quintil de maior alpha, contra o de menor'],
+  [P(D.perfil_seca.pct_win),'das gestoras captaram nos anos de seca (893 gestora-anos)']
+ ].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+ const d=D.depois;
+ document.getElementById('kpis2').innerHTML=[
+  [PP(d.exy_next_win)+' × '+PP(d.exy_next_lose),'p.p. contra o Ibovespa no ano seguinte (mediana): quem captou na seca × quem não captou'],
+  [F(d.t,1),'t da diferença ano a ano; positiva em só '+d.anos_pos+' de '+d.anos+' anos'],
+  [PP(d.fry_next_win)+' × '+PP(d.fry_next_lose),'% de fluxo no ano seguinte (mediana): a captação persiste em '+d.fry_anos_pos+' de '+d.anos+' anos'],
+  [P(d.bateu_next_win)+' × '+P(d.bateu_next_lose),'bateram o Ibovespa no ano seguinte']
+ ].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+}
+
+function ciclo(){
+ const A=D.anos.filter(a=>+a.y>=2006), W=1000,H=430,m={l:52,r:14,t:14,b:26},h1=250,gap=34,h2=H-m.t-m.b-h1-gap;
+ const s=box('c-ciclo',W,H), t=tip('c-ciclo');
+ const x=d3.scaleBand().domain(A.map(a=>a.y)).range([m.l,W-m.r]).padding(.22);
+ const y=d3.scaleLinear().domain([-.25,.6]).range([m.t+h1,m.t]);
+ const g=s.append('g').attr('class','grid');
+ y.ticks(6).forEach(v=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(v)).attr('y2',y(v));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(v)+4).attr('text-anchor','end').text(P(v))});
+ const y0=m.t+h1+gap, y2=d3.scaleLinear().domain([0,.18]).range([y0+h2,y0]);
+ [0,.06,.12,.18].forEach(v=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y2(v)).attr('y2',y2(v));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y2(v)+4).attr('text-anchor','end').text(P(v))});
+ s.append('text').attr('x',m.l).attr('y',y0-10).text('CDI no fim do ano');
+ A.forEach(a=>{const v=a.fr, top=Math.min(y(v),y(0)), hh=Math.abs(y(v)-y(0));
+  const r=4; const xx=x(a.y), bw=x.bandwidth();
+  const path=v>=0?`M${xx},${y(0)}V${top+r}Q${xx},${top} ${xx+r},${top}H${xx+bw-r}Q${xx+bw},${top} ${xx+bw},${top+r}V${y(0)}Z`:`M${xx},${y(0)}V${top+hh-r}Q${xx},${top+hh} ${xx+r},${top+hh}H${xx+bw-r}Q${xx+bw},${top+hh} ${xx+bw},${top+hh-r}V${y(0)}Z`;
+  s.append('path').attr('d',hh<r*2?`M${xx},${top}h${bw}v${Math.max(hh,1)}h${-bw}Z`:path).attr('fill',css(v>=0?'--in':'--out'));
+  if(Math.abs(v)>.12) s.append('text').attr('class','num').attr('x',xx+bw/2).attr('y',v>=0?y(v)-5:y(v)+14).attr('text-anchor','middle').style('fill',css('--ink')).text(P(v));
+  s.append('text').attr('x',xx+bw/2).attr('y',H-6).attr('text-anchor','middle').text(window.innerWidth<600?("'"+a.y.slice(2)):a.y);
+ });
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+ const ln=d3.line().x(a=>x(a.y)+x.bandwidth()/2).y(a=>y2(a.cdi_fim));
+ s.append('path').attr('d',ln(A)).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2);
+ A.forEach(a=>s.append('circle').attr('cx',x(a.y)+x.bandwidth()/2).attr('cy',y2(a.cdi_fim)).attr('r',3.5).attr('fill',css('--ink')).attr('stroke',css('--bg')).attr('stroke-width',2));
+ A.forEach(a=>s.append('rect').attr('x',x(a.y)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill','transparent')
+  .on('mousemove',ev=>show(t,ev,'c-ciclo',`<b>${a.y}${a.y=='2026'?' (até out)':''}</b>${row('Fluxo líquido',P(a.fr,1)+' do PL')}${row('Em reais','R$ '+F(a.flow_bi,1)+' bi')}${row('Gestoras que captaram',P(a.pos))}${row('CDI no fim do ano',P(a.cdi_fim,1))}${row('Ibovespa no ano',P(a.ibov))}`)).on('mouseleave',()=>t.style('display','none')));
+}
+
+function scatter(){
+ const A=D.anos.filter(a=>+a.y>=2006&&a.y!='2026'), W=1000,H=380,m={l:52,r:20,t:12,b:40};
+ const s=box('c-scatter',W,H), t=tip('c-scatter');
+ const x=d3.scaleLinear().domain([0,.17]).range([m.l,W-m.r]), y=d3.scaleLinear().domain([-.25,.6]).range([H-m.b,m.t]);
+ const g=s.append('g').attr('class','grid');
+ y.ticks(6).forEach(v=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(v)).attr('y2',y(v));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(v)+4).attr('text-anchor','end').text(P(v))});
+ [0,.04,.08,.12,.16].forEach(v=>s.append('text').attr('class','num').attr('x',x(v)).attr('y',H-m.b+18).attr('text-anchor','middle').text(P(v)));
+ s.append('text').attr('x',W-m.r).attr('y',H-4).attr('text-anchor','end').text('CDI no fim do ano →');
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+ // reta de MQO simples
+ const n=A.length,mx=d3.mean(A,a=>a.cdi_fim),my=d3.mean(A,a=>a.fr),b=d3.sum(A,a=>(a.cdi_fim-mx)*(a.fr-my))/d3.sum(A,a=>(a.cdi_fim-mx)**2);
+ s.append('line').attr('x1',x(.02)).attr('x2',x(.16)).attr('y1',y(my+b*(.02-mx))).attr('y2',y(my+b*(.16-mx))).attr('stroke',css('--muted')).attr('stroke-dasharray','5 4').attr('stroke-width',1.5);
+ A.forEach(a=>{s.append('circle').attr('cx',x(a.cdi_fim)).attr('cy',y(a.fr)).attr('r',7).attr('fill',css(COL[a.regime])).attr('stroke',css('--bg')).attr('stroke-width',2);
+  const left=['2015','2024','2008'].includes(a.y);
+  s.append('text').attr('class','lab').attr('x',x(a.cdi_fim)+(left?-10:10)).attr('y',y(a.fr)+(a.y=='2008'?-6:4)).attr('text-anchor',left?'end':'start').style('font-size','12px').text(a.y);
+  s.append('circle').attr('cx',x(a.cdi_fim)).attr('cy',y(a.fr)).attr('r',16).attr('fill','transparent')
+   .on('mousemove',ev=>show(t,ev,'c-scatter',`<b>${a.y}</b>${row('Fluxo',P(a.fr,1))}${row('CDI fim do ano',P(a.cdi_fim,1))}${row('Variação do CDI',PP(a.dcdi)+' p.p.')}${row('Ibovespa',P(a.ibov))}`)).on('mouseleave',()=>t.style('display','none'));});
+ const G=D.agg_anual, rows=[['Ibovespa no ano',G.ibov_ano],['Ibovespa no ano anterior',G.ibov_ano_anterior],['Alpha mediano das gestoras',G.alpha_mediano],['CDI: nível e variação no ano',G.juros],['CDI + Ibovespa',G.juros_ibov]];
+ const c=(r,k)=>r.coef[k]==null?'—':`${F(r.coef[k],2)} <span style="color:var(--muted)">(${F(r.t[k],1)})</span>`;
+ document.getElementById('t-agg').innerHTML='<table><thead><tr><th class="l">Fluxo anual da indústria explicado por</th><th>R²</th><th>Ibovespa</th><th>CDI nível</th><th>Δ CDI</th><th>Alpha mediano</th></tr></thead><tbody>'+
+  rows.map(([n,r])=>`<tr><td class="l">${n}</td><td class="n">${F(r.r2,2)}</td><td class="n">${c(r,'ibov')!=='—'?c(r,'ibov'):c(r,'ibov_l')}</td><td class="n">${c(r,'cdi')}</td><td class="n">${c(r,'dcdi')}</td><td class="n">${c(r,'ex_med')}</td></tr>`).join('')+'</tbody></table><p class="fs" style="margin-top:6px">Coeficientes com t entre parênteses, 2006–2025 (n = 19–20). Na mensal (fluxo do mês contra juros e alpha defasados, HAC 12): juros R² '+F(D.agg_reg.juros.r2,2)+', alpha mediano '+F(D.agg_reg.alpha_industria.r2,2)+'.</p>';
+}
+
+function decomp(){
+ const d=D.decomp, rows=[['Só o ano (maré)',d['so_ano (maré)'],'--neu'],['Só alpha 12m antes',d['so_alpha12 (rank)'],'--in'],['Alpha 12m antes + alpha do ano',d['so_alpha12_e_ano_corrente'],'--in'],['Ano + alpha 12m',d['ano + alpha12'],'--ink2'],['Ano + alphas',d['ano + alpha12 + alpha do ano'],'--ink2'],['Ano + alphas + tamanho',d['ano + alpha + tamanho'],'--ink2']];
+ const W=1000,rh=40,m={l:260,r:60,t:6,b:24},H=m.t+m.b+rows.length*rh, s=box('c-decomp',W,H);
+ const x=d3.scaleLinear().domain([0,.3]).range([m.l,W-m.r]);
+ const g=s.append('g').attr('class','grid');[0,.1,.2,.3].forEach(v=>{g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(v)).attr('y',H-6).attr('text-anchor','middle').text(P(v))});
+ rows.forEach(([n,v,c],i)=>{const yy=m.t+i*rh;s.append('text').attr('class','lab').attr('x',m.l-10).attr('y',yy+rh/2+5).attr('text-anchor','end').text(n);
+  const w=x(v)-x(0);s.append('path').attr('d',`M${x(0)},${yy+9}H${x(0)+w-4}Q${x(0)+w},${yy+9} ${x(0)+w},${yy+13}V${yy+rh-13}Q${x(0)+w},${yy+rh-9} ${x(0)+w-4},${yy+rh-9}H${x(0)}Z`).attr('fill',css(c));
+  s.append('text').attr('class','num').attr('x',x(v)+6).attr('y',yy+rh/2+4).style('fill',css('--ink')).text(P(v,1));});
+}
+
+let qk='fr_med';
+function quint(){
+ const Q=D.quintis, regs=['cheia','morno','seca'], W=1000,H=320,m={l:52,r:10,t:16,b:40}, s=box('c-quint',W,H), t=tip('c-quint');
+ const x0=d3.scaleBand().domain([1,2,3,4,5]).range([m.l,W-m.r]).padding(.25), x1=d3.scaleBand().domain(regs).range([0,x0.bandwidth()]).padding(.1);
+ const vals=Q.map(q=>q[qk]); const y=d3.scaleLinear().domain(qk=='pos'?[0,1]:[Math.min(-.15,d3.min(vals)),Math.max(.3,d3.max(vals))]).range([H-m.b,m.t]).nice();
+ const g=s.append('g').attr('class','grid');y.ticks(6).forEach(v=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(v)).attr('y2',y(v));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(v)+4).attr('text-anchor','end').text(P(v))});
+ [1,2,3,4,5].forEach(q=>s.append('text').attr('x',x0(q)+x0.bandwidth()/2).attr('y',H-14).attr('text-anchor','middle').text(q==1?'1 (pior alpha)':q==5?'5 (melhor)':q));
+ Q.forEach(q=>{const v=q[qk],xx=x0(q.q)+x1(q.regime),bw=x1.bandwidth(),top=Math.min(y(v),y(0)),hh=Math.max(1,Math.abs(y(v)-y(0)));
+  s.append('rect').attr('x',xx).attr('y',top).attr('width',bw).attr('height',hh).attr('rx',2).attr('fill',css(COL[q.regime]));
+  if(q.regime!='morno')s.append('text').attr('class','num').attr('x',xx+bw/2).attr('y',v>=0?y(v)-5:y(v)+14).attr('text-anchor','middle').style('font-size','11px').text(P(v));
+  s.append('rect').attr('x',xx).attr('y',m.t).attr('width',bw).attr('height',H-m.b-m.t).attr('fill','transparent')
+   .on('mousemove',ev=>show(t,ev,'c-quint',`<b>Quintil ${q.q}, anos de ${q.regime}</b>${row('Fluxo mediano',P(q.fr_med,1))}${row('Fluxo médio',P(q.fr_mean,1))}${row('% que captou',P(q.pos))}${row('Gestora-anos',q.n)}`)).on('mouseleave',()=>t.style('display','none'));});
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+}
+document.querySelectorAll('#q-seg button').forEach(b=>b.onclick=()=>{qk=b.dataset.k;document.querySelectorAll('#q-seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));quint();});
+
+function perfil(){
+ const S=Object.fromEntries(D.perfil_seca.tab.map(r=>[r.var,r])), C=Object.fromEntries(D.perfil_cheia.tab.map(r=>[r.var,r]));
+ const order=['ex12_l_rk','ex36_l_rk','size_rk','n_acoes_rk','top10_rk','cli_pf_rk','cli_inst_rk','cli_fundos_rk','perf_fee_rk','te36_l_rk','beta36_l_rk','vol36_l_rk','idade_rk','consenso_rk','sh_lb_l_rk'];
+ const W=1000,rh=30,m={l:290,r:40,t:24,b:28},H=m.t+m.b+order.length*rh, s=box('c-perfil',W,H), t=tip('c-perfil');
+ const x=d3.scaleLinear().domain([-.12,.18]).range([m.l,W-m.r]);
+ const g=s.append('g').attr('class','grid');[-.1,-.05,0,.05,.1,.15].forEach(v=>{g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(v)).attr('y',H-8).attr('text-anchor','middle').text(PP(v,0))});
+ s.append('text').attr('x',x(-.12)).attr('y',14).text('← quem captou tinha menos');s.append('text').attr('x',x(.18)).attr('y',14).attr('text-anchor','end').text('quem captou tinha mais →');
+ s.append('line').attr('class','zero').attr('x1',x(0)).attr('x2',x(0)).attr('y1',m.t).attr('y2',H-m.b);
+ const nm=k=>S[k].nome.replace(' (rank)','');
+ order.forEach((k,i)=>{const yy=m.t+i*rh+rh/2;s.append('text').attr('class','lab').attr('x',m.l-12).attr('y',yy+4).attr('text-anchor','end').text(nm(k));
+  const a=S[k],b=C[k];s.append('line').attr('x1',x(a.dif)).attr('x2',x(b.dif)).attr('y1',yy).attr('y2',yy).attr('stroke',css('--rule')).attr('stroke-width',2);
+  [[b,'--in'],[a,'--out']].forEach(([r,c])=>{const sig=r.t!=null&&Math.abs(r.t)>=2;s.append('circle').attr('cx',x(r.dif)).attr('cy',yy).attr('r',6.5).attr('fill',sig?css(c):css('--bg')).attr('stroke',css(c)).attr('stroke-width',2);});
+  s.append('rect').attr('x',m.l-280).attr('y',yy-rh/2).attr('width',W-m.l+280-m.r).attr('height',rh).attr('fill','transparent')
+   .on('mousemove',ev=>show(t,ev,'c-perfil',`<b>${nm(k)}</b>${row('Seca: captou × saiu',F(a.win*100,0)+' × '+F(a.lose*100,0))}${row('t (seca) · anos no mesmo sinal',F(a.t,1)+' · '+a.anos_mesmo_sinal+'/'+a.anos)}${row('Cheia: captou × saiu',F(b.win*100,0)+' × '+F(b.lose*100,0))}${row('t (cheia)',F(b.t,1))}`)).on('mouseleave',()=>t.style('display','none'));});
+}
+
+function pbars(id,ps,pc,labs){
+ const W=480,H=230,m={l:40,r:6,t:14,b:34}, s=box(id,W,H), t=tip(id);
+ const x0=d3.scaleBand().domain([0,1,2,3,4]).range([m.l,W-m.r]).padding(.25), x1=d3.scaleBand().domain(['s','c']).range([0,x0.bandwidth()]).padding(.08), y=d3.scaleLinear().domain([0,.8]).range([H-m.b,m.t]);
+ const g=s.append('g').attr('class','grid');[0,.2,.4,.6,.8].forEach(v=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(v)).attr('y2',y(v));s.append('text').attr('class','num').attr('x',m.l-6).attr('y',y(v)+4).attr('text-anchor','end').text(P(v))});
+ [0,1,2,3,4].forEach(i=>{s.append('text').attr('x',x0(i)+x0.bandwidth()/2).attr('y',H-14).attr('text-anchor','middle').text(labs[i]);
+  [['s',ps[i],'--out','Seca'],['c',pc[i],'--in','Cheia']].forEach(([k,v,c,n])=>{const xx=x0(i)+x1(k);s.append('rect').attr('x',xx).attr('y',y(v)).attr('width',x1.bandwidth()).attr('height',y(0)-y(v)).attr('rx',2).attr('fill',css(c));
+   if(k=='s')s.append('text').attr('class','num').attr('x',xx+x1.bandwidth()/2).attr('y',y(v)-4).attr('text-anchor','middle').style('font-size','10.5px').text(P(v));
+   s.append('rect').attr('x',xx).attr('y',m.t).attr('width',x1.bandwidth()).attr('height',H-m.b-m.t).attr('fill','transparent').on('mousemove',ev=>show(t,ev,id,`<b>${n}, quintil ${i+1}</b>${row('% que captou',P(v,1))}`)).on('mouseleave',()=>t.style('display','none'));});});
+}
+
+function logit(){
+ const L=D.logit, cols=[['size_rk','Tamanho'],['ex12_l_rk','Alpha 12m'],['ex36_l_rk','Alpha 36m'],['idade_rk','Idade'],['vol36_l_rk','Volatilidade'],['top10_rk','Concentração'],['consenso_rk','Consenso'],['sh_lb_l_rk','Long biased'],['cli_pf_rk','Clientes PF'],['cli_inst_rk','Institucionais'],['cli_fundos_rk','Alocadores'],['perf_fee_rk','Receita perf.']];
+ const ms=[['Seca: base',L.seca],['Seca: + estilo',L.estilo],['Seca: + clientela (2017+)',L.cli_seca],['Cheia: base',L.cheia],['Cheia: + clientela (2017+)',L.cli_cheia]];
+ const cell=(r,k)=>r.t[k]==null?'<td></td>':`<td class="n ${Math.abs(r.t[k])>=2?(r.t[k]>0?'pos':'neg'):''}">${F(r.t[k],1)}</td>`;
+ document.getElementById('t-logit').innerHTML='<table><thead><tr><th class="l">Logit: captou no ano (t-stat, erro por gestora, efeito de ano)</th>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'<th>n</th></tr></thead><tbody>'+ms.map(([n,r])=>`<tr><td class="l">${n}</td>${cols.map(c=>cell(r,c[0])).join('')}<td class="n">${r.n}</td></tr>`).join('')+'</tbody></table><p class="fs" style="margin-top:6px">Variáveis em rank no início do ano. Em cor, |t| ≥ 2: azul aumenta a chance de captar, laranja diminui.</p>';
+}
+
+function nomes(){
+ const G=D.ganhadores.filter(g=>g.regime=='seca');
+ document.getElementById('yrs').innerHTML=G.map(g=>`<div class="yr"><h4>${g.y}<span>${g.n_pos} de ${g.n} captaram · +R$ ${F(g.cap_pos_bi,1)} bi contra −R$ ${F(-g.saida_neg_bi,1)} bi</span></h4><ol>${g.top.slice(0,5).map(t=>`<li>${t.nome} <span>R$ ${t.flow_mi.toLocaleString('pt-BR')} mi · alpha ${t.ex12==null?'—':PP(t.ex12,0)} · tam. ${F(t.size_rk*100,0)}</span></li>`).join('')}</ol></div>`).join('');
+}
+
+function draw(){kpis();ciclo();scatter();decomp();quint();perfil();logit();nomes();
+ const q=['1','2','3','4','5'];pbars('c-psize',[0,1,2,3,4].map(i=>D.p_size[i]),[0,1,2,3,4].map(i=>D.p_size_cheia[i]),['menores','2','3','4','maiores']);
+ pbars('c-palpha',[0,1,2,3,4].map(i=>D.p_alpha[i]),[0,1,2,3,4].map(i=>D.p_alpha_cheia[i]),['pior','2','3','4','melhor']);}
+draw();
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,200)});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
+new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+</script>
