@@ -109,7 +109,6 @@ def main():
         res[k] = m
         print(f'{k:55s} {m["cagr"]:.3f} dd {m["maxdd"]:.3f} w3 {m["w3"]:.3f} a {m["c_a"]:.3f} b {m["c_b"]:.3f} sev {m["sev"]:.3f}', flush=True)
     out = dict(res=res, ic=ic, wsw=wsw, spy=dict(c_a=sub_cagr(spy, spy.index[0], CUT), c_b=sub_cagr(spy, CUT, spy.index[-1]), cagr=float(stats(spy)['CAGR'])))
-    pathlib.Path(ROOT / '_filho_state.pkl').write_bytes(b'')  # marcador
     pd.to_pickle((c, V, navs), ROOT.parent / 'mundo' / 'cache' / 'filho_state.pkl')
     (ROOT / 'dados_filho.json').write_text(json.dumps(out, ensure_ascii=False, default=lambda v: None if (isinstance(v, float) and not np.isfinite(v)) else float(v)))
     print('ic', {k: round(v, 3) for k, v in ic.items()}); print('wsw', {k: round(v, 3) for k, v in wsw.items()})
