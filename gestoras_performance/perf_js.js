@@ -103,7 +103,10 @@ function renderP(){
   $('p-win').innerHTML=PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${W_===v}">${l}</button>`).join('');
   curSeg($('p-cur'),renderP);
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
-  const hz=(r,bn)=>Object.fromEntries(PH.map(([n])=>[n, b-n+1>=0?pstats(r,b-n+1,b,bn):null]));
+  // desde o início do Apo (jul/22): mesma janela para todos
+  const AO=(Object.values(PR).find(p=>p.usd)||{}).o, AN=AO!=null&&b>=AO?b-AO+1:null;
+  const hz=(r,bn)=>({...Object.fromEntries(PH.map(([n])=>[n, b-n+1>=0?pstats(r,b-n+1,b,bn):null])), apo:AN?pstats(r,AO,b,bn):null});
+  const acell=s=>`<td style="border-left:1px solid var(--border)" title="${s&&s.ex!=null?'vs índice: '+(s.ex>=0?'+':'−')+nf(Math.abs(s.ex*100),1)+' p.p. a.a.':''}">${s?`<b>${pc(s.ann??s.ret)}</b><small class="muted" style="display:block;font-size:11px">${pc(s.ret,0)} total</small>`:pc(null)}</td>`;
   const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const BN=p.bm||IBV; const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,BN):null;
       // "desde o início": primeira sequência contínua até b
       let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,BN):null; if(st) st.a=a2; }
@@ -127,6 +130,7 @@ function renderP(){
     {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:o.g.gid&&GI[o.g.gid]?`<a href="#g-${o.g.gid}" data-open="${o.g.gid}" title="${esc(o.g.rs)}">${esc(o.g.n)}</a>`:`<span title="${esc(o.g.rs)}">${esc(o.g.n)}</span>`}${o.g.reg?` <span class="chip new" title="${o.p.bmn?'comparado ao '+esc(o.p.bmn)+' do factsheet':'comparado ao Ibovespa'}">${o.g.reg}</span>`:GI[o.g.id]?'':' <span class="chip" title="fora do painel de carteiras">só performance</span>'}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
     ...PH.map(([n,l])=>({k:'h'+n,l:n>12?`${l}<br><small>a.a.</small>`:l,v:o=>hv(o.h[n],n),f:o=>hcell(o.h[n],n,n===36)})),
+    ...(AN?[{k:'apo',l:`Desde ${pml(AO)}<br><small>início Apo · a.a.</small>`,v:o=>o.h.apo?(o.h.apo.ann??o.h.apo.ret):null,f:o=>acell(o.h.apo)}]:[]),
     {k:'ex',l:`vs Ibov<br><small>${WL} ${ann?'a.a.':''}</small>`,v:o=>o.s?o.s.ex:null,f:o=>`<td>${pcp(o.s?o.s.ex:null)}</td>`},
     {k:'vol',l:`Vol a.a.<br><small>${WL}</small>`,v:o=>o.s?o.s.vol:null,asc:true,f:o=>`<td class="muted">${!o.s||o.s.vol==null?'–':pct(o.s.vol,1)}</td>`},
     {k:'mdd',l:`Pior queda<br><small>${WL}</small>`,v:o=>o.s?o.s.mdd:null,f:o=>`<td>${pc(o.s?o.s.mdd:null,0)}</td>`},
@@ -138,7 +142,7 @@ function renderP(){
   else $('p-tbl').innerHTML='<tbody><tr><td class="l empty">Nenhuma gestora com série completa nessa janela.</td></tr></tbody>';
   $('p-tbl').querySelectorAll('tr.link').forEach(tr=>tr.classList.remove('link'));
   if(rows.length){ const ref=(nm,r)=>{ const h=hz(r,null), s2=W_?pstats(r,b-W_+1,b,null):null;
-      return `<tr style="background:var(--surface-2)"><td></td><td class="l" style="font-weight:600">${nm}</td><td></td>${PH.map(([n])=>hcell(h[n],n,n===36)).join('')}<td></td><td class="muted">${s2&&s2.vol!=null?pct(s2.vol,1):'–'}</td><td>${pc(s2?s2.mdd:null,0)}</td><td></td></tr>`; };
+      return `<tr style="background:var(--surface-2)"><td></td><td class="l" style="font-weight:600">${nm}</td><td></td>${PH.map(([n])=>hcell(h[n],n,n===36)).join('')}${AN?acell(h.apo):''}<td></td><td class="muted">${s2&&s2.vol!=null?pct(s2.vol,1):'–'}</td><td>${pc(s2?s2.mdd:null,0)}</td><td></td></tr>`; };
     $('p-tbl').tHead.insertAdjacentHTML('beforeend', ref('Ibovespa',IBV)+ref('CDI',CDI)); }
   $('p-tbl').querySelectorAll('a[data-open]').forEach(x=>x.onclick=e=>{e.preventDefault(); openG(x.dataset.open);});
   $('p-tbl').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.onchange=()=>{ const id=cb.dataset.g;
