@@ -13,3 +13,13 @@ Rodar na ordem (dados brutos da CVM numa pasta `raw/`: cad_fi.csv, cad_fi_hist.z
    `FLOW=rep` refaz tudo com captação−resgate reportados (robustez). `gestoras_fr.json` vem do artefato Gestoras CVM.
 
 `artefato/` tem o template, os dados da página e os resultados completos (principal e robustez).
+
+Parte 2, por tipo de investidor (2019T2–2026T1):
+
+4. `04_extrai_perfil.py raw/perfil out/fundo_mes.pkl out/perfil.pkl` — Perfil Mensal da CVM (% do PL por tipo de cotista).
+5. `05_extrai_cotistas_fundos.py raw/cda raw/perfil out/fundo_mes.pkl out` — CDA bloco 2 (quem são os fundos cotistas) no fim de cada trimestre e o Perfil deles.
+6. `06_passivo.py raw out carteiras.json ust10.csv passivo.json` — posição e fluxo de cada tipo de investidor final por gestora-trimestre
+   (abertura recursiva dos feeders, classificação dos fundos de outras casas), regimes (Ibov, Selic, Treasury FRED DGS10, fluxo da indústria),
+   sensibilidade a CDI/Ibov/Treasury, alpha 12m × 36m, perfil 0–100 de quem recebe e listas. Resumo em `artefato/passivo_resumo.txt`.
+
+A página é montada de `artefato/template.html` (dados da parte 1 em `bd_data.json`, parte 2 em `artefato/data/passivo.json`).

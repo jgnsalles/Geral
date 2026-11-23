@@ -1,0 +1,70 @@
+<section class="part" id="por-tipo">
+ <div class="eyebrow"><span>Parte 2 · por tipo de investidor</span><span>2019T2 a 2026T1 · 28 trimestres · 182 gestoras</span></div>
+ <h2>Quem põe e quem tira, e por quê</h2>
+ <p class="chapsub">O Perfil Mensal da CVM diz que fatia de cada fundo é de cada tipo de cotista. Quando o cotista é outro fundo, a carteira (CDA) diz qual: se for feeder da própria gestora, abro até o investidor final; se for de outra casa, classifico pelo gestor. O fluxo de cada tipo é a variação da sua posição menos o retorno. Escolha o tipo de passivo e o regime na barra abaixo: todos os gráficos desta parte mudam juntos.</p>
+ <div class="ctl" id="ctl">
+  <label for="sel-tipo">Tipo de passivo<select id="sel-tipo"></select></label>
+  <label for="sel-reg">Regime<select id="sel-reg"></select></label>
+  <div class="seg" role="group" aria-label="Estado" id="seg-est"></div>
+  <div class="now" id="now"></div>
+ </div>
+
+ <h2 class="chap">6. O passivo e o seu fluxo</h2>
+ <figure>
+  <figcaption class="ft" id="ft-flow">Fluxo trimestral do tipo escolhido</figcaption>
+  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span></div>
+  <div class="chart" id="p-flow"></div>
+  <div class="tbox" id="p-comp"></div>
+ </figure>
+
+ <h2 class="chap">7. Quem investe e quem tira, na alta e na baixa</h2>
+ <figure>
+  <figcaption class="ft">Entradas e saídas de cada tipo nos dois estados do regime</figcaption>
+  <figcaption class="fs">Para cada tipo: à direita, a soma das gestoras que receberam dinheiro desse tipo; à esquerda, a soma das que perderam; o traço é o líquido. Tudo em % da posição do tipo, por trimestre. Cada tipo tem duas barras: o primeiro estado do regime em cima e o segundo embaixo.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Investiu (gestoras com entrada)</span><span><i style="background:var(--out)"></i>Tirou (gestoras com saída)</span><span><i class="ln" style="background:var(--ink);height:12px;width:3px"></i>Líquido</span></div>
+  <div class="chart" id="p-butter"></div>
+  <div class="sowhat"><b>E daí</b><span id="sw-butter"></span></div>
+ </figure>
+
+ <h2 class="chap">8. Cada investidor responde a quê</h2>
+ <figure>
+  <figcaption class="ft">Correlação do fluxo trimestral de cada tipo com mercado, juros e Treasury</figcaption>
+  <figcaption class="fs">Correlação entre o fluxo do trimestre (% da posição) e cada variável, 28 trimestres; t entre parênteses. Azul: o fluxo sobe quando a variável sobe; laranja: cai. Clique numa coluna para ver a dispersão do tipo escolhido.</figcaption>
+  <div class="tbox"><table class="heat" id="p-heat"></table></div>
+  <div class="chart" id="p-drv" style="margin-top:14px"></div>
+  <div class="tbox" id="p-mv"></div>
+  <div class="sowhat"><b>E daí</b><span>Fundações e RPPS e wealth (private banks e family offices) são os mais presos ao CDI: o nível do juro explica metade da variância do fluxo deles. Plataformas respondem ao juro, ao Treasury e à bolsa dos últimos 12 meses. FoFs de terceiros seguem a bolsa (momentum). O PF private direto é o único contracíclico: põe dinheiro nos trimestres em que o Ibovespa cai. O varejo direto reage ao Treasury mais que à Selic. Estrangeiro e empresas são bases pequenas e ruidosas.</span></div>
+ </figure>
+
+ <h2 class="chap">9. Alpha de 1 ano ou de 3 anos?</h2>
+ <figure>
+  <figcaption class="ft">O fluxo de cada tipo responde ao alpha de quanto tempo</figcaption>
+  <figcaption class="fs">Diferença de fluxo trimestral (p.p. da posição do tipo) entre a gestora de pior e a de melhor alpha, com os dois horizontes na mesma regressão, efeito de trimestre e controle de tamanho. Traço = intervalo de 95% (erro por gestora). Segue o estado escolhido na barra.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Alpha 12 meses</span><span><i style="background:var(--ink2)"></i>Alpha 36 meses</span></div>
+  <div class="chart" id="p-sens"></div>
+  <div class="sowhat"><b>E daí</b><span>Plataformas, previdência e FoFs olham sobretudo o último ano. Fundações e RPPS olham quase só 3 anos: o alpha de 12 meses perde a significância quando entra o de 36. Wealth olha os dois com o mesmo peso. PF private e varejo direto quase não respondem ao alpha.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft" id="ft-quint">Fluxo por quintil de alpha</figcaption>
+  <figcaption class="fs">Gestoras agrupadas pelo alpha no início do trimestre (1 = pior). Mediana do fluxo do tipo escolhido, % da posição, no estado escolhido.</figcaption>
+  <div class="seg" role="group" aria-label="Horizonte" id="seg-hz"><button type="button" aria-pressed="true" data-k="ex12">Alpha 12 meses</button><button type="button" aria-pressed="false" data-k="ex36">Alpha 36 meses</button></div>
+  <div class="chart" id="p-quint" style="margin-top:8px"></div>
+ </figure>
+
+ <h2 class="chap">10. Quem recebe o dinheiro de cada tipo</h2>
+ <figure>
+  <figcaption class="ft" id="ft-pf2">Perfil de quem recebe e de quem perde</figcaption>
+  <figcaption class="fs">Percentil médio (0 = menos, 100 = mais, dentro do universo no início do trimestre) das gestoras que receberam fluxo líquido desse tipo (cheio) e das que perderam (vazado). Só gestoras com ao menos R$ 5 mi desse tipo ou fluxo desse tamanho. Em negrito, diferença com t ≥ 2 (erro trimestre a trimestre).</figcaption>
+  <div class="legend"><span><i class="dot" style="background:var(--in)"></i>Receberam</span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i>Perderam</span></div>
+  <div class="chart" id="p-perfil"></div>
+  <div class="sowhat"><b>E daí</b><span>Alpha de 12 e de 36 meses atrai quase todo tipo de investidor, em todos os regimes; as exceções são estrangeiro e empresas. Fora isso, cada tipo tem um perfil. Fundações, RPPS e previdência vão para casas de beta baixo, carteira mais diversificada e longe do consenso, e na seca isso fica mais forte. O varejo direto vai para carteira concentrada e tracking error alto. Plataformas e FoFs preferem gestoras mais novas e menores. Em quase todos os tipos, quem já depende muito daquele investidor perde mais dele.</span></div>
+ </figure>
+
+ <h2 class="chap">11. Os nomes</h2>
+ <figure style="border-top:0;margin-top:10px">
+  <p class="fs" id="tops-sub"></p>
+  <div class="lists"><div><h4>Mais receberam</h4><div class="tbox" id="p-rec"></div></div><div><h4>Mais perderam</h4><div class="tbox" id="p-saq"></div></div></div>
+ </figure>
+</section>

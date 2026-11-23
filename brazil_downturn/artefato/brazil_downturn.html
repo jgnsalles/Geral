@@ -86,13 +86,33 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--in);outline-o
 .method{font-size:13.5px;color:var(--ink2);max-width:82ch;display:grid;gap:8px;margin-top:10px}
 .method p{margin:0}
 code{font-family:var(--f-num);font-size:12.5px}
+.part{margin:80px 0 0;padding-top:16px;border-top:3px solid var(--ink)}
+.part .eyebrow{border:0;padding:0}
+.part h2{font-family:var(--f-head);font-weight:600;font-size:clamp(28px,4.2vw,42px);line-height:1.08;margin:10px 0 8px;max-width:24ch;text-wrap:balance}
+.part h2.chap{font-size:clamp(25px,3.4vw,34px)}
+.ctl{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--rule);margin:18px 0 0;padding:10px 0;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:end}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.ctl label{display:grid;gap:3px;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ctl select{font:inherit;font-size:14px;text-transform:none;letter-spacing:0;font-weight:500;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:7px;padding:6px 9px;max-width:100%}
+.ctl .now{font-size:13px;color:var(--ink2);flex:1 1 220px;min-width:0}
+.ctl .now b{color:var(--ink)}
+.heat td{text-align:center;font-family:var(--f-num);font-size:12px;cursor:pointer;white-space:nowrap}
+.heat td.l{font-family:var(--f-body);font-size:13px;cursor:default;text-align:left}
+.heat th{cursor:pointer;text-align:center}
+.heat th.on{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.heat tr.sel td.l{font-weight:600}
+.heat tr.sel td{box-shadow:inset 0 2px 0 var(--ink),inset 0 -2px 0 var(--ink)}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px}
+.lists>div{min-width:0}
+.lists h4{font-size:14px;margin:4px 0}
+.note{font-size:13px;color:var(--muted);margin:6px 0 0}
 </style>
 
 <div class="page">
 <div class="eyebrow"><span>Brazil Downturn · fluxos das gestoras de ações</span><span>CVM, jan/2006 a out/2026</span></div>
 <h1>O juro decide quanto entra. O alpha decide em quem.</h1>
 <p class="deck">Em 21 anos de captação e resgate das ~100 maiores gestoras independentes de ações, o volume que chega à indústria segue a Selic, não o desempenho dos gestores. Dentro de cada ano, o dinheiro vai para quem bateu o Ibovespa. Na seca, quem ainda capta é quem vinha de alpha alto, é menor que a média, tem carteira mais concentrada e base de clientes pessoa física.</p>
-<p class="by">Informe Diário da CVM de 10.583 fundos de ações · gestor do fundo na data · universo point-in-time do Navegando Brasil (100 maiores gestoras ativas de ações do mês anterior) · 236 gestoras, 1.523 gestora-anos</p>
+<p class="by">Parte 1: Informe Diário da CVM de 10.583 fundos de ações · gestor do fundo na data · universo point-in-time do Navegando Brasil (100 maiores gestoras ativas de ações do mês anterior) · 236 gestoras, 1.523 gestora-anos</p>
 
 <div class="kpis" id="kpis"></div>
 
@@ -112,6 +132,15 @@ code{font-family:var(--f-num);font-size:12.5px}
    <li><b>Menor que a média:</b> 35% das menores captam, contra 24% das maiores. Na cheia o tamanho não importa. Mas os maiores cheques da seca foram para casas grandes de alpha alto (Atmos, Dynamo, Absolute, Kapitalo).</li>
    <li><b>Carteira concentrada</b> (menos ações, mais peso nas 10 maiores) e <b>clientes pessoa física</b>; menos institucional. Long biased, beta, idade e "consenso" da carteira não fazem diferença.</li>
    <li><b>Depois:</b> quem captou na seca continua captando, mas não rende mais que os outros no ano seguinte.</li>
+  </ul>
+ </section>
+ <section style="grid-column:1/-1">
+  <h2>Por tipo de investidor (2019–2026, <a href="#por-tipo">parte 2</a>)</h2>
+  <ul>
+   <li><b>Quem segue o juro:</b> fundações e RPPS, e wealth (private banks e family offices via fundo exclusivo). O nível do CDI explica cerca de metade da variância do fluxo deles. Plataformas (conta e ordem) seguem juro, Treasury e bolsa de 12 meses.</li>
+   <li><b>Quem é contracíclico:</b> o PF private direto põe dinheiro nos trimestres de queda do Ibovespa (+1,5% contra −1,8% na alta). O varejo direto compra depois de 12 meses ruins (+7,5% por trimestre) e vende depois de 12 meses bons (−5,7%). FoFs de terceiros fazem o contrário: momentum.</li>
+   <li><b>Alpha de 1 ou de 3 anos:</b> plataformas, previdência e FoFs olham o último ano. Fundações e RPPS olham 3 anos (+24 p.p. do pior ao melhor; o de 12 meses some). Wealth pesa os dois igual. PF private e varejo quase não olham alpha.</li>
+   <li><b>Quem recebe de cada um:</b> institucionais vão para beta baixo, carteira diversificada e fora do consenso. Varejo direto vai para carteira concentrada e tracking error alto. Plataformas e FoFs, para gestoras menores e mais novas.</li>
   </ul>
  </section>
 </div>
@@ -156,12 +185,13 @@ code{font-family:var(--f-num);font-size:12.5px}
 </figure>
 
 <h2 class="chap">3. Quem capta quando todo mundo resgata</h2>
-<p class="chapsub">Onze anos de seca (fluxo agregado negativo): 893 gestora-anos, dos quais 31% captaram. Cada característica é o rank da gestora no início do ano (0 = menor do universo, 1 = maior), comparado entre quem captou e quem não captou.</p>
+<p class="chapsub">Onze anos de seca (fluxo agregado negativo): 893 gestora-anos, dos quais 31% captaram. Cada característica é o percentil da gestora no início do ano, dentro do universo: 0 = a de menos, 100 = a de mais, 50 = a mediana.</p>
 
 <figure>
  <figcaption class="ft">Na seca, o que vale é alpha, ser menor e ter carteira concentrada</figcaption>
- <figcaption class="fs">Diferença de rank médio entre gestoras que captaram e as que tiveram saída (pontos de percentil). À direita: quem captou tinha mais da característica. Círculo cheio = t ≥ 2 com erro por ano. Seca em laranja, cheia em azul.</figcaption>
- <div class="legend"><span><i class="dot" style="background:var(--out)"></i>Seca (11 anos)</span><span><i class="dot" style="background:var(--in)"></i>Cheia (8 anos)</span></div>
+ <figcaption class="fs">Percentil médio, de 0 a 100, das gestoras que captaram (círculo cheio) e das que tiveram saída (círculo vazado) em cada característica. A linha liga os dois grupos: quanto mais longa, mais a característica separa quem capta de quem perde. Em negrito, diferença com t ≥ 2 (erro calculado ano a ano).</figcaption>
+ <div class="seg" role="group" aria-label="Regime" id="pf1-seg"><button type="button" aria-pressed="true" data-k="seca">Anos de seca (11)</button><button type="button" aria-pressed="false" data-k="cheia">Anos de cheia (8)</button></div>
+ <div class="legend" style="margin-top:8px"><span><i class="dot" style="background:var(--in)"></i>Captaram</span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i>Tiveram saída</span><span><i class="ln" style="background:var(--muted)"></i>50 = mediana do universo</span></div>
  <div class="chart" id="c-perfil"></div>
  <div class="sowhat"><b>E daí</b><span>Alpha em 12 meses é o único traço com o mesmo sinal em todos os anos e nos dois regimes. O que muda com o regime: na seca captam as menores, as de carteira concentrada e as de cliente pessoa física; na cheia captam as de tracking error alto e carteira mais diversificada, com tamanho indiferente (cliente alocador aparece, mas sem significância). Receita de performance ajuda nos dois, mais na cheia.</span></div>
 </figure>
@@ -185,13 +215,85 @@ code{font-family:var(--f-num);font-size:12.5px}
  <div class="sowhat"><b>E daí</b><span>Captar na seca não sinaliza retorno melhor à frente. No ano seguinte, a mediana dos que captaram bate o Ibovespa por 0,3 p.p. e a dos outros perde 1,6 p.p., mas ano a ano a diferença é negativa em 7 de 10 anos (t = −0,5). O que persiste é o fluxo: em 10 de 10 anos, quem captou na seca teve fluxo melhor no ano seguinte. O dinheiro segue o alpha passado e não antecipa o futuro.</span></div>
 </figure>
 
+<section class="part" id="por-tipo">
+ <div class="eyebrow"><span>Parte 2 · por tipo de investidor</span><span>2019T2 a 2026T1 · 28 trimestres · 182 gestoras</span></div>
+ <h2>Quem põe e quem tira, e por quê</h2>
+ <p class="chapsub">O Perfil Mensal da CVM diz que fatia de cada fundo é de cada tipo de cotista. Quando o cotista é outro fundo, a carteira (CDA) diz qual: se for feeder da própria gestora, abro até o investidor final; se for de outra casa, classifico pelo gestor. O fluxo de cada tipo é a variação da sua posição menos o retorno. Escolha o tipo de passivo e o regime na barra abaixo: todos os gráficos desta parte mudam juntos.</p>
+ <div class="ctl" id="ctl">
+  <label for="sel-tipo">Tipo de passivo<select id="sel-tipo"></select></label>
+  <label for="sel-reg">Regime<select id="sel-reg"></select></label>
+  <div class="seg" role="group" aria-label="Estado" id="seg-est"></div>
+  <div class="now" id="now"></div>
+ </div>
+
+ <h2 class="chap">6. O passivo e o seu fluxo</h2>
+ <figure>
+  <figcaption class="ft" id="ft-flow">Fluxo trimestral do tipo escolhido</figcaption>
+  <figcaption class="fs">Fluxo líquido do trimestre em % da posição do tipo no início do trimestre. Faixas sombreadas: trimestres do estado escolhido no regime (quando o estado é "Todos", sombreia o primeiro estado). Embaixo: CDI anualizado no fim do trimestre.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span></div>
+  <div class="chart" id="p-flow"></div>
+  <div class="tbox" id="p-comp"></div>
+ </figure>
+
+ <h2 class="chap">7. Quem investe e quem tira, na alta e na baixa</h2>
+ <figure>
+  <figcaption class="ft">Entradas e saídas de cada tipo nos dois estados do regime</figcaption>
+  <figcaption class="fs">Para cada tipo: à direita, a soma das gestoras que receberam dinheiro desse tipo; à esquerda, a soma das que perderam; o traço é o líquido. Tudo em % da posição do tipo, por trimestre. Cada tipo tem duas barras: o primeiro estado do regime em cima e o segundo embaixo.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Investiu (gestoras com entrada)</span><span><i style="background:var(--out)"></i>Tirou (gestoras com saída)</span><span><i class="ln" style="background:var(--ink);height:12px;width:3px"></i>Líquido</span></div>
+  <div class="chart" id="p-butter"></div>
+  <div class="sowhat"><b>E daí</b><span id="sw-butter"></span></div>
+ </figure>
+
+ <h2 class="chap">8. Cada investidor responde a quê</h2>
+ <figure>
+  <figcaption class="ft">Correlação do fluxo trimestral de cada tipo com mercado, juros e Treasury</figcaption>
+  <figcaption class="fs">Correlação entre o fluxo do trimestre (% da posição) e cada variável, 28 trimestres; t entre parênteses. Azul: o fluxo sobe quando a variável sobe; laranja: cai. Clique numa coluna para ver a dispersão do tipo escolhido.</figcaption>
+  <div class="tbox"><table class="heat" id="p-heat"></table></div>
+  <div class="chart" id="p-drv" style="margin-top:14px"></div>
+  <div class="tbox" id="p-mv"></div>
+  <div class="sowhat"><b>E daí</b><span>Fundações e RPPS e wealth (private banks e family offices) são os mais presos ao CDI: o nível do juro explica metade da variância do fluxo deles. Plataformas respondem ao juro, ao Treasury e à bolsa dos últimos 12 meses. FoFs de terceiros seguem a bolsa (momentum). O PF private direto é o único contracíclico: põe dinheiro nos trimestres em que o Ibovespa cai. O varejo direto reage ao Treasury mais que à Selic. Estrangeiro e empresas são bases pequenas e ruidosas.</span></div>
+ </figure>
+
+ <h2 class="chap">9. Alpha de 1 ano ou de 3 anos?</h2>
+ <figure>
+  <figcaption class="ft">O fluxo de cada tipo responde ao alpha de quanto tempo</figcaption>
+  <figcaption class="fs">Diferença de fluxo trimestral (p.p. da posição do tipo) entre a gestora de pior e a de melhor alpha, com os dois horizontes na mesma regressão, efeito de trimestre e controle de tamanho. Traço = intervalo de 95% (erro por gestora). Segue o estado escolhido na barra.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Alpha 12 meses</span><span><i style="background:var(--ink2)"></i>Alpha 36 meses</span></div>
+  <div class="chart" id="p-sens"></div>
+  <div class="sowhat"><b>E daí</b><span>Plataformas, previdência e FoFs olham sobretudo o último ano. Fundações e RPPS olham quase só 3 anos: o alpha de 12 meses perde a significância quando entra o de 36. Wealth olha os dois com o mesmo peso. PF private e varejo direto quase não respondem ao alpha.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft" id="ft-quint">Fluxo por quintil de alpha</figcaption>
+  <figcaption class="fs">Gestoras agrupadas pelo alpha no início do trimestre (1 = pior). Mediana do fluxo do tipo escolhido, % da posição, no estado escolhido.</figcaption>
+  <div class="seg" role="group" aria-label="Horizonte" id="seg-hz"><button type="button" aria-pressed="true" data-k="ex12">Alpha 12 meses</button><button type="button" aria-pressed="false" data-k="ex36">Alpha 36 meses</button></div>
+  <div class="chart" id="p-quint" style="margin-top:8px"></div>
+ </figure>
+
+ <h2 class="chap">10. Quem recebe o dinheiro de cada tipo</h2>
+ <figure>
+  <figcaption class="ft" id="ft-pf2">Perfil de quem recebe e de quem perde</figcaption>
+  <figcaption class="fs">Percentil médio (0 = menos, 100 = mais, dentro do universo no início do trimestre) das gestoras que receberam fluxo líquido desse tipo (cheio) e das que perderam (vazado). Só gestoras com ao menos R$ 5 mi desse tipo ou fluxo desse tamanho. Em negrito, diferença com t ≥ 2 (erro trimestre a trimestre).</figcaption>
+  <div class="legend"><span><i class="dot" style="background:var(--in)"></i>Receberam</span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i>Perderam</span></div>
+  <div class="chart" id="p-perfil"></div>
+  <div class="sowhat"><b>E daí</b><span>Alpha de 12 e de 36 meses atrai quase todo tipo de investidor, em todos os regimes; as exceções são estrangeiro e empresas. Fora isso, cada tipo tem um perfil. Fundações, RPPS e previdência vão para casas de beta baixo, carteira mais diversificada e longe do consenso, e na seca isso fica mais forte. O varejo direto vai para carteira concentrada e tracking error alto. Plataformas e FoFs preferem gestoras mais novas e menores. Em quase todos os tipos, quem já depende muito daquele investidor perde mais dele.</span></div>
+ </figure>
+
+ <h2 class="chap">11. Os nomes</h2>
+ <figure style="border-top:0;margin-top:10px">
+  <p class="fs" id="tops-sub"></p>
+  <div class="lists"><div><h4>Mais receberam</h4><div class="tbox" id="p-rec"></div></div><div><h4>Mais perderam</h4><div class="tbox" id="p-saq"></div></div></div>
+ </figure>
+</section>
+
 <h2 class="chap" style="font-size:24px">Método, robustez e limites</h2>
 <div class="method">
  <p><b>Fluxo.</b> Informe Diário da CVM (2005–out/2026), fundos da classe Ações ou long biased, sem FIC, exclusivos, previdência e indexados na data. Os masters recebem o fluxo líquido dos feeders, então a soma não conta duas vezes. Medida principal híbrida: captação − resgate dos fundos que continuam elegíveis. Fundo novo conta pelo PL, descontadas as saídas por mudança de status da mesma gestora em ±1 mês, para que migrações de master (Dynamo 2021, Mainá 2024) não virem captação falsa. Troca de gestor e virada FIC ↔ master não contam como fluxo.</p>
  <p><b>Universo.</b> Gestora entra no mês t se estava entre as 100 maiores gestoras ativas de ações em t−1 (regra point-in-time do Navegando Brasil, sem bancos, seguradoras e previdência), com PL em fundos de ações ≥ R$ 30 mi. Para meses com CDA em sigilo usa-se a lista de abr/2026. Opportunity fica fora: a maior parte do PL é de veículos patrimoniais, e em 2023 dois fundos novos receberam R$ 21 bi de fora do perímetro.</p>
  <p><b>Alpha</b> = retorno ponderado pelo PL dos fundos da gestora menos o Ibovespa (mediana dos fundos indexados ao Ibovespa, correlação 0,9997 com o índice). <b>Estilo</b>: beta, volatilidade e tracking error em 36 meses; concentração, nº de ações e peso nas 20 ações mais detidas vêm das carteiras CDA consolidadas do Navegando Brasil. <b>Clientela e receita de performance</b>: Formulário de Referência (Gestoras CVM), de 2016 em diante.</p>
  <p><b>Robustez.</b> Com captação − resgate reportados em vez da medida híbrida, todos os sinais se mantêm: R² do juro no fluxo agregado 0,37; ano 18% contra alpha 8% na decomposição; logit da seca com tamanho t = −4,1, alpha 12m t = 3,1, alpha 36m t = 2,1; clientela PF t = 2,4.</p>
- <p><b>Limites.</b> Vinte anos são poucas observações para a regressão agregada (n = 19). O fluxo de fundos de ações capta só parte da gestora (multimercados e carteiras administradas ficam fora). O Formulário de Referência cobre só 2016–2025. A classificação long biased é pelo nome e pela Anbima atual. Código: <code>brazil_downturn/</code> no repositório Geral, branch <code>claude/brazil-gestoras-inflows-analysis-8f1cg5</code>.</p>
+ <p><b>Parte 2, por tipo de investidor.</b> Perfil Mensal da CVM (% do PL de cada fundo por tipo de cotista, jan/2019 a out/2026) e bloco de cotas de fundos da CDA no fim de cada trimestre. Perímetro: todos os fundos de ações da gestora, qualquer status. Cada real é contado uma vez, no investidor final: cotista que é fundo da mesma gestora é aberto pelo Perfil dele (até 4 níveis); cotista de outra casa é classificado pelo nome do gestor e do fundo em wealth (private banks e family offices), fundações e RPPS, previdência ou FoFs e gestoras de terceiros. "Outro" entra como fundo, porque até 2020 recebia cotistas fundos. Master sem Perfil no trimestre é rateado pela composição conhecida da gestora. Fluxo do tipo = posição no fim − posição no início × (1 + retorno da gestora). A série termina em 2026T1: de abril em diante a CDA ainda está parcialmente em sigilo. Regimes por trimestre: Ibovespa no trimestre e em 12 meses, variação do CDI no trimestre (alta = subiu mais de 0,25 p.p.), Treasury de 10 anos (FRED) e fluxo total do universo.</p>
+ <p><b>Limites.</b> A parte 2 tem só 28 trimestres e um ciclo de juros completo. A classificação de cotistas de outras casas é por nome (regras no código). Estrangeiro (1% do passivo) e empresas (3%) são bases pequenas e ruidosas.  Vinte anos são poucas observações para a regressão agregada (n = 19). O fluxo de fundos de ações capta só parte da gestora (multimercados e carteiras administradas ficam fora). O Formulário de Referência cobre só 2016–2025. A classificação long biased é pelo nome e pela Anbima atual. Código: <code>brazil_downturn/</code> no repositório Geral, branch <code>claude/brazil-gestoras-inflows-analysis-8f1cg5</code>.</p>
 </div>
 </div>
 
@@ -299,21 +401,30 @@ function quint(){
 }
 document.querySelectorAll('#q-seg button').forEach(b=>b.onclick=()=>{qk=b.dataset.k;document.querySelectorAll('#q-seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));quint();});
 
-function perfil(){
- const S=Object.fromEntries(D.perfil_seca.tab.map(r=>[r.var,r])), C=Object.fromEntries(D.perfil_cheia.tab.map(r=>[r.var,r]));
- const order=['ex12_l_rk','ex36_l_rk','size_rk','n_acoes_rk','top10_rk','cli_pf_rk','cli_inst_rk','cli_fundos_rk','perf_fee_rk','te36_l_rk','beta36_l_rk','vol36_l_rk','idade_rk','consenso_rk','sh_lb_l_rk'];
- const W=1000,rh=30,m={l:290,r:40,t:24,b:28},H=m.t+m.b+order.length*rh, s=box('c-perfil',W,H), t=tip('c-perfil');
- const x=d3.scaleLinear().domain([-.12,.18]).range([m.l,W-m.r]);
- const g=s.append('g').attr('class','grid');[-.1,-.05,0,.05,.1,.15].forEach(v=>{g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(v)).attr('y',H-8).attr('text-anchor','middle').text(PP(v,0))});
- s.append('text').attr('x',x(-.12)).attr('y',14).text('← quem captou tinha menos');s.append('text').attr('x',x(.18)).attr('y',14).attr('text-anchor','end').text('quem captou tinha mais →');
- s.append('line').attr('class','zero').attr('x1',x(0)).attr('x2',x(0)).attr('y1',m.t).attr('y2',H-m.b);
- const nm=k=>S[k].nome.replace(' (rank)','');
- order.forEach((k,i)=>{const yy=m.t+i*rh+rh/2;s.append('text').attr('class','lab').attr('x',m.l-12).attr('y',yy+4).attr('text-anchor','end').text(nm(k));
-  const a=S[k],b=C[k];s.append('line').attr('x1',x(a.dif)).attr('x2',x(b.dif)).attr('y1',yy).attr('y2',yy).attr('stroke',css('--rule')).attr('stroke-width',2);
-  [[b,'--in'],[a,'--out']].forEach(([r,c])=>{const sig=r.t!=null&&Math.abs(r.t)>=2;s.append('circle').attr('cx',x(r.dif)).attr('cy',yy).attr('r',6.5).attr('fill',sig?css(c):css('--bg')).attr('stroke',css(c)).attr('stroke-width',2);});
-  s.append('rect').attr('x',m.l-280).attr('y',yy-rh/2).attr('width',W-m.l+280-m.r).attr('height',rh).attr('fill','transparent')
-   .on('mousemove',ev=>show(t,ev,'c-perfil',`<b>${nm(k)}</b>${row('Seca: captou × saiu',F(a.win*100,0)+' × '+F(a.lose*100,0))}${row('t (seca) · anos no mesmo sinal',F(a.t,1)+' · '+a.anos_mesmo_sinal+'/'+a.anos)}${row('Cheia: captou × saiu',F(b.win*100,0)+' × '+F(b.lose*100,0))}${row('t (cheia)',F(b.t,1))}`)).on('mouseleave',()=>t.style('display','none'));});
+let pf1='seca';
+// dumbbell 0-100: rows=[{nome,w,l,t}] (w e l em percentil 0-100)
+function dumbbell(id,rows,labels){
+ const W=1000,rh=32,m={l:300,r:40,t:26,b:30},H=m.t+m.b+rows.length*rh, s=box(id,W,H), t=tip(id);
+ const x=d3.scaleLinear().domain([0,100]).range([m.l,W-m.r]);
+ const g=s.append('g').attr('class','grid');[0,25,50,75,100].forEach(v=>{g.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(v)).attr('y',H-10).attr('text-anchor','middle').text(v)});
+ s.append('line').attr('x1',x(50)).attr('x2',x(50)).attr('y1',m.t-6).attr('y2',H-m.b).attr('stroke',css('--muted')).attr('stroke-dasharray','4 3');
+ s.append('text').attr('x',x(0)).attr('y',14).text('0 = menos');s.append('text').attr('x',x(50)).attr('y',14).attr('text-anchor','middle').text('mediana');s.append('text').attr('x',x(100)).attr('y',14).attr('text-anchor','end').text('100 = mais');
+ rows.forEach((r,i)=>{const yy=m.t+i*rh+rh/2, sig=r.t!=null&&Math.abs(r.t)>=2;
+  s.append('text').attr('class','lab').attr('x',m.l-12).attr('y',yy+4).attr('text-anchor','end').style('font-weight',sig?600:400).style('fill',sig?css('--ink'):css('--ink2')).text(r.nome);
+  s.append('line').attr('x1',x(r.l)).attr('x2',x(r.w)).attr('y1',yy).attr('y2',yy).attr('stroke',css(r.w>=r.l?'--in':'--out')).attr('stroke-width',sig?3:1.5).attr('opacity',sig?.9:.45);
+  s.append('circle').attr('cx',x(r.l)).attr('cy',yy).attr('r',6.5).attr('fill',css('--bg')).attr('stroke',css('--out')).attr('stroke-width',2);
+  s.append('circle').attr('cx',x(r.w)).attr('cy',yy).attr('r',6.5).attr('fill',css('--in')).attr('stroke',css('--bg')).attr('stroke-width',1.5);
+  s.append('rect').attr('x',0).attr('y',yy-rh/2).attr('width',W).attr('height',rh).attr('fill','transparent')
+   .on('mousemove',ev=>show(t,ev,id,`<b>${r.nome}</b>${row(labels[0],F(r.w,0))}${row(labels[1],F(r.l,0))}${row('Diferença',PP(r.w/100-r.l/100,0)+' pontos')}${row('t',r.t==null?'—':F(r.t,1))}${r.extra||''}`)).on('mouseleave',()=>t.style('display','none'));});
 }
+function perfil(){
+ const P=pf1=='seca'?D.perfil_seca:D.perfil_cheia;
+ const order=['ex12_l_rk','ex36_l_rk','size_rk','top10_rk','n_acoes_rk','cli_pf_rk','cli_inst_rk','cli_fundos_rk','perf_fee_rk','te36_l_rk','beta36_l_rk','vol36_l_rk','idade_rk','consenso_rk','sh_lb_l_rk'];
+ const T=Object.fromEntries(P.tab.map(r=>[r.var,r]));
+ const nm={'ex12_l_rk':'Alpha 12 meses','ex36_l_rk':'Alpha 36 meses','size_rk':'Tamanho (PL em ações)','top10_rk':'Concentração (peso das 10 maiores)','n_acoes_rk':'Nº de ações na carteira','cli_pf_rk':'% de clientes pessoa física','cli_inst_rk':'% de clientes institucionais','cli_fundos_rk':'% de clientes fundos/alocadores','perf_fee_rk':'% da receita com performance','te36_l_rk':'Tracking error 36m','beta36_l_rk':'Beta 36m','vol36_l_rk':'Volatilidade 36m','idade_rk':'Idade da gestora','consenso_rk':'Peso nas 20 ações mais detidas','sh_lb_l_rk':'% do PL em long biased'};
+ dumbbell('c-perfil',order.map(k=>({nome:nm[k],w:T[k].win*100,l:T[k].lose*100,t:T[k].t,extra:row('Anos com o mesmo sinal',T[k].anos_mesmo_sinal+' de '+T[k].anos)})),['Captaram (percentil médio)','Tiveram saída']);
+}
+document.querySelectorAll('#pf1-seg button').forEach(b=>b.onclick=()=>{pf1=b.dataset.k;document.querySelectorAll('#pf1-seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));perfil();});
 
 function pbars(id,ps,pc,labs){
  const W=480,H=230,m={l:40,r:6,t:14,b:34}, s=box(id,W,H), t=tip(id);
@@ -337,9 +448,158 @@ function nomes(){
  document.getElementById('yrs').innerHTML=G.map(g=>`<div class="yr"><h4>${g.y}<span>${g.n_pos} de ${g.n} captaram · +R$ ${F(g.cap_pos_bi,1)} bi contra −R$ ${F(-g.saida_neg_bi,1)} bi</span></h4><ol>${g.top.slice(0,5).map(t=>`<li>${t.nome} <span>R$ ${t.flow_mi.toLocaleString('pt-BR')} mi · alpha ${t.ex12==null?'—':PP(t.ex12,0)} · tam. ${F(t.size_rk*100,0)}</span></li>`).join('')}</ol></div>`).join('');
 }
 
-function draw(){kpis();ciclo();scatter();decomp();quint();perfil();logit();nomes();
+function draw(){if(window.P2)drawP2();kpis();ciclo();scatter();decomp();quint();perfil();logit();nomes();
  const q=['1','2','3','4','5'];pbars('c-psize',[0,1,2,3,4].map(i=>D.p_size[i]),[0,1,2,3,4].map(i=>D.p_size_cheia[i]),['menores','2','3','4','maiores']);
  pbars('c-palpha',[0,1,2,3,4].map(i=>D.p_alpha[i]),[0,1,2,3,4].map(i=>D.p_alpha_cheia[i]),['pior','2','3','4','melhor']);}
+// ================= Parte 2: por tipo de investidor =================
+const ST={tipo:'total',rg:'fluxo',est:'todos',hz:'ex12',drv:'cdi'};
+const key=()=>ST.est=='todos'?'todos':`${ST.rg}:${ST.est}`;
+const NM=k=>window.P2.nomes[k];
+const estLbl=e=>e=='todos'?'Todos os trimestres':window.P2.estados[ST.rg][e=='alta'?0:1];
+function ctl(){
+ const X=window.P2, st=document.getElementById('sel-tipo'), sr=document.getElementById('sel-reg');
+ st.innerHTML=X.tipos.map(k=>`<option value="${k}">${X.nomes[k]}</option>`).join('');
+ sr.innerHTML=Object.entries(X.regimes).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+ st.value=ST.tipo; sr.value=ST.rg;
+ st.onchange=()=>{ST.tipo=st.value;drawP2();}; sr.onchange=()=>{ST.rg=sr.value;drawP2();};
+ document.querySelectorAll('#seg-hz button').forEach(b=>b.onclick=()=>{ST.hz=b.dataset.k;document.querySelectorAll('#seg-hz button').forEach(x=>x.setAttribute('aria-pressed',x===b));pquint();});
+}
+function segEst(){
+ const el=document.getElementById('seg-est'), X=window.P2, n=X.n_estado[ST.rg];
+ el.innerHTML=[['todos','Todos'],['alta',X.estados[ST.rg][0]+' ('+(n.alta||0)+')'],['baixa',X.estados[ST.rg][1]+' ('+(n.baixa||0)+')']].map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${ST.est==k}">${l}</button>`).join('');
+ el.querySelectorAll('button').forEach(b=>b.onclick=()=>{ST.est=b.dataset.k;drawP2();});
+ document.getElementById('now').innerHTML=`Vendo <b>${NM(ST.tipo)}</b> · <b>${estLbl(ST.est)}</b>`;
+}
+function inState(q){const r=window.P2.trimestres.find(x=>x.q==q);if(!r)return false;const e=ST.est=='todos'?'alta':ST.est;return r['st_'+ST.rg]==e;}
+
+function pflow(){
+ const X=window.P2, S=X.serie, k=ST.tipo, W=1000,H=400,m={l:52,r:12,t:14,b:26},h1=250,gap=30,h2=H-m.t-m.b-h1-gap;
+ document.getElementById('ft-flow').textContent='Fluxo trimestral: '+NM(k);
+ const s=box('p-flow',W,H), t=tip('p-flow');
+ const x=d3.scaleBand().domain(S.map(r=>r.q)).range([m.l,W-m.r]).padding(.18);
+ const v=S.map(r=>r[k].fr).filter(z=>z!=null); const ext=Math.max(.05,d3.quantile(v.map(Math.abs).sort(d3.ascending),.95)*1.15);
+ const y=d3.scaleLinear().domain([-ext,ext]).range([m.t+h1,m.t]).clamp(true);
+ S.forEach(r=>{if(inState(r.q))s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill',css('--soft'));});
+ const g=s.append('g').attr('class','grid');y.ticks(6).forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(tv)).attr('y2',y(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(tv)+4).attr('text-anchor','end').text(P(tv))});
+ S.forEach(r=>{const fr=r[k].fr;if(fr==null)return;const top=Math.min(y(fr),y(0)),hh=Math.max(1,Math.abs(y(fr)-y(0)));
+  s.append('rect').attr('x',x(r.q)).attr('y',top).attr('width',x.bandwidth()).attr('height',hh).attr('rx',2).attr('fill',css(fr>=0?'--in':'--out'));
+  if(Math.abs(fr)>ext)s.append('text').attr('class','num').attr('x',x(r.q)+x.bandwidth()/2).attr('y',fr>0?m.t+10:m.t+h1-4).attr('text-anchor','middle').text('↕');
+  if(r.q.endsWith('Q1'))s.append('text').attr('x',x(r.q)+x.bandwidth()/2).attr('y',H-6).attr('text-anchor','middle').text(r.q.slice(0,4));});
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+ const T=X.trimestres, y0=m.t+h1+gap, y2=d3.scaleLinear().domain([0,.16]).range([y0+h2,y0]);
+ [0,.08,.16].forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y2(tv)).attr('y2',y2(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y2(tv)+4).attr('text-anchor','end').text(P(tv))});
+ s.append('path').attr('d',d3.line().x(r=>x(r.q)+x.bandwidth()/2).y(r=>y2(r.cdi))(T.filter(r=>x(r.q)!=null))).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2);
+ S.forEach(r=>{const tr=T.find(z=>z.q==r.q)||{};s.append('rect').attr('x',x(r.q)-x.step()*x.paddingInner()/2).attr('y',m.t).attr('width',x.step()).attr('height',H-m.t-m.b).attr('fill','transparent')
+  .on('mousemove',ev=>show(t,ev,'p-flow',`<b>${r.q.replace('Q','T')}</b>${row('Fluxo',P(r[k].fr,1)+' da posição')}${row('Em reais','R$ '+F(r[k].f,2)+' bi')}${row('Posição no fim','R$ '+F(r[k].h,1)+' bi')}${row('Gestoras com entrada',P(r[k].pos))}${row('Ibovespa no trimestre',P(tr.ibov_q,1))}${row('CDI',P(tr.cdi,1))}${row('Treasury 10a',P(tr.ust,2))}`)).on('mouseleave',()=>t.style('display','none'));});
+ // composição
+ const f0=S[0],f1=S[S.length-1], tot0=f0.total.h, tot1=f1.total.h;
+ document.getElementById('p-comp').innerHTML='<table><thead><tr><th class="l">Tipo de passivo</th><th>% do passivo em '+f0.q.replace('Q','T')+'</th><th>% em '+f1.q.replace('Q','T')+'</th><th>Fluxo acumulado (R$ bi)</th><th>Fluxo / posição média</th></tr></thead><tbody>'+
+  X.tipos.filter(z=>z!='total').map(z=>{const acc=d3.sum(S,r=>r[z].f||0), mean=d3.mean(S,r=>r[z].h);return `<tr${z==k?' style="font-weight:600"':''}><td class="l">${NM(z)}</td><td class="n">${P(f0[z].h/tot0,1)}</td><td class="n">${P(f1[z].h/tot1,1)}</td><td class="n ${acc>=0?'pos':'neg'}">${F(acc,1)}</td><td class="n">${P(acc/mean,0)}</td></tr>`}).join('')+'</tbody></table>';
+}
+
+function pbutter(){
+ const X=window.P2, E=X.estados_agg[ST.rg], ks=X.tipos, lab=X.estados[ST.rg], W=1000,rh=20,gap=14,m={l:270,r:30,t:30,b:28};
+ const H=m.t+m.b+ks.length*(2*rh+gap), s=box('p-butter',W,H), t=tip('p-butter');
+ const all=ks.flatMap(k=>['alta','baixa'].flatMap(e=>[E[e][k].inv,E[e][k].tira])); const ext=Math.min(.35,Math.max(.12,d3.max(all.map(Math.abs))*1.05));
+ const x=d3.scaleLinear().domain([-ext,ext]).range([m.l,W-m.r]).clamp(true);
+ const g=s.append('g').attr('class','grid');x.ticks(8).forEach(tv=>{g.append('line').attr('x1',x(tv)).attr('x2',x(tv)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(tv)).attr('y',H-8).attr('text-anchor','middle').text(P(tv))});
+ s.append('text').attr('x',x(-ext)).attr('y',14).text('← tirou');s.append('text').attr('x',x(ext)).attr('y',14).attr('text-anchor','end').text('investiu →');
+ ks.forEach((k,i)=>{const y0=m.t+i*(2*rh+gap), sel=k==ST.tipo;
+  if(sel)s.append('rect').attr('x',0).attr('y',y0-4).attr('width',W).attr('height',2*rh+8).attr('fill',css('--soft'));
+  s.append('text').attr('class','lab').attr('x',m.l-12).attr('y',y0+rh+4).attr('text-anchor','end').style('font-weight',sel?600:400).text(NM(k).replace(' (private banks e family offices, via fundo)',' (PB e MFO)'));
+  ['alta','baixa'].forEach((e,j)=>{const r=E[e][k], yy=y0+j*rh+2, hh=rh-5;
+   s.append('text').attr('class','num').attr('x',m.l-4).attr('y',yy+hh-3).attr('text-anchor','end').style('font-size','10px').text(j?'▼':'▲');
+   s.append('rect').attr('x',x(r.tira)).attr('y',yy).attr('width',x(0)-x(r.tira)).attr('height',hh).attr('rx',2).attr('fill',css('--out')).attr('opacity',j?.6:1);
+   s.append('rect').attr('x',x(0)).attr('y',yy).attr('width',x(r.inv)-x(0)).attr('height',hh).attr('rx',2).attr('fill',css('--in')).attr('opacity',j?.6:1);
+   s.append('rect').attr('x',x(r.fr)-1.5).attr('y',yy-2).attr('width',3).attr('height',hh+4).attr('fill',css('--ink'));
+   s.append('rect').attr('x',m.l).attr('y',yy).attr('width',W-m.l-m.r).attr('height',rh).attr('fill','transparent')
+    .on('mousemove',ev=>show(t,ev,'p-butter',`<b>${NM(k)} · ${lab[j]}</b>${row('Investiu (por trimestre)',P(r.inv,1)+' · R$ '+F(r.inv_bi,1)+' bi')}${row('Tirou',P(r.tira,1)+' · R$ '+F(r.tira_bi,1)+' bi')}${row('Líquido',P(r.fr,1)+' · R$ '+F(r.f_bi,1)+' bi')}${row('Trimestres',r.n)}`)).on('mouseleave',()=>t.style('display','none'));});});
+ s.append('line').attr('class','zero').attr('x1',x(0)).attr('x2',x(0)).attr('y1',m.t-4).attr('y2',H-m.b);
+ // texto automático
+ const nets=ks.filter(k=>k!='total').map(k=>({k,a:E.alta[k].fr,b:E.baixa[k].fr}));
+ const mostA=[...nets].sort((p,q)=>q.a-p.a)[0], mostB=[...nets].sort((p,q)=>q.b-p.b)[0], leastA=[...nets].sort((p,q)=>p.a-q.a)[0], leastB=[...nets].sort((p,q)=>p.b-q.b)[0];
+ document.getElementById('sw-butter').innerHTML=`Com <b>${lab[0].toLowerCase()}</b>, quem mais pôs foi <b>${NM(mostA.k)}</b> (${PP(mostA.a)}% por trimestre) e quem mais tirou foi <b>${NM(leastA.k)}</b> (${PP(leastA.a)}%). Com <b>${lab[1].toLowerCase()}</b>, quem mais pôs foi <b>${NM(mostB.k)}</b> (${PP(mostB.b)}%) e quem mais tirou foi <b>${NM(leastB.k)}</b> (${PP(leastB.b)}%). Troque o regime na barra para comparar. Estrangeiro e empresas têm posições pequenas (1–4% do passivo), e um único caso move os números deles.`;
+}
+
+function pheat(){
+ const X=window.P2, dv=Object.keys(X.drivers_nome), tb=document.getElementById('p-heat');
+ const col=r=>{const a=Math.min(1,Math.abs(r)/.75);return r>=0?`rgba(42,120,214,${a*.55})`:`rgba(235,104,52,${a*.55})`;};
+ tb.innerHTML='<thead><tr><th class="l" style="text-align:left">Tipo</th>'+dv.map(d=>`<th data-d="${d}" class="${d==ST.drv?'on':''}">${X.drivers_nome[d]}</th>`).join('')+'</tr></thead><tbody>'+
+  X.tipos.map(k=>`<tr class="${k==ST.tipo?'sel':''}"><td class="l">${NM(k)}</td>${dv.map(d=>{const r=X.drivers[k][d];return `<td data-d="${d}" style="background:${col(r.r)}${Math.abs(r.t)>=2?';font-weight:600':''}">${(r.r>0?'+':'')+F(r.r,2)}<br><span style="color:var(--muted);font-weight:400">(${F(r.t,1)})</span></td>`}).join('')}</tr>`).join('')+'</tbody>';
+ tb.querySelectorAll('[data-d]').forEach(c=>c.onclick=()=>{ST.drv=c.dataset.d;pheat();});
+ // dispersão
+ const S=window.P2.serie, T=X.trimestres, k=ST.tipo, d=ST.drv, W=1000,H=300,m={l:52,r:20,t:12,b:40};
+ const pts=S.map(r=>{const tr=T.find(z=>z.q==r.q);return {q:r.q,x:d=='ind_alpha'?null:tr?tr[d]:null,y:r[k].fr}}).filter(p=>p.x!=null&&p.y!=null);
+ const s=box('p-drv',W,H), t=tip('p-drv');
+ if(!pts.length){s.append('text').attr('x',W/2).attr('y',H/2).attr('text-anchor','middle').text('Escolha outra coluna para ver a dispersão (alpha mediano não é série de mercado).');return;}
+ const x=d3.scaleLinear().domain(d3.extent(pts,p=>p.x)).nice().range([m.l,W-m.r]), yv=pts.map(p=>Math.abs(p.y)).sort(d3.ascending), ext=Math.max(.05,d3.quantile(yv,.95)*1.2);
+ const y=d3.scaleLinear().domain([-ext,ext]).range([H-m.b,m.t]).clamp(true);
+ const g=s.append('g').attr('class','grid');y.ticks(5).forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(tv)).attr('y2',y(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(tv)+4).attr('text-anchor','end').text(P(tv))});
+ x.ticks(6).forEach(tv=>s.append('text').attr('class','num').attr('x',x(tv)).attr('y',H-m.b+18).attr('text-anchor','middle').text(P(tv,d.startsWith('d')||d=='ust'?1:0)));
+ s.append('text').attr('x',W-m.r).attr('y',H-4).attr('text-anchor','end').text(X.drivers_nome[d]+' →');
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+ const mx=d3.mean(pts,p=>p.x),my=d3.mean(pts,p=>p.y),b=d3.sum(pts,p=>(p.x-mx)*(p.y-my))/d3.sum(pts,p=>(p.x-mx)**2),[a0,a1]=x.domain();
+ s.append('line').attr('x1',x(a0)).attr('x2',x(a1)).attr('y1',y(my+b*(a0-mx))).attr('y2',y(my+b*(a1-mx))).attr('stroke',css('--muted')).attr('stroke-dasharray','5 4').attr('stroke-width',1.5);
+ pts.forEach(p=>{s.append('circle').attr('cx',x(p.x)).attr('cy',y(p.y)).attr('r',6).attr('fill',css(p.y>=0?'--in':'--out')).attr('stroke',css('--bg')).attr('stroke-width',2)
+  .on('mousemove',ev=>show(t,ev,'p-drv',`<b>${p.q.replace('Q','T')}</b>${row('Fluxo',P(p.y,1))}${row(X.drivers_nome[d],P(p.x,2))}`)).on('mouseleave',()=>t.style('display','none'));});
+ const mv=X.drivers_mv, cn={cdi:'CDI nível',dcdi_12:'Δ CDI 12m',ibov_12:'Ibovespa 12m',dust_12:'Δ Treasury 12m'};
+ document.getElementById('p-mv').innerHTML='<table><thead><tr><th class="l">Regressão com as quatro juntas (coeficientes padronizados, t)</th>'+Object.values(cn).map(c=>`<th>${c}</th>`).join('')+'<th>R²</th></tr></thead><tbody>'+
+  X.tipos.map(k2=>`<tr${k2==k?' style="font-weight:600"':''}><td class="l">${NM(k2)}</td>${Object.keys(cn).map(c=>{const tt=mv[k2].t[c];return `<td class="n ${Math.abs(tt)>=2?(tt>0?'pos':'neg'):''}">${F(mv[k2].coef[c],2)} <span style="color:var(--muted)">(${F(tt,1)})</span></td>`}).join('')}<td class="n">${F(mv[k2].r2,2)}</td></tr>`).join('')+'</tbody></table><p class="note">Erro HAC (4 trimestres). Coeficiente = desvios-padrão de fluxo por desvio-padrão da variável.</p>';
+}
+
+function psens(){
+ const X=window.P2, ks=X.tipos, kk=key(), W=1000,rh=40,m={l:270,r:30,t:10,b:30}, H=m.t+m.b+ks.length*rh, s=box('p-sens',W,H), t=tip('p-sens');
+ const R=ks.map(k=>({k,r:(X.sens[k][kk]||{}).ambos})); const vals=R.flatMap(o=>o.r?[o.r.a12.b+1.96*Math.abs(o.r.a12.b/o.r.a12.t),o.r.a36.b+1.96*Math.abs(o.r.a36.b/o.r.a36.t),o.r.a12.b-1.96*Math.abs(o.r.a12.b/o.r.a12.t),o.r.a36.b-1.96*Math.abs(o.r.a36.b/o.r.a36.t)]:[]).filter(isFinite);
+ const x=d3.scaleLinear().domain([Math.max(-30,Math.min(-5,d3.min(vals))),Math.min(60,Math.max(20,d3.max(vals)))]).range([m.l,W-m.r]).clamp(true);
+ const g=s.append('g').attr('class','grid');x.ticks(8).forEach(tv=>{g.append('line').attr('x1',x(tv)).attr('x2',x(tv)).attr('y1',m.t).attr('y2',H-m.b);s.append('text').attr('class','num').attr('x',x(tv)).attr('y',H-8).attr('text-anchor','middle').text(tv)});
+ R.forEach((o,i)=>{const y0=m.t+i*rh, sel=o.k==ST.tipo;
+  if(sel)s.append('rect').attr('x',0).attr('y',y0).attr('width',W).attr('height',rh).attr('fill',css('--soft'));
+  s.append('text').attr('class','lab').attr('x',m.l-12).attr('y',y0+rh/2+4).attr('text-anchor','end').style('font-weight',sel?600:400).text(NM(o.k).replace(' (private banks e family offices, via fundo)',' (PB e MFO)'));
+  if(!o.r){s.append('text').attr('x',x(0)+6).attr('y',y0+rh/2+4).text('poucas observações');return;}
+  [['a12','--in',0],['a36','--ink2',1]].forEach(([c,cl,j])=>{const v=o.r[c], se=Math.abs(v.b/v.t), yy=y0+8+j*13;
+   s.append('rect').attr('x',Math.min(x(0),x(v.b))).attr('y',yy).attr('width',Math.abs(x(v.b)-x(0))).attr('height',10).attr('rx',2).attr('fill',css(cl)).attr('opacity',Math.abs(v.t)>=2?1:.35);
+   s.append('line').attr('x1',x(v.b-1.96*se)).attr('x2',x(v.b+1.96*se)).attr('y1',yy+5).attr('y2',yy+5).attr('stroke',css('--ink')).attr('stroke-width',1);});
+  s.append('rect').attr('x',m.l).attr('y',y0).attr('width',W-m.l-m.r).attr('height',rh).attr('fill','transparent')
+   .on('mousemove',ev=>show(t,ev,'p-sens',`<b>${NM(o.k)}</b>${row('Alpha 12m',F(o.r.a12.b,1)+' p.p. (t '+F(o.r.a12.t,1)+')')}${row('Alpha 36m',F(o.r.a36.b,1)+' p.p. (t '+F(o.r.a36.t,1)+')')}${row('Observações',o.r.n)}`)).on('mouseleave',()=>t.style('display','none'));});
+ s.append('line').attr('class','zero').attr('x1',x(0)).attr('x2',x(0)).attr('y1',m.t).attr('y2',H-m.b);
+ s.append('text').attr('x',W-m.r).attr('y',H-18).attr('text-anchor','end').style('font-size','11px').text('p.p. de fluxo por trimestre, do pior ao melhor alpha →');
+}
+
+function pquint(){
+ const X=window.P2, k=ST.tipo, Qd=(X.quintis[k][key()]||{})[ST.hz], W=1000,H=290,m={l:52,r:10,t:30,b:40};
+ document.getElementById('ft-quint').textContent='Fluxo por quintil de alpha: '+NM(k)+' · '+estLbl(ST.est);
+ const s=box('p-quint',W,H), t=tip('p-quint');
+ if(!Qd||!Qd.length){s.append('text').attr('x',W/2).attr('y',H/2).attr('text-anchor','middle').text('Sem observações suficientes nesse recorte.');return;}
+ const x=d3.scaleBand().domain(Qd.map(q=>q.q)).range([m.l,W-m.r]).padding(.3), v=Qd.map(q=>q.med);
+ const y=d3.scaleLinear().domain([Math.min(-.02,d3.min(v)*1.2),Math.max(.02,d3.max(v)*1.2)]).range([H-m.b,m.t]).nice();
+ const g=s.append('g').attr('class','grid');y.ticks(6).forEach(tv=>{g.append('line').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(tv)).attr('y2',y(tv));s.append('text').attr('class','num').attr('x',m.l-8).attr('y',y(tv)+4).attr('text-anchor','end').text(P(tv,1))});
+ Qd.forEach(q=>{const top=Math.min(y(q.med),y(0)),hh=Math.max(1,Math.abs(y(q.med)-y(0)));
+  s.append('rect').attr('x',x(q.q)).attr('y',top).attr('width',x.bandwidth()).attr('height',hh).attr('rx',3).attr('fill',css(q.med>=0?'--in':'--out'));
+  s.append('text').attr('class','num').attr('x',x(q.q)+x.bandwidth()/2).attr('y',q.med>=0?y(q.med)-6:y(q.med)+15).attr('text-anchor','middle').style('fill',css('--ink')).text(P(q.med,1)+' · '+P(q.pos)+' com entrada');
+  s.append('text').attr('x',x(q.q)+x.bandwidth()/2).attr('y',H-14).attr('text-anchor','middle').text(q.q==1?'1 (pior alpha)':q.q==5?'5 (melhor)':q.q);
+  s.append('rect').attr('x',x(q.q)).attr('y',m.t).attr('width',x.bandwidth()).attr('height',H-m.t-m.b).attr('fill','transparent').on('mousemove',ev=>show(t,ev,'p-quint',`<b>Quintil ${q.q}</b>${row('Fluxo mediano',P(q.med,2))}${row('% com entrada',P(q.pos))}${row('Gestora-trimestres',q.n)}`)).on('mouseleave',()=>t.style('display','none'));});
+ s.append('line').attr('class','zero').attr('x1',m.l).attr('x2',W-m.r).attr('y1',y(0)).attr('y2',y(0));
+}
+
+function pperfil(){
+ const X=window.P2, k=ST.tipo, p=X.perfil[k][key()];
+ document.getElementById('ft-pf2').textContent='Quem recebe e quem perde: '+NM(k)+' · '+estLbl(ST.est);
+ if(!p){box('p-perfil',1000,80).append('text').attr('x',500).attr('y',40).attr('text-anchor','middle').text('Poucas observações nesse recorte.');return;}
+ const order=['ex12_l','ex36_l','size0','top10','n_acoes','beta36_l','vol36_l','te36_l','idade','sh_lb_l','consenso','dep'].filter(a=>p.tab[a]);
+ dumbbell('p-perfil',order.map(a=>({nome:X.attr[a],w:p.tab[a].w,l:p.tab[a].l,t:p.tab[a].t,extra:row('Trimestres com o mesmo sinal',p.tab[a].same+' de '+p.tab[a].nq)+row('Observações',p.n)+row('% que recebeu',P(p.pct_win))})),['Receberam (percentil médio)','Perderam']);
+}
+
+function ptops(){
+ const X=window.P2, k=ST.tipo, T=X.tops[k][key()];
+ document.getElementById('tops-sub').innerHTML=`Soma do fluxo de <b>${NM(k)}</b> em <b>${estLbl(ST.est).toLowerCase()}</b>, em R$ milhões, com o alpha de 12 meses médio da gestora nesses trimestres e a posição média desse tipo nela.`;
+ const tb=L=>'<table><thead><tr><th class="l">Gestora</th><th>R$ mi</th><th>Alpha 12m</th><th>Posição média (R$ mi)</th><th>Trim.</th></tr></thead><tbody>'+L.map(r=>`<tr><td class="l">${r.nome}</td><td class="n ${r.f_mi>=0?'pos':'neg'}">${r.f_mi.toLocaleString('pt-BR')}</td><td class="n">${r.a12==null?'—':PP(r.a12,0)}</td><td class="n">${r.h_mi==null?'—':r.h_mi.toLocaleString('pt-BR')}</td><td class="n">${r.nq}</td></tr>`).join('')+'</tbody></table>';
+ document.getElementById('p-rec').innerHTML=T?tb(T.rec):''; document.getElementById('p-saq').innerHTML=T?tb(T.saq):'';
+}
+
+let ctlDone=false;
+function drawP2(){if(!window.P2)return;if(!ctlDone){ctl();ctlDone=true;}segEst();pflow();pbutter();pheat();psens();pquint();pperfil();ptops();}
+fetch('data/passivo.json').then(r=>r.json()).then(j=>{window.P2=j;drawP2();}).catch(()=>{document.getElementById('now').textContent='Não foi possível carregar os dados desta parte.';});
+
 draw();
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,200)});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);
