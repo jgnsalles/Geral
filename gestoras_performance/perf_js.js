@@ -64,6 +64,9 @@ const CDS={name:'CDI', r:CDI, color:'var(--muted)', dashArr:'2 3', sw:1.4};
 // último mês com Ibovespa e ao menos metade das gestoras com retorno
 const PLAST=(()=>{ const ids=Object.keys(PR); for(let i=PN-1;i>=0;i--){ if(IBV[i]==null) continue; const k=ids.filter(id=>PR[id].r[i]!=null).length; if(k>=ids.length*0.5) return i; } return PN-1; })();
 const PWIN=[[12,'12m'],[36,'3a'],[60,'5a'],[120,'10a'],[0,'Desde o início']];
+const PH=[[6,'6m'],[12,'1 ano'],[24,'2 anos'],[36,'3 anos'],[60,'5 anos'],[120,'10 anos']];
+const hv=(s,n)=>s==null?null:(n>12?s.ann:s.ret);
+const hcell=(s,n,bold)=>`<td${bold?' style="font-weight:600"':''} title="${s&&s.ex!=null?'vs índice: '+(s.ex>=0?'+':'−')+nf(Math.abs(s.ex*100),1)+' p.p.'+(n>12?' a.a.':''):''}">${pc(hv(s,n))}</td>`;
 
 // ----- aba Performance
 // gestoras extras (só performance, fora das carteiras: SPX, Dynamo...)
@@ -78,41 +81,43 @@ function renderP(){
   $('p-end').innerHTML=''; for(let i=PN-1;i>=12;i--) if(IBV[i]!=null) $('p-end').add(new Option(pmlong(i),i)); $('p-end').value=b;
   $('p-win').innerHTML=PWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${W_===v}">${l}</button>`).join('');
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
+  const hz=(r,bn)=>Object.fromEntries(PH.map(([n])=>[n, b-n+1>=0?pstats(r,b-n+1,b,bn):null]));
   const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,IBV):null;
       // "desde o início": primeira sequência contínua até b
       let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,IBV):null; if(st) st.a=a2; }
-      return {g, p, s:st, pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
-    .filter(o=>o.s && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
+      return {g, p, s:st, h:hz(p.r,IBV), pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
+    .filter(o=>o.p.r[b]!=null && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
+  const rowsW=rows.filter(o=>o.s);
   const a=W_?b-W_+1:null; const ib=W_?pstats(IBV,a,b):null, cd=W_?pstats(CDI,a,b):null;
   $('p-h').textContent=W_?`Retorno de ${pmlong(a)} a ${pmlong(b)}`:`Retorno desde o início, até ${pmlong(b)}`;
-  $('p-sub').textContent=`${rows.length} das ${PSEL.size} gestoras selecionadas com série completa na janela${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos long only da gestora (sem long biased), cota dos fundos não-FIC.`;
-  const beat=rows.filter(o=>o.s.ex!=null&&o.s.ex>0).length, med=q=>{const v=rows.map(q).filter(x=>x!=null).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null;};
+  $('p-sub').textContent=`${rows.length} das ${PSEL.size} gestoras selecionadas com dado em ${pmlong(b)}; ${rowsW.length} com série completa na janela das estatísticas${minpl?` e PL em fundos de ações ≥ ${plmi(minpl)}`:''}. Retorno ponderado pelo PL dos fundos long only da gestora (sem long biased), cota dos fundos não-FIC.`;
+  const beat=rowsW.filter(o=>o.s.ex!=null&&o.s.ex>0).length, med=q=>{const v=rowsW.map(q).filter(x=>x!=null).sort((x,y)=>x-y); return v.length?v[Math.floor(v.length/2)]:null;};
   $('p-kpis').innerHTML=kpis([
     [W_>=12?'Ibovespa (a.a.)':'Ibovespa', W_?pc(W_>=12?ib.ann:ib.ret):'–', W_?`${pc(ib.ret,0)} no período · CDI ${pc(W_>=12?cd.ann:cd.ret)}${W_>=12?' a.a.':''}`:'janela varia por gestora'],
-    ['Bateram o Ibovespa', `${beat} de ${rows.length}`, rows.length?`${pct(beat/rows.length,0)} das gestoras`:''],
+    ['Bateram o Ibovespa', `${beat} de ${rowsW.length}`, rowsW.length?`${pct(beat/rowsW.length,0)} das gestoras`:''],
     [W_>=12||!W_?'Mediana (a.a.)':'Mediana', pc(med(o=>W_&&W_<12?o.s.ret:o.s.ann)), `excesso mediano ${pcp(med(o=>o.s.ex))}`],
-    ['Melhor', rows.length?esc(rows.slice().sort((x,y)=>(y.s.ann??y.s.ret)-(x.s.ann??x.s.ret))[0].g.n):'–', rows.length?pc(rows.slice().sort((x,y)=>(y.s.ann??y.s.ret)-(x.s.ann??x.s.ret))[0].s[W_&&W_<12?'ret':'ann'])+(W_&&W_<12?'':' a.a.'):''],
+    ['Melhor', rowsW.length?esc(rowsW.slice().sort((x,y)=>(y.s.ann??y.s.ret)-(x.s.ann??x.s.ret))[0].g.n):'–', rowsW.length?pc(rowsW.slice().sort((x,y)=>(y.s.ann??y.s.ret)-(x.s.ann??x.s.ret))[0].s[W_&&W_<12?'ret':'ann'])+(W_&&W_<12?'':' a.a.'):''],
   ]);
   if(!S.psel) S.psel=rows.slice().sort((x,y)=>(y.pl||0)-(x.pl||0)).slice(0,5).map(o=>o.g.id);
-  const ann=!W_||W_>=12;
+  const ann=!W_||W_>=12; const WL=W_?PWIN.find(x=>x[0]===W_)[1]:'desde início';
   const cols=[
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
     {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:`${esc(o.g.n)} <span class="chip" title="fora do painel de carteiras">só performance</span>`}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
-    ...(W_?[]:[{k:'a',l:'Desde',cls:'l',v:o=>o.s.a,asc:true,f:o=>`<td class="l muted">${pml(o.s.a)}</td>`}]),
-    {k:'ret',l:'Retorno',v:o=>o.s.ret,f:o=>`<td>${pc(o.s.ret)}</td>`},
-    ...(ann?[{k:'ann',l:'Ao ano',v:o=>o.s.ann,f:o=>`<td style="font-weight:600">${pc(o.s.ann)}</td>`}]:[]),
-    {k:'ex',l:ann?'vs Ibov a.a.':'vs Ibov',v:o=>o.s.ex,f:o=>`<td>${pcp(o.s.ex)}</td>`},
-    {k:'vol',l:'Vol a.a.',v:o=>o.s.vol,asc:true,f:o=>`<td class="muted">${o.s.vol==null?'–':pct(o.s.vol,1)}</td>`},
-    {k:'mdd',l:'Pior queda',v:o=>o.s.mdd,f:o=>`<td>${pc(o.s.mdd,0)}</td>`},
-    {k:'beta',l:'Beta',v:o=>o.s.beta,asc:true,f:o=>`<td class="muted">${o.s.beta==null?'–':nf(o.s.beta,2)}</td>`},
-    {k:'hit',l:'Meses > Ibov',v:o=>o.s.hit,f:o=>`<td class="muted">${o.s.hit==null?'–':pct(o.s.hit,0)}</td>`},
+    ...PH.map(([n,l])=>({k:'h'+n,l:n>12?`${l}<br><small>a.a.</small>`:l,v:o=>hv(o.h[n],n),f:o=>hcell(o.h[n],n,n===36)})),
+    {k:'ex',l:`vs Ibov<br><small>${WL} ${ann?'a.a.':''}</small>`,v:o=>o.s?o.s.ex:null,f:o=>`<td>${pcp(o.s?o.s.ex:null)}</td>`},
+    {k:'vol',l:`Vol a.a.<br><small>${WL}</small>`,v:o=>o.s?o.s.vol:null,asc:true,f:o=>`<td class="muted">${!o.s||o.s.vol==null?'–':pct(o.s.vol,1)}</td>`},
+    {k:'mdd',l:`Pior queda<br><small>${WL}</small>`,v:o=>o.s?o.s.mdd:null,f:o=>`<td>${pc(o.s?o.s.mdd:null,0)}</td>`},
+    {k:'beta',l:`Beta<br><small>${WL}</small>`,v:o=>o.s?o.s.beta:null,asc:true,f:o=>`<td class="muted">${!o.s||o.s.beta==null?'–':nf(o.s.beta,2)}</td>`},
   ];
-  if(!S.sort['p-tbl']) S.sort['p-tbl']={k:ann?'ann':'ret',dir:-1};
-  const st=S.sort['p-tbl']; if(!cols.find(c=>c.k===st.k)) S.sort['p-tbl']={k:ann?'ann':'ret',dir:-1};
-  if(rows.length) sTable('p-tbl', cols, rows, ann?'ann':'ret', o=>`data-g="${o.g.id}"`, 1e9, renderP);
+  if(!S.sort['p-tbl']) S.sort['p-tbl']={k:'h36',dir:-1};
+  const st=S.sort['p-tbl']; if(!cols.find(c=>c.k===st.k)) S.sort['p-tbl']={k:'h36',dir:-1};
+  if(rows.length) sTable('p-tbl', cols, rows, 'h36', o=>`data-g="${o.g.id}"`, 1e9, renderP);
   else $('p-tbl').innerHTML='<tbody><tr><td class="l empty">Nenhuma gestora com série completa nessa janela.</td></tr></tbody>';
   $('p-tbl').querySelectorAll('tr.link').forEach(tr=>tr.classList.remove('link'));
+  if(rows.length){ const ref=(nm,r)=>{ const h=hz(r,null), s2=W_?pstats(r,b-W_+1,b,null):null;
+      return `<tr style="background:var(--surface-2)"><td></td><td class="l" style="font-weight:600">${nm}</td><td></td>${PH.map(([n])=>hcell(h[n],n,n===36)).join('')}<td></td><td class="muted">${s2&&s2.vol!=null?pct(s2.vol,1):'–'}</td><td>${pc(s2?s2.mdd:null,0)}</td><td></td></tr>`; };
+    $('p-tbl').tHead.insertAdjacentHTML('beforeend', ref('Ibovespa',IBV)+ref('CDI',CDI)); }
   $('p-tbl').querySelectorAll('a[data-open]').forEach(x=>x.onclick=e=>{e.preventDefault(); openG(x.dataset.open);});
   $('p-tbl').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.onchange=()=>{ const id=cb.dataset.g;
     if(cb.checked){ if(S.psel.length>=8){cb.checked=false; return;} S.psel.push(id);} else S.psel=S.psel.filter(x=>x!==id); renderP(); });
@@ -126,9 +131,11 @@ function renderP(){
       let bn=IBV; if(f.bm){ bn=new Array(PN).fill(null); f.bm.forEach((v,k)=>bn[f.o+k]=dec(v)); }
       let s=null, a2=null; if(b>=f.o && b<=end){ if(W_){ s=pstats(rr,b-W_+1,b,bn); } else { a2=b; while(a2>f.o&&rr[a2-1]!=null) a2--; s=rr[b]!=null?pstats(rr,a2,b,bn):null; } }
       return {f,rr,s,a2,end}; });
-  $('p-la').innerHTML=`<thead><tr><th class="l">Fundo</th><th class="l">Gestora</th><th>PL</th><th class="l">Desde</th><th>Retorno</th>${ann?'<th>Ao ano</th>':''}<th>${ann?'vs índice a.a.':'vs índice'}</th><th class="l">Índice</th><th>Vol a.a.</th><th>Pior queda</th></tr></thead><tbody>`+
-    la.sort((x,y)=>((y.s&&(y.s.ann??y.s.ret))??-9)-((x.s&&(x.s.ann??x.s.ret))??-9)).map(o=>`<tr><td class="l em">${esc(o.f.n)}${o.f.cur?' <span class="chip">US$ · factsheet</span>':''}<small>${esc(o.f.c)}</small></td><td class="l">${o.f.gid&&GI[o.f.gid]?`<a href="#g-${o.f.gid}" data-open="${o.f.gid}">${esc(o.f.g)}</a>`:esc(o.f.g)}</td><td class="muted">${o.end>=b-2?plmi(o.f.pl):'–'}</td><td class="l muted">${pml(o.f.o)}</td>`+
-      (o.s?`<td>${pc(o.s.ret)}</td>${ann?`<td style="font-weight:600">${pc(o.s.ann)}</td>`:''}<td>${pcp(o.s.ex)}</td><td class="l muted">${o.f.bmn?esc(o.f.bmn)+' (US$)':'Ibovespa'}</td><td class="muted">${o.s.vol==null?'–':pct(o.s.vol,1)}</td><td>${pc(o.s.mdd,0)}</td>`:`<td colspan="${ann?6:5}" class="muted">sem série completa na janela</td>`)+`</tr>`).join('')+'</tbody>';
+  la.forEach(o=>{ let bn=IBV; if(o.f.bm){ bn=new Array(PN).fill(null); o.f.bm.forEach((v,k)=>bn[o.f.o+k]=dec(v)); } o.h=o.rr[b]!=null?hz(o.rr,bn):null; });
+  $('p-la').innerHTML=`<thead><tr><th class="l">Fundo</th><th class="l">Gestora</th><th>PL</th><th class="l">Desde</th>${PH.map(([n,l])=>`<th>${l}${n>12?'<br><small>a.a.</small>':''}</th>`).join('')}<th class="l">Índice</th><th>Vol a.a.<br><small>${WL}</small></th><th>Pior queda<br><small>${WL}</small></th></tr></thead><tbody>`+
+    la.sort((x,y)=>((y.h&&hv(y.h[36],36))??(y.h&&hv(y.h[12],12))??-9)-((x.h&&hv(x.h[36],36))??(x.h&&hv(x.h[12],12))??-9)).map(o=>`<tr><td class="l em">${esc(o.f.n)}${o.f.cur?' <span class="chip">US$ · factsheet</span>':''}<small>${esc(o.f.c)}</small></td><td class="l">${o.f.gid&&GI[o.f.gid]?`<a href="#g-${o.f.gid}" data-open="${o.f.gid}">${esc(o.f.g)}</a>`:esc(o.f.g)}</td><td class="muted">${o.end>=b-2?plmi(o.f.pl):'–'}</td><td class="l muted">${pml(o.f.o)}</td>`+
+      (o.h?PH.map(([n])=>hcell(o.h[n],n,n===36)).join(''):`<td colspan="${PH.length}" class="muted">sem dado em ${pml(b)}</td>`)+
+      `<td class="l muted">${o.f.bmn?esc(o.f.bmn)+' (US$)':'Ibovespa'}</td><td class="muted">${o.s&&o.s.vol!=null?pct(o.s.vol,1):'–'}</td><td>${pc(o.s?o.s.mdd:null,0)}</td></tr>`).join('')+'</tbody>';
   $('p-la').querySelectorAll('a[data-open]').forEach(x=>x.onclick=e=>{e.preventDefault(); openG(x.dataset.open);});
   $('p-lan').textContent='A comparação com o Ibovespa é só referência: o índice certo seria o MSCI EM Latin America, que não está nos dados abertos. INCA e Fourth Sail (Tordesilhas) não têm fundos registrados na CVM — são veículos offshore — e por isso não aparecem; a série deles precisaria vir das cartas ou factsheets. Gama Fundamenta LatAm é o feeder em reais de um fundo offshore. Apo Capital Latam Fund (offshore, em US$): cotas líquidas da classe B transcritas do factsheet de out/2026, comparadas ao MSCI LatAm do próprio factsheet — não é comparável diretamente com os fundos em reais.';
   $('p-note').innerHTML=PNOTE;
