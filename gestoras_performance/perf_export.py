@@ -87,6 +87,12 @@ def series(s, i0, i1):
 
 ib = IX.ibov.reindex(M); cdi = IX.cdi.reindex(M)
 out = {'meses': M, 'ibov': [rint(v) for v in ib], 'cdi': [rint(v) for v in cdi], 'g': {}}
+# dólar PTAX venda, fim de mês (BCB SGS 3696): variação mensal do real contra o dólar, para converter retornos em US$
+_fx = os.path.join(os.path.dirname(os.path.abspath(OUT)), 'fx.json')
+if os.path.exists(_fx):
+    fx = {x['data'][6:] + '-' + x['data'][3:5]: float(x['valor']) for x in json.load(open(_fx))}
+    prev = [str(pd.Period(m, 'M') - 1) for m in M]
+    out['fxr'] = [rint(fx[p] / fx[m] - 1) if p in fx and m in fx else None for p, m in zip(prev, M)]
 
 MIN_PL = 1e6
 for g in G:
