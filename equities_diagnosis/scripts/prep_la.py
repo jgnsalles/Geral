@@ -13,6 +13,7 @@ pd.concat([Esel, E[Esel.columns]], ignore_index=True).to_pickle(j('E_all.pkl'))
 X = pd.read_pickle(j('emp', 'foreign.pkl'))
 X = X[X.CNPJ_FUNDO.isin(FUNDS) & X.tpa.isin(['Outros', 'Ação ordinária', 'Ação preferencial', 'Depository Receipt no Exterior(DR)']) & (X.v > 0)].copy()
 X['cod'] = X.cod.fillna('').str.strip().str.upper(); X = X[~X.cod.isin(['', 'FUNDO OFF', 'OFFSHORE'])]
+X['cod'] = X.cod.map(lambda c: {'BOLSA': 'BOLSAA'}.get(c.split()[0].replace('*', ''), c.split()[0].replace('*', '')))
 Hb = pd.read_pickle(j('attr', 'la', 'holdings.pkl'))
 Hf = pd.DataFrame({'CNPJ_FUNDO': X.CNPJ_FUNDO, 'ym': X.ym, 'tp': 'Investimento no Exterior', 'tk': 'X:' + X.cod, 'isin': None, 'ds': X.emissor, 'qt': X.qt, 'v': X.v})
 pd.concat([Hb, Hf], ignore_index=True).to_pickle(j('attr', 'la', 'holdings_all.pkl'))

@@ -7,6 +7,14 @@ FP, OUT = sys.argv[1:3]
 X = pd.read_pickle(FP)
 X = X[(X.qt > 0) & (X.v > 0)].copy()
 X['cod'] = X.cod.fillna('').str.strip().str.upper()
+# o mesmo ativo aparece com o código escrito de jeitos diferentes entre fundos ("ITAUCL CI", "ITAUCL C", "WALMEX* MM"):
+# fica só a primeira palavra, sem asterisco
+ALIAS = {'BOLSA': 'BOLSAA'}
+def norm(c):
+    if c in ('', 'FUNDO OFF', 'OFFSHORE'): return c
+    t = c.split()[0].replace('*', '')
+    return ALIAS.get(t, t)
+X['cod'] = X.cod.map(norm)
 eq = X[X.tpa.isin(['Outros', 'Ação ordinária', 'Ação preferencial', 'Depository Receipt no Exterior(DR)']) & ~X.cod.isin(['', 'FUNDO OFF', 'OFFSHORE'])].copy()
 eq['px'] = eq.v / eq.qt
 P = eq.groupby(['ym', 'cod']).px.median().unstack()
@@ -16,7 +24,14 @@ R[pd.Series(per, index=P.index).diff().fillna(1).values != 1] = np.nan
 R = R.mask((R > 2) | (R < -0.85))
 R.columns = ['X:' + c for c in R.columns]
 R.to_pickle(os.path.join(OUT, 'ret_ext.pkl'))
-nm = eq.groupby('cod').emissor.agg(lambda s: s.value_counts().index[0] if s.notna().any() else '')
+NAMES = {'AC': 'ARCA CONTINENTAL', 'AGUAS/A': 'AGUAS ANDINAS', 'ANDINAB': 'EMBOTELLADORA ANDINA', 'KOF': 'COCA-COLA FEMSA', 'WALMEX': 'WALMART DE MEXICO',
+         'BSMX': 'BANCO SANTANDER MEXICO', 'ITAUCL': 'BANCO ITAU CHILE', 'MELI': 'MERCADOLIBRE', 'NU': 'NU HOLDINGS', 'XP': 'XP INC', 'GFNORTEO': 'GRUPO FINANCIERO BANORTE',
+         'BOLSAA': 'BOLSA MEXICANA DE VALORES', 'VESTA': 'CORP INMOBILIARIA VESTA', 'Q': 'QUALITAS CONTROLADORA', 'RA': 'REGIONAL SAB'}
+def best(s):
+    v = s.dropna(); v = v[~v.str.upper().isin(['OFFSHORE', ''])]
+    return v.value_counts().index[0] if len(v) else ''
+nm = eq.groupby('cod').emissor.agg(best)
+for k, v in NAMES.items(): nm[k] = v
 json.dump({'X:' + k: v for k, v in nm.items()}, open(os.path.join(OUT, 'nomes_ext.json'), 'w'), ensure_ascii=False)
 print('ações estrangeiras com preço:', R.shape[1])
 # Fourth Sail: cota de cada série dos fundos offshore, retorno mensal mediano entre séries (sem side pockets)

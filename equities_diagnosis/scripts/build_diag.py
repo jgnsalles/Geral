@@ -30,9 +30,9 @@ for f in P.get('la', []):
 # setores: B3/CVM para ações brasileiras, mapa manual para as estrangeiras dos fundos LatAm
 SEC = {k: v['b'] for k, v in json.load(open(os.path.join(S, 'emp/sectors_all.json'))).items()}
 EXT = [('MELI', 'Varejo'), ('WALMEX', 'Varejo'), ('FALAB', 'Varejo'), ('CHDRAUI', 'Varejo'), ('CENCOSUD', 'Varejo'), ('LIVEPOL', 'Varejo'),
-       ('AC MM', 'Consumo'), ('GRUMA', 'Consumo'), ('ARCO', 'Consumo'), ('KOF', 'Consumo'), ('ANDINA', 'Consumo'), ('SPORTS', 'Consumo'), ('FEMSA', 'Consumo'), ('FMX', 'Consumo'), ('BIMBO', 'Consumo'), ('CCU', 'Consumo'),
-       ('BOLSA', 'Financials'), ('ITAUCL', 'Financials'), ('COMPARC', 'Financials'), ('BAP', 'Financials'), ('GFNORTE', 'Financials'), ('XP ', 'Financials'), ('BSMX', 'Financials'), ('NU ', 'Financials'), ('RA MM', 'Financials'), ('BSAC', 'Financials'), ('CHILE', 'Financials'), ('INBURSA', 'Financials'), ('BBAJIO', 'Financials'), ('IFS', 'Financials'),
-       ('Q* ', 'Seguros'), ('CPA', 'Transporte'), ('VAPORES', 'Transporte'), ('OMA', 'Transporte'), ('ASUR', 'Transporte'), ('GAP', 'Transporte'), ('PAC', 'Transporte'), ('VOLAR', 'Transporte'), ('LTM', 'Transporte'),
+       ('AC ', 'Consumo'), ('GRUMA', 'Consumo'), ('ARCO', 'Consumo'), ('KOF', 'Consumo'), ('ANDINA', 'Consumo'), ('SPORTS', 'Consumo'), ('FEMSA', 'Consumo'), ('FMX', 'Consumo'), ('BIMBO', 'Consumo'), ('CCU', 'Consumo'),
+       ('BOLSA', 'Financials'), ('ITAUCL', 'Financials'), ('COMPARC', 'Financials'), ('BAP', 'Financials'), ('GFNORTE', 'Financials'), ('XP ', 'Financials'), ('BSMX', 'Financials'), ('NU ', 'Financials'), ('RA ', 'Financials'), ('BSAC', 'Financials'), ('CHILE', 'Financials'), ('INBURSA', 'Financials'), ('BBAJIO', 'Financials'), ('IFS', 'Financials'),
+       ('Q ', 'Seguros'), ('CPA', 'Transporte'), ('VAPORES', 'Transporte'), ('OMA', 'Transporte'), ('ASUR', 'Transporte'), ('GAP', 'Transporte'), ('PAC', 'Transporte'), ('VOLAR', 'Transporte'), ('LTM', 'Transporte'),
        ('FERREY', 'Industrials'), ('VESTA', 'Real Estate'), ('FIBRAPL', 'Real Estate'), ('FUNO', 'Real Estate'), ('FSHOP', 'Malls'), ('PARAUCO', 'Malls'), ('MALLPLAZA', 'Malls'),
        ('AGUAS', 'Utilities'), ('ECL', 'Utilities'), ('ENELAM', 'Utilities'), ('CMPC', 'Commodities'), ('SQM', 'Commodities'), ('AGRO', 'Commodities'), ('CSAN', 'Commodities'), ('CEMEX', 'Commodities'), ('GMEXICO', 'Commodities'), ('SCCO', 'Commodities'), ('PE&OLES', 'Commodities'), ('VIST', 'Commodities'), ('YPF', 'Commodities'), ('ECOPETL', 'Commodities'), ('BVN', 'Commodities'),
        ('VTEX', 'TMT'), ('SONDA', 'TMT'), ('AMX', 'TMT'), ('GLOB', 'TMT'), ('DLO', 'TMT'), ('STNE', 'Financials'), ('PAGS', 'Financials')]
@@ -41,7 +41,7 @@ A = json.load(open(os.path.join(S, 'diag/attr.json'))) if os.path.exists(os.path
 for r in A['roots']:
     if r.startswith('X:'):
         c = r[2:] + ' '
-        SEC[r] = next((b for k, b in EXT if c.startswith(k) or (' ' in k and c.startswith(k))), 'Outros')
+        SEC[r] = next((b for k, b in EXT if c.startswith(k)), 'Outros')
 MAN = {'GGPS':'Industrials','EZTC':'Real Estate','WEGE':'Industrials','TRIS':'Real Estate','KROT':'Educação','AMBV':'Consumo','OHLB':'Transporte','ROXO':'Financials',
        'TEMP':'Saúde','WSON':'Transporte','PDGR':'Real Estate','RIPI':'Commodities','INBR':'Financials','MELI':'Varejo','M1TA':'TMT','UBBR':'Financials','AMZO':'Varejo',
        'LPSB':'Real Estate','BRTO':'TMT','RDCD':'Financials','MSFT':'TMT','PTIP':'Commodities','XPBR':'Financials','TSMC':'TMT','TMAR':'TMT','BELG':'Commodities',
