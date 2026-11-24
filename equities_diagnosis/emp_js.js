@@ -36,10 +36,10 @@ function renderE(){
   const srt=rows.slice().sort((x,y)=>y.ret-x.ret), win=srt.slice(0,20), los=srt.slice(-20).reverse();
   const chips=o=>{ const h=H.get(o.root)||[]; return h.length?h.slice(0,3).map(x=>`<span class="chip" title="peso médio ${pct(x.w,1)} em ${x.n} meses">${esc(x.g.n)} ${pct(x.w,0)}</span>`).join(' ')+(h.length>3?` <span class="muted">+${h.length-3}</span>`:''):'<span class="muted">nenhuma</span>'; };
   const st=o=>(o.out!=null?` <span class="chip down" title="último pregão em ${pmlong(o.out)}">saiu ${pml(o.out)}</span>`:'')+(o.ipo!=null?` <span class="chip new">estreou ${pml(o.ipo)}</span>`:'');
-  const tbl=(list)=>`<table class="etbl"><thead><tr><th class="l">Empresa</th><th>Retorno</th><th class="l">Quem detinha (peso médio)</th></tr></thead><tbody>${list.map(o=>`<tr class="link${S.esel===o.root?' sel':''}" data-r="${esc(o.root)}"><td class="l secbar" style="--c:${secC(secOf(o.root))}"><span class="tk">${esc(o.e.tk)}</span> <span class="muted">${esc(o.e.n.slice(0,22))}</span>${st(o)}<br>${secPill(o.root)}</td><td style="font-weight:600">${pc(o.ret,0)}</td><td class="l hold">${chips(o)}</td></tr>`).join('')}</tbody></table>`;
+  const tbl=(list)=>`<table class="etbl"><thead><tr><th class="l">Empresa</th><th>Retorno</th><th class="l">Quem detinha (peso médio)</th></tr></thead><tbody>${list.map(o=>`<tr class="link${S.esel===o.root?' sel':''}" data-r="${esc(o.root)}"><td class="l secbar" style="--c:${secC(secOf(o.root))}"><span class="tk">${esc(o.e.tk)}</span> <span class="muted">${esc(o.e.n.slice(0,22))}</span>${st(o)}</td><td style="font-weight:600">${pc(o.ret,0)}</td><td class="l hold">${chips(o)}</td></tr>`).join('')}</tbody></table>`;
   $('e-body').innerHTML=`<div class="kpis">${kpis([['Empresas',String(rows.length),`${up} subiram · ${rows.length-up} caíram`],['Mediana',pc(med),`Ibovespa ${pc(ib?ib.ret:null)}`],
       ['Melhor',win[0]?esc(win[0].e.tk):'–',win[0]?pc(win[0].ret,0):''],['Saíram da bolsa',String(outs.length),'no período (falência, fechamento ou incorporação)']])}</div>`+
-    `<div class="grid2"><div class="card"><div class="hd"><h2>Winners</h2><small>clique para ver quem detinha</small></div><div class="tblwrap">${tbl(win)}</div></div>`+
+    `${secLegend()}<div class="grid2"><div class="card"><div class="hd"><h2>Winners</h2><small>clique para ver quem detinha · cor = setor</small></div><div class="tblwrap">${tbl(win)}</div></div>`+
     `<div class="card"><div class="hd"><h2>Losers</h2><small>clique para ver quem detinha</small></div><div class="tblwrap">${tbl(los)}</div></div></div>`+
     `<div class="card" id="e-det"></div>`+
     `<div class="card"><div class="hd"><h2>Todas as empresas</h2><small>clique no cabeçalho para ordenar</small></div><div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="e-all"></table></div></div>`+
@@ -47,7 +47,6 @@ function renderE(){
   const bind=()=>$('e-body').querySelectorAll('tr[data-r]').forEach(tr=>tr.onclick=()=>{ S.esel=tr.dataset.r; renderEDet(a,b,rows,H); $('e-det').scrollIntoView({behavior:'smooth',block:'nearest'}); });
   sTable('e-all',[
     {k:'tk',l:'Empresa',cls:'l',v:o=>o.e.tk,asc:true,f:o=>`<td class="l secbar" style="--c:${secC(secOf(o.root))}"><span class="tk">${esc(o.e.tk)}</span> <span class="muted">${esc(o.e.n.slice(0,26))}</span>${st(o)}</td>`},
-    {k:'sec',l:'Setor',cls:'l',v:o=>secOf(o.root),asc:true,f:o=>`<td class="l">${secPill(o.root)}</td>`},
     {k:'ret',l:'Retorno',v:o=>o.ret,f:o=>`<td style="font-weight:600">${pc(o.ret,0)}</td>`},
     {k:'ex',l:'vs Ibov',v:o=>ib?o.ret-ib.ret:null,f:o=>`<td>${pcp(ib?o.ret-ib.ret:null)}</td>`},
     {k:'nh',l:'Gestoras',v:o=>(H.get(o.root)||[]).length,f:o=>`<td class="muted">${(H.get(o.root)||[]).length||'–'}</td>`},

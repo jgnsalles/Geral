@@ -11,6 +11,7 @@ const SECN=['Utilities','Financials','Seguros','Commodities','Consumo','Varejo',
 const SECV={Utilities:'--sec-util',Financials:'--sec-fin',Seguros:'--sec-seg',Commodities:'--sec-com',Consumo:'--sec-con',Varejo:'--sec-var',Industrials:'--sec-ind',Transporte:'--sec-tra','Saúde':'--sec-sau','Educação':'--sec-edu',Malls:'--sec-mal','Real Estate':'--sec-re',TMT:'--sec-tmt',Outros:'--sec-out'};
 const secOf=root=>(PF.sec&&PF.sec[root])||'Outros';
 const secC=b=>`var(${SECV[b]||'--sec-out'})`;
+const secLegend=(list)=>`<div class="pleg" style="margin:0 0 8px">${(list||SECN).map(b=>`<span><i style="background:${secC(b)};border-radius:50%"></i>${esc(b)}</span>`).join('')}</div>`;
 const secPill=root=>{ const b=secOf(root); return `<span class="secp"><i style="background:${secC(b)}"></i>${esc(b)}</span>`; };
 S.am='rank'; S.asec=null; S.amk='all';
 // mercado da ação: ativos com prefixo X: vêm do exterior (bloco 7 da CDA) = LatAm ex-Brasil; o resto é listado na B3
@@ -79,12 +80,11 @@ function renderA(){
   $('a-body').innerHTML=`<div class="dec">${dec5.map(([l,v,d],k)=>`<div class="kpi"><div class="lbl">${l}</div><div class="v">${k?pcp(v):pc(v)}</div><div class="d">${d}</div></div>`).join('')}</div>`+
     `<div class="grid2"><div class="card"><div class="hd"><h2>Maiores contribuições</h2><small>p.p. do retorno no período</small></div><div class="dbar">${bars(top,'var(--up)')||'<div class="empty">–</div>'}</div></div>`+
     `<div class="card"><div class="hd"><h2>Maiores detratores</h2><small>p.p. do retorno no período</small></div><div class="dbar">${bars(bot,'var(--down)')||'<div class="empty">–</div>'}</div></div></div>`+
-    `<div class="card"><div class="hd"><h2>Todos os emissores</h2><small>clique no cabeçalho para ordenar</small></div><div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="a-tbl"></table></div>`+
+    `<div class="card"><div class="hd"><h2>Todos os emissores</h2><small>clique no cabeçalho para ordenar · cor = setor</small></div>${secLegend()}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="a-tbl"></table></div>`+
     `<p class="note">Carteira revelada em média ${pct(o.cov,0)} do PL dos fundos; ${pct(o.conf,0)} em sigilo na CVM; ${pct(o.nop,1)} em ativos sem preço na B3 (renomeados, fechados, exterior)${o.nest?`; em ${o.nest} mês(es) a carteira do mês ainda está em sigilo e foi estimada pela última revelada (até 6 meses antes)`:''}${o.miss?`; ${o.miss} mês(es) sem carteira, tratados como "outros"`:''}. ${S.cur==='USD'?'As contribuições das ações são em reais; o efeito do dólar aparece na linha Câmbio.':''}</p></div>`+
     `<p class="note"><b>Como é calculado.</b> Peso de cada emissor = posição no fim do mês anterior ÷ PL do fundo, pela CDA da CVM, somando os fundos long only da gestora na mesma ponderação da performance; cotas de outros fundos (ex.: um fundo que investe no master) são abertas nas ações desse fundo; quando a carteira do mês ainda está em sigilo, usa-se a última revelada (até 6 meses). Retorno do emissor = fechamento da B3 + proventos em dinheiro na data-com, ajustado por desdobramentos, grupamentos e bonificações (API da B3). Contribuição do mês = peso × retorno, encadeada pelo retorno acumulado da gestora até o mês anterior, de modo que ações + outros + taxas${U?' + câmbio':''} = retorno líquido. "Outros" junta caixa, compras e vendas feitas dentro do mês, posições em sigilo e ativos sem preço. "Taxas" = retorno da cota do cotista (FIC) menos o do master.</p>`;
   sTable('a-tbl',[
-    {k:'e',l:'Emissor',cls:'l',v:x=>AT.roots[x.ri],asc:true,f:x=>`<td class="l"><span class="tk">${esc(dispR(AT.roots[x.ri]))}</span> <span class="muted">${esc(nameR(x.ri))}</span></td>`},
-    {k:'s',l:'Setor',cls:'l',v:x=>secOf(AT.roots[x.ri]),asc:true,f:x=>`<td class="l">${secPill(AT.roots[x.ri])}</td>`},
+    {k:'e',l:'Emissor',cls:'l',v:x=>AT.roots[x.ri],asc:true,f:x=>`<td class="l secbar" style="--c:${secC(secOf(AT.roots[x.ri]))}"><span class="tk">${esc(dispR(AT.roots[x.ri]))}</span> <span class="muted">${esc(nameR(x.ri))}</span></td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
     {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
@@ -162,8 +162,8 @@ function renderAR(){
   const f=S.asec, list=pairs.filter(x=>!f||x.sec===f).sort((x,y)=>y.c-x.c);
   const secs=SECN.filter(k=>bySec[k]);
   const mx=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg)));
-  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
-  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
+  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
+  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
   const N=50;
   // cenários: saldo sem a(s) empresa(s) que mais somaram / mais tiraram no setor (somando todas as gestoras)
   secs.forEach(k=>{ const q=bySec[k], co=[...q.co].sort((x,y)=>y[1]-x[1]); const top=co.filter(x=>x[1]>0), bot=co.filter(x=>x[1]<0).reverse();
@@ -185,14 +185,13 @@ const MK=[['sem a maior','<span class="sh d w"></span>'],['sem as 3 maiores','<s
       `<div class="v">${pcp(q.c)}<small class="muted" style="display:block;font-size:10.5px">+${nf(q.pos*100,0)} / −${nf(-q.neg*100,0)}</small></div>`+
       `<div class="scen">${[[q.t1,0],[q.t3,1],[q.b1,2],[q.b3,3]].map(([a,j])=>a.length?`<span><b class="mk">${MK[j][1]}</b> sem ${esc(nmL(a))}: <b>${(q.s[j]>=0?'+':'−')+nf(Math.abs(q.s[j]*100),0)}</b></span>`:'').join('')}</div>`; }).join('')}</div>`+
     `<p class="note">Número = saldo em pontos percentuais (p.p.), somando todas as gestoras. Embaixo de cada setor: como ficaria o saldo tirando a empresa (ou as 3) que mais somou e a que mais tirou, somando todas as gestoras que a tinham.</p></div>`+
-`<div class="grid2"><div class="card"><div class="hd"><h2>Maiores contribuições</h2><small>${f?esc(f)+' · ':''}top ${N}</small></div><div class="tblwrap" style="max-height:640px;overflow-y:auto"><table>${head}<tbody>${list.slice(0,N).map((x,k)=>row(x,k+1)).join('')}</tbody></table></div></div>`+
-    `<div class="card"><div class="hd"><h2>Maiores detratores</h2><small>${f?esc(f)+' · ':''}top ${N}</small></div><div class="tblwrap" style="max-height:640px;overflow-y:auto"><table>${head}<tbody>${list.slice(-N).reverse().map((x,k)=>row(x,k+1)).join('')}</tbody></table></div></div></div>`+
-    `<div class="card"><div class="hd"><h2>Todos os pares</h2><small>clique no cabeçalho para ordenar</small></div><div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="a-all"></table></div></div>`+
+`<div class="grid2"><div class="card"><div class="hd"><h2>Maiores contribuições</h2><small>${f?esc(f)+' · ':''}top ${N}</small></div>${secLegend(secs)}<div class="tblwrap" style="max-height:640px;overflow-y:auto"><table>${head}<tbody>${list.slice(0,N).map((x,k)=>row(x,k+1)).join('')}</tbody></table></div></div>`+
+    `<div class="card"><div class="hd"><h2>Maiores detratores</h2><small>${f?esc(f)+' · ':''}top ${N}</small></div>${secLegend(secs)}<div class="tblwrap" style="max-height:640px;overflow-y:auto"><table>${head}<tbody>${list.slice(-N).reverse().map((x,k)=>row(x,k+1)).join('')}</tbody></table></div></div></div>`+
+    `<div class="card"><div class="hd"><h2>Todos os pares</h2><small>clique no cabeçalho para ordenar</small></div>${secLegend(secs)}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="a-all"></table></div></div>`+
     `<p class="note"><b>Como ler.</b> Cada linha é uma ação na carteira de uma gestora: contribuição em pontos percentuais do retorno daquela gestora na janela (peso no fim do mês anterior × retorno total da ação, encadeado). Setores pela classificação da B3, agrupados. "Parcial" = a gestora só tem dados de parte da janela.</p>`;
   sTable('a-all',[
     {k:'g',l:'Gestora',cls:'l',v:x=>x.g.n,asc:true,f:x=>`<td class="l">${esc(x.g.n)}</td>`},
     {k:'e',l:'Empresa',cls:'l',v:x=>x.root,asc:true,f:x=>`<td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td>`},
-    {k:'s',l:'Setor',cls:'l',v:x=>x.sec,asc:true,f:x=>`<td class="l">${secPill(x.root)}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
     {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
