@@ -89,6 +89,8 @@ P = P[P.gid.notna() & ~P.ext & ~P.la]
 # Em vez do master, usa os FICs da própria gestora cujo fundo investido principal (>= 50% do PL do FIC, pela CDA) é um
 # master elegível (long only, Brasil) naquele mês; masters representados por esses FICs saem. Fundos sem FIC próprio
 # (o cotista aplica direto) ficam como estão: a cota já é líquida.
+if os.environ.get('DUMP_E'):  # fundos-mês da base bruta (masters e fundos diretos), usados no attribution
+    E[['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant', 'r']].to_pickle(os.environ['DUMP_E'])
 NET = os.environ.get('NET', '1') == '1'
 if NET:
     LK = pd.read_pickle(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'fic_links.pkl'))
@@ -112,6 +114,8 @@ if NET:
     wf = FC.pl_ant.sum(); wd = Em.pl_ant.sum()
     print('peso dos FICs no total:', round(wf / (wf + wd), 3))
     E = pd.concat([Em, FC.drop(columns=['t', 'cota'])], ignore_index=True)
+    if os.environ.get('DUMP_EN'):  # fundos-mês da base líquida (onde estão os cotistas), usados no passivo
+        E[['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant']].to_pickle(os.environ['DUMP_EN'])
 
 def rint(v):  # retorno em centésimos de ponto-base (1e-6), inteiro, ou None
     return None if v is None or not np.isfinite(v) else int(round(v * 1e6))

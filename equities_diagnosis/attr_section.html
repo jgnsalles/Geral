@@ -1,0 +1,35 @@
+<style>
+.dbar{display:grid;grid-template-columns:minmax(110px,180px) minmax(0,1fr) 72px;gap:4px 10px;align-items:center;font-size:12.5px}
+.dbar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dbar .nm b{font-family:var(--mono);font-weight:600}
+.dbar .tr{position:relative;height:14px}
+.dbar .tr i{position:absolute;top:2px;height:10px;border-radius:2px}
+.dbar .tr .ax{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--axis)}
+.dbar .v{text-align:right;font-variant-numeric:tabular-nums}
+.dec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 14px}
+.dec .kpi .v{font-size:20px}
+.cust{display:flex;gap:6px;align-items:center}
+.stack{display:flex;height:22px;border-radius:4px;overflow:hidden;border:1px solid var(--border)}
+.stack i{display:block;height:100%}
+.pleg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink-2);margin:8px 0}
+.pleg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+</style>
+<!-- ============ ATTRIBUTION ============ -->
+<section id="v-a" hidden>
+  <div class="bar">
+    <div class="f"><label class="lbl" for="a-q">Gestora</label><input id="a-q" class="gsearch" list="dl-a" placeholder="Buscar gestora…" autocomplete="off"><datalist id="dl-a"></datalist></div>
+    <div class="f"><span class="lbl">Janela</span><span class="seg" id="a-win"></span></div>
+    <div class="f" id="a-custom" hidden><span class="lbl">Período personalizado</span><span class="cust"><select id="a-from" aria-label="De"></select><span class="muted">a</span><select id="a-to" aria-label="Até"></select></span></div>
+    <div class="f"><span class="lbl">Moeda</span><span class="seg" id="a-cur"></span></div>
+  </div>
+  <div class="ghead"><div><h1 id="a-h">Attribution</h1><div class="sub" id="a-sub"></div></div></div>
+  <div id="a-body"><p class="loading">Carregando carteiras…</p></div>
+</section>
+<!-- ============ PASSIVO ============ -->
+<section id="v-l" hidden>
+  <div class="bar">
+    <div class="f"><label class="lbl" for="l-q">Gestora</label><input id="l-q" class="gsearch" list="dl-a" placeholder="Buscar gestora…" autocomplete="off"></div>
+  </div>
+  <div class="ghead"><div><h1 id="l-h">Passivo</h1><div class="sub" id="l-sub"></div></div></div>
+  <div id="l-body"><p class="loading">Carregando passivo…</p></div>
+</section>
