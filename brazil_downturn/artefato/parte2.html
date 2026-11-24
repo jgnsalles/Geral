@@ -17,6 +17,9 @@
   <div class="legend" style="margin-top:8px"><span><i style="background:var(--in)"></i>Entrada</span><span><i style="background:var(--out)"></i>Saída</span><span><i style="background:var(--soft)"></i>Trimestre no estado</span><span><i class="ln" style="background:var(--ink)"></i>CDI</span><span>▲ ▼ passou da escala (valor ao lado)</span></div>
   <div class="chart" id="p-flow"></div>
   <div class="tbox" id="p-comp"></div>
+  <div class="sowhat"><b>E daí</b><span>De 2019T2 a 2026T1 as gestoras perderam, em termos líquidos, cerca de R$ 67 bi do passivo. Wealth (−R$ 29 bi) e fundações e RPPS (−R$ 12 bi) respondem por 62% disso. Plataformas, que eram 9% do passivo, viraram 15%: perderam menos que os outros.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>A posição estrangeira nesses fundos é minúscula: entre R$ 0,2 e 1,8 bi, menos de 1% do passivo. Cresceu de R$ 0,4 bi em 2023 para R$ 1,8 bi em 2026T1, mas aos saltos: três trimestres (2022T4, 2024T2 e 2026T1) somam +R$ 1,2 bi, mais que todo o líquido do período (+R$ 0,4 bi). Escolha "Estrangeiro" no seletor e use a janela de 12 meses para ver os degraus.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Nos 8 trimestres com Ibovespa negativo em 12 meses, as gestoras perderam R$ 20 bi, e só o varejo direto (+R$ 4,0 bi) e empresas (+R$ 0,7 bi) puseram dinheiro líquido. Nos 12 trimestres em que o Ibovespa caiu no próprio trimestre, quem pôs foi o PF private (+R$ 6,9 bi), seguido de previdência (+R$ 0,8 bi).</span></div>
  </figure>
 
  <h2 class="chap">7. Quem investe e quem tira, na alta e na baixa</h2>
@@ -26,6 +29,8 @@
   <div class="legend"><span><i style="background:var(--in)"></i>Investiu (gestoras com entrada)</span><span><i style="background:var(--out)"></i>Tirou (gestoras com saída)</span><span><i class="ln" style="background:var(--ink);height:12px;width:3px"></i>Líquido</span></div>
   <div class="chart" id="p-butter"></div>
   <div class="sowhat"><b>E daí</b><span id="sw-butter"></span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>O estrangeiro tem as barras mais longas dos dois lados (investe 16% e tira 13% da posição por trimestre com o Ibovespa positivo em 12 meses) porque a base é pequena: um mandato que entra ou sai move de 10% a 60% da posição. O líquido muda de sinal conforme o regime escolhido, sem padrão estável, e em reais fica entre −R$ 0,8 bi e +R$ 1,2 bi em qualquer regime.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Escolha "Ibovespa em 12 meses" e o estado negativo. O varejo direto é o único com entrada líquida relevante: +7,5% por trimestre, investindo 12,7% contra 6,1% quando a bolsa vai bem. FoFs de terceiros fazem o contrário (−6,0%). Fundações e wealth tiram dinheiro nos dois estados, mas tiram menos na baixa (−0,4% e −1,0%) que na alta (−2,1% e −1,8%).</span></div>
  </figure>
 
  <h2 class="chap">8. Cada investidor responde a quê</h2>
@@ -36,6 +41,8 @@
   <div class="chart" id="p-drv" style="margin-top:14px"></div>
   <div class="tbox" id="p-mv"></div>
   <div class="sowhat"><b>E daí</b><span>Fundações e RPPS e wealth (private banks e family offices) são os mais presos ao CDI: o nível do juro explica metade da variância do fluxo deles. Plataformas respondem ao juro, ao Treasury e à bolsa dos últimos 12 meses. FoFs de terceiros seguem a bolsa (momentum). O PF private direto é o único contracíclico: põe dinheiro nos trimestres em que o Ibovespa cai. O varejo direto reage ao Treasury mais que à Selic. Estrangeiro e empresas são bases pequenas e ruidosas.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Nenhuma correlação simples do estrangeiro passa de t = 2. Na regressão conjunta aparecem a variação do Treasury (+0,50, t 3,7) e a do CDI (−0,44, t −3,3), mas com sinal oposto ao esperado: juro americano subindo costuma tirar dinheiro de emergentes. O resultado depende de poucos trimestres de aporte grande, não de um comportamento. O estrangeiro que conta para as gestoras entra pelos fundos offshore delas, que compram ações direto na B3 e não aparecem no Perfil Mensal.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>O único tipo com reação contracíclica significativa ao mercado é o PF private: correlação de −0,45 (t −2,6) com o Ibovespa do trimestre. O varejo direto compra no trimestre de alta (+0,33) mas tem sinal negativo com os 12 meses anteriores (−0,12): entra depois de um ano ruim. Empresas também têm sinal negativo com a bolsa de 12 meses (−0,23). Os demais não reagem à bolsa, só ao juro.</span></div>
  </figure>
 
  <h2 class="chap">9. Alpha de 1 ano ou de 3 anos?</h2>
@@ -45,6 +52,8 @@
   <div class="legend"><span><i style="background:var(--in)"></i>Alpha 12 meses</span><span><i style="background:var(--ink2)"></i>Alpha 36 meses</span></div>
   <div class="chart" id="p-sens"></div>
   <div class="sowhat"><b>E daí</b><span>Plataformas, previdência e FoFs olham sobretudo o último ano. Fundações e RPPS olham quase só 3 anos: o alpha de 12 meses perde a significância quando entra o de 36. Wealth olha os dois com o mesmo peso. PF private e varejo direto quase não respondem ao alpha.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Zero nos dois horizontes: +0,3 p.p. para alpha de 12 meses (t 0,04) e +7,4 para 36 meses (t 0,9), com 234 observações. O estrangeiro não escolhe gestora por alpha, nem bom nem ruim.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Com o Ibovespa negativo em 12 meses, PF private e varejo direto, que no geral ignoram alpha, passam a olhar o alpha de 12 meses: +8,4 p.p. (t 2,6) e +10,7 (t 2,4). Plataformas e wealth continuam no de 12 meses (+10,7 e +11,0). Fundações continuam no de 3 anos: nos trimestres de queda do Ibovespa, +22,0 p.p. (t 5,3). Na bolsa ruim, quem ainda põe dinheiro fica mais seletivo.</span></div>
  </figure>
 
  <figure>
@@ -52,6 +61,9 @@
   <figcaption class="fs">Gestoras agrupadas pelo alpha no início do trimestre (1 = pior). Mediana do fluxo do tipo escolhido, % da posição, no estado escolhido.</figcaption>
   <div class="seg" role="group" aria-label="Horizonte" id="seg-hz"><button type="button" aria-pressed="true" data-k="ex12">Alpha 12 meses</button><button type="button" aria-pressed="false" data-k="ex36">Alpha 36 meses</button></div>
   <div class="chart" id="p-quint" style="margin-top:8px"></div>
+  <div class="sowhat"><b>E daí</b><span>Com "Todos" e o Ibovespa negativo em 12 meses, só o quintil de melhor alpha tem fluxo mediano positivo (+1,3%, 59% com entrada). O pior perde 4,3% (27% com entrada).</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Para o estrangeiro, a mediana é negativa em todos os quintis (−0,6% a −1,0%), e a parcela com entrada cai de 42% no pior quintil para 34% no melhor. Não há relação com alpha.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Na bolsa ruim (Ibovespa em 12 meses negativo), wealth leva o padrão ao extremo: quintil de melhor alpha com +3,7% e 62% com entrada; o pior com −7,9%. Para o varejo direto, só o quintil 5 fica positivo (+0,9%, 62% com entrada).</span></div>
  </figure>
 
  <h2 class="chap">10. Quem recebe o dinheiro de cada tipo</h2>
@@ -61,11 +73,15 @@
   <div class="legend"><span><i class="dot" style="background:var(--in)"></i>Receberam</span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i>Perderam</span></div>
   <div class="chart" id="p-perfil"></div>
   <div class="sowhat"><b>E daí</b><span>Alpha de 12 e de 36 meses atrai quase todo tipo de investidor, em todos os regimes; as exceções são estrangeiro e empresas. Fora isso, cada tipo tem um perfil. Fundações, RPPS e previdência vão para casas de beta baixo, carteira mais diversificada e longe do consenso, e na seca isso fica mais forte. O varejo direto vai para carteira concentrada e tracking error alto. Plataformas e FoFs preferem gestoras mais novas e menores. Em quase todos os tipos, quem já depende muito daquele investidor perde mais dele.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Quem recebe dinheiro estrangeiro tem alpha de 12 meses um pouco abaixo de quem perde (percentil 49 contra 54, t −2,3) e depende menos de estrangeiro (−7 pontos). Isso vem de quem sai, não de quem entra: o estrangeiro sai de casas onde já pesava e que vinham bem (Dynamo, Tarpon). Com o Ibovespa negativo em 12 meses, quem recebe tem carteira mais concentrada (+11 pontos), mas são só 74 observações.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Com o Ibovespa negativo em 12 meses, todos os tipos grandes vão para gestoras de alpha alto em 12 e 36 meses, beta mais baixo e carteira fora do consenso. O varejo direto acrescenta concentração e tracking error altos (+8 pontos cada). Plataformas, carteira concentrada com menos ações (+5 e −6) e beta baixo (−5). Fundações, tracking error alto (+5). Ninguém vai para a carteira "de consenso" quando a bolsa está ruim.</span></div>
  </figure>
 
  <h2 class="chap">11. Os nomes</h2>
  <figure style="border-top:0;margin-top:10px">
   <p class="fs" id="tops-sub"></p>
   <div class="lists"><div><h4>Mais receberam</h4><div class="tbox" id="p-rec"></div></div><div><h4>Mais perderam</h4><div class="tbox" id="p-saq"></div></div></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Alaska recebeu R$ 567 mi de estrangeiros, quase tudo em poucos trimestres, e Plural R$ 179 mi. Dynamo perdeu R$ 300 mi e Tarpon R$ 143 mi. Três gestoras fazem metade de todo o fluxo estrangeiro do período: são mandatos, não um movimento.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Com o Ibovespa negativo em 12 meses, quem mais recebeu no total foi Atmos (R$ 3,0 bi), seguida de U.V. (R$ 1,3 bi), We, Absoluto, Absolute e Squadra. O dinheiro contracíclico das pessoas físicas foi concentrado: Alaska levou R$ 3,1 bi do varejo direto na bolsa ruim de 12 meses e R$ 4,0 bi do PF private nos trimestres de queda, à frente de U.V. (R$ 2,3 bi) e Squadra (R$ 1,2 bi).</span></div>
  </figure>
 </section>
