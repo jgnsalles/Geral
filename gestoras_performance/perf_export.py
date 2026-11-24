@@ -185,6 +185,14 @@ if os.path.exists(_man):
         m.pop('r_net', None)
         m['r'], m['bm'] = m['r'][:n], m['bm'][:n]
         out['la'].append({**m, 'o': o})
+# Fourth Sail (Tordesilhas): cota mensal dos fundos offshore Long Short pelo valor ÷ quantidade na CDA dos fundos brasileiros que os detêm
+_fs = os.path.join(os.path.dirname(os.path.abspath(OUT)), 'emp', 'fourth_sail.pkl')
+if os.path.exists(_fs):
+    fsr = pd.read_pickle(_fs)['Long Short'].dropna()
+    fsr = fsr[fsr.index.isin(MI)]
+    o = MI[fsr.index.min()]; b = MI[fsr.index.max()]
+    out['la'].append({'c': 'Fourth Sail Long Short Offshore Fund LP', 'n': 'FOURTH SAIL LONG SHORT OFFSHORE FUND LP (cota via fundos da Tordesilhas na CDA)',
+                      'g': 'Fourth Sail (Tordesilhas)', 'gid': '30791155', 'nm': 'Fourth Sail L/S', 'ls': True, 'o': o, 'r': series(fsr, o, b), 'pl': None})
 print('fundos LatAm:', [(f['n'][:40], f['g'], M[f['o']], f['pl']) for f in out['la']])
 out['x'] = [{k: g[k] for k in ('id', 'n', 'rs', 'cnpj')} for g in G if g.get('extra') and g['id'] in out['g']]
 print('extras:', out['x'])

@@ -1,4 +1,15 @@
 <style>
+:root{--sec-util:#2a78d6;--sec-fin:#4a3aa7;--sec-com:#a86a00;--sec-var:#e34948;--sec-ind:#52514e;--sec-sau:#1baf7a;--sec-mal:#e87ba4;--sec-re:#eb6834;--sec-seg:#7a5cd6;--sec-tra:#0e8a9e;--sec-tmt:#008300;--sec-con:#c25a00;--sec-edu:#9a7b00;--sec-out:#898781}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sec-util:#5b9bea;--sec-fin:#9085e9;--sec-com:#e0a526;--sec-var:#ef7676;--sec-ind:#b0afa6;--sec-sau:#2fc98f;--sec-mal:#ee93b6;--sec-re:#f08a5d;--sec-seg:#a68ff0;--sec-tra:#36b8cc;--sec-tmt:#3fbf3f;--sec-con:#e78a3c;--sec-edu:#d4b43a;--sec-out:#9a998f}}
+:root[data-theme="dark"]{--sec-util:#5b9bea;--sec-fin:#9085e9;--sec-com:#e0a526;--sec-var:#ef7676;--sec-ind:#b0afa6;--sec-sau:#2fc98f;--sec-mal:#ee93b6;--sec-re:#f08a5d;--sec-seg:#a68ff0;--sec-tra:#36b8cc;--sec-tmt:#3fbf3f;--sec-con:#e78a3c;--sec-edu:#d4b43a;--sec-out:#9a998f}
+.secp{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--ink-2);white-space:nowrap}
+.secp i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.secleg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:4px 0 10px}
+.secleg button{border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 9px;cursor:pointer;font-size:12px;color:var(--ink-2)}
+.secleg button[aria-pressed="true"]{border-color:var(--ink-2);color:var(--ink);font-weight:600}
+td.secbar{box-shadow:inset 3px 0 0 var(--c)}
+</style>
+<style>
 .dbar{display:grid;grid-template-columns:minmax(110px,180px) minmax(0,1fr) 72px;gap:4px 10px;align-items:center;font-size:12.5px}
 .dbar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dbar .nm b{font-family:var(--mono);font-weight:600}
@@ -17,7 +28,8 @@
 <!-- ============ ATTRIBUTION ============ -->
 <section id="v-a" hidden>
   <div class="bar">
-    <div class="f"><label class="lbl" for="a-q">Gestora</label><input id="a-q" class="gsearch" list="dl-a" placeholder="Buscar gestora…" autocomplete="off"><datalist id="dl-a"></datalist></div>
+    <div class="f"><span class="lbl">Visão</span><span class="seg" id="a-mode"></span></div>
+    <div class="f" id="a-gf"><label class="lbl" for="a-q">Gestora</label><input id="a-q" class="gsearch" list="dl-a" placeholder="Buscar gestora…" autocomplete="off"><datalist id="dl-a"></datalist></div>
     <div class="f"><span class="lbl">Janela</span><span class="seg" id="a-win"></span></div>
     <div class="f" id="a-custom" hidden><span class="lbl">Período personalizado</span><span class="cust"><select id="a-from" aria-label="De"></select><span class="muted">a</span><select id="a-to" aria-label="Até"></select></span></div>
     <div class="f"><span class="lbl">Moeda</span><span class="seg" id="a-cur"></span></div>

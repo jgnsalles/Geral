@@ -11,14 +11,14 @@ M = PF['meses']; MI = {m: i for i, m in enumerate(M)}
 prev = {m: str(pd.Period(m, 'M') - 1) for m in M}
 H['tk'] = H.tk.str.strip().str.upper()
 H = H[H.v > 0]
-H['root'] = H.tk.str[:4]
+H['root'] = H.tk.where(H.tk.str.startswith('X:'), H.tk.str[:4])
 # retorno de cada ticker no mês
 Rl = R.stack().rename('ret').reset_index(); Rl.columns = ['ym', 'tk', 'ret']
 # carteiras extras (fundos investidos via cotas) e ligações fundo -> fundo, se existirem
 import os
 X_H, X_P, X_L = os.environ.get('XH'), os.environ.get('XP'), os.environ.get('XL')
 if X_H and os.path.exists(X_H):
-    H2 = pd.read_pickle(X_H); H2['tk'] = H2.tk.str.strip().str.upper(); H2 = H2[H2.v > 0]; H2['root'] = H2.tk.str[:4]
+    H2 = pd.read_pickle(X_H); H2['tk'] = H2.tk.str.strip().str.upper(); H2 = H2[H2.v > 0]; H2['root'] = H2.tk.where(H2.tk.str.startswith('X:'), H2.tk.str[:4])
     H = pd.concat([H, H2], ignore_index=True)
 if X_P and os.path.exists(X_P):
     CP = pd.concat([CP, pd.read_pickle(X_P)]).drop_duplicates(['CNPJ_FUNDO', 'ym'], keep='first')
@@ -36,6 +36,9 @@ if X_L and os.path.exists(X_L):
     LT['w'] = LT.s * LT.w
     Hv = pd.concat([Hv, LT[['CNPJ_FUNDO', 'ym', 'tk', 'root', 'w']]]).groupby(['CNPJ_FUNDO', 'ym', 'tk', 'root']).w.sum().reset_index()
     print('posições vindas de look-through:', len(LT))
+# soma das posições acima de 100% do PL (master + look-through duplicados, alavancagem) é reescalada para 100%
+_tot = Hv.groupby(['CNPJ_FUNDO', 'ym']).w.transform('sum')
+Hv['w'] = np.where(_tot > 1.0, Hv.w / _tot, Hv.w)
 cv = Hv.groupby(['CNPJ_FUNDO', 'ym']).w.sum()
 conf = (CP.conf.fillna(0) / CP.pl).rename('cw').reset_index()
 # fundo-mês t usa a carteira de t-1; se t-1 estiver em sigilo (cobertura < 50%), usa a última carteira revelada (>= 70%) até 6 meses antes

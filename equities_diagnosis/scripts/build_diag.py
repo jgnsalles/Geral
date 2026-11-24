@@ -21,6 +21,51 @@ sec_style = re.search(r'<style>.*?</style>\n', sec, re.S).group(0); sec_body = s
 asec = open(os.path.join(S, 'diag/attr_section.html')).read() + open(os.path.join(S, 'diag/emp_section.html')).read()
 P = json.load(open(os.path.join(S, 'perf.json'))); G = json.load(open(os.path.join(S, 'gestoras_perf.json')))
 P['gestoras'] = [{k: g[k] for k in ('id', 'n', 'rs', 'cnpj')} for g in G if g['id'] in P['g']]
+# gestoras donas de linhas LatAm (attribution/passivo pelo fundo brasileiro) entram com nome
+_have = {g['id'] for g in P['gestoras']}
+for f in P.get('la', []):
+    if f.get('gid') and f['gid'] not in _have:
+        src = next((g for g in G if g['id'] == f['gid']), None)
+        P['gestoras'].append({'id': f['gid'], 'n': f.get('nm') or (src['n'] if src else f['g']), 'rs': src['rs'] if src else f['g'], 'cnpj': src['cnpj'] if src else ''}); _have.add(f['gid'])
+# setores: B3/CVM para ações brasileiras, mapa manual para as estrangeiras dos fundos LatAm
+SEC = {k: v['b'] for k, v in json.load(open(os.path.join(S, 'emp/sectors_all.json'))).items()}
+EXT = [('MELI', 'Varejo'), ('WALMEX', 'Varejo'), ('FALAB', 'Varejo'), ('CHDRAUI', 'Varejo'), ('CENCOSUD', 'Varejo'), ('LIVEPOL', 'Varejo'),
+       ('AC MM', 'Consumo'), ('GRUMA', 'Consumo'), ('ARCO', 'Consumo'), ('KOF', 'Consumo'), ('ANDINA', 'Consumo'), ('SPORTS', 'Consumo'), ('FEMSA', 'Consumo'), ('FMX', 'Consumo'), ('BIMBO', 'Consumo'), ('CCU', 'Consumo'),
+       ('BOLSA', 'Financials'), ('ITAUCL', 'Financials'), ('COMPARC', 'Financials'), ('BAP', 'Financials'), ('GFNORTE', 'Financials'), ('XP ', 'Financials'), ('BSMX', 'Financials'), ('NU ', 'Financials'), ('RA MM', 'Financials'), ('BSAC', 'Financials'), ('CHILE', 'Financials'), ('INBURSA', 'Financials'), ('BBAJIO', 'Financials'), ('IFS', 'Financials'),
+       ('Q* ', 'Seguros'), ('CPA', 'Transporte'), ('VAPORES', 'Transporte'), ('OMA', 'Transporte'), ('ASUR', 'Transporte'), ('GAP', 'Transporte'), ('PAC', 'Transporte'), ('VOLAR', 'Transporte'), ('LTM', 'Transporte'),
+       ('FERREY', 'Industrials'), ('VESTA', 'Real Estate'), ('FIBRAPL', 'Real Estate'), ('FUNO', 'Real Estate'), ('FSHOP', 'Malls'), ('PARAUCO', 'Malls'), ('MALLPLAZA', 'Malls'),
+       ('AGUAS', 'Utilities'), ('ECL', 'Utilities'), ('ENELAM', 'Utilities'), ('CMPC', 'Commodities'), ('SQM', 'Commodities'), ('AGRO', 'Commodities'), ('CSAN', 'Commodities'), ('CEMEX', 'Commodities'), ('GMEXICO', 'Commodities'), ('SCCO', 'Commodities'), ('PE&OLES', 'Commodities'), ('VIST', 'Commodities'), ('YPF', 'Commodities'), ('ECOPETL', 'Commodities'), ('BVN', 'Commodities'),
+       ('VTEX', 'TMT'), ('SONDA', 'TMT'), ('AMX', 'TMT'), ('GLOB', 'TMT'), ('DLO', 'TMT'), ('STNE', 'Financials'), ('PAGS', 'Financials')]
+roots = set()
+A = json.load(open(os.path.join(S, 'diag/attr.json'))) if os.path.exists(os.path.join(S, 'diag/attr.json')) else {'roots': []}
+for r in A['roots']:
+    if r.startswith('X:'):
+        c = r[2:] + ' '
+        SEC[r] = next((b for k, b in EXT if c.startswith(k) or (' ' in k and c.startswith(k))), 'Outros')
+MAN = {'GGPS':'Industrials','EZTC':'Real Estate','WEGE':'Industrials','TRIS':'Real Estate','KROT':'Educação','AMBV':'Consumo','OHLB':'Transporte','ROXO':'Financials',
+       'TEMP':'Saúde','WSON':'Transporte','PDGR':'Real Estate','RIPI':'Commodities','INBR':'Financials','MELI':'Varejo','M1TA':'TMT','UBBR':'Financials','AMZO':'Varejo',
+       'LPSB':'Real Estate','BRTO':'TMT','RDCD':'Financials','MSFT':'TMT','PTIP':'Commodities','XPBR':'Financials','TSMC':'TMT','TMAR':'TMT','BELG':'Commodities',
+       'CREM':'Saúde','TBLE':'Utilities','GOGL':'TMT','ARCE':'Commodities','GVTT':'TMT','JHSF':'Real Estate','ITAU':'Financials','GETI':'Utilities','TLPP':'TMT',
+       'PRGA':'Consumo','CMET':'Commodities','STOC':'Financials','TNLP':'TMT','AAPL':'TMT','NVDC':'TMT','BERK':'Financials','VISA':'Financials','MSCD':'Financials',
+       'TCNO':'TMT','BIDI':'Financials','PAGS':'Financials','STNE':'Financials','VVAR':'Varejo','BTOW':'Varejo','LAME':'Varejo','NATU':'Consumo','HYPE':'Saúde',
+       'ESTC':'Educação','SEER':'Educação','YDUQ':'Educação','COGN':'Educação','ANIM':'Educação','CIEL':'Financials','BBSE':'Seguros','PSSA':'Seguros','SULA':'Seguros',
+       'IRBR':'Seguros','CXSE':'Seguros','WIZS':'Seguros','EQTL':'Utilities','SBSP':'Utilities','CSMG':'Utilities','SAPR':'Utilities','RAIL':'Transporte','RENT':'Transporte',
+       'MOVI':'Transporte','CCRO':'Transporte','ECOR':'Transporte','STBP':'Transporte','AZUL':'Transporte','GOLL':'Transporte','EMBR':'Industrials','RDOR':'Saúde',
+       'HAPV':'Saúde','FLRY':'Saúde','QUAL':'Saúde','ODPV':'Saúde','RADL':'Saúde','PNVL':'Saúde','VIVT':'TMT','TIMS':'TMT','TOTS':'TMT','LWSA':'TMT','CASH':'TMT',
+       'ITUB':'Financials','BBDC':'Financials','BBAS':'Financials','SANB':'Financials','BPAC':'Financials','ITSA':'Financials','B3SA':'Financials','BRSR':'Financials',
+       'ABCB':'Financials','MULT':'Malls','IGTI':'Malls','ALOS':'Malls','BRML':'Malls','LREN':'Varejo','MGLU':'Varejo','AMER':'Varejo','ARZZ':'Varejo','SOMA':'Varejo',
+       'AZZA':'Varejo','VIIA':'Varejo','BHIA':'Varejo','PETZ':'Varejo','ASAI':'Varejo','CRFB':'Varejo','PCAR':'Varejo','GMAT':'Varejo','VULC':'Varejo','GRND':'Varejo',
+       'ALPA':'Varejo','CEAB':'Varejo','GUAR':'Varejo','ABEV':'Consumo','JBSS':'Consumo','BRFS':'Consumo','MRFG':'Consumo','BEEF':'Consumo','MDIA':'Consumo','CAML':'Consumo',
+       'SMTO':'Commodities','SLCE':'Commodities','PETR':'Commodities','PRIO':'Commodities','VALE':'Commodities','GGBR':'Commodities','GOAU':'Commodities','CSNA':'Commodities',
+       'USIM':'Commodities','SUZB':'Commodities','KLBN':'Commodities','BRKM':'Commodities','UNIP':'Commodities','CSAN':'Commodities','UGPA':'Commodities','VBBR':'Commodities',
+       'RECV':'Commodities','ENEV':'Utilities','CPLE':'Utilities','CMIG':'Utilities','ELET':'Utilities','AXIA':'Utilities','EGIE':'Utilities','TAEE':'Utilities','ALUP':'Utilities',
+       'AURE':'Utilities','NEOE':'Utilities','CPFE':'Utilities','ENGI':'Utilities','TRPL':'Utilities','ISAE':'Utilities','CYRE':'Real Estate','MRVE':'Real Estate',
+       'EVEN':'Real Estate','DIRR':'Real Estate','CURY':'Real Estate','TEND':'Real Estate','PLPL':'Real Estate','GFSA':'Real Estate','RAPT':'Industrials','POMO':'Industrials',
+       'TUPY':'Industrials','PRNR':'Industrials','RANI':'Commodities','KEPL':'Industrials','SHUL':'Industrials','FRAS':'Industrials','MYPK':'Industrials','LEVE':'Industrials','INTB':'TMT'}
+for k, v in MAN.items():
+    if SEC.get(k, 'Outros') == 'Outros' or k in ('PRNR',): SEC[k] = v
+P['sec'] = SEC
+json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 VIEWS = [('p', 'performance', 'Performance'), ('a', 'attribution', 'Attribution'), ('e', 'empresas', 'Empresas'), ('l', 'passivo', 'Passivo'), ('g', None, 'Gestora')]
 tabs = '\n'.join(f'    <button role="tab" id="t-{v}" aria-selected="{"true" if v=="p" else "false"}" data-v="{v}">{l}</button>' for v, h, l in VIEWS)

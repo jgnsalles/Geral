@@ -27,3 +27,9 @@ Não versionado aqui (≈700 KB); regenerar com os scripts de `gestoras_performa
 1. `univ.py raw/b3 vol_anual.pkl` → volume anual por ticker no COTAHIST; universo = 250 mais negociadas de cada ano + tudo que os fundos já tiveram + Ibovespa e Small atuais (API de índices da B3).
 2. `b3_prices.py` + `b3_events.py` + `b3_returns.py` (eventos deduplicados; grupamento/desdobramento não registrado inferido pelo salto diário; quedas reais mantidas).
 3. `emp_build.py ret.pkl nomes.json tags.json raw/b3ev perf.json empresas.json` → série por empresa (classe mais negociada nos 12 meses anteriores), inclusive as que saíram da bolsa.
+
+## Setores, LatAm e Fourth Sail
+- `sectors.py` (classificação da B3 via API) + `sectors_cvm.py` (CVM: FCA ticker → CNPJ → SETOR_ATIV) → baldes; mapa manual em `build_diag.py` para o que faltar e para ações estrangeiras.
+- `foreign.py raw/cda foreign.pkl` (bloco 7 da CDA de todos os fundos) → `foreign_prices.py`: preço mensal em R$ de ações estrangeiras = mediana de valor ÷ quantidade entre fundos (sem dividendos); cota dos fundos offshore Fourth Sail (via fundos da Tordesilhas).
+- `prep_la.py`: attribution da Onyx LatAm (30.181.837) e do fundo brasileiro da Apo (41.333.289), Brasil + exterior.
+- B3: saltos diários ≥ 50× ou ≤ 1/50 = mudança de cotação (lote de mil → unidade), neutralizados.

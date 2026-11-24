@@ -83,9 +83,9 @@ const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", 
 (PF.la||[]).forEach((f,k)=>{ const id='la'+k, rr=new Array(PN).fill(null); f.r.forEach((v,j)=>rr[f.o+j]=dec(v)); const last=f.o+f.r.length-1;
   let bm=null; if(f.bm){ bm=new Array(PN).fill(null); f.bm.forEach((v,j)=>bm[f.o+j]=dec(v)); }
   const pl=new Array(PN).fill(null); if(f.pl!=null) pl[last]=f.pl;
-  PR[id]={o:f.o, last, r:rr, rB:rr, pl, nf:new Array(PN).fill(1), f:[], bm, bmB:bm, bmn:f.bmn, usd:!!f.cur};
-  const nm=/FUNDAMENTA/.test(f.n)?'Fundamenta LatAm (Gama)':/EXPLORITAS/.test(f.n)?'Exploritas Marathon':`${f.g.replace(/ Equity$/,'')} LatAm`;
-  const g={id, n:nm, rs:f.n, cnpj:f.c, reg:f.cur?'LatAm · factsheet US$ líquido':'LatAm', gid:f.gid}; PG.push(g); PGI[id]=g; PSEL.add(id); });
+  PR[id]={o:f.o, last, r:rr, rB:rr, pl, nf:new Array(PN).fill(1), f:[], bm, bmB:bm, bmn:f.bmn, usd:!!f.cur, akey:f.gid||null};
+  const nm=f.nm||(/FUNDAMENTA/.test(f.n)?'Fundamenta LatAm (Gama)':/EXPLORITAS/.test(f.n)?'Exploritas Marathon':`${f.g.replace(/ Equity$/,'')} LatAm`);
+  const g={id, n:nm, rs:f.n, cnpj:f.c, reg:f.ls?'LatAm · long short (cota offshore)':f.cur?'LatAm · factsheet US$ líquido':'LatAm', gid:f.gid}; PG.push(g); PGI[id]=g; PSEL.add(id); });
 function applyCur(){ const U=S.cur==='USD';
   IBV=U?toUSD(IBVB):IBVB; CDI=U?toUSD(CDIB):CDIB; IBS.r=IBV; CDS.r=CDI;
   Object.values(PR).forEach(p=>{ if(p.usd){ // série já em dólar: em reais converte ao contrário
@@ -127,13 +127,14 @@ function renderP(){
   $('p-win').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.pwin=+x.dataset.v; renderP();};
   // desde o início do Apo (jul/22): mesma janela para todos
   const AO=(Object.values(PR).find(p=>p.usd)||{}).o, AN=AO!=null&&b>=AO?b-AO+1:null;
-  const hz=(r,bn)=>({...Object.fromEntries(PH.map(([n])=>[n, b-n+1>=0?pstats(r,b-n+1,b,bn):null])), apo:AN?pstats(r,AO,b,bn):null});
+  const hz=(r,bn,e=b)=>({...Object.fromEntries(PH.map(([n])=>[n, e-n+1>=0?pstats(r,e-n+1,e,bn):null])), apo:AN&&e>=AO?pstats(r,AO,e,bn):null});
   const acell=s=>`<td style="border-left:1px solid var(--border)" title="${s&&s.ex!=null?'vs índice: '+(s.ex>=0?'+':'−')+nf(Math.abs(s.ex*100),1)+' p.p. a.a.':''}">${s?`<b>${pc(s.ann??s.ret)}</b><small class="muted" style="display:block;font-size:11px">${pc(s.ret,0)} total</small>`:pc(null)}</td>`;
   const rows=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>{ const p=PR[g.id]; const a=W_?b-W_+1:Math.max(p.o,0); const BN=p.bm||IBV; const s=b<=p.last&&b>=p.o?pstats(p.r,a,b,BN):null;
       // "desde o início": primeira sequência contínua até b
       let st=s; if(!W_ && b>=p.o){ let a2=b; while(a2>p.o && p.r[a2-1]!=null) a2--; st=p.r[b]!=null?pstats(p.r,a2,b,BN):null; if(st) st.a=a2; }
-      return {g, p, s:st, h:hz(p.r,BN), pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
-    .filter(o=>o.p.r[b]!=null && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
+      const e=p.r[b]!=null?b:(p.last<b&&p.last>=b-3&&p.r[p.last]!=null?p.last:null);
+      return {g, p, s:st, h:e==null?{}:hz(p.r,BN,e), e, pl:lastPL(p,Math.min(b,p.last)), live:b<=p.last+2}; })
+    .filter(o=>o.e!=null && (o.pl||0)>=minpl && (!fq||o.g.n.toLowerCase().includes(fq)||o.g.rs.toLowerCase().includes(fq)));
   const rowsW=rows.filter(o=>o.s);
   const a=W_?b-W_+1:null; const ib=W_?pstats(IBV,a,b):null, cd=W_?pstats(CDI,a,b):null;
   $('p-h').textContent=W_?`Retorno de ${pmlong(a)} a ${pmlong(b)}`:`Retorno desde o início, até ${pmlong(b)}`;
@@ -149,7 +150,7 @@ function renderP(){
   const ann=!W_||W_>=12; const WL=W_?PWIN.find(x=>x[0]===W_)[1]:'desde início';
   const cols=[
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
-    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:o.g.gid&&GI[o.g.gid]?`<a href="#g-${o.g.gid}" data-open="${o.g.gid}" title="${esc(o.g.rs)}">${esc(o.g.n)}</a>`:`<span title="${esc(o.g.rs)}">${esc(o.g.n)}</span>`}${o.g.reg?` <span class="chip new" title="${o.p.bmn?'comparado ao '+esc(o.p.bmn)+' do factsheet':'comparado ao Ibovespa'}">${o.g.reg}</span>`:GI[o.g.id]?'':' <span class="chip" title="fora do painel de carteiras">só performance</span>'}${o.live?'':' <span class="chip">sem dados recentes</span>'}</td>`},
+    {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:o.g.gid&&GI[o.g.gid]?`<a href="#g-${o.g.gid}" data-open="${o.g.gid}" title="${esc(o.g.rs)}">${esc(o.g.n)}</a>`:`<span title="${esc(o.g.rs)}">${esc(o.g.n)}</span>`}${o.g.reg?` <span class="chip new" title="${o.p.bmn?'comparado ao '+esc(o.p.bmn)+' do factsheet':'comparado ao Ibovespa'}">${o.g.reg}</span>`:GI[o.g.id]?'':' <span class="chip" title="fora do painel de carteiras">só performance</span>'}${o.e!=null&&o.e<b?` <span class="chip" title="última cota disponível">até ${pml(o.e)}</span>`:''}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
     ...PH.map(([n,l])=>({k:'h'+n,l:n>12?`${l}<br><small>a.a.</small>`:l,v:o=>hv(o.h[n],n),f:o=>hcell(o.h[n],n,n===36)})),
     ...(AN?[{k:'apo',l:`Desde ${pml(AO)}<br><small>início Apo · a.a.</small>`,v:o=>o.h.apo?(o.h.apo.ann??o.h.apo.ret):null,f:o=>acell(o.h.apo)}]:[]),

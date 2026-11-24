@@ -7,6 +7,8 @@ import sys, os, re, json, glob, zipfile, io
 import pandas as pd, numpy as np
 EN, PD, GJ, FRH, OUT = sys.argv[1:6]
 E = pd.read_pickle(EN)
+_xe = os.environ.get('XE')
+if _xe: E = pd.concat([E, pd.read_pickle(_xe)[['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant']]], ignore_index=True)
 keep = set(E.CNPJ_FUNDO)
 CAT = [  # (rótulo, colunas)
     ('PF varejo', ['PF_VAREJO']), ('PF private', ['PF_PB']),
