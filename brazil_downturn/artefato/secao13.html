@@ -1,0 +1,24 @@
+
+ <h2 class="chap" id="pf">13. Que pessoa física é essa: dinheiro pulverizado ou cheque grande</h2>
+ <p class="chapsub">O Perfil Mensal também traz o número de cotistas de cada tipo. Dividindo o dinheiro pelo número de pessoas, dá para ver se a entrada veio de muita gente com pouco ou de pouca gente com muito. O fluxo de cada gestora no trimestre é separado em duas partes: <b>cotistas novos</b> (variação do número de cotistas × posição média) e <b>quem já estava</b> (o resto: aportes e resgates de quem já era cotista). Cada entrada é classificada pelo cheque por cotista novo: pulverizado (até R$ 50 mil), médio (R$ 50 mil a 1 mi), grande (acima de R$ 1 mi) ou de quem já estava (entrou dinheiro sem aumentar o número de cotistas).</p>
+ <figure>
+  <figcaption class="ft" id="ft-pf">Cotistas e posição média</figcaption>
+  <div class="seg" role="group" aria-label="Tipo de pessoa" id="seg-pf"></div>
+  <div class="two" style="margin-top:10px"><div><h4>Número de cotistas</h4><div class="chart" id="pf-n"></div></div><div><h4>Posição média por cotista (R$ mil)</h4><div class="chart" id="pf-a"></div></div></div>
+  <p class="note">Número de cotistas encadeado: de um trimestre para o outro, só conta a variação dentro das mesmas gestoras, para que entrada e saída de gestoras do universo não pareçam ganho ou perda de cotistas. Contagens com erro de preenchimento (picos isolados, zeros, blocos 20 vezes acima do normal do fundo) foram corrigidas.</p>
+ </figure>
+ <figure>
+  <figcaption class="ft">Fluxo acumulado: cotistas novos e quem já estava</figcaption>
+  <figcaption class="fs">Soma desde 2019T2, em R$ bi. Só gestora-trimestres com contagem consistente (a posição média por cotista não mudou mais que 3 vezes).</figcaption>
+  <div class="legend"><span><i class="ln" style="background:var(--in)"></i>Cotistas novos</span><span><i class="ln" style="background:var(--out)"></i>Quem já estava</span><span><i class="ln" style="background:var(--ink)"></i>Total</span></div>
+  <div class="chart" id="pf-acc"></div>
+ </figure>
+ <figure>
+  <figcaption class="ft">De onde vêm as entradas: tamanho do cheque</figcaption>
+  <figcaption class="fs">Composição das entradas (gestoras com fluxo positivo do tipo) por cheque por cotista novo, em todos os trimestres e nos dois estados do regime escolhido na barra.</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Pulverizado (até R$ 50 mil)</span><span><i style="background:#7fb0ea"></i>Médio (R$ 50 mil a 1 mi)</span><span><i style="background:var(--out)"></i>Grande (acima de R$ 1 mi)</span><span><i style="background:var(--ink2)"></i>Quem já estava aumentou</span><span><i style="background:var(--grid)"></i>Contagem inconsistente</span></div>
+  <div class="chart" id="pf-band"></div>
+  <div class="sowhat"><b>E daí</b><span>Há duas pessoas físicas diferentes. A das plataformas (conta e ordem) é pulverizada: 51% das entradas vêm de cotistas novos com menos de R$ 50 mil cada, a posição média fica entre R$ 24 e 60 mil, e o número de cotistas subiu de 390 mil (2019) para 890 mil (2021) e caiu para 340 mil (2026). Com isso as plataformas acumularam +R$ 14 bi até 2021 e devolveram tudo. O PF private e o "varejo direto" são de cheque grande: 67% e 72% das entradas vêm de cheques acima de R$ 1 mi por cotista novo, e outros 20% a 23% de quem já estava aumentando a posição. O private tem ~4 mil cotistas com R$ 5 a 12 mi cada; o número cai e a posição média sobe.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>São 19 a 34 cotistas não residentes no universo inteiro, quase sempre 1 a 5 por gestora, com posição média de R$ 6 a 33 mi. 85% das entradas são cheques acima de R$ 1 mi e o resto é quem já estava aumentando. Não existe estrangeiro pulverizado nesses fundos: cada movimento é uma decisão de uma instituição.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>O dinheiro que entra na bolsa ruim é de cheque grande. Com o Ibovespa negativo em 12 meses, 83% das entradas do varejo direto foram cheques acima de R$ 1 mi por cotista novo (Alaska concentrou R$ 3,1 bi), e no PF private 71%, mais 23% de quem já estava. As plataformas continuam pulverizadas (56%), mas no saldo saem: −R$ 4,4 bi pela saída de cotistas. A pessoa física que compra na queda é rica e concentrada, não o pequeno investidor.</span></div>
+ </figure>

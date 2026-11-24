@@ -142,6 +142,7 @@ def vec(cnpj, ym, gid, r8, depth, seen, mult=1.0):
         if h in seen: out['sem_cda'] += fsh * w; continue
         if (hg and hg == gid) or (hr and hr == r8):
             if (h, ym) in PSET: continue          # contado no próprio cotista
+            REC.add((gid, ym, h))
             sub = vec(h, ym, gid, r8, depth + 1, seen | {h}, mult * fsh * w)
             for k in OUTK: out[k] += fsh * w * sub[k]
         else:
@@ -150,7 +151,7 @@ def vec(cnpj, ym, gid, r8, depth, seen, mult=1.0):
             out[cat] += fsh * w
             EXTLOG.append((cnpj, ym, h, hr, cat, fsh * w * mult * CUR[0]))
     return out
-EXTLOG, CUR, VV = [], [0.0], []
+EXTLOG, CUR, VV, REC = [], [0.0], [], set()
 for c, y, g, r, pl in zip(M.CNPJ_FUNDO, M.ym, M.gid, M.r8, M.pl):
     CUR[0] = pl; VV.append(vec(c, y, g, r, 0, {c}))
 EXT = pd.DataFrame(EXTLOG, columns=['inv', 'ym', 'holder', 'hr8', 'cat', 'v'])
@@ -354,7 +355,120 @@ for k in TT:
                         top3_rec=round(f[f > 0].nlargest(3).sum() / f[f > 0].sum(), 3) if (f > 0).any() else None)
 out['tri'] = TQ
 out['estimados'] = [str(pd.Period(m, 'M').asfreq('Q')) for m in EST_Q]
-json.dump(out, open(SAIDA, 'w'), ensure_ascii=False, separators=(',', ':'), default=lambda o: o.item() if hasattr(o, 'item') else str(o))
+
+# ---------------- pessoa física: número de cotistas, posição média, cotistas novos x quem já estava, tamanho do cheque
+NPF = pd.read_pickle(os.path.join(OUT, 'cotistas_pf.pkl')).sort_values(['CNPJ_FUNDO', 'ym'])
+# limpeza: valor isolado > 5x os dois vizinhos (ou zero entre vizinhos > 1000) é erro de preenchimento -> média dos vizinhos
+for c in ['n_private', 'n_varejo', 'n_plataformas', 'n_estrangeiro']:
+    g = NPF.groupby('CNPJ_FUNDO')[c]; a, b = g.shift(1), g.shift(-1); v = NPF[c]
+    nb = pd.concat([a, b], axis=1)
+    spike = (v > 500) & (v > 5 * nb.max(axis=1).fillna(0))
+    hole = (v == 0) & (nb.min(axis=1) > 1000)
+    block = (v > 1000) & (v > 20 * g.transform('median'))   # bloco de trimestres com contagem errada (ex.: 19 -> 6.315 -> 100)
+    bad = spike | hole | block
+    NPF.loc[bad & ~block, c] = nb[bad & ~block].mean(axis=1).round()
+    NPF[c] = NPF[c].astype(float); NPF.loc[block, c] = g.transform('median')[block].round()
+    print('contagem corrigida', c, int(bad.sum()))
+PFK = ['private', 'varejo', 'plataformas', 'estrangeiro']
+cnt = M[['CNPJ_FUNDO', 'ym', 'gid']].merge(NPF, on=['CNPJ_FUNDO', 'ym'], how='left')
+rec = pd.DataFrame(list(REC), columns=['gid', 'ym', 'CNPJ_FUNDO']).merge(NPF, on=['CNPJ_FUNDO', 'ym'], how='left')
+NC = pd.concat([cnt, rec]).groupby(['gid', 'ym'])[['n_' + k for k in PFK]].sum().reset_index()
+NC['q'] = pd.PeriodIndex(NC.ym, freq='M').asfreq('Q').astype(str)
+Q = Q.merge(NC[['gid', 'q'] + ['n_' + k for k in PFK]], on=['gid', 'q'], how='left').sort_values(['gid', 'q'])
+BANDS = [('pulverizado', 0, 50e3), ('medio', 50e3, 1e6), ('grande', 1e6, np.inf), ('existentes', 0, 0), ('inconsistente', 0, 0)]
+pf = {}
+for k in PFK:
+    Q['n_' + k + '_ant'] = Q.groupby('gid')['n_' + k].shift(); Q.loc[Q.q != Q.groupby('gid').q.shift().map(lambda z: str(pd.Period(z, 'Q') + 1) if isinstance(z, str) else ''), 'n_' + k + '_ant'] = np.nan
+    a0 = Q[k + '_ant'] / Q['n_' + k + '_ant'].replace(0, np.nan)
+    dN = Q['n_' + k] - Q['n_' + k + '_ant']
+    # contagem consistente: sem reclassificação de cotistas (número muda muito sem o dinheiro mudar);
+    # relação nova (menos de 30 cotistas antes): o cheque é a posição do fim dividida pelos cotistas novos
+    a1 = Q[k] / Q['n_' + k].replace(0, np.nan)
+    rat = a1 / a0
+    novo = Q['n_' + k + '_ant'].fillna(0) < 30
+    # reclassificação = o número de cotistas muda mais de 3x e o dinheiro não acompanha (fica entre metade e o dobro)
+    cr = Q['n_' + k] / Q['n_' + k + '_ant'].replace(0, np.nan)
+    mr = Q[k] / (Q[k + '_ant'] * (1 + Q.rq.fillna(0))).replace(0, np.nan)
+    recl = ((cr > 3) | (cr < 1 / 3)) & mr.between(0.5, 2)
+    okc = (novo & (Q['n_' + k].fillna(0) > 0)) | (~novo & cr.notna() & ~recl)
+    dN = dN.where(~novo, Q['n_' + k] - Q['n_' + k + '_ant'].fillna(0))
+    dN = dN.where(okc)
+    Q['okc_' + k] = okc
+    ext = (dN * a0 * (1 + Q.rq.fillna(0)))
+    ext = ext.where(~novo, Q['f_' + k])                      # relação nova: todo o dinheiro é de cotista novo
+    Q['ext_' + k] = ext.where(okc)
+    Q['int_' + k] = (Q['f_' + k] - Q['ext_' + k]).where(okc)
+    Q['dN_' + k] = dN
+    tk = Q['f_' + k] / dN
+    # cheque da entrada: R$ por cotista novo líquido; entrada sem cotista novo = grande cheque (quem já estava aumentou)
+    band = np.where(Q['f_' + k] <= 0, None, np.where(dN.isna(), 'inconsistente', np.where(dN <= 0, 'existentes', np.where(tk < 50e3, 'pulverizado', np.where(tk < 1e6, 'medio', 'grande')))))
+    Q['band_' + k] = band
+    rows = []
+    for q, x in Q.groupby('q'):
+        x2 = x[x['n_' + k].notna()]
+        f = x2['f_' + k]
+        r = dict(q=q, n=int(x2['n_' + k].sum()), h=round(x2[k].sum() / 1e9, 3), f=round(f.sum() / 1e9, 3),
+                 ext=round(x2['ext_' + k].sum() / 1e9, 3), int=round(x2['int_' + k].sum() / 1e9, 3),
+                 dN=int(x2['dN_' + k].sum()) if x2['dN_' + k].notna().any() else None)
+        x3 = x2[x2['okc_' + k].fillna(False).astype(bool)]   # só contagem consistente
+        r['pos_media_mil'] = round(x3[k].sum() / max(1, x3['n_' + k].sum()) / 1e3, 1)
+        for b, _, _ in BANDS: r[b] = round(x2.loc[x2['band_' + k] == b, 'f_' + k].sum() / 1e9, 3)
+        rows.append(r)
+    st = {}
+    for rg in REG:
+        st[rg] = {}
+        for stt in ('alta', 'baixa'):
+            x = Q[(Q['st_' + rg] == stt) & Q['n_' + k].notna()]
+            fpos = x['f_' + k].clip(lower=0).sum()
+            st[rg][stt] = {b: round(x.loc[x['band_' + k] == b, 'f_' + k].sum() / fpos, 3) if fpos > 0 else None for b, _, _ in BANDS} | dict(
+                ext_bi=round(x['ext_' + k].sum() / 1e9, 2), int_bi=round(x['int_' + k].sum() / 1e9, 2), f_bi=round(x['f_' + k].sum() / 1e9, 2), entrada_bi=round(fpos / 1e9, 2))
+    x = Q[Q['n_' + k].notna()]; fpos = x['f_' + k].clip(lower=0).sum()
+    st['todos'] = {b: round(x.loc[x['band_' + k] == b, 'f_' + k].sum() / fpos, 3) for b, _, _ in BANDS} | dict(
+        ext_bi=round(x['ext_' + k].sum() / 1e9, 2), int_bi=round(x['int_' + k].sum() / 1e9, 2), f_bi=round(x['f_' + k].sum() / 1e9, 2), entrada_bi=round(fpos / 1e9, 2))
+    # número de cotistas encadeado: variação só entre as mesmas gestoras de um trimestre para o outro (entrada e saída do universo não mexem)
+    pv = Q.pivot_table(index='gid', columns='q', values='n_' + k, aggfunc='sum')
+    qs = sorted(pv.columns); idx = {qs[0]: float(pv[qs[0]].sum())}
+    for a_, b_ in zip(qs, qs[1:]):
+        both = pv[a_].notna() & pv[b_].notna() & (pv[a_] > 0)
+        idx[b_] = idx[a_] * (pv.loc[both, b_].sum() / pv.loc[both, a_].sum()) if both.any() else idx[a_]
+    # posição média encadeada: mesma ideia, só gestoras presentes e com contagem consistente nos dois trimestres
+    ok = Q[Q['okc_' + k].fillna(False).astype(bool) | Q['n_' + k + '_ant'].isna()]
+    ph = ok.pivot_table(index='gid', columns='q', values=k, aggfunc='sum'); pn = ok.pivot_table(index='gid', columns='q', values='n_' + k, aggfunc='sum')
+    q0 = qs[0]; a0_ = ph[q0].sum() / max(1, pn[q0].sum()); ida = {q0: a0_}
+    for a_, b_ in zip(qs, qs[1:]):
+        if a_ not in ph or b_ not in ph: ida[b_] = ida[a_]; continue
+        both = ph[a_].notna() & ph[b_].notna() & (pn[a_] > 0) & (pn[b_] > 0)
+        if both.any():
+            r_ = (ph.loc[both, b_].sum() / pn.loc[both, b_].sum()) / (ph.loc[both, a_].sum() / pn.loc[both, a_].sum())
+            ida[b_] = ida[a_] * r_
+        else: ida[b_] = ida[a_]
+    for r in rows:
+        r['n_enc'] = round(idx.get(r['q'], np.nan)); r['pos_enc_mil'] = round(ida.get(r['q'], np.nan) / 1e3, 1)
+    pf[k] = dict(serie=rows, estados=st)
+    # tabela trimestral: acrescenta cotistas novos e R$ por cotista novo
+    for q, d in out['tri'].get(k, {}).items():
+        xq = Q[Q.q == q].set_index('nome')
+        for lst in (d['rec'], d['saq']):
+            for r in lst:
+                if r['nome'] in xq.index:
+                    z = xq.loc[r['nome']]; z = z.iloc[0] if isinstance(z, pd.DataFrame) else z
+                    dn = z['dN_' + k]; r['dN'] = None if pd.isna(dn) else int(dn)
+                    r['tk_mil'] = None if (pd.isna(dn) or dn <= 0 or r['f_mi'] <= 0) else round(r['f_mi'] * 1e3 / dn, 1)
+                    r['band'] = z['band_' + k] if isinstance(z['band_' + k], str) else None
+out['pf'] = pf
+print('\npessoa física: entradas por tamanho do cheque (todos os trimestres) e cotistas novos x quem já estava (R$ bi):')
+print(pd.DataFrame({k: pf[k]['estados']['todos'] for k in PFK}).to_string())
+print(pd.DataFrame({k: {s2: pf[k]['estados']['ibov_12'][s2] for s2 in ('alta', 'baixa')} for k in PFK}).to_string())
+print(pd.DataFrame([{**{'q': r['q']}, **{c: r[c] for c in ('n', 'pos_media_mil', 'f', 'ext', 'int')}} for r in pf['varejo']['serie']]).iloc[::3].to_string())
+print(pd.DataFrame([{**{'q': r['q']}, **{c: r[c] for c in ('n', 'pos_media_mil', 'f', 'ext', 'int')}} for r in pf['private']['serie']]).iloc[::3].to_string())
+print(pd.DataFrame([{**{'q': r['q']}, **{c: r[c] for c in ('n', 'pos_media_mil', 'f', 'ext', 'int')}} for r in pf['plataformas']['serie']]).iloc[::3].to_string())
+def _limpa(o):   # JSON não aceita NaN/inf
+    if isinstance(o, dict): return {k: _limpa(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)): return [_limpa(v) for v in o]
+    if hasattr(o, 'item') and not isinstance(o, str): o = o.item()
+    if isinstance(o, float) and not np.isfinite(o): return None
+    return o
+json.dump(_limpa(out), open(SAIDA, 'w'), ensure_ascii=False, separators=(',', ':'), allow_nan=False, default=str)
 Q.to_pickle(os.path.join(OUT, 'passivo_trimestre.pkl'))
 
 # ---------------- resumo no terminal
