@@ -20,8 +20,13 @@ td.secbar{box-shadow:inset 3px 0 0 var(--c)}
 .sbar .tr{height:18px}
 .sbar .tr i{top:4px;height:10px}
 .sbar .tr .z{position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px dashed var(--muted)}
-.sbar .tr .mk.at{position:absolute;top:50%;transform:translate(-50%,-50%);font-size:11px;line-height:1;color:var(--ink)}
-.mk{font-weight:400;font-size:11px;color:var(--ink)}
+.sbar .tr .mk.at{position:absolute;top:50%;transform:translate(-50%,-50%);line-height:0}
+.sh{display:inline-block;width:9px;height:9px;vertical-align:middle;box-sizing:border-box}
+.sh.c{border-radius:50%}
+.sh.d{transform:rotate(45deg) scale(.85)}
+.sh.w{background:#fff;border:1.5px solid #000}
+.sh.k{background:#000;border:1.5px solid #fff}
+.mk{font-weight:400;line-height:0;display:inline-flex;align-items:center}
 .sbar .scen{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:2px 16px;font-size:11.5px;color:var(--muted);margin:-2px 0 8px;padding-left:2px}
 .sbar .scen b{color:var(--ink-2);font-weight:600}
 .sbar .tr .net{position:absolute;top:0;bottom:0;width:0;border-left:2.5px solid var(--ink);transform:translateX(-1px)}
