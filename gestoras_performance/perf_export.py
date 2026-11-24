@@ -77,7 +77,36 @@ E0 = P[P.eleg & P.r.notna() & P.pl_ant.gt(0)].copy()
 E0 = E0[(E0.r - E0.ym.map(IX.ibov)).abs().le(0.40) | E0.ym.map(IX.ibov).isna()]
 EL = E0[E0.la & ~E0.CNPJ_FUNDO.map(F.nome.map(dea).str.contains('TECHNOLOG|DISRUPT')).fillna(False).astype(bool)]  # ex-LatAm que mudou de mandato
 E = E0[~E0.ext & ~E0.la & E0.gid.notna()]
+PALL = P
 P = P[P.gid.notna() & ~P.ext & ~P.la]
+
+# ---------------- base LÍQUIDA (padrão): cota que o cotista recebe
+# Em vez do master, usa os FICs da própria gestora cujo fundo investido principal (>= 50% do PL do FIC, pela CDA) é um
+# master elegível (long only, Brasil) naquele mês; masters representados por esses FICs saem. Fundos sem FIC próprio
+# (o cotista aplica direto) ficam como estão: a cota já é líquida.
+NET = os.environ.get('NET', '1') == '1'
+if NET:
+    LK = pd.read_pickle(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'fic_links.pkl'))
+    LK = LK[LK.v > 0].sort_values('v').drop_duplicates(['CNPJ_FUNDO', 'ym'], keep='last')  # maior posição em cotas
+    fp = PALL[['CNPJ_FUNDO', 'ym', 'pl']]
+    LK = LK.merge(fp, on=['CNPJ_FUNDO', 'ym'], how='left'); LK['sh'] = LK.v / LK.pl
+    LK = LK[LK.sh >= 0.5]
+    LK['t'] = pd.PeriodIndex(LK.ym, freq='M').astype('int64')
+    OKM = set(map(tuple, E0[~E0.ext & ~E0.la][['CNPJ_FUNDO', 'ym']].values))
+    FC = PALL[PALL.fic & ~PALL.exclusivo & ~PALL.prev & ~PALL.indexado & ~PALL.ext & ~PALL.la & PALL.gid.notna()
+              & PALL.r.notna() & PALL.pl_ant.gt(0)].copy()
+    FC['t'] = pd.PeriodIndex(FC.ym, freq='M').astype('int64')
+    FC = pd.merge_asof(FC.sort_values('t'), LK[['CNPJ_FUNDO', 't', 'cota']].sort_values('t'), on='t', by='CNPJ_FUNDO',
+                       direction='nearest', tolerance=6)  # meses sem CDA: ligação do mês mais próximo (até 6 meses)
+    FC = FC[[ (c, y) in OKM for c, y in zip(FC.cota, FC.ym) ]]
+    FC = FC[(FC.r - FC.ym.map(IX.ibov)).abs().le(0.40) | FC.ym.map(IX.ibov).isna()]
+    rep = set(zip(FC.cota, FC.ym, FC.gid))
+    keepm = [ (c, y, g) not in rep for c, y, g in zip(E.CNPJ_FUNDO, E.ym, E.gid) ]
+    Em = E[keepm]
+    print('base líquida: FIC-mês', len(FC), '| masters substituídos', len(E) - len(Em), '| fundos diretos mantidos', len(Em))
+    wf = FC.pl_ant.sum(); wd = Em.pl_ant.sum()
+    print('peso dos FICs no total:', round(wf / (wf + wd), 3))
+    E = pd.concat([Em, FC.drop(columns=['t', 'cota'])], ignore_index=True)
 
 def rint(v):  # retorno em centésimos de ponto-base (1e-6), inteiro, ou None
     return None if v is None or not np.isfinite(v) else int(round(v * 1e6))
@@ -143,6 +172,8 @@ if os.path.exists(_man):
     for m in json.load(open(_man)):
         o = MI[m.pop('start')]
         n = min(len(m['r']), len(M) - o)
+        if NET and m.get('r_net'): m['r'] = m['r_net']; m['n'] = 'APO CAPITAL LATAM FUND LLC (offshore, classe B líquida)'
+        m.pop('r_net', None)
         m['r'], m['bm'] = m['r'][:n], m['bm'][:n]
         out['la'].append({**m, 'o': o})
 print('fundos LatAm:', [(f['n'][:40], f['g'], M[f['o']], f['pl']) for f in out['la']])

@@ -9,3 +9,5 @@ Artefato: https://claude.ai/artifact/FgEspc6hKKbuF83qguuiz1
 4. `assemble.py <html do artefato> perf.json perf_section.html perf_js.js saida.html`: injeta a aba e o bloco da página da gestora.
 
 0. `shorts.py raw/cda ibov_pts.json fundos_eleg.txt shorts.pkl`: posição vendida por fundo-mês a partir da CDA (futuro de Ibovespa vendido + ações tomadas em aluguel), usada para excluir long biased (mediana 12m ≥ 10% do PL).
+
+Base líquida (padrão, `NET=1`): `fic_links.py raw/cda fics.txt fic_links.pkl` liga cada FIC ao fundo em que investe (bloco 2 da CDA); o retorno usa a cota dos FICs da própria gestora que alimentam masters elegíveis, e a cota do fundo direto quando não há FIC. `NET=0` volta para a cota dos masters.
