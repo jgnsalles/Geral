@@ -97,6 +97,28 @@ S.pend=PLAST; S.pwin=36; S.psel=null;
 $('p-end').addEventListener('change',()=>{S.pend=+$('p-end').value; renderP();});
 const curSeg=(el,cb)=>{ el.innerHTML=[['USD','US$'],['BRL','R$']].map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.cur===v}">${l}</button>`).join('');
   el.onclick=e=>{const x=e.target.closest('button'); if(!x||x.dataset.v===S.cur) return; S.cur=x.dataset.v; applyCur(); cb();}; };
+// quartis: a tabela é dividida em 4 grupos pela coluna de ordenação; cada célula de retorno ganha a cor do seu quartil naquela coluna
+const QLBL=['1º quartil','2º quartil','3º quartil','4º quartil'];
+function qOf(vals){ // vals: Map id->v (maior = melhor); devolve Map id->1..4
+  const v=[...vals].filter(([,x])=>x!=null&&isFinite(x)).sort((a,b)=>b[1]-a[1]), n=v.length, q=new Map();
+  v.forEach(([id],k)=>q.set(id, Math.min(4, Math.floor(k*4/n)+1))); return q; }
+function quartis(cols, rows){
+  const tb=$('p-tbl').tBodies[0]; if(!tb) return; const byId=new Map(rows.map(o=>[o.g.id,o]));
+  const trs=[...tb.rows]; const ncol=cols.length;
+  // cor por coluna de retorno (horizontes, desde o Apo e vs Ibov)
+  cols.forEach((c,ci)=>{ if(!/^h\d+$|^apo$|^ex$/.test(c.k)) return; const q=qOf(new Map(rows.map(o=>[o.g.id,c.v(o)])));
+    trs.forEach(tr=>{ const k=q.get(tr.dataset.g); const td=tr.cells[ci]; if(td&&k) td.classList.add('qc'+k); }); });
+  // grupos pela coluna ordenada (só se for numérica de "maior = melhor" ou "menor = melhor")
+  const st=S.sort['p-tbl'], c=cols.find(x=>x.k===st.k); if(!c||!c.v||['g','sel'].includes(c.k)) return;
+  const vals=new Map(rows.map(o=>[o.g.id, c.v(o)==null?null:c.v(o)*(st.dir<0?1:-1)])); const q=qOf(vals);
+  const fmtv=v=>c.k==='beta'?nf(v,2):c.k==='pl'?plmi(v):(c.k==='ex'?pcp(v):pc(v));
+  let last=null;
+  trs.forEach(tr=>{ const k=q.get(tr.dataset.g)||0; if(k===last) return; last=k;
+    const ids=[...q].filter(([,x])=>x===k).map(([id])=>id), vs=ids.map(id=>c.v(byId.get(id))).filter(x=>x!=null).sort((a,b)=>a-b);
+    const med=vs.length?vs[Math.floor(vs.length/2)]:null;
+    const lbl=k?`<b>${QLBL[k-1]}</b> · ${ids.length} ${ids.length===1?'linha':'linhas'} · ${c.l.replace(/<br>.*$/,'').replace(/<[^>]+>/g,'')}: de ${fmtv(vs[0])} a ${fmtv(vs[vs.length-1])} · mediana ${fmtv(med)}`:`<b>Sem dado nesta coluna</b>`;
+    tr.insertAdjacentHTML('beforebegin', `<tr class="qhead q${k}"><td colspan="${ncol}" class="l">${lbl}</td></tr>`); });
+}
 function renderP(){
   const b=S.pend, W_=S.pwin, minpl=+$('p-min').value, fq=$('p-q').value.trim().toLowerCase();
   $('p-end').innerHTML=''; for(let i=PN-1;i>=12;i--) if(IBV[i]!=null) $('p-end').add(new Option(pmlong(i),i)); $('p-end').value=b;
@@ -141,6 +163,7 @@ function renderP(){
   if(rows.length) sTable('p-tbl', cols, rows, 'h36', o=>`data-g="${o.g.id}"`, 1e9, renderP);
   else $('p-tbl').innerHTML='<tbody><tr><td class="l empty">Nenhuma gestora com série completa nessa janela.</td></tr></tbody>';
   $('p-tbl').querySelectorAll('tr.link').forEach(tr=>tr.classList.remove('link'));
+  if(rows.length) quartis(cols, rows);
   if(rows.length){ const ref=(nm,r)=>{ const h=hz(r,null), s2=W_?pstats(r,b-W_+1,b,null):null;
       return `<tr style="background:var(--surface-2)"><td></td><td class="l" style="font-weight:600">${nm}</td><td></td>${PH.map(([n])=>hcell(h[n],n,n===36)).join('')}${AN?acell(h.apo):''}<td></td><td class="muted">${s2&&s2.vol!=null?pct(s2.vol,1):'–'}</td><td>${pc(s2?s2.mdd:null,0)}</td><td></td></tr>`; };
     $('p-tbl').tHead.insertAdjacentHTML('beforeend', ref('Ibovespa',IBV)+ref('CDI',CDI)); }

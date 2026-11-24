@@ -1,3 +1,12 @@
+<style>
+#p-tbl tr.qhead td{background:var(--surface-2);font-size:12px;color:var(--ink-2);padding:7px 10px;border-top:2px solid var(--border-strong);position:static}
+#p-tbl tr.qhead.q1 td{box-shadow:inset 4px 0 0 var(--up)} #p-tbl tr.qhead.q4 td{box-shadow:inset 4px 0 0 var(--down)}
+#p-tbl tr.qhead.q2 td{box-shadow:inset 4px 0 0 color-mix(in srgb,var(--up) 45%,transparent)} #p-tbl tr.qhead.q3 td{box-shadow:inset 4px 0 0 color-mix(in srgb,var(--down) 45%,transparent)}
+#p-tbl td.qc1{background:color-mix(in srgb,var(--up) 16%,transparent)} #p-tbl td.qc2{background:color-mix(in srgb,var(--up) 6%,transparent)}
+#p-tbl td.qc3{background:color-mix(in srgb,var(--down) 6%,transparent)} #p-tbl td.qc4{background:color-mix(in srgb,var(--down) 14%,transparent)}
+.qleg{display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin:2px 0 8px}
+.qleg i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+</style>
 <!-- ============ PERFORMANCE ============ -->
 <section id="v-p" hidden>
   <div class="bar">
@@ -11,7 +20,8 @@
   <div class="kpis" id="p-kpis"></div>
   <div class="card">
     <div class="hd"><h2>Ranking — Brasil e LatAm</h2><small>clique no nome para abrir a gestora · marque até 8 para comparar no gráfico</small></div>
-    <div class="tblwrap" style="max-height:620px;overflow-y:auto"><table id="p-tbl"></table></div>
+    <div class="qleg"><span>Grupos = quartis da coluna ordenada (clique em outro cabeçalho para reagrupar). Cor da célula = quartil naquela coluna:</span><span><i style="background:color-mix(in srgb,var(--up) 16%,transparent)"></i>1º</span><span><i style="background:color-mix(in srgb,var(--up) 6%,transparent)"></i>2º</span><span><i style="background:color-mix(in srgb,var(--down) 6%,transparent)"></i>3º</span><span><i style="background:color-mix(in srgb,var(--down) 14%,transparent)"></i>4º</span></div>
+    <div class="tblwrap" style="max-height:760px;overflow-y:auto"><table id="p-tbl"></table></div>
   </div>
   <div class="card">
     <div class="hd"><h2 id="p-ct">Retorno acumulado</h2><small id="p-cs"></small></div>
