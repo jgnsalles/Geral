@@ -45,7 +45,7 @@ X = X.merge(E[['CNPJ_FUNDO', 'ym', 'gid', 'pl']], on=['CNPJ_FUNDO', 'ym'])
 # percentuais podem vir em 0–100 ou 0–1: normaliza pela soma do fundo
 pc = ['p_' + c for c in NRC]
 s = X[pc].sum(axis=1)
-X = X[s > 0.5]
+X = X[(s > 0.5) & (X.pl > 0)]  # fundo-mês sem composição ou sem PL fica de fora
 X[pc] = X[pc].div(X[pc].sum(axis=1), axis=0)
 mx = X.maior.where(X.maior <= 1, X.maior / 100)
 X['maior'] = mx

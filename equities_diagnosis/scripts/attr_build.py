@@ -41,9 +41,16 @@ Hv = Hv[['CNPJ_FUNDO', 'ym', 'tk', 'root', 'w']]
 if X_L and os.path.exists(X_L):
     Lk = pd.read_pickle(X_L).merge(CP.pl.rename('plf').reset_index(), on=['CNPJ_FUNDO', 'ym'])
     Lk = Lk[Lk.plf > 0]; Lk['s'] = Lk.v / Lk.plf; Lk = Lk[(Lk.s > 0.005) & (Lk.s <= 1.5) & (Lk.cota != Lk.CNPJ_FUNDO)]
-    LT = Lk[['CNPJ_FUNDO', 'ym', 'cota', 's']].merge(Hv.rename(columns={'CNPJ_FUNDO': 'cota'}), on=['cota', 'ym'])
-    LT['w'] = LT.s * LT.w
-    Hv = pd.concat([Hv, LT[['CNPJ_FUNDO', 'ym', 'tk', 'root', 'w']]]).groupby(['CNPJ_FUNDO', 'ym', 'tk', 'root']).w.sum().reset_index()
+    # vários níveis (FIC -> FIC/feeder -> master, comum após a RCVM 175): repete a abertura até 5 vezes
+    Lk = Lk[['CNPJ_FUNDO', 'ym', 'cota', 's']].drop_duplicates(['CNPJ_FUNDO', 'ym', 'cota'])
+    H0 = Hv; Hc = Hv
+    for _ in range(5):
+        LT = Lk.merge(Hc.rename(columns={'CNPJ_FUNDO': 'cota'}), on=['cota', 'ym'])
+        LT['w'] = LT.s * LT.w
+        Hn = pd.concat([H0, LT[['CNPJ_FUNDO', 'ym', 'tk', 'root', 'w']]]).groupby(['CNPJ_FUNDO', 'ym', 'tk', 'root']).w.sum().reset_index()
+        if len(Hn) == len(Hc) and np.isclose(Hn.w.sum(), Hc.w.sum()): break
+        Hc = Hn
+    Hv = Hn
     print('posições vindas de look-through:', len(LT))
 # soma das posições acima de 100% do PL (master + look-through duplicados, alavancagem) é reescalada para 100%
 _tot = Hv.groupby(['CNPJ_FUNDO', 'ym']).w.transform('sum')
@@ -54,12 +61,15 @@ conf = (CP.conf.fillna(0) / CP.pl).rename('cw').reset_index()
 E = E[E.ym.isin(MI)].copy(); E['yp'] = E.ym.map(prev)
 E['a'] = E.pl_ant / E.groupby(['gid', 'ym']).pl_ant.transform('sum')
 cvd = cv.to_dict()
+cfd = (CP.conf.fillna(0) / CP.pl).to_dict()
 def src(f, yp):
-    if cvd.get((f, yp), 0) >= 0.5: return yp, False
+    sig = cfd.get((f, yp), 0) > 0.5
+    if not sig and cvd.get((f, yp), 0) >= 0.5: return yp, False
+    if not sig and cvd.get((f, yp), 0) >= 0.3: return yp, False  # carteira aberta, só pouco em ações: é real
     per = pd.Period(yp, 'M')
     for k in range(1, 7):
         y2 = str(per - k)
-        if cvd.get((f, y2), 0) >= 0.7: return y2, True
+        if cfd.get((f, y2), 0) < 0.2 and cvd.get((f, y2), 0) >= 0.3: return y2, True
     return yp, False
 sr = [src(f, y) for f, y in zip(E.CNPJ_FUNDO, E.yp)]
 E['ys'] = [x[0] for x in sr]; E['est'] = [x[1] for x in sr]

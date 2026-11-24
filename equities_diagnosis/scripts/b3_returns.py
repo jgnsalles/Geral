@@ -75,7 +75,7 @@ for tk, g in B.groupby('tk'):
         if Mu.iloc[k] != 1.0 or not (pv[k - 1] > 0) or D.iloc[k] > 0: continue
         q = pv[k] / pv[k - 1]
         if not (q > 0): continue
-        if q >= 50 or q <= 0.02:  # mudança de cotação (lote de mil -> unidade) ou evento enorme: neutraliza o dia
+        if q >= 8 or q <= 0.125:  # mudança de cotação (lote de mil -> unidade) ou evento não registrado: nenhuma ação real anda 8x num pregão
             Mu.iloc[k] = 1 / q; log['quote_change'] = log.get('quote_change', 0) + 1; continue
         if q >= 4:
             f = min(FF, key=lambda f: abs(math.log(q / f)))
