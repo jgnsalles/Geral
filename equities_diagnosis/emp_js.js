@@ -4,7 +4,7 @@
 let EM=null;
 const loadE=()=>EM?Promise.resolve(EM):fetch('empresas.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ EM=d; return d; });
 S.ew=12; S.ef=null; S.et=null; S.eu='all'; S.ev=5; S.esel=null;
-function eWin(){ const hi=PLAST; if(S.ew) return {a:Math.max(0,hi-S.ew+1), b:hi}; let a=S.ef??hi-11, b=S.et??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b}; }
+function eWin(){ const hi=PLAST; if(S.ew===-1) return {a:0,b:hi}; if(S.ew) return {a:Math.max(0,hi-S.ew+1), b:hi}; let a=S.ef??hi-11, b=S.et??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b}; }
 function eRet(e,a,b){ const U=S.cur==='USD'; let c=1, miss=0, n=0; const last=e.o+e.r.length-1;
   if(last<a||e.o>b) return null;
   for(let i=Math.max(a,e.o);i<=Math.min(b,last);i++){ const v=e.r[i-e.o]; if(v==null){ miss++; continue; } const fx=U&&FXR[i]!=null?FXR[i]:0; c*=(1+v/1e6)*(1+fx); n++; }

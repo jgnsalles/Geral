@@ -532,7 +532,7 @@ function renderGP(g){
 let AT=null, LP=null;
 const loadA=()=>AT?Promise.resolve(AT):fetch('attr.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ AT=d; return d; });
 const loadL=()=>LP?Promise.resolve(LP):fetch('passivo.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ LP=d; return d; });
-const AWIN=[[6,'6m'],[12,'1 ano'],[24,'2 anos'],[36,'3 anos'],[60,'5 anos'],[120,'10 anos'],[0,'Personalizada']];
+const AWIN=[[6,'6m'],[12,'1 ano'],[24,'2 anos'],[36,'3 anos'],[60,'5 anos'],[120,'10 anos'],[-1,'Desde o início'],[0,'Personalizada']];
 S.aw=36; S.af=null; S.at=null;
 // setores (classificação da B3 agrupada)
 const SECN=['Utilities','Financials','Seguros','Commodities','Consumo','Varejo','Industrials','Transporte','Saúde','Educação','Malls','Real Estate','TMT','Outros'];
@@ -572,6 +572,7 @@ function aCompute(gid,a,b){
   out.tot=G-1; out.m=b-a+1; out.rows=[...C.values()].map(e=>({...e, w:e.ws/(b-a+1), r:e.g-1}));
   if(out.n){ out.cov/=out.n; out.conf/=out.n; out.nop/=out.n; out.est/=out.n; } return out; }
 function aBounds(gid){ const p=PR[gid], rec=AT.g[attrKey(gid)]; const lo=Math.max(p.o, rec?rec.o:p.o), hi=Math.min(p.last, PLAST);
+  if(S.aw===-1) return {a:lo,b:hi,cut:false};
   if(S.aw){ const b=hi, a=Math.max(lo, b-S.aw+1); return {a,b,cut:b-S.aw+1<lo}; }
   let a=S.af??Math.max(lo,hi-35), b=S.at??hi; a=Math.max(lo,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b,cut:false,lo,hi}; }
 function renderA(){
@@ -677,7 +678,7 @@ $('dl-a').innerHTML=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>`<option value
 // ---------- ranking gestora × empresa
 function renderAR(){
   const hi=PLAST; let a,b;
-  if(S.aw){ b=hi; a=Math.max(0,b-S.aw+1); } else { a=S.af??hi-35; b=S.at??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); }
+  if(S.aw===-1){ b=hi; a=0; } else if(S.aw){ b=hi; a=Math.max(0,b-S.aw+1); } else { a=S.af??hi-35; b=S.at??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); }
   $('a-custom').hidden=S.aw!==0;
   if(S.aw===0){ const opt=(sel,v)=>{ sel.innerHTML=''; for(let i=hi;i>=0;i--) sel.add(new Option(pmlong(i),i)); sel.value=v; }; opt($('a-from'),a); opt($('a-to'),b);
     $('a-from').onchange=()=>{S.af=+$('a-from').value; renderA();}; $('a-to').onchange=()=>{S.at=+$('a-to').value; renderA();}; }
@@ -685,14 +686,14 @@ function renderAR(){
   const pairs=[], bySec={}; let ng=0;
   ids.forEach(id=>{ const p=PR[id], rec=AT.g[attrKey(id)]; const a2=Math.max(a,p.o,rec.o), b2=Math.min(b,p.last);
     if(b2<a2) return; const o=aCompute(id,a2,b2); if(o.err) return; ng++;
-    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); if(!mktOk(root)) return; pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:a2>a});
+    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); if(!mktOk(root)) return; pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:S.aw!==-1&&a2>a,a2});
       (bySec[sec]=bySec[sec]||{c:0,pos:0,neg:0,co:new Map()}); bySec[sec].c+=x.c; if(x.c>0) bySec[sec].pos+=x.c; else bySec[sec].neg+=x.c; bySec[sec].co.set(root,(bySec[sec].co.get(root)||0)+x.c); }); });
-  $('a-h').textContent=`Attribution · ${pml(a)} a ${pml(b)}`;
+  $('a-h').textContent=S.aw===-1?`Attribution · desde o início de cada gestora até ${pml(b)}`:`Attribution · ${pml(a)} a ${pml(b)}`;
   $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${new Set(pairs.map(x=>x.id)).size} gestoras${mktLbl()} · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;
   const f=S.asec, list=pairs.filter(x=>!f||x.sec===f).sort((x,y)=>y.c-x.c);
   const secs=SECN.filter(k=>bySec[k]);
   const mx=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg)));
-  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
+  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}${S.aw===-1?` <span class="muted" style="font-size:11px">desde ${pml(x.a2)}</span>`:''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
   const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
   const N=50;
   // cenários: saldo sem a(s) empresa(s) que mais somaram / mais tiraram no setor (somando todas as gestoras)
@@ -738,7 +739,7 @@ const MK=[['sem a maior','<span class="sh d w"></span>'],['sem as 3 maiores','<s
 let EM=null;
 const loadE=()=>EM?Promise.resolve(EM):fetch('empresas.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ EM=d; return d; });
 S.ew=12; S.ef=null; S.et=null; S.eu='all'; S.ev=5; S.esel=null;
-function eWin(){ const hi=PLAST; if(S.ew) return {a:Math.max(0,hi-S.ew+1), b:hi}; let a=S.ef??hi-11, b=S.et??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b}; }
+function eWin(){ const hi=PLAST; if(S.ew===-1) return {a:0,b:hi}; if(S.ew) return {a:Math.max(0,hi-S.ew+1), b:hi}; let a=S.ef??hi-11, b=S.et??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b}; }
 function eRet(e,a,b){ const U=S.cur==='USD'; let c=1, miss=0, n=0; const last=e.o+e.r.length-1;
   if(last<a||e.o>b) return null;
   for(let i=Math.max(a,e.o);i<=Math.min(b,last);i++){ const v=e.r[i-e.o]; if(v==null){ miss++; continue; } const fx=U&&FXR[i]!=null?FXR[i]:0; c*=(1+v/1e6)*(1+fx); n++; }
