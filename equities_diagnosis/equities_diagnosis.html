@@ -295,8 +295,7 @@ tr.mine td,tr[data-mine] td{background:color-mix(in srgb,var(--down) 5%,transpar
 <!-- ============ 4º QUARTIL ============ -->
 <section id="v-q" hidden>
   <div class="bar">
-    <div class="f"><span class="lbl">Grupo</span><span class="seg" id="q-grp"></span></div>
-    <div class="f"><span class="lbl">Janela da dissecação e do comportamento</span><span class="seg" id="q-win"></span></div>
+    <div class="f"><span class="lbl">Janela das seções 4 e 5</span><span class="seg" id="q-win"></span></div>
   </div>
   <div class="ghead"><div><h1 id="q-h">4º quartil</h1><div class="sub" id="q-sub"></div></div></div>
   <div id="q-body"><p class="loading">Carregando…</p></div>
@@ -870,13 +869,11 @@ function behav(key,a,b){ const rec=AT.g[key]; if(!rec) return null; const P=rec.
   return {n:nN?sN/nN:null, top:nN?sTop/nN:null, cov:nN?sCov/nN:null, ex:nN?sEx/nN:null, giro:nT>=Math.min(6,(b-a)/2)?sT/nT*12:null, hold:hs?hw/hs/12:null, m:nN}; }
 const yrs=v=>v==null||!isFinite(v)?'<span class="zero">–</span>':nf(v,1)+' a';
 function renderQ(){
-  $('q-grp').innerHTML=[[4,'Só 4º quartil'],[3,'3º e 4º quartis']].map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.qg===v}">${l}</button>`).join('');
-  $('q-grp').onclick=e=>{ const x=e.target.closest('button'); if(!x) return; S.qg=+x.dataset.v; renderQ(); };
   $('q-win').innerHTML=[[12,'12 meses'],[36,'3 anos']].map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.qw===v}">${l}</button>`).join('');
   $('q-win').onclick=e=>{ const x=e.target.closest('button'); if(!x) return; S.qw=+x.dataset.v; renderQ(); };
   if(!AT||!LP||!FL){ $('q-body').innerHTML='<p class="loading">Carregando carteiras, passivo e fluxos…</p>';
     Promise.all([loadA(),loadL(),loadF()]).then(renderQ).catch(e=>{ $('q-body').innerHTML=`<p class="loading">Não foi possível carregar os dados (${esc(e.message)}).</p>`; }); return; }
-  const QG=S.qg, inG=o=>(o.q12&&o.q12>=QG)||(o.q36&&o.q36>=QG), U0=qUniverse();
+  const QG=4, inG=o=>(o.q12&&o.q12>=QG)||(o.q36&&o.q36>=QG), U0=qUniverse();
   // uma linha por casa (Onyx Brasil e Onyx LatAm dividem passivo e carteira)
   const EM=new Map(); U0.forEach(o=>{ if(!EM.has(o.key)) EM.set(o.key,{key:o.key,rows:[]}); EM.get(o.key).rows.push(o); });
   const plAt=(o,i)=>lastPL(o.p,Math.min(i,o.p.last));
@@ -891,126 +888,88 @@ function renderQ(){
     e.disp=e.aum!=null?e.aum*e.mob:null; e.pot=e.disp!=null?e.disp*(e.both?1:.7)*(e.f12!=null&&e.f12<0?1:.8):null;
     return e; });
   const GR=ENT.filter(e=>e.inG), RE=ENT.filter(e=>!e.inG), sum=(a,f)=>a.reduce((s,x)=>s+(f(x)||0),0);
-  const gl=QG===4?'4º quartil':'3º e 4º quartis';
-  $('q-h').textContent=`Quem está no ${gl}`;
-  $('q-sub').textContent=`${GR.length} das ${ENT.length} gestoras do ranking estão no ${gl} em 12 meses ou em 3 anos (retorno líquido em US$ até ${pmlong(PLAST)}). Dinheiro em R$; passivo pelo Perfil Mensal da CVM; captação pelo Informe Diário.`;
-  // ---------- 1. passivo
+  // ---------- contas
   const cats=LP.cats, catR=g=>cats.map((c,k)=>sum(g.filter(e=>e.mix),e=>e.aum*e.mix[k]));
   const cg=catR(GR), cr=catR(RE), tg=sum(GR,e=>e.aum), tr=sum(RE,e=>e.aum), ng=sum(GR.filter(e=>!e.mix),e=>e.aum), nr=sum(RE.filter(e=>!e.mix),e=>e.aum);
-  const dispG=sum(GR,e=>e.disp), f12G=sum(GR,e=>e.f12), a12G=sum(GR.filter(e=>e.f12!=null),e=>e.a12), f12R=sum(RE,e=>e.f12), a12R=sum(RE.filter(e=>e.f12!=null),e=>e.a12);
-  const order=cats.map((c,k)=>k).sort((x,y)=>cg[y]-cg[x]);
-  const mixRow=(lbl,arr,t,nn)=>`<div class="nm">${lbl}</div><div class="stack">${order.map(k=>arr[k]>0?`<i style="width:${arr[k]/t*100}%;background:${LCOL[k%LCOL.length]}" title="${esc(cats[k])}: ${nf(arr[k]/t*100,1)}%"></i>`:'').join('')}${nn>0?`<i style="width:${nn/t*100}%;background:var(--grid)" title="sem Perfil Mensal: ${nf(nn/t*100,1)}%"></i>`:''}</div><div class="v">${plmi(t)}</div>`;
-  const top3=GR.slice().sort((x,y)=>(y.aum||0)-(x.aum||0)).slice(0,3);
-  const mobK=cats.map((c,k)=>k).filter(k=>(MOBN[cats[k]]??.5)>=1), mobShare=mobK.reduce((s,k)=>s+cg[k],0)/Math.max(1e-9,tg-ng);
-  let html=`<div class="qtake"><b>Resumo.</b><ul style="margin:4px 0 0;padding-left:18px">`+
-    `<li>R$ ${nf(tg/1000,1)} bi em fundos long only de ${GR.length} gestoras (${pct(tg/(tg+tr),0)} do dinheiro do ranking). As três maiores: ${top3.map(e=>`${esc(e.n)} (${plmi(e.aum)})`).join(', ')}.</li>`+
-    `<li>${pct(mobShare,0)} desse dinheiro está em plataformas ou com alocadores (fundos e clubes), que trocam de gestora com mais facilidade.</li>`+
-    `<li>Captação líquida em 12 meses: grupo ${fmo(f12G)} (${pct(a12G?f12G/a12G:null,0)} do PL de um ano atrás); demais gestoras ${fmo(f12R)} (${pct(a12R?f12R/a12R:null,0)}).</li></ul></div>`;
-  html+=`<div class="qsec">1 · Passivo<b>Quanto dinheiro e de quem</b></div>`;
-  html+=`<div class="dec">${kpis([
-    ['PL do grupo', 'R$ '+nf(tg/1000,1)+' bi', `${GR.length} gestoras · ${pct(tg/(tg+tr),0)} do total`],
-    ['Dinheiro disputável', 'R$ '+nf(dispG/1000,1)+' bi', 'PL × mobilidade do tipo de cotista'],
-    ['Captação 12m', fmo(f12G), a12G?`${pct(f12G/a12G,1)} do PL de 12 meses atrás`:''],
-    ['Cotistas', sum(GR,e=>e.nc).toLocaleString('pt-BR'), 'nos fundos long only do grupo'],
-  ])}</div>`;
-  html+=`<div class="card"><div class="hd"><h2>Tipo de cotista: grupo × demais gestoras</h2><small>% do PL · R$ à direita</small></div>`+
-    `<div class="qmix">${mixRow(`<b>${gl}</b>`,cg,tg,ng)}${mixRow('Demais',cr,tr,nr)}</div>`+
-    `<div class="pleg">${order.filter(k=>cg[k]+cr[k]>0).map(k=>`<span><i style="background:${LCOL[k%LCOL.length]}"></i>${esc(cats[k])}</span>`).join('')}<span><i style="background:var(--grid)"></i>sem Perfil Mensal</span></div>`+
-    `<div class="tblwrap"><table><thead><tr><th class="l">Tipo de cotista</th><th>Grupo (R$)</th><th>% grupo</th><th>% demais</th><th>Mobilidade</th></tr></thead><tbody>${order.filter(k=>cg[k]>0||cr[k]>0).map(k=>`<tr><td class="l"><span class="sw" style="background:${LCOL[k%LCOL.length]}"></span>${esc(cats[k])}</td><td style="font-weight:600">${plmi(cg[k])}</td><td>${pct(cg[k]/tg,1)}</td><td class="muted">${pct(cr[k]/tr,1)}</td><td class="muted">${pct(MOBN[cats[k]]??.5,0)}</td></tr>`).join('')}</tbody></table></div></div>`;
-  // ---------- doadores
-  html+=`<div class="qsec">2 · Doadores de share<b>Onde está o dinheiro mais fácil de capturar</b></div>`+
-    `<div class="card"><div class="hd"><h2>Gestoras do grupo</h2><small>ordenadas pelo potencial · clique no cabeçalho para reordenar</small></div><div class="tblwrap" style="max-height:640px;overflow-y:auto"><table id="q-don"></table></div>`+
-    `<p class="note"><b>Potencial</b> = PL × mobilidade × intensidade. Mobilidade = média ponderada pelo tipo de cotista: plataformas e fundos/clubes 100%, private e estrangeiros 70%, varejo, PJ e bancos 50%, previdência, RPPS e seguradoras 30% (sem Perfil Mensal: 60%). Intensidade: 1 se está no grupo nas duas janelas, 0,7 se só numa; × 0,8 se não perdeu dinheiro em 12 meses. É um critério de julgamento para ordenar a lista, não uma previsão.</p></div>`;
-  // ---------- 3. fluxos
-  const qtab=(w)=>{ const qq=e=>w===12?e.q12:e.q36; return `<table><thead><tr><th class="l">Quartil ${w===12?'12m':'3 anos'}</th><th>Gestoras</th><th>PL hoje</th><th>Captação 12m</th><th>% PL</th><th>Captação 3a</th><th>% PL</th></tr></thead><tbody>${[1,2,3,4].map(q=>{ const g=ENT.filter(e=>qq(e)===q), f1=sum(g,e=>e.f12), f3=sum(g,e=>e.f36), a1=sum(g.filter(e=>e.f12!=null),e=>e.a12), a3=sum(g.filter(e=>e.f36!=null),e=>e.a36);
-      return `<tr><td class="l">${qbadge(q)} ${QLBL[q-1]}</td><td class="muted">${g.length}</td><td>${plmi(sum(g,e=>e.aum))}</td><td>${fmo(f1)}</td><td>${a1?pcp(f1/a1).replace(' p.p.','%'):'–'}</td><td>${fmo(f3)}</td><td>${a3?pcp(f3/a3).replace(' p.p.','%'):'–'}</td></tr>`; }).join('')}</tbody></table>`; };
-  html+=`<div class="qsec">3 · Fluxos<b>O dinheiro já está saindo? Para onde?</b></div>`+
-    `<div class="grid2"><div class="card"><div class="hd"><h2>Por quartil de 12 meses</h2></div><div class="tblwrap">${qtab(12)}</div></div><div class="card"><div class="hd"><h2>Por quartil de 3 anos</h2></div><div class="tblwrap">${qtab(36)}</div></div></div>`+
-    `<div class="card"><div class="hd"><h2>Crescimento só por captação, últimos 3 anos</h2><small>por quartil de 3 anos · captação do mês ÷ PL do mês anterior, acumulada</small></div><div id="q-fchart"></div>`+
-    `<p class="note">Captação líquida = aplicações − resgates do Informe Diário, nos fundos usados na performance (FICs da gestora e fundos diretos); fundos LatAm por PL − PL anterior × (1 + retorno). % PL = captação ÷ PL no início do período. Movimentos entre fundos da mesma casa podem aparecer como saída de um fundo e entrada em outro fora da base (ex.: um fundo long biased).</p></div>`;
-  // ---------- 4. dissecação (em R$)
-  const W=S.qw, qw=o=>W===12?o.q12:o.q36, curS=S.cur; S.cur='BRL';
+  const dispG=sum(GR,e=>e.disp), f12G=sum(GR,e=>e.f12), a12G=sum(GR.filter(e=>e.f12!=null),e=>e.a12);
+  const MV=[2,3], mvG=MV.reduce((s,k)=>s+cg[k],0)/Math.max(1e-9,tg-ng), mvR=MV.reduce((s,k)=>s+cr[k],0)/Math.max(1e-9,tr-nr);
+  const fq=q=>{ const g=ENT.filter(e=>e.q36===q), f=sum(g,e=>e.f36), a=sum(g.filter(e=>e.f36!=null),e=>e.a36); return a?f/a:null; };
+  const W=S.qw, WL=W===12?'12 meses':'3 anos', qw=o=>W===12?o.q12:o.q36, curS=S.cur; S.cur='BRL';
   const seen=new Set(), comp=[];
   U0.forEach(o=>{ const q=qw(o); if(!q||seen.has(o.key)||!AT.g[o.key]) return; const rec=AT.g[o.key]; const b=Math.min(o.e,o.p.last), a=Math.max(b-W+1,o.p.o,rec.o); if(b-a+1<W*0.75) return;
-    const r=aCompute(o.id,a,b); if(r.err) return; seen.add(o.key); comp.push({o,q,r,a,b,bh:behav(o.key,a,b)}); });
+    const r=aCompute(o.id,a,b); if(r.err) return; seen.add(o.key); comp.push({o,q,r,bh:behav(o.key,a,b)}); });
   S.cur=curS;
-  const LO=comp.filter(x=>x.q>=QG), WI=comp.filter(x=>x.q===1);
-  const pairs=g=>g.flatMap(x=>x.r.rows.map(y=>({x,id:x.o.id,g:x.o.g,root:AT.roots[y.ri],ri:y.ri,sec:secOf(AT.roots[y.ri]),c:y.c,w:y.w,n:y.n,r:y.r,ms:y.ms})));
-  const PL_=pairs(LO), PW=pairs(WI);
+  const LO=comp.filter(x=>x.q===4), WI=comp.filter(x=>x.q===1), nL=Math.max(1,LO.length), nW=Math.max(1,WI.length);
   const mean=(a,f)=>a.length?a.reduce((s,x)=>s+f(x),0)/a.length:null;
-  const hit=P=>({h:P.length?P.filter(x=>x.c>0).length/P.length:null, up:mean(P.filter(x=>x.c>0),x=>x.c), dn:mean(P.filter(x=>x.c<0),x=>x.c)});
-  const hL=hit(PL_), hW=hit(PW);
-  const WL=W===12?'12 meses':'3 anos';
-  html+=`<div class="qsec">4 · Dissecação · ${WL}<b>O que o grupo errou e o que os vencedores fizeram diferente</b></div>`+
-    `<p class="note" style="margin-top:0">Grupo = ${gl} na janela de ${WL} (${LO.length} gestoras com carteira); comparação = 1º quartil na mesma janela (${WI.length}). Em R$, média simples entre gestoras.</p>`+
-    `<div class="dec">${[['Retorno líquido',x=>x.r.tot],['Ações',x=>x.r.stk],['Outros',x=>x.r.oth],['Taxas e custos',x=>x.r.fee]].map(([l,f],k)=>{ const a=mean(LO,f), b=mean(WI,f); return `<div class="kpi"><div class="lbl">${l} · média</div><div class="v">${k?pcp(a):pc(a)}</div><div class="d">1º quartil ${k?pcp(b):pc(b)} · diferença ${pcp(b!=null&&a!=null?b-a:null)}</div></div>`; }).join('')}`+
-    `<div class="kpi"><div class="lbl">Acerto</div><div class="v">${pct(hL.h,0)}</div><div class="d">posições que somaram · 1º quartil ${pct(hW.h,0)}</div></div>`+
-    `<div class="kpi"><div class="lbl">Ganho ÷ perda média</div><div class="v">${hL.up&&hL.dn?nf(hL.up/-hL.dn,2):'–'}</div><div class="d">por posição · 1º quartil ${hW.up&&hW.dn?nf(hW.up/-hW.dn,2):'–'}</div></div></div>`;
-  const prow=(x,k)=>`<tr><td class="muted">${k}</td><td class="l">${esc(x.g.n)}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(x.ri).slice(0,22))}</span></td><td>${pct(x.w,1)}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
-  const phead='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th>Peso médio</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
-  const srt=PL_.slice().sort((x,y)=>x.c-y.c), secs=SECN;
-  html+=`<div class="grid2"><div class="card"><div class="hd"><h2>Maiores erros do grupo</h2><small>gestora × empresa · p.p. do retorno</small></div>${secLegend()}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table>${phead}<tbody>${srt.slice(0,30).map((x,k)=>prow(x,k+1)).join('')}</tbody></table></div></div>`+
-    `<div class="card"><div class="hd"><h2>Maiores acertos do grupo</h2><small>o que funcionou mesmo assim</small></div>${secLegend()}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table>${phead}<tbody>${srt.slice().reverse().slice(0,30).map((x,k)=>prow(x,k+1)).join('')}</tbody></table></div></div></div>`;
-  // por empresa: consenso e diferença para o 1º quartil
-  const agg=new Map(); const add=(P,side)=>P.forEach(x=>{ if(!agg.has(x.root)) agg.set(x.root,{root:x.root,ri:x.ri,sec:x.sec,L:{c:0,n:0,who:[],r:[]},W:{c:0,n:0,who:[],r:[]}}); const a=agg.get(x.root)[side]; a.c+=x.c; a.n++; a.who.push(x.g.n); a.r.push(x.r); });
-  add(PL_,'L'); add(PW,'W');
-  const nL=Math.max(1,LO.length), nW=Math.max(1,WI.length);
-  const E_=[...agg.values()].map(e=>({...e, cl:e.L.c/nL, cw:e.W.c/nW, gap:e.W.c/nW-e.L.c/nL}));
-  const erow=(e,k)=>`<tr><td class="muted">${k}</td><td class="l secbar" style="--c:${secC(e.sec)}"><span class="tk">${esc(dispR(e.root))}</span> <span class="muted">${esc(nameR(e.ri).slice(0,22))}</span></td><td title="${esc(e.L.who.join(', '))}">${e.L.n} de ${LO.length}</td><td>${pcp(e.cl)}</td><td class="muted" title="${esc(e.W.who.join(', '))}">${e.W.n} de ${WI.length}</td><td>${pcp(e.cw)}</td><td style="font-weight:600">${pcp(e.gap)}</td></tr>`;
-  const ehead=`<thead><tr><th>#</th><th class="l">Empresa</th><th>No grupo</th><th>Contrib. média grupo</th><th>No 1º quartil</th><th>Contrib. média 1º quartil</th><th>Diferença</th></tr></thead>`;
-  const cons=E_.filter(e=>e.L.n>=2).sort((x,y)=>x.L.c-y.L.c).slice(0,20);
-  html+=`<div class="card"><div class="hd"><h2>Erros de consenso</h2><small>ações que 2+ gestoras do grupo tinham e mais tiraram do grupo somado · passe o mouse para ver quem</small></div>${secLegend()}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table>${ehead}<tbody>${cons.map((e,k)=>erow(e,k+1)).join('')}</tbody></table></div>`+
-    `<p class="note">Contribuição média = soma das contribuições dividida pelo número de gestoras do lado (quem não tinha a ação entra com zero). Diferença = 1º quartil − grupo: positiva = a ação ajudou mais os vencedores.</p></div>`;
-  // setores
-  const bs={}; E_.forEach(e=>{ (bs[e.sec]=bs[e.sec]||{l:0,w:0}); bs[e.sec].l+=e.cl; bs[e.sec].w+=e.cw; });
-  const sk=Object.keys(bs).sort((x,y)=>(bs[y].w-bs[y].l)-(bs[x].w-bs[x].l)), mxs=Math.max(1e-9,...sk.map(k=>Math.abs(bs[k].w-bs[k].l)));
-  const gapBars=sk.map(k=>{ const g=bs[k].w-bs[k].l, wpc=Math.abs(g)/mxs*50; return `<div class="nm"><span class="secp"><i style="background:${secC(k)}"></i>${esc(k)}</span></div><div class="tr" title="1º quartil ${nf(bs[k].w*100,1)} p.p. · grupo ${nf(bs[k].l*100,1)} p.p."><span class="ax" style="left:50%"></span><i style="background:${g>=0?'var(--up)':'var(--down)'};${g>=0?`left:50%;width:${wpc}%`:`right:50%;width:${wpc}%`}"></i></div><div class="v">${pcp(g)}<small class="muted" style="display:block;font-size:10.5px">${nf(bs[k].w*100,1)} vs ${nf(bs[k].l*100,1)}</small></div>`; }).join('');
-  const gTot=sum(sk,k=>bs[k].w-bs[k].l);
-  const gp=E_.slice().sort((x,y)=>y.gap-x.gap).slice(0,15), gn=E_.slice().sort((x,y)=>x.gap-y.gap).slice(0,15);
-  html+=`<div class="card"><div class="hd"><h2>Onde está a diferença: 1º quartil − grupo, por setor</h2><small>contribuição média das ações · total ${pcp(gTot)}</small></div><div class="dbar">${gapBars}</div>`+
-    `<p class="note">Direita (verde) = o setor rendeu mais para os vencedores (por terem mais peso, ações melhores ou ambos); esquerda = o grupo foi melhor ali. Valores embaixo: 1º quartil vs grupo, em p.p.</p></div>`+
-    `<div class="grid2"><div class="card"><div class="hd"><h2>O que os vencedores tinham e o grupo não</h2><small>maior diferença a favor do 1º quartil</small></div><div class="tblwrap" style="max-height:520px;overflow-y:auto"><table>${ehead}<tbody>${gp.map((e,k)=>erow(e,k+1)).join('')}</tbody></table></div></div>`+
-    `<div class="card"><div class="hd"><h2>Onde o grupo foi melhor</h2><small>maior diferença a favor do grupo</small></div><div class="tblwrap" style="max-height:520px;overflow-y:auto"><table>${ehead}<tbody>${gn.map((e,k)=>erow(e,k+1)).join('')}</tbody></table></div></div></div>`;
-  // ---------- 5. comportamento
-  const BQ=[1,2,3,4].map(q=>{ const g=comp.filter(x=>x.q===q&&x.bh); return {q,k:g.length,giro:med(g.map(x=>x.bh.giro)),hold:med(g.map(x=>x.bh.hold)),n:med(g.map(x=>x.bh.n)),top:med(g.map(x=>x.bh.top)),cov:med(g.map(x=>x.bh.cov)),ex:med(g.map(x=>x.bh.ex)),ret:med(g.map(x=>x.r.tot))}; });
-  html+=`<div class="qsec">5 · Comportamento · ${WL}<b>Quem perde está girando demais?</b></div>`+
-    `<div class="card"><div class="hd"><h2>Mediana por quartil</h2><small>quartil da janela de ${WL}</small></div><div class="tblwrap"><table><thead><tr><th class="l">Quartil</th><th>Gestoras</th><th>Retorno R$</th><th>Giro anual</th><th>Holding implícito</th><th>Permanência média</th><th>Nº ações</th><th>Top 10</th><th>Em ações</th><th>Ex-Brasil</th></tr></thead><tbody>${BQ.map(x=>`<tr${x.q>=QG?' class="mine"':''}><td class="l">${qbadge(x.q)} ${QLBL[x.q-1]}</td><td class="muted">${x.k}</td><td>${pc(x.ret)}</td><td style="font-weight:600">${pct(x.giro,0)}</td><td>${yrs(x.giro?1/x.giro:null)}</td><td>${yrs(x.hold)}</td><td>${x.n==null?'–':nf(x.n,0)}</td><td>${pct(x.top,0)}</td><td>${pct(x.cov,0)}</td><td>${pct(x.ex,0)}</td></tr>`).join('')}</tbody></table></div></div>`+
-    `<div class="card"><div class="hd"><h2>Todas as gestoras</h2><small>linhas do grupo destacadas · clique no cabeçalho para ordenar</small></div><div class="tblwrap" style="max-height:620px;overflow-y:auto"><table id="q-beh"></table></div>`+
-    `<p class="note"><b>Giro anual</b> = metade da soma das mudanças de peso de um mês para o outro, já descontado o efeito do preço (a carteira do mês anterior é atualizada pelo retorno de cada ação), × 12; compras e vendas dentro do mesmo mês não aparecem, então é um piso. Meses com carteira em sigilo ficam de fora. <b>Holding implícito</b> = 1 ÷ giro. <b>Permanência média</b> = tempo que cada posição relevante (≥ 0,5% do PL) ficou na carteira, ponderado pelo peso, contando toda a história até o fim da janela (posições ainda abertas contam até hoje, então subestima). <b>Nº ações</b> = posições ≥ 0,2% do PL. <b>Top 10</b> = peso das 10 maiores sobre a parte em ações. <b>Em ações</b> = parte do PL em ações identificadas.</p></div>`;
-  html+=`<p class="note"><b>Como o grupo é formado.</b> Mesmas gestoras e mesma conta da aba Performance (fundos long only, cota líquida), sempre em US$: retorno de 12 meses e retorno anualizado de 3 anos até ${pmlong(PLAST)}, divididos em quatro partes iguais. Gestoras sem 3 anos de história só têm o quartil de 12 meses. Na dissecação e no comportamento, os quartis são os da janela escolhida.</p>`;
-  $('q-body').innerHTML=html;
-  // tabelas ordenáveis
-  sTable('q-don',[
-    {k:'g',l:'Gestora',cls:'l',v:e=>e.n,asc:true,f:e=>`<td class="l"><a href="#" data-q="${e.main.id}">${esc(e.n)}</a>${e.both?' <span class="chip warn" title="no grupo em 12 meses e em 3 anos">nas duas janelas</span>':''}</td>`},
-    {k:'q12',l:'12m<br><small>US$</small>',v:e=>e.r12,f:e=>`<td>${qbadge(e.q12)} ${pc(e.r12,0)}</td>`},
-    {k:'q36',l:'3 anos<br><small>US$ a.a.</small>',v:e=>e.r36,f:e=>`<td>${qbadge(e.q36)} ${pc(e.r36,0)}</td>`},
-    {k:'aum',l:'PL',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
-    {k:'f12',l:'Captação<br><small>12m</small>',v:e=>e.f12,f:e=>`<td>${fmo(e.f12)}${e.f12!=null&&e.a12?`<small class="muted" style="display:block;font-size:11px">${pct(e.f12/e.a12,0)}</small>`:''}</td>`},
-    {k:'f36',l:'Captação<br><small>3 anos</small>',v:e=>e.f36,f:e=>`<td>${fmo(e.f36)}${e.f36!=null&&e.a36?`<small class="muted" style="display:block;font-size:11px">${pct(e.f36/e.a36,0)}</small>`:''}</td>`},
-    {k:'nc',l:'Cotistas',v:e=>e.nc,f:e=>`<td class="muted">${e.nc==null?'–':e.nc.toLocaleString('pt-BR')}</td>`},
-    ...[['Plataf.',[2]],['Fundos e clubes',[3]],['PF',[0,1]],['Prev./inst.',[4,5,6]]].map(([l,ks],j)=>({k:'m'+j,l,v:e=>e.mix?ks.reduce((s,k)=>s+e.mix[k],0):null,f:e=>`<td class="muted">${e.mix?pct(ks.reduce((s,k)=>s+e.mix[k],0),0):'–'}</td>`})),
-    {k:'disp',l:'Disputável',v:e=>e.disp,f:e=>`<td>${plmi(e.disp)}${e.mobEst?' <span class="chip" title="sem Perfil Mensal: mobilidade assumida de 60%">est.</span>':''}</td>`},
-    {k:'pot',l:'Potencial',v:e=>e.pot,f:e=>`<td style="font-weight:600">${plmi(e.pot)}</td>`},
-  ], GR, 'pot', ()=>'', 1e9, renderQ);
-  const BR=comp.map(x=>({...x, n:x.o.g.n, mine:x.q>=QG}));
-  sTable('q-beh',[
-    {k:'g',l:'Gestora',cls:'l',v:x=>x.n,asc:true,f:x=>`<td class="l">${esc(x.n)}</td>`},
-    {k:'q',l:'Quartil',v:x=>-x.q,f:x=>`<td>${qbadge(x.q)}</td>`},
-    {k:'ret',l:'Retorno R$',v:x=>x.r.tot,f:x=>`<td>${pc(x.r.tot)}</td>`},
-    {k:'giro',l:'Giro anual',v:x=>x.bh&&x.bh.giro,f:x=>`<td style="font-weight:600">${pct(x.bh&&x.bh.giro,0)}</td>`},
-    {k:'hi',l:'Holding<br><small>implícito</small>',v:x=>x.bh&&x.bh.giro?1/x.bh.giro:null,f:x=>`<td>${yrs(x.bh&&x.bh.giro?1/x.bh.giro:null)}</td>`},
-    {k:'hold',l:'Permanência<br><small>média</small>',v:x=>x.bh&&x.bh.hold,f:x=>`<td>${yrs(x.bh&&x.bh.hold)}</td>`},
-    {k:'n',l:'Nº ações',v:x=>x.bh&&x.bh.n,f:x=>`<td class="muted">${x.bh&&x.bh.n!=null?nf(x.bh.n,0):'–'}</td>`},
-    {k:'top',l:'Top 10',v:x=>x.bh&&x.bh.top,f:x=>`<td class="muted">${pct(x.bh&&x.bh.top,0)}</td>`},
-    {k:'cov',l:'Em ações',v:x=>x.bh&&x.bh.cov,f:x=>`<td class="muted">${pct(x.bh&&x.bh.cov,0)}</td>`},
-  ], BR, 'giro', x=>x.mine?'data-mine="1"':'', 1e9, renderQ);
-  $('q-body').querySelectorAll('a[data-q]').forEach(x=>x.onclick=e=>{ e.preventDefault(); S.g=x.dataset.q; setView('l'); renderL(); });
-  // gráfico de captação acumulada por quartil de 3 anos
+  const pairs=g=>g.flatMap(x=>x.r.rows.map(y=>({g:x.o.g,root:AT.roots[y.ri],ri:y.ri,sec:secOf(AT.roots[y.ri]),c:y.c})));
+  const PLo=pairs(LO), PWi=pairs(WI);
+  const hit=P=>({h:P.length?P.filter(x=>x.c>0).length/P.length:null, pr:(()=>{ const u=mean(P.filter(x=>x.c>0),x=>x.c), d=mean(P.filter(x=>x.c<0),x=>x.c); return u&&d?u/-d:null; })()});
+  const hL=hit(PLo), hW=hit(PWi);
+  const agg=new Map(); const add=(P,side)=>P.forEach(x=>{ if(!agg.has(x.root)) agg.set(x.root,{root:x.root,ri:x.ri,sec:x.sec,L:{c:0,who:[]},W:{c:0,who:[]}}); const a=agg.get(x.root)[side]; a.c+=x.c; a.who.push(x.g.n); });
+  add(PLo,'L'); add(PWi,'W');
+  const EA=[...agg.values()].map(e=>({...e, cl:e.L.c/nL, cw:e.W.c/nW}));
+  const cons=EA.filter(e=>e.L.who.length>=2).sort((x,y)=>x.L.c-y.L.c).slice(0,8);
+  const wins=EA.filter(e=>e.W.who.length>=2&&e.cw>0).sort((x,y)=>(y.cw-y.cl)-(x.cw-x.cl)).slice(0,8);
+  const bs={}; EA.forEach(e=>{ (bs[e.sec]=bs[e.sec]||{l:0,w:0}); bs[e.sec].l+=e.cl; bs[e.sec].w+=e.cw; });
+  const sk=Object.keys(bs).sort((x,y)=>(bs[y].w-bs[y].l)-(bs[x].w-bs[x].l));
+  const dTot=mean(WI,x=>x.r.tot)-mean(LO,x=>x.r.tot), dStk=mean(WI,x=>x.r.stk)-mean(LO,x=>x.r.stk);
+  const BQ=[1,2,3,4].map(q=>{ const g=comp.filter(x=>x.q===q&&x.bh); return {q,giro:med(g.map(x=>x.bh.giro)),n:med(g.map(x=>x.bh.n)),top:med(g.map(x=>x.bh.top))}; });
+  const who=a=>{ const u=[...new Set(a)]; return u.length>3?u.slice(0,3).join(', ')+` +${u.length-3}`:u.join(', '); };
+  const tk=e=>`<span class="tk">${esc(dispR(e.root))}</span> <span class="muted">${esc(nameR(e.ri).slice(0,16))}</span>`;
   const a0=PLAST-35, QC=['var(--up)','var(--accent-ink)','var(--warn)','var(--down)'];
   const ser=[1,2,3,4].map(q=>{ const g=ENT.filter(e=>e.q36===q&&e.fl); const r=new Array(PN).fill(null);
     for(let i=a0;i<=PLAST;i++){ let f=0,p=0; g.forEach(e=>{ const j=i-e.fl.o, v=j>=0&&j<e.fl.f.length?e.fl.f[j]:null, pl=e.rows.reduce((s,o)=>s+(o.p.pl[i-1]||0),0); if(v!=null&&pl>0){ f+=v; p+=pl; } }); r[i]=p>0?f/p:null; }
-    return {name:QLBL[q-1], r, color:QC[q-1], sw:q===1||q===4?2.4:1.6}; });
-  cumChart($('q-fchart'), ser, a0, PLAST, {endLabels:true, noLegend:true, label:'Captação acumulada por quartil'});
+    return {name:QLBL[q-1], r, color:QC[q-1], sw:q===1||q===4?2.4:1.4}; });
+  const cumE=q=>{ let c=1; for(let i=a0;i<=PLAST;i++){ const v=ser[q-1].r[i]; if(v!=null) c*=1+v; } return c-1; };
+  // ---------- página
+  $('q-h').textContent='Quem está no 4º quartil';
+  $('q-sub').textContent=`${GR.length} gestoras no 4º quartil em 12 meses ou 3 anos (retorno líquido em US$ até ${pmlong(PLAST)}).`;
+  const top3=GR.slice().sort((x,y)=>(y.aum||0)-(x.aum||0)).slice(0,3);
+  const c1=cons[0], s1=sk[0];
+  let html=`<div class="qtake"><ul style="margin:0;padding-left:18px">`+
+    `<li><b>R$ ${nf(tg/1000,1)} bi</b> em fundos ruins, ${pct(tg/(tg+tr),0)} do dinheiro do ranking. ${pct(sum(top3,e=>e.aum)/tg,0)} disso em três casas: ${top3.map(e=>esc(e.n)).join(', ')}.</li>`+
+    `<li><b>${pct(mvG,0)}</b> está em plataformas e alocadores, o dinheiro que troca de gestora (demais: ${pct(mvR,0)}).</li>`+
+    `<li><b>O dinheiro sai da classe, não vai para os vencedores:</b> em 3 anos, o 4º quartil perdeu ${pct(-cumE(4),0)} do PL por resgates, mas o 1º quartil também perdeu ${pct(-cumE(1),0)}.</li>`+
+    (c1?`<li><b>Onde erraram (${WL}):</b> ${pcp(dTot)} de diferença para o 1º quartil, ${pcp(dStk)} nas ações. Maior erro coletivo: ${esc(dispR(c1.root))} (${c1.L.who.length} de ${LO.length} tinham); maior falta: ${esc(s1)}.</li>`:'')+
+    `</ul></div>`;
+  // 1
+  const order=cats.map((c,k)=>k).sort((x,y)=>cg[y]-cg[x]).filter(k=>cg[k]/tg>=0.02||cr[k]/tr>=0.02);
+  const oth=(arr,t,nn)=>t-nn-order.reduce((s,k)=>s+arr[k],0);
+  const bar=(lbl,arr,t,nn)=>`<div class="nm">${lbl}</div><div class="stack">${order.map(k=>`<i style="width:${arr[k]/t*100}%;background:${LCOL[k%LCOL.length]}" title="${esc(cats[k])}: ${nf(arr[k]/t*100,0)}%"></i>`).join('')}<i style="width:${(oth(arr,t,nn)+nn)/t*100}%;background:var(--grid)" title="outros / sem dado"></i></div><div class="v">${plmi(t)}</div>`;
+  html+=`<div class="qsec">1<b>Quanto dinheiro e de quem</b></div>`+
+    `<div class="dec">${kpis([['PL no 4º quartil','R$ '+nf(tg/1000,1)+' bi',`${GR.length} gestoras`],['Disputável','R$ '+nf(dispG/1000,1)+' bi','ponderado por tipo de cotista'],['Captação 12m',fmo(f12G),a12G?`${pct(f12G/a12G,0)} do PL`:'']])}</div>`+
+    `<div class="card"><div class="qmix">${bar('<b>4º quartil</b>',cg,tg,ng)}${bar('Demais',cr,tr,nr)}</div>`+
+    `<div class="pleg">${order.map(k=>`<span><i style="background:${LCOL[k%LCOL.length]}"></i>${esc(cats[k])} ${nf(cg[k]/tg*100,0)}% <span class="muted">vs ${nf(cr[k]/tr*100,0)}%</span></span>`).join('')}</div></div>`;
+  // 2
+  html+=`<div class="qsec">2<b>De quem tirar share</b></div><div class="card"><div class="tblwrap"><table id="q-don"></table></div>`+
+    `<p class="note">Ordem = PL × quanto do passivo é móvel × (mais peso se está no 4º quartil nas duas janelas e já perde dinheiro). Móvel = plataformas + fundos e clubes.</p></div>`;
+  // 3
+  html+=`<div class="qsec">3<b>Para onde vai o dinheiro</b></div><div class="card"><div class="hd"><h2>PL ganho ou perdido só por captação, 3 anos</h2><small>por quartil de 3 anos</small></div><div id="q-fchart"></div></div>`;
+  // 4
+  const crow=(e,side)=>side==='L'?`<tr><td class="l secbar" style="--c:${secC(e.sec)}">${tk(e)}</td><td class="l muted" style="white-space:normal;font-size:12px">${esc(who(e.L.who))}</td><td style="font-weight:600">${pcp(e.cl)}</td></tr>`
+    :`<tr><td class="l secbar" style="--c:${secC(e.sec)}">${tk(e)}</td><td class="l muted" style="white-space:normal;font-size:12px">${esc(who(e.W.who))}</td><td style="font-weight:600">${pcp(e.cw)}</td><td class="muted">${pcp(e.cl)}</td></tr>`;
+  const mxs=Math.max(1e-9,...sk.map(k=>Math.abs(bs[k].w-bs[k].l)));
+  html+=`<div class="qsec">4<b>O que deu errado · ${WL}</b></div>`+
+    `<div class="dec">${kpis([['Diferença p/ 1º quartil',pcp(dTot),`retorno médio ${pc(mean(LO,x=>x.r.tot),0)} vs ${pc(mean(WI,x=>x.r.tot),0)}`],['Vem das ações',pcp(dStk),'o resto: caixa, trades no mês, taxas'],['Acerto',pct(hL.h,0),`1º quartil ${pct(hW.h,0)}`],['Ganho ÷ perda',hL.pr?nf(hL.pr,1)+'×':'–',`1º quartil ${hW.pr?nf(hW.pr,1)+'×':'–'}`]])}</div>`+
+    `<div class="grid2"><div class="card"><div class="hd"><h2>Erros coletivos</h2><small>o que mais tirou do 4º quartil</small></div><div class="tblwrap"><table><thead><tr><th class="l">Empresa</th><th class="l">Quem tinha</th><th>Média</th></tr></thead><tbody>${cons.map(e=>crow(e,'L')).join('')}</tbody></table></div></div>`+
+    `<div class="card"><div class="hd"><h2>O que os vencedores tinham</h2><small>maior vantagem do 1º quartil</small></div><div class="tblwrap"><table><thead><tr><th class="l">Empresa</th><th class="l">Quem tinha (1º quartil)</th><th>Média 1º q.</th><th>Média 4º q.</th></tr></thead><tbody>${wins.map(e=>crow(e,'W')).join('')}</tbody></table></div></div></div>`+
+    `<div class="card"><div class="hd"><h2>Diferença por setor</h2><small>1º quartil − 4º quartil, p.p. por gestora</small></div><div class="dbar">${sk.filter(k=>Math.abs(bs[k].w-bs[k].l)>=0.01).map(k=>{ const g=bs[k].w-bs[k].l, w_=Math.abs(g)/mxs*50; return `<div class="nm"><span class="secp"><i style="background:${secC(k)}"></i>${esc(k)}</span></div><div class="tr"><span class="ax" style="left:50%"></span><i style="background:${g>=0?'var(--up)':'var(--down)'};${g>=0?`left:50%;width:${w_}%`:`right:50%;width:${w_}%`}"></i></div><div class="v">${pcp(g)}</div>`; }).join('')}</div>`+
+    `<p class="note">"Média" = contribuição somada ÷ nº de gestoras do quartil (quem não tinha conta zero). Verde = setor rendeu mais para os vencedores; setores com diferença abaixo de 1 p.p. omitidos.</p></div>`;
+  // 5
+  html+=`<div class="qsec">5<b>Giram demais?</b></div><div class="card"><div class="tblwrap"><table><thead><tr><th class="l">Quartil (${WL})</th><th>Giro anual</th><th>Holding</th><th>Nº ações</th><th>Top 10</th></tr></thead><tbody>${BQ.map(x=>`<tr${x.q===4?' class="mine"':''}><td class="l">${qbadge(x.q)} ${QLBL[x.q-1]}</td><td style="font-weight:600">${pct(x.giro,0)}</td><td>${yrs(x.giro?1/x.giro:null)}</td><td>${x.n==null?'–':nf(x.n,0)}</td><td>${pct(x.top,0)}</td></tr>`).join('')}</tbody></table></div>`+
+    `<p class="note">Medianas. Giro = troca de carteira de um mês para o outro, sem o efeito do preço (piso: não vê trades dentro do mês). Holding = 1 ÷ giro. Por gestora, na aba Attribution.</p></div>`;
+  html+=`<p class="note">Quartis = retorno líquido em US$ de 12 meses e 3 anos (a.a.), mesmas gestoras da aba Performance. Passivo: Perfil Mensal da CVM; captação: aplicações − resgates do Informe Diário; seções 4 e 5 em R$, pela carteira da CDA.</p>`;
+  $('q-body').innerHTML=html;
+  sTable('q-don',[
+    {k:'g',l:'Gestora',cls:'l',v:e=>e.n,asc:true,f:e=>`<td class="l"><a href="#" data-q="${e.main.id}">${esc(e.n)}</a></td>`},
+    {k:'q',l:'12m · 3a',v:e=>(e.q12||0)+(e.q36||0),f:e=>`<td>${qbadge(e.q12)} ${qbadge(e.q36)}</td>`},
+    {k:'aum',l:'PL',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
+    {k:'f12',l:'Captação 12m',v:e=>e.f12!=null&&e.a12?e.f12/e.a12:null,f:e=>`<td>${fmo(e.f12)} <small class="muted">${e.f12!=null&&e.a12?pct(e.f12/e.a12,0):''}</small></td>`},
+    {k:'mv',l:'Passivo móvel',v:e=>e.mix?e.mix[2]+e.mix[3]:null,f:e=>`<td>${e.mix?pct(e.mix[2]+e.mix[3],0):'–'}</td>`},
+    {k:'pot',l:'Potencial',v:e=>e.pot,f:e=>`<td style="font-weight:600">${plmi(e.pot)}</td>`},
+  ], GR, 'pot', ()=>'', 10, renderQ);
+  $('q-body').querySelectorAll('a[data-q]').forEach(x=>x.onclick=e=>{ e.preventDefault(); S.g=x.dataset.q; setView('l'); renderL(); });
+  cumChart($('q-fchart'), ser, a0, PLAST, {endLabels:true, noLegend:true, h:260, label:'Captação acumulada por quartil'});
 }
 
 // ---------- navegação (#performance, #attribution, #passivo, #g-<id>)
