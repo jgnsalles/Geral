@@ -15,12 +15,19 @@ VA = pd.read_pickle(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'vol_anu
 esp = VA.drop_duplicates('tk', keep='last').set_index('tk').espec
 fund = {t for t, e in esp.items() if str(e).startswith(('CI', 'ETF', 'DRN', 'BDR'))}
 R = R[[c for c in R.columns if c not in fund and not any(w in str(NM.get(c[:4], '')).upper() for w in ('ISHARES', ' ETF', 'FUNDO', 'IT NOW', 'TREND '))]]
-roots = sorted({c[:4] for c in R.columns})
+TM = json.load(open(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'tickermap.json')))
+REN = TM['rename']
+def ren(r):
+    seen = set()
+    while r in REN and r not in seen: seen.add(r); r = REN[r]
+    return r
+rootof = {c: ren(c[:4]) for c in R.columns}
+roots = sorted(set(rootof.values()))
 V12 = V.rolling(12, min_periods=1).sum().shift(1).fillna(V)   # volume dos 12 meses anteriores
 last_all = M[-1]
 out = {'meses': M, 'e': {}}
 for r in roots:
-    cols = [c for c in R.columns if c[:4] == r]
+    cols = [c for c in R.columns if rootof[c] == r]
     rr = R[cols]; vv = V12[cols]
     vw = vv.where(rr.notna()).fillna(-1)                   # classe mais líquida com retorno no mês
     pick = vw.idxmax(axis=1).where(vw.max(axis=1) >= 0)

@@ -65,6 +65,12 @@ MAN = {'GGPS':'Industrials','EZTC':'Real Estate','WEGE':'Industrials','TRIS':'Re
 for k, v in MAN.items():
     if SEC.get(k, 'Outros') == 'Outros' or k in ('PRNR',): SEC[k] = v
 P['sec'] = SEC
+TM = json.load(open(os.path.join(S, 'emp/tickermap.json')))
+def _ren(r):
+    seen = set()
+    while r in TM['rename'] and r not in seen: seen.add(r); r = TM['rename'][r]
+    return r
+P['tmerge'] = {k: _ren(v) for k, v in TM['merge'].items()}
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 VIEWS = [('p', 'performance', 'Performance'), ('a', 'attribution', 'Attribution'), ('e', 'empresas', 'Empresas'), ('l', 'passivo', 'Passivo'), ('g', None, 'Gestora')]

@@ -1,0 +1,6 @@
+{"_comentario": "rename = mesma empresa com código novo (vira uma empresa só em todas as abas). merge = incorporada: no attribution a posição continua na compradora; na aba Empresas segue separada até sair da bolsa.",
+ "rename": {"ELET":"AXIA","EMBR":"EMBJ","ALSO":"ALOS","SOMA":"AZZA","PETZ":"AUAU","CESP":"AURE","BRIT":"BRST","CCRO":"MOTV","TRPL":"ISAE","BRDT":"VBBR",
+            "VVAR":"BHIA","VIIA":"BHIA","KROT":"COGN","ESTC":"YDUQ","BVMF":"B3SA","DTEX":"DXCO","BTOW":"AMER","RUMO":"RAIL","CNTO":"SBFG","NTCO":"NATU",
+            "RRRP":"BRAV","MRFG":"MBRF","MPXE":"ENEV","IGTA":"IGTI","TIET":"AESB"},
+ "merge":  {"BRML":"ALOS","ARZZ":"AZZA","HGTX":"AZZA","GNDI":"HAPV","FIBR":"SUZB","LAME":"AMER","CTIP":"B3SA","ENAT":"BRAV","BRFS":"MBRF","SULA":"RDOR",
+            "AESB":"AURE","AEDU":"COGN","ALLL":"RAIL","RLOG":"RAIL","BMEF":"B3SA","BOVH":"B3SA","SMLS":"GOLL"}}

@@ -12,13 +12,22 @@ prev = {m: str(pd.Period(m, 'M') - 1) for m in M}
 H['tk'] = H.tk.str.strip().str.upper()
 H = H[H.v > 0]
 H['root'] = H.tk.where(H.tk.str.startswith('X:'), H.tk.str[:4])
+# trocas de código (mesma empresa): raiz antiga -> nova
+import os as _os
+_tm = _os.environ.get('TMAP')
+REN = json.load(open(_tm))['rename'] if _tm and _os.path.exists(_tm) else {}
+def ren(r):
+    seen = set()
+    while r in REN and r not in seen: seen.add(r); r = REN[r]
+    return r
+H['root'] = H.root.map(ren)
 # retorno de cada ticker no mês
 Rl = R.stack().rename('ret').reset_index(); Rl.columns = ['ym', 'tk', 'ret']
 # carteiras extras (fundos investidos via cotas) e ligações fundo -> fundo, se existirem
 import os
 X_H, X_P, X_L = os.environ.get('XH'), os.environ.get('XP'), os.environ.get('XL')
 if X_H and os.path.exists(X_H):
-    H2 = pd.read_pickle(X_H); H2['tk'] = H2.tk.str.strip().str.upper(); H2 = H2[H2.v > 0]; H2['root'] = H2.tk.where(H2.tk.str.startswith('X:'), H2.tk.str[:4])
+    H2 = pd.read_pickle(X_H); H2['tk'] = H2.tk.str.strip().str.upper(); H2 = H2[H2.v > 0]; H2['root'] = H2.tk.where(H2.tk.str.startswith('X:'), H2.tk.str[:4]).map(ren)
     H = pd.concat([H, H2], ignore_index=True)
 if X_P and os.path.exists(X_P):
     CP = pd.concat([CP, pd.read_pickle(X_P)]).drop_duplicates(['CNPJ_FUNDO', 'ym'], keep='first')
