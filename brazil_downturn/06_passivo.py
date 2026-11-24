@@ -22,8 +22,10 @@ TYPES = list(GRP) + ['wealth', 'alocadores']
 NOMES = {'total': 'Todos', 'private': 'PF private', 'varejo': 'PF varejo direto', 'plataformas': 'Plataformas (conta e ordem)',
          'wealth': 'Wealth (private banks e family offices, via fundo)', 'alocadores': 'FoFs e gestoras de terceiros', 'previdencia': 'Previdência aberta', 'pensao': 'Fundos de pensão e RPPS',
          'estrangeiro': 'Estrangeiro', 'empresas': 'Empresas e bancos'}
-# até 2026-03: de abr/2026 em diante a CDA ainda está parcialmente em sigilo e os feeders somem do bloco de cotas
-QM = [f'{y}-{m:02d}' for y in range(2019, 2027) for m in (3, 6, 9, 12) if f'{y}-{m:02d}' <= '2026-03']
+# até 2026-09. De abr/2026 em diante a CDA ainda está parcialmente em sigilo (cotas de fundos -18% em jun, -35% em set):
+# nesses trimestres, fundo cuja lista de cotistas-fundo veio incompleta usa a de mar/2026 (BASEQ), com o Perfil Mensal atual de cada cotista.
+QM = [f'{y}-{m:02d}' for y in range(2019, 2027) for m in (3, 6, 9, 12) if f'{y}-{m:02d}' <= '2026-09']
+BASEQ, EST_Q = '2026-03', ['2026-06', '2026-09']
 
 # ---------------- dados
 P = pd.read_pickle(os.path.join(OUT, 'fundo_mes.pkl'))
@@ -91,10 +93,22 @@ TI = {c: i for i, c in enumerate(TIPCOLS)}
 GI = {k: [TI[c] for c in cs] for k, cs in GRP.items()}
 FI_ = [TI[c] for c in FUND]
 B['hr8'] = B.hr8.fillna(''); B['hgid'] = B.hgid.fillna('')
-HOLD = {}
+HOLD, VT = {}, {}
 for (inv, ym), x in B[B.CNPJ_FUNDO != B.CNPJ_FUNDO_COTA].groupby(['CNPJ_FUNDO_COTA', 'ym']):
     tot = x.v.sum()
-    if tot > 0: HOLD[(inv, ym)] = list(zip(x.CNPJ_FUNDO, x.v / tot, x.hgid, x.hr8))
+    if tot > 0: HOLD[(inv, ym)] = list(zip(x.CNPJ_FUNDO, x.v / tot, x.hgid, x.hr8)); VT[(inv, ym)] = tot
+# trimestres com CDA parcial: completa com a estrutura de mar/2026 quando o valor em cotas caiu mais de 30% contra mar/2026
+_pl = P.set_index(['CNPJ_FUNDO', 'ym']).pl
+n_fill = {}
+for ym in EST_Q:
+    for (inv, y0), hs in list(HOLD.items()):
+        if y0 != BASEQ: continue
+        v0, v1 = VT.get((inv, BASEQ), 0), VT.get((inv, ym), 0)
+        g0, g1 = _pl.get((inv, BASEQ), np.nan), _pl.get((inv, ym), np.nan)
+        esc = (g1 / g0) if (g0 and g0 > 0 and g1 == g1) else 1.0
+        if v1 < 0.7 * v0 * esc:
+            HOLD[(inv, ym)] = hs; n_fill[ym] = n_fill.get(ym, 0) + 1
+print('fundos com cotistas-fundo de mar/2026 nos trimestres estimados:', n_fill)
 OUTK = list(GRP) + ['wealth', 'alocadores', 'sem_cda', 'nao_ident']
 # classificação do fundo cotista de outra casa pelo nome do gestor e do fundo
 gn = pd.concat([rf.assign(r=rf.g.map(root8))[['r', 'Gestor']], cad.assign(r=cad.CPF_CNPJ_GESTOR.map(root8))[['r', 'GESTOR']].rename(columns={'GESTOR': 'Gestor'})]).dropna().drop_duplicates('r').set_index('r').Gestor
@@ -114,6 +128,7 @@ ECAT = {}
 def vec(cnpj, ym, gid, r8, depth, seen, mult=1.0):
     out = dict.fromkeys(OUTK, 0.0)
     s = PERd.get((cnpj, ym))
+    if (s is None or np.isnan(s).all()) and ym in EST_Q: s = PERd.get((cnpj, BASEQ))
     if s is None or np.isnan(s).all():
         out['nao_ident'] = 1.0; return out
     s = np.nan_to_num(s)
@@ -323,6 +338,22 @@ for k in TT:
             sub = Q[Q['st_' + rg] == stt]
             PERF[k][f'{rg}:{stt}'] = perfil(k, sub); QUI[k][f'{rg}:{stt}'] = quint(k, sub); TOP[k][f'{rg}:{stt}'] = tops(k, sub)
 out['perfil'] = PERF; out['quintis'] = QUI; out['tops'] = TOP
+# quem captou e quem sacou, trimestre a trimestre, por tipo
+TQ = {}
+for k in TT:
+    TQ[k] = {}
+    for q, x in Q.groupby('q'):
+        x = x[x['f_' + k].notna() & ((x[k + '_ant'].fillna(0) >= 1e6) | (x['f_' + k].abs() >= 1e6))]
+        if x.empty: continue
+        def lst(z):
+            return [dict(nome=r.nome, f_mi=round(getattr(r, 'f_' + k) / 1e6, 1), pct=None if not getattr(r, k + '_ant') else round(getattr(r, 'f_' + k) / getattr(r, k + '_ant'), 3),
+                         a12=None if pd.isna(r.ex12_l) else round(r.ex12_l, 3), h_mi=round((getattr(r, k + '_ant') or 0) / 1e6)) for r in z.itertuples()]
+        f = x['f_' + k]
+        TQ[k][q] = dict(rec=lst(x[f > 0].sort_values('f_' + k, ascending=False).head(8)), saq=lst(x[f < 0].sort_values('f_' + k).head(8)),
+                        n_rec=int((f > 0).sum()), n_saq=int((f < 0).sum()), rec_bi=round(f[f > 0].sum() / 1e9, 3), saq_bi=round(f[f < 0].sum() / 1e9, 3),
+                        top3_rec=round(f[f > 0].nlargest(3).sum() / f[f > 0].sum(), 3) if (f > 0).any() else None)
+out['tri'] = TQ
+out['estimados'] = [str(pd.Period(m, 'M').asfreq('Q')) for m in EST_Q]
 json.dump(out, open(SAIDA, 'w'), ensure_ascii=False, separators=(',', ':'), default=lambda o: o.item() if hasattr(o, 'item') else str(o))
 Q.to_pickle(os.path.join(OUT, 'passivo_trimestre.pkl'))
 
