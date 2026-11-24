@@ -171,7 +171,7 @@ function renderAR(){
     q.s=[q.c-sum(q.t1), q.c-sum(q.t3), q.c-sum(q.b1), q.c-sum(q.b3)]; });
   const mxg=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg,...bySec[k].s.map(Math.abs))));
   const X=v=>50+v/mxg*50; // posição em % da largura: 50 = zero
-  const MK=[['sem a maior','◇'],['sem as 3 maiores','◆'],['sem a pior','○'],['sem as 3 piores','●']];
+  const MK=[['sem a maior','◆'],['sem as 3 maiores','■'],['sem a pior','●'],['sem as 3 piores','▲']];
   const nmL=a=>a.map(([r])=>dispR(r)).join(', ');
   $('a-body').innerHTML=`<div class="card"><div class="hd"><h2>Quanto cada setor rendeu para as gestoras</h2><small>clique num setor para filtrar as tabelas</small></div>`+
     `<p class="note" style="margin:0 0 6px">Conta: em cada gestora, peso da ação × retorno da ação, mês a mês. Soma por setor, de todas as gestoras.</p>`+

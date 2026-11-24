@@ -218,7 +218,7 @@ td.secbar{box-shadow:inset 3px 0 0 var(--c)}
 .sbar .tr{height:18px}
 .sbar .tr i{top:4px;height:10px}
 .sbar .tr .z{position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px dashed var(--muted)}
-.sbar .tr .mk.at{position:absolute;top:50%;transform:translate(-50%,-50%);font-size:11px;line-height:1;color:var(--ink);text-shadow:0 0 2px var(--surface)}
+.sbar .tr .mk.at{position:absolute;top:50%;transform:translate(-50%,-50%);font-size:11px;line-height:1;color:var(--ink)}
 .mk{font-weight:400;font-size:11px;color:var(--ink)}
 .sbar .scen{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:2px 16px;font-size:11.5px;color:var(--muted);margin:-2px 0 8px;padding-left:2px}
 .sbar .scen b{color:var(--ink-2);font-weight:600}
@@ -694,7 +694,7 @@ function renderAR(){
     q.s=[q.c-sum(q.t1), q.c-sum(q.t3), q.c-sum(q.b1), q.c-sum(q.b3)]; });
   const mxg=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg,...bySec[k].s.map(Math.abs))));
   const X=v=>50+v/mxg*50; // posição em % da largura: 50 = zero
-  const MK=[['sem a maior','◇'],['sem as 3 maiores','◆'],['sem a pior','○'],['sem as 3 piores','●']];
+  const MK=[['sem a maior','◆'],['sem as 3 maiores','■'],['sem a pior','●'],['sem as 3 piores','▲']];
   const nmL=a=>a.map(([r])=>dispR(r)).join(', ');
   $('a-body').innerHTML=`<div class="card"><div class="hd"><h2>Quanto cada setor rendeu para as gestoras</h2><small>clique num setor para filtrar as tabelas</small></div>`+
     `<p class="note" style="margin:0 0 6px">Conta: em cada gestora, peso da ação × retorno da ação, mês a mês. Soma por setor, de todas as gestoras.</p>`+
