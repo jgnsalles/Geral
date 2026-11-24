@@ -13,7 +13,7 @@ const secOf=root=>(PF.sec&&PF.sec[root])||'Outros';
 const secC=b=>`var(${SECV[b]||'--sec-out'})`;
 const secLegend=(list)=>`<div class="pleg" style="margin:0 0 8px">${(list||SECN).map(b=>`<span><i style="background:${secC(b)};border-radius:50%"></i>${esc(b)}</span>`).join('')}</div>`;
 const secPill=root=>{ const b=secOf(root); return `<span class="secp"><i style="background:${secC(b)}"></i>${esc(b)}</span>`; };
-S.am='rank'; S.asec=null; S.amk='all'; S.aall=false;
+S.am='rank'; S.asec=null; S.amk='all'; S.aall=true;
 // mercado da ação: ativos com prefixo X: vêm do exterior (bloco 7 da CDA) = LatAm ex-Brasil; o resto é listado na B3
 const isEx=root=>root.startsWith('X:');
 const dispR=r=>String(r).replace(/^X:/,'');
@@ -78,7 +78,7 @@ function renderA(){
   const dec5=[['Retorno líquido',o.tot,'no período, '+(U?'em US$':'em R$')],...stkK,
     ['Outros',o.oth,'caixa, operações no mês, sigilo'],['Taxas e custos',o.fee,'líquido − bruto dos fundos'],...(U?[['Câmbio',o.fx,'variação do real']]:[])];
   const NB=S.aall?1e9:20, sorted=o.rows.slice().sort((x,y)=>y.c-x.c), posA=sorted.filter(x=>x.c>0), negA=sorted.filter(x=>x.c<0).reverse(), top=posA.slice(0,NB), bot=negA.slice(0,NB);
-  const more=(n)=>n>20?`<div class="more"><button type="button" class="btn" data-amore>${S.aall?'Ver menos':`Ver todas (${n})`}</button></div>`:'';
+  const more=()=>'';
   const mx=Math.max(1e-9,...sorted.map(x=>Math.abs(x.c)));
   const bars=(list,col)=>list.map(x=>{ const wpc=Math.abs(x.c)/mx*50; return `<div class="nm" title="${esc(nameR(x.ri))} · ${esc(secOf(AT.roots[x.ri]))}"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${secC(secOf(AT.roots[x.ri]))};margin-right:6px"></i><b>${esc(dispR(AT.roots[x.ri]))}</b> ${esc(nameR(x.ri).slice(0,22))}</div><div class="tr"><span class="ax" style="left:50%"></span><i style="background:${col};${x.c>=0?`left:50%;width:${wpc}%`:`right:50%;width:${wpc}%`}"></i></div><div class="v">${pcp(x.c)}</div>`; }).join('');
   $('a-body').innerHTML=`<div class="dec">${dec5.map(([l,v,d],k)=>`<div class="kpi"><div class="lbl">${l}</div><div class="v">${k?pcp(v):pc(v)}</div><div class="d">${d}</div></div>`).join('')}</div>`+
