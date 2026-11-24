@@ -36,149 +36,149 @@ contagem corrigida n_estrangeiro 0
 
 pessoa física: entradas por tamanho do cheque (todos os trimestres) e cotistas novos x quem já estava (R$ bi):
                private  varejo  plataformas  estrangeiro
-pulverizado      0.001   0.010        0.508        0.000
-medio            0.037   0.053        0.284        0.005
-grande           0.670   0.723        0.117        0.845
-existentes       0.290   0.214        0.070        0.150
+pulverizado      0.001   0.011        0.504        0.000
+medio            0.039   0.049        0.290        0.006
+grande           0.663   0.721        0.114        0.839
+existentes       0.296   0.219        0.071        0.155
 inconsistente    0.001   0.000        0.021        0.000
-ext_bi           6.840   2.990        8.150        0.970
-int_bi          -9.900  -5.620      -12.630        0.000
-f_bi            -4.520  -4.230       -3.920        0.570
-entrada_bi      36.730  14.190       37.170        2.760
-                                                                                                                                                                       private                                                                                                                                                                  varejo                                                                                                                                                                 plataformas                                                                                                                                                        estrangeiro
-alta    {'pulverizado': 0.002, 'medio': 0.033, 'grande': 0.66, 'existentes': 0.305, 'inconsistente': 0.0, 'ext_bi': 8.39, 'int_bi': -8.63, 'f_bi': -0.89, 'entrada_bi': 29.26}  {'pulverizado': 0.007, 'medio': 0.067, 'grande': 0.623, 'existentes': 0.303, 'inconsistente': 0.0, 'ext_bi': -0.8, 'int_bi': -5.82, 'f_bi': -8.19, 'entrada_bi': 7.48}  {'pulverizado': 0.495, 'medio': 0.321, 'grande': 0.124, 'existentes': 0.058, 'inconsistente': 0.002, 'ext_bi': 12.53, 'int_bi': -12.37, 'f_bi': 0.11, 'entrada_bi': 30.07}   {'pulverizado': 0.0, 'medio': 0.005, 'grande': 0.851, 'existentes': 0.145, 'inconsistente': 0.0, 'ext_bi': 0.91, 'int_bi': 0.0, 'f_bi': 0.57, 'entrada_bi': 2.5}
-baixa  {'pulverizado': 0.0, 'medio': 0.053, 'grande': 0.711, 'existentes': 0.234, 'inconsistente': 0.002, 'ext_bi': -1.55, 'int_bi': -1.28, 'f_bi': -3.63, 'entrada_bi': 7.47}     {'pulverizado': 0.013, 'medio': 0.038, 'grande': 0.834, 'existentes': 0.115, 'inconsistente': 0.0, 'ext_bi': 3.79, 'int_bi': 0.2, 'f_bi': 3.96, 'entrada_bi': 6.71}    {'pulverizado': 0.561, 'medio': 0.129, 'grande': 0.087, 'existentes': 0.12, 'inconsistente': 0.102, 'ext_bi': -4.39, 'int_bi': -0.26, 'f_bi': -4.04, 'entrada_bi': 7.11}  {'pulverizado': 0.0, 'medio': 0.012, 'grande': 0.785, 'existentes': 0.203, 'inconsistente': 0.0, 'ext_bi': 0.05, 'int_bi': 0.0, 'f_bi': -0.0, 'entrada_bi': 0.26}
+ext_bi           7.010   3.070        8.050        1.030
+int_bi          -8.300  -5.090      -10.100        0.000
+f_bi            -2.730  -3.620       -1.460        0.620
+entrada_bi      37.420  14.430       37.970        2.790
+                                                                                                                                                                       private                                                                                                                                                                   varejo                                                                                                                                                               plataformas                                                                                                                                                        estrangeiro
+alta    {'pulverizado': 0.002, 'medio': 0.035, 'grande': 0.654, 'existentes': 0.309, 'inconsistente': 0.0, 'ext_bi': 8.55, 'int_bi': -7.25, 'f_bi': 0.64, 'entrada_bi': 29.84}  {'pulverizado': 0.009, 'medio': 0.062, 'grande': 0.623, 'existentes': 0.307, 'inconsistente': 0.0, 'ext_bi': -0.73, 'int_bi': -5.42, 'f_bi': -7.72, 'entrada_bi': 7.68}   {'pulverizado': 0.495, 'medio': 0.324, 'grande': 0.12, 'existentes': 0.06, 'inconsistente': 0.002, 'ext_bi': 12.43, 'int_bi': -10.38, 'f_bi': 2.0, 'entrada_bi': 30.76}  {'pulverizado': 0.0, 'medio': 0.005, 'grande': 0.846, 'existentes': 0.149, 'inconsistente': 0.0, 'ext_bi': 0.97, 'int_bi': 0.0, 'f_bi': 0.63, 'entrada_bi': 2.53}
+baixa  {'pulverizado': 0.0, 'medio': 0.055, 'grande': 0.698, 'existentes': 0.246, 'inconsistente': 0.002, 'ext_bi': -1.54, 'int_bi': -1.05, 'f_bi': -3.38, 'entrada_bi': 7.57}       {'pulverizado': 0.013, 'medio': 0.035, 'grande': 0.833, 'existentes': 0.119, 'inconsistente': 0.0, 'ext_bi': 3.8, 'int_bi': 0.33, 'f_bi': 4.1, 'entrada_bi': 6.75}  {'pulverizado': 0.545, 'medio': 0.147, 'grande': 0.087, 'existentes': 0.118, 'inconsistente': 0.102, 'ext_bi': -4.38, 'int_bi': 0.28, 'f_bi': -3.46, 'entrada_bi': 7.21}   {'pulverizado': 0.0, 'medio': 0.012, 'grande': 0.78, 'existentes': 0.208, 'inconsistente': 0.0, 'ext_bi': 0.05, 'int_bi': 0.0, 'f_bi': -0.0, 'entrada_bi': 0.26}
          q      n  pos_media_mil      f    ext    int
-0   2019Q2  31949          179.1 -0.007 -0.004  0.000
-3   2020Q1  32414          156.9  0.483  0.489 -0.005
-6   2020Q4  32767          389.1  0.362  0.972 -0.567
-9   2021Q3  34365          278.1  0.046 -0.553  0.599
-12  2022Q2  33410          177.8 -0.096 -0.304  0.228
-15  2023Q1  37111          108.1  0.140  0.285 -0.141
-18  2023Q4   9306          449.9 -0.246 -0.196 -0.050
-21  2024Q3   8582          473.4 -0.229 -0.283  0.054
-24  2025Q2   7259          522.0 -0.131 -0.109 -0.019
-27  2026Q1  34797          139.7  0.879  0.890 -0.006
+0   2019Q2  31949          179.1  0.010  0.012  0.000
+3   2020Q1  32414          156.9  0.464  0.471 -0.007
+6   2020Q4  32767          389.1  0.420  0.962 -0.498
+9   2021Q3  34365          278.1  0.064 -0.551  0.616
+12  2022Q2  33410          177.8 -0.078 -0.303  0.246
+15  2023Q1  37111          108.1  0.144  0.288 -0.139
+18  2023Q4   9306          449.9 -0.239 -0.194 -0.044
+21  2024Q3   8582          473.4 -0.220 -0.280  0.060
+24  2025Q2   7259          522.0 -0.121 -0.108 -0.011
+27  2026Q1  34797          139.7  0.892  0.898 -0.000
          q     n  pos_media_mil      f    ext    int
-0   2019Q2  5737         5421.1 -1.287 -1.277  0.000
-3   2020Q1  5717         4412.8  1.035  0.843  0.179
-6   2020Q4  6597         5843.4 -0.712  1.360 -2.049
-9   2021Q3  6782         6184.7  0.202  2.520 -2.298
-12  2022Q2  6311         4803.7 -0.364  1.082 -1.446
-15  2023Q1  5093         6852.6 -0.311 -0.744  0.433
-18  2023Q4  4477        10750.6  0.985  0.976  0.009
-21  2024Q3  4397        10218.4 -0.245 -0.094 -0.151
-24  2025Q2  4222        12034.8 -0.309 -0.363  0.054
-27  2026Q1  4027        12480.0 -2.812 -2.989  0.213
+0   2019Q2  5737         5421.1 -1.228 -1.218  0.000
+3   2020Q1  5717         4412.8  1.078  0.818  0.246
+6   2020Q4  6597         5843.4 -0.572  1.446 -1.995
+9   2021Q3  6782         6184.7  0.216  2.558 -2.324
+12  2022Q2  6311         4803.7 -0.368  1.064 -1.432
+15  2023Q1  5093         6852.6 -0.259 -0.719  0.460
+18  2023Q4  4477        10750.6  1.112  0.996  0.116
+21  2024Q3  4397        10218.4 -0.148 -0.099 -0.049
+24  2025Q2  4222        12034.8 -0.311 -0.355  0.045
+27  2026Q1  4027        12480.0 -2.702 -2.963  0.298
          q        n  pos_media_mil      f    ext    int
-0   2019Q2   390001           29.8  0.357  0.358  0.000
-3   2020Q1   716479           21.0  2.929  2.958 -0.681
-6   2020Q4   949957           31.9  2.869  3.935 -1.055
-9   2021Q3  1262990           26.4 -0.138  0.804 -0.942
-12  2022Q2  1042106           20.7 -1.906 -2.039  0.133
-15  2023Q1   801809           21.7 -1.891 -1.613 -0.278
-18  2023Q4   687119           31.2 -0.127 -0.584  0.472
-21  2024Q3   613288           39.6 -0.582 -1.079  0.496
-24  2025Q2   524749           46.0 -0.394  0.747 -1.141
-27  2026Q1   487001           60.2  1.449  1.787 -0.335
+0   2019Q2   390001           29.8  0.415  0.416  0.000
+3   2020Q1   716479           21.0  2.991  2.937 -0.608
+6   2020Q4   949957           31.9  2.980  3.941 -0.953
+9   2021Q3  1262990           26.4 -0.026  0.778 -0.804
+12  2022Q2  1042106           20.7 -1.847 -2.031  0.184
+15  2023Q1   801809           21.7 -1.846 -1.607 -0.239
+18  2023Q4   687119           31.2 -0.063 -0.578  0.530
+21  2024Q3   613288           39.6 -0.511 -1.075  0.564
+24  2025Q2   524749           46.0 -0.263  0.731 -0.994
+27  2026Q1   487001           60.2  1.481  1.775 -0.291
 
 fluxo médio por trimestre (% da posição do tipo) e investe/tira, por estado:
 == Ibovespa no trimestre {'alta': 17, 'baixa': 13}
                                                     alta:fr  alta:inv  alta:tira  baixa:fr  baixa:inv  baixa:tira
-Todos                                                 -1.52      3.18      -4.71     -1.20       2.57       -3.76
-PF private                                            -1.79      2.76      -4.55      1.35       3.56       -2.21
-PF varejo direto                                       2.26     11.03      -8.77     -6.93       4.47      -11.40
-Plataformas (conta e ordem)                            0.69      6.65      -5.96     -1.90       3.75       -5.65
-Previdência aberta                                    -5.98      9.09     -15.06      0.53       7.78       -7.25
-Fundos de pensão e RPPS                               -2.03      4.72      -6.76     -1.23       4.25       -5.48
-Estrangeiro                                           -3.04     10.81     -13.85     12.60      18.18       -5.58
-Empresas e bancos                                     -1.21     10.19     -11.40     -0.29       3.44       -3.73
-Wealth (private banks e family offices, via fundo)    -2.01      5.42      -7.42     -1.74       3.46       -5.20
-FoFs e gestoras de terceiros                          -1.06     10.76     -11.83     -2.53       5.42       -7.95
+Todos                                                 -1.07      3.42      -4.49     -0.94       2.66       -3.60
+PF private                                            -1.60      2.85      -4.45      1.45       3.59       -2.14
+PF varejo direto                                       2.71     11.19      -8.48     -6.71       4.58      -11.28
+Plataformas (conta e ordem)                            1.11      6.82      -5.71     -1.63       3.80       -5.43
+Previdência aberta                                    -5.44      9.28     -14.73      0.75       7.90       -7.14
+Fundos de pensão e RPPS                               -1.66      4.92      -6.58     -1.02       4.35       -5.37
+Estrangeiro                                           -2.64     11.03     -13.67     12.72      18.22       -5.50
+Empresas e bancos                                     -1.14     10.22     -11.36     -0.22       3.46       -3.68
+Wealth (private banks e family offices, via fundo)    -1.34      5.73      -7.06     -1.38       3.58       -4.96
+FoFs e gestoras de terceiros                          -0.52     11.04     -11.56     -2.23       5.56       -7.79
 == Ibovespa em 12 meses {'alta': 22, 'baixa': 8}
                                                     alta:fr  alta:inv  alta:tira  baixa:fr  baixa:inv  baixa:tira
-Todos                                                 -1.39      2.86      -4.25     -1.31       2.96       -4.26
-PF private                                            -0.10      3.21      -3.31     -1.37       2.82       -4.20
-PF varejo direto                                      -6.31      5.76     -12.06      7.50      12.70       -5.20
-Plataformas (conta e ordem)                            0.02      5.79      -5.77     -2.14       3.77       -5.91
-Previdência aberta                                    -3.40      8.53     -11.93     -1.18       8.20       -9.38
-Fundos de pensão e RPPS                               -2.15      4.16      -6.31     -0.37       5.29       -5.66
-Estrangeiro                                            3.36     14.74     -11.39     -0.09       7.62       -7.71
-Empresas e bancos                                     -1.68      8.36     -10.04      1.70       4.03       -2.33
-Wealth (private banks e family offices, via fundo)    -2.21      4.35      -6.56     -1.00       4.63       -5.63
-FoFs e gestoras de terceiros                          -0.06      9.70      -9.77     -6.02       4.46      -10.48
+Todos                                                 -1.01      3.04      -4.05     -1.00       3.09       -4.09
+PF private                                             0.07      3.27      -3.20     -1.28       2.87       -4.15
+PF varejo direto                                      -5.94      5.92     -11.86      7.76      12.77       -5.01
+Plataformas (conta e ordem)                            0.39      5.93      -5.54     -1.84       3.83       -5.66
+Previdência aberta                                    -2.95      8.72     -11.67     -0.97       8.31       -9.27
+Fundos de pensão e RPPS                               -1.83      4.33      -6.16     -0.15       5.40       -5.55
+Estrangeiro                                            3.71     14.92     -11.21     -0.11       7.68       -7.79
+Empresas e bancos                                     -1.61      8.39      -9.99      1.77       4.07       -2.30
+Wealth (private banks e family offices, via fundo)    -1.67      4.56      -6.23     -0.55       4.84       -5.39
+FoFs e gestoras de terceiros                           0.40      9.92      -9.53     -5.66       4.66      -10.32
 == Selic no trimestre {'baixa': 16, 'alta': 14}
                                                     alta:fr  alta:inv  alta:tira  baixa:fr  baixa:inv  baixa:tira
-Todos                                                 -2.97      1.94      -4.91      0.38       3.91       -3.53
-PF private                                            -0.09      2.97      -3.06     -0.65       3.26       -3.91
-PF varejo direto                                      -8.30      3.71     -12.02      3.87      11.95       -8.08
-Plataformas (conta e ordem)                           -3.80      2.72      -6.52      2.95       7.99       -5.04
-Previdência aberta                                    -1.62      7.53      -9.15     -4.35       9.69      -14.04
-Fundos de pensão e RPPS                               -3.06      3.11      -6.17     -0.08       6.00       -6.08
-Estrangeiro                                           -1.90     10.15     -12.04      6.50      16.26       -9.76
-Empresas e bancos                                      6.32     10.06      -3.74     -8.05       4.39      -12.44
-Wealth (private banks e family offices, via fundo)    -4.23      2.42      -6.64      1.09       6.95       -5.86
-FoFs e gestoras de terceiros                          -3.81      5.54      -9.35      0.37      11.00      -10.62
+Todos                                                 -2.66      2.04      -4.71      0.80       4.15       -3.35
+PF private                                             0.00      3.01      -3.01     -0.44       3.33       -3.77
+PF varejo direto                                      -8.01      3.81     -11.82      4.25      12.12       -7.87
+Plataformas (conta e ordem)                           -3.46      2.78      -6.24      3.31       8.16       -4.85
+Previdência aberta                                    -1.30      7.66      -8.95     -3.90       9.89      -13.78
+Fundos de pensão e RPPS                               -2.80      3.23      -6.03      0.25       6.18       -5.92
+Estrangeiro                                           -1.53     10.41     -11.94      6.74      16.33       -9.59
+Empresas e bancos                                      6.39     10.09      -3.70     -7.97       4.42      -12.39
+Wealth (private banks e family offices, via fundo)    -3.80      2.54      -6.34      1.72       7.29       -5.57
+FoFs e gestoras de terceiros                          -3.45      5.70      -9.15      0.88      11.26      -10.38
 == Treasury 10 anos no trimestre {'alta': 19, 'baixa': 11}
                                                     alta:fr  alta:inv  alta:tira  baixa:fr  baixa:inv  baixa:tira
-Todos                                                 -1.85      2.39      -4.24     -0.44       3.83       -4.27
-PF private                                             0.21      3.03      -2.83     -1.53       3.30       -4.83
-PF varejo direto                                      -6.61      5.01     -11.62      6.30      13.29       -6.99
-Plataformas (conta e ordem)                           -1.07      4.96      -6.03      0.48       5.84       -5.35
-Previdência aberta                                    -5.41      7.17     -12.58      3.07      11.26       -8.20
-Fundos de pensão e RPPS                               -1.99      3.83      -5.82     -0.99       5.70       -6.69
-Estrangeiro                                           10.15     18.06      -7.91    -11.20       4.99      -16.20
-Empresas e bancos                                     -6.99      3.54     -10.53     10.81      14.22       -3.41
-Wealth (private banks e family offices, via fundo)    -2.24      4.04      -6.28     -1.16       5.18       -6.34
-FoFs e gestoras de terceiros                          -1.77      8.09      -9.86     -1.76       8.40      -10.17
+Todos                                                 -1.50      2.54      -4.04     -0.06       4.04       -4.10
+PF private                                             0.36      3.07      -2.72     -1.38       3.39       -4.77
+PF varejo direto                                      -6.28      5.16     -11.44      6.65      13.39       -6.74
+Plataformas (conta e ordem)                           -0.73      5.06      -5.79      0.86       5.98       -5.13
+Previdência aberta                                    -5.02      7.32     -12.34      3.44      11.46       -8.02
+Fundos de pensão e RPPS                               -1.69      3.99      -5.68     -0.71       5.83       -6.54
+Estrangeiro                                           10.38     18.16      -7.78    -10.80       5.25      -16.06
+Empresas e bancos                                     -6.92      3.57     -10.48     10.87      14.25       -3.38
+Wealth (private banks e family offices, via fundo)    -1.74      4.23      -5.97     -0.61       5.44       -6.04
+FoFs e gestoras de terceiros                          -1.34      8.26      -9.60     -1.33       8.69      -10.02
 == Fluxo da indústria no trimestre {'baixa': 20, 'alta': 10}
                                                     alta:fr  alta:inv  alta:tira  baixa:fr  baixa:inv  baixa:tira
-Todos                                                  3.58      5.41      -1.84     -3.73       1.67       -5.41
-PF private                                            -0.89      3.38      -4.28     -0.19       3.02       -3.21
-PF varejo direto                                       3.79     12.39      -8.60     -7.53       3.81      -11.34
-Plataformas (conta e ordem)                            6.29     11.05      -4.76     -3.64       2.64       -6.28
-Previdência aberta                                     2.00     19.10     -17.11     -4.51       4.58       -9.09
-Fundos de pensão e RPPS                                2.63      7.59      -4.96     -3.73       2.97       -6.69
-Estrangeiro                                           -4.80      7.51     -12.31      4.32      14.78      -10.46
-Empresas e bancos                                     -1.49      4.86      -6.36     -0.55       8.15       -8.71
-Wealth (private banks e family offices, via fundo)     5.82      8.63      -2.81     -5.82       2.27       -8.09
-FoFs e gestoras de terceiros                           3.38     10.54      -7.16     -4.72       6.86      -11.58
+Todos                                                  4.08      5.79      -1.71     -3.44       1.74       -5.18
+PF private                                            -0.72      3.48      -4.20     -0.04       3.06       -3.11
+PF varejo direto                                       4.20     12.59      -8.38     -7.26       3.90      -11.15
+Plataformas (conta e ordem)                            6.78     11.29      -4.52     -3.35       2.70       -6.05
+Previdência aberta                                     2.53     19.39     -16.87     -4.18       4.69       -8.87
+Fundos de pensão e RPPS                                3.00      7.82      -4.82     -3.47       3.08       -6.55
+Estrangeiro                                           -4.66      7.59     -12.25      4.64      14.95      -10.30
+Empresas e bancos                                     -1.40      4.92      -6.31     -0.49       8.18       -8.66
+Wealth (private banks e family offices, via fundo)     6.55      9.11      -2.56     -5.42       2.35       -7.77
+FoFs e gestoras de terceiros                           3.99     10.91      -6.92     -4.39       6.98      -11.38
 
 correlação do fluxo trimestral de cada tipo com:
                                                    Ibovespa no trimestre  Ibovespa 12m   CDI (nível)     Δ CDI 12m Treasury 10a (nível) Δ Treasury 12m Alpha mediano das gestoras
-Todos                                                       -0.15 (-0.8)  +0.17 (+0.9)  -0.70 (-5.2)  -0.37 (-2.1)         -0.66 (-4.7)   -0.60 (-3.9)               +0.55 (+3.5)
-PF private                                                  -0.45 (-2.7)  +0.10 (+0.5)  +0.14 (+0.8)  +0.18 (+1.0)         +0.12 (+0.6)   +0.29 (+1.6)               -0.32 (-1.8)
-PF varejo direto                                            +0.30 (+1.7)  -0.15 (-0.8)  -0.32 (-1.8)  -0.20 (-1.1)         -0.38 (-2.2)   -0.50 (-3.0)               +0.40 (+2.3)
-Plataformas (conta e ordem)                                 +0.03 (+0.1)  +0.28 (+1.5)  -0.54 (-3.4)  -0.37 (-2.1)         -0.45 (-2.6)   -0.64 (-4.3)               +0.43 (+2.5)
-Previdência aberta                                          -0.27 (-1.5)  +0.09 (+0.5)  -0.37 (-2.1)  -0.18 (-1.0)         -0.37 (-2.1)   -0.29 (-1.6)               +0.16 (+0.9)
-Fundos de pensão e RPPS                                     -0.14 (-0.7)  -0.04 (-0.2)  -0.69 (-5.0)  -0.24 (-1.3)         -0.71 (-5.3)   -0.38 (-2.2)               +0.54 (+3.4)
-Estrangeiro                                                 -0.03 (-0.1)  +0.01 (+0.1)  +0.14 (+0.8)  -0.09 (-0.5)         +0.23 (+1.3)   +0.32 (+1.8)               -0.25 (-1.4)
+Todos                                                       -0.12 (-0.6)  +0.17 (+0.9)  -0.71 (-5.3)  -0.38 (-2.1)         -0.67 (-4.7)   -0.60 (-4.0)               +0.52 (+3.2)
+PF private                                                  -0.44 (-2.6)  +0.10 (+0.6)  +0.14 (+0.8)  +0.17 (+0.9)         +0.12 (+0.6)   +0.28 (+1.5)               -0.33 (-1.8)
+PF varejo direto                                            +0.31 (+1.7)  -0.15 (-0.8)  -0.33 (-1.8)  -0.20 (-1.1)         -0.38 (-2.2)   -0.50 (-3.1)               +0.40 (+2.3)
+Plataformas (conta e ordem)                                 +0.03 (+0.2)  +0.28 (+1.5)  -0.54 (-3.4)  -0.37 (-2.1)         -0.45 (-2.7)   -0.64 (-4.4)               +0.40 (+2.3)
+Previdência aberta                                          -0.26 (-1.4)  +0.09 (+0.5)  -0.38 (-2.2)  -0.19 (-1.0)         -0.37 (-2.1)   -0.29 (-1.6)               +0.12 (+0.6)
+Fundos de pensão e RPPS                                     -0.11 (-0.6)  -0.02 (-0.1)  -0.69 (-5.1)  -0.25 (-1.4)         -0.71 (-5.3)   -0.38 (-2.2)               +0.51 (+3.1)
+Estrangeiro                                                 -0.02 (-0.1)  +0.01 (+0.1)  +0.14 (+0.8)  -0.09 (-0.5)         +0.24 (+1.3)   +0.32 (+1.8)               -0.28 (-1.5)
 Empresas e bancos                                           -0.05 (-0.2)  -0.26 (-1.4)  +0.04 (+0.2)  +0.11 (+0.6)         -0.04 (-0.2)   -0.01 (-0.1)               +0.17 (+0.9)
-Wealth (private banks e family offices, via fundo)          -0.13 (-0.7)  +0.11 (+0.6)  -0.66 (-4.7)  -0.30 (-1.7)         -0.65 (-4.5)   -0.59 (-3.8)               +0.61 (+4.1)
-FoFs e gestoras de terceiros                                +0.13 (+0.7)  +0.55 (+3.5)  -0.51 (-3.1)  -0.36 (-2.1)         -0.39 (-2.2)   -0.39 (-2.2)               +0.29 (+1.6)
+Wealth (private banks e family offices, via fundo)          -0.11 (-0.6)  +0.12 (+0.6)  -0.67 (-4.8)  -0.31 (-1.7)         -0.66 (-4.6)   -0.59 (-3.9)               +0.58 (+3.8)
+FoFs e gestoras de terceiros                                +0.15 (+0.8)  +0.55 (+3.5)  -0.52 (-3.2)  -0.37 (-2.1)         -0.40 (-2.3)   -0.39 (-2.2)               +0.29 (+1.6)
 
 multivariada padronizada (coef, t):
                                                              cdi       dcdi_12       ibov_12       dust_12     R2
-Todos                                               -0.57 (-3.6)  +0.14 (+1.6)  +0.16 (+2.0)  -0.36 (-1.8)  0.589
-PF private                                          -0.04 (-0.3)  +0.10 (+0.7)  +0.13 (+1.2)  +0.26 (+1.9)  0.101
-PF varejo direto                                    -0.11 (-1.3)  +0.06 (+0.6)  -0.16 (-1.5)  -0.48 (-4.3)  0.287
-Plataformas (conta e ordem)                         -0.30 (-2.2)  +0.11 (+0.8)  +0.27 (+2.3)  -0.52 (-2.7)  0.524
-Previdência aberta                                  -0.33 (-2.0)  +0.08 (+0.8)  +0.08 (+0.7)  -0.15 (-0.9)  0.158
-Fundos de pensão e RPPS                             -0.72 (-3.5)  +0.14 (+1.1)  -0.04 (-0.4)  -0.07 (-0.4)  0.490
-Estrangeiro                                         +0.09 (+0.8)  -0.39 (-2.5)  -0.06 (-0.4)  +0.47 (+3.1)  0.196
-Empresas e bancos                                   +0.03 (+0.2)  +0.08 (+0.7)  -0.24 (-2.2)  -0.08 (-0.8)  0.072
-Wealth (private banks e family offices, via fundo)  -0.55 (-3.1)  +0.20 (+1.9)  +0.12 (+1.4)  -0.39 (-1.9)  0.545
-FoFs e gestoras de terceiros                        -0.42 (-5.9)  +0.08 (+0.8)  +0.54 (+4.7)  -0.18 (-1.8)  0.552
+Todos                                               -0.58 (-3.6)  +0.14 (+1.6)  +0.16 (+1.9)  -0.35 (-1.9)  0.603
+PF private                                          -0.04 (-0.3)  +0.10 (+0.6)  +0.14 (+1.2)  +0.26 (+1.9)  0.097
+PF varejo direto                                    -0.11 (-1.3)  +0.06 (+0.7)  -0.16 (-1.5)  -0.48 (-4.3)  0.287
+Plataformas (conta e ordem)                         -0.30 (-2.2)  +0.11 (+0.8)  +0.27 (+2.3)  -0.52 (-2.7)  0.529
+Previdência aberta                                  -0.33 (-2.1)  +0.08 (+0.8)  +0.09 (+0.7)  -0.15 (-0.9)  0.164
+Fundos de pensão e RPPS                             -0.73 (-3.5)  +0.14 (+1.1)  -0.03 (-0.3)  -0.07 (-0.4)  0.499
+Estrangeiro                                         +0.09 (+0.9)  -0.39 (-2.5)  -0.06 (-0.4)  +0.47 (+3.2)  0.198
+Empresas e bancos                                   +0.03 (+0.2)  +0.08 (+0.7)  -0.24 (-2.1)  -0.08 (-0.8)  0.072
+Wealth (private banks e family offices, via fundo)  -0.55 (-3.2)  +0.20 (+1.9)  +0.12 (+1.4)  -0.40 (-1.9)  0.557
+FoFs e gestoras de terceiros                        -0.43 (-5.9)  +0.08 (+0.8)  +0.54 (+4.6)  -0.18 (-1.8)  0.559
 
 sensibilidade ao alpha (p.p. de fluxo no trimestre do pior ao melhor rank), modelo com os dois:
                                                        a12   t12     a36   t36       n
-Todos                                                7.563  7.89   5.944  5.03  2499.0
-PF private                                           2.559  2.01   1.758  1.12  1877.0
-PF varejo direto                                     1.956  0.67   3.536  1.45  1158.0
-Plataformas (conta e ordem)                         14.276  6.41   5.019  2.50  1813.0
-Previdência aberta                                  15.693  4.60   9.667  2.68  1270.0
-Fundos de pensão e RPPS                              2.898  0.89  23.158  5.33  1234.0
-Estrangeiro                                          3.401  0.52   8.037  1.18   268.0
-Empresas e bancos                                    8.113  1.46  -0.180 -0.03   477.0
-Wealth (private banks e family offices, via fundo)  11.873  5.82  11.256  4.54  1851.0
-FoFs e gestoras de terceiros                        10.543  3.41   7.403  3.11  1881.0
+Todos                                                7.492  7.57   7.315  6.28  2500.0
+PF private                                           2.281  1.85   3.092  2.07  1878.0
+PF varejo direto                                     1.291  0.44   4.867  1.98  1159.0
+Plataformas (conta e ordem)                         14.880  6.66   4.926  2.38  1813.0
+Previdência aberta                                  14.210  4.19  11.103  3.01  1270.0
+Fundos de pensão e RPPS                              2.745  0.84  24.814  5.82  1234.0
+Estrangeiro                                          4.283  0.58   6.500  1.00   268.0
+Empresas e bancos                                    5.793  1.20   5.986  0.94   477.0
+Wealth (private banks e family offices, via fundo)  11.343  5.38  12.587  5.22  1851.0
+FoFs e gestoras de terceiros                        11.641  3.63   8.383  3.53  1881.0

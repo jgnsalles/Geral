@@ -57,6 +57,7 @@ F['small'] = F.nomes.str.contains(r'SMALL|MICRO|\bSMID\b|MID ?CAP') | F.anbima.s
 F['divid'] = F.nomes.str.contains(r'DIVIDEND|RENDA') | F.anbima.str.contains('Dividend')
 F['exterior'] = F.nomes.str.contains(r'EXTERIOR|GLOBAL|\bIE\b|OFFSHORE|INTERNACIONAL|WORLD|USA|AMERICA') | F.anbima.str.contains('Exterior')
 F['eleg'] = ~(F.fic | F.exclusivo | F.prev | F.indexado)
+F['master'] = F.nomes.str.contains(r'\bMASTER\b|\bMST\b')
 print(F[['fic', 'exclusivo', 'prev', 'indexado', 'eleg', 'long_biased', 'small', 'divid', 'exterior']].sum().to_string(), flush=True)
 
 # ---------------- gestor na data (vetorizado por intervalos)
@@ -69,7 +70,7 @@ rcx = rc.merge(rf[['ID_Registro_Fundo', 'g']], on='ID_Registro_Fundo')
 REG = pd.concat([rcx[['CNPJ_FUNDO', 'g']], rf.assign(CNPJ_FUNDO=rf.CNPJ_Fundo.str.zfill(14).map(fmt))[['CNPJ_FUNDO', 'g']]]).drop_duplicates('CNPJ_FUNDO').set_index('CNPJ_FUNDO').g
 CADG = cad[cad.PF_PJ_GESTOR == 'PJ'].drop_duplicates('CNPJ_FUNDO', keep='last').set_index('CNPJ_FUNDO').CPF_CNPJ_GESTOR
 
-P = P.merge(F[['CNPJ_FUNDO', 'indexado', 'prev', 'long_biased', 'small', 'divid', 'exterior']], on='CNPJ_FUNDO')
+P = P.merge(F[['CNPJ_FUNDO', 'indexado', 'prev', 'long_biased', 'small', 'divid', 'exterior', 'master']], on='CNPJ_FUNDO')
 P['d'] = pd.to_datetime(P.ym + '-15')
 
 # FIC e exclusivo NA DATA (um fundo que virou feeder depois de anos como master conta como master até a troca)
@@ -184,7 +185,17 @@ def agg(x):
                       'cap': x.cap.sum(), 'res': x.res.sum(), 'r': (x.r * w).sum() / w.sum() if w.sum() > 0 else np.nan,
                       'nf': x.CNPJ_FUNDO.nunique(), 'cot': x.cot.sum(),
                       'pl_lb': x.pl[x.long_biased].sum(), 'pl_small': x.pl[x.small].sum(), 'pl_div': x.pl[x.divid].sum(), 'pl_ext': x.pl[x.exterior].sum()})
-GM = E[E.gid.notna()].groupby(['gid', 'ym']).apply(agg).reset_index()
+GM = E[E.gid.notna()].groupby(['gid', 'ym']).apply(agg).reset_index().rename(columns={'r': 'r_bruto'})
+# retorno LÍQUIDO de taxas, igual para todas as gestoras: média ponderada pelo PL dos fundos em que o investidor aplica
+# (feeders/FIC não exclusivos e fundos elegíveis que não são master). Em master-feeder as taxas de administração e performance
+# ficam no feeder, então o master é bruto; usar o master para uns e o fundo único para outros misturava bruto e líquido.
+# Sem fundo de investidor no mês, fica o retorno do elegível (bruto) e a flag r_liq_ok = False.
+INV = P[P.gid.notna() & P.r.notna() & P.pl_ant.gt(0) & ~P.indexado & ~P.prev & ((P.fic & ~P.exclusivo) | (P.eleg & ~P.master))]
+RN = INV.groupby(['gid', 'ym']).apply(lambda x: (x.r * x.pl_ant).sum() / x.pl_ant.sum()).rename('r_liq').reset_index()
+GM = GM.merge(RN, on=['gid', 'ym'], how='left')
+GM['r_liq_ok'] = GM.r_liq.notna()
+GM['r'] = GM.r_liq.fillna(GM.r_bruto)
+print('gestora-mês com retorno líquido:', round(GM.r_liq_ok.mean(), 3), '| diferença bruto - líquido (mediana, p.p. ao mês):', round((GM.r_bruto - GM.r_liq).median() * 100, 3), flush=True)
 # grade mensal completa por gestora (mês sem fundo elegível = PL zero, para capturar a saída total)
 allm = [str(p) for p in pd.period_range(P.ym.min(), P.ym.max(), freq='M')]
 grid = []
