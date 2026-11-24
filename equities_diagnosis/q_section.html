@@ -1,0 +1,23 @@
+<style>
+.qb{display:inline-block;min-width:22px;text-align:center;font-size:11px;font-weight:600;padding:1px 6px;border-radius:999px;font-variant-numeric:tabular-nums}
+.qb.q1{background:color-mix(in srgb,var(--up) 22%,transparent);color:var(--up)}
+.qb.q2{background:color-mix(in srgb,var(--up) 9%,transparent);color:var(--ink-2)}
+.qb.q3{background:color-mix(in srgb,var(--down) 9%,transparent);color:var(--ink-2)}
+.qb.q4{background:color-mix(in srgb,var(--down) 22%,transparent);color:var(--down)}
+.qsec{margin:26px 0 8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.qsec b{color:var(--ink);font-size:18px;letter-spacing:-.01em;text-transform:none;display:block;margin-top:2px}
+.qmix{display:grid;grid-template-columns:minmax(90px,150px) minmax(0,1fr) 92px;gap:6px 10px;align-items:center;font-size:12.5px}
+.qmix .v{text-align:right;font-variant-numeric:tabular-nums}
+tr.mine td,tr[data-mine] td{background:color-mix(in srgb,var(--down) 5%,transparent)}
+.qtake{margin:0 0 14px;padding:12px 14px;border-left:3px solid var(--accent-ink);background:var(--surface-2);border-radius:0 8px 8px 0;font-size:13.5px;line-height:1.5}
+.qtake li{margin:2px 0}
+</style>
+<!-- ============ 4º QUARTIL ============ -->
+<section id="v-q" hidden>
+  <div class="bar">
+    <div class="f"><span class="lbl">Grupo</span><span class="seg" id="q-grp"></span></div>
+    <div class="f"><span class="lbl">Janela da dissecação e do comportamento</span><span class="seg" id="q-win"></span></div>
+  </div>
+  <div class="ghead"><div><h1 id="q-h">4º quartil</h1><div class="sub" id="q-sub"></div></div></div>
+  <div id="q-body"><p class="loading">Carregando…</p></div>
+</section>
