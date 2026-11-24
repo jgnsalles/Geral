@@ -1,0 +1,18 @@
+<style>
+.etbl td.hold{white-space:normal;min-width:180px}
+.etbl td.hold .chip{margin:1px 0}
+.etbl tr.sel td{background:var(--accent-soft)}
+.etbl tr.link{cursor:pointer}
+</style>
+<!-- ============ EMPRESAS ============ -->
+<section id="v-e" hidden>
+  <div class="bar">
+    <div class="f"><span class="lbl">Janela</span><span class="seg" id="e-win"></span></div>
+    <div class="f" id="e-custom" hidden><span class="lbl">Período personalizado</span><span class="cust"><select id="e-from" aria-label="De"></select><span class="muted">a</span><select id="e-to" aria-label="Até"></select></span></div>
+    <div class="f"><span class="lbl">Moeda</span><span class="seg" id="e-cur"></span></div>
+    <div class="f"><label class="lbl" for="e-u">Universo</label><select id="e-u"><option value="all">Todas</option><option value="ib">Ibovespa hoje</option><option value="sm">Small hoje</option><option value="h">Já detidas pelas gestoras</option></select></div>
+    <div class="f"><label class="lbl" for="e-v">Liquidez (negociado/mês)</label><select id="e-v"><option value="0">qualquer</option><option value="10">≥ R$ 10 mi</option><option value="100">≥ R$ 100 mi</option><option value="1000">≥ R$ 1 bi</option></select></div>
+  </div>
+  <div class="ghead"><div><h1 id="e-h">Empresas</h1><div class="sub" id="e-sub"></div></div></div>
+  <div id="e-body"><p class="loading">Carregando empresas…</p></div>
+</section>

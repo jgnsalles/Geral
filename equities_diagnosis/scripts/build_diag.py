@@ -15,14 +15,14 @@ i = [k for k, l in enumerate(L) if l.startswith('function sTable(')][0]; j = i
 while not L[j].startswith('}'): j += 1
 stab = '\n'.join(L[i:j+1])
 perf = open(os.path.join(S, 'perf_js.js')).read()
-attr = open(os.path.join(S, 'diag/attr_js.js')).read()
+attr = open(os.path.join(S, 'diag/attr_js.js')).read() + '\n' + open(os.path.join(S, 'diag/emp_js.js')).read()
 sec = open(os.path.join(S, 'perf_section.html')).read()
 sec_style = re.search(r'<style>.*?</style>\n', sec, re.S).group(0); sec_body = sec.replace(sec_style, '')
-asec = open(os.path.join(S, 'diag/attr_section.html')).read()
+asec = open(os.path.join(S, 'diag/attr_section.html')).read() + open(os.path.join(S, 'diag/emp_section.html')).read()
 P = json.load(open(os.path.join(S, 'perf.json'))); G = json.load(open(os.path.join(S, 'gestoras_perf.json')))
 P['gestoras'] = [{k: g[k] for k in ('id', 'n', 'rs', 'cnpj')} for g in G if g['id'] in P['g']]
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
-VIEWS = [('p', 'performance', 'Performance'), ('a', 'attribution', 'Attribution'), ('l', 'passivo', 'Passivo'), ('g', None, 'Gestora')]
+VIEWS = [('p', 'performance', 'Performance'), ('a', 'attribution', 'Attribution'), ('e', 'empresas', 'Empresas'), ('l', 'passivo', 'Passivo'), ('g', None, 'Gestora')]
 tabs = '\n'.join(f'    <button role="tab" id="t-{v}" aria-selected="{"true" if v=="p" else "false"}" data-v="{v}">{l}</button>' for v, h, l in VIEWS)
 page = f'''<title>Equities Diagnosis</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -72,7 +72,7 @@ const G=PF.gestoras, GI={{}}; G.forEach(g=>GI[g.id]=g);
 {attr}
 // ---------- navegação (#performance, #attribution, #passivo, #g-<id>)
 const VH={json.dumps({v: h for v, h, l in VIEWS if h})};
-const RENDER={{p:()=>renderP(), a:()=>renderA(), l:()=>renderL(), g:()=>renderGV()}};
+const RENDER={{p:()=>renderP(), a:()=>renderA(), e:()=>renderE(), l:()=>renderL(), g:()=>renderGV()}};
 function setView(v){{ S.view=v; {json.dumps([v for v,_,_ in VIEWS])}.forEach(x=>{{ $('v-'+x).hidden=x!==v; $('t-'+x).setAttribute('aria-selected',x===v); }});
   const h=v==='g'&&S.g?`#g-${{S.g}}`:'#'+(VH[v]||'performance'); if(location.hash!==h){{ try{{ history.replaceState(null,'',h); }}catch(e){{}} }} window.scrollTo({{top:0}}); }}
 function openG(id){{ const g=PGI[id]||GI[id]; if(!g) return; S.g=id; setView('g'); renderGV(); }}

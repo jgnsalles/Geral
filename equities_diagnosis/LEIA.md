@@ -22,3 +22,8 @@ Não versionado aqui (≈700 KB); regenerar com os scripts de `gestoras_performa
 (Perfil Mensal da CVM desde 2019 + Formulário de Referência anual).
 
 `build_diag.py <scratch>` monta a página; publicar com data.json, attr.json e passivo.json ao lado.
+
+## Empresas (aba Empresas)
+1. `univ.py raw/b3 vol_anual.pkl` → volume anual por ticker no COTAHIST; universo = 250 mais negociadas de cada ano + tudo que os fundos já tiveram + Ibovespa e Small atuais (API de índices da B3).
+2. `b3_prices.py` + `b3_events.py` + `b3_returns.py` (eventos deduplicados; grupamento/desdobramento não registrado inferido pelo salto diário; quedas reais mantidas).
+3. `emp_build.py ret.pkl nomes.json tags.json raw/b3ev perf.json empresas.json` → série por empresa (classe mais negociada nos 12 meses anteriores), inclusive as que saíram da bolsa.

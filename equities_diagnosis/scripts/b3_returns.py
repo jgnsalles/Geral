@@ -44,8 +44,11 @@ for tk, g in B.groupby('tk'):
             continue
         D[ex] += v / q; log['div_ok'] += 1
     # eventos com ações: confere o multiplicador pela cotação antes e depois
-    my_isin = isin.get(tk)
+    my_isin = isin.get(tk); seen = set()
     for x in ev['stock']:
+        kx = (x.get('label'), x.get('factor'), x.get('lastDatePrior'), x.get('isinCode') if my_isin else None)
+        if kx in seen: continue
+        seen.add(kx)
         lab = x.get('label', '')
         if lab not in ('DESDOBRAMENTO', 'GRUPAMENTO', 'BONIFICACAO'):
             continue
@@ -64,6 +67,20 @@ for tk, g in B.groupby('tk'):
             Mu[ex] *= m; log['split_ok'] += 1
         else:
             log['split_skip'] += 1
+    # saltos de um pregão para outro sem evento registrado: fator redondo = grupamento (alta >= 4x, tolerância 15%)
+    # ou desdobramento (queda <= 1/4, tolerância 3%); quedas reais de um dia (ex.: Americanas jan/23) ficam
+    FF = [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 16, 20, 25, 30, 40, 50, 60, 75, 80, 100, 150, 200, 250, 500, 1000]
+    pv = g.values
+    for k in range(1, len(pv)):
+        if Mu.iloc[k] != 1.0 or not (pv[k - 1] > 0) or D.iloc[k] > 0: continue
+        q = pv[k] / pv[k - 1]
+        if not (q > 0): continue
+        if q >= 4:
+            f = min(FF, key=lambda f: abs(math.log(q / f)))
+            if abs(math.log(q / f)) < 0.15: Mu.iloc[k] = 1 / f; log['split_infer_up'] = log.get('split_infer_up', 0) + 1
+        elif q <= 0.25:
+            f = min(FF, key=lambda f: abs(math.log(q * f)))
+            if abs(math.log(q * f)) < 0.03: Mu.iloc[k] = f; log['split_infer_dn'] = log.get('split_infer_dn', 0) + 1
     # índice de retorno total
     p = g.values; idx = np.ones(len(p))
     for k in range(1, len(p)):
@@ -77,8 +94,19 @@ for tk, g in B.groupby('tk'):
     r[gap] = np.nan
     out[tk] = r
 R = pd.DataFrame(out).sort_index()
-# saltos impossíveis sem evento explicado: descarta o mês
-bad = (R > 1.5) | (R < -0.75)
-print('meses descartados por salto:', int(bad.sum().sum()))
+# saltos sem evento da B3: só descarta o que parece erro, não quebra real.
+#  (a) vai e volta: salto grande seguido do movimento contrário no mês seguinte
+#  (b) razão muito próxima de um fator redondo de desdobramento/grupamento (±3%) = evento não registrado
+import math
+F = [2, 3, 4, 5, 8, 10, 20, 25, 50, 100, 200, 1000]; F = F + [1 / x for x in F]
+big = (R > 1.5) | (R < -0.75)
+nxt = R.shift(-1)
+rev = big & ((np.log1p(R.clip(lower=-0.999)) + np.log1p(nxt.clip(lower=-0.999))).abs() < 0.3)
+rnd = big & (1 + R).apply(lambda col: col.map(lambda v: (not np.isnan(v)) and v > 0 and min(abs(math.log(v / f)) for f in F) < 0.03))
+bad = rev | rnd
+print('meses grandes:', int(big.sum().sum()), '| descartados (vai e volta):', int(rev.sum().sum()), '| (fator redondo):', int((rnd & ~rev).sum().sum()), '| mantidos como reais:', int((big & ~bad).sum().sum()))
 R = R.mask(bad)
 R.to_pickle(OUT); print(R.shape, log)
+V = B.assign(ym=B.dt.dt.strftime('%Y-%m')).groupby(['ym', 'tk']).vol.sum().unstack()
+V.to_pickle(OUT.replace('.pkl', '_vol.pkl'))
+LT = B.groupby('tk').dt.max().dt.strftime('%Y-%m'); LT.to_pickle(OUT.replace('.pkl', '_last.pkl'))
