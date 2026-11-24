@@ -256,7 +256,7 @@ td.secbar{box-shadow:inset 3px 0 0 var(--c)}
     <div class="f" id="e-custom" hidden><span class="lbl">Período personalizado</span><span class="cust"><select id="e-from" aria-label="De"></select><span class="muted">a</span><select id="e-to" aria-label="Até"></select></span></div>
     <div class="f"><span class="lbl">Moeda</span><span class="seg" id="e-cur"></span></div>
     <div class="f"><label class="lbl" for="e-u">Universo</label><select id="e-u"><option value="all">Todas</option><option value="ib">Ibovespa hoje</option><option value="sm">Small hoje</option><option value="h">Já detidas pelas gestoras</option></select></div>
-    <div class="f"><label class="lbl" for="e-v">Liquidez (negociado/mês)</label><select id="e-v"><option value="0">qualquer</option><option value="10">≥ R$ 10 mi</option><option value="100">≥ R$ 100 mi</option><option value="1000">≥ R$ 1 bi</option></select></div>
+    <div class="f"><label class="lbl" for="e-v">Liquidez (volume médio/dia)</label><select id="e-v"><option value="0">qualquer (inclui micro caps)</option><option value="1">≥ R$ 1 mi</option><option value="5" selected>≥ R$ 5 mi</option><option value="20">≥ R$ 20 mi</option><option value="50">≥ R$ 50 mi</option><option value="200">≥ R$ 200 mi</option></select></div>
   </div>
   <div class="ghead"><div><h1 id="e-h">Empresas</h1><div class="sub" id="e-sub"></div></div></div>
   <div id="e-body"><p class="loading">Carregando empresas…</p></div>
@@ -530,6 +530,11 @@ S.am='rank'; S.asec=null;
 
 const nameR=k=>AT.names[k]&&AT.names[k]!==AT.roots[k]?AT.names[k]:'';
 const attrKey=id=>(PR[id]&&PR[id].akey)||id;
+// meses em carteira -> intervalos "jan/22–mar/23, ago/24–out/26" (mês = mês da contribuição, carteira do fim do mês anterior)
+function spans(ms){ if(!ms||!ms.length) return []; const s=ms.slice().sort((a,b)=>a-b), out=[]; let a=s[0], p=s[0];
+  for(let k=1;k<=s.length;k++){ if(k<s.length&&s[k]===p+1){ p=s[k]; continue; } out.push([a,p]); if(k<s.length){ a=s[k]; p=s[k]; } } return out; }
+const spanTxt=(ms,max=4)=>{ const sp=spans(ms); const t=sp.map(([a,b])=>a===b?pml(a):`${pml(a)}–${pml(b)}`); return t.length>max?t.slice(0,max).join(', ')+` +${t.length-max}`:t.join(', '); };
+const spanCell=ms=>`<td class="l muted" style="white-space:normal;min-width:150px;font-size:12px" title="${esc(spanTxt(ms,99))}">${esc(spanTxt(ms))}</td>`;
 function aCompute(gid,a,b){
   const p=PR[gid], rec=AT.g[attrKey(gid)]; if(!p||!rec) return {err:'Sem carteira na CDA para esta gestora.'};
   const U=S.cur==='USD'; let G=1, out={stk:0,oth:0,fee:0,fx:0,cov:0,conf:0,nop:0,est:0,nest:0,n:0,miss:0}; const C=new Map();
@@ -537,7 +542,7 @@ function aCompute(gid,a,b){
     const k=i-rec.o, rg0=k>=0&&k<rec.rg.length?rec.rg[k]:null, rg=rg0==null?rn:dec(rg0); if(rg0==null) out.miss++;
     const fx=U&&FXR[i]!=null?FXR[i]:0, rt=(1+rn)*(1+fx)-1;
     let sc=0; ((k>=0&&rec.p[k])||[]).forEach(([ri,w,c])=>{ const W=w/1e6, Cc=c/1e6; sc+=Cc;
-      let e=C.get(ri); if(!e){ e={ri,c:0,ws:0,n:0,g:1}; C.set(ri,e); } e.c+=Cc*G; e.ws+=W; e.n++; e.g*=1+(W?Cc/W:0); });
+      let e=C.get(ri); if(!e){ e={ri,c:0,ws:0,n:0,g:1,ms:[]}; C.set(ri,e); } e.c+=Cc*G; e.ws+=W; e.n++; e.g*=1+(W?Cc/W:0); e.ms.push(i); });
     out.stk+=sc*G; out.oth+=(rg-sc)*G; out.fee+=(rn-rg)*G; out.fx+=(rt-rn)*G;
     if(k>=0&&rec.cov[k]!=null){ out.cov+=dec(rec.cov[k]); out.conf+=dec(rec.conf[k]); out.nop+=dec(rec.nop[k]); out.n++; const es=rec.est&&rec.est[k]?dec(rec.est[k]):0; out.est+=es; if(es>0.5) out.nest++; }
     G*=1+rt; }
@@ -584,6 +589,7 @@ function renderA(){
     {k:'s',l:'Setor',cls:'l',v:x=>secOf(AT.roots[x.ri]),asc:true,f:x=>`<td class="l">${secPill(AT.roots[x.ri])}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
+    {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
     {k:'r',l:'Retorno na carteira',v:x=>x.r,f:x=>`<td>${pc(x.r)}</td>`},
     {k:'c',l:'Contribuição',v:x=>x.c,f:x=>`<td style="font-weight:600">${pcp(x.c)}</td>`},
   ], o.rows, 'c', ()=>'', 1e9, renderA);
@@ -651,15 +657,15 @@ function renderAR(){
   const pairs=[], bySec={}; let ng=0;
   ids.forEach(id=>{ const p=PR[id], rec=AT.g[attrKey(id)]; const a2=Math.max(a,p.o,rec.o), b2=Math.min(b,p.last);
     if(b2<a2) return; const o=aCompute(id,a2,b2); if(o.err) return; ng++;
-    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,part:a2>a});
+    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:a2>a});
       (bySec[sec]=bySec[sec]||{c:0,pos:0,neg:0}); bySec[sec].c+=x.c; if(x.c>0) bySec[sec].pos+=x.c; else bySec[sec].neg+=x.c; }); });
   $('a-h').textContent=`Attribution · ${pml(a)} a ${pml(b)}`;
   $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${ng} gestoras · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;
   const f=S.asec, list=pairs.filter(x=>!f||x.sec===f).sort((x,y)=>y.c-x.c);
   const secs=SECN.filter(k=>bySec[k]);
   const mx=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg)));
-  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td><td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
-  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
+  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
+  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
   const N=50;
   $('a-body').innerHTML=`<div class="card"><div class="hd"><h2>Contribuição por setor</h2><small>soma das contribuições de todas as gestoras · clique para filtrar</small></div>`+
     `<div class="secleg">${['Todos',...secs].map(k=>`<button type="button" data-s="${k==='Todos'?'':esc(k)}" aria-pressed="${(k==='Todos'&&!f)||k===f}">${k==='Todos'?'Todos':`<span class="secp"><i style="background:${secC(k)}"></i>${esc(k)}</span>`}</button>`).join('')}</div>`+
@@ -675,6 +681,7 @@ function renderAR(){
     {k:'s',l:'Setor',cls:'l',v:x=>x.sec,asc:true,f:x=>`<td class="l">${secPill(x.root)}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
+    {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
     {k:'r',l:'Retorno na carteira',v:x=>x.r,f:x=>`<td>${pc(x.r)}</td>`},
     {k:'c',l:'Contribuição',v:x=>x.c,f:x=>`<td style="font-weight:600">${pcp(x.c)}</td>`},
   ], list, 'c', ()=>'', 3000, renderA);
@@ -687,7 +694,7 @@ function renderAR(){
 // a série vai até o último pregão e o restante da janela fica parado (sem retorno). Quem detinha vem das carteiras do attribution.
 let EM=null;
 const loadE=()=>EM?Promise.resolve(EM):fetch('empresas.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }).then(d=>{ EM=d; return d; });
-S.ew=12; S.ef=null; S.et=null; S.eu='all'; S.ev=0; S.esel=null;
+S.ew=12; S.ef=null; S.et=null; S.eu='all'; S.ev=5; S.esel=null;
 function eWin(){ const hi=PLAST; if(S.ew) return {a:Math.max(0,hi-S.ew+1), b:hi}; let a=S.ef??hi-11, b=S.et??hi; a=Math.max(0,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b}; }
 function eRet(e,a,b){ const U=S.cur==='USD'; let c=1, miss=0, n=0; const last=e.o+e.r.length-1;
   if(last<a||e.o>b) return null;
@@ -696,10 +703,10 @@ function eRet(e,a,b){ const U=S.cur==='USD'; let c=1, miss=0, n=0; const last=e.
   let vol=0; for(let i=Math.max(a,e.o);i<=Math.min(b,last);i++) vol+=e.v[i-e.o]||0;
   return {ret:c-1, miss, n, ipo:e.o>a?e.o:null, out:e.dl&&last<b?last:null, vol:vol/Math.max(1,Math.min(b,last)-Math.max(a,e.o)+1)}; }
 function eHolders(root,a,b){ if(!AT) return null; const ri=AT.roots.indexOf(root); if(ri<0) return [];
-  const out=[]; Object.entries(AT.g).forEach(([gid,rec])=>{ if(!PSEL.has(gid)&&!PGI[gid]) return; let n=0,ws=0,wmax=0,c=0,first=null,last=null;
+  const out=[]; Object.entries(AT.g).forEach(([gid,rec])=>{ if(!PSEL.has(gid)&&!PGI[gid]) return; let n=0,ws=0,wmax=0,c=0,first=null,last=null; const ms=[];
     for(let i=Math.max(a,rec.o);i<=Math.min(b,rec.o+rec.p.length-1);i++){ const arr=rec.p[i-rec.o]; if(!arr) continue; const x=arr.find(q=>q[0]===ri); if(!x) continue;
-      const w=x[1]/1e6; n++; ws+=w; wmax=Math.max(wmax,w); c+=x[2]/1e6; if(first==null) first=i; last=i; }
-    if(n) out.push({gid, g:PGI[gid]||{n:gid}, n, w:ws/n, wmax, c, first, last}); });
+      const w=x[1]/1e6; n++; ws+=w; wmax=Math.max(wmax,w); c+=x[2]/1e6; if(first==null) first=i; last=i; ms.push(i); }
+    if(n) out.push({gid, g:PGI[gid]||{n:gid}, n, w:ws/n, wmax, c, first, last, ms}); });
   return out.sort((x,y)=>y.w-x.w); }
 function renderE(){
   $('e-win').innerHTML=AWIN.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.ew===v}">${l}</button>`).join('');
@@ -712,10 +719,10 @@ function renderE(){
   S.eu=$('e-u').value; S.ev=+$('e-v').value;
   const ib=pstats(IBV,a,b);
   const rows=Object.entries(EM.e).map(([root,e])=>{ const s=eRet(e,a,b); if(!s||s.n<Math.min(3,b-a+1)) return null; return {root,e,...s}; }).filter(Boolean)
-    .filter(o=>(S.eu==='all'||(S.eu==='ib'&&o.e.ib)||(S.eu==='sm'&&o.e.sm)||(S.eu==='h'&&o.e.h)) && o.vol>=S.ev);
+    .filter(o=>(S.eu==='all'||(S.eu==='ib'&&o.e.ib)||(S.eu==='sm'&&o.e.sm)||(S.eu==='h'&&o.e.h)) && o.vol/21>=S.ev);
   const H=new Map(rows.map(o=>[o.root,eHolders(o.root,a,b)]));
   $('e-h').textContent=`Empresas · ${pml(a)} a ${pml(b)}`;
-  $('e-sub').textContent=`${rows.length} empresas · retorno total (preço + proventos) em ${S.cur==='USD'?'US$':'R$'} · quem detinha = gestoras do ranking com a ação na carteira em algum mês da janela`;
+  $('e-sub').textContent=`${rows.length} empresas${S.ev?` com volume médio ≥ ${plmi(S.ev)}/dia na janela`:''} · retorno total (preço + proventos) em ${S.cur==='USD'?'US$':'R$'} · quem detinha = gestoras do ranking com a ação na carteira em algum mês da janela`;
   const up=rows.filter(o=>o.ret>0).length, med=rows.map(o=>o.ret).sort((x,y)=>x-y)[Math.floor(rows.length/2)], outs=rows.filter(o=>o.out!=null);
   const srt=rows.slice().sort((x,y)=>y.ret-x.ret), win=srt.slice(0,20), los=srt.slice(-20).reverse();
   const chips=o=>{ const h=H.get(o.root)||[]; return h.length?h.slice(0,3).map(x=>`<span class="chip" title="peso médio ${pct(x.w,1)} em ${x.n} meses">${esc(x.g.n)} ${pct(x.w,0)}</span>`).join(' ')+(h.length>3?` <span class="muted">+${h.length-3}</span>`:''):'<span class="muted">nenhuma</span>'; };
@@ -735,7 +742,7 @@ function renderE(){
     {k:'ret',l:'Retorno',v:o=>o.ret,f:o=>`<td style="font-weight:600">${pc(o.ret,0)}</td>`},
     {k:'ex',l:'vs Ibov',v:o=>ib?o.ret-ib.ret:null,f:o=>`<td>${pcp(ib?o.ret-ib.ret:null)}</td>`},
     {k:'nh',l:'Gestoras',v:o=>(H.get(o.root)||[]).length,f:o=>`<td class="muted">${(H.get(o.root)||[]).length||'–'}</td>`},
-    {k:'vol',l:'Negociado/mês',v:o=>o.vol,f:o=>`<td class="muted">${plmi(o.vol)}</td>`},
+    {k:'vol',l:'Volume médio/dia',v:o=>o.vol,f:o=>`<td class="muted">${plmi(o.vol/21)}</td>`},
     {k:'tag',l:'Índice hoje',cls:'l',v:o=>(o.e.ib?2:0)+(o.e.sm?1:0),f:o=>`<td class="l muted">${[o.e.ib?'Ibov':'',o.e.sm?'Small':''].filter(Boolean).join(' · ')||'–'}</td>`},
   ], rows, 'ret', o=>`data-r="${esc(o.root)}"`, 1e9, renderE);
   bind();
@@ -748,7 +755,7 @@ function renderEDet(a,b,rows,H){ const o=rows.find(x=>x.root===S.esel), el=$('e-
   const rr=new Array(PN).fill(null); e.r.forEach((v,k)=>{ const i=e.o+k; if(v!=null){ const fx=U&&FXR[i]!=null?FXR[i]:0; rr[i]=(1+v/1e6)*(1+fx)-1; } });
   el.innerHTML=`<div class="hd"><h2><span class="tk">${esc(e.tk)}</span> ${esc(e.n)} ${secPill(o.root)}</h2><small>${pc(o.ret,0)} de ${pml(a)} a ${pml(b)}${o.out!=null?` · último pregão ${pmlong(o.out)}`:''}</small></div><div class="chart" id="e-chart"></div>`+
     `<div class="lbl" style="margin:10px 0 6px">Gestoras do ranking que tinham a ação na janela (${h.length})</div>`+
-    (h.length?`<div class="tblwrap"><table><thead><tr><th class="l">Gestora</th><th>Meses</th><th class="l">De</th><th class="l">Até</th><th>Peso médio</th><th>Peso máx.</th><th>Contribuição</th></tr></thead><tbody>${h.map(x=>`<tr><td class="l"><a href="#g-${x.gid}" data-open="${x.gid}">${esc(x.g.n)}</a></td><td class="muted">${x.n}</td><td class="l muted">${pml(x.first)}</td><td class="l muted">${pml(x.last)}</td><td>${pct(x.w,1)}</td><td class="muted">${pct(x.wmax,1)}</td><td>${pcp(x.c)}</td></tr>`).join('')}</tbody></table></div><p class="note">Contribuição = soma mensal de peso × retorno da ação na carteira da gestora, em reais, sem encadear.</p>`:'<div class="empty">Nenhuma gestora do ranking teve a ação nesse período.</div>');
+    (h.length?`<div class="tblwrap"><table><thead><tr><th class="l">Gestora</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Peso médio</th><th>Peso máx.</th><th>Contribuição</th></tr></thead><tbody>${h.map(x=>`<tr><td class="l"><a href="#g-${x.gid}" data-open="${x.gid}">${esc(x.g.n)}</a></td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pct(x.w,1)}</td><td class="muted">${pct(x.wmax,1)}</td><td>${pcp(x.c)}</td></tr>`).join('')}</tbody></table></div><p class="note">Contribuição = soma mensal de peso × retorno da ação na carteira da gestora, em reais, sem encadear.</p>`:'<div class="empty">Nenhuma gestora do ranking teve a ação nesse período.</div>');
   cumChart($('e-chart'),[{name:e.tk,r:rr,color:SER[0],sw:2.4},IBS],a,b,{h:240,label:`Retorno de ${e.tk}`});
   el.querySelectorAll('a[data-open]').forEach(x=>x.onclick=ev=>{ev.preventDefault(); openG(x.dataset.open);});
 }

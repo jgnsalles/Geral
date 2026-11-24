@@ -16,6 +16,11 @@ S.am='rank'; S.asec=null;
 
 const nameR=k=>AT.names[k]&&AT.names[k]!==AT.roots[k]?AT.names[k]:'';
 const attrKey=id=>(PR[id]&&PR[id].akey)||id;
+// meses em carteira -> intervalos "jan/22–mar/23, ago/24–out/26" (mês = mês da contribuição, carteira do fim do mês anterior)
+function spans(ms){ if(!ms||!ms.length) return []; const s=ms.slice().sort((a,b)=>a-b), out=[]; let a=s[0], p=s[0];
+  for(let k=1;k<=s.length;k++){ if(k<s.length&&s[k]===p+1){ p=s[k]; continue; } out.push([a,p]); if(k<s.length){ a=s[k]; p=s[k]; } } return out; }
+const spanTxt=(ms,max=4)=>{ const sp=spans(ms); const t=sp.map(([a,b])=>a===b?pml(a):`${pml(a)}–${pml(b)}`); return t.length>max?t.slice(0,max).join(', ')+` +${t.length-max}`:t.join(', '); };
+const spanCell=ms=>`<td class="l muted" style="white-space:normal;min-width:150px;font-size:12px" title="${esc(spanTxt(ms,99))}">${esc(spanTxt(ms))}</td>`;
 function aCompute(gid,a,b){
   const p=PR[gid], rec=AT.g[attrKey(gid)]; if(!p||!rec) return {err:'Sem carteira na CDA para esta gestora.'};
   const U=S.cur==='USD'; let G=1, out={stk:0,oth:0,fee:0,fx:0,cov:0,conf:0,nop:0,est:0,nest:0,n:0,miss:0}; const C=new Map();
@@ -23,7 +28,7 @@ function aCompute(gid,a,b){
     const k=i-rec.o, rg0=k>=0&&k<rec.rg.length?rec.rg[k]:null, rg=rg0==null?rn:dec(rg0); if(rg0==null) out.miss++;
     const fx=U&&FXR[i]!=null?FXR[i]:0, rt=(1+rn)*(1+fx)-1;
     let sc=0; ((k>=0&&rec.p[k])||[]).forEach(([ri,w,c])=>{ const W=w/1e6, Cc=c/1e6; sc+=Cc;
-      let e=C.get(ri); if(!e){ e={ri,c:0,ws:0,n:0,g:1}; C.set(ri,e); } e.c+=Cc*G; e.ws+=W; e.n++; e.g*=1+(W?Cc/W:0); });
+      let e=C.get(ri); if(!e){ e={ri,c:0,ws:0,n:0,g:1,ms:[]}; C.set(ri,e); } e.c+=Cc*G; e.ws+=W; e.n++; e.g*=1+(W?Cc/W:0); e.ms.push(i); });
     out.stk+=sc*G; out.oth+=(rg-sc)*G; out.fee+=(rn-rg)*G; out.fx+=(rt-rn)*G;
     if(k>=0&&rec.cov[k]!=null){ out.cov+=dec(rec.cov[k]); out.conf+=dec(rec.conf[k]); out.nop+=dec(rec.nop[k]); out.n++; const es=rec.est&&rec.est[k]?dec(rec.est[k]):0; out.est+=es; if(es>0.5) out.nest++; }
     G*=1+rt; }
@@ -70,6 +75,7 @@ function renderA(){
     {k:'s',l:'Setor',cls:'l',v:x=>secOf(AT.roots[x.ri]),asc:true,f:x=>`<td class="l">${secPill(AT.roots[x.ri])}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
+    {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
     {k:'r',l:'Retorno na carteira',v:x=>x.r,f:x=>`<td>${pc(x.r)}</td>`},
     {k:'c',l:'Contribuição',v:x=>x.c,f:x=>`<td style="font-weight:600">${pcp(x.c)}</td>`},
   ], o.rows, 'c', ()=>'', 1e9, renderA);
@@ -137,15 +143,15 @@ function renderAR(){
   const pairs=[], bySec={}; let ng=0;
   ids.forEach(id=>{ const p=PR[id], rec=AT.g[attrKey(id)]; const a2=Math.max(a,p.o,rec.o), b2=Math.min(b,p.last);
     if(b2<a2) return; const o=aCompute(id,a2,b2); if(o.err) return; ng++;
-    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,part:a2>a});
+    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:a2>a});
       (bySec[sec]=bySec[sec]||{c:0,pos:0,neg:0}); bySec[sec].c+=x.c; if(x.c>0) bySec[sec].pos+=x.c; else bySec[sec].neg+=x.c; }); });
   $('a-h').textContent=`Attribution · ${pml(a)} a ${pml(b)}`;
   $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${ng} gestoras · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;
   const f=S.asec, list=pairs.filter(x=>!f||x.sec===f).sort((x,y)=>y.c-x.c);
   const secs=SECN.filter(k=>bySec[k]);
   const mx=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg)));
-  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td><td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
-  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
+  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
+  const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
   const N=50;
   $('a-body').innerHTML=`<div class="card"><div class="hd"><h2>Contribuição por setor</h2><small>soma das contribuições de todas as gestoras · clique para filtrar</small></div>`+
     `<div class="secleg">${['Todos',...secs].map(k=>`<button type="button" data-s="${k==='Todos'?'':esc(k)}" aria-pressed="${(k==='Todos'&&!f)||k===f}">${k==='Todos'?'Todos':`<span class="secp"><i style="background:${secC(k)}"></i>${esc(k)}</span>`}</button>`).join('')}</div>`+
@@ -161,6 +167,7 @@ function renderAR(){
     {k:'s',l:'Setor',cls:'l',v:x=>x.sec,asc:true,f:x=>`<td class="l">${secPill(x.root)}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
+    {k:'pe',l:'Períodos na carteira',cls:'l',v:x=>x.ms[0],asc:true,f:x=>spanCell(x.ms)},
     {k:'r',l:'Retorno na carteira',v:x=>x.r,f:x=>`<td>${pc(x.r)}</td>`},
     {k:'c',l:'Contribuição',v:x=>x.c,f:x=>`<td style="font-weight:600">${pcp(x.c)}</td>`},
   ], list, 'c', ()=>'', 3000, renderA);
