@@ -11,8 +11,10 @@ E['gid'] = E.CNPJ_FUNDO.map(FUNDS)
 Esel = pd.read_pickle(j('E_sel.pkl'))
 pd.concat([Esel, E[Esel.columns]], ignore_index=True).to_pickle(j('E_all.pkl'))
 X = pd.read_pickle(j('emp', 'foreign.pkl'))
-X = X[X.CNPJ_FUNDO.isin(FUNDS) & X.tpa.isin(['Outros', 'Ação ordinária', 'Ação preferencial', 'Depository Receipt no Exterior(DR)']) & (X.v > 0)].copy()
+ALLF = set(pd.concat([Esel, E[Esel.columns]]).CNPJ_FUNDO)  # ações no exterior de TODOS os fundos do attribution
+X = X[X.CNPJ_FUNDO.isin(ALLF) & X.tpa.isin(['Outros', 'Ação ordinária', 'Ação preferencial', 'Depository Receipt no Exterior(DR)']) & (X.v > 0)].copy()
 X['cod'] = X.cod.fillna('').str.strip().str.upper(); X = X[~X.cod.isin(['', 'FUNDO OFF', 'OFFSHORE'])]
+X = X[~X.cod.str.match(r'^[0-9]+$') & ~(X.emissor.fillna('') + ' ' + X.ds.fillna('')).str.upper().str.contains(r"(FUND|FUNDO|\bFDO\b|CLASS|\bCL [A-Z]\b|\bLP\b|L\.P\.|SICAV|PORTFOLIO|LONG ONLY|MASTER|FEEDER|OFFSHORE|SQUADRA|ATMOS|DYNAMO|SHP |\bETF\b|ISHARES)")]  # cotas de fundos ficam em 'outros'
 X['cod'] = X.cod.map(lambda c: {'BOLSA': 'BOLSAA'}.get(c.split()[0].replace('*', ''), c.split()[0].replace('*', '')))
 Hb = pd.read_pickle(j('attr', 'la', 'holdings.pkl'))
 Hf = pd.DataFrame({'CNPJ_FUNDO': X.CNPJ_FUNDO, 'ym': X.ym, 'tp': 'Investimento no Exterior', 'tk': 'X:' + X.cod, 'isin': None, 'ds': X.emissor, 'qt': X.qt, 'v': X.v})

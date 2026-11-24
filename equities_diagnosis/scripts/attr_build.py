@@ -79,8 +79,11 @@ est = E[E.est].groupby(['gid', 'ym']).a.sum().rename('est')
 G = G.join(cov).join(nop).join(cf).join(est).fillna({'cov': 0, 'nop': 0, 'conf': 0, 'est': 0})
 P = X[X.ret.notna()].groupby(['gid', 'ym', 'root']).agg(w=('wa', 'sum'), c=('c', 'sum')).reset_index()
 roots = sorted(P.root.unique()); RI = {r: k for k, r in enumerate(roots)}
+# empresas de fora do Brasil: posições no exterior (X:) ou BDRs (códigos 31-35, 39)
+_tpx = H.assign(fx=H.tk.str.startswith('X:') | H.tk.str.match(r'^[A-Z0-9]{4}(3[1-5]|39)$') | H.tp.fillna('').str.contains('Depository|Exterior'))
+FXR = set(_tpx[_tpx.fx].root)
 I = lambda v: int(round(v * 1e6)) if np.isfinite(v) else 0
-out = {'meses': M, 'roots': roots, 'names': [NM.get(r, r) for r in roots], 'g': {}}
+out = {'meses': M, 'roots': roots, 'names': [NM.get(r, r) for r in roots], 'fx': [k for k, r in enumerate(roots) if r in FXR], 'g': {}}
 for gid, gg in G.groupby(level=0):
     gg = gg.droplevel(0)
     o, last = MI[gg.index.min()], MI[gg.index.max()]

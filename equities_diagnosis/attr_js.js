@@ -15,11 +15,11 @@ const secLegend=(list)=>`<div class="pleg" style="margin:0 0 8px">${(list||SECN)
 const secPill=root=>{ const b=secOf(root); return `<span class="secp"><i style="background:${secC(b)}"></i>${esc(b)}</span>`; };
 S.am='rank'; S.asec=null; S.amk='all'; S.aall=true;
 // mercado da ação: ativos com prefixo X: vêm do exterior (bloco 7 da CDA) = LatAm ex-Brasil; o resto é listado na B3
-const isEx=root=>root.startsWith('X:');
+let _FX=null; const isEx=root=>{ if(!_FX) _FX=new Set((AT.fx||[]).map(k=>AT.roots[k])); return root.startsWith('X:')||_FX.has(root); };
 const dispR=r=>String(r).replace(/^X:/,'');
 const mktOk=root=>S.amk==='all'||(S.amk==='ex'?isEx(root):!isEx(root));
-const MKT=[['all','Tudo'],['br','Só Brasil'],['ex','Só LatAm ex-BR']];
-const mktLbl=()=>({all:'',br:' · só ações do Brasil',ex:' · só ações LatAm ex-Brasil'})[S.amk];
+const MKT=[['all','Tudo'],['br','Só Brasil'],['ex','Só ex-Brasil']];
+const mktLbl=()=>({all:'',br:' · só empresas brasileiras',ex:' · só empresas de fora do Brasil (ações no exterior e BDRs)'})[S.amk];
 
 const nameR=k=>AT.names[k]&&AT.names[k]!==AT.roots[k]?AT.names[k]:'';
 const attrKey=id=>(PR[id]&&PR[id].akey)||id;
@@ -73,7 +73,7 @@ function renderA(){
   const U=S.cur==='USD';
   const sBR=o.rows.filter(x=>!isEx(AT.roots[x.ri])), sEX=o.rows.filter(x=>isEx(AT.roots[x.ri]));
   const sum=a=>a.reduce((t,x)=>t+x.c,0);
-  const stkK=sEX.length?[['Ações Brasil',sum(sBR),`${sBR.length} emissores`],['Ações LatAm ex-BR',sum(sEX),`${sEX.length} emissores`]]:[['Ações',o.stk,`${o.rows.length} emissores`]];
+  const stkK=sEX.length?[['Ações Brasil',sum(sBR),`${sBR.length} emissores`],['Ações ex-Brasil',sum(sEX),`${sEX.length} emissores`]]:[['Ações',o.stk,`${o.rows.length} emissores`]];
   o.rows=o.rows.filter(x=>mktOk(AT.roots[x.ri]));
   const dec5=[['Retorno líquido',o.tot,'no período, '+(U?'em US$':'em R$')],...stkK,
     ['Outros',o.oth,'caixa, operações no mês, sigilo'],['Taxas e custos',o.fee,'líquido − bruto dos fundos'],...(U?[['Câmbio',o.fx,'variação do real']]:[])];

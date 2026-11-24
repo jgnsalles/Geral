@@ -16,12 +16,20 @@ def norm(c):
     return ALIAS.get(t, t)
 X['cod'] = X.cod.map(norm)
 eq = X[X.tpa.isin(['Outros', 'Ação ordinária', 'Ação preferencial', 'Depository Receipt no Exterior(DR)']) & ~X.cod.isin(['', 'FUNDO OFF', 'OFFSHORE'])].copy()
+eq = eq[~eq.cod.str.match(r'^[0-9]+$') & (eq.cod.str.len() >= 1)]   # código só com números = não é ticker
+# cotas de fundos declaradas como ação (ex.: código 'SQ' = fundo offshore da Squadra, não a Square)
+FUNDRE = r"(FUND|FUNDO|\bFDO\b|CLASS|\bCL [A-Z]\b|\bLP\b|L\.P\.|SICAV|PORTFOLIO|LONG ONLY|MASTER|FEEDER|OFFSHORE|SQUADRA|ATMOS|DYNAMO|SHP |\bETF\b|ISHARES)"
+eq = eq[~(eq.emissor.fillna('') + ' ' + eq.ds.fillna('')).str.upper().str.contains(FUNDRE)]
 eq['px'] = eq.v / eq.qt
-P = eq.groupby(['ym', 'cod']).px.median().unstack()
-R = P.pct_change(fill_method=None)
-per = pd.PeriodIndex(P.index, freq='M').astype('int64')
-R[pd.Series(per, index=P.index).diff().fillna(1).values != 1] = np.nan
-R = R.mask((R > 2) | (R < -0.85))
+# retorno dentro de cada fundo (a unidade da quantidade é a mesma no fundo); mediana entre fundos
+f = eq.groupby(['CNPJ_FUNDO', 'cod', 'ym']).agg(v=('v', 'sum'), qt=('qt', 'sum')).reset_index()
+f['px'] = f.v / f.qt
+f = f.sort_values(['CNPJ_FUNDO', 'cod', 'ym'])
+f['t'] = pd.PeriodIndex(f.ym, freq='M').astype('int64')
+g = f.groupby(['CNPJ_FUNDO', 'cod'])
+f['r'] = g.px.pct_change(); f['dt'] = g.t.diff()
+f = f[(f.dt == 1) & f.r.notna() & (f.r.abs() < 0.6)]
+R = f.groupby(['ym', 'cod']).r.median().unstack().sort_index()
 R.columns = ['X:' + c for c in R.columns]
 R.to_pickle(os.path.join(OUT, 'ret_ext.pkl'))
 NAMES = {'AC': 'ARCA CONTINENTAL', 'AGUAS/A': 'AGUAS ANDINAS', 'ANDINAB': 'EMBOTELLADORA ANDINA', 'KOF': 'COCA-COLA FEMSA', 'WALMEX': 'WALMART DE MEXICO',

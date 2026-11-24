@@ -61,9 +61,13 @@ MAN = {'GGPS':'Industrials','EZTC':'Real Estate','WEGE':'Industrials','TRIS':'Re
        'RECV':'Commodities','ENEV':'Utilities','CPLE':'Utilities','CMIG':'Utilities','ELET':'Utilities','AXIA':'Utilities','EGIE':'Utilities','TAEE':'Utilities','ALUP':'Utilities',
        'AURE':'Utilities','NEOE':'Utilities','CPFE':'Utilities','ENGI':'Utilities','TRPL':'Utilities','ISAE':'Utilities','CYRE':'Real Estate','MRVE':'Real Estate',
        'EVEN':'Real Estate','DIRR':'Real Estate','CURY':'Real Estate','TEND':'Real Estate','PLPL':'Real Estate','GFSA':'Real Estate','RAPT':'Industrials','POMO':'Industrials',
-       'TUPY':'Industrials','PRNR':'Industrials','RANI':'Commodities','KEPL':'Industrials','SHUL':'Industrials','FRAS':'Industrials','MYPK':'Industrials','LEVE':'Industrials','INTB':'TMT'}
+       'TUPY':'Industrials','PRNR':'Industrials','X:CZZ':'Commodities','X:DUFN':'Varejo','X:ABI':'Consumo','X:BUD':'Consumo','JPSA':'Malls','ABNB':'Industrials','DAYC':'Financials','X:SQ':'Financials',
+       'X:BYMA':'Financials','BNCA':'Financials','FFTL':'Commodities','DROG':'Saúde','X:SGMLF':'Commodities','X:GENTERA':'Financials','MAGS':'Commodities','BRTP':'TMT',
+       'BISA':'Real Estate','MARI':'Varejo','X:USDXPCAS':'Financials','OGXP':'Commodities','CZLT':'Commodities','AURA':'Commodities','BABA':'Varejo','AMZO':'Varejo',
+       'AIRB':'Consumo','BKNG':'Consumo','DISB':'TMT','ADBE':'TMT','ASML':'TMT','BIDU':'TMT','A1MD':'TMT','CTGP':'Financials','BLAK':'Financials','CHVX':'Commodities',
+       'DEEC':'Industrials','DEOP':'Consumo','DUFB':'Varejo','A1RC':'Consumo','ARCO':'Educação','AFYA':'Educação','RANI':'Commodities','KEPL':'Industrials','SHUL':'Industrials','FRAS':'Industrials','MYPK':'Industrials','LEVE':'Industrials','INTB':'TMT'}
 for k, v in MAN.items():
-    if SEC.get(k, 'Outros') == 'Outros' or k in ('PRNR',): SEC[k] = v
+    if SEC.get(k, 'Outros') == 'Outros' or k in ('PRNR',) or k.startswith('X:'): SEC[k] = v
 P['sec'] = SEC
 TM = json.load(open(os.path.join(S, 'emp/tickermap.json')))
 def _ren(r):
