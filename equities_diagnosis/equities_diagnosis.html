@@ -231,6 +231,7 @@ td.secbar{box-shadow:inset 3px 0 0 var(--c)}
     <div class="f"><span class="lbl">Janela</span><span class="seg" id="a-win"></span></div>
     <div class="f" id="a-custom" hidden><span class="lbl">Período personalizado</span><span class="cust"><select id="a-from" aria-label="De"></select><span class="muted">a</span><select id="a-to" aria-label="Até"></select></span></div>
     <div class="f"><span class="lbl">Moeda</span><span class="seg" id="a-cur"></span></div>
+    <div class="f"><span class="lbl">Mercado das ações</span><span class="seg" id="a-mkt"></span></div>
   </div>
   <div class="ghead"><div><h1 id="a-h">Attribution</h1><div class="sub" id="a-sub"></div></div></div>
   <div id="a-body"><p class="loading">Carregando carteiras…</p></div>
@@ -526,7 +527,13 @@ const SECV={Utilities:'--sec-util',Financials:'--sec-fin',Seguros:'--sec-seg',Co
 const secOf=root=>(PF.sec&&PF.sec[root])||'Outros';
 const secC=b=>`var(${SECV[b]||'--sec-out'})`;
 const secPill=root=>{ const b=secOf(root); return `<span class="secp"><i style="background:${secC(b)}"></i>${esc(b)}</span>`; };
-S.am='rank'; S.asec=null;
+S.am='rank'; S.asec=null; S.amk='all';
+// mercado da ação: ativos com prefixo X: vêm do exterior (bloco 7 da CDA) = LatAm ex-Brasil; o resto é listado na B3
+const isEx=root=>root.startsWith('X:');
+const dispR=r=>String(r).replace(/^X:/,'');
+const mktOk=root=>S.amk==='all'||(S.amk==='ex'?isEx(root):!isEx(root));
+const MKT=[['all','Tudo'],['br','Só Brasil'],['ex','Só LatAm ex-BR']];
+const mktLbl=()=>({all:'',br:' · só ações do Brasil',ex:' · só ações LatAm ex-Brasil'})[S.amk];
 
 const nameR=k=>AT.names[k]&&AT.names[k]!==AT.roots[k]?AT.names[k]:'';
 const attrKey=id=>(PR[id]&&PR[id].akey)||id;
@@ -561,6 +568,8 @@ function renderA(){
   if(!AT){ $('a-body').innerHTML='<p class="loading">Carregando carteiras…</p>'; loadA().then(renderA).catch(e=>{$('a-body').innerHTML=`<p class="loading">Não foi possível carregar as carteiras (${esc(e.message)}).</p>`;}); return; }
   $('a-mode').innerHTML=[['rank','Ranking gestora × empresa'],['one','Por gestora']].map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.am===v}">${l}</button>`).join('');
   $('a-mode').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.am=x.dataset.v; renderA();};
+  $('a-mkt').innerHTML=MKT.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${S.amk===v}">${l}</button>`).join('');
+  $('a-mkt').onclick=e=>{const x=e.target.closest('button'); if(!x) return; S.amk=x.dataset.v; renderA();};
   $('a-gf').hidden=S.am==='rank';
   if(S.am==='rank'){ renderAR(); return; }
   if(!AT.g[attrKey(S.g)]){ $('a-h').textContent=g.n; $('a-sub').textContent=''; $('a-custom').hidden=true; $('a-body').innerHTML='<div class="card"><div class="empty">Sem carteira na CDA para os fundos desta gestora.</div></div>'; return; }
@@ -569,15 +578,19 @@ function renderA(){
     opt($('a-from'),bd.a,bd.lo,bd.hi); opt($('a-to'),bd.b,bd.lo,bd.hi);
     $('a-from').onchange=()=>{S.af=+$('a-from').value; renderA();}; $('a-to').onchange=()=>{S.at=+$('a-to').value; renderA();}; }
   const o=aCompute(S.g,bd.a,bd.b);
-  $('a-h').textContent=`${g.n} · ${pml(bd.a)} a ${pml(bd.b)}`;
+  $('a-h').textContent=`${g.n} · ${pml(bd.a)} a ${pml(bd.b)}${mktLbl()}`;
   $('a-sub').textContent=`${o.m||bd.b-bd.a+1} meses${bd.cut?' (série começa depois do início da janela)':''} · em ${S.cur==='USD'?'US$':'R$'} · retorno líquido do cotista decomposto pela carteira de ações dos fundos long only da gestora`;
   if(o.err){ $('a-body').innerHTML=`<div class="card"><div class="empty">${esc(o.err)}</div></div>`; return; }
   const U=S.cur==='USD';
-  const dec5=[['Retorno líquido',o.tot,'no período, '+(U?'em US$':'em R$')],['Ações',o.stk,`${o.rows.length} emissores`],
+  const sBR=o.rows.filter(x=>!isEx(AT.roots[x.ri])), sEX=o.rows.filter(x=>isEx(AT.roots[x.ri]));
+  const sum=a=>a.reduce((t,x)=>t+x.c,0);
+  const stkK=sEX.length?[['Ações Brasil',sum(sBR),`${sBR.length} emissores`],['Ações LatAm ex-BR',sum(sEX),`${sEX.length} emissores`]]:[['Ações',o.stk,`${o.rows.length} emissores`]];
+  o.rows=o.rows.filter(x=>mktOk(AT.roots[x.ri]));
+  const dec5=[['Retorno líquido',o.tot,'no período, '+(U?'em US$':'em R$')],...stkK,
     ['Outros',o.oth,'caixa, operações no mês, sigilo'],['Taxas e custos',o.fee,'líquido − bruto dos fundos'],...(U?[['Câmbio',o.fx,'variação do real']]:[])];
   const sorted=o.rows.slice().sort((x,y)=>y.c-x.c), top=sorted.filter(x=>x.c>0).slice(0,12), bot=sorted.filter(x=>x.c<0).slice(-12).reverse();
   const mx=Math.max(1e-9,...sorted.map(x=>Math.abs(x.c)));
-  const bars=(list,col)=>list.map(x=>{ const wpc=Math.abs(x.c)/mx*50; return `<div class="nm" title="${esc(nameR(x.ri))} · ${esc(secOf(AT.roots[x.ri]))}"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${secC(secOf(AT.roots[x.ri]))};margin-right:6px"></i><b>${esc(AT.roots[x.ri])}</b> ${esc(nameR(x.ri).slice(0,22))}</div><div class="tr"><span class="ax" style="left:50%"></span><i style="background:${col};${x.c>=0?`left:50%;width:${wpc}%`:`right:50%;width:${wpc}%`}"></i></div><div class="v">${pcp(x.c)}</div>`; }).join('');
+  const bars=(list,col)=>list.map(x=>{ const wpc=Math.abs(x.c)/mx*50; return `<div class="nm" title="${esc(nameR(x.ri))} · ${esc(secOf(AT.roots[x.ri]))}"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${secC(secOf(AT.roots[x.ri]))};margin-right:6px"></i><b>${esc(dispR(AT.roots[x.ri]))}</b> ${esc(nameR(x.ri).slice(0,22))}</div><div class="tr"><span class="ax" style="left:50%"></span><i style="background:${col};${x.c>=0?`left:50%;width:${wpc}%`:`right:50%;width:${wpc}%`}"></i></div><div class="v">${pcp(x.c)}</div>`; }).join('');
   $('a-body').innerHTML=`<div class="dec">${dec5.map(([l,v,d],k)=>`<div class="kpi"><div class="lbl">${l}</div><div class="v">${k?pcp(v):pc(v)}</div><div class="d">${d}</div></div>`).join('')}</div>`+
     `<div class="grid2"><div class="card"><div class="hd"><h2>Maiores contribuições</h2><small>p.p. do retorno no período</small></div><div class="dbar">${bars(top,'var(--up)')||'<div class="empty">–</div>'}</div></div>`+
     `<div class="card"><div class="hd"><h2>Maiores detratores</h2><small>p.p. do retorno no período</small></div><div class="dbar">${bars(bot,'var(--down)')||'<div class="empty">–</div>'}</div></div></div>`+
@@ -585,7 +598,7 @@ function renderA(){
     `<p class="note">Carteira revelada em média ${pct(o.cov,0)} do PL dos fundos; ${pct(o.conf,0)} em sigilo na CVM; ${pct(o.nop,1)} em ativos sem preço na B3 (renomeados, fechados, exterior)${o.nest?`; em ${o.nest} mês(es) a carteira do mês ainda está em sigilo e foi estimada pela última revelada (até 6 meses antes)`:''}${o.miss?`; ${o.miss} mês(es) sem carteira, tratados como "outros"`:''}. ${S.cur==='USD'?'As contribuições das ações são em reais; o efeito do dólar aparece na linha Câmbio.':''}</p></div>`+
     `<p class="note"><b>Como é calculado.</b> Peso de cada emissor = posição no fim do mês anterior ÷ PL do fundo, pela CDA da CVM, somando os fundos long only da gestora na mesma ponderação da performance; cotas de outros fundos (ex.: um fundo que investe no master) são abertas nas ações desse fundo; quando a carteira do mês ainda está em sigilo, usa-se a última revelada (até 6 meses). Retorno do emissor = fechamento da B3 + proventos em dinheiro na data-com, ajustado por desdobramentos, grupamentos e bonificações (API da B3). Contribuição do mês = peso × retorno, encadeada pelo retorno acumulado da gestora até o mês anterior, de modo que ações + outros + taxas${U?' + câmbio':''} = retorno líquido. "Outros" junta caixa, compras e vendas feitas dentro do mês, posições em sigilo e ativos sem preço. "Taxas" = retorno da cota do cotista (FIC) menos o do master.</p>`;
   sTable('a-tbl',[
-    {k:'e',l:'Emissor',cls:'l',v:x=>AT.roots[x.ri],asc:true,f:x=>`<td class="l"><span class="tk">${esc(AT.roots[x.ri])}</span> <span class="muted">${esc(nameR(x.ri))}</span></td>`},
+    {k:'e',l:'Emissor',cls:'l',v:x=>AT.roots[x.ri],asc:true,f:x=>`<td class="l"><span class="tk">${esc(dispR(AT.roots[x.ri]))}</span> <span class="muted">${esc(nameR(x.ri))}</span></td>`},
     {k:'s',l:'Setor',cls:'l',v:x=>secOf(AT.roots[x.ri]),asc:true,f:x=>`<td class="l">${secPill(AT.roots[x.ri])}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
@@ -657,14 +670,14 @@ function renderAR(){
   const pairs=[], bySec={}; let ng=0;
   ids.forEach(id=>{ const p=PR[id], rec=AT.g[attrKey(id)]; const a2=Math.max(a,p.o,rec.o), b2=Math.min(b,p.last);
     if(b2<a2) return; const o=aCompute(id,a2,b2); if(o.err) return; ng++;
-    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:a2>a});
+    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); if(!mktOk(root)) return; pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:a2>a});
       (bySec[sec]=bySec[sec]||{c:0,pos:0,neg:0}); bySec[sec].c+=x.c; if(x.c>0) bySec[sec].pos+=x.c; else bySec[sec].neg+=x.c; }); });
   $('a-h').textContent=`Attribution · ${pml(a)} a ${pml(b)}`;
-  $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${ng} gestoras · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;
+  $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${new Set(pairs.map(x=>x.id)).size} gestoras${mktLbl()} · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;
   const f=S.asec, list=pairs.filter(x=>!f||x.sec===f).sort((x,y)=>y.c-x.c);
   const secs=SECN.filter(k=>bySec[k]);
   const mx=Math.max(1e-9,...secs.map(k=>Math.max(bySec[k].pos,-bySec[k].neg)));
-  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
+  const row=(x,k)=>`<tr><td class="muted">${k}</td><td class="l"><a href="#" data-g="${x.id}">${esc(x.g.n)}</a>${x.part?' <span class="chip" title="série da gestora começa depois do início da janela">parcial</span>':''}</td><td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td><td class="l">${secPill(x.root)}</td><td>${pct(x.w,1)}</td><td class="muted">${x.n}</td>${spanCell(x.ms)}<td>${pc(x.r)}</td><td style="font-weight:600">${pcp(x.c)}</td></tr>`;
   const head='<thead><tr><th>#</th><th class="l">Gestora</th><th class="l">Empresa</th><th class="l">Setor</th><th>Peso médio</th><th>Meses</th><th class="l">Períodos na carteira</th><th>Retorno na carteira</th><th>Contribuição</th></tr></thead>';
   const N=50;
   const mxn=Math.max(1e-9,...secs.map(k=>Math.abs(bySec[k].c)));
@@ -679,7 +692,7 @@ function renderAR(){
     `<p class="note"><b>Como ler.</b> Cada linha é uma ação na carteira de uma gestora: contribuição em pontos percentuais do retorno daquela gestora na janela (peso no fim do mês anterior × retorno total da ação, encadeado). Setores pela classificação da B3, agrupados. "Parcial" = a gestora só tem dados de parte da janela.</p>`;
   sTable('a-all',[
     {k:'g',l:'Gestora',cls:'l',v:x=>x.g.n,asc:true,f:x=>`<td class="l">${esc(x.g.n)}</td>`},
-    {k:'e',l:'Empresa',cls:'l',v:x=>x.root,asc:true,f:x=>`<td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(x.root)}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td>`},
+    {k:'e',l:'Empresa',cls:'l',v:x=>x.root,asc:true,f:x=>`<td class="l secbar" style="--c:${secC(x.sec)}"><span class="tk">${esc(dispR(x.root))}</span> <span class="muted">${esc(nameR(AT.roots.indexOf(x.root)).slice(0,24))}</span></td>`},
     {k:'s',l:'Setor',cls:'l',v:x=>x.sec,asc:true,f:x=>`<td class="l">${secPill(x.root)}</td>`},
     {k:'w',l:'Peso médio',v:x=>x.w,f:x=>`<td>${pct(x.w,1)}</td>`},
     {k:'n',l:'Meses',v:x=>x.n,f:x=>`<td class="muted">${x.n}</td>`},
