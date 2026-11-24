@@ -59,6 +59,10 @@ P = P[~P.CNPJ_FUNDO.map(prv).fillna(False).astype(bool)]
 LA = r'LATAM|\bLATIN\b|AMERICA LATINA|LATINOAMERIC'
 lax = F.nomes.fillna('').str.contains(LA)
 P['la'] = P.CNPJ_FUNDO.map(lax).fillna(False).astype(bool)
+# veículos que investem a maior parte num fundo LatAm (ex.: Quadrado, ~84% no Onyx LatAm pela CDA) contam como LatAm, não Brasil
+LAFEED = {'51.389.172/0001-30'}
+P.loc[P.CNPJ_FUNDO.isin(LAFEED), 'la'] = True
+P.loc[P.CNPJ_FUNDO.isin(LAFEED), 'lafeed'] = True
 # exterior pelo nome ATUAL (o histórico tem muita troca de mandato) ou Anbima atual
 EXT = r'INVESTIMENTO NO EXTERIOR|\bIE\b|GLOBAL|OFFSHORE|\bUSD\b|INTERNACIONAL|INTERNATIONAL|WORLD|\bBDR\b'
 extx = F.nome.map(dea).str.contains(EXT) | (F.anbima.fillna('').str.contains('Exterior') & ~F.nome.map(dea).str.contains('ACOES$|EM ACOES -|DE ACOES -'))
@@ -75,7 +79,8 @@ print('fundo-mês exterior pelo nome na data:', len(set(_x['index'])))
 E0 = P[P.eleg & P.r.notna() & P.pl_ant.gt(0)].copy()
 # erros de cota: fundo que se afasta mais de 40 p.p. do Ibovespa no mês fica fora daquele mês
 E0 = E0[(E0.r - E0.ym.map(IX.ibov)).abs().le(0.40) | E0.ym.map(IX.ibov).isna()]
-EL = E0[E0.la & ~E0.CNPJ_FUNDO.map(F.nome.map(dea).str.contains('TECHNOLOG|DISRUPT')).fillna(False).astype(bool)]  # ex-LatAm que mudou de mandato
+EL = E0[E0.la & ~E0.CNPJ_FUNDO.map(F.nome.map(dea).str.contains('TECHNOLOG|DISRUPT')).fillna(False).astype(bool)]
+EL = EL[~EL.CNPJ_FUNDO.isin(LAFEED)]  # ex-LatAm que mudou de mandato
 E = E0[~E0.ext & ~E0.la & E0.gid.notna()]
 PALL = P
 P = P[P.gid.notna() & ~P.ext & ~P.la]
