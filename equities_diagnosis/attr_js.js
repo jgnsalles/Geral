@@ -32,19 +32,22 @@ const spanTxt=(ms,max=4)=>{ const sp=spans(ms); const t=sp.map(([a,b])=>a===b?pm
 const spanCell=ms=>`<td class="l muted" style="white-space:normal;min-width:150px;font-size:12px" title="${esc(spanTxt(ms,99))}">${esc(spanTxt(ms))}</td>`;
 function aCompute(gid,a,b){
   const p=PR[gid], rec=AT.g[attrKey(gid)]; if(!p||!rec) return {err:'Sem carteira na CDA para esta gestora.'};
-  const U=S.cur==='USD'; let G=1, out={stk:0,oth:0,fee:0,fx:0,cov:0,conf:0,nop:0,est:0,nest:0,n:0,miss:0}; const C=new Map();
+  const U=S.cur==='USD'; let G=1, out={stk:0,cash:0,oth:0,fee:0,fx:0,cov:0,conf:0,nop:0,est:0,nest:0,n:0,miss:0}; const C=new Map();
   for(let i=a;i<=b;i++){ const r0=p.rB[i], rn=p.usd?(r0==null||FXR[i]==null?null:(1+r0)/(1+FXR[i])-1):r0; if(rn==null) return {err:`Sem retorno em ${pmlong(i)}.`};
     const k=i-rec.o, rg0=k>=0&&k<rec.rg.length?rec.rg[k]:null, rg=rg0==null?rn:dec(rg0); if(rg0==null) out.miss++;
     const fx=U&&FXR[i]!=null?FXR[i]:0, rt=(1+rn)*(1+fx)-1;
     let sc=0; ((k>=0&&rec.p[k])||[]).forEach(([ri0,w,c])=>{ const ri=mIdx(ri0); const W=w/1e6, Cc=c/1e6; sc+=Cc;
       let e=C.get(ri); if(!e){ e={ri,c:0,ws:0,n:0,g:1,ms:[]}; C.set(ri,e); } e.c+=Cc*G; e.ws+=W; e.n++; e.g*=1+(W?Cc/W:0); e.ms.push(i); });
-    out.stk+=sc*G; out.oth+=(rg-sc)*G; out.fee+=(rn-rg)*G; out.fx+=(rt-rn)*G;
+    const cx=rg0!=null&&rec.cx&&rec.cx[k]!=null?dec(rec.cx[k]):0;
+    out.stk+=sc*G; out.cash+=cx*G; out.oth+=(rg-sc-cx)*G; out.fee+=(rn-rg)*G; out.fx+=(rt-rn)*G;
     if(k>=0&&rec.cov[k]!=null){ out.cov+=dec(rec.cov[k]); out.conf+=dec(rec.conf[k]); out.nop+=dec(rec.nop[k]); out.n++; const es=rec.est&&rec.est[k]?dec(rec.est[k]):0; out.est+=es; if(es>0.5) out.nest++; }
     G*=1+rt; }
   out.tot=G-1; out.m=b-a+1; out.rows=[...C.values()].map(e=>({...e, w:e.ws/(b-a+1), r:e.g-1}));
   if(out.n){ out.cov/=out.n; out.conf/=out.n; out.nop/=out.n; out.est/=out.n; } return out; }
+// início da sequência contínua de retornos que termina em hi (buracos na série cortam o "desde o início")
+const contStart=(p,lo,hi)=>{ let a=hi; while(a>lo&&p.rB[a-1]!=null) a--; return a; };
 function aBounds(gid){ const p=PR[gid], rec=AT.g[attrKey(gid)]; const lo=Math.max(p.o, rec?rec.o:p.o), hi=Math.min(p.last, PLAST);
-  if(S.aw===-1) return {a:lo,b:hi,cut:false};
+  if(S.aw===-1) return {a:contStart(p,lo,hi),b:hi,cut:false};
   if(S.aw){ const b=hi, a=Math.max(lo, b-S.aw+1); return {a,b,cut:b-S.aw+1<lo}; }
   let a=S.af??Math.max(lo,hi-35), b=S.at??hi; a=Math.max(lo,Math.min(a,hi)); b=Math.max(a,Math.min(b,hi)); return {a,b,cut:false,lo,hi}; }
 function renderA(){
@@ -76,7 +79,7 @@ function renderA(){
   const stkK=sEX.length?[['Ações Brasil',sum(sBR),`${sBR.length} emissores`],['Ações ex-Brasil',sum(sEX),`${sEX.length} emissores`]]:[['Ações',o.stk,`${o.rows.length} emissores`]];
   o.rows=o.rows.filter(x=>mktOk(AT.roots[x.ri]));
   const dec5=[['Retorno líquido',o.tot,'no período, '+(U?'em US$':'em R$')],...stkK,
-    ['Outros',o.oth,'caixa, operações no mês, sigilo'],['Taxas e custos',o.fee,'líquido − bruto dos fundos'],...(U?[['Câmbio',o.fx,'variação do real']]:[])];
+    ['Caixa (CDI)',o.cash,'parte fora de ações × CDI'],['Outros',o.oth,'trades no mês, sigilo, ativos sem preço'],['Taxas e custos',o.fee,'líquido − bruto dos fundos'],...(U?[['Câmbio',o.fx,'variação do real']]:[])];
   const NB=S.aall?1e9:20, sorted=o.rows.slice().sort((x,y)=>y.c-x.c), posA=sorted.filter(x=>x.c>0), negA=sorted.filter(x=>x.c<0).reverse(), top=posA.slice(0,NB), bot=negA.slice(0,NB);
   const more=()=>'';
   const mx=Math.max(1e-9,...sorted.map(x=>Math.abs(x.c)));
@@ -86,7 +89,7 @@ function renderA(){
     `<div class="card"><div class="hd"><h2>Maiores detratores</h2><small>p.p. do retorno no período</small></div><div class="dbar">${bars(bot,'var(--down)')||'<div class="empty">–</div>'}</div>${more(negA.length)}</div></div>`+
     `<div class="card"><div class="hd"><h2>Todos os emissores</h2><small>clique no cabeçalho para ordenar · cor = setor</small></div>${secLegend()}<div class="tblwrap" style="max-height:560px;overflow-y:auto"><table id="a-tbl"></table></div>`+
     `${(()=>{ const bh=behav(attrKey(S.g),bd.a,bd.b); return bh&&bh.giro?`<p class="note" style="margin-bottom:0"><b>Giro e holding.</b> Giro anual da carteira ≈ ${pct(bh.giro,0)} (holding implícito de ${nf(1/bh.giro,1)} anos); uma posição relevante (≥ 0,5% do PL) fica em média ${bh.hold?nf(bh.hold,1):'–'} anos; ${bh.n!=null?nf(bh.n,0):'–'} ações com ≥ 0,2% do PL; as 10 maiores somam ${pct(bh.top,0)} da parte em ações. Comparação com as outras gestoras na aba 4º quartil.</p>`:''; })()}<p class="note">Carteira revelada em média ${pct(o.cov,0)} do PL dos fundos; ${pct(o.conf,0)} em sigilo na CVM; ${pct(o.nop,1)} em ativos sem preço na B3 (renomeados, fechados, exterior)${o.nest?`; em ${o.nest} mês(es) a carteira do mês ainda está em sigilo e foi estimada pela última revelada (até 6 meses antes)`:''}${o.miss?`; ${o.miss} mês(es) sem carteira, tratados como "outros"`:''}. ${S.cur==='USD'?'As contribuições das ações são em reais; o efeito do dólar aparece na linha Câmbio.':''}</p></div>`+
-    `<p class="note"><b>Como é calculado.</b> Peso de cada emissor = posição no fim do mês anterior ÷ PL do fundo, pela CDA da CVM, somando os fundos long only da gestora na mesma ponderação da performance; cotas de outros fundos (ex.: um fundo que investe no master) são abertas nas ações desse fundo; quando a carteira do mês ainda está em sigilo, usa-se a última revelada (até 6 meses). Retorno do emissor = fechamento da B3 + proventos em dinheiro na data-com, ajustado por desdobramentos, grupamentos e bonificações (API da B3). Contribuição do mês = peso × retorno, encadeada pelo retorno acumulado da gestora até o mês anterior, de modo que ações + outros + taxas${U?' + câmbio':''} = retorno líquido. "Outros" junta caixa, compras e vendas feitas dentro do mês, posições em sigilo e ativos sem preço. "Taxas" = retorno da cota do cotista (FIC) menos o do master.</p>`;
+    `<p class="note"><b>Como é calculado.</b> Peso de cada emissor = posição no fim do mês anterior ÷ PL do fundo, pela CDA da CVM, somando os fundos long only da gestora na mesma ponderação da performance; cotas de outros fundos (ex.: um fundo que investe no master) são abertas nas ações desse fundo; quando a carteira do mês ainda está em sigilo, usa-se a última revelada (até 6 meses). Retorno do emissor = fechamento da B3 + proventos em dinheiro na data-com, ajustado por desdobramentos, grupamentos e bonificações (API da B3). Contribuição do mês = peso × retorno, encadeada pelo retorno acumulado da gestora até o mês anterior, de modo que ações + outros + taxas${U?' + câmbio':''} = retorno líquido. "Caixa" = parte do PL fora de ações e fora do sigilo × CDI do mês (estimativa). "Outros" = o que sobra: compras e vendas dentro do mês, posições em sigilo e ativos sem preço (empresas fechadas, opções). Ações e BDRs vêm dos blocos 4 e 8 da CDA; ADRs e BDRs de empresas brasileiras somam na ação local. "Taxas" = retorno da cota do cotista (FIC) menos o do master.</p>`;
   $('a-body').querySelectorAll('[data-amore]').forEach(bn=>bn.onclick=()=>{ S.aall=!S.aall; renderA(); });
   sTable('a-tbl',[
     {k:'e',l:'Emissor',cls:'l',v:x=>AT.roots[x.ri],asc:true,f:x=>`<td class="l secbar" style="--c:${secC(secOf(AT.roots[x.ri]))}"><span class="tk">${esc(dispR(AT.roots[x.ri]))}</span> <span class="muted">${esc(nameR(x.ri))}</span></td>`},
@@ -161,8 +164,8 @@ function renderAR(){
   const ids=PG.filter(g=>PR[g.id]&&PSEL.has(g.id)).map(g=>g.id).filter(id=>AT.g[attrKey(id)]);
   const pairs=[], bySec={}; let ng=0;
   ids.forEach(id=>{ const p=PR[id], rec=AT.g[attrKey(id)]; const a2=Math.max(a,p.o,rec.o), b2=Math.min(b,p.last);
-    if(b2<a2) return; const o=aCompute(id,a2,b2); if(o.err) return; ng++;
-    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); if(!mktOk(root)) return; pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:S.aw!==-1&&a2>a,a2});
+    if(b2<a2) return; const a3=S.aw===-1?contStart(p,a2,b2):a2; const o=aCompute(id,a3,b2); if(o.err) return; ng++;
+    o.rows.forEach(x=>{ const root=AT.roots[x.ri], sec=secOf(root); if(!mktOk(root)) return; pairs.push({id,g:PGI[id],root,sec,c:x.c,w:x.w,n:x.n,r:x.r,ms:x.ms,part:S.aw!==-1&&a2>a,a2:a3});
       (bySec[sec]=bySec[sec]||{c:0,pos:0,neg:0,co:new Map()}); bySec[sec].c+=x.c; if(x.c>0) bySec[sec].pos+=x.c; else bySec[sec].neg+=x.c; bySec[sec].co.set(root,(bySec[sec].co.get(root)||0)+x.c); }); });
   $('a-h').textContent=S.aw===-1?`Attribution · desde o início de cada gestora até ${pml(b)}`:`Attribution · ${pml(a)} a ${pml(b)}`;
   $('a-sub').textContent=`${pairs.length.toLocaleString('pt-BR')} pares gestora × empresa em ${new Set(pairs.map(x=>x.id)).size} gestoras${mktLbl()} · contribuição em p.p. do retorno de cada gestora, ${S.cur==='USD'?'encadeada em US$':'em R$'}`;

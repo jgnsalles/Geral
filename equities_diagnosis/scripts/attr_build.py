@@ -87,6 +87,9 @@ cf.loc[cf.est, 'cw'] = 0
 cf = (cf.a * cf.cw.fillna(0)).groupby([cf.gid, cf.ym]).sum().rename('conf')
 est = E[E.est].groupby(['gid', 'ym']).a.sum().rename('est')
 G = G.join(cov).join(nop).join(cf).join(est).fillna({'cov': 0, 'nop': 0, 'conf': 0, 'est': 0})
+# caixa: parte do PL fora de ações e fora do sigilo, rendendo CDI no mês
+_cdi = {m: (v / 1e6 if v is not None else 0.0) for m, v in zip(PF['meses'], PF['cdi'])}
+G['cx'] = (1 - G['cov'] - G['conf']).clip(0, 1) * G.index.get_level_values(1).map(_cdi).values
 P = X[X.ret.notna()].groupby(['gid', 'ym', 'root']).agg(w=('wa', 'sum'), c=('c', 'sum')).reset_index()
 roots = sorted(P.root.unique()); RI = {r: k for k, r in enumerate(roots)}
 # empresas de fora do Brasil: posições no exterior (X:) ou BDRs (códigos 31-35, 39)
@@ -99,16 +102,16 @@ for gid, gg in G.groupby(level=0):
     o, last = MI[gg.index.min()], MI[gg.index.max()]
     pg = P[P.gid == gid]
     byM = {ym: d for ym, d in pg.groupby('ym')}
-    rec = {'o': o, 'rg': [], 'cov': [], 'nop': [], 'conf': [], 'est': [], 'p': []}
+    rec = {'o': o, 'rg': [], 'cov': [], 'nop': [], 'conf': [], 'est': [], 'cx': [], 'p': []}
     for i in range(o, last + 1):
         ym = M[i]
         if ym in gg.index:
             row = gg.loc[ym]
-            rec['rg'].append(I(row['rg'])); rec['cov'].append(I(row['cov'])); rec['nop'].append(I(row['nop'])); rec['conf'].append(I(row['conf'])); rec['est'].append(I(row['est']))
+            rec['rg'].append(I(row['rg'])); rec['cov'].append(I(row['cov'])); rec['nop'].append(I(row['nop'])); rec['conf'].append(I(row['conf'])); rec['est'].append(I(row['est'])); rec['cx'].append(I(row['cx']))
             d = byM.get(ym)
             rec['p'].append([] if d is None else [[RI[r], I(w), I(c)] for r, w, c in zip(d.root, d.w, d.c) if abs(w) >= 5e-5])
         else:
-            for k in ('rg', 'cov', 'nop', 'conf', 'est'): rec[k].append(None)
+            for k in ('rg', 'cov', 'nop', 'conf', 'est', 'cx'): rec[k].append(None)
             rec['p'].append([])
     out['g'][gid] = rec
 json.dump(out, open(OUT, 'w'), separators=(',', ':'), ensure_ascii=False)
@@ -117,5 +120,6 @@ S = P.groupby(['gid', 'ym']).c.sum().rename('sc')
 C = G.join(S).dropna()
 C = C[C['cov'] > 0.7]
 print('gestora-meses com cobertura > 70%:', len(C), '| correlação ações x bruto:', round(C.sc.corr(C.rg), 3),
-      '| resíduo médio mensal (p.p.):', round((C.rg - C.sc).mean() * 100, 2), '| desvio:', round((C.rg - C.sc).std() * 100, 2))
+      '| resíduo médio mensal (p.p.):', round((C.rg - C.sc).mean() * 100, 2), '| desvio:', round((C.rg - C.sc).std() * 100, 2),
+      '| resíduo depois do caixa:', round((C.rg - C.sc - C.cx).mean() * 100, 2))
 print('emissores:', len(roots), 'gestoras:', len(out['g']))
