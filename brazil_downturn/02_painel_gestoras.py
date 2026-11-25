@@ -13,6 +13,7 @@ import sys, os, re, json, zipfile, unicodedata
 import pandas as pd, numpy as np
 
 RAW, PF, CJ, CDI, OUT = sys.argv[1:6]
+LIG = sys.argv[6] if len(sys.argv) > 6 else None   # ligações fundo -> fundo da CDA (passo 10)
 os.makedirs(OUT, exist_ok=True)
 deacc = lambda s: unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().upper()
 fmt = lambda c: f'{c[:2]}.{c[2:5]}.{c[5:8]}/{c[8:12]}-{c[12:]}' if isinstance(c, str) and len(c) == 14 else c
@@ -129,6 +130,60 @@ P['flow_impl'] = P.pl - P.pl_ant * (1 + P.r)
 P.to_pickle(os.path.join(OUT, 'fundo_mes.pkl'))
 F.to_csv(os.path.join(OUT, 'fundos_meta.csv'), index=False)
 
+# ---------------- dupla contagem decidida pela carteira (CDA, cotas de fundos), não pela marca de FIC
+# Conjunto somado da gestora no mês: fundos sem indexado, previdência e exclusivo (qualquer marca de FIC).
+# Peso do fundo B = 1 - (fração de B detida por outros fundos A do MESMO conjunto, mesma gestora na data).
+# Fração >= 98%: B sai inteiro. Ligação do mês mais próximo, até 6 meses (fração v/PL de B no mês da ligação).
+# Cotas de B detidas por fundos de OUTRA gestora não saem (é dinheiro da gestora de B).
+# Sem CDA (antes de 2019): vale a regra antiga (marca de FIC no cadastro e no nome).
+# Depois da RCVM 175 muitos feeders viraram "FIF"/"FIF CIC" sem a marca de cotas (ex.: Dynamo Cougar desde mai/2025),
+# e a regra antiga contava master e feeder juntos.
+P['conj'] = ~(P.indexado | P.prev | P.exclusivo) & P.gid.notna()
+P['w'] = np.where(P.eleg, 1.0, 0.0)
+P['w_regra'] = 'marca_fic'
+if LIG:
+    L = pd.read_pickle(LIG)
+    L = L.rename(columns={'CNPJ_FUNDO': 'A', 'CNPJ_FUNDO_COTA': 'B'})
+    plB = P.set_index(['CNPJ_FUNDO', 'ym']).pl
+    L['plB'] = [plB.get((b, y), np.nan) for b, y in zip(L.B, L.ym)]
+    L = L[L.plB > 0]; L['fr'] = (L.v / L.plB).clip(0, 1)
+    ym2i = lambda y: int(y[:4]) * 12 + int(y[5:7])
+    L['t'] = L.ym.map(ym2i)
+    l0 = L.ym.min()
+    cand = P[(P.ym >= l0) & P.conj][['CNPJ_FUNDO', 'ym', 'gid']].rename(columns={'CNPJ_FUNDO': 'B', 'gid': 'gB'})
+    pairs = L[['A', 'B']].drop_duplicates()
+    G2 = cand.merge(pairs, on='B'); G2['t'] = G2.ym.map(ym2i)
+    G2 = G2.sort_values('t'); Ls = L[['A', 'B', 't', 'fr']].sort_values('t')
+    G2 = pd.merge_asof(G2, Ls, on='t', by=['A', 'B'], direction='nearest', tolerance=6)
+    G2 = G2[G2.fr.notna()]
+    # A precisa estar no conjunto da mesma gestora no mesmo mês
+    PA = P[P.conj][['CNPJ_FUNDO', 'ym', 'gid']].rename(columns={'CNPJ_FUNDO': 'A', 'gid': 'gA'})
+    G2 = G2.merge(PA, on=['A', 'ym'])
+    G2 = G2[G2.gA == G2.gB]
+    held = G2.groupby(['B', 'ym']).fr.sum().clip(upper=1).rename('frac')
+    P = P.merge(held.reset_index().rename(columns={'B': 'CNPJ_FUNDO'}), on=['CNPJ_FUNDO', 'ym'], how='left')
+    P['frac'] = P.frac.fillna(0.0)
+    novo = (P.ym >= l0) & P.conj
+    w = 1 - P.frac
+    w = np.where(P.frac >= 0.98, 0.0, w)
+    # reserva: fundo marcado como FIC sem nenhuma ligação na CDA (como cotista) em até 6 meses segue a regra antiga
+    hold_t = L.groupby('A').t.apply(lambda s: np.array(sorted(set(s))))
+    def tem_lig(a, y):
+        arr = hold_t.get(a)
+        if arr is None: return False
+        t = ym2i(y); i = np.searchsorted(arr, t)
+        return any(abs(arr[j] - t) <= 6 for j in (i - 1, i) if 0 <= j < len(arr))
+    fic_sem = novo & P.fic & np.array([tem_lig(a, y) is False if f else False for a, y, f in zip(P.CNPJ_FUNDO, P.ym, P.fic)])
+    P['w'] = np.where(novo, np.where(fic_sem, 0.0, w), P.w)
+    P['w_regra'] = np.where(novo, np.where(fic_sem, 'fic_sem_cda', 'cda'), P.w_regra)
+    P = P.sort_values(['CNPJ_FUNDO', 'ym'])
+    print('peso pela CDA: fundo-mês 2019+ no conjunto', int(novo.sum()), '| com parte detida pela casa', int((novo & (P.frac > 0)).sum()),
+          '| saem inteiros (>=98%)', int((novo & (P.frac >= 0.98)).sum()), '| FIC sem ligação (regra antiga)', int(fic_sem.sum()), flush=True)
+    chk = P[(P.ym >= l0) & P.gid.notna()]
+    print('PL somado 2019+: regra antiga', round(chk.pl[chk.eleg].sum() / 1e12, 2), 'tri | regra da carteira', round((chk.pl * chk.w).sum() / 1e12, 2), 'tri (soma de meses)', flush=True)
+P['eleg'] = P.w > 0
+P.to_pickle(os.path.join(OUT, 'fundo_mes.pkl'))
+
 # ---------------- índices: fundos indexados de maior PL médio com série longa
 def index_series(pat):
     c = F[F.indexado & F.nomes.str.contains(pat) & ~F.fic & ~F.prev].CNPJ_FUNDO
@@ -156,15 +211,16 @@ P = P.sort_values(['CNPJ_FUNDO', 'ym'])
 P['first'] = ~P.CNPJ_FUNDO.duplicated()
 cons = P.pl_ant.notna() | (P.ym_ant.notna() & (P.ym_ant.map(lambda y: str(pd.Period(y, 'M') + 1) if isinstance(y, str) else '') == P.ym))
 P['eleg_ant'] = P.groupby('CNPJ_FUNDO').eleg.shift().astype('boolean').fillna(False).astype(bool) & cons
+P['w_ant'] = P.groupby('CNPJ_FUNDO').w.shift().fillna(0.0).where(cons, 0.0)
 P['gid_ant'] = P.groupby('CNPJ_FUNDO').gid.shift()
 P['cont'] = P.eleg & P.eleg_ant & (P.gid == P.gid_ant)
-P['new_in'] = np.where(P.eleg & P['first'], P.pl.fillna(0), 0.0)
+P['new_in'] = np.where(P.eleg & P['first'], (P.pl * P.w).fillna(0), 0.0)
 # saída por status: era elegível na gestora g em t-1 e em t não é (ou mudou de gestora)
-P['st_out'] = np.where(P.eleg_ant & (~P.eleg | (P.gid != P.gid_ant)), (P.pl_ant * (1 + P.r.fillna(0))).fillna(0), 0.0)
+P['st_out'] = np.where(P.eleg_ant & (~P.eleg | (P.gid != P.gid_ant)), (P.pl_ant * P.w_ant * (1 + P.r.fillna(0))).fillna(0), 0.0)
 P['idade_f'] = P.groupby('CNPJ_FUNDO').cumcount()
 young = P.cont & (P.idade_f <= 6) & (P.flow > 0)
-P['young_in'] = np.where(young, P.flow, 0.0)            # entradas de fundo recém-criado: podem ser a carteira do master antigo
-P['flow_h'] = np.where(P.cont & ~young, P.flow, 0.0)
+P['young_in'] = np.where(young, P.flow * P.w, 0.0)            # entradas de fundo recém-criado: podem ser a carteira do master antigo
+P['flow_h'] = np.where(P.cont & ~young, P.flow * P.w, 0.0)
 P['new_in'] = P.new_in + P.young_in
 ev = P.groupby(['gid_ant', 'ym']).st_out.sum().rename('so').reset_index().rename(columns={'gid_ant': 'gid'})
 ni = P.groupby(['gid', 'ym']).new_in.sum().rename('ni').reset_index()
@@ -180,18 +236,21 @@ P.to_pickle(os.path.join(OUT, 'fundo_mes.pkl'))
 E = P[P.eleg]
 def agg(x):
     ok = x.r.notna() & x.pl_ant.gt(0)
-    w = x.pl_ant.where(ok)
-    return pd.Series({'pl': x.pl.sum(), 'pl_ant': x.pl_ant.sum(), 'flow': x.flow.sum(), 'flow_impl': x.flow_impl.sum(), 'flow_h': x.flow_h.sum(),
-                      'cap': x.cap.sum(), 'res': x.res.sum(), 'r': (x.r * w).sum() / w.sum() if w.sum() > 0 else np.nan,
+    w = (x.pl_ant * x.w_ant).where(ok)
+    return pd.Series({'pl': (x.pl * x.w).sum(), 'pl_ant': (x.pl_ant * x.w_ant).sum(), 'flow': (x.flow * x.w).sum(), 'flow_impl': (x.flow_impl * x.w).sum(), 'flow_h': x.flow_h.sum(),
+                      'cap': (x.cap * x.w).sum(), 'res': (x.res * x.w).sum(), 'r': (x.r * w).sum() / w.sum() if w.sum() > 0 else np.nan,
                       'nf': x.CNPJ_FUNDO.nunique(), 'cot': x.cot.sum(),
-                      'pl_lb': x.pl[x.long_biased].sum(), 'pl_small': x.pl[x.small].sum(), 'pl_div': x.pl[x.divid].sum(), 'pl_ext': x.pl[x.exterior].sum()})
+                      'pl_lb': (x.pl * x.w)[x.long_biased].sum(), 'pl_small': (x.pl * x.w)[x.small].sum(), 'pl_div': (x.pl * x.w)[x.divid].sum(), 'pl_ext': (x.pl * x.w)[x.exterior].sum()})
 GM = E[E.gid.notna()].groupby(['gid', 'ym']).apply(agg).reset_index().rename(columns={'r': 'r_bruto'})
 # retorno LÍQUIDO de taxas, igual para todas as gestoras: média ponderada pelo PL dos fundos em que o investidor aplica
 # (feeders/FIC não exclusivos e fundos elegíveis que não são master). Em master-feeder as taxas de administração e performance
 # ficam no feeder, então o master é bruto; usar o master para uns e o fundo único para outros misturava bruto e líquido.
 # Sem fundo de investidor no mês, fica o retorno do elegível (bruto) e a flag r_liq_ok = False.
-INV = P[P.gid.notna() & P.r.notna() & P.pl_ant.gt(0) & ~P.indexado & ~P.prev & ((P.fic & ~P.exclusivo) | (P.eleg & ~P.master))]
-RN = INV.groupby(['gid', 'ym']).apply(lambda x: (x.r * x.pl_ant).sum() / x.pl_ant.sum()).rename('r_liq').reset_index()
+# com o peso da carteira: fundos em que o investidor aplica = peso > 0 e não master (o master só entra pela parte de outras casas)
+_wi = np.where(P.ym >= '2019-01', P.w_ant, np.where(P.fic & ~P.exclusivo, 1.0, P.w_ant))   # antes de 2019 o feeder (FIC) tem peso 0 na soma, mas é o fundo do investidor
+INV = P.assign(wi=_wi)
+INV = INV[INV.gid.notna() & INV.r.notna() & INV.pl_ant.gt(0) & ~INV.indexado & ~INV.prev & ~INV.master & (INV.wi > 0)]
+RN = INV.groupby(['gid', 'ym']).apply(lambda x: (x.r * x.pl_ant * x.wi).sum() / (x.pl_ant * x.wi).sum()).rename('r_liq').reset_index()
 GM = GM.merge(RN, on=['gid', 'ym'], how='left')
 GM['r_liq_ok'] = GM.r_liq.notna()
 GM['r'] = GM.r_liq.fillna(GM.r_bruto)
@@ -217,8 +276,9 @@ GM['top100_prev'] = [(g, y) in prev for g, y in zip(GM.gid, GM.ym)]
 GM.to_pickle(os.path.join(OUT, 'gestora_mes.pkl'))
 
 # mercado: todos os fundos elegíveis (inclui bancos e gestoras fora da regra) e só as gestoras da regra
-MK = E.groupby('ym').agg(pl=('pl', 'sum'), flow_rep=('flow', 'sum'), flow_h=('flow_h', 'sum'), cap=('cap', 'sum'), res=('res', 'sum'), nf=('CNPJ_FUNDO', 'nunique'))
-MK['r'] = E[E.r.notna() & E.pl_ant.gt(0)].groupby('ym').apply(lambda x: (x.r * x.pl_ant).sum() / x.pl_ant.sum())
+E = E.assign(plw=E.pl * E.w, flw=E.flow * E.w, capw=E.cap * E.w, resw=E.res * E.w)
+MK = E.groupby('ym').agg(pl=('plw', 'sum'), flow_rep=('flw', 'sum'), flow_h=('flow_h', 'sum'), cap=('capw', 'sum'), res=('resw', 'sum'), nf=('CNPJ_FUNDO', 'nunique'))
+MK['r'] = E[E.r.notna() & E.pl_ant.gt(0)].groupby('ym').apply(lambda x: (x.r * x.pl_ant * x.w_ant).sum() / max((x.pl_ant * x.w_ant).sum(), 1))
 MK['pl_ant'] = MK.pl.shift(); MK['flow'] = MK.pl - MK.pl_ant * (1 + MK.r)
 RG = GM[GM.top100_prev].groupby('ym').agg(pl=('pl', 'sum'), pl_ant=('pl_ant', 'sum'), flow=('flow', 'sum'), ng=('gid', 'nunique'))
 MK.join(RG, rsuffix='_regra').to_csv(os.path.join(OUT, 'mercado_mes.csv'))

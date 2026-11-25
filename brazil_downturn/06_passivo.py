@@ -86,7 +86,7 @@ M['F'] = M.pl * M[FUND].sum(axis=1)
 M.loc[M.sem_perfil, 'F'] = 0; M['nao_ident'] = np.where(M.sem_perfil, M.pl, 0.0)
 # cotistas-fundo: abertura recursiva até o investidor final.
 # vetor de tipos de um fundo X = % não-fundo do X + % fundo do X repartido entre seus fundos cotistas (CDA):
-#   cotista da mesma gestora -> abre o vetor dele (até 4 níveis); cotista de outra casa -> alocadores; sem cotista na CDA -> alocadores (sem_cda).
+#   cotista da mesma gestora -> abre o vetor dele (até 5 níveis); cotista de outra casa -> alocadores; sem cotista na CDA -> alocadores (sem_cda).
 PER = pd.concat([PFq[['CNPJ_FUNDO', 'ym'] + TIPCOLS], PC[['CNPJ_FUNDO', 'ym'] + TIPCOLS]]).drop_duplicates(['CNPJ_FUNDO', 'ym']).set_index(['CNPJ_FUNDO', 'ym'])
 PERd = {k: v for k, v in zip(PER.index, PER[TIPCOLS].to_numpy())}
 TI = {c: i for i, c in enumerate(TIPCOLS)}
@@ -136,7 +136,7 @@ def vec(cnpj, ym, gid, r8, depth, seen, mult=1.0):
     fsh = float(s[FI_].sum())
     if fsh <= 0: return out
     hs = HOLD.get((cnpj, ym))
-    if not hs or depth >= 4:
+    if not hs or depth >= 5:
         out['sem_cda'] += fsh; return out
     for h, w, hg, hr in hs:
         if h in seen: out['sem_cda'] += fsh * w; continue
