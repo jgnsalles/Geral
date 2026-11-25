@@ -77,6 +77,14 @@ def _ren(r):
 P['tmerge'] = {k: _ren(v) for k, v in TM['merge'].items()}
 # Formulário de Referência: última foto anual (31/dez) de cada gestora: [ano, AUM total R$ mi, investidores não residentes R$ mi]
 _LP = json.load(open(os.path.join(S, 'attr/passivo.json')))
+# MSCI EM Latin America (892000, net total return, US$) e T-bill 3 meses (FRED TB3MS), mensais, alinhados aos meses da performance
+_lv = {str(x['calc_date'])[:4] + '-' + str(x['calc_date'])[4:6]: x['level_eod'] for x in json.load(open(os.path.join(S, 'bm/msci_net.json')))['indexes']['INDEX_LEVELS']}
+_ks = sorted(_lv); _mr = {k: _lv[k] / _lv[p] - 1 for p, k in zip(_ks, _ks[1:])}
+P['msci'] = [None if m not in _mr else int(round(_mr[m] * 1e6)) for m in P['meses']]
+_tb = {}
+for _l in open(os.path.join(S, 'bm/tb3.csv')).read().split('\n')[1:]:
+    if ',' in _l and _l.split(',')[1].strip() not in ('', '.'): _tb[_l[:7]] = (1 + float(_l.split(',')[1]) / 100) ** (1 / 12) - 1
+P['tbill'] = [None if m not in _tb else int(round(_tb[m] * 1e6)) for m in P['meses']]
 P['fre'] = {}
 for gid, ys in _LP['fr'].items():
     y = max(ys); a = ys[y]['a']
