@@ -1,0 +1,54 @@
+
+<section class="part" id="estrangeiro">
+ <div class="eyebrow"><span>Parte 3 · o estrangeiro de verdade</span><span>Formulário de Referência, dez/2017 a dez/2025 · anual</span></div>
+ <h2>O estrangeiro compra o Brasil barato em dólar e não olha alpha</h2>
+ <p class="chapsub">Nos fundos da CVM o estrangeiro aparece só quando compra cota de fundo brasileiro: menos de 1% do passivo. A maior parte entra pelos fundos offshore da gestora (Cayman, Delaware), que compram ações direto na B3. O Formulário de Referência de cada gestora traz o patrimônio de "investidores não residentes", que inclui esses veículos. É uma foto de 31 de dezembro, da casa inteira, então a análise é anual e só usa <b>casas de ações</b>: gestoras cujo PL em fundos de ações na CVM é ao menos 40% do patrimônio doméstico declarado no Formulário. Fluxo estimado do ano = posição no fim − posição no início × (1 + retorno líquido da gestora no ano).</p>
+ <div class="kpis" id="e-kpis"></div>
+
+ <figure>
+  <figcaption class="ft">Um quarto do dinheiro das casas de ações é estrangeiro</figcaption>
+  <figcaption class="fs">Por ano: casas de ações no universo, quantas têm estrangeiro, patrimônio de não residentes, % do patrimônio total dessas casas, número de investidores não residentes declarados, posição média por investidor e peso das 5 maiores.</figcaption>
+  <div class="tbox" id="e-tab"></div>
+  <div class="sowhat"><b>E daí</b><span>O estrangeiro passou de R$ 11 bi em 2017 para R$ 50 bi em 2020 e fica entre R$ 42 e 52 bi desde então: 19% a 29% do patrimônio das casas de ações. É 30 a 100 vezes o que aparecia nos fundos da CVM. Metade das casas tem algum estrangeiro, e as 5 maiores ficam com 65% a 90% dele.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Cada "investidor" do Formulário costuma ser um veículo, não uma pessoa: o fundo offshore da casa conta como um cliente. A Alaska tem R$ 11,3 bi de estrangeiros em 2 investidores; a Ryo, R$ 2,8 bi em 1. Na mediana, uma casa de ações tem 6 investidores não residentes e R$ 50 mi por investidor (p25 R$ 10 mi, p75 R$ 174 mi). Não existe estrangeiro pulverizado.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft">Contra a maré: entra quando o Ibovespa em dólar cai, sai quando sobe</figcaption>
+  <figcaption class="fs">Cada ponto é um ano. Eixo horizontal: Ibovespa em dólar no ano. Eixo vertical: fluxo do ano em % da posição no início. Cheio: estrangeiro. Vazado: dinheiro doméstico das mesmas casas.</figcaption>
+  <div class="legend"><span><i class="dot" style="background:var(--in)"></i>Estrangeiro</span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i>Doméstico</span></div>
+  <div class="chart" id="e-sc"></div>
+  <div class="tbox" id="e-reg"></div>
+  <div class="sowhat"><b>E daí</b><span>O estrangeiro é contracíclico em dólar. Nos 4 anos em que o Ibovespa caiu em dólar (2018, 2020, 2021 e 2024) ele pôs dinheiro em todos, em média +R$ 3,8 bi por ano (+10,5% da posição); nos 4 anos de alta ele tirou, −R$ 1,9 bi por ano. A correlação do fluxo estrangeiro com o Ibovespa em dólar é −0,64 e com a alta do dólar, +0,75. Em 2025, com o Ibovespa +52% em dólar, saíram R$ 7,5 bi (−20%). O juro pesa igual para os dois: correlação de −0,83 com o CDI, para estrangeiro e doméstico.</span></div>
+  <div class="sowhat lens"><b>E daí: estrangeiro</b><span>Isso não aparecia nos fundos da CVM, onde o estrangeiro parecia responder ao Treasury: a fatia local é pequena e feita de poucos mandatos. Pelo Formulário, o padrão é outro e mais simples: o estrangeiro compra Brasil quando ele fica barato em dólar.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>É o único tipo de investidor que pôs dinheiro nos 4 anos de bolsa ruim em dólar. Em 2020 entraram R$ 12,4 bi (+35%), o maior aporte da série, com o real desvalorizado 29%. Em 2024, com o Ibovespa −30% em dólar, o estrangeiro pôs R$ 2,0 bi enquanto o doméstico das mesmas casas tirava 13%.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft">O estrangeiro não persegue alpha; o doméstico das mesmas casas persegue</figcaption>
+  <figcaption class="fs">Diferença de fluxo do ano (p.p. da posição) entre a casa de pior e a de melhor alpha, com os dois horizontes juntos, efeito de ano e controle de tamanho; traço = intervalo de 95% (erro por gestora).</figcaption>
+  <div class="legend"><span><i style="background:var(--in)"></i>Alpha 12 meses</span><span><i style="background:var(--ink2)"></i>Alpha 36 meses</span></div>
+  <div class="chart" id="e-sens"></div>
+  <div class="sowhat"><b>E daí</b><span>Para o doméstico das casas de ações, ir do pior ao melhor alpha soma 19 p.p. de fluxo no ano pelo alpha de 12 meses e 29 p.p. pelo de 36 meses (t = 2,6 e 3,7). Para o estrangeiro, o efeito não é distinguível de zero (t = 0,5 e 0,7). O estrangeiro escolhe a casa uma vez, pelo tamanho e pelo histórico, e depois move o dinheiro pelo preço do Brasil em dólar.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft" id="e-pf-t">Que casa tem estrangeiro e que casa recebe dele</figcaption>
+  <figcaption class="fs">Percentil médio (0 = menos, 100 = mais, entre as casas de ações do ano) de cada grupo. Em negrito, diferença com t ≥ 2 (erro ano a ano).</figcaption>
+  <div class="seg" role="group" aria-label="Comparação" id="e-pf-seg"><button type="button" aria-pressed="true" data-k="tem">Tem estrangeiro × não tem</button><button type="button" aria-pressed="false" data-k="rec">Recebeu × perdeu</button><button type="button" aria-pressed="false" data-k="ruim">Recebeu × perdeu, anos de Ibovespa em dólar negativo</button></div>
+  <div class="legend" style="margin-top:8px"><span><i class="dot" style="background:var(--in)"></i><span id="e-pf-l1">Tem estrangeiro</span></span><span><i class="dot" style="background:var(--bg);border:2px solid var(--out);box-sizing:border-box"></i><span id="e-pf-l2">Não tem</span></span></div>
+  <div class="chart" id="e-pf"></div>
+  <div class="sowhat"><b>E daí</b><span>Quem tem estrangeiro é maior (percentil 61 contra 43) e mais antiga (57 contra 46), com tracking error mais baixo (45 contra 57), beta um pouco maior e carteira mais perto do consenso: é a casa grande e estabelecida, mais próxima do índice. Alpha não separa quem tem de quem não tem (o de 36 meses é até um pouco menor). Entre quem já tem, recebe mais quem depende menos do estrangeiro (−8 pontos, t −5,4): o dinheiro novo vai para casas onde ele ainda pesa pouco.</span></div>
+  <div class="sowhat lens"><b>E daí: mercado ruim</b><span>Nos anos de Ibovespa em dólar negativo, o perfil de quem recebe é o mesmo dos outros anos: alpha não conta, e recebe quem depende menos de estrangeiro (t −2,6) e tem mais long biased (t 2,1). O estrangeiro aumenta a aposta nas casas que já conhece.</span></div>
+ </figure>
+
+ <figure>
+  <figcaption class="ft">Quem recebeu e quem perdeu, ano a ano</figcaption>
+  <div class="ctl" style="position:static;border:0;margin:0;padding:0 0 6px"><label for="e-ano">Ano<select id="e-ano"></select></label><div class="now" id="e-ano-s"></div></div>
+  <div class="lists"><div><h4>Receberam</h4><div class="tbox" id="e-rec"></div></div><div><h4>Perderam</h4><div class="tbox" id="e-saq"></div></div></div>
+  <h4 style="margin:14px 0 4px">Maiores posições estrangeiras no fim do ano</h4>
+  <div class="tbox" id="e-mai"></div>
+  <div class="sowhat"><b>E daí</b><span>O dinheiro estrangeiro é concentrado e muda de casa devagar. Em 2020, Vinci Equities (+R$ 5,0 bi), Alaska (+R$ 3,1 bi), Navi (+R$ 2,4 bi) e Kiron (+R$ 1,9 bi) receberam quase todo o aporte. Em 2025 a saída também se concentrou: Constellation (−R$ 3,5 bi), Alaska (−R$ 2,1 bi) e BC (−R$ 1,6 bi). Squadra, Alaska e Navi têm mais de 60% do patrimônio em estrangeiros.</span></div>
+ </figure>
+ <p class="note">Limites: 8 anos de fluxo; o Formulário é uma foto de 31/dez e cobre a casa inteira, por isso o filtro de casa de ações. O fluxo usa o retorno em reais dos fundos de ações da gestora; classes offshore com hedge cambial têm retorno diferente. 112 gestora-anos com erro de unidade no Formulário (patrimônio 5 vezes acima ou abaixo do ano anterior) ficaram fora. Código: <code>11_estrangeiro_fre.py</code>.</p>
+</section>

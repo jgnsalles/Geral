@@ -28,3 +28,4 @@ A página é montada de `artefato/template.html` (dados da parte 1 em `bd_data.j
 
 9. `09_dados_pagina.py resultado.json resultado_rep.json artefato/bd_data.json` — dados da parte 1 para a página.
 10. `10_ligacoes_cda.py` — ligações fundo → fundo mês a mês (CDA bloco 2, jan/2019–out/2026), usadas no passo 2.
+11. `11_estrangeiro_fre.py out carteiras.json gestoras_fr.json usdbrl.json ust10.csv artefato/data/estrangeiro_fre.json` — parte 3: estrangeiro pelo Formulário de Referência (AUM de não residentes, inclui fundos offshore), anual 2017–2025, só casas de ações (PL em ações na CVM ≥ 40% do AUM doméstico). Fluxo, regimes (Ibovespa em dólar, dólar, Selic, Treasury), sensibilidade a alpha, perfil e listas por ano.
