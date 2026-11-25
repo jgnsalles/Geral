@@ -408,6 +408,10 @@ function cumChart(el, series, a, b, opt={}){
 const IBS={name:'Ibovespa', r:IBV, color:'var(--ink-2)', dashArr:'5 4', sw:1.6};
 const CDS={name:'CDI', r:CDI, color:'var(--muted)', dashArr:'2 3', sw:1.4};
 // último mês com Ibovespa e ao menos metade das gestoras com retorno
+// Formulário de Referência (foto anual de 31/dez, todos os produtos da casa, inclusive estrangeiros)
+const FRE=PF.fre||{}, FREY=Math.max(0,...Object.values(FRE).map(x=>x[0]));
+const freOf=id=>FRE[(PR[id]&&PR[id].akey)||id]||null;
+const FRENOTE=`<b>*</b> Formulário de Referência (FRE) da CVM: foto anual da gestora inteira em 31/dez (a mais recente é dez/${FREY}, entregue até mar/${FREY+1}). Inclui todos os produtos (multimercados, previdência, carteiras e fundos offshore) e é a única fonte pública para o dinheiro de estrangeiros. Não capta o que entrou ou saiu depois dessa data: use como ordem de grandeza.`;
 const PLAST=(()=>{ const ids=Object.keys(PR); for(let i=PN-1;i>=0;i--){ if(IBV[i]==null) continue; const k=ids.filter(id=>PR[id].r[i]!=null).length; if(k>=ids.length*0.5) return i; } return PN-1; })();
 const PWIN=[[12,'12m'],[36,'3a'],[60,'5a'],[120,'10a'],[0,'Desde o início']];
 const PH=[[6,'6m'],[12,'1 ano'],[24,'2 anos'],[36,'3 anos'],[60,'5 anos'],[120,'10 anos']];
@@ -416,10 +420,10 @@ const hcell=(s,n,bold)=>`<td${bold?' style="font-weight:600"':''} title="${s&&s.
 
 // ----- aba Performance
 // gestoras extras (só performance, fora das carteiras: SPX, Dynamo...)
-const PNM={'08752088':'Brasil Capital','45999585':'TB','14229647':'Núcleo','18529041':'SFA','53980469':'JGP Equities','11888689':'STK','13143849':'Bahia AM','09175140':'Galt','13911006':'Parcitas','49640512':'Capsigma','02228585':'Tática','15555653':'Onyx','06182127':'Constellation'};
+const PNM={'05825277':'SPN','32319907':'IP','08204817':'Equitas','08752088':'Brasil Capital','45999585':'TB','14229647':'Núcleo','18529041':'SFA','53980469':'JGP Equities','11888689':'STK','13143849':'Bahia AM','09175140':'Galt','13911006':'Parcitas','49640512':'Capsigma','02228585':'Tática','15555653':'Onyx','06182127':'Constellation'};
 const PG=[...G.map(g=>PNM[g.id]?{...g,n:PNM[g.id]}:g), ...(PF.x||[]).filter(x=>!GI[x.id])]; const PGI={}; PG.forEach(g=>PGI[g.id]=g);
 // seleção de gestoras do ranking (escolhida a dedo; as demais continuam com o bloco de desempenho na própria página)
-const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "11530232", "06015560", "09175140", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "04581293", "14359791", "11401701", "53980469", "18730786", "49640512", "05336089", "08251477", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "02228585", "12330774", "72116353", "23890968", "37947185"]);
+const PSEL=new Set(["10957035", "11752203", "07078144", "35098801", "32541657", "00533944", "11570951", "09326542", "09267871", "45999585", "14205023", "10917835", "17776271", "14229647", "42462859", "11959069", "06182127", "27957477", "17544838", "28375224", "27133825", "13143849", "43020918", "31227292", "08947719", "10626543", "28925400", "51744631", "04714159", "18529041", "23345332", "08752088", "13911006", "14359791", "53980469", "18730786", "49640512", "05336089", "31340246", "22688191", "29389196", "23862803", "11888689", "15555653", "12330774", "72116353", "23890968", "37947185", "05825277", "32319907", "08204817", "10240925", "04506394", "27916161", "16878742"]);
 // fundos LatAm entram no mesmo ranking (benchmark próprio quando o factsheet traz, senão Ibovespa)
 (PF.la||[]).forEach((f,k)=>{ const id='la'+k, rr=new Array(PN).fill(null); f.r.forEach((v,j)=>rr[f.o+j]=dec(v)); const last=f.o+f.r.length-1;
   let bm=null; if(f.bm){ bm=new Array(PN).fill(null); f.bm.forEach((v,j)=>bm[f.o+j]=dec(v)); }
@@ -493,6 +497,7 @@ function renderP(){
     {k:'sel',l:'',f:o=>{const k=S.psel.indexOf(o.g.id); const st=k>=0?serStyle(k):null; return `<td class="l" style="width:1%"><input type="checkbox" data-g="${o.g.id}" ${k>=0?'checked':''} aria-label="comparar ${esc(o.g.n)}" style="min-height:auto">${st?`<span class="sw" style="background:${st.color};margin-left:6px"></span>`:''}</td>`;}},
     {k:'g',l:'Gestora',cls:'l',v:o=>o.g.n,asc:true,f:o=>`<td class="l">${GI[o.g.id]?`<a href="#g-${o.g.id}" data-open="${o.g.id}">${esc(o.g.n)}</a>`:o.g.gid&&GI[o.g.gid]?`<a href="#g-${o.g.gid}" data-open="${o.g.gid}" title="${esc(o.g.rs)}">${esc(o.g.n)}</a>`:`<span title="${esc(o.g.rs)}">${esc(o.g.n)}</span>`}${o.g.reg?` <span class="chip new" title="${o.p.bmn?'comparado ao '+esc(o.p.bmn)+' do factsheet':'comparado ao Ibovespa'}">${o.g.reg}</span>`:GI[o.g.id]?'':' <span class="chip" title="fora do painel de carteiras">só performance</span>'}${o.e!=null&&o.e<b?` <span class="chip" title="última cota disponível">até ${pml(o.e)}</span>`:''}</td>`},
     {k:'pl',l:'PL long only',v:o=>o.pl,f:o=>`<td class="muted">${plmi(o.pl)}</td>`},
+    {k:'fre',l:`AUM da casa*<br><small>FRE dez/${String(FREY).slice(2)}</small>`,v:o=>{const f=freOf(o.g.id); return f?f[1]:null;},f:o=>{const f=freOf(o.g.id); return `<td class="muted" title="${f?'estrangeiros: '+plmi(f[2]):''}">${f?plmi(f[1]):'–'}</td>`;}},
     ...PH.map(([n,l])=>({k:'h'+n,l:n>12?`${l}<br><small>a.a.</small>`:l,v:o=>hv(o.h[n],n),f:o=>hcell(o.h[n],n,n===36)})),
     ...(AN?[{k:'apo',l:`Desde ${pml(AO)}<br><small>início Apo · a.a.</small>`,v:o=>o.h.apo?(o.h.apo.ann??o.h.apo.ret):null,f:o=>acell(o.h.apo)}]:[]),
     {k:'ex',l:`vs Ibov<br><small>${WL} ${ann?'a.a.':''}</small>`,v:o=>o.s?o.s.ex:null,f:o=>`<td>${pcp(o.s?o.s.ex:null)}</td>`},
@@ -518,7 +523,7 @@ function renderP(){
   $('p-cs').textContent=`em ${S.cur==='USD'?'US$':'R$'} · até 8 linhas · Ibovespa e CDI tracejados`;
   cumChart($('p-chart'), [...S.psel.filter(id=>PR[id]).map((id,k)=>({name:PGI[id].n, r:PR[id].r, ...serStyle(k)})), IBS, CDS], a0, b, {endLabels:true, noLegend:true, label:'Retorno acumulado das gestoras marcadas'});
   chipSelector($('p-chips'), rows.slice().sort((x,y)=>x.g.n.localeCompare(y.g.n)).map(o=>({key:o.g.id,label:o.g.n})), S.psel, 8, renderP);
-  $('p-note').innerHTML=PNOTE;
+  $('p-note').innerHTML=PNOTE+'<br>'+FRENOTE;
 }
 const PNOTE=`<b>Moeda.</b> Em US$, o retorno mensal de cada série em reais é convertido pela PTAX de venda de fim de mês (BCB, série 3696): (1 + retorno em R$) × dólar do mês anterior ÷ dólar do mês − 1. Ibovespa e CDI recebem a mesma conversão. O Apo já vem em US$ do factsheet; em R$ ele é convertido no sentido contrário. <br><b>LatAm.</b> Fundos LatAm entram como linhas próprias (selo LatAm): Onyx, Fundamenta (feeder em reais da Gama), Exploritas e Fama, pelo Informe Diário, comparados ao Ibovespa; Apo Capital Latam Fund (offshore, US$) transcrito do factsheet de out/2026 pela classe B líquida e comparado ao MSCI LatAm do próprio factsheet. INCA e Fourth Sail (Tordesilhas) não têm fundos na CVM. <br><b>Como é calculado.</b> Fonte: Informe Diário da CVM (cota e PL de cada fundo, 2005 em diante). Para cada gestora, entram só os fundos <b>long only</b> da classe Ações que ela geria <i>naquela data</i> (histórico de gestores da CVM, somando os CNPJs da mesma casa), excluídos fundos de cotas (FIC), exclusivos, de previdência e indexados, e os fundos de investimento no exterior ou LatAm (estes ficam na tabela LatAm). Long biased fica de fora: fundos com long biased, long short ou L/S no nome (atual ou antigo), classificados pela Anbima como L/S ou multimercado, ou registrados na CVM como multimercado (salvo se o nome atual diz ações). Além disso, pela carteira da CDA: o fundo sai nos meses em que a mediana de 12 meses da posição vendida (futuro de Ibovespa vendido + ações tomadas em aluguel e vendidas) passa de 10% do PL. Os long only ficam tipicamente entre 0% e 5%. `+
   `O retorno do mês é a média dos retornos de cota desses fundos ponderada pelo PL do fim do mês anterior. <b>Base líquida para todos.</b> O retorno é o da cota que o cotista recebe, já descontadas as taxas de administração e de performance. Nas estruturas master-feeder as taxas são cobradas no FIC, então em vez do master entram os FICs da própria gestora cujo fundo investido principal (≥ 50% do PL do FIC, pela CDA) é um master elegível naquele mês; o master representado sai. Fundos sem FIC próprio (o cotista aplica direto) entram pela própria cota, que já é líquida. Cerca de 57% do peso vem de FICs. O Apo usa a classe B líquida do factsheet. Conferência com tabelas de peers líquidas: diferença mediana de 0,2 p.p. por ano. `+
@@ -683,11 +688,11 @@ function renderL(){
   } else { $('l-sub').textContent=''; html+=`<div class="card"><div class="empty">Sem Perfil Mensal para os fundos desta gestora.</div></div>`; }
   const fr=LP.fr[attrKey(S.g)];
   if(fr){ const ys=Object.keys(fr).sort(); const cl=LP.fr_classes; const used=cl.map((c,k)=>k).filter(k=>ys.some(y=>fr[y].a[k]>0));
-    html+=`<div class="card"><div class="hd"><h2>Gestora inteira · Formulário de Referência</h2><small>AUM por classe de cliente (R$ mi), todos os produtos, anual</small></div><div class="tblwrap"><table><thead><tr><th class="l">Ano</th>${used.map(k=>`<th>${esc(cl[k])}</th>`).join('')}<th>Total</th></tr></thead><tbody>${ys.slice().reverse().map(y=>{ const a=fr[y].a, t=a.reduce((s,v)=>s+v,0); return `<tr><td class="l">${y}</td>${used.map(k=>`<td title="${t?nf(a[k]/t*100,0)+'%':''}">${a[k]?a[k].toLocaleString('pt-BR')+`<small class="muted" style="display:block;font-size:11px">${t?nf(a[k]/t*100,0)+'%':''}</small>`:'<span class="zero">–</span>'}</td>`).join('')}<td style="font-weight:600">${t.toLocaleString('pt-BR')}</td></tr>`; }).join('')}</tbody></table></div><p class="note">O Formulário de Referência cobre todos os produtos da gestora (multimercados, previdência, carteiras), não só ações. Clubes e fundos de investimento incluem plataformas e alocadores.</p></div>`; }
+    html+=`<div class="card"><div class="hd"><h2>Gestora inteira · Formulário de Referência*</h2><small>AUM por tipo de cliente em 31/dez de cada ano (R$ mi), todos os produtos</small></div><div class="tblwrap"><table><thead><tr><th class="l">Ano</th>${used.map(k=>`<th>${esc(cl[k])}</th>`).join('')}<th>Total</th></tr></thead><tbody>${ys.slice().reverse().map(y=>{ const a=fr[y].a, t=a.reduce((s,v)=>s+v,0); return `<tr><td class="l">${y}</td>${used.map(k=>`<td title="${t?nf(a[k]/t*100,0)+'%':''}">${a[k]?a[k].toLocaleString('pt-BR')+`<small class="muted" style="display:block;font-size:11px">${t?nf(a[k]/t*100,0)+'%':''}</small>`:'<span class="zero">–</span>'}</td>`).join('')}<td style="font-weight:600">${t.toLocaleString('pt-BR')}</td></tr>`; }).join('')}</tbody></table></div><p class="note">${FRENOTE} "Fundos de investimento" inclui plataformas e alocadores.</p></div>`; }
   // comparação entre gestoras
   const rows=ids.map(id=>{ const r=LP.g[attrKey(id)]; if(!r) return null; let li=r.p.length-1; while(li>0&&!r.p[li]) li--; if(!r.p[li]) return null; return {id,g:PGI[id],p:r.p[li],pl:r.pl[li],nc:r.ncot[li],m:r.o+li}; }).filter(Boolean);
   const big=cats.map((c,k)=>k).filter(k=>rows.some(x=>x.p[k]>=500));
-  html+=`<div class="card"><div class="hd"><h2>Passivo atual de todas as gestoras</h2><small>% do PL dos fundos long only · clique no nome para abrir</small></div><div class="tblwrap" style="max-height:620px;overflow-y:auto"><table id="l-tbl"></table></div></div>`;
+  html+=`<div class="card"><div class="hd"><h2>Passivo atual de todas as gestoras</h2><small>% do PL dos fundos long only · clique no nome para abrir</small></div><div class="tblwrap" style="max-height:620px;overflow-y:auto"><table id="l-tbl"></table><p class="note">${FRENOTE}</p></div></div>`;
   html+=`<p class="note"><b>Como é calculado.</b> Perfil Mensal da CVM (desde jan/2019): cada fundo informa o % do PL detido por tipo de cotista. Aqui entram os mesmos fundos da performance líquida (FICs da gestora que alimentam masters long only e fundos diretos), ponderados pelo PL do mês. "Plataformas (conta e ordem)" são clientes de distribuidores que aplicam em nome deles; "Fundos e clubes" são outros fundos cotistas (alocadores, fundos de fundos, exclusivos de famílias). O campo de maior cotista vem vazio na CVM e ficou de fora.</p>`;
   $('l-body').innerHTML=html;
   if(rec) stackArea($('l-area'),M0,rec.o,rec.p,cats);
@@ -695,6 +700,8 @@ function renderL(){
     {k:'g',l:'Gestora',cls:'l',v:x=>x.g.n,asc:true,f:x=>`<td class="l"><a href="#" data-l="${x.id}">${esc(x.g.n)}</a></td>`},
     {k:'pl',l:'PL',v:x=>x.pl,f:x=>`<td class="muted">${plmi(x.pl)}</td>`},
     {k:'nc',l:'Cotistas',v:x=>x.nc,f:x=>`<td class="muted">${x.nc.toLocaleString('pt-BR')}</td>`},
+    {k:'fa',l:`AUM da casa*<br><small>FRE dez/${String(FREY).slice(2)}</small>`,v:x=>{const f=freOf(x.id); return f?f[1]:null;},f:x=>{const f=freOf(x.id); return `<td class="muted">${f?plmi(f[1]):'–'}</td>`;}},
+    {k:'fe',l:`Estrangeiros*<br><small>FRE dez/${String(FREY).slice(2)}</small>`,v:x=>{const f=freOf(x.id); return f?f[2]:null;},f:x=>{const f=freOf(x.id); return `<td>${f&&f[2]?plmi(f[2]):'<span class="zero">–</span>'}</td>`;}},
     ...big.map(k=>({k:'c'+k,l:esc(cats[k]),v:x=>x.p[k],f:x=>`<td style="background:color-mix(in srgb,${LCOL[k%LCOL.length]} ${Math.round(x.p[k]/100*0.5)}%,transparent)">${x.p[k]>=50?nf(x.p[k]/100,0)+'%':'<span class="zero">–</span>'}</td>`})),
   ], rows, 'pl', ()=>'', 1e9, renderL);
   $('l-tbl').querySelectorAll('a[data-l]').forEach(x=>x.onclick=e=>{e.preventDefault(); S.g=x.dataset.l; renderL(); window.scrollTo({top:0});});
@@ -885,7 +892,8 @@ function renderQ(){
     e.fl=f; e.f12=fs(12); e.f36=fs(36);
     const pla=n=>e.rows.reduce((s,o)=>s+(o.p.pl[PLAST-n]||0),0); e.a12=pla(12)||null; e.a36=pla(36)||null;
     e.mob=e.mix?e.mix.reduce((s,v,k)=>s+v*(MOBN[LP.cats[k]]??.5),0):.6; e.mobEst=!e.mix;
-    e.disp=e.aum!=null?e.aum*e.mob:null; e.pot=e.disp!=null?e.disp*(e.both?1:.7)*(e.f12!=null&&e.f12<0?1:.8):null;
+    e.fre=freOf(e.main.id); e.exF=e.fre?e.fre[2]:0;
+    e.disp=e.aum!=null?e.aum*e.mob+e.exF*MOBN['Estrangeiros']:null; e.pot=e.disp!=null?e.disp*(e.both?1:.7)*(e.f12!=null&&e.f12<0?1:.8):null;
     return e; });
   const GR=ENT.filter(e=>e.inG), RE=ENT.filter(e=>!e.inG), sum=(a,f)=>a.reduce((s,x)=>s+(f(x)||0),0);
   // ---------- contas
@@ -927,7 +935,7 @@ function renderQ(){
   const top3=GR.slice().sort((x,y)=>(y.aum||0)-(x.aum||0)).slice(0,3);
   const c1=cons[0], s1=sk[0];
   let html=`<div class="qtake"><ul style="margin:0;padding-left:18px">`+
-    `<li><b>R$ ${nf(tg/1000,1)} bi</b> em fundos ruins, ${pct(tg/(tg+tr),0)} do dinheiro do ranking. ${pct(sum(top3,e=>e.aum)/tg,0)} disso em três casas: ${top3.map(e=>esc(e.n)).join(', ')}.</li>`+
+    `<li><b>R$ ${nf(tg/1000,1)} bi</b> em fundos ruins, ${pct(tg/(tg+tr),0)} do dinheiro do ranking, mais <b>R$ ${nf(sum(GR,e=>e.exF)/1000,1)} bi de estrangeiros</b> nas mesmas casas*. ${pct(sum(top3,e=>e.aum)/tg,0)} disso em três casas: ${top3.map(e=>esc(e.n)).join(', ')}.</li>`+
     `<li><b>${pct(mvG,0)}</b> está em plataformas e alocadores, o dinheiro que troca de gestora (demais: ${pct(mvR,0)}).</li>`+
     `<li><b>O dinheiro sai da classe, não vai para os vencedores:</b> em 3 anos, o 4º quartil perdeu ${pct(-cumE(4),0)} do PL por resgates, mas o 1º quartil também perdeu ${pct(-cumE(1),0)}.</li>`+
     (c1?`<li><b>Onde erraram (${WL}):</b> ${pcp(dTot)} de diferença para o 1º quartil, ${pcp(dStk)} nas ações. Maior erro coletivo: ${esc(dispR(c1.root))} (${c1.L.who.length} de ${LO.length} tinham); maior falta: ${esc(s1)}.</li>`:'')+
@@ -937,12 +945,12 @@ function renderQ(){
   const oth=(arr,t,nn)=>t-nn-order.reduce((s,k)=>s+arr[k],0);
   const bar=(lbl,arr,t,nn)=>`<div class="nm">${lbl}</div><div class="stack">${order.map(k=>`<i style="width:${arr[k]/t*100}%;background:${LCOL[k%LCOL.length]}" title="${esc(cats[k])}: ${nf(arr[k]/t*100,0)}%"></i>`).join('')}<i style="width:${(oth(arr,t,nn)+nn)/t*100}%;background:var(--grid)" title="outros / sem dado"></i></div><div class="v">${plmi(t)}</div>`;
   html+=`<div class="qsec">1<b>Quanto dinheiro e de quem</b></div>`+
-    `<div class="dec">${kpis([['PL no 4º quartil','R$ '+nf(tg/1000,1)+' bi',`${GR.length} gestoras`],['Disputável','R$ '+nf(dispG/1000,1)+' bi','ponderado por tipo de cotista'],['Captação 12m',fmo(f12G),a12G?`${pct(f12G/a12G,0)} do PL`:'']])}</div>`+
+    `<div class="dec">${kpis([['PL no 4º quartil','R$ '+nf(tg/1000,1)+' bi',`${GR.length} gestoras`],['Estrangeiros*','R$ '+nf(sum(GR,e=>e.exF)/1000,1)+' bi',`FRE dez/${String(FREY).slice(2)}, casa inteira`],['Disputável','R$ '+nf(dispG/1000,1)+' bi','ponderado por tipo de cotista'],['Captação 12m',fmo(f12G),a12G?`${pct(f12G/a12G,0)} do PL`:'']])}</div>`+
     `<div class="card"><div class="qmix">${bar('<b>4º quartil</b>',cg,tg,ng)}${bar('Demais',cr,tr,nr)}</div>`+
     `<div class="pleg">${order.map(k=>`<span><i style="background:${LCOL[k%LCOL.length]}"></i>${esc(cats[k])} ${nf(cg[k]/tg*100,0)}% <span class="muted">vs ${nf(cr[k]/tr*100,0)}%</span></span>`).join('')}</div></div>`;
   // 2
   html+=`<div class="qsec">2<b>De quem tirar share</b></div><div class="card"><div class="tblwrap"><table id="q-don"></table></div>`+
-    `<p class="note">Ordem = PL × quanto do passivo é móvel × (mais peso se está no 4º quartil nas duas janelas e já perde dinheiro). Móvel = plataformas + fundos e clubes.</p></div>`;
+    `<p class="note">Ordem = (PL long only × quanto do passivo é móvel + estrangeiros × 70%) × mais peso se está no 4º quartil nas duas janelas e já perde dinheiro. Móvel = plataformas + fundos e clubes.</p><p class="note">${FRENOTE}</p></div>`;
   // 3
   html+=`<div class="qsec">3<b>Para onde vai o dinheiro</b></div><div class="card"><div class="hd"><h2>PL ganho ou perdido só por captação, 3 anos</h2><small>por quartil de 3 anos</small></div><div id="q-fchart"></div></div>`;
   // 4
@@ -963,7 +971,8 @@ function renderQ(){
   sTable('q-don',[
     {k:'g',l:'Gestora',cls:'l',v:e=>e.n,asc:true,f:e=>`<td class="l"><a href="#" data-q="${e.main.id}">${esc(e.n)}</a></td>`},
     {k:'q',l:'12m · 3a',v:e=>(e.q12||0)+(e.q36||0),f:e=>`<td>${qbadge(e.q12)} ${qbadge(e.q36)}</td>`},
-    {k:'aum',l:'PL',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
+    {k:'aum',l:'PL long only',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
+    {k:'ex',l:`Estrangeiros*<br><small>FRE dez/${String(FREY).slice(2)}</small>`,v:e=>e.exF||null,f:e=>`<td>${e.exF?plmi(e.exF):'<span class="zero">–</span>'}</td>`},
     {k:'f12',l:'Captação 12m',v:e=>e.f12!=null&&e.a12?e.f12/e.a12:null,f:e=>`<td>${fmo(e.f12)} <small class="muted">${e.f12!=null&&e.a12?pct(e.f12/e.a12,0):''}</small></td>`},
     {k:'mv',l:'Passivo móvel',v:e=>e.mix?e.mix[2]+e.mix[3]:null,f:e=>`<td>${e.mix?pct(e.mix[2]+e.mix[3],0):'–'}</td>`},
     {k:'pot',l:'Potencial',v:e=>e.pot,f:e=>`<td style="font-weight:600">${plmi(e.pot)}</td>`},

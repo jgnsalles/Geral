@@ -5,9 +5,11 @@ import sys, json
 import pandas as pd
 EN, FM, EL, PJ, OUT = sys.argv[1:6]
 M = json.load(open(PJ))['meses']; MI = {m: i for i, m in enumerate(M)}
-E = pd.read_pickle(EN)[['CNPJ_FUNDO', 'ym', 'gid']]
-F = pd.read_pickle(FM)[['CNPJ_FUNDO', 'ym', 'flow']]
+E = pd.read_pickle(EN)[['CNPJ_FUNDO', 'ym', 'gid', 'pl']]
+F = pd.read_pickle(FM)[['CNPJ_FUNDO', 'ym', 'flow', 'pl']].rename(columns={'pl': 'plf'})
 X = E.merge(F, on=['CNPJ_FUNDO', 'ym'], how='left')
+# fundo com parte do PL já contada em outro fundo da casa (master de feeder): fluxo na mesma proporção
+X['flow'] = X.flow * (X.pl / X.plf.where(X.plf > 0)).clip(0, 1).fillna(1)
 L = pd.read_pickle(EL); L = L[L.pl_ant > 0]
 L['flow'] = L.pl - L.pl_ant * (1 + L.r)
 X = pd.concat([X[['gid', 'ym', 'flow']], L[['gid', 'ym', 'flow']]])

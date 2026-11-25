@@ -92,6 +92,34 @@ P = P[P.gid.notna() & ~P.ext & ~P.la]
 if os.environ.get('DUMP_E'):  # fundos-mês da base bruta (masters e fundos diretos), usados no attribution
     E[['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant', 'r']].to_pickle(os.environ['DUMP_E'])
 NET = os.environ.get('NET', '1') == '1'
+# ---- dupla contagem master + feeder: depois da RCVM 175 muitos feeders viraram "FIF" sem a marca de FIC e entram junto com o master.
+# Para cada fundo B da base, a parte do PL de B que pertence a outros fundos da mesma gestora na base sai de B (PL e peso).
+_LF = os.path.join(os.path.dirname(os.path.abspath(OUT)), 'attr', 'links_full.pkl')
+_LFD = pd.read_pickle(_LF) if os.path.exists(_LF) else None
+def dedup(D):
+    if _LFD is None or D.empty: return D
+    D = D.copy(); D['_i'] = range(len(D))
+    base = D[['CNPJ_FUNDO', 'ym', 'gid', 'pl']]
+    lk = _LFD[_LFD.CNPJ_FUNDO.isin(set(D.CNPJ_FUNDO)) & _LFD.cota.isin(set(D.CNPJ_FUNDO)) & (_LFD.cota != _LFD.CNPJ_FUNDO)]
+    if lk.empty: return D.drop(columns='_i')
+    plk = PALL[['CNPJ_FUNDO', 'ym', 'pl']].drop_duplicates(['CNPJ_FUNDO', 'ym'])
+    lk = lk.merge(plk, on=['CNPJ_FUNDO', 'ym']); lk = lk[lk.pl > 0]; lk['fr'] = (lk.v / lk.pl).clip(0, 1.2)
+    lk['t'] = pd.PeriodIndex(lk.ym, freq='M').astype('int64')
+    A = base.rename(columns={'pl': 'plA'}).copy(); A['t'] = pd.PeriodIndex(A.ym, freq='M').astype('int64')
+    out_ = []
+    for cota, l in lk.groupby('cota'):
+        a = A[A.CNPJ_FUNDO.isin(set(l.CNPJ_FUNDO))].sort_values('t')
+        m = pd.merge_asof(a, l[['CNPJ_FUNDO', 't', 'fr']].sort_values('t'), on='t', by='CNPJ_FUNDO', direction='nearest', tolerance=6).dropna(subset=['fr'])
+        m['cota'] = cota; m['held'] = m.fr * m.plA; out_.append(m[['cota', 'ym', 'gid', 'held']])
+    if not out_: return D.drop(columns='_i')
+    Hd = pd.concat(out_).groupby(['cota', 'ym', 'gid']).held.sum().rename('held').reset_index()
+    D = D.merge(Hd.rename(columns={'cota': 'CNPJ_FUNDO'}), on=['CNPJ_FUNDO', 'ym', 'gid'], how='left').sort_values('_i')
+    sh = (D.held.fillna(0) / D.pl.where(D.pl > 0)).clip(0, 1).fillna(0)
+    print('dupla contagem: fundo-meses ajustados', int((sh > 0.02).sum()), '| PL removido R$ bi (último mês)', round(float((D.pl * sh)[D.ym == D.ym.max()].sum() / 1e9), 1))
+    D['pl'] = D.pl * (1 - sh); D['pl_ant'] = D.pl_ant * (1 - sh) if 'pl_ant' in D else None
+    D = D[(sh < 0.98)]
+    return D.drop(columns=['_i', 'held'])
+
 if NET:
     LK = pd.read_pickle(os.path.join(os.path.dirname(os.path.abspath(OUT)), 'fic_links.pkl'))
     LK = LK[LK.v > 0].sort_values('v').drop_duplicates(['CNPJ_FUNDO', 'ym'], keep='last')  # maior posição em cotas
@@ -114,8 +142,10 @@ if NET:
     wf = FC.pl_ant.sum(); wd = Em.pl_ant.sum()
     print('peso dos FICs no total:', round(wf / (wf + wd), 3))
     E = pd.concat([Em, FC.drop(columns=['t', 'cota'])], ignore_index=True)
+    E = dedup(E)
     if os.environ.get('DUMP_EN'):  # fundos-mês da base líquida (onde estão os cotistas), usados no passivo
         E[['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant']].to_pickle(os.environ['DUMP_EN'])
+
 
 def rint(v):  # retorno em centésimos de ponto-base (1e-6), inteiro, ou None
     return None if v is None or not np.isfinite(v) else int(round(v * 1e6))
@@ -133,6 +163,7 @@ if os.path.exists(_fx):
     out['fxr'] = [rint(fx[p] / fx[m] - 1) if p in fx and m in fx else None for p, m in zip(prev, M)]
 
 MIN_PL = 1e6
+PLD = dedup(P[P.gid.notna() & P.eleg][['CNPJ_FUNDO', 'ym', 'gid', 'pl', 'pl_ant']])
 for g in G:
     x = E[E.gid == g['id']]
     if x.empty:
@@ -141,7 +172,7 @@ for g in G:
     agg = agg[agg.w >= MIN_PL]
     if agg.empty:
         continue
-    pl = P[(P.gid == g['id']) & P.eleg].groupby('ym').pl.sum()
+    pl = PLD[PLD.gid == g['id']].groupby('ym').pl.sum()
     i0, i1 = MI[agg.index.min()], MI[agg.index.max()]
     # fundos: os de maior PL médio (até 8), com série própria
     fs = x.groupby('CNPJ_FUNDO').agg(plm=('pl', 'mean'), plx=('pl', 'max'), a=('ym', 'min'), b=('ym', 'max'), n=('ym', 'size'))

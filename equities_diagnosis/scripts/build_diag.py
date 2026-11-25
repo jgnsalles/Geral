@@ -75,6 +75,12 @@ def _ren(r):
     while r in TM['rename'] and r not in seen: seen.add(r); r = TM['rename'][r]
     return r
 P['tmerge'] = {k: _ren(v) for k, v in TM['merge'].items()}
+# Formulário de Referência: última foto anual (31/dez) de cada gestora: [ano, AUM total R$ mi, investidores não residentes R$ mi]
+_LP = json.load(open(os.path.join(S, 'attr/passivo.json')))
+P['fre'] = {}
+for gid, ys in _LP['fr'].items():
+    y = max(ys); a = ys[y]['a']
+    if sum(a) > 0: P['fre'][gid] = [int(y), int(sum(a)), int(a[10])]
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 json.dump(P, open(os.path.join(S, 'diag/data.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 VIEWS = [('p', 'performance', 'Performance'), ('a', 'attribution', 'Attribution'), ('e', 'empresas', 'Empresas'), ('l', 'passivo', 'Passivo'), ('q', 'quartil', '4º quartil'), ('g', None, 'Gestora')]

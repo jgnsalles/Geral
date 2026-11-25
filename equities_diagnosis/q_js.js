@@ -52,7 +52,8 @@ function renderQ(){
     e.fl=f; e.f12=fs(12); e.f36=fs(36);
     const pla=n=>e.rows.reduce((s,o)=>s+(o.p.pl[PLAST-n]||0),0); e.a12=pla(12)||null; e.a36=pla(36)||null;
     e.mob=e.mix?e.mix.reduce((s,v,k)=>s+v*(MOBN[LP.cats[k]]??.5),0):.6; e.mobEst=!e.mix;
-    e.disp=e.aum!=null?e.aum*e.mob:null; e.pot=e.disp!=null?e.disp*(e.both?1:.7)*(e.f12!=null&&e.f12<0?1:.8):null;
+    e.fre=freOf(e.main.id); e.exF=e.fre?e.fre[2]:0;
+    e.disp=e.aum!=null?e.aum*e.mob+e.exF*MOBN['Estrangeiros']:null; e.pot=e.disp!=null?e.disp*(e.both?1:.7)*(e.f12!=null&&e.f12<0?1:.8):null;
     return e; });
   const GR=ENT.filter(e=>e.inG), RE=ENT.filter(e=>!e.inG), sum=(a,f)=>a.reduce((s,x)=>s+(f(x)||0),0);
   // ---------- contas
@@ -94,7 +95,7 @@ function renderQ(){
   const top3=GR.slice().sort((x,y)=>(y.aum||0)-(x.aum||0)).slice(0,3);
   const c1=cons[0], s1=sk[0];
   let html=`<div class="qtake"><ul style="margin:0;padding-left:18px">`+
-    `<li><b>R$ ${nf(tg/1000,1)} bi</b> em fundos ruins, ${pct(tg/(tg+tr),0)} do dinheiro do ranking. ${pct(sum(top3,e=>e.aum)/tg,0)} disso em três casas: ${top3.map(e=>esc(e.n)).join(', ')}.</li>`+
+    `<li><b>R$ ${nf(tg/1000,1)} bi</b> em fundos ruins, ${pct(tg/(tg+tr),0)} do dinheiro do ranking, mais <b>R$ ${nf(sum(GR,e=>e.exF)/1000,1)} bi de estrangeiros</b> nas mesmas casas*. ${pct(sum(top3,e=>e.aum)/tg,0)} disso em três casas: ${top3.map(e=>esc(e.n)).join(', ')}.</li>`+
     `<li><b>${pct(mvG,0)}</b> está em plataformas e alocadores, o dinheiro que troca de gestora (demais: ${pct(mvR,0)}).</li>`+
     `<li><b>O dinheiro sai da classe, não vai para os vencedores:</b> em 3 anos, o 4º quartil perdeu ${pct(-cumE(4),0)} do PL por resgates, mas o 1º quartil também perdeu ${pct(-cumE(1),0)}.</li>`+
     (c1?`<li><b>Onde erraram (${WL}):</b> ${pcp(dTot)} de diferença para o 1º quartil, ${pcp(dStk)} nas ações. Maior erro coletivo: ${esc(dispR(c1.root))} (${c1.L.who.length} de ${LO.length} tinham); maior falta: ${esc(s1)}.</li>`:'')+
@@ -104,12 +105,12 @@ function renderQ(){
   const oth=(arr,t,nn)=>t-nn-order.reduce((s,k)=>s+arr[k],0);
   const bar=(lbl,arr,t,nn)=>`<div class="nm">${lbl}</div><div class="stack">${order.map(k=>`<i style="width:${arr[k]/t*100}%;background:${LCOL[k%LCOL.length]}" title="${esc(cats[k])}: ${nf(arr[k]/t*100,0)}%"></i>`).join('')}<i style="width:${(oth(arr,t,nn)+nn)/t*100}%;background:var(--grid)" title="outros / sem dado"></i></div><div class="v">${plmi(t)}</div>`;
   html+=`<div class="qsec">1<b>Quanto dinheiro e de quem</b></div>`+
-    `<div class="dec">${kpis([['PL no 4º quartil','R$ '+nf(tg/1000,1)+' bi',`${GR.length} gestoras`],['Disputável','R$ '+nf(dispG/1000,1)+' bi','ponderado por tipo de cotista'],['Captação 12m',fmo(f12G),a12G?`${pct(f12G/a12G,0)} do PL`:'']])}</div>`+
+    `<div class="dec">${kpis([['PL no 4º quartil','R$ '+nf(tg/1000,1)+' bi',`${GR.length} gestoras`],['Estrangeiros*','R$ '+nf(sum(GR,e=>e.exF)/1000,1)+' bi',`FRE dez/${String(FREY).slice(2)}, casa inteira`],['Disputável','R$ '+nf(dispG/1000,1)+' bi','ponderado por tipo de cotista'],['Captação 12m',fmo(f12G),a12G?`${pct(f12G/a12G,0)} do PL`:'']])}</div>`+
     `<div class="card"><div class="qmix">${bar('<b>4º quartil</b>',cg,tg,ng)}${bar('Demais',cr,tr,nr)}</div>`+
     `<div class="pleg">${order.map(k=>`<span><i style="background:${LCOL[k%LCOL.length]}"></i>${esc(cats[k])} ${nf(cg[k]/tg*100,0)}% <span class="muted">vs ${nf(cr[k]/tr*100,0)}%</span></span>`).join('')}</div></div>`;
   // 2
   html+=`<div class="qsec">2<b>De quem tirar share</b></div><div class="card"><div class="tblwrap"><table id="q-don"></table></div>`+
-    `<p class="note">Ordem = PL × quanto do passivo é móvel × (mais peso se está no 4º quartil nas duas janelas e já perde dinheiro). Móvel = plataformas + fundos e clubes.</p></div>`;
+    `<p class="note">Ordem = (PL long only × quanto do passivo é móvel + estrangeiros × 70%) × mais peso se está no 4º quartil nas duas janelas e já perde dinheiro. Móvel = plataformas + fundos e clubes.</p><p class="note">${FRENOTE}</p></div>`;
   // 3
   html+=`<div class="qsec">3<b>Para onde vai o dinheiro</b></div><div class="card"><div class="hd"><h2>PL ganho ou perdido só por captação, 3 anos</h2><small>por quartil de 3 anos</small></div><div id="q-fchart"></div></div>`;
   // 4
@@ -130,7 +131,8 @@ function renderQ(){
   sTable('q-don',[
     {k:'g',l:'Gestora',cls:'l',v:e=>e.n,asc:true,f:e=>`<td class="l"><a href="#" data-q="${e.main.id}">${esc(e.n)}</a></td>`},
     {k:'q',l:'12m · 3a',v:e=>(e.q12||0)+(e.q36||0),f:e=>`<td>${qbadge(e.q12)} ${qbadge(e.q36)}</td>`},
-    {k:'aum',l:'PL',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
+    {k:'aum',l:'PL long only',v:e=>e.aum,f:e=>`<td>${plmi(e.aum)}</td>`},
+    {k:'ex',l:`Estrangeiros*<br><small>FRE dez/${String(FREY).slice(2)}</small>`,v:e=>e.exF||null,f:e=>`<td>${e.exF?plmi(e.exF):'<span class="zero">–</span>'}</td>`},
     {k:'f12',l:'Captação 12m',v:e=>e.f12!=null&&e.a12?e.f12/e.a12:null,f:e=>`<td>${fmo(e.f12)} <small class="muted">${e.f12!=null&&e.a12?pct(e.f12/e.a12,0):''}</small></td>`},
     {k:'mv',l:'Passivo móvel',v:e=>e.mix?e.mix[2]+e.mix[3]:null,f:e=>`<td>${e.mix?pct(e.mix[2]+e.mix[3],0):'–'}</td>`},
     {k:'pot',l:'Potencial',v:e=>e.pot,f:e=>`<td style="font-weight:600">${plmi(e.pot)}</td>`},
